@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 @@include('html/head.html',{
 "title":"Головна"
 })
 
-<body class="home-page">
+<body>
 	<div class="wrapper">
 		@@include('html/header.html',{})
 		<main class="main">
-			<section class="section-top mb-24">
+			<section class="section-top mb-24 mt-8">
 				<div class="container">
 					<div class="row">
 						<div class="col-12 col-lg-7 col-xxl-8 mb-4 mb-lg-0">
@@ -98,7 +98,7 @@
 					@@include('html/parts/section-progress.html',{})
 				</div>
 			</section>
-			<section class="our-directions bg-blue mb-24">
+			<section class="our-directions offices-direction bg-blue mb-24">
 				<div class="container">
 					@@include('html/parts/our-directions.html',{})
 				</div>
@@ -173,75 +173,7 @@
 							<a href="##" class="btn btn-white font-weight-bold">Усі лікарі</a>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col">
-							<div class="doctors--swiper">
-								<div class="swiper-wrapper">
-									<div class="doctors--item swiper-slide">
-										<a href="##" class="inner">
-											<div class="wrap-img mb-3">
-												<img src="img/doctors/doctor-1.jpeg" alt="img">
-											</div>
-											<div class="experience-quantity mb-3">8 років досвіду</div>
-											<div class="h4 mb-1">Максаков Дмитро Миколайович</div>
-											<div class="position-work">Алерголог</div>
-										</a>
-									</div>
-									<div class="doctors--item swiper-slide">
-										<a href="##" class="inner">
-											<div class="wrap-img mb-3">
-												<img src="img/doctors/doctor-2.jpeg" alt="img">
-											</div>
-											<div class="experience-quantity mb-3">8 років досвіду</div>
-											<div class="h4 mb-1">Максаков Дмитро Миколайович</div>
-											<div class="position-work">Алерголог</div>
-										</a>
-									</div>
-									<div class="doctors--item swiper-slide">
-										<a href="##" class="inner">
-											<div class="wrap-img mb-3">
-												<img src="img/doctors/doctor-3.jpeg" alt="img">
-											</div>
-											<div class="experience-quantity mb-3">8 років досвіду</div>
-											<div class="h4 mb-1">Максаков Дмитро Миколайович</div>
-											<div class="position-work">Алерголог</div>
-										</a>
-									</div>
-									<div class="doctors--item swiper-slide">
-										<a href="##" class="inner">
-											<div class="wrap-img mb-4">
-												<img src="img/doctors/doctor-1.jpeg" alt="img">
-											</div>
-											<div class="experience-quantity mb-3">8 років досвіду</div>
-											<div class="h4 mb-1">Максаков Дмитро Миколайович</div>
-											<div class="position-work">Алерголог</div>
-										</a>
-									</div>
-									<div class="doctors--item swiper-slide">
-										<a href="##" class="inner">
-											<div class="wrap-img mb-3">
-												<img src="img/doctors/doctor-2.jpeg" alt="img">
-											</div>
-											<div class="experience-quantity mb-3">8 років досвіду</div>
-											<div class="h4 mb-1">Максаков Дмитро Миколайович</div>
-											<div class="position-work">Алерголог</div>
-										</a>
-									</div>
-									<div class="doctors--item swiper-slide">
-										<a href="##" class="inner">
-											<div class="wrap-img mb-3">
-												<img src="img/doctors/doctor-3.jpeg" alt="img">
-											</div>
-											<div class="experience-quantity mb-3">8 років досвіду</div>
-											<div class="h4 mb-1">Максаков Дмитро Миколайович</div>
-											<div class="position-work">Алерголог</div>
-										</a>
-									</div>
-								</div>
-								<div class="swiper-pagination mt-8"></div>
-							</div>
-						</div>
-					</div>
+					@@include('html/parts/doctors.html',{})
 				</div>
 			</section>
 			<section class="meeting mb-24 py-lg-16">
@@ -272,147 +204,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="partners--swiper mb-8">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-44.png" alt="img">
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-70.png" alt="img">
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-46.png" alt="img">
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-47.png" alt="img">
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-48.png" alt="img">
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-49.png" alt="img">
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-71.png" alt="img">
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-47.png" alt="img">
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-48.png" alt="img">
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-49.png" alt="img">
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-71.png" alt="img">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div dir="rtl" class="partners--swiper">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-73.png" alt="img">
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-74.png" alt="img">
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-55.png" alt="img">
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-56.png" alt="img">
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-57.png" alt="img">
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-58.png" alt="img">
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-55.png" alt="img">
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-								<div class="wrap-img">
-									<img src="img/partners/image-56.png" alt="img">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				@@include('html/parts/partners.html',{})
 			</section>
 			<section class="news mb-24">
 				<div class="container overflow-hidden">
@@ -422,45 +214,7 @@
 							<a href="##" class="btn btn-white font-weight-bold">Усі новини</a>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col">
-							<div class="news--swiper">
-								<div class="swiper-wrapper">
-									<div class="swiper-slide news--item">
-										<a href="##" class="inner">
-											<div class="wrap-img mb-4">
-												<img src="img/articles/article-1.jpeg" alt="img">
-												<div class="date-label">13 березня 2024</div>
-											</div>
-											<div class="h3 mb-2">Консультація анестезіолога у Дніпрі</div>
-											<div class="h5 descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у Дніпрі пропонує..</div>
-										</a>
-									</div>
-									<div class="swiper-slide news--item">
-										<a href="##" class="inner">
-											<div class="wrap-img mb-4">
-												<img src="img/articles/article-2.jpeg" alt="img">
-												<div class="date-label">13 березня 2024</div>
-											</div>
-											<div class="h3 mb-2">Консультація анестезіолога у Дніпрі</div>
-											<div class="h5 descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у Дніпрі пропонує..</div>
-										</a>
-									</div>
-									<div class="swiper-slide news--item">
-										<a href="##" class="inner">
-											<div class="wrap-img mb-4">
-												<img src="img/articles/article-3.jpeg" alt="img">
-												<div class="date-label">13 березня 2024</div>
-											</div>
-											<div class="h3 mb-2">Консультація анестезіолога у Дніпрі</div>
-											<div class="h5 descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у Дніпрі пропонує..</div>
-										</a>
-									</div>
-								</div>
-								<div class="swiper-pagination mt-6 d-xl-none"></div>
-							</div>
-						</div>
-					</div>
+					@@include('html/parts/news.html',{})
 				</div>
 			</section>
 			<section class="meeting mb-24 py-lg-16">
@@ -534,7 +288,12 @@
 				</div>
 			</section>
 		</main>
+		@@include('html/footer.html',{})
 	</div>
+	@@include('html/popup/popup--sign-up-appointment.html',{})
+	@@include('html/popup/popup--contacts.html',{})
+
+	@@include('html/maps/contacts-map.html',{})
 
 	@@include('html/scripts.html',{})
 </body>

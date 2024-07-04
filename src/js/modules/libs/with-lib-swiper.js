@@ -1,3 +1,4 @@
+import { auto } from '@popperjs/core';
 import Swiper from 'swiper/bundle';
 
 new Swiper(".section-top--backdrop-swiper", {
@@ -350,4 +351,112 @@ new Swiper('.media--swiper', {
 	observer: true,
 	observeParents: true,
 	observeSlideChildren: true,
+});
+
+new Swiper(".template-shares--swiper", {
+	grabCursor: true,
+	slidesPerView: 1,
+	loop: true,
+	spaceBetween: 25,
+	autoHeight: true,
+	pagination: {
+		el: ".template-shares--swiper .swiper-pagination",
+		clickable: true,
+	},
+	navigation: {
+		nextEl: ".template-shares--swiper .swiper-buttons .button-slider-next",
+		prevEl: ".template-shares--swiper .swiper-buttons .button-slider-prev",
+	},
+	autoplay: {
+		delay: 10000,
+		disableOnInteraction: false
+	},
+	breakpoints: {
+		1024: {
+		},
+		768: {
+			spaceBetween: 20,
+			slidesPerView: 2,
+		},
+		0: {
+			spaceBetween: 15,
+		}
+	}
+})
+
+new Swiper(".offices-anchor--swiper", {
+	grabCursor: true,
+	slidesPerView: 4,
+	loop: true,
+	spaceBetween: 25,
+	autoHeight: true,
+	navigation: {
+		nextEl: ".offices-anchor--swiper .swiper-buttons .button-slider-next",
+		prevEl: ".offices-anchor--swiper.swiper-buttons .button-slider-prev",
+	},
+	autoplay: {
+		delay: 10000,
+		disableOnInteraction: false
+	},
+	breakpoints: {
+		1400: {
+		},
+		1200: {
+			slidesPerView: 3,
+		},
+		1024: {
+			slidesPerView: 3,
+		},
+		768: {
+			spaceBetween: 20,
+			slidesPerView: 2,
+		},
+		575: {
+			spaceBetween: 15,
+			slidesPerView: 1,
+		},
+		0: {
+			spaceBetween: 15,
+			slidesPerView: 1,
+		}
+	}
+})
+
+document.querySelectorAll('.offices-direction-thumbs--swiper').forEach(function (swiperThumbsEl, index) {
+	var swiperMainEl = document.querySelectorAll('.offices-direction--swiper')[index];
+
+	if (swiperThumbsEl && swiperMainEl) {
+		var SwiperOfficesDirectionThumbs = new Swiper(swiperThumbsEl, {
+			grabCursor: true,
+			spaceBetween: 8,
+			slidesPerView: 'auto'
+		});
+
+		new Swiper(swiperMainEl, {
+			grabCursor: true,
+			slidesPerView: 1,
+			loop: true,
+			breakpoints: {
+				1200: {
+					spaceBetween: 25,
+				},
+				576: {
+					spaceBetween: 20,
+				},
+				0: {
+				}
+			},
+			autoplay: {
+				delay: 10000,
+				disableOnInteraction: false
+			},
+			navigation: {
+				nextEl: swiperMainEl.querySelector(".swiper-buttons .button-slider-next"),
+				prevEl: swiperMainEl.querySelector(".swiper-buttons .button-slider-prev"),
+			},
+			thumbs: {
+				swiper: SwiperOfficesDirectionThumbs,
+			}
+		});
+	}
 });
