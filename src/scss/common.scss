@@ -317,7 +317,7 @@ p {
 	&.btn-outline-white,
 	&.btn-outline-blue {
 		font-size: 20px;
-		line-height: 140%;
+		line-height: 120%;
 	}
 	&.btn-default-white {
 		&:not(:disabled) {
@@ -832,6 +832,7 @@ form {
 		}
 	}
 	textarea {
+		-webkit-overflow-scrolling: touch;
 		&::-webkit-scrollbar {
 			width: 8px;
 			height: 8px;
@@ -1265,28 +1266,32 @@ form {
 	background: transparent;
 	padding: 0;
 	row-gap: 10px;
+	display: inline-block;
 	.breadcrumb-item {
 		font-size: 18px;
 		font-weight: 500;
 		line-height: 140%;
 		position: relative;
-		display: flex;
-		align-items: center;
+		display: inline;
 		&.active {
 			color: $grey;
 		}
 		+ .breadcrumb-item {
 			padding-left: 0;
 			margin-left: 4px;
+			word-break: break-word;
+			hyphens: auto;
 			&::before {
 				all: unset;
 				content: "";
-				display: block;
+				display: inline-block;
+				vertical-align: middle;
 				margin: 0;
 				border: none;
 				width: 24px;
 				height: 24px;
 				margin-right: 4px;
+				margin-top: -4px;
 				position: relative;
 				background: url(../img/icons/icons.svg#i-arrow-small-down) no-repeat center;
 				background-size: cover;
@@ -1297,6 +1302,8 @@ form {
 		}
 		a {
 			color: $blue;
+			word-break: break-word;
+			hyphens: auto;
 			&:hover {
 				text-decoration: unset;
 				color: $grey;
@@ -1480,7 +1487,7 @@ form {
 }
 //modal
 .modal--custom {
-	z-index: 1065;
+	z-index: 1085;
 	.modal-dialog {
 		.modal-content {
 			border-radius: 20px;
@@ -1515,7 +1522,7 @@ form {
 	}
 }
 .modal-backdrop {
-	z-index: 1060;
+	z-index: 1080;
 }
 
 //fancybox gallery
@@ -1655,6 +1662,7 @@ form {
 		max-height: 275px;
 		overflow-y: scroll;
 		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
 		padding-right: 16px;
 		font-weight: 500;
 		color: #65738a;
@@ -2169,5 +2177,21 @@ form {
 	.psv-loader-image {
 		max-width: 150px !important;
 		max-height: 150px !important;
+	}
+}
+
+.simplebar-track {
+	border-radius: 24px;
+	background: $light-blue;
+	&.simplebar-horizontal,
+	&.simplebar-vertical {
+		width: 8px;
+	}
+}
+.simplebar-scrollbar {
+	background: $blue;
+	border-radius: 24px;
+	&::before {
+		background: $blue;
 	}
 }
