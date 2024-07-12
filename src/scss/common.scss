@@ -1667,20 +1667,20 @@ form {
 		-webkit-overflow-scrolling: touch;
 		padding-right: 16px;
 		font-weight: 500;
-		color: #65738a;
+		color: $grey;
 		@include md-max {
 			max-height: 420px;
 		}
-		&::-webkit-scrollbar {
-			width: 8px;
-			height: 8px;
-			background-color: #f4f4f4;
-			border-radius: 24px;
-		}
-		&::-webkit-scrollbar-thumb {
-			background-color: $blue;
-			border-radius: 24px;
-		}
+		// &::-webkit-scrollbar {
+		// 	width: 8px;
+		// 	height: 8px;
+		// 	background-color: #f4f4f4;
+		// 	border-radius: 24px;
+		// }
+		// &::-webkit-scrollbar-thumb {
+		// 	background-color: $blue;
+		// 	border-radius: 24px;
+		// }
 	}
 	ul {
 		counter-reset: items;
@@ -2196,4 +2196,32 @@ form {
 	&::before {
 		background: $blue;
 	}
+}
+
+//scroll
+.os-scrollbar-vertical .os-scrollbar-track:before {
+	background: $light-blue;
+	border-radius: 24px;
+	.our-directions & {
+		background-color: #73c4fd;
+	}
+}
+.os-scrollbar.os-scrollbar-track-interactive .os-scrollbar-track,
+.os-scrollbar.os-scrollbar-handle-interactive .os-scrollbar-handle {
+	background: $blue;
+	border-radius: 24px;
+	.our-directions & {
+		background-color: #f4f4f4;
+	}
+}
+
+[data-overlayscrollbars-viewport]:not([data-overlayscrollbars]) {
+	position: static;
+	&:focus {
+		overflow: visible !important;
+	}
+}
+
+[data-overlayscrollbars-viewport~="overflowYHidden"] {
+	padding-right: 0 !important;
 }
