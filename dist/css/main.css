@@ -1557,7 +1557,7 @@ p:last-child {
 .btn.btn-default-white:not(:disabled):focus {
   border: 2px solid rgb(0, 175, 255);
   background: unset;
-  color: #00afff;
+  color: #3da6d3;
 }
 .btn.btn-default-white:disabled {
   border-color: #808b9e;
