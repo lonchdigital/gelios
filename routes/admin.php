@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\InsuranceCompaniesController;
 
 
 Route::group([
@@ -16,6 +17,11 @@ Route::group([
 //        'middleware' => ['admin_auth']
     ], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('adminDashboard');
+
+        Route::prefix('/insurance-companies')->group(function() {
+            Route::get('/', [InsuranceCompaniesController::class, 'index'])->name('insurance.companies.index');
+        });
+
     });
 
 });
