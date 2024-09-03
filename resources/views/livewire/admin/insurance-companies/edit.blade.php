@@ -2,27 +2,37 @@
     <div class="col-12">
         <div class="card mb-30">
             <div class="card-body pb-0">
+
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                <div class="card-head mb-20">
+                    <h4 class="card-head-title">{{ trans('admin.insurance_companies') }}</h4>
+                </div>
+
                 <form wire:submit.prevent="save">
+
+                    <h6 class="card-title">{{ trans('admin.row_one') }}</h6>
+
                     <section class="mb-50">
-                        <h6 class="card-title">{{ trans('admin.insurance_companies') }}</h6>
+                        
 
-
-                        {{-- @dd('yes!', $this->companiesRowOne, $this->companiesRowTwo) --}}
-
-                        {{-- @dd($this->companiesRowOne) --}}
 
                         <div class="row" id="companies-row-one">
 
                             @if(isset($this->companiesRowOne))
                                 @foreach($this->companiesRowOne as $index => $companyRowOne)
 
-                                <div class="col-md-4 company-row pb-1 mb-4" id="company-id-rrr">
+                                <div class="col-md-4 company-row pb-1 mb-4">
                                     <div>
                                         <div class="border border-secondary rounded p-3">
                                             <div class="row justify-content-between align-items-center">
 
                                                 <div class="col-md-12">
-                                                    <div class="row" id="company-item-rrr">
+                                                    <div class="row">
                                                         <div class="col-md-12">
 
                                                             <div class="col-md-1">
@@ -40,23 +50,44 @@
                                                                     </div>
                                                                 @endif
                                                             </div>
-                                                    
 
-                                                            <x-admin.multilanguage-input
+                                                            {{-- <x-admin.multilanguage-input
                                                                 :is-required="false"
                                                                 :label="trans('admin.item')"
                                                                 field-name="company[rrr][test]"
                                                                 field-display="test"
-                                                                :values="[]"
-                                                                />
+                                                                :values="$companyRowOne['fields']"
+                                                                /> --}}
 
-                                                                {{ $companyRowOne['image'] }}
+                                                            <div class="form-group mt-2 mb-3">
+                                                                <label for="">Зображення</label></br>
+                                                                @if (isset($this->companiesRowOne[$index]['temporaryImage']))
+                                                                    <img src="{{ $this->companiesRowOne[$index]['temporaryImage'] }}"
+                                                                        width="60"><a
+                                                                        wire:click="deleteImageRowOne('{{ $index }}')"
+                                                                        style="cursor: pointer;">
+                                                                        <i
+                                                                            class="ti-close font-weight-bold mr-2"></i>
+                                                                        Видалити зображення
+                                                                    </a>
+                                                                @else
+                                                                    @if (isset($this->companiesRowOne[$index]['image']))
+                                                                        <img src="{{ '/storage/' . $this->companiesRowOne[$index]['image'] }}"
+                                                                            class="mb-2"
+                                                                            width="60"></br>
+                                                                    @endif
+
+                                                                    <input type="file"
+                                                                        wire:model="companiesRowOne.{{ $index }}.newImage">
+                                                                @endif
+                                                            </div>
+                                                            <input type="hidden" name="company_id" value="{{ $this->companiesRowOne[$index]['id'] }}">
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-5">
-                                                    <a href="#">
+                                                    <a wire:click="removeElementRowOne('{{ $index }}')">
                                                         <i class="ti-close font-weight-bold mr-2"></i>
                                                         {{ trans('admin.delete') }}
                                                     </a>
@@ -70,10 +101,12 @@
                                 @endforeach
                             @endif
 
-                        </div>
+                        </div> {{-- # companies-row-one --}}
+                        
+
                         <div class="row pt-3">
                             <div class="col-md-12 text-center">
-                                <a href="#" id="add-company" class="btn mb-2 btn-secondary">
+                                <a wire:click="addElementRowOne" class="btn mb-2 btn-secondary">
                                     <span class="ti-plus font-weight-bold"></span>
                                     {{ trans('admin.add_item') }}
                                 </a>

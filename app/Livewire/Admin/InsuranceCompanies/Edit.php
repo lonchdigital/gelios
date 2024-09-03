@@ -7,75 +7,115 @@ use Livewire\WithFileUploads;
 use App\Models\InsuranceCompany;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Collection;
+use App\Services\Admin\InsuranceCompanies\InsuranceCompaniesService;
 
 class Edit extends Component
 {
     use WithFileUploads;
 
-    public array $companiesRowOne;
+    public array $companiesRowOne = [];
     // public Collection $companiesRowTwo;
+    protected InsuranceCompaniesService $insuranceCompaniesService;
     
-    public function mount() {
-        $companiesRowOne = InsuranceCompany::where('row', 1)->get();
+    public function mount(InsuranceCompaniesService $insuranceCompaniesService) 
+    {
+        $companiesRowOne = InsuranceCompany::where('row', 1)->orderBy('sort', 'asc')->get();
         // $companiesRowTwo = InsuranceCompany::where('row', 2)->get();
+
+        updateSort($companiesRowOne);
         
-        $i = 1;
-        foreach($companiesRowOne as $companyRowOne) {
-            $companyRowOne->update([
-                'sort' => $i,
-            ]);
-
-            $i += 1;
-        }
-
-        // $this->companiesRowOne = $companiesRowOne;
-        // $this->companiesRowTwo = $companiesRowTwo;
-
-        foreach($companiesRowOne as $companyRowOne2) {
+        foreach($companiesRowOne as $companyRowOneItem) {
             $this->companiesRowOne[] = [
-                'sort' => $companyRowOne2->sort,
-                'image' => $companyRowOne2->image,
-                'fields' => $companyRowOne2->getTranslationsArray(),
+                'id' => $companyRowOneItem->id,
+                'sort' => $companyRowOneItem->sort,
+                'oldImage' => $companyRowOneItem->image ?? '',
+                'newImage' => null,
+                'image' => $companyRowOneItem->image,
+                // 'fields' => $companyRowOne2->getTranslationsArray(),
             ];
         }
-
-        // $this->companiesRowOne = $this->companiesRowOne->sortBy('sort');
-        usort($this->companiesRowOne, function ($a, $b) {
-            return $a['sort'] <=> $b['sort'];
-        });
         
+        $this->companiesRowOne = makeUsort($this->companiesRowOne);
+    }
+
+    public function hydrate()
+    {
+        $this->insuranceCompaniesService = app(InsuranceCompaniesService::class);
     }
 
     public function newPositionRowOne($val, $index)
     {
-
         $this->companiesRowOne[$index + $val]['sort'] = $this->companiesRowOne[$index]['sort'];
 
         $this->companiesRowOne[$index]['sort'] = $this->companiesRowOne[$index]['sort'] + $val;
 
-        usort($this->companiesRowOne, function ($a, $b) {
-            return $a['sort'] <=> $b['sort'];
-        });
+        $this->companiesRowOne = makeUsort($this->companiesRowOne);
+    }
 
+    public function updated($propertyName)
+    {
+        if (preg_match('/companiesRowOne\.\d+\.newImage/', $propertyName)) {
+            $this->handleImageChangeForRowOne($propertyName);
+        }
+        if (preg_match('/companiesRowTwo\.\d+\.newImage/', $propertyName)) {
+            // $this->handleImageChangeForRowTwo($propertyName);
+        }
+    }
 
+    protected function handleImageChangeForRowOne($propertyName)
+    {
+        preg_match('/companiesRowOne\.(\d+)\.newImage/', $propertyName, $matches);
+        $index = $matches[1];
 
+        $this->companiesRowOne[$index]['temporaryImage'] = $this->companiesRowOne[$index]['newImage']->temporaryUrl();
+    }
 
+    public function deleteImageRowOne($index)
+    {
+        $this->companiesRowOne[$index]['image'] = null;
+        $this->companiesRowOne[$index]['temporaryImage'] = null;
+    }
 
+    public function removeElementRowOne($index)
+    {
+        foreach($this->companiesRowOne as $index2 => $companyRowOne) {
+            if($companyRowOne['sort'] > $this->companiesRowOne[$index]['sort']) {
+                $this->companiesRowOne[$index2]['sort'] = $companyRowOne['sort'] - 1;
+            }
+        }
 
-        // dd($val, $index);
-        // $this->companiesRowOne[$index + $val]->sort = $this->companiesRowOne[$index]->sort;
+        if (array_key_exists($index, $this->companiesRowOne)) {
+            unset($this->companiesRowOne[$index]);
+        }
+    }
 
-        // $this->companiesRowOne[$index]->sort = $this->companiesRowOne[$index]->sort + $val;
+    public function addElementRowOne()
+    {
+        $this->companiesRowOne[] = [
+            'id' => null,
+            'image' => null,
+            'newImage' => null,
+            'sort' => count($this->companiesRowOne) + 1,
+        ];
+    }
 
-        // $this->companiesRowOne = $this->companiesRowOne->sortBy('sort')->values();
+    protected function rules()
+    {
+        return [
+            'companiesRowOne.*.newImage' => [
+                'nullable'
+            ]
+        ];
+    }
 
-        // dd($this->companiesRowOne);
-        // $i = 1;
-        // foreach($this->companiesRowOne as $companyRowOne) {
-        //     // $companyRowOne->sort = $i;
-        //     $companyRowOne[$i];
-        //     $i += 1;
-        // }
+    public function save()
+    {
+        $this->validate();
+
+        $existingCompaniesRowOne = InsuranceCompany::where('row', 1)->get();
+        $this->insuranceCompaniesService->syncCompanies($this->companiesRowOne, $existingCompaniesRowOne, 1);
+
+        redirect()->route('insurance.companies.index')->with('success', trans('admin.document_updated'));
     }
 
     public function render()
