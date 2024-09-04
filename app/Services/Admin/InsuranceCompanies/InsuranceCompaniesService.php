@@ -11,14 +11,13 @@ class InsuranceCompaniesService
     public function syncCompanies(array $companies, Collection $existingCompanies, int $row)
     {
         foreach( $companies as $company ) {
-
             $existingCompany = $existingCompanies->where('id', $company['id'])->first();
 
             if( !is_null($existingCompany) ) {
                 $dataToUpdate = [
                     'sort' => $company['sort']
                 ];
-
+                
                 $existingCompany->update($dataToUpdate);
             } else {
                 $image = null;

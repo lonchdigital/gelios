@@ -45,6 +45,7 @@ return [
     'content' => 'Контент',
     'choose_image' => 'Оберіть зображення…',
     'image' => 'Зображення',
+    'remove_image' => 'Видалити зображення',
     'year' => 'Рік',
     'cars_title' => 'Авто',
     'action' => 'Дія',
