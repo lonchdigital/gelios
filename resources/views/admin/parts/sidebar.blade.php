@@ -32,6 +32,34 @@
                         </a>
                     </li>
 
+                    <li @if(Route::is('admin.promotions.*')) class="active" @endif>
+                        <a href="{{ route('admin.promotions.index') }}">
+                            <i class='fa fa-cog'></i>
+                            <span>{{ trans('admin.promotions') }}</span>
+                        </a>
+                    </li>
+
+                    <li @if(Route::is('admin.check-ups.*')) class="active" @endif>
+                        <a href="{{ route('admin.check-ups.index') }}">
+                            <i class='fa fa-cog'></i>
+                            <span>{{ trans('admin.check_ups') }}</span>
+                        </a>
+                    </li>
+
+                    <li class="treeview @if(Route::is('admin.article-categories.*') || Route::is('admin.articles.*')) menu-open @endif">
+                        <a href="javascript:void(0)"><i class="bx bx-home-heart"></i> <span>{{ trans('admin.articles') }}</span> <i class="fa fa-angle-right"></i></a>
+                        <ul class="treeview-menu" @if(Route::is('admin.article-categories.*') || Route::is('admin.articles.*')) style="display: block;" @else style="display: none;" @endif>
+                            <li @if(Route::is('admin.article-categories.*')) class="active" @endif>
+                                <a href="{{ route('admin.article-categories.index') }}">{{ trans('admin.categories') }}
+                                </a>
+                            </li>
+                            <li @if(Route::is('admin.articles.*')) class="active" @endif >
+                                <a href="{{ route('admin.articles.index') }}">{{ trans('admin.articles_list') }}
+
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>

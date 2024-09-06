@@ -76,27 +76,25 @@
 								<div class="current-lang">
 									<div class="current-lang--inner d-flex align-items-center">
 										<div class="language mr-1">
-											<span>Ua</span>
+											<span>{{ LaravelLocalization::getCurrentLocale() }}</span>
 										</div>
 										<svg class="i-arrow-down">
 											<use xlink:href="{{ asset('styles/img/icons/icons.svg#i-arrow-small-down') }}"></use>
 										</svg>
 									</div>
 									<ul class="submenu list-unstyled mb-0 position-absolute py-1 px-2">
-										<li>
-											<div class="language d-flex align-items-center">
-												<a class="d-flex" href="/">
-													<span>Ru</span>
-												</a>
-											</div>
-										</li>
-										<li>
-											<div class="language d-flex align-items-center">
-												<a class="d-flex" href="/">
-													<span>Eng</span>
-												</a>
-											</div>
-										</li>
+                                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                            @if ($localeCode !== LaravelLocalization::getCurrentLocale())
+                                                <li>
+                                                    <div class="language d-flex align-items-center">
+                                                        <a class="d-flex" rel="alternate" hreflang="{{ $localeCode }}"
+                                                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                            <span>{{ $localeCode }}</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            @endif
+                                        @endforeach
 									</ul>
 								</div>
 							</div>
@@ -78328,11 +78326,11 @@
 										</div>
 										<div class="list-inline-item"><a class="nav-link" href="##">Хірургія</a></div>
 										<div class="list-inline-item"><a class="nav-link" href="##">Про компанію</a></div>
-										<div class="hover-aside-menu--item position-right list-inline-item"><a class="nav-link" href="##">Акції</a>
+										<div class="hover-aside-menu--item position-right list-inline-item"><a class="nav-link" href="{{ route('promotions.index') }}">Акції</a>
 											<div class="hover-aside-menu--list">
 												<div class="hover-aside-menu--inner">
 													<div class="hover-aside-menu--content">
-														<div class="hover-aside-menu--item"><a class="link" href="##">Check-up</a></div>
+														<div class="hover-aside-menu--item"><a class="link" href="{{ route('check-ups.index') }}">Check-up</a></div>
 													</div>
 												</div>
 											</div>
@@ -78435,11 +78433,11 @@
 													<div class="item"><a href="##">Хірургія</a></div>
 													<div class="item"><a href="##">Про компанію</a></div>
 													<div class="item has-dropdown">
-														<a href="##">Акції</a>
+														<a href="{{ route('promotions.index') }}">Акції</a>
 														<div class="push-menu--lvl scrollable-content">
 															<div class="scrollable-content--inner">
-																<div class="item"><a href="##">Акції</a></div>
-																<div class="item"><a href="##">Check-up</a></div>
+																<div class="item"><a href="{{ route('promotions.index') }}">Акції</a></div>
+																<div class="item"><a href="{{ route('check-ups.index') }}">Check-up</a></div>
 															</div>
 														</div>
 													</div>

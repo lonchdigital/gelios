@@ -373,9 +373,9 @@
 
 </script>
 
-	<script src="js/jquery.min.js"></script>
-<script src="js/libs.min.js"></script>
-<script src="js/main.min.js"></script>
+	<script src="{{ asset('styles/js/jquery.min.js') }}"></script>
+<script src="{{ asset('styles/js/libs.min.js') }}"></script>
+<script src="{{ asset('styles/js/main.min.js') }}"></script>
 </body>
 
 </html>
