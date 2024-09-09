@@ -16,6 +16,7 @@ class MultilanguageInput extends Component
         public readonly string $fieldName,
         public readonly ?array $values,
         public readonly ?string $fieldDisplay = '',
+        public readonly ?string $liveWireField = '',
         public readonly ?string $placeholder = null,
         public readonly ?bool $isRequired = false,
     ) { }
@@ -40,6 +41,7 @@ class MultilanguageInput extends Component
             'label' => $this->label,
             'fieldName' => $this->fieldName,
             'fieldDisplay' => $this->fieldDisplay,
+            'liveWireField' => $this->liveWireField,
             'errorFieldName' => preg_replace(
                 '(\.$)',
                 '',

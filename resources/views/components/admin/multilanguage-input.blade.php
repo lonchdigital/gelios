@@ -10,7 +10,7 @@
                                 <strong class="text-danger">*</strong>
                             @endif
                         </label>
-                        <input type="text" name="{{ $fieldName }}[{{$availableLanguage}}]" id="{{ $fieldName }}_{{ $availableLanguage }}" class="form-control" @if(isset($valuesField[$availableLanguage])) value="{{ $valuesField[$availableLanguage] }}" @endif @isset($placeholder) placeholder="{{ $placeholder }}" @endisset>
+                        <input type="text" @if($liveWireField) wire:model="{{$liveWireField}}.{{$availableLanguage}}" @endif name="{{ $fieldName }}[{{$availableLanguage}}]" id="{{ $fieldName }}_{{ $availableLanguage }}" class="form-control" @if(isset($valuesField[$availableLanguage])) value="{{ $valuesField[$availableLanguage] }}" @endif @isset($placeholder) placeholder="{{ $placeholder }}" @endisset>
                     </div>
                 </div>
             @endforeach

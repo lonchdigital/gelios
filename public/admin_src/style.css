@@ -14774,3 +14774,7 @@ td.image-preview-td {
 .art-running-text textarea {
     height: 200px;
 }
+
+.dark-lincs a {
+    color: #495057;
+}

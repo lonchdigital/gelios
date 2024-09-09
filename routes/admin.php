@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\Admin\ArticleCategoryController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CheckUpController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\InsuranceCompaniesController;
 use App\Http\Controllers\Admin\PromotionController;
+use App\Http\Controllers\Admin\DirectionsController;
+use App\Http\Controllers\Admin\ArticleCategoryController;
+use App\Http\Controllers\Admin\InsuranceCompaniesController;
 
 Route::group([
     'prefix' => 'admin',
@@ -21,6 +22,10 @@ Route::group([
     ], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('adminDashboard');
 
+        Route::prefix('/directions')->group(function() {
+            Route::get('/', [DirectionsController::class, 'index'])->name('directions.index');
+            Route::get('/{directionId}/edit', [DirectionsController::class, 'edit'])->name('directions.edit');
+        });
         Route::prefix('/insurance-companies')->group(function() {
             Route::get('/', [InsuranceCompaniesController::class, 'index'])->name('insurance.companies.index');
         });

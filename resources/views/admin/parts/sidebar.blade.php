@@ -7,10 +7,6 @@
         </a>
     </div>
 
-    @php
-        $currentRoute = request()->route()->getName();
-    @endphp
-
     <!-- Side Nav -->
     <div class="ecaps-sidenav" id="ecapsSideNav">
         <!-- Side Menu Area -->
@@ -18,14 +14,21 @@
             <!-- Sidebar Menu -->
             <nav>
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li @if( $currentRoute === 'adminDashboard' ) class="active"@endif>
+                    <li @if( Route::is('adminDashboard') ) class="active"@endif>
                         <a href="{{ route('adminDashboard') }}">
                             <i class='fa fa-home'></i>
                             <span>{{ trans('admin.main') }}</span>
                         </a>
                     </li>
 
-                    <li @if( $currentRoute === 'insurance.companies.index' ) class="active"@endif>
+                    <li @if( Route::is('directions.index') ) class="active"@endif>
+                        <a href="{{ route('directions.index') }}">
+                            <i class='fa fa-cog'></i>
+                            <span>{{ trans('admin.directions') }}</span>
+                        </a>
+                    </li>
+
+                    <li @if( Route::is('insurance.companies.index') ) class="active"@endif>
                         <a href="{{ route('insurance.companies.index') }}">
                             <i class='fa fa-cog'></i>
                             <span>{{ trans('admin.insurance_companies') }}</span>

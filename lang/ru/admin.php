@@ -78,4 +78,11 @@ return [
     'row_two' => 'Второй ряд',
     'hero_header' => 'Первый блок',
     'delete_video' => 'Удалить видео',
+    'directions' => 'Направления',
+    'direction' => 'Направление',
+    'template' => 'Шаблон',
+    'category' => 'Категория',
+    'categories' => 'Категории',
+    'sub_category' => 'Подкатегория',
+    'not_chosen' => 'Не выбрано',
 ];
