@@ -16,16 +16,20 @@ class DirectionsController extends Controller
     {
         $direction = Direction::find($directionId);
 
-        switch ($direction->template) {
-            case 1:
-                return view('admin.directions.templates.category', compact('direction'));
-                break;
-            case 2:
-                return view('admin.directions.templates.sub-category', compact('direction'));
-                break;
-            case 3:
-                return view('admin.directions.templates.direction', compact('direction'));
-                break;
+        if(!is_null($direction)) {
+            switch ($direction->template) {
+                case 1:
+                    return view('admin.directions.templates.category', compact('direction'));
+                    break;
+                case 2:
+                    return view('admin.directions.templates.sub-category', compact('direction'));
+                    break;
+                case 3:
+                    return view('admin.directions.templates.direction', compact('direction'));
+                    break;
+            }
+        } else {
+            return view('admin.directions.index');
         }
     }
 

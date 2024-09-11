@@ -16,6 +16,7 @@ class MultilanguageTextArea extends Component
         public readonly string $fieldName,
         public readonly ?array $values,
         public readonly ?string $fieldDisplay = '',
+        public readonly ?string $liveWireField = '',
         public readonly ?bool $isRequired = false,
     ) { }
     /**
@@ -47,6 +48,7 @@ class MultilanguageTextArea extends Component
                 )
             ),
             'valuesField' => $valuesToDisplay,
+            'liveWireField' => $this->liveWireField,
             'isRequired' => $this->isRequired,
         ]);
     }

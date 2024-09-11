@@ -85,4 +85,9 @@ return [
     'categories' => 'Категорії',
     'sub_category' => 'Підкатегорія',
     'not_chosen' => 'Не обрано',
+    'section_one' => 'Перша секція',
+    'section_two' => 'Друга секція',
+    'section_three' => 'Третя секція',
+    'is_image' => 'Секція с зображенням',
+    'is_reverse' => 'Перевернути',
 ];
