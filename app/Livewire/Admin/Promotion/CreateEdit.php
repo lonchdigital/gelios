@@ -137,6 +137,8 @@ class CreateEdit extends Component
 
     public function save()
     {
+        $this->validate();
+        
         if($this->image) {
             $image = $this->downloadImage($this->image);
 

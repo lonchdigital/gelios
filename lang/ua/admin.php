@@ -90,4 +90,14 @@ return [
     'section_three' => 'Третя секція',
     'is_image' => 'Секція с зображенням',
     'is_reverse' => 'Перевернути',
+    'promotions' => 'Акції',
+    'check_ups' => 'Check up',
+    'articles' => 'Блог',
+    'articles_list' => 'Список статтей',
+    'article' => [
+        'blocks_type' => [
+            'one_block' => 'Один блок',
+            'two_blocks' => 'Два блоки',
+        ],
+    ],
 ];

@@ -112,6 +112,8 @@ class CreateEdit extends Component
 
     public function save()
     {
+        $this->validate();
+
         $this->program->check_up_id = $this->checkUp->id;
         $this->program->save();
 

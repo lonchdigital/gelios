@@ -63,6 +63,28 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li class="treeview @if(Route::is('admin.doctor-categories.*') || Route::is('admin.doctors.*')) menu-open @endif">
+                        <a href="javascript:void(0)"><i class="fa fa-user-md"></i> <span>Лікарі</span> <i class="fa fa-angle-right"></i></a>
+                        <ul class="treeview-menu" @if(Route::is('admin.doctor-categories.*') || Route::is('admin.doctors.*')) style="display: block;" @else style="display: none;" @endif>
+                            <li @if(Route::is('admin.doctor-categories.*')) class="active" @endif>
+                                <a href="{{ route('admin.doctor-categories.index') }}">Категорії
+                                </a>
+                            </li>
+                            <li @if(Route::is('admin.doctors.*')) class="active" @endif >
+                                <a href="{{ route('admin.doctors.index') }}">Список лікарів
+
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li @if(Route::is('admin.specializations.*')) class="active" @endif>
+                        <a href="{{ route('admin.specializations.index') }}">
+                            <i class="fa fa-stethoscope"></i>
+                            <span>Спеціальності лікарів</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>

@@ -22,6 +22,7 @@
                         <thead>
                             <tr>
                                 <th>Назва</th>
+                                <th>Зображення</th>
                                 <th style="text-align: right">Дії</th>
                             </tr>
                         </thead>
@@ -29,6 +30,9 @@
                         @foreach($this->articles as $article)
                             <tr>
                                 <td>{{ $article->title }}</td>
+                                <td>
+                                    <img src="{{ $article->imageUrl }}" width="60">
+                                </td>
                                 <td style="text-align: right">
                                     <a href="{{ route('admin.articles.edit', $article) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
                                 </td>
