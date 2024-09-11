@@ -31,8 +31,7 @@ class Edit extends Component
                 'sort' => $companyRowOneItem->sort,
                 'oldImage' => $companyRowOneItem->image ?? '',
                 'newImage' => null,
-                'image' => $companyRowOneItem->image,
-                // 'fields' => $companyRowOne2->getTranslationsArray(),
+                'image' => $companyRowOneItem->image
             ];
         }
         foreach($companiesRowTwo as $companyRowTwoItem) {

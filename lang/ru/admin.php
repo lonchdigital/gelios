@@ -85,4 +85,9 @@ return [
     'categories' => 'Категории',
     'sub_category' => 'Подкатегория',
     'not_chosen' => 'Не выбрано',
+    'section_one' => 'Первая секция',
+    'section_two' => 'Вторая секция',
+    'section_three' => 'Третья секция',
+    'is_image' => 'Секция с картинкой',
+    'is_reverse' => 'Перевернуть',
 ];

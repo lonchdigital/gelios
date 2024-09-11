@@ -15,6 +15,8 @@ class MultilanguageTextAreaRich extends Component
         public readonly string $label,
         public readonly string $fieldName,
         public readonly ?array $values,
+        public readonly ?string $fieldDisplay = '',
+        public readonly ?string $liveWireField = '',
         public readonly ?bool $isRequired = false,
     ) { }
     /**
@@ -22,6 +24,17 @@ class MultilanguageTextAreaRich extends Component
      */
     public function render(): View|Closure|string
     {
+        $valuesToDisplay = [];
+        if( $this->fieldDisplay ) {
+            foreach ($this->values as $lang => $value) {
+                $valuesToDisplay[$lang] = $value[$this->fieldDisplay];
+            }
+        } else {
+            foreach ($this->values as $lang => $value) {
+                $valuesToDisplay[$lang] = $value;
+            }
+        }
+        
         return view('components.admin.multilanguage-text-area-rich', [
             'label' => $this->label,
             'fieldName' => $this->fieldName,
@@ -34,7 +47,8 @@ class MultilanguageTextAreaRich extends Component
                     $this->fieldName
                 )
             ),
-            'values' => $this->values,
+            'valuesField' => $valuesToDisplay,
+            'liveWireField' => $this->liveWireField,
             'isRequired' => $this->isRequired,
         ]);
     }
