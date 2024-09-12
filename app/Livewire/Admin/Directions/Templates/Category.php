@@ -30,92 +30,22 @@ class Category extends Component
     
     public function mount() 
     {
+        $this->directionsService = app(DirectionsService::class);
+
         // Set Section One data
         $this->directionTextBlockOne = DirectionTextBlock::where('number', 1)->where('direction_id', $this->direction->id)->first();
-        if(!is_null($this->directionTextBlockOne)) {
-            foreach ($this->directionTextBlockOne->getTranslationsArray() as $lang => $value) {
-                $this->sectionOneData['text_one'][$lang] = $value['text_one'];
-            }
-            foreach ($this->directionTextBlockOne->getTranslationsArray() as $lang => $value) {
-                $this->sectionOneData['text_two'][$lang] = $value['text_two'];
-            }
-            $this->sectionOneData['media']['image'] = $this->directionTextBlockOne->image;
-            $this->sectionOneData['is_reverse'] = $this->directionTextBlockOne->is_reverse;
-            $this->sectionOneData['is_image'] = $this->directionTextBlockOne->is_image;
-        } else {
-            $this->sectionOneData['text_one'] = [];
-            $this->sectionOneData['text_two'] = [];
-            $this->sectionOneData['is_reverse'] = false;
-            $this->sectionOneData['is_image'] = true;
-        }
+        $this->sectionOneData = $this->directionsService->setTextBlockData($this->directionTextBlockOne);
 
         // Set Section Two data
         $this->directionTextBlockTwo = DirectionTextBlock::where('number', 2)->where('direction_id', $this->direction->id)->first();
-        if(!is_null($this->directionTextBlockTwo)) {
-            foreach ($this->directionTextBlockTwo->getTranslationsArray() as $lang => $value) {
-                $this->sectionTwoData['text_one'][$lang] = $value['text_one'];
-            }
-            foreach ($this->directionTextBlockTwo->getTranslationsArray() as $lang => $value) {
-                $this->sectionTwoData['text_two'][$lang] = $value['text_two'];
-            }
-            $this->sectionTwoData['media']['image'] = $this->directionTextBlockTwo->image;
-            $this->sectionTwoData['is_reverse'] = $this->directionTextBlockTwo->is_reverse;
-            $this->sectionTwoData['is_image'] = $this->directionTextBlockTwo->is_image;
-        } else {
-            $this->sectionTwoData['text_one'] = [];
-            $this->sectionTwoData['text_two'] = [];
-            $this->sectionTwoData['is_reverse'] = false;
-            $this->sectionTwoData['is_image'] = true;
-        }
+        $this->sectionTwoData = $this->directionsService->setTextBlockData($this->directionTextBlockTwo);
         
         // Set Section Three data
         $this->directionTextBlockThree = DirectionTextBlock::where('number', 3)->where('direction_id', $this->direction->id)->first();
-        if(!is_null($this->directionTextBlockThree)) {
-            foreach ($this->directionTextBlockThree->getTranslationsArray() as $lang => $value) {
-                $this->sectionThreeData['text_one'][$lang] = $value['text_one'];
-            }
-            foreach ($this->directionTextBlockThree->getTranslationsArray() as $lang => $value) {
-                $this->sectionThreeData['text_two'][$lang] = $value['text_two'];
-            }
-            $this->sectionThreeData['media']['image'] = $this->directionTextBlockThree->image;
-            $this->sectionThreeData['is_reverse'] = $this->directionTextBlockThree->is_reverse;
-            $this->sectionThreeData['is_image'] = $this->directionTextBlockThree->is_image;
-        } else {
-            $this->sectionThreeData['text_one'] = [];
-            $this->sectionThreeData['text_two'] = [];
-            $this->sectionThreeData['is_reverse'] = false;
-            $this->sectionThreeData['is_image'] = true;
-        }
+        $this->sectionThreeData = $this->directionsService->setTextBlockData($this->directionTextBlockThree);
 
         // Set SEO data
-        if(!is_null($this->direction->page->meta_title)) {
-            foreach ($this->direction->page->getTranslationsArray() as $lang => $value) {
-                $this->seoData['meta_title'][$lang] = $value['meta_title'];
-            }
-        } else {
-            $this->seoData['meta_title'] = [];
-        }
-        if(!is_null($this->direction->page->meta_description)) {
-            foreach ($this->direction->page->getTranslationsArray() as $lang => $value) {
-                $this->seoData['meta_description'][$lang] = $value['meta_description'];
-            }
-        } else {
-            $this->seoData['meta_description'] = [];
-        }
-        if(!is_null($this->direction->page->meta_keywords)) {
-            foreach ($this->direction->page->getTranslationsArray() as $lang => $value) {
-                $this->seoData['meta_keywords'][$lang] = $value['meta_keywords'];
-            }
-        } else {
-            $this->seoData['meta_keywords'] = [];
-        }
-        if(!is_null($this->direction->page->seo_text)) {
-            foreach ($this->direction->page->getTranslationsArray() as $lang => $value) {
-                $this->seoData['seo_text'][$lang] = $value['seo_text'];
-            }
-        } else {
-            $this->seoData['seo_text'] = [];
-        }
+        $this->seoData = $this->directionsService->setSeoData($this->direction->page);
     }
 
     public function hydrate()
