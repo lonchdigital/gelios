@@ -18,6 +18,7 @@ class PageDirection extends Model implements TranslatableContract
         'meta_title',
         'meta_description',
         'meta_keywords',
+        'seo_text',
     ];
     protected $fillable = [
         'slug'

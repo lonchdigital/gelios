@@ -24,8 +24,8 @@ class Category extends Component
     public array $sectionTwoData = [];
     public array $sectionThreeData = [];
 
-    public int|null $directionParent = null;
-    public array $allDirections = [];
+    public array $seoData = [];
+
     protected DirectionsService $directionsService;
     
     public function mount() 
@@ -87,6 +87,35 @@ class Category extends Component
             $this->sectionThreeData['is_image'] = true;
         }
 
+        // Set SEO data
+        if(!is_null($this->direction->page->meta_title)) {
+            foreach ($this->direction->page->getTranslationsArray() as $lang => $value) {
+                $this->seoData['meta_title'][$lang] = $value['meta_title'];
+            }
+        } else {
+            $this->seoData['meta_title'] = [];
+        }
+        if(!is_null($this->direction->page->meta_description)) {
+            foreach ($this->direction->page->getTranslationsArray() as $lang => $value) {
+                $this->seoData['meta_description'][$lang] = $value['meta_description'];
+            }
+        } else {
+            $this->seoData['meta_description'] = [];
+        }
+        if(!is_null($this->direction->page->meta_keywords)) {
+            foreach ($this->direction->page->getTranslationsArray() as $lang => $value) {
+                $this->seoData['meta_keywords'][$lang] = $value['meta_keywords'];
+            }
+        } else {
+            $this->seoData['meta_keywords'] = [];
+        }
+        if(!is_null($this->direction->page->seo_text)) {
+            foreach ($this->direction->page->getTranslationsArray() as $lang => $value) {
+                $this->seoData['seo_text'][$lang] = $value['seo_text'];
+            }
+        } else {
+            $this->seoData['seo_text'] = [];
+        }
     }
 
     public function hydrate()
@@ -171,8 +200,6 @@ class Category extends Component
     {
         // $this->validate();
 
-        // dd($this->sectionOneData, $this->sectionTwoData);
-
         $formDataOne = [
             'direction_id' => $this->direction->id,
             'number' => 1,
@@ -206,7 +233,10 @@ class Category extends Component
         ];
         $this->directionsService->updateTextBlock($formDataThree);
 
-        redirect()->route('directions.edit', ['directionId' => $this->direction->id])->with('success', trans('admin.document_updated'));
+        // Update Direction Page
+        $this->directionsService->updatePage($this->direction->page, $this->seoData);
+
+        redirect()->route('directions.edit', ['directionId' => $this->direction->id])->with('success', trans('admin.data_updated'));
     }
 
     public function render()

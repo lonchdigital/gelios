@@ -73,6 +73,34 @@ class DirectionsService
         return $tree;
     }
 
+    public function updatePage(PageDirection $page, array $data)
+    {
+        $dataToUpdate = [];
+
+        if($data['meta_title']) {
+            foreach ($data['meta_title'] as $lang => $value) {
+                $dataToUpdate[$lang]['meta_title'] = $value;
+            }
+        }
+        if($data['meta_description']) {
+            foreach ($data['meta_description'] as $lang => $value) {
+                $dataToUpdate[$lang]['meta_description'] = $value;
+            }
+        }
+        if($data['meta_keywords']) {
+            foreach ($data['meta_keywords'] as $lang => $value) {
+                $dataToUpdate[$lang]['meta_keywords'] = $value;
+            }
+        }
+        if($data['seo_text']) {
+            foreach ($data['seo_text'] as $lang => $value) {
+                $dataToUpdate[$lang]['seo_text'] = $value;
+            }
+        }
+
+        $page->update($dataToUpdate);
+    }
+
     public function updateTextBlock(array $data)
     {
         $dataToUpdate = [];
