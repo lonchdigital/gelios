@@ -90,6 +90,9 @@ return [
     'section_three' => 'Третя секція',
     'is_image' => 'Секція с зображенням',
     'is_reverse' => 'Перевернути',
+    'show_left' => 'Відображати ліворуч',
+    'data_updated' => 'Дані оновлено',
+    'seo_text' => 'SEO текст',
     'promotions' => 'Акції',
     'check_ups' => 'Check up',
     'articles' => 'Блог',
@@ -100,4 +103,5 @@ return [
             'two_blocks' => 'Два блоки',
         ],
     ],
+ 
 ];

@@ -73,6 +73,34 @@ class DirectionsService
         return $tree;
     }
 
+    public function updatePage(PageDirection $page, array $data)
+    {
+        $dataToUpdate = [];
+
+        if($data['meta_title']) {
+            foreach ($data['meta_title'] as $lang => $value) {
+                $dataToUpdate[$lang]['meta_title'] = $value;
+            }
+        }
+        if($data['meta_description']) {
+            foreach ($data['meta_description'] as $lang => $value) {
+                $dataToUpdate[$lang]['meta_description'] = $value;
+            }
+        }
+        if($data['meta_keywords']) {
+            foreach ($data['meta_keywords'] as $lang => $value) {
+                $dataToUpdate[$lang]['meta_keywords'] = $value;
+            }
+        }
+        if($data['seo_text']) {
+            foreach ($data['seo_text'] as $lang => $value) {
+                $dataToUpdate[$lang]['seo_text'] = $value;
+            }
+        }
+
+        $page->update($dataToUpdate);
+    }
+
     public function updateTextBlock(array $data)
     {
         $dataToUpdate = [];
@@ -105,6 +133,66 @@ class DirectionsService
         } else {
             DirectionTextBlock::create($dataToUpdate);
         }
+    }
+
+    public function setTextBlockData(DirectionTextBlock $directionTextBlock)
+    {
+        $data = [];
+
+        if(!is_null($directionTextBlock)) {
+            foreach ($directionTextBlock->getTranslationsArray() as $lang => $value) {
+                $data['text_one'][$lang] = $value['text_one'];
+            }
+            foreach ($directionTextBlock->getTranslationsArray() as $lang => $value) {
+                $data['text_two'][$lang] = $value['text_two'];
+            }
+            $data['media']['image'] = $directionTextBlock->image;
+            $data['is_reverse'] = $directionTextBlock->is_reverse;
+            $data['is_image'] = $directionTextBlock->is_image;
+        } else {
+            $data['text_one'] = [];
+            $data['text_two'] = [];
+            $data['is_reverse'] = false;
+            $data['is_image'] = true;
+        }
+
+        return $data;
+    }
+
+    public function setSeoData(PageDirection $page)
+    {
+        $data = [];
+
+        if(!is_null($page->meta_title)) {
+            foreach ($page->getTranslationsArray() as $lang => $value) {
+                $data['meta_title'][$lang] = $value['meta_title'];
+            }
+        } else {
+            $data['meta_title'] = [];
+        }
+        if(!is_null($page->meta_description)) {
+            foreach ($page->getTranslationsArray() as $lang => $value) {
+                $data['meta_description'][$lang] = $value['meta_description'];
+            }
+        } else {
+            $data['meta_description'] = [];
+        }
+        if(!is_null($page->meta_keywords)) {
+            foreach ($page->getTranslationsArray() as $lang => $value) {
+                $data['meta_keywords'][$lang] = $value['meta_keywords'];
+            }
+        } else {
+            $data['meta_keywords'] = [];
+        }
+        if(!is_null($page->seo_text)) {
+            foreach ($page->getTranslationsArray() as $lang => $value) {
+                $data['seo_text'][$lang] = $value['seo_text'];
+            }
+        } else {
+            $data['seo_text'] = [];
+        }
+
+        return $data;
     }
 
 }

@@ -7595,8 +7595,8 @@ select,
 }
 
 .checkbox input[type="checkbox"]:checked+.cr::before {
-    background: #1dd5d2;
-    border-color: #1dd5d2;
+    background: #3da6d3;
+    border-color: #3da6d3;
     color: #fff;
 }
 
@@ -14777,4 +14777,14 @@ td.image-preview-td {
 
 .dark-lincs a {
     color: #495057;
+}
+
+.art-text-block-switcher {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.art-text-block-switcher label {
+    margin-bottom: 0;
 }

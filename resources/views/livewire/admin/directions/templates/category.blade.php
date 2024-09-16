@@ -27,9 +27,12 @@
 
                                         <div class="form-group mt-2 mb-0">
 
-                                            <div class="checkbox d-inline mr-5">
-                                                <input type="checkbox" wire:model="sectionOneData.is_reverse" id="is_reverse_1" @if($sectionOneData['is_reverse']) checked @endif>
-                                                <label for="is_reverse_1" class="cr">{{ trans('admin.is_reverse') }}</label>
+                                            <div class="new-checkbox art-text-block-switcher">
+                                                <label class="switch mr-3">
+                                                    <input type="checkbox" wire:model="sectionOneData.is_reverse" id="is_reverse_1" @if($sectionOneData['is_reverse']) checked @endif>
+                                                    <span class="slider"></span>
+                                                </label>
+                                                <span>{{ trans('admin.show_left') }}</span>
                                             </div>
 
                                             <div class="checkbox d-inline">
@@ -92,14 +95,17 @@
                                     <hr>
 
                                     {{-- Section 2 --}}
-                                    <section class="mb-50">
+                                    <section class="mb-50 mt-30">
                                         <h6 class="card-title">{{ trans('admin.section_two') }}</h6>
 
                                         <div class="form-group mt-2 mb-0">
 
-                                            <div class="checkbox d-inline mr-5">
-                                                <input type="checkbox" wire:model="sectionTwoData.is_reverse" id="is_reverse_2" @if($sectionTwoData['is_reverse']) checked @endif>
-                                                <label for="is_reverse_2" class="cr">{{ trans('admin.is_reverse') }}</label>
+                                            <div class="new-checkbox art-text-block-switcher">
+                                                <label class="switch mr-3">
+                                                    <input type="checkbox" wire:model="sectionTwoData.is_reverse" id="is_reverse_2" @if($sectionTwoData['is_reverse']) checked @endif>
+                                                    <span class="slider"></span>
+                                                </label>
+                                                <span>{{ trans('admin.show_left') }}</span>
                                             </div>
 
                                             <div class="checkbox d-inline">
@@ -162,14 +168,17 @@
                                     <hr>
 
                                     {{-- Section 3 --}}
-                                    <section class="mb-50">
+                                    <section class="mb-50 mt-30">
                                         <h6 class="card-title">{{ trans('admin.section_three') }}</h6>
 
                                         <div class="form-group mt-2 mb-0">
 
-                                            <div class="checkbox d-inline mr-5">
-                                                <input type="checkbox" wire:model="sectionThreeData.is_reverse" id="is_reverse_3" @if($sectionThreeData['is_reverse']) checked @endif>
-                                                <label for="is_reverse_3" class="cr">{{ trans('admin.is_reverse') }}</label>
+                                            <div class="new-checkbox art-text-block-switcher">
+                                                <label class="switch mr-3">
+                                                    <input type="checkbox" wire:model="sectionThreeData.is_reverse" id="is_reverse_3" @if($sectionThreeData['is_reverse']) checked @endif>
+                                                    <span class="slider"></span>
+                                                </label>
+                                                <span>{{ trans('admin.show_left') }}</span>
                                             </div>
 
                                             <div class="checkbox d-inline">
@@ -226,6 +235,43 @@
                                                 @endif
                                             </div>
                                         @endif
+
+                                    </section>
+
+                                    <hr>
+
+                                    <section class="mb-50 mt-30">
+                                        <h6 class="card-title">SEO</h6>
+
+                                        <x-admin.multilanguage-input
+                                            :is-required="false"
+                                            :label="trans('admin.meta_title')"
+                                            field-name="meta_title"
+                                            live-wire-field="seoData.meta_title"
+                                            :values="$seoData['meta_title']"
+                                        />
+                                    
+                                        <x-admin.multilanguage-text-area-rich
+                                            :is-required="false"
+                                            :label="trans('admin.meta_description')"
+                                            field-name="meta_description"
+                                            live-wire-field="seoData.meta_description"
+                                            :values="$seoData['meta_description']"
+                                        />
+                                        <x-admin.multilanguage-text-area-rich
+                                            :is-required="false"
+                                            :label="trans('admin.meta_keywords')"
+                                            field-name="meta_keywords"
+                                            live-wire-field="seoData.meta_keywords"
+                                            :values="$seoData['meta_keywords']"
+                                        />
+                                        <x-admin.multilanguage-text-area-rich
+                                            :is-required="false"
+                                            :label="trans('admin.seo_text')"
+                                            field-name="seo_text"
+                                            live-wire-field="seoData.seo_text"
+                                            :values="$seoData['seo_text']"
+                                        />
 
                                     </section>
                                         

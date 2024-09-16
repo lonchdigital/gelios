@@ -29,4 +29,9 @@ class Direction extends Model implements TranslatableContract
     {
         return $this->belongsTo(Direction::class, 'parent_id');
     }
+
+    public function page()
+    {
+        return $this->belongsTo(PageDirection::class, 'page_direction_id', 'id');
+    }
 }
