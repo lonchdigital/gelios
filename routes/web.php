@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CheckUpController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LaboratoryController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PromotionController;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,8 @@ Route::group([
 
         Route::get('/nashi-speczialisty/', [DoctorController::class, 'index'])->name('doctors.index');
         Route::get('/nashi-speczialisty/{doctor:slug}', [DoctorController::class, 'show'])->name('doctors.show');
+
+        Route::get('/laboratories/', [LaboratoryController::class, 'index'])->name('laboratories.index');
 });
 
 Route::get('lang/{lang}', [LanguageController::class, 'changeLanguage'])->name('changeLanguage');

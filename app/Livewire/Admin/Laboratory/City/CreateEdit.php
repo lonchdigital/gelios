@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Livewire\Admin\DoctorCategory;
+namespace App\Livewire\Admin\Laboratory\City;
 
-use App\Models\DoctorCategory;
-use App\Models\DoctorCategoryTranslation;
+use App\Models\LaboratoryCity;
+use App\Models\LaboratoryCityTranslation;
 use Livewire\Component;
 
 class CreateEdit extends Component
 {
-    public DoctorCategory $category;
+    public LaboratoryCity $city;
 
     public string $activeLocale;
 
@@ -17,28 +17,29 @@ class CreateEdit extends Component
     public string $enTitle = '';
 
     public string $ruTitle = '';
+
     protected $listeners = [
         'languageSwitched' => 'languageSwitched'
     ];
 
-    public function mount(DoctorCategory $category = null)
+    public function mount(LaboratoryCity $city = null)
     {
-        $this->category = $category ?? new DoctorCategory();
+        $this->city = $city ?? new LaboratoryCity();
 
         $this->activeLocale = app()->getLocale();
 
-        $this->uaTitle = DoctorCategoryTranslation::where('locale', 'ua')
-            ->where('doctor_category_id', $this->category->id ?? null)
+        $this->uaTitle = LaboratoryCityTranslation::where('locale', 'ua')
+            ->where('laboratory_city_id', $this->city->id ?? null)
             ->first()
             ->title ?? '';
 
-        $this->enTitle = DoctorCategoryTranslation::where('locale', 'en')
-            ->where('doctor_category_id', $this->category->id ?? null)
+        $this->enTitle = LaboratoryCityTranslation::where('locale', 'en')
+            ->where('laboratory_city_id', $this->city->id ?? null)
             ->first()
             ->title ?? '';
 
-        $this->ruTitle = DoctorCategoryTranslation::where('locale', 'ru')
-            ->where('doctor_category_id', $this->category->id ?? null)
+        $this->ruTitle = LaboratoryCityTranslation::where('locale', 'ru')
+            ->where('laboratory_city_id', $this->city->id ?? null)
             ->first()
             ->title ?? '';
     }
@@ -71,37 +72,37 @@ class CreateEdit extends Component
     public function save()
     {
         $this->validate();
-        
-        $this->category->save();
 
-        DoctorCategoryTranslation::updateOrCreate([
+        $this->city->save();
+
+        LaboratoryCityTranslation::updateOrCreate([
             'locale' => 'ua',
-            'doctor_category_id' => $this->category->id,
+            'laboratory_city_id' => $this->city->id,
         ], [
             'title' => $this->uaTitle,
         ]);
 
-        DoctorCategoryTranslation::updateOrCreate([
+        LaboratoryCityTranslation::updateOrCreate([
             'locale' => 'ru',
-            'doctor_category_id' => $this->category->id,
+            'laboratory_city_id' => $this->city->id,
         ], [
             'title' => $this->ruTitle,
         ]);
 
-        DoctorCategoryTranslation::updateOrCreate([
+        LaboratoryCityTranslation::updateOrCreate([
             'locale' => 'en',
-            'doctor_category_id' => $this->category->id,
+            'laboratory_city_id' => $this->city->id,
         ], [
             'title' => $this->enTitle,
         ]);
 
         session()->flash('success', 'Дані успішно збережено');
 
-        $this->redirectRoute('admin.doctor-categories.index');
+        $this->redirectRoute('admin.laboratory-cities.index');
     }
 
     public function render()
     {
-        return view('livewire.admin.doctor-category.create-edit');
+        return view('livewire.admin.laboratory.city.create-edit');
     }
 }

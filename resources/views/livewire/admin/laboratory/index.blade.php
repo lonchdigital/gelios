@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-30">
+            <div class="card-body pb-0">
+                <div class="d-flex justify-content-between align-items-center mb-20">
+                    <h6 class="card-title mb-0">Список лабораторій</h6>
+
+                    <a href="{{ route('admin.laboratories.create') }}" class="btn btn-primary waves-effect waves-light float-right mb-3">
+                        + Додати лабораторію
+                    </a>
+                </div>
+
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+
+                <div class="table-responsive art-cars-list">
+                    <table class="table table-nowrap">
+                        <thead>
+                            <tr>
+                                <th>Адреса</th>
+                                <th>Email</th>
+                                <th>Номер телефону</th>
+                                <th style="text-align: right">Дії</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($this->laboratories as $laboratory)
+                            <tr>
+                                <td>{{ $laboratory->address }}</td>
+                                <td>
+                                    {{ $laboratory->email }}
+                                </td>
+                                <td>
+                                    {{ $laboratory->phone }}
+                                </td>
+                                <td style="text-align: right">
+                                    <a href="{{ route('admin.laboratories.edit', ['laboratory' => $laboratory]) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="pagination-wrapper d-flex justify-content-center mt-4 mb-5">
+            {{ $this->laboratories->links() }}
+        </div>
+    </div>
+</div>

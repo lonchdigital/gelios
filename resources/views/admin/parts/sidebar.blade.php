@@ -85,6 +85,20 @@
                             <span>Спеціальності лікарів</span>
                         </a>
                     </li>
+
+                    <li class="treeview @if(Route::is('admin.laboratory-cities.*') || Route::is('admin.laboratories.*')) menu-open @endif">
+                        <a href="javascript:void(0)"><i class="fa fa-user-md"></i> <span>Лабораторії</span> <i class="fa fa-angle-right"></i></a>
+                        <ul class="treeview-menu" @if(Route::is('admin.laboratory-cities.*') || Route::is('admin.laboratories.*')) style="display: block;" @else style="display: none;" @endif>
+                            <li @if(Route::is('admin.laboratory-cities.*')) class="active" @endif>
+                                <a href="{{ route('admin.laboratory-cities.index') }}">Міста категорій
+                                </a>
+                            </li>
+                            <li @if(Route::is('admin.laboratories.*')) class="active" @endif >
+                                <a href="{{ route('admin.laboratories.index') }}">Список лабораторій
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>

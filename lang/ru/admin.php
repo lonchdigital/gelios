@@ -90,4 +90,7 @@ return [
     'section_three' => 'Третья секция',
     'is_image' => 'Секция с картинкой',
     'is_reverse' => 'Перевернуть',
+    'show_left' => 'Отображать Слева',
+    'data_updated' => 'Данные обновленны',
+    'seo_text' => 'SEO текст',
 ];

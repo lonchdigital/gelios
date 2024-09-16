@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\DirectionsController;
 use App\Http\Controllers\Admin\ArticleCategoryController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\InsuranceCompaniesController;
+use App\Http\Controllers\Admin\LaboratoryController;
 use App\Http\Controllers\Admin\SpecializationController;
 
 Route::group([
@@ -78,6 +79,18 @@ Route::group([
             Route::get('/', [SpecializationController::class, 'index'])->name('index');
             Route::get('/create', [SpecializationController::class, 'create'])->name('create');
             Route::get('/{category}/edit', [SpecializationController::class, 'edit'])->name('edit');
+        });
+
+        Route::prefix('/laboratories')->name('admin.laboratories.')->group(function() {
+            Route::get('/', [LaboratoryController::class, 'index'])->name('index');
+            Route::get('/create', [LaboratoryController::class, 'create'])->name('create');
+            Route::get('/{laboratory}/edit', [LaboratoryController::class, 'edit'])->name('edit');
+        });
+
+        Route::prefix('/laboratory-cities')->name('admin.laboratory-cities.')->group(function() {
+            Route::get('/', [LaboratoryController::class, 'cityIndex'])->name('index');
+            Route::get('/create', [LaboratoryController::class, 'cityCreate'])->name('create');
+            Route::get('/{city}/edit', [LaboratoryController::class, 'cityEdit'])->name('edit');
         });
     });
 
