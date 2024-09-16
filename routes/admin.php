@@ -7,7 +7,9 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PromotionController;
 use App\Http\Controllers\Admin\DirectionsController;
 use App\Http\Controllers\Admin\ArticleCategoryController;
+use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\InsuranceCompaniesController;
+use App\Http\Controllers\Admin\SpecializationController;
 
 Route::group([
     'prefix' => 'admin',
@@ -55,6 +57,27 @@ Route::group([
             Route::get('/', [ArticleController::class, 'index'])->name('index');
             Route::get('/create', [ArticleController::class, 'create'])->name('create');
             Route::get('/{article}/edit', [ArticleController::class, 'edit'])->name('edit');
+
+            Route::get('/{article}/create-block', [ArticleController::class, 'createBlock'])->name('create-block');
+            Route::get('/{article}/edit-block/{block}', [ArticleController::class, 'editBlock'])->name('edit-block');
+        });
+
+        Route::prefix('/doctors')->name('admin.doctors.')->group(function() {
+            Route::get('/', [DoctorController::class, 'index'])->name('index');
+            Route::get('/create', [DoctorController::class, 'create'])->name('create');
+            Route::get('/{doctor}/edit', [DoctorController::class, 'edit'])->name('edit');
+        });
+
+        Route::prefix('/doctor-categories')->name('admin.doctor-categories.')->group(function() {
+            Route::get('/', [DoctorController::class, 'categoryIndex'])->name('index');
+            Route::get('/create', [DoctorController::class, 'categoryCreate'])->name('create');
+            Route::get('/{category}/edit', [DoctorController::class, 'categoryEdit'])->name('edit');
+        });
+
+        Route::prefix('/specializations')->name('admin.specializations.')->group(function() {
+            Route::get('/', [SpecializationController::class, 'index'])->name('index');
+            Route::get('/create', [SpecializationController::class, 'create'])->name('create');
+            Route::get('/{category}/edit', [SpecializationController::class, 'edit'])->name('edit');
         });
     });
 

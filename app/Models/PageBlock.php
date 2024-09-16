@@ -16,6 +16,7 @@ class PageBlock extends Model
         'key',
         'url',
         'image',
+        'images'
     ];
 
     public $translatedAttributes = [

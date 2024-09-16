@@ -93,4 +93,15 @@ return [
     'show_left' => 'Відображати ліворуч',
     'data_updated' => 'Дані оновлено',
     'seo_text' => 'SEO текст',
+    'promotions' => 'Акції',
+    'check_ups' => 'Check up',
+    'articles' => 'Блог',
+    'articles_list' => 'Список статтей',
+    'article' => [
+        'blocks_type' => [
+            'one_block' => 'Один блок',
+            'two_blocks' => 'Два блоки',
+        ],
+    ],
+ 
 ];

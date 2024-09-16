@@ -78335,7 +78335,7 @@
 												</div>
 											</div>
 										</div>
-										<div class="list-inline-item"><a class="nav-link" href="##">Лікарі</a></div>
+										<div class="list-inline-item"><a class="nav-link" href="{{ route('doctors.index') }}">Лікарі</a></div>
 										<div class="list-inline-item"><a class="nav-link" href="##">Стаціонар</a></div>
 										<div class="list-inline-item"><a class="nav-link" href="##">Ціни</a></div>
 										<div class="hover-aside-menu--item position-left list-inline-item"><a class="nav-link" href="##">Контакти</a>
@@ -78441,7 +78441,7 @@
 															</div>
 														</div>
 													</div>
-													<div class="item"><a href="##">Лікарі</a></div>
+													<div class="item"><a href="{{ route('doctors.index') }}">Лікарі</a></div>
 													<div class="item"><a href="##">Стаціонар</a></div>
 													<div class="item"><a href="##">Ціни</a></div>
 													<div class="item has-dropdown">
