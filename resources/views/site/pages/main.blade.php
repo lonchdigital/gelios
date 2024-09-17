@@ -2068,7 +2068,7 @@
                 <div class="row">
                     <div class="col d-flex align-items-center justify-content-between mb-5">
                         <div class="h2 font-m font-weight-bolder">Новини</div>
-                        <a href="##" class="btn btn-white font-weight-bold">Усі новини</a>
+                        <a href="{{ route('articles.index') }}" class="btn btn-white font-weight-bold">Усі новини</a>
                     </div>
                 </div>
                 <div class="row">

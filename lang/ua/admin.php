@@ -100,4 +100,15 @@ return [
     'prices' => 'Ціны',
     'info_block' => 'Інформаційний блок',
     'parent_cat' => 'Батьківська категорія',
+    'promotions' => 'Акції',
+    'check_ups' => 'Check up',
+    'articles' => 'Блог',
+    'articles_list' => 'Список статтей',
+    'article' => [
+        'blocks_type' => [
+            'one_block' => 'Один блок',
+            'two_blocks' => 'Два блоки',
+        ],
+    ],
+
 ];

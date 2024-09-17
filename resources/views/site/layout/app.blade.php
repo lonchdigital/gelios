@@ -37,7 +37,7 @@
 
 <div id="btnTop" class="btn btn-arrow-up">
 	<svg>
-		<use xlink:href="img/icons/icons.svg#i-arrow-small-down"></use>
+		<use xlink:href="{{ asset('styles/img/icons/icons.svg#i-arrow-small-down') }}"></use>
 	</svg>
 </div>
 	</div>
