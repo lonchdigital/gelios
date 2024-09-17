@@ -2571,9 +2571,13 @@
 		.swiper-wrapper {
 			z-index: 3;
 		}
+		.swiper-slide {
+			padding-bottom: 1px;
+		}
 		.city-pin {
 			font-weight: 500;
 			display: flex;
+			justify-content: center;
 			gap: 8px;
 			color: $grey;
 			border: 2px solid $grey;
@@ -2869,4 +2873,14 @@
 			}
 		}
 	}
+}
+.price--consultation {
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 140%;
+	padding: 4px 16px;
+	border-radius: 40px;
+	color: $white;
+	background: $blue;
+	width: max-content;
 }
