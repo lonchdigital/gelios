@@ -20,8 +20,340 @@
                                 </div>
 
                                 <form wire:submit.prevent="save">
+
+                                    <section class="mb-50">
+                                        <label>{{ trans('admin.parent_cat') }}</label>
+                                            <select class="form-control" id="status-select" wire:model="directionParent" name="parent_id">
+                                                <option value="{{ null }}">- {{ trans('admin.not_chosen') }} -</option>
+                                                @foreach($allDirections as $cat)
+                                                    @include('admin.directions.partials.direction-option', ['direction' => $cat, 'depth' => 0, 'parent_id' => $direction->parent_id])
+                                                @endforeach
+                                            </select>
+                                    </section>
+
+                                    <hr>
                                     
-                                    form222<br>
+                                    {{-- Section 1 --}}
+                                    <section class="mb-50 mt-30">
+                                        <h6 class="card-title">{{ trans('admin.section_one') }}</h6>
+
+                                        <div class="form-group mt-2 mb-0">
+
+                                            <div class="new-checkbox art-text-block-switcher">
+                                                <label class="switch mr-3">
+                                                    <input type="checkbox" wire:model="sectionOneData.is_reverse" id="is_reverse_1" @if($sectionOneData['is_reverse']) checked @endif>
+                                                    <span class="slider"></span>
+                                                </label>
+                                                <span>{{ trans('admin.show_left') }}</span>
+                                            </div>
+
+                                            <div class="checkbox d-inline">
+                                                <input 
+                                                    type="checkbox" 
+                                                    wire:model="sectionOneData.is_image"
+                                                    wire:click="handleDisplayFields(1)"
+                                                    id="is_image_1" 
+                                                    @if($sectionOneData['is_image']) checked @endif
+                                                >
+                                                <label for="is_image_1" class="cr">{{ trans('admin.is_image') }}</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <x-admin.multilanguage-text-area-rich
+                                            :is-required="false"
+                                            :label="trans('admin.text')"
+                                            field-name="textBlock[1][text_one]"
+                                            live-wire-field="sectionOneData.text_one"
+                                            :values="$sectionOneData['text_one']"
+                                        />
+
+                                        @if(!$sectionOneData['is_image'])
+                                            <x-admin.multilanguage-text-area-rich
+                                            :is-required="false"
+                                            :label="trans('admin.text')"
+                                            field-name="textBlock[1][text_two]"
+                                            live-wire-field="sectionOneData.text_two"
+                                            :values="$sectionOneData['text_two']"
+                                            />
+                                        @endif
+
+                                        @if($sectionOneData['is_image'])
+                                            <div class="form-group mt-2 mb-3">
+                                                <label for="">{{ trans('admin.image') }}</label></br>
+                                                @if (isset($sectionOneData['media']['temporaryImage']))
+                                                    <img src="{{ $sectionOneData['media']['temporaryImage'] }}"
+                                                        width="60"><a
+                                                        wire:click="deleteSectionImage(1)"
+                                                        style="cursor: pointer;">
+                                                        <i
+                                                            class="ti-close font-weight-bold mr-2"></i>
+                                                            {{ trans('admin.remove_image') }}
+                                                    </a>
+                                                @else
+                                                    @if (isset($sectionOneData['media']['image']))
+                                                        <img src="{{ '/storage/' . $sectionOneData['media']['image'] }}"
+                                                            class="mb-2"
+                                                            width="60"></br>
+                                                    @endif
+
+                                                    <input type="file"
+                                                        wire:model="sectionOneData.media.newImage">
+                                                @endif
+                                            </div>
+                                        @endif
+
+                                    </section>
+
+                                    <hr>
+
+                                    {{-- Section 2 --}}
+                                    <section class="mb-50 mt-30">
+                                        <h6 class="card-title">{{ trans('admin.section_two') }}</h6>
+
+                                        <div class="form-group mt-2 mb-0">
+
+                                            <div class="new-checkbox art-text-block-switcher">
+                                                <label class="switch mr-3">
+                                                    <input type="checkbox" wire:model="sectionTwoData.is_reverse" id="is_reverse_2" @if($sectionTwoData['is_reverse']) checked @endif>
+                                                    <span class="slider"></span>
+                                                </label>
+                                                <span>{{ trans('admin.show_left') }}</span>
+                                            </div>
+
+                                            <div class="checkbox d-inline">
+                                                <input 
+                                                    type="checkbox" 
+                                                    wire:model="sectionTwoData.is_image"
+                                                    wire:click="handleDisplayFields(2)"
+                                                    id="is_image_2" 
+                                                    @if($sectionTwoData['is_image']) checked @endif
+                                                >
+                                                <label for="is_image_2" class="cr">{{ trans('admin.is_image') }}</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <x-admin.multilanguage-text-area-rich
+                                            :is-required="false"
+                                            :label="trans('admin.text')"
+                                            field-name="textBlock[2][text_one]"
+                                            live-wire-field="sectionTwoData.text_one"
+                                            :values="$sectionTwoData['text_one']"
+                                        />
+
+                                        @if(!$sectionTwoData['is_image'])
+                                            <x-admin.multilanguage-text-area-rich
+                                            :is-required="false"
+                                            :label="trans('admin.text')"
+                                            field-name="textBlock[2][text_two]"
+                                            live-wire-field="sectionTwoData.text_two"
+                                            :values="$sectionTwoData['text_two']"
+                                            />
+                                        @endif
+
+                                        @if($sectionTwoData['is_image'])
+                                            <div class="form-group mt-2 mb-3">
+                                                <label for="">{{ trans('admin.image') }}</label></br>
+                                                @if (isset($sectionTwoData['media']['temporaryImage']))
+                                                    <img src="{{ $sectionTwoData['media']['temporaryImage'] }}"
+                                                        width="60"><a
+                                                        wire:click="deleteSectionImage(2)"
+                                                        style="cursor: pointer;">
+                                                        <i
+                                                            class="ti-close font-weight-bold mr-2"></i>
+                                                            {{ trans('admin.remove_image') }}
+                                                    </a>
+                                                @else
+                                                    @if (isset($sectionTwoData['media']['image']))
+                                                        <img src="{{ '/storage/' . $sectionTwoData['media']['image'] }}"
+                                                            class="mb-2"
+                                                            width="60"></br>
+                                                    @endif
+
+                                                    <input type="file"
+                                                        wire:model="sectionTwoData.media.newImage">
+                                                @endif
+                                            </div>
+                                        @endif
+
+                                    </section>
+
+                                    <hr>
+
+                                    <section class="mb-50 mt-30 art-services-section ">
+                                        <h6 class="card-title">{{ trans('admin.prices') }}</h6>
+
+                                        @if(isset($directionPrices))
+                                            @foreach($directionPrices as $index => $directionPrice)
+
+                                                <div class="">
+                                                    <div class="row justify-content-between align-items-center">
+
+                                                        <div class="col-md-12">
+                                                            <div class="row">
+                                                                <div class="col-md-1 service-left-side">
+                                                                    <div class="art-sort-arrows">
+                                                                        @if ($loop->iteration !== 1)
+                                                                            <div style="cursor: pointer;"
+                                                                                wire:click="newPositionDirectionPrices(-1, {{ $index }})">
+                                                                                <i class="fa fa-sort-up"></i>
+                                                                            </div>
+                                                                        @endif
+                                                                        {{ $directionPrice['sort'] }}
+                                                                        @if (!$loop->last)
+                                                                            <div style="cursor: pointer;"
+                                                                                wire:click="newPositionDirectionPrices(+1, {{ $index }})">
+                                                                                <i class="fa fa-sort-desc"></i>
+                                                                            </div>
+                                                                        @endif
+                                                                    </div>
+
+                                                                    <div class="art-remove">
+                                                                        <a wire:click="removeElementDirectionPrices('{{ $index }}')">
+                                                                            <i class="ti-close font-weight-bold mr-2"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                    
+                                                                </div>
+
+                                                                <div class="col-md-9">
+                                                                    <x-admin.multilanguage-input
+                                                                        :is-required="false"
+                                                                        :label="trans('admin.service')"
+                                                                        field-name="directionPrices.{{ $index }}.service"
+                                                                        live-wire-field="directionPrices.{{ $index }}.service"
+                                                                        :values="$directionPrice['service']"
+                                                                    />
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <div class="form-group mb-1">
+                                                                        <label for="meta_title_ua">{{ trans('admin.price') }}</label>
+                                                                        <input type="number" wire:model="directionPrices.{{ $index }}.price" name="directionPrices.{{ $index }}.price" value="{{ $directionPrice['price'] }}" class="form-control">
+                                                                    </div>
+                                                                </div>
+
+                                                                <input type="hidden" name="direction_price_id" value="{{ $this->directionPrices[$index]['id'] }}">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                
+                                            @endforeach
+                                        @endif
+
+                                        <div class="row pt-3">
+                                            <div class="col-md-12 text-center">
+                                                <a wire:click="addElementDirectionPrices" class="btn mb-2 btn-secondary">
+                                                    <span class="ti-plus font-weight-bold"></span>
+                                                    {{ trans('admin.add') }}
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </section>
+
+                                    <hr>
+
+                                    <section class="mb-50">
+                                        <h6 class="card-title">{{ trans('admin.info_block') }}</h6>
+                                        <div class="row" id="companies-row-one">
+                
+                                            @if(isset($infoData))
+                                                @foreach($infoData as $index => $infoDataItem)
+                
+                                                <div class="col-md-4 company-row pb-1 mb-4">
+                                                    <div>
+                                                        <div class="border border-secondary rounded p-3">
+                                                            <div class="row justify-content-between align-items-center">
+                
+                                                                <div class="col-md-12">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                
+                                                                            <x-admin.multilanguage-input
+                                                                                :is-required="false"
+                                                                                :label="trans('admin.title')"
+                                                                                field-name="infoData.{{ $index }}.title"
+                                                                                live-wire-field="infoData.{{ $index }}.title"
+                                                                                :values="$infoDataItem['title']"
+                                                                            />
+
+                                                                            <x-admin.multilanguage-text-area
+                                                                                :is-required="false"
+                                                                                :label="trans('admin.description')"
+                                                                                field-name="infoData.{{ $index }}.description"
+                                                                                live-wire-field="infoData.{{ $index }}.description"
+                                                                                :values="$infoDataItem['description']"
+                                                                            />
+                              
+                                                                            <input type="hidden" name="direction_info_data_id" value="{{ $infoData[$index]['id'] }}">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                
+                                                                <div class="col-md-5">
+                                                                    <a wire:click="removeElementDirectionInfo('{{ $index }}')">
+                                                                        <i class="ti-close font-weight-bold mr-2"></i>
+                                                                        {{ trans('admin.delete') }}
+                                                                    </a>
+                                                                </div>
+                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                @endforeach
+                                            @endif
+                
+                                        </div>
+                                        
+                                        <div class="row pt-3">
+                                            <div class="col-md-12 text-center">
+                                                <a wire:click="addElementDirectionInfo" class="btn mb-2 btn-secondary">
+                                                    <span class="ti-plus font-weight-bold"></span>
+                                                    {{ trans('admin.add') }}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <hr>
+
+                                    <section class="mb-50 mt-30">
+                                        <h6 class="card-title">SEO</h6>
+
+                                        <x-admin.multilanguage-input
+                                            :is-required="false"
+                                            :label="trans('admin.meta_title')"
+                                            field-name="meta_title"
+                                            live-wire-field="seoData.meta_title"
+                                            :values="$seoData['meta_title']"
+                                        />
+                                    
+                                        <x-admin.multilanguage-text-area-rich
+                                            :is-required="false"
+                                            :label="trans('admin.meta_description')"
+                                            field-name="meta_description"
+                                            live-wire-field="seoData.meta_description"
+                                            :values="$seoData['meta_description']"
+                                        />
+                                        <x-admin.multilanguage-text-area-rich
+                                            :is-required="false"
+                                            :label="trans('admin.meta_keywords')"
+                                            field-name="meta_keywords"
+                                            live-wire-field="seoData.meta_keywords"
+                                            :values="$seoData['meta_keywords']"
+                                        />
+                                        <x-admin.multilanguage-text-area-rich
+                                            :is-required="false"
+                                            :label="trans('admin.seo_text')"
+                                            field-name="seo_text"
+                                            live-wire-field="seoData.seo_text"
+                                            :values="$seoData['seo_text']"
+                                        />
+
+                                    </section>
                                         
                                     <button type="submit" class="btn btn-primary mr-2 mb-3">{{ trans('admin.save') }}</button>
                                 </form>
