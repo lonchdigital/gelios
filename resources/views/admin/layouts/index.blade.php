@@ -65,11 +65,16 @@
 <!-- Active JS -->
 <script src="{{ asset('admin_src/js/default-assets/active.js') }}"></script>
 
+
+<script src="{{ asset('admin_src/js/default-assets/modal-classes.js') }}"></script>
+<script src="{{ asset('admin_src/js/default-assets/modaleffects.js') }}"></script>
+
 <!-- custom JS -->
 
 
 @stack('scripts')
 @livewireScripts
+<script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v1.x.x/dist/livewire-sortable.js"></script>
 </body>
 
 </html>

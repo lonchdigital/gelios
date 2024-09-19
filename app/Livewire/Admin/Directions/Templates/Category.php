@@ -15,7 +15,7 @@ class Category extends Component
 {
     use WithFileUploads;
 
-    public Direction $direction; 
+    public Direction $direction;
     public DirectionTextBlock|null $directionTextBlockOne = null;
     public DirectionTextBlock|null $directionTextBlockTwo = null;
     public DirectionTextBlock|null $directionTextBlockThree = null;

@@ -22,7 +22,7 @@ class Direction extends Model implements TranslatableContract
 
     public function children()
     {
-        return $this->hasMany(Direction::class, 'parent_id');
+        return $this->hasMany(Direction::class, 'parent_id')->orderBy('sort');
     }
 
     public function parent()
