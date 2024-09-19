@@ -16,7 +16,46 @@ class DirectionsService
 {
     public function getAllDirections(): Collection
     {
-        return Direction::with('children.children')->whereNull('parent_id')->get();
+        return Direction::with('children.children')->whereNull('parent_id')->orderBy('sort')->get();
+    }
+    public function getDirectionsByCategory(int $parentId): Collection
+    {
+        return Direction::with('children.children')->where('parent_id', $parentId)->orderBy('sort')->get();
+    }
+
+    public function removeDirectionWithChildren(int $id)
+    {
+        $direction = Direction::find($id);
+
+        $allChildren = $this->getDirectionsByCategory($direction->id);
+        $this->removeChildrenDirections($allChildren);
+
+        $this->removeDirection($direction);
+    }
+
+    private function removeChildrenDirections(Collection $directions)
+    {
+        foreach($directions as $direction){
+            if(count($direction->children) > 0) {
+                $this->removeChildrenDirections($direction->children);
+            }
+            $this->removeDirection($direction);
+        }
+    }
+
+    private function removeDirection(Direction $direction)
+    {
+        $this->removeTextBlocks($direction);
+
+        $existingDirectionPrices = DirectionPrice::where('direction_id', $direction->id)->get();
+        $this->syncPrices([], $existingDirectionPrices, $direction->id);
+
+        $existingDirectionInfo = DirectionInfoBlock::where('direction_id', $direction->id)->get();
+        $this->syncInfo([], $existingDirectionInfo, $direction->id);
+
+        $directionPage = $direction->page;
+        $direction->delete();
+        $directionPage->delete();
     }
 
     public function addDirection(array $data)
@@ -103,6 +142,16 @@ class DirectionsService
         $page->update($dataToUpdate);
     }
 
+    private function removeTextBlocks(Direction $direction)
+    {
+        $textBlocks = DirectionTextBlock::where('direction_id', $direction->id)->get();
+
+        foreach ($textBlocks as $textBlock) {
+            removeImageFromStorage($textBlock->image);
+            $textBlock->delete();
+        }
+    }
+
     public function updateTextBlock(array $data)
     {
         $dataToUpdate = [];
@@ -123,7 +172,9 @@ class DirectionsService
         }
 
         if(isset($data['image']) && isset($data['image']['newImage'])) {
-            removeImageFromStorage($data['image']['image']);
+            if(isset($data['image']['image'])) {
+                removeImageFromStorage($data['image']['image']);
+            }
             $image = downloadImage('/directions', $data['image']['newImage']);
             $dataToUpdate['image'] = $image;
         }

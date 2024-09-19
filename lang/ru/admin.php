@@ -12,6 +12,7 @@ return [
     'faqs_cars' => 'FAQ авто',
     'add' => 'Добавить',
     'delete' => 'Удалить',
+    'delete_all_directions' => 'а также все связанные записи',
     'question' => 'Вопрос',
     'answer' => 'Ответ',
     'in_subscription' => 'В подписке',
@@ -100,4 +101,9 @@ return [
     'prices' => 'Цены',
     'info_block' => 'Информационный блок',
     'parent_cat' => 'Родительская категория',
+    'all_directions' => 'Все направления',
+    'choose' => 'Выбрать',
+    'sort' => 'Сортировка',
+    'belonging' => 'Принадлежность',
+    'attention' => 'Внимание!',
 ];

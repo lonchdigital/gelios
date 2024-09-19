@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="container-fluid">
-        @livewire('admin.directions.index')
+        @livewire('admin.directions.index', ['direction' => $direction])
     </div>
 @endsection
 
