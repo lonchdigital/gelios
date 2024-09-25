@@ -10,7 +10,9 @@ use App\Http\Controllers\Admin\ArticleCategoryController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\InsuranceCompaniesController;
 use App\Http\Controllers\Admin\LaboratoryController;
+use App\Http\Controllers\Admin\RobotsController;
 use App\Http\Controllers\Admin\SpecializationController;
+use App\Http\Controllers\Admin\SurgeryController;
 
 Route::group([
     'prefix' => 'admin',
@@ -28,7 +30,7 @@ Route::group([
         Route::prefix('/directions')->group(function() {
             Route::get('/', [DirectionsController::class, 'index'])->name('directions.index');
             Route::get('/category/{directionId}', [DirectionsController::class, 'category'])->name('directions.category');
-            
+
             Route::get('/{directionId}/edit', [DirectionsController::class, 'edit'])->name('directions.edit');
         });
         Route::prefix('/insurance-companies')->group(function() {
@@ -94,6 +96,24 @@ Route::group([
             Route::get('/create', [LaboratoryController::class, 'cityCreate'])->name('create');
             Route::get('/{city}/edit', [LaboratoryController::class, 'cityEdit'])->name('edit');
         });
+
+        Route::prefix('/surgery')->name('admin.surgery.')->group(function() {
+            Route::get('/', [SurgeryController::class, 'index'])->name('index');
+
+            Route::get('/edit-block/{block}', [SurgeryController::class, 'edit'])->name('edit-block');
+
+            Route::get('/create', [SurgeryController::class, 'createSurgery'])->name('create');
+            Route::get('/{surgery}', [SurgeryController::class, 'showSurgery'])->name('show');
+            Route::get('/{surgery}/edit', [SurgeryController::class, 'editSurgery'])->name('edit');
+
+            Route::get('/{page}/create-static-block', [SurgeryController::class, 'createStaticBlock'])->name('create-static-block');
+            Route::get('/{page}/{block}/edit-block', [SurgeryController::class, 'editStaticBlock'])->name('edit-static-block');
+
+            Route::get('/{surgery}/create', [SurgeryController::class, 'createSurgeryBlock'])->name('create-block');
+            Route::get('/{surgery}/{block}/edit', [SurgeryController::class, 'editSurgeryBlock'])->name('edit-direction-block');
+        });
+
+        Route::get('/edit-robots', [RobotsController::class, 'edit'])->name('admin.edit-robots');
     });
 
 });

@@ -1,30 +1,22 @@
 @extends('site.layout.app')
 
 @section('content')
-    <section class="nav-breadcrumb mt-8 mb-8">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <nav aria-label="breadcrumb" class="breadcrumb-nav">
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item">
-                                <a href="/">
-                                    <svg class="i-home">
-                                        <use xlink:href="img/icons/icons.svg#i-home"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="##">Блог</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">Консультація анестезіолога у Дніпрі
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section>
+@include('site.components.breadcrumbs', [
+    'breadcrumbs' => [
+        [
+            'title' => 'Головна',
+            'url' => route('main'),
+        ],
+        [
+            'title' => 'Блог',
+            'url' => route('articles.index'),
+        ],
+        [
+            'title' => $article->title ?? '',
+            'url' => null,
+        ],
+    ],
+])
     <section class="section-top mb-24">
         <div class="container">
             <div class="row">

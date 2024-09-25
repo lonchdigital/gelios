@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="app-url" content="{{ env('APP_URL') }}">
 	<title>Головна</title>
 	<link rel="shortcut icon" href="##" type="image/x-icon" />
 	<link rel="stylesheet" href="{{ asset('styles/css/libs.min.css') }}">
@@ -110,6 +112,7 @@
 						</div>
 					</div>
 				</form>
+                {{-- @include('site.components.appointment-form') --}}
 			</div>
 		</div>
 	</div>

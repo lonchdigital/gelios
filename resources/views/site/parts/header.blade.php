@@ -78324,7 +78324,7 @@
 												</div>
 											</div>
 										</div>
-										<div class="list-inline-item"><a class="nav-link" href="##">Хірургія</a></div>
+										<div class="list-inline-item"><a class="nav-link" href="{{ route('surgery.index') }}">Хірургія</a></div>
 										<div class="list-inline-item"><a class="nav-link" href="##">Про компанію</a></div>
 										<div class="hover-aside-menu--item position-right list-inline-item"><a class="nav-link" href="{{ route('promotions.index') }}">Акції</a>
 											<div class="hover-aside-menu--list">

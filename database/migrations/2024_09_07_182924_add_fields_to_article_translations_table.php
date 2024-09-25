@@ -15,7 +15,7 @@ return new class extends Migration
             $table->foreignId('article_id')->after('id')->constrained('articles')->cascadeOnDelete();
             $table->string('locale', 10)->after('article_id')->index();
             $table->string('title')->after('locale')->nullable();
-            $table->text('description')->after('title_description')->nullable();
+            $table->text('description')->after('title')->nullable();
         });
     }
 

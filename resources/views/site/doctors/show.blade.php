@@ -1,29 +1,22 @@
 @extends('site.layout.app')
 
 @section('content')
-    <section class="nav-breadcrumb mt-8 mb-8">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <nav aria-label="breadcrumb" class="breadcrumb-nav">
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item">
-                                <a href="index.html">
-                                    <svg class="i-home">
-                                        <use xlink:href="img/icons/icons.svg#i-home"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="##">Лікарі</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">Один лікар</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('site.components.breadcrumbs', [
+        'breadcrumbs' => [
+            [
+                'title' => 'Головна',
+                'url' => route('main'),
+            ],
+            [
+                'title' => 'Лікарі',
+                'url' => route('doctors.index'),
+            ],
+            [
+                'title' => $doctor->title ?? '',
+                'url' => null,
+            ],
+        ],
+    ])
     <section class="section-doctor mb-24">
         <div class="container">
             <div class="row">
@@ -39,14 +32,17 @@
                                 <div class="h3 font-m font-weight-bolder text-blue">{{ $doctor->title ?? '' }}</div>
                             </div>
                         </div>
-                        <div class="position-work font-weight-bold text-grey mb-3">Лікар {{ $doctor->specialization->title ?? '' }}</div>
+                        <div class="position-work font-weight-bold text-grey mb-3">Лікар
+                            {{ $doctor->specialization->title ?? '' }}</div>
                         <div class="experience-quantity mb-3">Досвід роботи: {{ $doctor->expirience ?? '' }} років</div>
                         <div class="os-scrollbar-overflow content mb-3">
                             <div class="mb-3">
-                                <span class="text-blue mr-3">Спеціальність:</span><span>{{ $doctor->specialty ?? '' }}</span>
+                                <span
+                                    class="text-blue mr-3">Спеціальність:</span><span>{{ $doctor->specialty ?? '' }}</span>
                             </div>
                             <div class="mb-3">
-                                <span class="text-blue mr-3">Спеціалізація:</span><span>{{ $doctor->specialization->title ?? '' }}</span>
+                                <span
+                                    class="text-blue mr-3">Спеціалізація:</span><span>{{ $doctor->specialization->title ?? '' }}</span>
                             </div>
                             <div class="mb-3">
                                 <span class="text-blue mr-3">Стаж:</span><span>{{ $doctor->age ?? '' }} роки</span>

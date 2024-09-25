@@ -3,12 +3,20 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CheckUpController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LaboratoryController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\SurgeryController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
+Route::name('auth.')->prefix('/admin')->group(function () {
+    Auth::routes(['register' => false, 'reset' => false]);
+});
+
+Route::post('/feedback-store', [FeedbackController::class, 'store'])->name('feedback.store');
 
 Route::group([
         'prefix' => LaravelLocalization::setLocale(),
@@ -29,6 +37,12 @@ Route::group([
         Route::get('/nashi-speczialisty/{doctor:slug}', [DoctorController::class, 'show'])->name('doctors.show');
 
         Route::get('/laboratories/', [LaboratoryController::class, 'index'])->name('laboratories.index');
+
+        Route::get('/vzroslym/hirurgiya/', [SurgeryController::class, 'index'])->name('surgery.index');
 });
 
 Route::get('lang/{lang}', [LanguageController::class, 'changeLanguage'])->name('changeLanguage');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

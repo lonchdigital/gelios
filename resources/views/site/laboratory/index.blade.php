@@ -1,27 +1,18 @@
 @extends('site.layout.app')
 
 @section('content')
-    <section class="nav-breadcrumb mt-8 mb-8">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <nav aria-label="breadcrumb" class="breadcrumb-nav">
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item">
-                                <a href="index.html">
-                                    <svg class="i-home">
-                                        <use xlink:href="img/icons/icons.svg#i-home"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">Лабараторії
-                            <li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('site.components.breadcrumbs', [
+        'breadcrumbs' => [
+            [
+                'title' => 'Головна',
+                'url' => route('main'),
+            ],
+            [
+                'title' => 'Лабораторії',
+                'url' => null,
+            ],
+        ],
+    ])
     <section class="section-top section-top-4 mb-8 mt-8">
         <div class="container">
             <div class="row">
@@ -145,51 +136,56 @@
                 <div class="col">
                     <div class="accordion" id="our-laboratories-list">
                         @forelse($cities as $city)
-                        <div class="card">
-                            <div class="card-header p-0" id="heading-our-laboratories-list-{{ $loop->iteration }}">
-                                <div class="h4 mb-0">
-                                    <div class="btn btn-link collapsed" data-toggle="collapse"
-                                        data-target="#collapse-our-laboratories-list-{{ $loop->iteration }}" aria-expanded="false"
-                                        aria-controls="collapse-our-laboratories-list-{{ $loop->iteration }}">{{ $city->title }}</div>
+                            <div class="card">
+                                <div class="card-header p-0" id="heading-our-laboratories-list-{{ $loop->iteration }}">
+                                    <div class="h4 mb-0">
+                                        <div class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapse-our-laboratories-list-{{ $loop->iteration }}"
+                                            aria-expanded="false"
+                                            aria-controls="collapse-our-laboratories-list-{{ $loop->iteration }}">
+                                            {{ $city->title }}</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div id="collapse-our-laboratories-list-{{ $loop->iteration }}" class="collapse"
-                                aria-labelledby="heading-our-laboratories-list-{{ $loop->iteration }}" data-parent="#our-laboratories-list">
-                                <div class="card-body">
-                                    <div class="row row-gap">
-                                        @forelse($city->laboratories as $laboratory)
-                                            <div class="col-12 col-lg-6">
-                                                <div class="item">
-                                                    <ul class="list-unstyled mb-0">
-                                                        <li>
-                                                            <div class="head-address">Адреса:</div>
-                                                            <div class="offices-address">{{ $laboratory->address }}</div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="head-phone">Телефон:</div>
-                                                            <a href="tel:+38 (095) 000-01-50">
-                                                                <div class="link-phone">{{ $laboratory->phone }}</div>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="head-email">Email:</div>
-                                                            <a href="mailto:helioscentr@gmail.com">
-                                                                <div class="offices-email">{{ $laboratory->email }}</div>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="head-time">Години роботи:</div>
-                                                            <div class="offices-time">{{ $laboratory->hours }}</div>
-                                                        </li>
-                                                    </ul>
+                                <div id="collapse-our-laboratories-list-{{ $loop->iteration }}" class="collapse"
+                                    aria-labelledby="heading-our-laboratories-list-{{ $loop->iteration }}"
+                                    data-parent="#our-laboratories-list">
+                                    <div class="card-body">
+                                        <div class="row row-gap">
+                                            @forelse($city->laboratories as $laboratory)
+                                                <div class="col-12 col-lg-6">
+                                                    <div class="item">
+                                                        <ul class="list-unstyled mb-0">
+                                                            <li>
+                                                                <div class="head-address">Адреса:</div>
+                                                                <div class="offices-address">{{ $laboratory->address }}
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="head-phone">Телефон:</div>
+                                                                <a href="tel:+38 (095) 000-01-50">
+                                                                    <div class="link-phone">{{ $laboratory->phone }}</div>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <div class="head-email">Email:</div>
+                                                                <a href="mailto:helioscentr@gmail.com">
+                                                                    <div class="offices-email">{{ $laboratory->email }}
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <div class="head-time">Години роботи:</div>
+                                                                <div class="offices-time">{{ $laboratory->hours }}</div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        @empty
-                                        @endforelse
+                                            @empty
+                                            @endforelse
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         @empty
                         @endforelse
                         {{-- <div class="card">

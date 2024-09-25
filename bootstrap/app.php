@@ -11,7 +11,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
         using: function () {
             // TODO:: set correct middleware for admin routes
-            Route::middleware('web') // 'admin', 'auth'
+            Route::middleware('web', 'auth') // 'admin', 'auth'
                 ->group(base_path('routes/admin.php'));
 
             Route::middleware('api')
@@ -31,6 +31,10 @@ return Application::configure(basePath: dirname(__DIR__))
             'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
             'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
             'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
+        ]);
+
+        $middleware->group('auth', [
+            App\Http\Middleware\AuthMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

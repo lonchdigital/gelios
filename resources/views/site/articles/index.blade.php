@@ -1,26 +1,18 @@
 @extends('site.layout.app')
 
 @section('content')
-    <section class="nav-breadcrumb mt-8 mb-8">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <nav aria-label="breadcrumb" class="breadcrumb-nav">
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item">
-                                <a href="/">
-                                    <svg class="i-home">
-                                        <use xlink:href="{{ asset('styles/img/icons/icons.svg#i-home') }}"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">Блог</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('site.components.breadcrumbs', [
+        'breadcrumbs' => [
+            [
+                'title' => 'Головна',
+                'url' => route('main'),
+            ],
+            [
+                'title' => 'Блог',
+                'url' => null,
+            ],
+        ],
+    ])
     <section class="news-head mb-8">
         <div class="container">
             <div class="row align-items-center justify-content-between w-100 mb-5">
@@ -33,7 +25,7 @@
                             <select class="select-news-category">
                                 <option></option>
                                 @forelse($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
                                 @empty
                                 @endforelse
 
@@ -66,7 +58,8 @@
                                     </div>
                                 </div>
                                 <div class="wrap-img">
-                                    <img class="bg-down" src="{{ asset('styles/img/img-background-1.jpeg') }}" alt="img">
+                                    <img class="bg-down" src="{{ asset('styles/img/img-background-1.jpeg') }}"
+                                        alt="img">
                                 </div>
                             </div>
                             <div
@@ -80,7 +73,8 @@
                                     </div>
                                 </div>
                                 <div class="wrap-img">
-                                    <img class="bg-down" src="{{ asset('styles/img/img-background-2.jpeg') }}" alt="img">
+                                    <img class="bg-down" src="{{ asset('styles/img/img-background-2.jpeg') }}"
+                                        alt="img">
                                 </div>
                             </div>
                             <div
@@ -94,7 +88,8 @@
                                     </div>
                                 </div>
                                 <div class="wrap-img">
-                                    <img class="bg-down" src="{{ asset('styles/img/img-background-1.jpeg') }}" alt="img">
+                                    <img class="bg-down" src="{{ asset('styles/img/img-background-1.jpeg') }}"
+                                        alt="img">
                                 </div>
                             </div>
                             <div
@@ -108,7 +103,8 @@
                                     </div>
                                 </div>
                                 <div class="wrap-img">
-                                    <img class="bg-down" src="{{ asset('styles/img/img-background-2.jpeg') }}" alt="img">
+                                    <img class="bg-down" src="{{ asset('styles/img/img-background-2.jpeg') }}"
+                                        alt="img">
                                 </div>
                             </div>
                         </div>
@@ -152,12 +148,15 @@
                                 <div class="news--item">
                                     <a href="{{ route('articles.show', ['article' => $article->slug]) }}" class="inner">
                                         <div class="wrap-img mb-4">
-                                            @if($article->image)
+                                            @if ($article->image)
                                                 <img src="{{ $article->imageUrl }}" alt="{{ $article->title }}">
                                             @else
-                                                <img src="{{ asset('styles/img/articles/article-1.jpeg') }}" alt="img">
+                                                <img src="{{ asset('styles/img/articles/article-1.jpeg') }}"
+                                                    alt="img">
                                             @endif
-                                            <div class="date-label">{{ Carbon\Carbon::parse($article->created_at)->day }}  {{ Carbon\Carbon::parse($article->created_at)->translatedFormat('F') }} {{ Carbon\Carbon::parse($article->created_at)->year }}</div>
+                                            <div class="date-label">{{ Carbon\Carbon::parse($article->created_at)->day }}
+                                                {{ Carbon\Carbon::parse($article->created_at)->translatedFormat('F') }}
+                                                {{ Carbon\Carbon::parse($article->created_at)->year }}</div>
                                         </div>
                                         <div class="h3 small mb-2">{{ $article->title }}</div>
                                         <div class="h6 descrp">{{ $article->description }}</div>

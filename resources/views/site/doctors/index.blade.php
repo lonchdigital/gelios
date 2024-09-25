@@ -1,26 +1,18 @@
 @extends('site.layout.app')
 
 @section('content')
-    <section class="nav-breadcrumb mt-8 mb-8">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <nav aria-label="breadcrumb" class="breadcrumb-nav">
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item">
-                                <a href="index.html">
-                                    <svg class="i-home">
-                                        <use xlink:href="img/icons/icons.svg#i-home"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">Лікарі</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('site.components.breadcrumbs', [
+        'breadcrumbs' => [
+            [
+                'title' => 'Головна',
+                'url' => route('main'),
+            ],
+            [
+                'title' => 'Лікарі',
+                'url' => null,
+            ],
+        ],
+    ])
     <section id="doctors" class="doctors mb-24">
         <div class="container">
             <div class="row mb-8">
@@ -56,7 +48,8 @@
                                         <select class="select-doctors-category">
                                             <option value="">Усі лікарі</option>
                                             @forelse($specializations as $specialization)
-                                                <option value="{{ $specialization->id }}">{{ $specialization->title }}</option>
+                                                <option value="{{ $specialization->id }}">{{ $specialization->title }}
+                                                </option>
                                             @empty
                                             @endforelse
                                         </select>
@@ -86,7 +79,8 @@
                                         <div class="wrap-img mb-3">
                                             <img src="{{ $doctor->imageUrl }}" alt="{{ $doctor->title }}">
                                         </div>
-                                        <div class="experience-quantity mb-3">Досвід роботи: {{ $doctor->expirience }} років</div>
+                                        <div class="experience-quantity mb-3">Досвід роботи: {{ $doctor->expirience }} років
+                                        </div>
                                         <div class="h4 mb-1 font-weight-bolder">{{ $doctor->title }}</div>
                                         <div class="position-work">{{ $doctor->specialization->title ?? '' }}</div>
                                     </a>

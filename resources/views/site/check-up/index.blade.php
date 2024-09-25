@@ -4,11 +4,11 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => null,
-                'url' => null,
+                'title' => 'Головна',
+                'url' => route('main'),
             ],
             [
-                'title' => null,
+                'title' => 'Check up',
                 'url' => null,
             ],
         ],

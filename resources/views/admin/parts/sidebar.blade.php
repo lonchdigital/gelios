@@ -37,14 +37,14 @@
 
                     <li @if(Route::is('admin.promotions.*')) class="active" @endif>
                         <a href="{{ route('admin.promotions.index') }}">
-                            <i class='fa fa-cog'></i>
+                            <i class="fa fa-star-o"></i>
                             <span>{{ trans('admin.promotions') }}</span>
                         </a>
                     </li>
 
                     <li @if(Route::is('admin.check-ups.*')) class="active" @endif>
                         <a href="{{ route('admin.check-ups.index') }}">
-                            <i class='fa fa-cog'></i>
+                            <i class="fa fa-check-circle-o"></i>
                             <span>{{ trans('admin.check_ups') }}</span>
                         </a>
                     </li>
@@ -87,10 +87,10 @@
                     </li>
 
                     <li class="treeview @if(Route::is('admin.laboratory-cities.*') || Route::is('admin.laboratories.*')) menu-open @endif">
-                        <a href="javascript:void(0)"><i class="fa fa-user-md"></i> <span>Лабораторії</span> <i class="fa fa-angle-right"></i></a>
+                        <a href="javascript:void(0)"><i class="fa fa-hospital-o"></i> <span>Лабораторії</span> <i class="fa fa-angle-right"></i></a>
                         <ul class="treeview-menu" @if(Route::is('admin.laboratory-cities.*') || Route::is('admin.laboratories.*')) style="display: block;" @else style="display: none;" @endif>
                             <li @if(Route::is('admin.laboratory-cities.*')) class="active" @endif>
-                                <a href="{{ route('admin.laboratory-cities.index') }}">Міста категорій
+                                <a href="{{ route('admin.laboratory-cities.index') }}">Міста лабораторій
                                 </a>
                             </li>
                             <li @if(Route::is('admin.laboratories.*')) class="active" @endif >
@@ -98,6 +98,20 @@
                                 </a>
                             </li>
                         </ul>
+                    </li>
+
+                    <li @if(Route::is('admin.surgery.*')) class="active" @endif>
+                        <a href="{{ route('admin.surgery.index') }}">
+                            <i class="fa fa-medkit"></i>
+                            <span>Хірургія</span>
+                        </a>
+                    </li>
+
+                    <li @if(Route::is('admin.edit-robots')) class="active" @endif>
+                        <a href="{{ route('admin.edit-robots') }}">
+                            <i class="fa fa-file-code-o"></i>
+                            <span>Robots.txt</span>
+                        </a>
                     </li>
                 </ul>
             </nav>

@@ -4,11 +4,15 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => null,
-                'url' => null,
+                'title' => 'Головна',
+                'url' => route('main'),
             ],
             [
-                'title' => null,
+                'title' => 'Акції',
+                'url' => route('promotions.index'),
+            ],
+            [
+                'title' => $promotion->title ?? '',
                 'url' => null,
             ],
         ],
@@ -22,7 +26,8 @@
                             <div class="col-12">
                                 <div class="content-wrap d-flex flex-column justify-content-between">
                                     <div>
-                                        <div class="h3 font-m font-weight-bolder text-blue mb-5">{{ $promotion->title }}</div>
+                                        <div class="h3 font-m font-weight-bolder text-blue mb-5">{{ $promotion->title }}
+                                        </div>
                                         <div class="content os-scrollbar-overflow">
                                             <p>{{ $promotion->description }}</p>
                                         </div>
@@ -32,12 +37,14 @@
                         </div>
                     </div>
                 </div>
-                @if($promotion->image)
+                @if ($promotion->image)
                     <div class="col-12 col-lg-6 mb-8 mb-lg-0">
-                        <div class="position-relative align-content-end h-100 rounded-sm overflow-hidden text-white p-3 p-lg-6">
+                        <div
+                            class="position-relative align-content-end h-100 rounded-sm overflow-hidden text-white p-3 p-lg-6">
                             <div class="backdrop position-static">
                                 <div class="wrap-img">
-                                    <img class="bg-down" src="{{ $promotion->imageUrl }}" alt="{{ $promotion->title ?? '' }}">
+                                    <img class="bg-down" src="{{ $promotion->imageUrl }}"
+                                        alt="{{ $promotion->title ?? '' }}">
                                 </div>
                             </div>
                         </div>
@@ -125,16 +132,17 @@
                     <div class="news--swiper">
                         <div class="swiper-wrapper">
                             @forelse($promotions as $promotion2)
-                            <div class="swiper-slide news--item">
-                                <a href="{{ route('promotions.show', ['promotion' => $promotion2->slug]) }}" class="inner">
-                                    <div class="wrap-img mb-4">
-                                        @if($promotion2->image)
-                                            <img src="{{ $promotion2->imageUrl }}" alt="{{ $promotion2->title ?? '' }}">
-                                        @endif
-                                    </div>
-                                    <div class="h3 small mb-2">{{ $promotion2->title ?? '' }}</div>
-                                </a>
-                            </div>
+                                <div class="swiper-slide news--item">
+                                    <a href="{{ route('promotions.show', ['promotion' => $promotion2->slug]) }}"
+                                        class="inner">
+                                        <div class="wrap-img mb-4">
+                                            @if ($promotion2->image)
+                                                <img src="{{ $promotion2->imageUrl }}" alt="{{ $promotion2->title ?? '' }}">
+                                            @endif
+                                        </div>
+                                        <div class="h3 small mb-2">{{ $promotion2->title ?? '' }}</div>
+                                    </a>
+                                </div>
                             @empty
                             @endforelse
                             {{-- <div class="swiper-slide news--item">
@@ -159,31 +167,31 @@
                 </div>
             </div>
             <!-- <div class="shares-list row">
-                    <div class="shares--item content-item col-12 col-md-6 col-xl-4">
-                        <a href="##" class="inner">
-                            <div class="wrap-img mb-4">
-                                <img src="img/shares/card-img-1.jpeg" alt="img">
-                            </div>
-                            <div class="h3">Консультація анестезіолога у Дніпрі</div>
-                        </a>
-                    </div>
-                    <div class="shares--item content-item col-12 col-md-6 col-xl-4">
-                        <a href="##" class="inner">
-                            <div class="wrap-img mb-4">
-                                <img src="img/shares/card-img-2.jpeg" alt="img">
-                            </div>
-                            <div class="h3">Консультація анестезіолога у Дніпрі</div>
-                        </a>
-                    </div>
-                    <div class="shares--item content-item col-12 col-md-6 col-xl-4">
-                        <a href="##" class="inner">
-                            <div class="wrap-img mb-4">
-                                <img src="img/shares/card-img-3.jpeg" alt="img">
-                            </div>
-                            <div class="h3">Консультація анестезіолога у Дніпрі</div>
-                        </a>
-                    </div>
-                </div> -->
+                        <div class="shares--item content-item col-12 col-md-6 col-xl-4">
+                            <a href="##" class="inner">
+                                <div class="wrap-img mb-4">
+                                    <img src="img/shares/card-img-1.jpeg" alt="img">
+                                </div>
+                                <div class="h3">Консультація анестезіолога у Дніпрі</div>
+                            </a>
+                        </div>
+                        <div class="shares--item content-item col-12 col-md-6 col-xl-4">
+                            <a href="##" class="inner">
+                                <div class="wrap-img mb-4">
+                                    <img src="img/shares/card-img-2.jpeg" alt="img">
+                                </div>
+                                <div class="h3">Консультація анестезіолога у Дніпрі</div>
+                            </a>
+                        </div>
+                        <div class="shares--item content-item col-12 col-md-6 col-xl-4">
+                            <a href="##" class="inner">
+                                <div class="wrap-img mb-4">
+                                    <img src="img/shares/card-img-3.jpeg" alt="img">
+                                </div>
+                                <div class="h3">Консультація анестезіолога у Дніпрі</div>
+                            </a>
+                        </div>
+                    </div> -->
         </div>
     </section>
 @endsection
