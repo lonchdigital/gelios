@@ -30,19 +30,19 @@
                                             <div class="mt-1 text-danger ajaxError">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror                               
                                         <div class="mb-3">
                                             <label>{{ trans('admin.template') }}</label>
-                                                <select class="form-control" id="status-select" wire:model="directionTemplate" name="template_id">
+                                                <select class="form-control">
                                                     @foreach(App\DataClasses\DirectionTemplateTypeClass::get() as $template)
                                                         <option value="{{ $template['id'] }}">{{ $template['name'] }}</option>
                                                     @endforeach
                                                 </select>
                                         </div>
-                                        {{-- @dd($allDirections) --}}
+
                                         <div class="mb-3">
-                                            <label>{{ trans('admin.categories') }}</label>
-                                                <select class="form-control" id="status-select" wire:model="directionParent" name="parent_id">
+                                            <label>{{ trans('admin.belonging') }}</label>
+                                                <select class="form-control" wire:model="directionParent" name="parent_id">
                                                     <option value="{{ null }}">- {{ trans('admin.not_chosen') }} -</option>
                                                     @foreach($allDirections as $cat)
                                                         @include('admin.directions.partials.direction-option', ['direction' => $cat, 'depth' => 0])
@@ -57,27 +57,74 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Some text</h4>
+                                <h4 class="card-title">{{ (is_null($direction)) ? trans('admin.all_directions') : $direction->name }}</h4>
                                 {{-- @dd($allDirections) --}}
+
+                                <form id="directionForm" action="#" method="GET" class="mb-5">
+                                    <div class="row aligh-items-center">
+                                        <div class="col-md-9">
+                                            <select class="form-control" id="directionSelect">
+                                                <option value="{{ null }}">- {{ trans('admin.all_directions') }} -</option>
+                                                @foreach($allDirections as $cat)
+                                                    @include('admin.directions.partials.direction-option', ['direction' => $cat, 'depth' => 0])
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button type="button" class="btn btn-primary" onclick="goToCategory()">{{ trans('admin.choose') }}</button>
+                                        </div>
+                                    </div>
+                                </form>
 
                                 <div class="template-demo">
                                     <table class="dark-lincs table mb-0">
                                         <thead>
                                             <tr>
+                                                <th></th>
+                                                <th></th>
                                                 <th>{{ trans('admin.direction') }}</th>
-                                                <th class="text-right">Sort</th>
+                                                <th class="text-right">{{ trans('admin.remove') }}</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody wire:sortable="updateOrder" id="art-directions-container" class="art-directions-container">
                                             @foreach ($allDirections as $direction)
-                                                <tr>
-                                                    <td><a href="{{ route('directions.edit', ['directionId' => $direction['id']]) }}">{{ $direction['name'] }}</a></td>
+                                                <tr wire:sortable.item="{{ $direction['id'] }}" 
+                                                    wire:key="direction-{{ $direction['id'] }}" 
+                                                    class="art-drag-item drag-item"
+                                                    id="parent-direction-{{ $direction['id'] }}">
+                                                    <td>
+                                                        <i class="fa fa-bars art-bars-move" 
+                                                        aria-hidden="true" 
+                                                        wire:sortable.handle 
+                                                        style="cursor:move"></i>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" target="_blank"><i class="fa fa-eye text-info font-18"></i></a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('directions.edit', ['directionId' => $direction['id']]) }}">{{ $direction['name'] }}</a>
+                                                    </td>
                                                     <td class="text-right">
-                                                        <i class="fa fa-bars" aria-hidden="true"></i>
+                                                        <a href="#" class="md-trigger mr-2" data-modal="modal-{{ $direction['id'] }}">
+                                                            <i class="fa fa-trash text-danger font-18"></i>
+                                                        </a>
+                                                        <div class="md-modal md-effect-1" id="modal-{{ $direction['id'] }}">
+                                                            <div class="md-content">
+                                                                <h3 class="bg-main">{{ trans('admin.attention') }}</h3>
+                                                                <p class="text-center mt-4">{{ trans('admin.delete') }} "{{ $direction['name'] }}", {{ trans('admin.delete_all_directions') }}?</p>
+                                                                <div class="d-flex art-modal-buttons">
+                                                                    <button class="btn btn-primary md-close">{{ trans('admin.close') }}</button>
+                                                                    <button wire:click="removeDirectionFromDB('{{ $direction['id'] }}')" class="btn btn-danger d-block">{{ trans('admin.delete') }}</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 @if (!empty($direction['children']))
-                                                    @include('admin.directions.partials.direction-children', ['children' => $direction['children'], 'level' => 1])
+                                                    @include('admin.directions.partials.direction-children', [
+                                                        'children' => $direction['children'], 
+                                                        'level' => 1
+                                                    ])
                                                 @endif
                                             @endforeach
                                         </tbody>
@@ -95,3 +142,58 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+
+    <script>
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     if (window.Livewire) {
+//         console.log('Livewire is loaded');
+//         Livewire.emit('testOrder');
+//         console.log('testOrder method called successfully');
+//     } else {
+//         console.error('Livewire is not loaded');
+//     }
+// });
+
+
+            // document.addEventListener('livewire:load', function () {
+            //     @this.call('testOrder');
+            //     console.log('222222');
+            // });
+
+            // console.log('333333')
+
+    </script>
+
+    <script>
+        function goToCategory() {
+            var directionId = document.getElementById('directionSelect').value;
+            
+            if (directionId) {
+                window.location.href = '/admin/directions/category/' + directionId;
+            } else {
+                window.location.href = '/admin/directions/';
+            }
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tableRowBars = document.querySelectorAll('.art-bars-move');
+
+            tableRowBars.forEach(row => {
+                row.addEventListener('mousedown', function () {
+                    const directionsTable = document.getElementById('art-directions-container');
+                    const rowsToHide = directionsTable.querySelectorAll(`tr.child-direction`);
+
+                    rowsToHide.forEach(row => {
+                        row.style.display = 'none';
+                    });
+                });
+            });
+        });
+    </script>
+
+    
+@endpush

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Directions;
 
+use App\Models\Direction;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\InsuranceCompany;
@@ -14,18 +15,25 @@ class Index extends Component
 {
     use WithFileUploads;
 
+    public Direction|null $direction = null;
+
     public array $directionName = [];
-    public int $directionTemplate = 1;
+    public $directionTemplate;
     public int|null $directionParent = null;
     public array $allDirections = [];
     protected DirectionsService $directionsService;
-    
+
     public function mount() 
     {
         $this->directionsService = new DirectionsService;
 
-        $allDirections = $this->directionsService->getAllDirections();
-        $this->allDirections = $this->directionsService->buildTree($allDirections);
+        if(is_null($this->direction)) {
+            $allDirections = $this->directionsService->getAllDirections();
+            $this->allDirections = $this->directionsService->buildTree($allDirections);
+        } else {
+            $allDirections = $this->directionsService->getDirectionsByCategory($this->direction->id);
+            $this->allDirections = $this->directionsService->buildTree($allDirections);
+        }
     }
 
     public function hydrate()
@@ -35,6 +43,31 @@ class Index extends Component
     
     public function updated($propertyName)
     {}
+
+    public function updateOrder($list)
+    {
+        foreach($list as $item){
+            Direction::find($item['value'])->update(['sort' => $item['order']]);
+        }
+
+        if(is_null($this->direction)) {
+            $allDirections = $this->directionsService->getAllDirections();
+            $this->allDirections = $this->directionsService->buildTree($allDirections);
+        } else {
+            $allDirections = $this->directionsService->getDirectionsByCategory($this->direction->id);
+            $this->allDirections = $this->directionsService->buildTree($allDirections);
+        }
+    }
+
+    public function removeDirectionFromDB(int $id)
+    {
+        if($id) {
+            $this->directionsService->removeDirectionWithChildren($id);
+            redirect()->route('directions.index')->with('success', trans('admin.removed'));
+        }
+
+        redirect()->route('directions.index')->with('error', trans('admin.error'));
+    }
 
     protected function rules()
     {
@@ -67,7 +100,7 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.admin.directions.index');
+        return view('livewire.admin.directions.index', ['direction' => $this->direction]);
     }
 
 }

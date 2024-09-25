@@ -27,6 +27,8 @@ Route::group([
 
         Route::prefix('/directions')->group(function() {
             Route::get('/', [DirectionsController::class, 'index'])->name('directions.index');
+            Route::get('/category/{directionId}', [DirectionsController::class, 'category'])->name('directions.category');
+            
             Route::get('/{directionId}/edit', [DirectionsController::class, 'edit'])->name('directions.edit');
         });
         Route::prefix('/insurance-companies')->group(function() {

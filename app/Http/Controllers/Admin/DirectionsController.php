@@ -9,7 +9,14 @@ class DirectionsController extends Controller
 {
     public function index()
     {
-        return view('admin.directions.index');
+        return view('admin.directions.index', ['direction' => null]);
+    }
+
+    public function category(int $directionId)
+    {
+        $direction = Direction::find($directionId);
+
+        return view('admin.directions.index', compact('direction'));
     }
 
     public function edit(int $directionId)

@@ -34,7 +34,7 @@ class MultilanguageTextArea extends Component
                 $valuesToDisplay[$lang] = $value;
             }
         }
-
+        
         return view('components.admin.multilanguage-text-area', [
             'label' => $this->label,
             'fieldName' => $this->fieldName,

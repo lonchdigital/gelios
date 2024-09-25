@@ -3,8 +3,10 @@
 namespace App\Services\Admin\Directions;
 
 use App\Models\Direction;
+use App\Models\DirectionInfoBlock;
 use Illuminate\Support\Str;
 use App\Models\PageDirection;
+use App\Models\DirectionPrice;
 use App\Models\DirectionTextBlock;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
@@ -14,7 +16,46 @@ class DirectionsService
 {
     public function getAllDirections(): Collection
     {
-        return Direction::with('children.children')->whereNull('parent_id')->get();
+        return Direction::with('children.children')->whereNull('parent_id')->orderBy('sort')->get();
+    }
+    public function getDirectionsByCategory(int $parentId): Collection
+    {
+        return Direction::with('children.children')->where('parent_id', $parentId)->orderBy('sort')->get();
+    }
+
+    public function removeDirectionWithChildren(int $id)
+    {
+        $direction = Direction::find($id);
+
+        $allChildren = $this->getDirectionsByCategory($direction->id);
+        $this->removeChildrenDirections($allChildren);
+
+        $this->removeDirection($direction);
+    }
+
+    private function removeChildrenDirections(Collection $directions)
+    {
+        foreach($directions as $direction){
+            if(count($direction->children) > 0) {
+                $this->removeChildrenDirections($direction->children);
+            }
+            $this->removeDirection($direction);
+        }
+    }
+
+    private function removeDirection(Direction $direction)
+    {
+        $this->removeTextBlocks($direction);
+
+        $existingDirectionPrices = DirectionPrice::where('direction_id', $direction->id)->get();
+        $this->syncPrices([], $existingDirectionPrices, $direction->id);
+
+        $existingDirectionInfo = DirectionInfoBlock::where('direction_id', $direction->id)->get();
+        $this->syncInfo([], $existingDirectionInfo, $direction->id);
+
+        $directionPage = $direction->page;
+        $direction->delete();
+        $directionPage->delete();
     }
 
     public function addDirection(array $data)
@@ -101,6 +142,16 @@ class DirectionsService
         $page->update($dataToUpdate);
     }
 
+    private function removeTextBlocks(Direction $direction)
+    {
+        $textBlocks = DirectionTextBlock::where('direction_id', $direction->id)->get();
+
+        foreach ($textBlocks as $textBlock) {
+            removeImageFromStorage($textBlock->image);
+            $textBlock->delete();
+        }
+    }
+
     public function updateTextBlock(array $data)
     {
         $dataToUpdate = [];
@@ -120,8 +171,10 @@ class DirectionsService
             }
         }
 
-        if(isset($data['image']['newImage'])) {
-            removeImageFromStorage($data['image']['image']);
+        if(isset($data['image']) && isset($data['image']['newImage'])) {
+            if(isset($data['image']['image'])) {
+                removeImageFromStorage($data['image']['image']);
+            }
             $image = downloadImage('/directions', $data['image']['newImage']);
             $dataToUpdate['image'] = $image;
         }
@@ -135,9 +188,161 @@ class DirectionsService
         }
     }
 
-    public function setTextBlockData(DirectionTextBlock $directionTextBlock)
+    public function setPrices(Collection $directionPrices)
     {
         $data = [];
+
+        foreach($directionPrices as $directionPrice) {
+            $service = [];
+
+            if(!is_null($directionPrice)) {
+                foreach ($directionPrice->getTranslationsArray() as $lang => $value) {
+                    $service[$lang] = $value['service'];
+                }
+            }
+
+            $data[] = [
+                'id' => $directionPrice->id,
+                'sort' => $directionPrice->sort,
+                'price' => $directionPrice->price,
+                'service' => $service,
+            ];
+        }
+
+        return $data;
+    }
+
+    public function setInfoData(Collection $directionInfoBlocks)
+    {
+        $data = [];
+
+        foreach($directionInfoBlocks as $directionInfoBlock) {
+            $title = [];
+            $description = [];
+
+            if(!is_null($directionInfoBlock)) {
+                foreach ($directionInfoBlock->getTranslationsArray() as $lang => $value) {
+                    $title[$lang] = $value['title'];
+                }
+                foreach ($directionInfoBlock->getTranslationsArray() as $lang => $value) {
+                    $description[$lang] = $value['description'];
+                }
+            }
+
+            $data[] = [
+                'id' => $directionInfoBlock->id,
+                'title' => $title,
+                'description' => $description
+            ];
+        }
+
+        return $data;
+    }
+
+    public function syncInfo(array $infoItems, Collection $existingInfoItems, int $directionId)
+    {
+        foreach( $infoItems as $infoItem ) {
+            $existingInfoItem = $existingInfoItems->where('id', $infoItem['id'])->first();
+
+            if( !is_null($existingInfoItem) ) {
+                if($infoItem['title']) {
+                    foreach ($infoItem['title'] as $lang => $value) {
+                        $dataToUpdate[$lang]['title'] = $value;
+                    }
+                }
+                if($infoItem['description']) {
+                    foreach ($infoItem['description'] as $lang => $value) {
+                        $dataToUpdate[$lang]['description'] = $value;
+                    }
+                }
+                $existingInfoItem->update($dataToUpdate);
+            } else {
+                $dataToUpdate = [
+                    'direction_id' => $directionId
+                ];
+
+                if($infoItem['title']) {
+                    foreach ($infoItem['title'] as $lang => $value) {
+                        $dataToUpdate[$lang]['title'] = $value;
+                    }
+                }
+                if($infoItem['description']) {
+                    foreach ($infoItem['description'] as $lang => $value) {
+                        $dataToUpdate[$lang]['description'] = $value;
+                    }
+                }
+
+                DirectionInfoBlock::create($dataToUpdate);
+            }
+        }
+
+        // remove items
+        $existingInfoItemsInRequest = $infoItems ? array_filter(array_column($infoItems, 'id'), function ($item) {
+            return $item !== null;
+        }): [];
+
+        $infoItemsToDelete = $existingInfoItems->whereNotIn('id', $existingInfoItemsInRequest);
+
+        foreach ($infoItemsToDelete as $infoItemToDelete) {
+            $infoItemToDelete->delete();
+        }
+    }
+
+    public function syncPrices(array $prices, Collection $existingPrices, int $directionId)
+    {
+        foreach( $prices as $price ) {
+            $existingPrice = $existingPrices->where('id', $price['id'])->first();
+
+            if( !is_null($existingPrice) ) {
+                $dataToUpdate = [
+                    'sort' => $price['sort'],
+                    'price' => $price['price']
+                ];
+
+                if($price['service']) {
+                    foreach ($price['service'] as $lang => $value) {
+                        $dataToUpdate[$lang]['service'] = $value;
+                    }
+                }
+
+                $existingPrice->update($dataToUpdate);
+            } else {
+                $dataToUpdate = [
+                    'direction_id' => $directionId,
+                    'sort' => $price['sort'],
+                    'price' => $price['price']
+                ];
+
+                if($price['service']) {
+                    foreach ($price['service'] as $lang => $value) {
+                        $dataToUpdate[$lang]['service'] = $value;
+                    }
+                }
+
+                DirectionPrice::create($dataToUpdate);
+            }
+        }
+
+        // remove items
+        $existingPricesInRequest = $prices ? array_filter(array_column($prices, 'id'), function ($item) {
+            return $item !== null;
+        }): [];
+
+        $pricesToDelete = $existingPrices->whereNotIn('id', $existingPricesInRequest);
+
+        foreach ($pricesToDelete as $priceToDelete) {
+            $priceToDelete->delete();
+        }
+    }
+
+    public function setTextBlockData(null|DirectionTextBlock $directionTextBlock)
+    {
+        $data = [];
+
+        $data['text_one'] = [];
+        $data['text_two'] = [];
+        $data['is_reverse'] = false;
+        $data['is_image'] = true;
 
         if(!is_null($directionTextBlock)) {
             foreach ($directionTextBlock->getTranslationsArray() as $lang => $value) {
@@ -149,11 +354,6 @@ class DirectionsService
             $data['media']['image'] = $directionTextBlock->image;
             $data['is_reverse'] = $directionTextBlock->is_reverse;
             $data['is_image'] = $directionTextBlock->is_image;
-        } else {
-            $data['text_one'] = [];
-            $data['text_two'] = [];
-            $data['is_reverse'] = false;
-            $data['is_image'] = true;
         }
 
         return $data;
