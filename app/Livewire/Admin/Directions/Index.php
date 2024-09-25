@@ -18,7 +18,7 @@ class Index extends Component
     public Direction|null $direction = null;
 
     public array $directionName = [];
-    public int $directionTemplate = 1;
+    public $directionTemplate;
     public int|null $directionParent = null;
     public array $allDirections = [];
     protected DirectionsService $directionsService;
@@ -46,8 +46,6 @@ class Index extends Component
 
     public function updateOrder($list)
     {
-        // dd('hello111', $list);
-
         foreach($list as $item){
             Direction::find($item['value'])->update(['sort' => $item['order']]);
         }
@@ -60,12 +58,6 @@ class Index extends Component
             $this->allDirections = $this->directionsService->buildTree($allDirections);
         }
     }
-
-    public function testOrder()
-    {
-        dd('test666');
-    }
-
 
     public function removeDirectionFromDB(int $id)
     {

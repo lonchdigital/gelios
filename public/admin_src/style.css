@@ -3499,7 +3499,8 @@ bx-tada {
     border-radius: .15rem;
     font-weight: 500;
     letter-spacing: 0.5px;
-    padding: .75rem 1.75rem;
+    /* padding: .75rem 1.75rem; */
+    padding: .58rem 1.75rem;
 }
 
 @media only screen and (max-width: 767px) {

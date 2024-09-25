@@ -30,10 +30,10 @@
                                             <div class="mt-1 text-danger ajaxError">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror                               
                                         <div class="mb-3">
                                             <label>{{ trans('admin.template') }}</label>
-                                                <select class="form-control" id="status-select" wire:model="directionTemplate" name="template_id">
+                                                <select class="form-control">
                                                     @foreach(App\DataClasses\DirectionTemplateTypeClass::get() as $template)
                                                         <option value="{{ $template['id'] }}">{{ $template['name'] }}</option>
                                                     @endforeach
@@ -42,7 +42,7 @@
 
                                         <div class="mb-3">
                                             <label>{{ trans('admin.belonging') }}</label>
-                                                <select class="form-control" id="status-select" wire:model="directionParent" name="parent_id">
+                                                <select class="form-control" wire:model="directionParent" name="parent_id">
                                                     <option value="{{ null }}">- {{ trans('admin.not_chosen') }} -</option>
                                                     @foreach($allDirections as $cat)
                                                         @include('admin.directions.partials.direction-option', ['direction' => $cat, 'depth' => 0])
