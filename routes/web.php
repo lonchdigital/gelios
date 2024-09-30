@@ -1,15 +1,16 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CheckUpController;
-use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\SurgeryController;
 use App\Http\Controllers\FeedbackController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LaboratoryController;
+use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PromotionController;
-use App\Http\Controllers\SurgeryController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LaboratoryController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::name('auth.')->prefix('/admin')->group(function () {
@@ -24,6 +25,8 @@ Route::group([
     ], function () {
 
         Route::get('/', [HomeController::class, 'index'])->name('main');
+
+        Route::get('/staczionar/', [HospitalController::class, 'show'])->name('hospital.show');
 
         Route::get('/akczii-i-speczialnye-predlozheniya/', [PromotionController::class, 'index'])->name('promotions.index');
         Route::get('/akczii-i-speczialnye-predlozheniya/{promotion:slug}', [PromotionController::class, 'show'])->name('promotions.show');

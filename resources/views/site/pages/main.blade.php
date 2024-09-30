@@ -1870,147 +1870,36 @@
                     </div>
                 </div>
             </div>
-            <div class="partners--swiper mb-8">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-44.png') }}" alt="img">
+            @if($insuranceCompanies->where('row', 1)->count())
+                <div class="partners--swiper mb-8">
+                    <div class="swiper-wrapper">
+                        @foreach ($insuranceCompanies->where('row', 1)->sortBy('sort') as $company)
+                            <div class="swiper-slide">
+                                <div class="content">
+                                    <div class="wrap-img">
+                                        <img src="{{ '/storage/' . $company->image }}" alt="img">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-70.png') }}" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-46.png') }}" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-47.png') }}" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-48.png') }}" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-49.png') }}" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-71.png') }}" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-47.png') }}" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-48.png') }}" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-49.png') }}" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-71.png') }}" alt="img">
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
-            </div>
-            <div dir="rtl" class="partners--swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-73.png') }}" alt="img">
+            @endif
+            @if($insuranceCompanies->where('row', 2)->count())
+                <div dir="rtl" class="partners--swiper">
+                    <div class="swiper-wrapper">
+                        @foreach ($insuranceCompanies->where('row', 2)->sortBy('sort') as $company2)
+                            <div class="swiper-slide">
+                                <div class="content">
+                                    <div class="wrap-img">
+                                        <img src="{{ '/storage/' . $company2->image }}" alt="img">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-74.png') }}" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-55.png') }}" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-56.png') }}" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-57.png') }}" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-58.png') }}" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-55.png') }}" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="content">
-                            <div class="wrap-img">
-                                <img src="{{ asset('styles/img/partners/image-56.png') }}" alt="img">
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
-            </div>
+            @endif
         </section>
         <section class="news mb-24">
             <div class="container overflow-hidden">
