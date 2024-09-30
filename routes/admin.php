@@ -1,18 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Admin\RobotsController;
+use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CheckUpController;
+use App\Http\Controllers\Admin\SurgeryController;
+use App\Http\Controllers\Admin\HospitalController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PromotionController;
 use App\Http\Controllers\Admin\DirectionsController;
-use App\Http\Controllers\Admin\ArticleCategoryController;
-use App\Http\Controllers\Admin\DoctorController;
-use App\Http\Controllers\Admin\InsuranceCompaniesController;
 use App\Http\Controllers\Admin\LaboratoryController;
-use App\Http\Controllers\Admin\RobotsController;
 use App\Http\Controllers\Admin\SpecializationController;
-use App\Http\Controllers\Admin\SurgeryController;
+use App\Http\Controllers\Admin\ArticleCategoryController;
+use App\Http\Controllers\Admin\InsuranceCompaniesController;
 
 Route::group([
     'prefix' => 'admin',
@@ -35,6 +37,17 @@ Route::group([
         });
         Route::prefix('/insurance-companies')->group(function() {
             Route::get('/', [InsuranceCompaniesController::class, 'index'])->name('insurance.companies.index');
+        });
+
+        Route::prefix('/hospitals')->group(function() {
+            Route::get('/', [HospitalController::class, 'index'])->name('hospitals.index');
+            
+            Route::get('/create', [HospitalController::class, 'create'])->name('hospitals.create');
+            Route::get('/{hospital}/edit', [HospitalController::class, 'editHospital'])->name('hospitals.edit');
+        });
+
+        Route::prefix('/about-us')->group(function() {
+            Route::get('/', [AboutUsController::class, 'edit'])->name('about.us.edit');
         });
 
         Route::prefix('/promotions')->name('admin.promotions.')->group(function() {

@@ -16,5 +16,9 @@ class PageTranslation extends Model
         'name',
         'description',
         'text',
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
+        'seo_text'
     ];
 }

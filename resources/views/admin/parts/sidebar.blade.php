@@ -28,6 +28,20 @@
                         </a>
                     </li>
 
+                    <li @if( Route::is('hospitals.index') ) class="active"@endif>
+                        <a href="{{ route('hospitals.index') }}">
+                            <i class='fa fa-cog'></i>
+                            <span>{{ trans('admin.hospitals_stationary') }}</span>
+                        </a>
+                    </li>
+
+                    <li @if( Route::is('about.us.edit') ) class="active"@endif>
+                        <a href="{{ route('about.us.edit') }}">
+                            <i class='fa fa-cog'></i>
+                            <span>{{ trans('admin.about_us') }}</span>
+                        </a>
+                    </li>
+
                     <li @if( Route::is('insurance.companies.index') ) class="active"@endif>
                         <a href="{{ route('insurance.companies.index') }}">
                             <i class='fa fa-cog'></i>
