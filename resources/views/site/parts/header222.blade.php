@@ -148,7 +148,7 @@
 									</button>
 								</div>
 							</div>
-							{{-- @dd($adllDirections) --}}
+							@dd($adllDirections, '22224')
 							<div class="collapse navbar-collapse justify-content-between order-last" id="navbarSupportedContent">
 								<div class="header-main--desk d-none d-lg-flex align-items-center justify-content-end justify-content-xxl-between w-100">
 									<div class="navbar-nav list-inline hover-aside-menu--list">

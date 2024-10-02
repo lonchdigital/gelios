@@ -33,7 +33,7 @@
                                         @enderror                               
                                         <div class="mb-3">
                                             <label>{{ trans('admin.template') }}</label>
-                                                <select class="form-control">
+                                                <select class="form-control" wire:model="directionTemplate">
                                                     @foreach(App\DataClasses\DirectionTemplateTypeClass::get() as $template)
                                                         <option value="{{ $template['id'] }}">{{ $template['name'] }}</option>
                                                     @endforeach

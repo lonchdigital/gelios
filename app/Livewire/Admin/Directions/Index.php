@@ -27,6 +27,8 @@ class Index extends Component
     {
         $this->directionsService = new DirectionsService;
 
+        $this->directionTemplate = 1;
+
         if(is_null($this->direction)) {
             $allDirections = $this->directionsService->getAllDirections();
             $this->allDirections = $this->directionsService->buildTree($allDirections);
@@ -86,7 +88,9 @@ class Index extends Component
 
     public function save()
     {
-        $this->validate();
+        // $this->validate();
+
+        // dd('hello', $this->directionTemplate);
 
         $formData = [
             'directionName' => $this->directionName,

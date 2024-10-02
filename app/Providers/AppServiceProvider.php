@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\View\Composers\DoctorComposer;
+use App\Http\View\Composers\DirectionsComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,5 +23,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('site.components.appointment-form', DoctorComposer::class);
+        View::composer('site.*', DirectionsComposer::class);
     }
 }
