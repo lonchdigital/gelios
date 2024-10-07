@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CheckUpController;
 use App\Http\Controllers\Admin\SurgeryController;
 use App\Http\Controllers\Admin\HospitalController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OneCenterController;
 use App\Http\Controllers\Admin\PromotionController;
 use App\Http\Controllers\Admin\DirectionsController;
 use App\Http\Controllers\Admin\LaboratoryController;
@@ -37,6 +38,9 @@ Route::group([
         });
         Route::prefix('/insurance-companies')->group(function() {
             Route::get('/', [InsuranceCompaniesController::class, 'index'])->name('insurance.companies.index');
+        });
+        Route::prefix('/one-center')->group(function() {
+            Route::get('/', [OneCenterController::class, 'show'])->name('one.center.show');
         });
 
         Route::prefix('/hospitals')->group(function() {

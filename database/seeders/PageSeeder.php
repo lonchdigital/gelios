@@ -68,6 +68,10 @@ class PageSeeder extends Seeder
         ]);
 
         Page::firstOrCreate([
+            'type' => PageType::ONECENTER->value,
+        ]);
+
+        Page::firstOrCreate([
             'type' => PageType::REVIEWS->value,
         ]);
 

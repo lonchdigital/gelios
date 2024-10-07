@@ -49,6 +49,13 @@
                         </a>
                     </li>
 
+                    <li @if( Route::is('one.center.show') ) class="active"@endif>
+                        <a href="{{ route('one.center.show') }}">
+                            <i class='fa fa-cog'></i>
+                            <span>{{ trans('admin.one_center') }}</span>
+                        </a>
+                    </li>
+
                     <li @if(Route::is('admin.promotions.*')) class="active" @endif>
                         <a href="{{ route('admin.promotions.index') }}">
                             <i class="fa fa-star-o"></i>
