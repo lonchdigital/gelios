@@ -16,6 +16,7 @@ enum PageType: string
     case PARTNERS = 'partners';
     case PRICES = 'prices';
     case REHABILITATIONCENTER = 'rehabilitation_center';
+    case ONECENTER = 'one_center';
     case REVIEWS = 'reviews';
     case SHARES = 'shares';
     case SHARESITEM = 'shares_item';

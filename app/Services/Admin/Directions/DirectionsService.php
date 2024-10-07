@@ -94,7 +94,7 @@ class DirectionsService
         Direction::create($dataToUpdate);
     }
 
-    public function buildTree($directions)
+    public function buildTree($directions, $collection = false)
     {
         $tree = [];
 
@@ -111,7 +111,11 @@ class DirectionsService
             ];
         }
 
-        return $tree;
+        if($collection) {
+            return collect($tree);
+        } else {
+            return $tree;
+        }
     }
 
     public function updatePage(PageDirection $page, array $data)
