@@ -34,4 +34,9 @@ class Direction extends Model implements TranslatableContract
     {
         return $this->belongsTo(PageDirection::class, 'page_direction_id', 'id');
     }
+
+    public function textBlocks()
+    {
+        return $this->hasMany(DirectionTextBlock::class);
+    }
 }

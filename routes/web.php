@@ -9,6 +9,7 @@ use App\Http\Controllers\SurgeryController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\DirectionController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\LaboratoryController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -27,6 +28,8 @@ Route::group([
         Route::get('/', [HomeController::class, 'index'])->name('main');
 
         Route::get('/staczionar/', [HospitalController::class, 'show'])->name('hospital.show');
+
+        Route::get('/direction/category/{pageDirection:slug}', [DirectionController::class, 'category'])->name('direction.category');
 
         Route::get('/akczii-i-speczialnye-predlozheniya/', [PromotionController::class, 'index'])->name('promotions.index');
         Route::get('/akczii-i-speczialnye-predlozheniya/{promotion:slug}', [PromotionController::class, 'show'])->name('promotions.show');

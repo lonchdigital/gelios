@@ -32,11 +32,12 @@
 
             <li class="nav-item dropdown">
                 <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"><span class="flag-thumb-cu"><img src="img/core-img/l1.jpg"
-                            alt=""></span></button>
+                    aria-expanded="false"><span class="flag-thumb-cu">
+                        {{-- <img src="img/core-img/l1.jpg"alt=""></span> --}}
+                    </button>
                 <div class="dropdown-menu language-dropdown dropdown-menu-right">
-                    <a href="#" class="dropdown-item mb-15"><img
-                            src="{{ asset('admin_src/img/core-img/l5.jpg') }}" alt="Image"> <span>USA</span></a>
+                    {{-- <a href="#" class="dropdown-item mb-15"><img
+                            src="{{ asset('admin_src/img/core-img/l5.jpg') }}" alt="Image"> <span>USA</span></a> --}}
                     <a href="#" class="dropdown-item mb-15"><img
                             src="{{ asset('admin_src/img/core-img/l2.jpg') }}" alt="Image"> <span>German</span></a>
                     <a href="#" class="dropdown-item mb-15"><img

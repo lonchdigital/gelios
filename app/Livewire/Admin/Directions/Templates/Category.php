@@ -31,6 +31,7 @@ class Category extends Component
     public function mount() 
     {
         $this->directionsService = app(DirectionsService::class);
+        $this->dispatch('livewire:load');
 
         // Set Section One data
         $this->directionTextBlockOne = DirectionTextBlock::where('number', 1)->where('direction_id', $this->direction->id)->first();
