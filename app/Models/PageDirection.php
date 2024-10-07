@@ -23,4 +23,9 @@ class PageDirection extends Model implements TranslatableContract
     protected $fillable = [
         'slug'
     ];
+
+    public function direction()
+    {
+        return $this->hasOne(Direction::class);
+    }
 }

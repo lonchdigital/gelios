@@ -73,56 +73,6 @@
 <!-- custom JS -->
 
 <script src="{{ asset('admin_src/js/quill.min.js') }}"></script>
-<script type="text/javascript">
-    const toolbarOptions = [
-        [
-            {
-                'header': [1, 2, 3, 4, 5, 6, false]
-            }],
-        ['bold', 'italic', 'underline', 'strike', 'link', 'image'],
-        ['blockquote'],
-        [
-            {
-                'list': 'ordered'
-            },
-            {
-                'list': 'bullet'
-            }],
-        [
-            {
-                'script': 'sub'
-            },
-            {
-                'script': 'super'
-            }],
-        [
-            {
-                'color': []
-            },
-        ],
-        [
-            {
-                'align': []
-            }],
-        ['clean']
-    ];
-
-    let editorsOnPage = [];
-
-    $('.rich-editor').each(function () {
-        const quill = new Quill($(this)[0],
-            {
-                modules:
-                    {
-                        toolbar: toolbarOptions
-                    },
-                theme: 'snow'
-            });
-        editorsOnPage.push({editor: $(this), input: $(`input[name="content[${$(this).parent().attr('language')}]"]`)});
-    });
-
-
-</script>
 
 @stack('scripts')
 @livewireScripts
