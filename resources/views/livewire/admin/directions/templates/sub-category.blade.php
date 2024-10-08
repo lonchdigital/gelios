@@ -111,15 +111,6 @@
                                         <h6 class="card-title">{{ trans('admin.section_two') }}</h6>
 
                                         <div class="form-group mt-2 mb-0">
-
-                                            <div class="new-checkbox art-text-block-switcher">
-                                                <label class="switch mr-3">
-                                                    <input type="checkbox" wire:model="sectionTwoData.is_reverse" id="is_reverse_2" @if($sectionTwoData['is_reverse']) checked @endif>
-                                                    <span class="slider"></span>
-                                                </label>
-                                                <span>{{ trans('admin.show_left') }}</span>
-                                            </div>
-
                                             <div class="checkbox d-inline">
                                                 <input 
                                                     type="checkbox" 
@@ -369,3 +360,17 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
+    <script type="text/javascript">
+        document.addEventListener('livewire:load', () => {
+            initQuillEditors((quill, fieldName, language) => {
+                quill.on('text-change', function () {
+                    let value = quill.root.innerHTML;
+                    @this.set(`${fieldName}.${language}`, value);
+                });
+            });
+        });
+    </script>
+@endpush
