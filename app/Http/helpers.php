@@ -75,3 +75,11 @@ function removeImageFromStorage($path)
         Storage::disk(config('app.images_disk_default'))->delete($path);
     }
 }
+
+function isEmptyHtml($html) {
+    $cleanedHtml = trim(
+        preg_replace('/<p><br><\/p>|<br>|&nbsp;|\s+/', '', $html)
+    );
+
+    return empty($cleanedHtml);
+}
