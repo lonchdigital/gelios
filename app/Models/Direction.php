@@ -39,4 +39,14 @@ class Direction extends Model implements TranslatableContract
     {
         return $this->hasMany(DirectionTextBlock::class);
     }
+
+    public function prices()
+    {
+        return $this->hasMany(DirectionPrice::class)->orderBy('sort');
+    }
+
+    public function infoBlocks()
+    {
+        return $this->hasMany(DirectionInfoBlock::class);
+    }
 }

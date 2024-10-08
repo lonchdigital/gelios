@@ -34,6 +34,7 @@ class SubCategory extends Component
     public function mount() 
     {
         $this->directionsService = app(DirectionsService::class);
+        $this->dispatch('livewire:load');
 
         $allDirections = $this->directionsService->getAllDirections();
         $this->allDirections = $this->directionsService->buildTree($allDirections);
