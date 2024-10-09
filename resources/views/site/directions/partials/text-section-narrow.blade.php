@@ -1,4 +1,4 @@
-@if( !isEmptyHtml($data->text_one) )
+@if( isset($data) && !isEmptyHtml($data->text_one) )
     @if($data->is_image)
         <div class="col-12 col-xl-4 mb-5 mb-xl-0">
             <div class="position-relative rounded-sm overflow-hidden h-100">

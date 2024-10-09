@@ -29,6 +29,7 @@ Route::group([
 
         Route::get('/staczionar/', [HospitalController::class, 'show'])->name('hospital.show');
 
+        Route::get('/direction/{pageDirection:slug}', [DirectionController::class, 'direction'])->name('direction.itself');
         Route::get('/direction/category/{pageDirection:slug}', [DirectionController::class, 'category'])->name('direction.category');
         Route::get('/direction/sub-category/{pageDirection:slug}', [DirectionController::class, 'subCategory'])->name('direction.sub-category');
 
