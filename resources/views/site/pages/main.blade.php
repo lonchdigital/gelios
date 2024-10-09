@@ -160,9 +160,7 @@
                                 <div class="push-menu">
                                     <div class="push-menu--nav">
                                         <div class="nav-toggle">
-                                            <a href="##"
-                                                class="btn-nav-back btn-nav-direction btn font-weight-bold ml-auto mb-6"><span>Повернутись</span><span
-                                                    class="icon"></span></a>
+                                            <a href="##" class="btn-nav-back btn-nav-direction btn font-weight-bold ml-auto mb-6"><span>Назад</span><span class="icon"></span></a>
                                         </div>
                                         <div class="push-menu--lvl position-relative">
                                             <div class="item has-dropdown">
@@ -171,19 +169,35 @@
                                                         <div class="row">
                                                             @foreach ($adllDirections as $oneDirection)
                                                                 <div class="col-12 col-lg-4 position-static">
-                                                                    <div class="directions-item">
-                                                                        <div class="content {{ ($oneDirection['children']) ? 'item has-dropdown' : '' }}">
-                                                                            <a href="##" class="link">
-                                                                                <span>{{ $oneDirection['name'] }}</span>
-                                                                                @if( $oneDirection['children'] )
+                                                                    @if( $oneDirection['children'] )
+                                                                        <div class="directions-item">
+                                                                            <div class="content item has-dropdown">
+                                                                                <a href="##" class="link">
+                                                                                    <span>{{ $oneDirection['name'] }}</span>
                                                                                     <div class="i-link"></div>
-                                                                                @endif
-                                                                            </a>
-                                                                            @if( $oneDirection['children'] )
+                                                                                </a>
                                                                                 @include('site.directions.partials.section-menu', ['data' => $oneDirection['children']])
-                                                                            @endif
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
+                                                                    @else
+                                                                        <div class="directions-item">
+                                                                            <div class="content">
+                                                                                @if ($oneDirection['template'] === 1)
+                                                                                    <a class="link" href="{{ route('direction.category', ['pageDirection' => $oneDirection['slug']]) }}">
+                                                                                        {{ $oneDirection['name'] }}
+                                                                                    </a>
+                                                                                @elseif ($oneDirection['template'] === 2)
+                                                                                    <a class="link" href="{{ route('direction.sub-category', ['pageDirection' => $oneDirection['slug']]) }}">
+                                                                                        {{ $oneDirection['name'] }}
+                                                                                    </a>
+                                                                                @elseif ($oneDirection['template'] === 3)
+                                                                                    <a class="link" href="{{ route('direction.itself', ['pageDirection' => $oneDirection['slug']]) }}">
+                                                                                        {{ $oneDirection['name'] }}
+                                                                                    </a>
+                                                                                @endif
+                                                                            </div>
+                                                                        </div>
+                                                                    @endif
                                                                 </div>
                                                             @endforeach
                                                         </div>

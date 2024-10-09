@@ -35,7 +35,19 @@
                             <ul class="nav">
                                 @foreach ($direction->children as $child)
                                     <li class="nav-item">
-                                        <a class="nav-link" href="##">{{ $child->name }}</a>
+                                        @if ($child->template === 1)
+                                            <a class="nav-link" href="{{ route('direction.category', ['pageDirection' => $child->page->slug]) }}">
+                                                {{ $child->name }}
+                                            </a>
+                                        @elseif ($child->template === 2)
+                                            <a class="nav-link" href="{{ route('direction.sub-category', ['pageDirection' => $child->page->slug]) }}">
+                                                {{ $child->name }}
+                                            </a>
+                                        @elseif ($child->template === 3)
+                                            <a class="nav-link" href="{{ route('direction.itself', ['pageDirection' => $child->page->slug]) }}">
+                                                {{ $child->name }}
+                                            </a>
+                                        @endif
                                     </li>
                                 @endforeach
                             </ul>
