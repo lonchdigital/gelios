@@ -186,7 +186,7 @@
 
                                                                     <div class="push-menu--aside">
                                                                         @foreach ($adllDirections->where('template', 3) as $direction)
-                                                                            <div class="item"><a href="##">{{ $direction['name'] }}</a></div>
+                                                                            <div class="item"><a href="{{ route('direction.itself', ['pageDirection' => $direction['slug']]) }}">{{ $direction['name'] }}</a></div>
                                                                         @endforeach
                                                                     </div>
 
@@ -194,24 +194,41 @@
                                                                         @foreach ($adllDirections->where('template', 1) as $category)
 																			<div class="push-menu--sub-category">
 
-																				<div class="item has-dropdown main-title">
-																					<a href="##" class="heading">{{ $category['name'] }}</a>
-                                                                                	<div class="push-menu--lvl">
-																						@include('site.directions.partials.header-menu', ['data' => collect($category['children'])])
-																					</div>
-																				</div>
+                                                                                @if( $category['children'] )
+                                                                                    <div class="item has-dropdown main-title">
+                                                                                        <a href="##" class="heading">{{ $category['name'] }}</a>
+                                                                                        <div class="push-menu--lvl">
+                                                                                            @include('site.directions.partials.header-menu', ['data' => collect($category['children'])])
+                                                                                        </div>
+                                                                                    </div>
+                                                                                @else
+                                                                                    <div class="item main-title">
+                                                                                        <a href="{{ route('direction.category', ['pageDirection' => $category['slug']]) }}" class="heading">{{ $category['name'] }}</a>
+                                                                                    </div>
+                                                                                @endif
 
                                                                                 @foreach (collect($category['children']) as $subCategory)
-                                                                                    <div class="item has-dropdown">
-                                                                                        <a href="##">{{ $subCategory['name'] }}</a>
-                                                                                        @if( $subCategory['children'] )
+                                                                                    @if( $subCategory['children'] )
+                                                                                        <div class="item has-dropdown">
+                                                                                            <a href="##">{{ $subCategory['name'] }}</a>
                                                                                             <div class="push-menu--lvl">
                                                                                                 @include('site.directions.partials.header-menu', ['data' => collect($subCategory['children'])])
                                                                                             </div>
-                                                                                        @endif
-                                                                                    </div>
+                                                                                        </div>
+                                                                                    @else
+                                                                                        <div class="item">
+                                                                                            @if ($subCategory['template'] === 2)
+                                                                                                <a href="{{ route('direction.sub-category', ['pageDirection' => $subCategory['slug']]) }}">
+                                                                                                    {{ $subCategory['name'] }}
+                                                                                                </a>
+                                                                                            @elseif ($subCategory['template'] === 3)
+                                                                                                <a href="{{ route('direction.itself', ['pageDirection' => $subCategory['slug']]) }}">
+                                                                                                    {{ $subCategory['name'] }}
+                                                                                                </a>
+                                                                                            @endif
+                                                                                        </div>
+                                                                                    @endif
                                                                                 @endforeach
-                                                                                
 																			</div>
 																		@endforeach
                                                                     </div>

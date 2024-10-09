@@ -35,7 +35,9 @@
                                 <div class="wrap-mob">
                                     <div class="h3 font-weight-bolder text-blue mb-8"></div>
                                     <div class="direction-template--content">
-                                        {!! $direction->textBlocks->where('number', 2)->first()->text_one !!}
+                                        @if(!is_null($direction->textBlocks->where('number', 2)->first()))
+                                            {!! $direction->textBlocks->where('number', 2)->first()->text_one !!}
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -49,11 +51,11 @@
                         
                         <div class="row">
                             <div class="col-auto">
-                                <a href="##" class="btn btn-fz-20 btn-outline-blue font-weight-bold d-none d-lg-block">Детальніше1</a>
+                                <a href="##" class="btn btn-fz-20 btn-outline-blue font-weight-bold d-none d-lg-block">Детальніше</a>
                             </div>
                         </div>
                     </div>
-                    <a href="##" class="btn btn-outline-blue font-weight-bold d-lg-none">Детальніше2</a>
+                    <a href="##" class="btn btn-outline-blue font-weight-bold d-lg-none">Детальніше</a>
                 </div>
 
                 <div class="col-12 col-lg-5 col-xl-4">
@@ -63,7 +65,19 @@
                             <ul class="nav">
                                 @foreach ($direction->children as $child)
                                     <li class="nav-item">
-                                        <a class="nav-link" href="##">{{ $child->name }}</a>
+                                        @if ($child->template === 1)
+                                            <a class="nav-link" href="{{ route('direction.category', ['pageDirection' => $child->page->slug]) }}">
+                                                {{ $child->name }}
+                                            </a>
+                                        @elseif ($child->template === 2)
+                                            <a class="nav-link" href="{{ route('direction.sub-category', ['pageDirection' => $child->page->slug]) }}">
+                                                {{ $child->name }}
+                                            </a>
+                                        @elseif ($child->template === 3)
+                                            <a class="nav-link" href="{{ route('direction.itself', ['pageDirection' => $child->page->slug]) }}">
+                                                {{ $child->name }}
+                                            </a>
+                                        @endif
                                     </li>
                                 @endforeach
                             </ul>
