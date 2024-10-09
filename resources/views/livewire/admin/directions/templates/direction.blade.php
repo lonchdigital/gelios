@@ -110,15 +110,16 @@
                                     <section class="mb-50 mt-30">
                                         <h6 class="card-title">{{ trans('admin.section_two') }}</h6>
 
-                                        <div class="form-group mt-2 mb-0">
+                                        {{-- Hidden because we do not need it for this section --}}
+                                        <div class="form-group mt-2 mb-0 d-none">
 
-                                            <div class="new-checkbox art-text-block-switcher">
+                                           <div class="new-checkbox art-text-block-switcher">
                                                 <label class="switch mr-3">
                                                     <input type="checkbox" wire:model="sectionTwoData.is_reverse" id="is_reverse_2" @if($sectionTwoData['is_reverse']) checked @endif>
                                                     <span class="slider"></span>
                                                 </label>
                                                 <span>{{ trans('admin.show_left') }}</span>
-                                            </div>
+                                            </div> 
 
                                             <div class="checkbox d-inline">
                                                 <input 
@@ -139,41 +140,6 @@
                                             live-wire-field="sectionTwoData.text_one"
                                             :values="$sectionTwoData['text_one']"
                                         />
-
-                                        @if(!$sectionTwoData['is_image'])
-                                            <x-admin.multilanguage-text-area-rich
-                                            :is-required="false"
-                                            :label="trans('admin.text')"
-                                            field-name="textBlock[2][text_two]"
-                                            live-wire-field="sectionTwoData.text_two"
-                                            :values="$sectionTwoData['text_two']"
-                                            />
-                                        @endif
-
-                                        @if($sectionTwoData['is_image'])
-                                            <div class="form-group mt-2 mb-3">
-                                                <label for="">{{ trans('admin.image') }}</label></br>
-                                                @if (isset($sectionTwoData['media']['temporaryImage']))
-                                                    <img src="{{ $sectionTwoData['media']['temporaryImage'] }}"
-                                                        width="60"><a
-                                                        wire:click="deleteSectionImage(2)"
-                                                        style="cursor: pointer;">
-                                                        <i
-                                                            class="ti-close font-weight-bold mr-2"></i>
-                                                            {{ trans('admin.remove_image') }}
-                                                    </a>
-                                                @else
-                                                    @if (isset($sectionTwoData['media']['image']))
-                                                        <img src="{{ '/storage/' . $sectionTwoData['media']['image'] }}"
-                                                            class="mb-2"
-                                                            width="60"></br>
-                                                    @endif
-
-                                                    <input type="file"
-                                                        wire:model="sectionTwoData.media.newImage">
-                                                @endif
-                                            </div>
-                                        @endif
 
                                     </section>
 
@@ -588,3 +554,17 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
+    <script type="text/javascript">
+        document.addEventListener('livewire:load', () => {
+            initQuillEditors((quill, fieldName, language) => {
+                quill.on('text-change', function () {
+                    let value = quill.root.innerHTML;
+                    @this.set(`${fieldName}.${language}`, value);
+                });
+            });
+        });
+    </script>
+@endpush

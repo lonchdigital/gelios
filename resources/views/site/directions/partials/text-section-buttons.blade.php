@@ -1,4 +1,4 @@
-@if( !isEmptyHtml($data->text_one) )
+@if( !is_null($data) && !isEmptyHtml($data->text_one) )
     <div class="row flex-column-reverse {{ ($data->is_reverse) ? 'flex-lg-row-reverse' : '' }} flex-lg-row">
         <div class="col-12 col-lg-6">
             <div class="media-content">

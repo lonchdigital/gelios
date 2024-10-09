@@ -1,5 +1,5 @@
-@if( !isEmptyHtml($data->text_one) )
-    <div class="media-content--inner row flex-column-reverse {{ ($data->is_reverse) ? 'flex-lg-row-reverse' : '' }} flex-lg-row mb-24">
+@if( isset($data) && !isEmptyHtml($data->text_one) )
+    <div class="media-content--inner row flex-column-reverse {{ ($data->is_reverse) ? 'flex-lg-row-reverse' : '' }} flex-lg-row {{ (isset($mb) && is_null($mb)) ? '' : 'mb-24' }}">
         <div class="col-12 col-lg-6">
             <div class="content-wrap">
                 {{-- <div class="h3 font-weight-bolder text-blue mb-5">Якими захворюваннями займається хірургія?</div> --}}
