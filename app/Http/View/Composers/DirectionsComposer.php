@@ -12,6 +12,6 @@ class DirectionsComposer
     {
         $directionsService = app(DirectionsService::class);
         $directions = $directionsService->buildTree($directionsService->getAllDirections(), true);
-        $view->with('adllDirections', $directions);
+        $view->with('allDirections', $directions);
     }
 }
