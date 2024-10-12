@@ -25,12 +25,15 @@ class DirectionController extends Controller
 
     public function direction(PageDirection $pageDirection)
     {
+        $direction = $pageDirection->direction;
+        if( $direction->template !== 3 ) { abort(404); }
+
         $doctors = Doctor::limit(10)->get();
         $promotions = Promotion::limit(5)->get();
 
         return view('site.directions.direction',[
             'page' => $pageDirection,
-            'direction' => $pageDirection->direction,
+            'direction' => $direction,
             'doctors' => $doctors,
             'promotions' => $promotions
         ]);
@@ -38,19 +41,25 @@ class DirectionController extends Controller
 
     public function category(PageDirection $pageDirection)
     {
+        $direction = $pageDirection->direction;
+        if( $direction->template !== 1 ) { abort(404); }
+
         return view('site.directions.category',[
             'page' => $pageDirection,
-            'direction' => $pageDirection->direction
+            'direction' => $direction
         ]);
     }
 
     public function subCategory(PageDirection $pageDirection)
     {
+        $direction = $pageDirection->direction;
+        if( $direction->template !== 2 ) { abort(404); }
+
         $doctors = Doctor::limit(10)->get();
 
         return view('site.directions.sub-category',[
             'page' => $pageDirection,
-            'direction' => $pageDirection->direction,
+            'direction' => $direction,
             'doctors' => $doctors
         ]);
     }
