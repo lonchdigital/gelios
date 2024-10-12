@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\HospitalController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OneCenterController;
 use App\Http\Controllers\Admin\PromotionController;
+use App\Http\Controllers\Admin\TextPagesController;
 use App\Http\Controllers\Admin\DirectionsController;
 use App\Http\Controllers\Admin\LaboratoryController;
 use App\Http\Controllers\Admin\SpecializationController;
@@ -31,7 +32,7 @@ Route::group([
         Route::get('/', [DashboardController::class, 'index'])->name('adminDashboard');
 
         Route::prefix('/directions')->group(function() {
-            Route::get('/page', [DirectionsController::class, 'page'])->name('directions.page');
+            Route::get('/page', [DirectionsController::class, 'page'])->name('directions.page.edit');
             Route::get('/', [DirectionsController::class, 'index'])->name('directions.index');
             Route::get('/category/{directionId}', [DirectionsController::class, 'category'])->name('directions.category');
 
@@ -42,6 +43,10 @@ Route::group([
         });
         Route::prefix('/one-center')->group(function() {
             Route::get('/', [OneCenterController::class, 'show'])->name('one.center.show');
+        });
+        Route::prefix('/text-pages')->group(function() {
+            Route::get('/', [TextPagesController::class, 'index'])->name('text.pages.index');
+            Route::get('/{page}/edit', [TextPagesController::class, 'edit'])->name('text.pages.edit');
         });
 
         Route::prefix('/hospitals')->group(function() {
