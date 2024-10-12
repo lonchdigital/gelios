@@ -12,6 +12,11 @@ class DirectionsController extends Controller
         return view('admin.directions.index', ['direction' => null]);
     }
 
+    public function page()
+    {
+        return view('admin.directions.page');
+    }
+
     public function category(int $directionId)
     {
         $direction = Direction::find($directionId);

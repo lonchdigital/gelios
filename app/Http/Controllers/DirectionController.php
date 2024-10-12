@@ -2,15 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Page;
 use App\Models\Doctor;
+use App\Enums\PageType;
 use App\Models\Direction;
+use App\Models\Promotion;
 use Illuminate\Http\Request;
 use App\Models\PageDirection;
 use App\Models\InsuranceCompany;
-use App\Models\Promotion;
 
 class DirectionController extends Controller
 {
+
+    public function page()
+    {
+        $page = Page::where('type', PageType::DIRECTIONS->value)->first();
+
+        return view('site.directions.page',[
+            'page' => $page,
+        ]);
+    }
+
     public function direction(PageDirection $pageDirection)
     {
         $doctors = Doctor::limit(10)->get();

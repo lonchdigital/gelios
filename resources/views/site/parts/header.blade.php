@@ -169,8 +169,8 @@
                                         <div class="list-inline-item">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-													{{-- @dd( collect($adllDirections[3]['children']) ) --}}
-													{{-- @dd( $adllDirections[3] ) --}}
+													{{-- @dd( collect($allDirections[3]['children']) ) --}}
+													{{-- @dd( $allDirections[3] ) --}}
                                                     <span>Напрямки</span>
                                                 </div>
                                                 <div class="submenu position-absolute">
@@ -185,13 +185,13 @@
                                                                 <div class="push-menu--lvl">
 
                                                                     <div class="push-menu--aside">
-                                                                        @foreach ($adllDirections->where('template', 3) as $direction)
+                                                                        @foreach ($allDirections->where('template', 3) as $direction)
                                                                             <div class="item"><a href="{{ route('direction.itself', ['pageDirection' => $direction['slug']]) }}">{{ $direction['name'] }}</a></div>
                                                                         @endforeach
                                                                     </div>
 
                                                                     <div class="push-menu--category">
-                                                                        @foreach ($adllDirections->where('template', 1) as $category)
+                                                                        @foreach ($allDirections->where('template', 1) as $category)
 																			<div class="push-menu--sub-category">
 
                                                                                 @if( $category['children'] )

@@ -21,11 +21,20 @@
                         </a>
                     </li>
 
-                    <li @if( Route::is('directions.index') ) class="active"@endif>
-                        <a href="{{ route('directions.index') }}">
-                            <i class='fa fa-cog'></i>
-                            <span>{{ trans('admin.directions') }}</span>
+                    <li class="treeview @if(Route::is('directions.*')) menu-open @endif">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-cog"></i> 
+                            <span>{{ trans('admin.directions') }}</span> 
+                            <i class="fa fa-angle-right"></i>
                         </a>
+                        <ul class="treeview-menu" @if(Route::is('directions.*')) style="display: block;" @else style="display: none;" @endif>
+                            <li @if(Route::is('directions.page')) class="active" @endif>
+                                <a href="{{ route('directions.page') }}">{{ trans('admin.directions_page') }}</a>
+                            </li>
+                            <li @if(Route::is('directions.index')) class="active" @endif >
+                                <a href="{{ route('directions.index') }}">{{ trans('admin.directions') }}</a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li @if( Route::is('hospitals.index') ) class="active"@endif>

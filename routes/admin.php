@@ -31,6 +31,7 @@ Route::group([
         Route::get('/', [DashboardController::class, 'index'])->name('adminDashboard');
 
         Route::prefix('/directions')->group(function() {
+            Route::get('/page', [DirectionsController::class, 'page'])->name('directions.page');
             Route::get('/', [DirectionsController::class, 'index'])->name('directions.index');
             Route::get('/category/{directionId}', [DirectionsController::class, 'category'])->name('directions.category');
 
