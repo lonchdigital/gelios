@@ -1,33 +1,29 @@
 <?php
 
-namespace App\Livewire\Admin\Directions;
+namespace App\Livewire\Admin\TextPages;
 
 use App\Models\Page;
-use App\Enums\PageType;
 use Livewire\Component;
-use App\Models\Direction;
 use Livewire\WithFileUploads;
-use App\Models\InsuranceCompany;
 use App\Traits\Livewire\SeoPages;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Database\Eloquent\Collection;
-use App\Services\Admin\Directions\DirectionsService;
+use App\Services\Admin\TextPages\TextPagesService;
 
-class DirectionsPage extends Component
+class Edit extends Component
 {
     use WithFileUploads, SeoPages;
 
     public Page $page;
+    public array $contentData = [];
     public array $seoData = [];
 
-    protected DirectionsService $directionsService;
+    protected TextPagesService $textPagesService;
 
     public function mount() 
     {
-        $this->directionsService = new DirectionsService;
+        $this->textPagesService = new TextPagesService;
         $this->dispatch('livewire:load');
 
-        $this->page = Page::where('type', PageType::DIRECTIONS->value)->first();
+        $this->contentData = $this->textPagesService->setContentData($this->page);
 
         // Set SEO data
         $this->seoData = $this->setSeoDataPage($this->page);
@@ -35,7 +31,7 @@ class DirectionsPage extends Component
 
     public function hydrate()
     {
-        $this->directionsService = app(DirectionsService::class);
+        $this->textPagesService = app(TextPagesService::class);
     }
     
     public function updated()
@@ -60,14 +56,16 @@ class DirectionsPage extends Component
     {
         // $this->validate();
 
+        $this->textPagesService->updateContentData($this->page, $this->contentData);
+
         $this->updateSeoDataPage($this->page, $this->seoData);
 
-        redirect()->route('directions.page.edit')->with('success', trans('admin.document_updated'));
+        redirect()->route('text.pages.edit', $this->page)->with('success', trans('admin.document_updated'));
     }
 
     public function render()
     {
-        return view('livewire.admin.directions.directions-page', ['page' => $this->page]);
+        return view('livewire.admin.text-pages.edit', ['page' => $this->page]);
     }
 
 }

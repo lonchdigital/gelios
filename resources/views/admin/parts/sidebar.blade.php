@@ -28,8 +28,8 @@
                             <i class="fa fa-angle-right"></i>
                         </a>
                         <ul class="treeview-menu" @if(Route::is('directions.*')) style="display: block;" @else style="display: none;" @endif>
-                            <li @if(Route::is('directions.page')) class="active" @endif>
-                                <a href="{{ route('directions.page') }}">{{ trans('admin.directions_page') }}</a>
+                            <li @if(Route::is('directions.page.edit')) class="active" @endif>
+                                <a href="{{ route('directions.page.edit') }}">{{ trans('admin.directions_page') }}</a>
                             </li>
                             <li @if(Route::is('directions.index')) class="active" @endif >
                                 <a href="{{ route('directions.index') }}">{{ trans('admin.directions') }}</a>
@@ -41,6 +41,13 @@
                         <a href="{{ route('hospitals.index') }}">
                             <i class='fa fa-cog'></i>
                             <span>{{ trans('admin.hospitals_stationary') }}</span>
+                        </a>
+                    </li>
+
+                    <li @if( Route::is('text.pages.index') ) class="active"@endif>
+                        <a href="{{ route('text.pages.index') }}">
+                            <i class='fa fa-cog'></i>
+                            <span>{{ trans('admin.text_pages') }}</span>
                         </a>
                     </li>
 

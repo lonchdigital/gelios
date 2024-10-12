@@ -157,10 +157,9 @@
 			<div class="row">
 				<div class="col">
 					<ul class="list-unstyled list-inline d-flex flex-column flex-xxl-row align-items-center justify-content-center justify-content-xxl-between text-center text-xxl-right mb-0">
-						<li class="list-inline-item"><a href="##">Договір оферти</a></li>
-						<li class="list-inline-item"><a href="##">Положення про відеоспостереження в центрі</a></li>
-						<li class="list-inline-item"><a href="##">Правила поведінки під час повітряної тривоги</a></li>
-						<li class="list-inline-item"><a href="##">Положення про процедуру обробки персональних даних</a></li>
+						@foreach ($footerPages as $footerPage)
+							<li class="list-inline-item"><a href="{{ route('text.page.show', ['page' => $footerPage->slug]) }}">{{ $footerPage->title }}</a></li>
+						@endforeach
 					</ul>
 				</div>
 			</div>

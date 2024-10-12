@@ -205,6 +205,47 @@ class PageSeeder extends Seeder
             'type' => PageType::TEXT->value,
         ]);
 
+        $offerContract = Page::firstOrCreate([
+            'type' => PageType::TEXT->value,
+            'show_in_footer' => 1,
+            'slug' => 'dohovir-oferty'
+        ]);
+        $offerContract->translateOrNew('ua')->title = 'Договір оферти';
+        $offerContract->translateOrNew('ru')->title = 'Договор оферты';
+        $offerContract->translateOrNew('en')->title = 'Offer contract';
+        $offerContract->save();
+
+        $videoSurveillance = Page::firstOrCreate([
+            'type' => PageType::TEXT->value,
+            'show_in_footer' => 1,
+            'slug' => 'polozhennya-pro-videosposterezhennya-v-tsentri'
+        ]);
+        $videoSurveillance->translateOrNew('ua')->title = 'Положення про відеоспостереження в центрі';
+        $videoSurveillance->translateOrNew('ru')->title = 'Положение о видеонаблюдении в центре';
+        $videoSurveillance->translateOrNew('en')->title = 'Regulations on video surveillance in the center';
+        $videoSurveillance->save();
+
+        $airAlert = Page::firstOrCreate([
+            'type' => PageType::TEXT->value,
+            'show_in_footer' => 1,
+            'slug' => 'pravyla-povedinky-pid-chas-povitryanoyi-tryvohy'
+        ]);
+        $airAlert->translateOrNew('ua')->title = 'Правила поведінки під час повітряної тривоги';
+        $airAlert->translateOrNew('ru')->title = 'Правила поведения во время воздушной тревоги';
+        $airAlert->translateOrNew('en')->title = 'Rules of conduct during an air alert';
+        $airAlert->save();
+
+        $processingPersonalData = Page::firstOrCreate([
+            'type' => PageType::TEXT->value,
+            'show_in_footer' => 1,
+            'slug' => 'polozhennya-pro-protseduru-obrobky-personalnykh-danykh'
+        ]);
+        $processingPersonalData->translateOrNew('ua')->title = 'Положення про процедуру обробки персональних даних';
+        $processingPersonalData->translateOrNew('ru')->title = 'Положение о процедуре обработки персональных данных';
+        $processingPersonalData->translateOrNew('en')->title = 'Regulations on the procedure for processing personal data';
+        $processingPersonalData->save();
+        
+
         Page::firstOrCreate([
             'type' => PageType::CHECKUP->value,
         ]);
