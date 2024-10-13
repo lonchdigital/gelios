@@ -122,7 +122,7 @@
                     <section class="mb-50 mt-30">
                         <h6 class="card-title">{{ trans('admin.section_media') }}</h6>
 
-                        <div class="form-group mt-2 mb-0">
+                        {{-- <div class="form-group mt-2 mb-0">
 
                             <div class="new-checkbox art-text-block-switcher">
                                 <label class="switch mr-3">
@@ -142,7 +142,7 @@
                                 >
                                 <label for="is_image_1" class="cr">{{ trans('admin.is_image') }}</label>
                             </div>
-                        </div>
+                        </div> --}}
                         
                         <x-admin.multilanguage-text-area-rich
                             :is-required="false"
@@ -377,3 +377,17 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
+    <script type="text/javascript">
+        document.addEventListener('livewire:load', () => {
+            initQuillEditors((quill, fieldName, language) => {
+                quill.on('text-change', function () {
+                    let value = quill.root.innerHTML;
+                    @this.set(`${fieldName}.${language}`, value);
+                });
+            });
+        });
+    </script>
+@endpush
