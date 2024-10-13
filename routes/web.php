@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CheckUpController;
 use App\Http\Controllers\SurgeryController;
@@ -31,6 +32,8 @@ Route::group([
 
         Route::get('/one-center/', [OneCenterController::class, 'page'])->name('one.center.page');
 
+        Route::get('/about-us/', [AboutUsController::class, 'page'])->name('one.center.page');
+        
         Route::get('/staczionar/', [HospitalController::class, 'show'])->name('hospital.show');
 
         Route::get('/directions/', [DirectionController::class, 'page'])->name('directions.page');

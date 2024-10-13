@@ -10,10 +10,7 @@ use App\Models\SectionImage;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use App\Models\PageMediaBlock;
-use App\Models\InsuranceCompany;
-use Illuminate\Support\Facades\Storage;
 use App\Traits\Livewire\HandlesPageBlocks;
-use Illuminate\Database\Eloquent\Collection;
 use App\Services\Admin\AboutUs\AboutUsService;
 use App\Traits\Livewire\AboutUs\HandlesPhotos;
 use App\Traits\Livewire\AboutUs\HandlesBriefBlocks;
@@ -39,6 +36,7 @@ class Edit extends Component
     public function mount() 
     {
         $this->aboutUsService = app(AboutUsService::class);
+        $this->dispatch('livewire:load');
 
         $this->page = Page::where('type', PageType::ABOUT->value)->first();
 
