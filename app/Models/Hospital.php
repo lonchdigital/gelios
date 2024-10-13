@@ -20,4 +20,9 @@ class Hospital extends Model implements TranslatableContract
         'is_image',
         'image'
     ];
+
+    public function gallery()
+    {
+        return $this->hasMany(HospitalGallery::class)->orderBy('sort');
+    }
 }

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\InsuranceCompany;
 use App\Models\Page;
 use App\Enums\PageType;
+use App\Models\Hospital;
 use App\Models\PageTextBlock;
 
 class HospitalController extends Controller
@@ -17,7 +16,8 @@ class HospitalController extends Controller
 
         return view('site.pages.hospital',[
             'page' => $page,
-            'pageTextBlock' => $pageTextBlock
+            'pageTextBlock' => $pageTextBlock,
+            'hospitals' => Hospital::all()
         ]);
     }
 }
