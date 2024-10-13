@@ -29,6 +29,7 @@ class Index extends Component
     public function mount()
     {
         $this->hospitalsService = app(HospitalsService::class);
+        $this->dispatch('livewire:load');
 
         $this->page = Page::where('type', PageType::HOSPITAL->value)->first();
 

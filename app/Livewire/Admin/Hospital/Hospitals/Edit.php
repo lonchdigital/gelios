@@ -25,6 +25,7 @@ class Edit extends Component
     public function mount() 
     {
         $this->hospitalsService = app(HospitalsService::class);
+        $this->dispatch('livewire:load');
 
         // set text block
         $this->sectionData = $this->hospitalsService->setTextBlockData($this->hospital);

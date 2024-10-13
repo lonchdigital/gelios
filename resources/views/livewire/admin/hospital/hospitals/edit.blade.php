@@ -196,3 +196,17 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
+    <script type="text/javascript">
+        document.addEventListener('livewire:load', () => {
+            initQuillEditors((quill, fieldName, language) => {
+                quill.on('text-change', function () {
+                    let value = quill.root.innerHTML;
+                    @this.set(`${fieldName}.${language}`, value);
+                });
+            });
+        });
+    </script>
+@endpush

@@ -190,8 +190,20 @@
 
             </div>
         </div>
-        {{-- <div class="pagination-wrapper d-flex justify-content-center mt-4 mb-5">
-            {{ $this->doctors->links() }}
-        </div> --}}
+
     </div>
 </div>
+
+@push('scripts')
+    <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
+    <script type="text/javascript">
+        document.addEventListener('livewire:load', () => {
+            initQuillEditors((quill, fieldName, language) => {
+                quill.on('text-change', function () {
+                    let value = quill.root.innerHTML;
+                    @this.set(`${fieldName}.${language}`, value);
+                });
+            });
+        });
+    </script>
+@endpush
