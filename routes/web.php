@@ -10,6 +10,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\DirectionController;
+use App\Http\Controllers\OneCenterController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\TextPagesController;
 use App\Http\Controllers\LaboratoryController;
@@ -27,6 +28,8 @@ Route::group([
     ], function () {
 
         Route::get('/', [HomeController::class, 'index'])->name('main');
+
+        Route::get('/one-center/', [OneCenterController::class, 'page'])->name('one.center.page');
 
         Route::get('/staczionar/', [HospitalController::class, 'show'])->name('hospital.show');
 

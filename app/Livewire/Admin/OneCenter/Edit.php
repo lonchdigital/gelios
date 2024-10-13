@@ -37,6 +37,8 @@ class Edit extends Component
     public function mount() 
     {
         $this->oneCenterService = app(OneCenterService::class);
+        $this->dispatch('livewire:load');
+        
         $this->page = Page::where('type', PageType::ONECENTER->value)->first();
 
         // Set Slides
