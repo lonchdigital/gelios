@@ -43,6 +43,13 @@
                             <span>{{ trans('admin.hospitals_stationary') }}</span>
                         </a>
                     </li>
+                    
+                    <li @if( Route::is('prices.index') ) class="active"@endif>
+                        <a href="{{ route('prices.index') }}">
+                            <i class='fa fa-cog'></i>
+                            <span>{{ trans('admin.prices') }}</span>
+                        </a>
+                    </li>
 
                     <li @if( Route::is('text.pages.index') ) class="active"@endif>
                         <a href="{{ route('text.pages.index') }}">
