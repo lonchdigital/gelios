@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PriceController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\RobotsController;
 use App\Http\Controllers\Admin\AboutUsController;
@@ -54,6 +55,13 @@ Route::group([
             
             Route::get('/create', [HospitalController::class, 'create'])->name('hospitals.create');
             Route::get('/{hospital}/edit', [HospitalController::class, 'editHospital'])->name('hospitals.edit');
+        });
+
+        Route::prefix('/prices')->group(function() {
+            Route::get('/', [PriceController::class, 'index'])->name('prices.index');
+            
+            Route::get('/create', [PriceController::class, 'createTest'])->name('prices.test.create');
+            Route::get('/{test}/edit', [PriceController::class, 'editTest'])->name('prices.test.edit');
         });
 
         Route::prefix('/about-us')->group(function() {
