@@ -85,36 +85,6 @@ class Edit extends Component
     }
 
 
-    public function newPositionPrices($val, $index)
-    {
-        $this->prices[$index + $val]['sort'] = $this->prices[$index]['sort'];
-
-        $this->prices[$index]['sort'] = $this->prices[$index]['sort'] + $val;
-
-        $this->prices = makeUsort($this->prices);
-    }
-    public function removeElementPrices($index)
-    {
-        foreach($this->prices as $index2 => $priceItem) {
-            if($priceItem['sort'] > $this->prices[$index]['sort']) {
-                $this->prices[$index2]['sort'] = $priceItem['sort'] - 1;
-            }
-        }
-
-        if (array_key_exists($index, $this->prices)) {
-            unset($this->prices[$index]);
-        }
-    }
-    public function addElementPrices()
-    {
-        $this->prices[] = [
-            'id' => null,
-            'sort' => count($this->prices) + 1,
-            'price' => 0,
-            'service' => []
-        ];
-    }
-
     protected function rules()
     {
         return [

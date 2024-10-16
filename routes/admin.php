@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PriceController;
 use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\RobotsController;
 use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\ArticleController;
@@ -74,6 +75,13 @@ Route::group([
 
         Route::prefix('/about-us')->group(function() {
             Route::get('/', [AboutUsController::class, 'edit'])->name('about.us.edit');
+        });
+
+        Route::prefix('/reviews')->group(function() {
+            Route::get('/', [ReviewController::class, 'index'])->name('reviews.index');
+
+            Route::get('/create', [ReviewController::class, 'createReview'])->name('reviews.create');
+            Route::get('/{review}/edit', [ReviewController::class, 'editReview'])->name('reviews.edit');
         });
 
         Route::prefix('/promotions')->name('admin.promotions.')->group(function() {
