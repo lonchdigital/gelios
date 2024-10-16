@@ -115,11 +115,15 @@ class ContactsService
         }
     }
 
-    public function removeTest(int $testlID) 
+    public function removeContact(int $contactID)
     {
-        $test = Test::find($testlID);
+        $contact = Contact::find($contactID);
+
+        if(!is_null($contact->image)){
+            removeImageFromStorage($contact->image);
+        }
         
-        $test->delete();
+        $contact->delete();
     }
 
 }

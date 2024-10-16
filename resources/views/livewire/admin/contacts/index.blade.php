@@ -48,7 +48,7 @@
                                                     <p class="text-center mt-4">{{ trans('admin.delete') }} "{{ $contact->title }}"?</p>
                                                     <div class="d-flex art-modal-buttons">
                                                         <button class="btn btn-primary md-close">{{ trans('admin.close') }}</button>
-                                                        <button wire:click="removeTestFromDB('{{ $contact->id }}')" class="btn btn-danger d-block">{{ trans('admin.delete') }}</button>
+                                                        <button wire:click="removeContactFromDB('{{ $contact->id }}')" class="btn btn-danger d-block">{{ trans('admin.delete') }}</button>
                                                     </div>
                                                 </div>
                                             </div>

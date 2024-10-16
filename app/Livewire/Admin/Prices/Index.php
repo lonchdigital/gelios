@@ -43,8 +43,6 @@ class Index extends Component
         $this->pricesService = app(PricesService::class);
     }
 
-
-
     public function removeTestFromDB(int $testID)
     {
         $this->pricesService->removeTest($testID);
