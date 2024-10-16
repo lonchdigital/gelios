@@ -129,11 +129,11 @@ class Edit extends Component
         $currentContact = $this->contactsService->updateContact($this->sectionData, $this->contact);
         
         // update phones
-        $existingPhones = ContactItem::where('contact_id', $this->contact->id)->where('type', 'phone')->orderBy('sort', 'asc')->get();
+        $existingPhones = ContactItem::where('contact_id', $currentContact->id)->where('type', 'phone')->orderBy('sort', 'asc')->get();
         $this->contactsService->syncItems($this->phones, $existingPhones, $currentContact->id, 'phone');
         
         // update emails
-        $existingEmails = ContactItem::where('contact_id', $this->contact->id)->where('type', 'email')->orderBy('sort', 'asc')->get();
+        $existingEmails = ContactItem::where('contact_id', $currentContact->id)->where('type', 'email')->orderBy('sort', 'asc')->get();
         $this->contactsService->syncItems($this->emails, $existingEmails, $currentContact->id, 'email');
 
         redirect()->route('contacts.index')->with('success', trans('admin.added_contact'));

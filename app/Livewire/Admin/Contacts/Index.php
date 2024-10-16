@@ -45,11 +45,11 @@ class Index extends Component
 
 
 
-    public function removeTestFromDB(int $testID)
+    public function removeContactFromDB(int $contactID)
     {
-        $this->contactsService->removeTest($testID);
+        $this->contactsService->removeContact($contactID);
 
-        redirect()->route('prices.index')->with('success', trans('admin.deleted_hospital_stationary'));
+        redirect()->route('contacts.index')->with('success', trans('admin.deleted_contact'));
     }
 
     protected function rules()
@@ -66,7 +66,7 @@ class Index extends Component
 
         $this->updateSeoDataPage($this->page, $this->seoData);
 
-        redirect()->route('prices.index', $this->page)->with('success', trans('admin.document_updated'));
+        redirect()->route('contacts.index', $this->page)->with('success', trans('admin.document_updated'));
     }
     
     public function render()
