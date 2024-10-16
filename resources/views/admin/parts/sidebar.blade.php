@@ -51,6 +51,13 @@
                         </a>
                     </li>
 
+                    <li @if( Route::is('contacts.index') ) class="active"@endif>
+                        <a href="{{ route('contacts.index') }}">
+                            <i class='fa fa-cog'></i>
+                            <span>{{ trans('admin.contacts') }}</span>
+                        </a>
+                    </li>
+
                     <li @if( Route::is('text.pages.index') ) class="active"@endif>
                         <a href="{{ route('text.pages.index') }}">
                             <i class='fa fa-cog'></i>

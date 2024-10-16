@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\RobotsController;
 use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CheckUpController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\SurgeryController;
 use App\Http\Controllers\Admin\HospitalController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -62,6 +63,13 @@ Route::group([
             
             Route::get('/create', [PriceController::class, 'createTest'])->name('prices.test.create');
             Route::get('/{test}/edit', [PriceController::class, 'editTest'])->name('prices.test.edit');
+        });
+
+        Route::prefix('/contacts')->group(function() {
+            Route::get('/', [ContactController::class, 'index'])->name('contacts.index');
+            
+            Route::get('/create', [ContactController::class, 'createContact'])->name('contacts.create');
+            Route::get('/{contact}/edit', [ContactController::class, 'editContact'])->name('contacts.edit');
         });
 
         Route::prefix('/about-us')->group(function() {
