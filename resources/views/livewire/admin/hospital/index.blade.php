@@ -125,7 +125,7 @@
                                                     <h3 class="bg-main">{{ trans('admin.attention') }}</h3>
                                                     <p class="text-center mt-4">{{ trans('admin.delete') }} "{{ $hospital->name }}"?</p>
                                                     <div class="d-flex art-modal-buttons">
-                                                        <button class="btn btn-primary md-close">{{ trans('admin.close') }}</button>
+                                                        <a href="#" class="btn btn-primary md-close">{{ trans('admin.close') }}</a>
                                                         <button wire:click="removeHospitalFromDB('{{ $hospital->id }}')" class="btn btn-danger d-block">{{ trans('admin.delete') }}</button>
                                                     </div>
                                                 </div>

@@ -23,7 +23,7 @@
 
                     <li class="treeview @if(Route::is('directions.*')) menu-open @endif">
                         <a href="javascript:void(0)">
-                            <i class="fa fa-cog"></i> 
+                            <i class="fa fa-sitemap"></i> 
                             <span>{{ trans('admin.directions') }}</span> 
                             <i class="fa fa-angle-right"></i>
                         </a>
@@ -39,28 +39,28 @@
 
                     <li @if( Route::is('hospitals.index') ) class="active"@endif>
                         <a href="{{ route('hospitals.index') }}">
-                            <i class='fa fa-cog'></i>
+                            <i class='fa fa-h-square'></i>
                             <span>{{ trans('admin.hospitals_stationary') }}</span>
                         </a>
                     </li>
                     
                     <li @if( Route::is('prices.index') ) class="active"@endif>
                         <a href="{{ route('prices.index') }}">
-                            <i class='fa fa-cog'></i>
+                            <i class='fa fa-usd'></i>
                             <span>{{ trans('admin.prices') }}</span>
                         </a>
                     </li>
 
                     <li @if( Route::is('contacts.index') ) class="active"@endif>
                         <a href="{{ route('contacts.index') }}">
-                            <i class='fa fa-cog'></i>
+                            <i class='fa fa-address-card'></i>
                             <span>{{ trans('admin.contacts') }}</span>
                         </a>
                     </li>
 
                     <li @if( Route::is('text.pages.index') ) class="active"@endif>
                         <a href="{{ route('text.pages.index') }}">
-                            <i class='fa fa-cog'></i>
+                            <i class='fa fa-file-text-o'></i>
                             <span>{{ trans('admin.text_pages') }}</span>
                         </a>
                     </li>
@@ -74,21 +74,21 @@
 
                     <li @if( Route::is('insurance.companies.index') ) class="active"@endif>
                         <a href="{{ route('insurance.companies.index') }}">
-                            <i class='fa fa-cog'></i>
+                            <i class='fa fa-briefcase'></i>
                             <span>{{ trans('admin.insurance_companies') }}</span>
                         </a>
                     </li>
 
                     <li @if( Route::is('one.center.show') ) class="active"@endif>
                         <a href="{{ route('one.center.show') }}">
-                            <i class='fa fa-cog'></i>
+                            <i class='fa fa-building-o'></i>
                             <span>{{ trans('admin.one_center') }}</span>
                         </a>
                     </li>
 
                     <li class="treeview @if(Route::is('reviews.*')) menu-open @endif">
                         <a href="javascript:void(0)">
-                            <i class="fa fa-cog"></i> 
+                            <i class="fa fa-commenting-o"></i> 
                             <span>{{ trans('admin.reviews') }}</span> 
                             <i class="fa fa-angle-right"></i>
                         </a>

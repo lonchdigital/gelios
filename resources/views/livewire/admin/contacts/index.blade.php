@@ -45,9 +45,9 @@
                                             <div class="md-modal md-effect-1" id="modal-{{ $contact->id }}">
                                                 <div class="md-content">
                                                     <h3 class="bg-main">{{ trans('admin.attention') }}</h3>
-                                                    <p class="text-center mt-4">{{ trans('admin.delete') }} "{{ $contact->title }}"?</p>
+                                                    <p class="text-center mt-4">{{ trans('admin.delete') }} "{{ $contact->city .' '. $contact->street }}"?</p>
                                                     <div class="d-flex art-modal-buttons">
-                                                        <button class="btn btn-primary md-close">{{ trans('admin.close') }}</button>
+                                                        <a href="#" class="btn btn-primary md-close">{{ trans('admin.close') }}</a>
                                                         <button wire:click="removeContactFromDB('{{ $contact->id }}')" class="btn btn-danger d-block">{{ trans('admin.delete') }}</button>
                                                     </div>
                                                 </div>

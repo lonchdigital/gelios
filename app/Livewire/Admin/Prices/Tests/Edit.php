@@ -110,7 +110,7 @@ class Edit extends Component
         $existingPrices = $currentTest->prices;
         $this->pricesService->syncPrices($this->prices, $existingPrices, $currentTest->id);
 
-        redirect()->route('prices.index')->with('success', trans('admin.added_price'));
+        redirect()->route('prices.index')->with('success', trans('admin.added_test'));
     }
 
     public function render()

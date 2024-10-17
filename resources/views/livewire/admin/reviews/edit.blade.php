@@ -14,7 +14,7 @@
                         @if(is_null($review))
                             {{ trans('admin.new_review') }}
                         @else
-                            {{ trans('admin.edit_reviews') }}
+                            {{ trans('admin.edit_review') }}
                         @endif
                     </h4>
                 </div>
