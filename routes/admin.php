@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\PromotionController;
 use App\Http\Controllers\Admin\TextPagesController;
 use App\Http\Controllers\Admin\DirectionsController;
 use App\Http\Controllers\Admin\LaboratoryController;
+use App\Http\Controllers\Admin\TypicalPagesController;
 use App\Http\Controllers\Admin\SpecializationController;
 use App\Http\Controllers\Admin\ArticleCategoryController;
 use App\Http\Controllers\Admin\InsuranceCompaniesController;
@@ -51,6 +52,16 @@ Route::group([
             Route::get('/', [TextPagesController::class, 'index'])->name('text.pages.index');
             Route::get('/{page}/edit', [TextPagesController::class, 'edit'])->name('text.pages.edit');
         });
+        
+        Route::prefix('/typical-pages')->group(function() {
+            Route::get('/', [TypicalPagesController::class, 'index'])->name('typical.pages.index');
+
+            Route::get('/create', [TypicalPagesController::class, 'create'])->name('typical.pages.create');
+            Route::get('/{page}/edit', [TypicalPagesController::class, 'edit'])->name('typical.pages.edit');
+
+            Route::get('/{page}/block/create', [TypicalPagesController::class, 'blockCreate'])->name('typical.page.block.create');
+            Route::get('/{page}/block/{pageTextBlock}/edit', [TypicalPagesController::class, 'blockEdit'])->name('typical.page.block.edit');
+        });
 
         Route::prefix('/hospitals')->group(function() {
             Route::get('/', [HospitalController::class, 'index'])->name('hospitals.index');
@@ -60,15 +71,10 @@ Route::group([
         });
 
         Route::prefix('/page/{page}/prices')->group(function() {
-            // Prices page
             Route::get('/', [PriceController::class, 'index'])->name('prices.index');
+
             Route::get('/create', [PriceController::class, 'createTest'])->name('prices.test.create');
             Route::get('/{test}/edit', [PriceController::class, 'editTest'])->name('prices.test.edit');
-
-            // Prices laboratories page
-            // Route::get('/laboratories', [PriceController::class, 'index'])->name('prices.laboratories.index');
-            // Route::get('/laboratories/create', [PriceController::class, 'createTest'])->name('prices.laboratories.test.create');
-            // Route::get('/laboratories/{test}/edit', [PriceController::class, 'editTest'])->name('prices.laboratories.test.edit');
         });
 
         Route::prefix('/contacts')->group(function() {

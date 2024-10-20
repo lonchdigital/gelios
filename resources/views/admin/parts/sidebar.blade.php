@@ -74,6 +74,13 @@
                         </a>
                     </li>
 
+                    <li @if( Route::is('typical.pages.index') ) class="active"@endif>
+                        <a href="{{ route('typical.pages.index') }}">
+                            <i class='fa fa-file-text-o'></i>
+                            <span>{{ trans('admin.typical_pages') }}</span>
+                        </a>
+                    </li>
+
                     <li @if( Route::is('about.us.edit') ) class="active"@endif>
                         <a href="{{ route('about.us.edit') }}">
                             <i class='fa fa-cog'></i>
