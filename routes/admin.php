@@ -59,11 +59,16 @@ Route::group([
             Route::get('/{hospital}/edit', [HospitalController::class, 'editHospital'])->name('hospitals.edit');
         });
 
-        Route::prefix('/prices')->group(function() {
+        Route::prefix('/page/{page}/prices')->group(function() {
+            // Prices page
             Route::get('/', [PriceController::class, 'index'])->name('prices.index');
-            
             Route::get('/create', [PriceController::class, 'createTest'])->name('prices.test.create');
             Route::get('/{test}/edit', [PriceController::class, 'editTest'])->name('prices.test.edit');
+
+            // Prices laboratories page
+            // Route::get('/laboratories', [PriceController::class, 'index'])->name('prices.laboratories.index');
+            // Route::get('/laboratories/create', [PriceController::class, 'createTest'])->name('prices.laboratories.test.create');
+            // Route::get('/laboratories/{test}/edit', [PriceController::class, 'editTest'])->name('prices.laboratories.test.edit');
         });
 
         Route::prefix('/contacts')->group(function() {

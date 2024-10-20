@@ -35,4 +35,9 @@ class Page extends Model implements TranslatableContract
     {
         return $this->hasMany(PageBlock::class);
     }
+
+    public function tests(): HasMany
+    {
+        return $this->hasMany(Test::class);
+    }
 }

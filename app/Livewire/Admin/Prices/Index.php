@@ -30,9 +30,9 @@ class Index extends Component
         $this->pricesService = app(PricesService::class);
         $this->dispatch('livewire:load');
 
-        $this->page = Page::where('type', PageType::PRICES->value)->first();
+        // $this->page = Page::where('type', PageType::PRICES->value)->first();
 
-        $this->tests = Test::all();
+        $this->tests = $this->page->tests;
 
         // Set SEO data
         $this->seoData = $this->setSeoDataPage($this->page);

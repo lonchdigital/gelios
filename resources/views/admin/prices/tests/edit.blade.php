@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="container-fluid">
-        @livewire('admin.prices.tests.edit', ['test' => $test])
+        @livewire('admin.prices.tests.edit', ['page' => $page, 'test' => $test])
     </div>
 @endsection
 

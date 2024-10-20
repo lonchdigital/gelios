@@ -27,7 +27,7 @@ class Edit extends Component
         $this->pricesService = app(PricesService::class);
         $this->dispatch('livewire:load');
 
-        $this->page = Page::where('type', PageType::PRICES->value)->first();
+        // $this->page = Page::where('type', PageType::PRICES->value)->first();
 
         if(!is_null($this->test)) {
 
@@ -110,7 +110,7 @@ class Edit extends Component
         $existingPrices = $currentTest->prices;
         $this->pricesService->syncPrices($this->prices, $existingPrices, $currentTest->id);
 
-        redirect()->route('prices.index')->with('success', trans('admin.added_test'));
+        redirect()->route('prices.index', ['page' => $this->page])->with('success', trans('admin.added_test'));
     }
 
     public function render()
