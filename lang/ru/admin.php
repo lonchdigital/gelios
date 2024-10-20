@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'laboratories' => 'Лаборатории',
     'directions_page' => 'Страница направлений',
     'all_directions' => 'Все направления',
     'belonging' => 'Принадлежит',

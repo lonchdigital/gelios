@@ -43,12 +43,21 @@
                             <span>{{ trans('admin.hospitals_stationary') }}</span>
                         </a>
                     </li>
-                    
-                    <li @if( Route::is('prices.index') ) class="active"@endif>
-                        <a href="{{ route('prices.index') }}">
-                            <i class='fa fa-usd'></i>
-                            <span>{{ trans('admin.prices') }}</span>
+
+                    <li class="treeview @if(Route::is('prices.*')) menu-open @endif">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-usd"></i> 
+                            <span>{{ trans('admin.prices') }}</span> 
+                            <i class="fa fa-angle-right"></i>
                         </a>
+                        <ul class="treeview-menu" @if(Route::is('prices.*')) style="display: block;" @else style="display: none;" @endif>
+                            <li @if(Route::is('prices.index') && request()->route('page')->id === App\Models\Page::where('type', App\Enums\PageType::PRICES->value)->first()->id) class="active" @endif>
+                                <a href="{{ route('prices.index', ['page' => App\Models\Page::where('type', App\Enums\PageType::PRICES->value)->first()]) }}">{{ trans('admin.prices') }}</a>
+                            </li>
+                            <li @if(Route::is('prices.index') && request()->route('page')->id === App\Models\Page::where('type', App\Enums\PageType::LABORATORY->value)->first()->id) class="active" @endif>
+                                <a href="{{ route('prices.index', ['page' => App\Models\Page::where('type', App\Enums\PageType::LABORATORY->value)->first()]) }}">{{ trans('admin.laboratories') }}</a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li @if( Route::is('contacts.index') ) class="active"@endif>

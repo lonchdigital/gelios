@@ -34,7 +34,7 @@
                                     <td>
                                         <div style="text-align: right">
                                             <a role="button"
-                                                href="{{ route('prices.test.edit', ['test' => $test]) }}"
+                                                href="{{ route('prices.test.edit', ['page' => $page, 'test' => $test]) }}"
                                                 class="btn btn-accent btn-xs">
                                                 <i class="fa fa-edit text-info font-18"></i>
                                             </a>
@@ -63,7 +63,7 @@
                     <div class="d-flex justify-content-between align-items-center mb-20">
                         <h6 class="card-title mb-0">{{ trans('admin.tests_list') }}</h6>
 
-                        <a href="{{ route('prices.test.create') }}"
+                        <a href="{{ route('prices.test.create', ['page' => $page]) }}"
                             class="btn btn-primary waves-effect waves-light float-right mb-3">
                             + {{ trans('admin.add_test') }}
                         </a>

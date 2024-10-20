@@ -9,18 +9,18 @@ use App\Models\Test;
 
 class PriceController extends Controller
 {
-    public function index()
+    public function index(Page $page)
     {
-        return view('admin.prices.index');
+        return view('admin.prices.index', compact('page'));
     }
-    public function createTest()
+    public function createTest(Page $page)
     {
         $test = null;
-        return view('admin.prices.tests.edit', compact('test'));
+        return view('admin.prices.tests.edit', compact('page', 'test'));
     }
-    public function editTest(Test $test)
+    public function editTest(Page $page, Test $test)
     {
-        return view('admin.prices.tests.edit', compact('test'));
+        return view('admin.prices.tests.edit', compact('page', 'test'));
     }
 
 }
