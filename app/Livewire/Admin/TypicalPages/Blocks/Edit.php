@@ -76,7 +76,7 @@ class Edit extends Component
         ];
         $this->typicalPagesService->updateTextBlock($formData, $this->pageTextBlock, $this->page);
 
-        redirect()->route('typical.pages.edit', ['page' => $this->page])->with('success', trans('admin.added_block_section'));
+        redirect()->route('typical.pages.edit', ['page' => $this->page])->with('success', trans('admin.document_updated'));
     }
 
     public function render()

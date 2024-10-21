@@ -38,7 +38,7 @@ class CreateUserCommand extends Command
             'password' => Hash::make($password),
         ]);
 
-        $this->info("User created:\nid: $user->id\nname: $user->name\nemail: $user->email}");
+        $this->info("User created:\nid: $user->id\nname: $user->name\nemail: $user->email");
 
         return Command::SUCCESS;
     }

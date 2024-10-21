@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CheckUpController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\OfficesController;
 use App\Http\Controllers\Admin\SurgeryController;
 use App\Http\Controllers\Admin\HospitalController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -79,9 +80,13 @@ Route::group([
 
         Route::prefix('/contacts')->group(function() {
             Route::get('/', [ContactController::class, 'index'])->name('contacts.index');
+        });
+
+        Route::prefix('/offices')->group(function() {
+            Route::get('/', [OfficesController::class, 'index'])->name('offices.index');
             
-            Route::get('/create', [ContactController::class, 'createContact'])->name('contacts.create');
-            Route::get('/{contact}/edit', [ContactController::class, 'editContact'])->name('contacts.edit');
+            Route::get('/create', [OfficesController::class, 'createOffice'])->name('offices.create');
+            Route::get('/{contact}/edit', [OfficesController::class, 'editOffice'])->name('offices.edit');
         });
 
         Route::prefix('/about-us')->group(function() {

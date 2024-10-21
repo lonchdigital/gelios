@@ -1,6 +1,17 @@
 <?php
 
 return [
+    'deleted_contact' => 'Філію було видалено',
+    'add_office' => 'Додати філію',
+    'offices' => 'Філії',
+    'text_block' => 'Текстовий блок',
+    'new_page_block' => 'Новий блок',
+    'edit_page_block' => 'Редагувати блок',
+    'add_page_block' => 'Додати блок',
+    'add_new_typical_page' => 'Нова типова сторінка',
+    'typical_pages' => 'Типові сторінки',
+    'typical_pages_list' => 'Типові сторінки',
+    'add_typical_page' => 'Додати типову сторінку',
     'laboratories' => 'Лабораторії',
     'directions_page' => 'Сторінка напрямків',
     'all_directions' => 'Всі напрямки',

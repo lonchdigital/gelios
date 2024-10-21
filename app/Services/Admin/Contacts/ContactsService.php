@@ -6,6 +6,7 @@ use App\Models\Page;
 use App\Models\Test;
 use App\Models\Price;
 use App\Models\Contact;
+use App\Models\ContactGallery;
 use App\Models\ContactItem;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -20,6 +21,8 @@ class ContactsService
 
         $data['city'] = [];
         $data['street'] = [];
+        $data['title'] = [];
+        $data['text'] = [];
         $data['iframe'] = '';
         // $data['image'] = '';
 
@@ -29,6 +32,12 @@ class ContactsService
             }
             foreach ($contact->getTranslationsArray() as $lang => $value) {
                 $data['street'][$lang] = $value['street'];
+            }
+            foreach ($contact->getTranslationsArray() as $lang => $value) {
+                $data['title'][$lang] = $value['title'];
+            }
+            foreach ($contact->getTranslationsArray() as $lang => $value) {
+                $data['text'][$lang] = $value['text'];
             }
             $data['media']['image'] = $contact->image;
             $data['iframe'] = $contact->iframe;
@@ -82,6 +91,8 @@ class ContactsService
             'image' => $sectionData['media'] ?? null,
             'city' => $sectionData['city'],
             'street' => $sectionData['street'],
+            'title' => $sectionData['title'],
+            'text' => $sectionData['text'],
             'iframe' => $sectionData['iframe'],
         ];
 
@@ -96,6 +107,16 @@ class ContactsService
         if(!is_null($formData['street'])) {
             foreach ($formData['street'] as $lang => $value) {
                 $dataToUpdate[$lang]['street'] = $value;
+            }
+        }
+        if(!is_null($formData['title'])) {
+            foreach ($formData['title'] as $lang => $value) {
+                $dataToUpdate[$lang]['title'] = $value;
+            }
+        }
+        if(!is_null($formData['text'])) {
+            foreach ($formData['text'] as $lang => $value) {
+                $dataToUpdate[$lang]['text'] = $value;
             }
         }
 
@@ -119,6 +140,13 @@ class ContactsService
     {
         $contact = Contact::find($contactID);
 
+        // remove gallery
+        $galleryToDelete = ContactGallery::where('contact_id', $contactID)->get();
+        foreach ($galleryToDelete as $galleryImage) {
+            removeImageFromStorage($galleryImage->image);
+            $galleryImage->delete();
+        }
+
         if(!is_null($contact->image)){
             removeImageFromStorage($contact->image);
         }
@@ -126,4 +154,42 @@ class ContactsService
         $contact->delete();
     }
 
+
+    public function syncGallery(array $gallery, Collection $existingGallery, int $contactID)
+    {
+        foreach( $gallery as $galleryItem ) {
+            $existingGalleryItem = $existingGallery->where('id', $galleryItem['id'])->first();
+
+            if( !is_null($existingGalleryItem) ) {
+                $dataToUpdate = [
+                    'sort' => $galleryItem['sort']
+                ];
+                
+                $existingGalleryItem->update($dataToUpdate);
+            } else {
+                $image = null;
+                if(isset($galleryItem['newImage'])) {
+                    $image = downloadImage(self::IMAGE_PATH, $galleryItem['newImage']);
+                }
+    
+                ContactGallery::create([
+                    'contact_id' => $contactID,
+                    'sort' => $galleryItem['sort'],
+                    'image' => $image,
+                ]);
+            }
+        }
+
+        // remove items
+        $existingGalleryInRequest = $gallery ? array_filter(array_column($gallery, 'id'), function ($item) {
+            return $item !== null;
+        }): [];
+
+        $galleriesToDelete = $existingGallery->whereNotIn('id', $existingGalleryInRequest);
+
+        foreach ($galleriesToDelete as $galleryToDelete) {
+            removeImageFromStorage($galleryToDelete->image);
+            $galleryToDelete->delete();
+        }
+    }
 }

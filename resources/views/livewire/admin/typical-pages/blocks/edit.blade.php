@@ -12,9 +12,9 @@
                 <div class="card-head mb-20">
                     <h4 class="card-head-title">
                         @if(is_null($pageTextBlock))
-                            {{ trans('admin.new_text_page_block') }}
+                            {{ trans('admin.new_page_block') }}
                         @else
-                            {{ trans('admin.edit_text_page_block') }}
+                            {{ trans('admin.edit_page_block') }}
                         @endif
                     </h4>
                 </div>

@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class ContactTranslation extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['city', 'street'];
+    protected $fillable = ['city', 'street', 'title', 'text'];
 }

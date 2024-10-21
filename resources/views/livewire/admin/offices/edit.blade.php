@@ -73,8 +73,9 @@
 
                     </section>
 
+                    <hr>
 
-                    <section class="mb-50">
+                    <section class="mb-50 mt-30">
                         <h6 class="card-title">{{ trans('admin.phones') }}</h6>
                         <div class="row" id="phones">
 
@@ -148,7 +149,9 @@
                         </div>
                     </section>
 
-                    <section class="mb-50">
+                    <hr>
+
+                    <section class="mb-50 mt-30">
                         <h6 class="card-title">{{ trans('admin.emails') }}</h6>
                         <div class="row" id="emails">
 
@@ -222,14 +225,133 @@
                         </div>
                     </section>
 
-       
+                    <hr>
+
+                    <section class="mb-50 mt-30">
+                        <h6 class="card-title">{{ trans('admin.content') }}</h6>
+
+                        <x-admin.multilanguage-input
+                            :is-required="false"
+                            :label="trans('admin.title')"
+                            field-name="title"
+                            live-wire-field="sectionData.title"
+                            :values="$sectionData['title']"
+                        />
+
+                        <x-admin.multilanguage-text-area-rich
+                            :is-required="false"
+                            :label="trans('admin.text')"
+                            field-name="text"
+                            live-wire-field="sectionData.text"
+                            :values="$sectionData['text']"
+                        />
+                    </section>
+
+                    <hr>
+
+                    <section class="mb-50 mt-30">
+                        <h6 class="card-title">{{ trans('admin.gallery') }}</h6>
+                        <div class="row" id="gallery">
+
+                            @if(isset($this->gallery))
+                                @foreach($this->gallery as $index => $galleryItem)
+
+                                <div class="col-md-4 company-row pb-1 mb-4">
+                                    <div>
+                                        <div class="border border-secondary rounded p-3">
+                                            <div class="row justify-content-between align-items-center">
+
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+
+                                                            <div class="col-md-1">
+                                                                @if ($loop->iteration !== 1)
+                                                                    <div style="cursor: pointer;"
+                                                                        wire:click="newPositionGallery(-1, {{ $index }})">
+                                                                        <i class="fa fa-sort-up"></i>
+                                                                    </div>
+                                                                @endif
+                                                                {{ $galleryItem['sort'] }}
+                                                                @if (!$loop->last)
+                                                                    <div style="cursor: pointer;"
+                                                                        wire:click="newPositionGallery(+1, {{ $index }})">
+                                                                        <i class="fa fa-sort-desc"></i>
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+
+                                                            <div class="form-group mt-2 mb-3">
+                                                                <label for="">{{ trans('admin.image') }}</label></br>
+                                                                @if (isset($this->gallery[$index]['temporaryImage']))
+                                                                    <img src="{{ $this->gallery[$index]['temporaryImage'] }}"
+                                                                        width="60"><a
+                                                                        wire:click="deleteImageGallery('{{ $index }}')"
+                                                                        style="cursor: pointer;">
+                                                                        <i
+                                                                            class="ti-close font-weight-bold mr-2"></i>
+                                                                            {{ trans('admin.remove_image') }}
+                                                                    </a>
+                                                                @else
+                                                                    @if (isset($this->gallery[$index]['image']))
+                                                                        <img src="{{ '/storage/' . $this->gallery[$index]['image'] }}"
+                                                                            class="mb-2"
+                                                                            width="60"></br>
+                                                                    @endif
+
+                                                                    <input type="file"
+                                                                        wire:model="gallery.{{ $index }}.newImage">
+                                                                @endif
+                                                            </div>
+                                                            <input type="hidden" name="company_id" value="{{ $this->gallery[$index]['id'] }}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-5">
+                                                    <a wire:click="removeElementGallery('{{ $index }}')">
+                                                        <i class="ti-close font-weight-bold mr-2"></i>
+                                                        {{ trans('admin.delete') }}
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @endforeach
+                            @endif
+
+                        </div> {{-- # gallery --}}
+                        
+                        <div class="row pt-3">
+                            <div class="col-md-12 text-center">
+                                <a wire:click="addElementGallery" class="btn mb-2 btn-secondary">
+                                    <span class="ti-plus font-weight-bold"></span>
+                                    {{ trans('admin.add') }}
+                                </a>
+                            </div>
+                        </div>
+                    </section>
 
                     <button type="submit" class="btn btn-primary mr-2 mb-3">{{ trans('admin.save') }}</button>
                 </form>
             </div>
         </div>
-        <div class="pagination-wrapper d-flex justify-content-center mt-4 mb-5">
-            {{-- {{ $this->faqs->links('vendor.pagination.default') }} --}}
-        </div>
     </div>
 </div>
+
+@push('scripts')
+    <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
+    <script type="text/javascript">
+        document.addEventListener('livewire:load', () => {
+            initQuillEditors((quill, fieldName, language) => {
+                quill.on('text-change', function () {
+                    let value = quill.root.innerHTML;
+                    @this.set(`${fieldName}.${language}`, value);
+                });
+            });
+        });
+    </script>
+@endpush

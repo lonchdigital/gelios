@@ -1,6 +1,17 @@
 <?php
 
 return [
+    'deleted_contact' => 'Филиал был удален',
+    'add_office' => 'Добавить филиал',
+    'offices' => 'Филиалы',
+    'text_block' => 'Текстовый блок',
+    'new_page_block' => 'Новый блок',
+    'edit_page_block' => 'Редактировать блок',
+    'add_page_block' => 'Добавить блок',
+    'add_new_typical_page' => 'Новая типичная страница',
+    'typical_pages' => 'Типичные страницы',
+    'typical_pages_list' => 'Типичные страницы',
+    'add_typical_page' => 'Добавить типичную страницу',
     'laboratories' => 'Лаборатории',
     'directions_page' => 'Страница направлений',
     'all_directions' => 'Все направления',
