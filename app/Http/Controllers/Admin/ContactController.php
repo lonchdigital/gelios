@@ -11,15 +11,4 @@ class ContactController extends Controller
     {
         return view('admin.contacts.index');
     }
-
-    public function createContact()
-    {
-        $contact = null;
-        return view('admin.contacts.edit', compact('contact'));
-    }
-    public function editContact(Contact $contact)
-    {
-        return view('admin.contacts.edit', compact('contact'));
-    }
-
 }

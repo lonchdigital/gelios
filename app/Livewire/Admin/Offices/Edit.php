@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Livewire\Admin\Contacts;
+namespace App\Livewire\Admin\Offices;
 
 use App\Models\Contact;
+use App\Models\ContactGallery;
 use Livewire\Component;
 use App\Models\ContactItem;
 use Livewire\WithFileUploads;
@@ -20,6 +21,7 @@ class Edit extends Component
     public array $sectionData = [];
     public array $phones = [];
     public array $emails = [];
+    public array $gallery = [];
 
     protected ContactsService $contactsService;
     
@@ -57,6 +59,21 @@ class Edit extends Component
                 ];
             }
             $this->emails = makeUsort($this->emails);
+
+            // set gallery
+            $gallery = ContactGallery::where('contact_id', $this->contact->id)->orderBy('sort', 'asc')->get();
+        
+            updateSort($gallery);
+            foreach($gallery as $galleryItem) {
+                $this->gallery[] = [
+                    'id' => $galleryItem->id,
+                    'sort' => $galleryItem->sort,
+                    'oldImage' => $galleryItem->image ?? '',
+                    'newImage' => null,
+                    'image' => $galleryItem->image
+                ];
+            }
+            $this->gallery = makeUsort($this->gallery);
         }
         
         
@@ -73,6 +90,9 @@ class Edit extends Component
         if (preg_match('/sectionData.media.newImage/', $propertyName)) {
             $this->handleContactImage();
         }
+        if (preg_match('/gallery\.\d+\.newImage/', $propertyName)) {
+            $this->handleImageChangeForGallery($propertyName);
+        }
     }
     protected function handleContactImage()
     {
@@ -82,6 +102,49 @@ class Edit extends Component
     {
         $this->sectionData['media']['image'] = null;
         $this->sectionData['media']['temporaryImage'] = null;
+    }
+
+
+    public function newPositionGallery($val, $index)
+    {
+        $this->gallery[$index + $val]['sort'] = $this->gallery[$index]['sort'];
+
+        $this->gallery[$index]['sort'] = $this->gallery[$index]['sort'] + $val;
+
+        $this->gallery = makeUsort($this->gallery);
+    }
+    protected function handleImageChangeForGallery($propertyName)
+    {
+        preg_match('/gallery\.(\d+)\.newImage/', $propertyName, $matches);
+        $index = $matches[1];
+
+        $this->gallery[$index]['temporaryImage'] = $this->gallery[$index]['newImage']->temporaryUrl();
+    }
+    public function deleteImageGallery($index)
+    {
+        $this->gallery[$index]['image'] = null;
+        $this->gallery[$index]['temporaryImage'] = null;
+    }
+    public function removeElementGallery($index)
+    {
+        foreach($this->gallery as $index2 => $galleryItem) {
+            if($galleryItem['sort'] > $this->gallery[$index]['sort']) {
+                $this->gallery[$index2]['sort'] = $galleryItem['sort'] - 1;
+            }
+        }
+
+        if (array_key_exists($index, $this->gallery)) {
+            unset($this->gallery[$index]);
+        }
+    }
+    public function addElementGallery()
+    {
+        $this->gallery[] = [
+            'id' => null,
+            'image' => null,
+            'newImage' => null,
+            'sort' => count($this->gallery) + 1,
+        ];
     }
 
 
@@ -106,12 +169,16 @@ class Edit extends Component
         $existingEmails = ContactItem::where('contact_id', $currentContact->id)->where('type', 'email')->orderBy('sort', 'asc')->get();
         $this->contactsService->syncItems($this->emails, $existingEmails, $currentContact->id, 'email');
 
-        redirect()->route('contacts.index')->with('success', trans('admin.added_contact'));
+        // update gallery
+        $existingGallery = ContactGallery::where('contact_id', $currentContact->id)->get();
+        $this->contactsService->syncGallery($this->gallery, $existingGallery, $currentContact->id);
+
+        redirect()->route('offices.edit', ['contact' => $currentContact])->with('success', trans('admin.document_updated'));
     }
 
     public function render()
     {
-        return view('livewire.admin.contacts.edit');
+        return view('livewire.admin.offices.edit');
     }
 
 }

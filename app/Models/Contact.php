@@ -12,7 +12,9 @@ class Contact extends Model implements TranslatableContract
 
     public $translatedAttributes = [
         'city',
-        'street'
+        'street',
+        'title',
+        'text'
     ];
     protected $fillable = [
         'iframe',
@@ -22,5 +24,10 @@ class Contact extends Model implements TranslatableContract
     public function items()
     {
         return $this->hasMany(ContactItem::class)->orderBy('sort');
+    }
+
+    public function gallery()
+    {
+        return $this->hasMany(ContactGallery::class)->orderBy('sort');
     }
 }

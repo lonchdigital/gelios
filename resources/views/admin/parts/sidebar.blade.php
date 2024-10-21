@@ -67,6 +67,13 @@
                         </a>
                     </li>
 
+                    <li @if( Route::is('offices.index') ) class="active"@endif>
+                        <a href="{{ route('offices.index') }}">
+                            <i class='fa fa-building-o'></i>
+                            <span>{{ trans('admin.offices') }}</span>
+                        </a>
+                    </li>
+
                     <li @if( Route::is('text.pages.index') ) class="active"@endif>
                         <a href="{{ route('text.pages.index') }}">
                             <i class='fa fa-file-text-o'></i>

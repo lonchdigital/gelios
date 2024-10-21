@@ -1,25 +1,20 @@
 <?php
 
-namespace App\Livewire\Admin\Contacts;
+namespace App\Livewire\Admin\Offices;
 
-use App\Models\Page;
-use App\Enums\PageType;
 use App\Models\Contact;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
-use App\Traits\Livewire\SeoPages;
 use Illuminate\Database\Eloquent\Collection;
 use App\Services\Admin\Contacts\ContactsService;
 
 class Index extends Component
 {
-    use WithPagination, WithFileUploads, SeoPages;
+    use WithPagination, WithFileUploads;
 
-    public Page $page;
     public array $sectionData = [];
-
-    public array $seoData = [];
+    public Collection $contacts;
 
     protected ContactsService $contactsService;
 
@@ -29,10 +24,7 @@ class Index extends Component
         $this->contactsService = app(ContactsService::class);
         $this->dispatch('livewire:load');
 
-        $this->page = Page::where('type', PageType::CONTACTS->value)->first();
-
-        // Set SEO data
-        $this->seoData = $this->setSeoDataPage($this->page);
+        $this->contacts = Contact::all();
     }
 
     public function hydrate()
@@ -46,7 +38,7 @@ class Index extends Component
     {
         $this->contactsService->removeContact($contactID);
 
-        redirect()->route('contacts.index')->with('success', trans('admin.deleted_contact'));
+        redirect()->route('offices.index')->with('success', trans('admin.deleted_contact'));
     }
 
     protected function rules()
@@ -55,19 +47,9 @@ class Index extends Component
 
         ];
     }
-
-    public function save()
-    {
-        // $this->validate();
-
-
-        $this->updateSeoDataPage($this->page, $this->seoData);
-
-        redirect()->route('contacts.index', $this->page)->with('success', trans('admin.document_updated'));
-    }
     
     public function render()
     {
-        return view('livewire.admin.contacts.index');
+        return view('livewire.admin.offices.index');
     }
 }
