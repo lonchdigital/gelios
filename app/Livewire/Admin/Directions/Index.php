@@ -19,13 +19,20 @@ class Index extends Component
 
     public array $directionName = [];
     public $directionTemplate;
+
     public int|null $directionParent = null;
+    public array $directionContacts = [];
+    public Collection $allDirectionContacts;
+
     public array $allDirections = [];
     protected DirectionsService $directionsService;
 
     public function mount() 
     {
-        $this->directionsService = new DirectionsService;
+        $this->directionsService = app(DirectionsService::class);
+        $this->dispatch('livewire:load');
+
+        $this->allDirectionContacts = $this->directionsService->getAllOffices();
 
         $this->directionTemplate = 1;
 
@@ -96,6 +103,7 @@ class Index extends Component
             'directionName' => $this->directionName,
             'directionTemplate' => $this->directionTemplate,
             'directionParent' => $this->directionParent,
+            'directionContacts' => $this->directionContacts,
         ];
         $this->directionsService->addDirection($formData);
 

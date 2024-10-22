@@ -30,4 +30,9 @@ class Contact extends Model implements TranslatableContract
     {
         return $this->hasMany(ContactGallery::class)->orderBy('sort');
     }
+
+    public function directions()
+    {
+        return $this->belongsToMany(Direction::class, 'contact_directions');
+    }
 }

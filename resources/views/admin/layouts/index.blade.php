@@ -22,6 +22,8 @@
     @stack('head')
 
     <link rel="stylesheet" href="{{ asset('admin_src/css/quill.snow.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin_src/css/select2.min.css') }}">
+
     <link rel="stylesheet" href="{{ asset('admin_src/style.css') }}">
     <meta name="robots" content="noindex, nofollow">
     @livewireStyles
@@ -62,10 +64,10 @@
 <script src="{{ asset('admin_src/js/bundle.js') }}"></script>
 <script src="{{ asset('admin_src/js/default-assets/setting.js') }}"></script>
 <script src="{{ asset('admin_src/js/default-assets/fullscreen.js') }}"></script>
+<script src="{{ asset('admin_src/js/select2.min.js') }}"></script>
 
 <!-- Active JS -->
 <script src="{{ asset('admin_src/js/default-assets/active.js') }}"></script>
-
 
 <script src="{{ asset('admin_src/js/default-assets/modal-classes.js') }}"></script>
 <script src="{{ asset('admin_src/js/default-assets/modaleffects.js') }}"></script>

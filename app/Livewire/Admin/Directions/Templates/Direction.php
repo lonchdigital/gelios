@@ -37,6 +37,8 @@ class Direction extends Component
     public array $seoData = [];
     
     public int|null $directionParent = null;
+    public array $directionContacts = [];
+    public Collection $allDirectionContacts;
     public array $allDirections = [];
     protected DirectionsService $directionsService;
     
@@ -45,9 +47,13 @@ class Direction extends Component
         $this->directionsService = app(DirectionsService::class);
         $this->dispatch('livewire:load');
 
-        $allDirections = $this->directionsService->getAllDirections();
+        $this->allDirectionContacts = $this->directionsService->getAllOffices();
+        $allDirections = $this->directionsService->getAllDirectionsExceptOne($this->direction);
         $this->allDirections = $this->directionsService->buildTree($allDirections);
         $this->directionParent = $this->direction->parent_id;
+
+        // Set current direction contacts
+        $this->directionContacts = $this->directionsService->setCurrentdirectionContacts($this->direction);
 
         // Set Section One data
         $this->directionTextBlockOne = DirectionTextBlock::where('number', 1)->where('direction_id', $this->direction->id)->first();
@@ -242,6 +248,8 @@ class Direction extends Component
     {
         // $this->validate();
 
+        // dd('hello???? 333', $this->directionParent);
+
         $formDataOne = [
             'direction_id' => $this->direction->id,
             'number' => 1,
@@ -302,11 +310,18 @@ class Direction extends Component
         $existingDirectionPrices = DirectionPrice::where('direction_id', $this->direction->id)->get();
         $this->directionsService->syncPrices($this->directionPrices, $existingDirectionPrices, $this->direction->id);
 
-
         // Update Direction Info
         $existingDirectionInfo = DirectionInfoBlock::where('direction_id', $this->direction->id)->get();
         $this->directionsService->syncInfo($this->infoData, $existingDirectionInfo, $this->direction->id);
 
+        $this->direction->contacts()->sync($this->directionContacts);
+
+        // Update Direction Page
+        $directionData = [
+            'parent_id' => $this->directionParent
+        ];
+        $this->directionsService->updateDirection($this->direction, $directionData);
+        
         // Update Direction Page
         $this->directionsService->updatePage($this->direction->page, $this->seoData);
 

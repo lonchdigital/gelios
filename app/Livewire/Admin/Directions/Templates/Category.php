@@ -26,12 +26,20 @@ class Category extends Component
 
     public array $seoData = [];
 
+    public array $directionContacts = [];
+    public Collection $allDirectionContacts;
+
     protected DirectionsService $directionsService;
     
     public function mount() 
     {
         $this->directionsService = app(DirectionsService::class);
         $this->dispatch('livewire:load');
+
+        $this->allDirectionContacts = $this->directionsService->getAllOffices();
+
+        // Set current direction contacts
+        $this->directionContacts = $this->directionsService->setCurrentdirectionContacts($this->direction);
 
         // Set Section One data
         $this->directionTextBlockOne = DirectionTextBlock::where('number', 1)->where('direction_id', $this->direction->id)->first();
@@ -163,6 +171,8 @@ class Category extends Component
             'is_image' => $this->sectionThreeData['is_image'],
         ];
         $this->directionsService->updateTextBlock($formDataThree);
+
+        $this->direction->contacts()->sync($this->directionContacts);
 
         // Update Direction Page
         $this->directionsService->updatePage($this->direction->page, $this->seoData);
