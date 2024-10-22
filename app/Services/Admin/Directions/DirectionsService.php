@@ -177,6 +177,15 @@ class DirectionsService
         }
     }
 
+    public function getAllDirectionsWithParents(Collection $directions): Collection
+    {
+        $parentIds = $directions->pluck('parent_id')->filter()->unique();
+
+        $parents = Direction::whereIn('id', $parentIds)->get();
+
+        return $directions->merge($parents);
+    }
+
     public function updatePage(PageDirection $page, array $data)
     {
         $dataToUpdate = [];

@@ -3,10 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\PricesController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CheckUpController;
+use App\Http\Controllers\OfficesController;
 use App\Http\Controllers\SurgeryController;
+use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\LanguageController;
@@ -32,8 +35,14 @@ Route::group([
 
         Route::get('/one-center/', [OneCenterController::class, 'page'])->name('one.center.page');
 
-        Route::get('/about-us/', [AboutUsController::class, 'page'])->name('one.center.page');
+        Route::get('/about-us/', [AboutUsController::class, 'page'])->name('about.us.page');
         
+        Route::get('/prices/', [PricesController::class, 'page'])->name('prices.page');
+
+        Route::get('/contacts/', [ContactsController::class, 'page'])->name('contacts.page');
+
+        Route::get('/offices/', [OfficesController::class, 'page'])->name('offices.page');
+
         Route::get('/staczionar/', [HospitalController::class, 'show'])->name('hospital.show');
 
         Route::get('/directions/', [DirectionController::class, 'page'])->name('directions.page');

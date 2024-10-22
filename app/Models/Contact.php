@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Collection;
+use App\Services\Admin\Directions\DirectionsService;
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 
 class Contact extends Model implements TranslatableContract
 {
@@ -21,6 +23,17 @@ class Contact extends Model implements TranslatableContract
         'image'
     ];
 
+    protected ?DirectionsService $directionsService = null;
+
+    public function directionsService(): DirectionsService
+    {
+        if ($this->directionsService === null) {
+            $this->directionsService = app(DirectionsService::class);
+        }
+
+        return $this->directionsService;
+    }
+
     public function items()
     {
         return $this->hasMany(ContactItem::class)->orderBy('sort');
@@ -35,4 +48,14 @@ class Contact extends Model implements TranslatableContract
     {
         return $this->belongsToMany(Direction::class, 'contact_directions');
     }
+
+    public function getDirectionsTree()
+    {
+        $contactDirections = $this->directions()->with('children.children')->get();
+
+        $allDirections = $this->directionsService()->getAllDirectionsWithParents($contactDirections);
+
+        return $this->directionsService()->buildTree($allDirections, true);
+    }
+    
 }

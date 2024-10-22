@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 @forelse($direction->prices as $price)
-                    @include('site.directions.partials.price', ['price' => $price])
+                    @include('site.components.price', ['price' => $price])
                 @empty
                 @endforelse
             </div>
