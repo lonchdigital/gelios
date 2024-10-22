@@ -21,6 +21,19 @@
 
                                 <form wire:submit.prevent="save">
 
+                                    <section class="mb-50">
+                                        <div wire:ignore class="mt-3">
+                                            <label>{{ trans('admin.offices') }}</label>
+                                            <select id="offices" class="js-direction-contacts-multiple form-control" name="offices[]" wire:model="directionContacts" multiple>
+                                                @foreach ($allDirectionContacts as $directionContactItem)
+                                                    <option value="{{ $directionContactItem->id }}">{{ $directionContactItem->city . ' ' . $directionContactItem->street }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </section>
+
+                                    <hr>
+
                                     {{-- Section 1 --}}
                                     <section class="mb-50">
                                         <h6 class="card-title">{{ trans('admin.section_one') }}</h6>
@@ -294,12 +307,22 @@
     <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
     <script type="text/javascript">
         document.addEventListener('livewire:load', () => {
+
             initQuillEditors((quill, fieldName, language) => {
                 quill.on('text-change', function () {
                     let value = quill.root.innerHTML;
                     @this.set(`${fieldName}.${language}`, value);
                 });
             });
+
+            // Handle directionContacts
+            let directionContacts = $('.js-direction-contacts-multiple').select2();
+            directionContacts.val(@json($directionContacts)).trigger('change');
+            directionContacts.on('change', function () {
+                let selectedValues = $(this).val();
+                @this.set('directionContacts', selectedValues);
+            });
+
         });
     </script>
 @endpush

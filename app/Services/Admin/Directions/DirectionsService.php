@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin\Directions;
 
+use App\Models\Contact;
 use App\Models\Direction;
 use App\Models\DirectionInfoBlock;
 use Illuminate\Support\Str;
@@ -14,10 +15,55 @@ use Illuminate\Database\Eloquent\Collection;
 
 class DirectionsService 
 {
+    public function getAllOffices(): Collection
+    {
+        return Contact::all();
+    }
+    public function setCurrentdirectionContacts(Direction $direction): array
+    {
+        $data = [];
+        foreach($direction->contacts as $contact) {
+            $data[] = $contact->id;
+        }
+
+        return $data;
+    }
+
     public function getAllDirections(): Collection
     {
         return Direction::with('children.children')->whereNull('parent_id')->orderBy('sort')->get();
     }
+    public function getAllDirectionsExceptOne(Direction $direction)
+    {
+        $excludedId = $direction->id;
+        // return Direction::with('children.children')
+        //     ->whereNull('parent_id')
+        //     ->where('id', '!=', $direction->id)
+        //     ->orderBy('sort')
+        //     ->get();
+
+        return Direction::with('children.children')
+            ->whereNull('parent_id')
+            ->orderBy('sort')
+            ->get()
+            ->map(function ($direction) use ($excludedId) {
+                return $this->filterDirection($direction, $excludedId);
+            })->filter(); 
+    }
+    private function filterDirection($direction, $excludedId) {
+
+        if ($direction->id == $excludedId) {
+            return null;
+        }
+    
+        // filter children
+        $direction->children = $direction->children->map(function ($child) use ($excludedId) {
+            return $this->filterDirection($child, $excludedId);
+        })->filter();
+    
+        return $direction;
+    }
+
     public function getDirectionsByCategory(int $parentId): Collection
     {
         return Direction::with('children.children')->where('parent_id', $parentId)->orderBy('sort')->get();
@@ -45,6 +91,8 @@ class DirectionsService
 
     private function removeDirection(Direction $direction)
     {
+        $direction->contacts()->sync([]);
+
         $this->removeTextBlocks($direction);
 
         $existingDirectionPrices = DirectionPrice::where('direction_id', $direction->id)->get();
@@ -91,7 +139,17 @@ class DirectionsService
             $dataToUpdate[$lang]['name'] = $value;
         }
 
-        Direction::create($dataToUpdate);
+        $direction = Direction::create($dataToUpdate);
+
+        $direction->contacts()->sync($data['directionContacts']);
+    }
+
+    public function updateDirection(Direction $direction, array $data)
+    {
+        $dataToUpdate = [];
+        $dataToUpdate['parent_id'] = $data['parent_id'];
+
+        $direction->update($dataToUpdate);
     }
 
     public function buildTree($directions, $collection = false)

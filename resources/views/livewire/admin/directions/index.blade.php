@@ -40,7 +40,7 @@
                                                 </select>
                                         </div>
 
-                                        <div class="mb-3">
+                                        {{-- <div class="mb-3">
                                             <label>{{ trans('admin.belonging') }}</label>
                                                 <select class="form-control" wire:model="directionParent" name="parent_id">
                                                     <option value="{{ null }}">- {{ trans('admin.not_chosen') }} -</option>
@@ -48,7 +48,31 @@
                                                         @include('admin.directions.partials.direction-option', ['direction' => $cat, 'depth' => 0])
                                                     @endforeach
                                                 </select>
-                                        </div>
+                                        </div> --}}
+
+                                        <section class="mb-3">
+
+                                            <div wire:ignore>
+                                                <label>{{ trans('admin.belonging') }}</label>
+                                                <select class="js-parent-cat form-control" id="status-select" wire:model="directionParent" name="parent_id">
+                                                    <option value="{{ null }}">- {{ trans('admin.not_chosen') }} -</option>
+                                                    @foreach($allDirections as $cat)
+                                                        @include('admin.directions.partials.direction-option', ['direction' => $cat, 'depth' => 0])
+                                                    @endforeach
+                                                </select>
+                                            </div>
+    
+                                            <div wire:ignore class="mt-3">
+                                                <label>{{ trans('admin.offices') }}</label>
+                                                <select id="offices" class="js-direction-contacts-multiple form-control" name="offices[]" wire:model="directionContacts" multiple>
+                                                    @foreach ($allDirectionContacts as $directionContactItem)
+                                                        <option value="{{ $directionContactItem->id }}">{{ $directionContactItem->city . ' ' . $directionContactItem->street }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+    
+                                        </section>
+
                                     <button type="submit" class="btn btn-primary mr-2 mb-3">{{ trans('admin.save') }}</button>
                                 </form>
                             </div>
@@ -146,28 +170,6 @@
 @push('scripts')
 
     <script>
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     if (window.Livewire) {
-//         console.log('Livewire is loaded');
-//         Livewire.emit('testOrder');
-//         console.log('testOrder method called successfully');
-//     } else {
-//         console.error('Livewire is not loaded');
-//     }
-// });
-
-
-            // document.addEventListener('livewire:load', function () {
-            //     @this.call('testOrder');
-            //     console.log('222222');
-            // });
-
-            // console.log('333333')
-
-    </script>
-
-    <script>
         function goToCategory() {
             var directionId = document.getElementById('directionSelect').value;
             
@@ -195,5 +197,26 @@
         });
     </script>
 
+    <script type="text/javascript">
+        document.addEventListener('livewire:load', () => {
+            
+            // Handle directionParent
+            let parentCat = $('.js-parent-cat').select2();
+            parentCat.val(@json($directionParent)).trigger('change');
+            parentCat.on('change', function () {
+                let selectedValue = $(this).val();
+                @this.set('directionParent', selectedValue);
+            });
+
+            // Handle directionContacts
+            let directionContacts = $('.js-direction-contacts-multiple').select2();
+            directionContacts.val(@json($directionContacts)).trigger('change');
+            directionContacts.on('change', function () {
+                let selectedValues = $(this).val();
+                @this.set('directionContacts', selectedValues);
+            });
+
+        });
+    </script>
     
 @endpush

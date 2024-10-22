@@ -49,4 +49,9 @@ class Direction extends Model implements TranslatableContract
     {
         return $this->hasMany(DirectionInfoBlock::class);
     }
+
+    public function contacts()
+    {
+        return $this->belongsToMany(Contact::class, 'contact_directions');
+    }
 }

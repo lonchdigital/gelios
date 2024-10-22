@@ -22,13 +22,26 @@
                                 <form wire:submit.prevent="save">
                                     
                                     <section class="mb-50">
-                                        <label>{{ trans('admin.parent_cat') }}</label>
-                                            <select class="form-control" id="status-select" wire:model="directionParent" name="parent_id">
+
+                                        <div wire:ignore>
+                                            <label>{{ trans('admin.belonging') }}</label>
+                                            <select class="js-parent-cat form-control" id="status-select" wire:model="directionParent" name="parent_id">
                                                 <option value="{{ null }}">- {{ trans('admin.not_chosen') }} -</option>
                                                 @foreach($allDirections as $cat)
                                                     @include('admin.directions.partials.direction-option', ['direction' => $cat, 'depth' => 0, 'parent_id' => $direction->parent_id])
                                                 @endforeach
                                             </select>
+                                        </div>
+
+                                        <div wire:ignore class="mt-3">
+                                            <label>{{ trans('admin.offices') }}</label>
+                                            <select id="offices" class="js-direction-contacts-multiple form-control" name="offices[]" wire:model="directionContacts" multiple>
+                                                @foreach ($allDirectionContacts as $directionContactItem)
+                                                    <option value="{{ $directionContactItem->id }}">{{ $directionContactItem->city . ' ' . $directionContactItem->street }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
                                     </section>
 
                                     <hr>
@@ -559,12 +572,32 @@
     <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
     <script type="text/javascript">
         document.addEventListener('livewire:load', () => {
+            
             initQuillEditors((quill, fieldName, language) => {
                 quill.on('text-change', function () {
                     let value = quill.root.innerHTML;
                     @this.set(`${fieldName}.${language}`, value);
                 });
             });
+
+
+
+            // Handle directionParent
+            let parentCat = $('.js-parent-cat').select2();
+            parentCat.val(@json($directionParent)).trigger('change');
+            parentCat.on('change', function () {
+                let selectedValue = $(this).val();
+                @this.set('directionParent', selectedValue);
+            });
+
+            // Handle directionContacts
+            let directionContacts = $('.js-direction-contacts-multiple').select2();
+            directionContacts.val(@json($directionContacts)).trigger('change');
+            directionContacts.on('change', function () {
+                let selectedValues = $(this).val();
+                @this.set('directionContacts', selectedValues);
+            });
+
         });
     </script>
 @endpush

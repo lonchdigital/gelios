@@ -140,6 +140,8 @@ class ContactsService
     {
         $contact = Contact::find($contactID);
 
+        $contact->directions()->sync([]);
+
         // remove gallery
         $galleryToDelete = ContactGallery::where('contact_id', $contactID)->get();
         foreach ($galleryToDelete as $galleryImage) {
