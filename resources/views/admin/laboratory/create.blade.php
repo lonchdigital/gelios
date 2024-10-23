@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="container-fluid">
-        @livewire('admin.laboratory.create-edit')
+        @livewire('admin.laboratory.slider.create-edit')
     </div>
 @endsection

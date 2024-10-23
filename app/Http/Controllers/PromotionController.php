@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PageType;
+use App\Models\Page;
 use App\Models\Promotion;
 use Illuminate\Http\Request;
 
@@ -11,7 +13,11 @@ class PromotionController extends Controller
     {
         $promotions = Promotion::get();
 
-        return view('site.promotion.index', compact('promotions'));
+        $page = Page::where('type', PageType::SHARES)
+            ->with('pageBlocks', 'pageBlocks.translations')
+            ->firstOrFail();
+
+        return view('site.promotion.index', compact('promotions', 'page'));
     }
 
     public function show(Promotion $promotion)

@@ -23,8 +23,8 @@
 
                     <li class="treeview @if(Route::is('directions.*')) menu-open @endif">
                         <a href="javascript:void(0)">
-                            <i class="fa fa-sitemap"></i> 
-                            <span>{{ trans('admin.directions') }}</span> 
+                            <i class="fa fa-sitemap"></i>
+                            <span>{{ trans('admin.directions') }}</span>
                             <i class="fa fa-angle-right"></i>
                         </a>
                         <ul class="treeview-menu" @if(Route::is('directions.*')) style="display: block;" @else style="display: none;" @endif>
@@ -46,8 +46,8 @@
 
                     <li class="treeview @if(Route::is('prices.*')) menu-open @endif">
                         <a href="javascript:void(0)">
-                            <i class="fa fa-usd"></i> 
-                            <span>{{ trans('admin.prices') }}</span> 
+                            <i class="fa fa-usd"></i>
+                            <span>{{ trans('admin.prices') }}</span>
                             <i class="fa fa-angle-right"></i>
                         </a>
                         <ul class="treeview-menu" @if(Route::is('prices.*')) style="display: block;" @else style="display: none;" @endif>
@@ -111,8 +111,8 @@
 
                     <li class="treeview @if(Route::is('reviews.*')) menu-open @endif">
                         <a href="javascript:void(0)">
-                            <i class="fa fa-commenting-o"></i> 
-                            <span>{{ trans('admin.reviews') }}</span> 
+                            <i class="fa fa-commenting-o"></i>
+                            <span>{{ trans('admin.reviews') }}</span>
                             <i class="fa fa-angle-right"></i>
                         </a>
                         <ul class="treeview-menu" @if(Route::is('reviews.*')) style="display: block;" @else style="display: none;" @endif>
@@ -197,11 +197,31 @@
                         </a>
                     </li>
 
+                    <li @if(Route::is('admin.vacancies.*')) class="active" @endif>
+                        <a href="{{ route('admin.vacancies.index') }}">
+                            <i class="fa fa-address-book-o"></i>
+                            <span>Вакансії</span>
+                        </a>
+                    </li>
+
                     <li @if(Route::is('admin.edit-robots')) class="active" @endif>
                         <a href="{{ route('admin.edit-robots') }}">
                             <i class="fa fa-file-code-o"></i>
                             <span>Robots.txt</span>
                         </a>
+                    </li>
+
+                    <li class="treeview @if(
+                        Route::is('admin.main-page.*')
+                        || Route::is('admin.main-page.*')
+                    ) menu-open @endif">
+                        <a href="javascript:void(0)"><i class="fa fa-hospital-o"></i> <span>Сторінки</span> <i class="fa fa-angle-right"></i></a>
+                        <ul class="treeview-menu" @if(Route::is('admin.laboratory-cities.*') || Route::is('admin.laboratories.*')) style="display: block;" @else style="display: none;" @endif>
+                            <li @if(Route::is('admin.main-page.*')) class="active" @endif>
+                                <a href="{{ route('admin.main-page.show') }}">Головна сторінка
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>

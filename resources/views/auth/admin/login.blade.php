@@ -15,7 +15,7 @@
                             <h4 class="font-24 mb-1">Логін.</h4>
                             <p class="mb-30">Увійдіть в свій акаунт щоб продовжити.</p>
 
-                            <form method="POST" action="{{ route('login') }}">
+                            <form method="POST" action="{{ route('auth.login') }}">
                                 @csrf
                                 @method('POST')
                                 <div class="form-group">

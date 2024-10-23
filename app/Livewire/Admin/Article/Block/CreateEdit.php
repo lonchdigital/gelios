@@ -6,6 +6,7 @@ use App\Enums\ArticleBlockType;
 use App\Models\Article;
 use App\Models\ArticleBlock;
 use App\Models\ArticleBlockTranslation;
+use App\Services\Admin\ArticleBlockService;
 use Livewire\Component;
 
 class CreateEdit extends Component
@@ -54,7 +55,9 @@ class CreateEdit extends Component
         $this->block = $block ?? new ArticleBlock();
         $this->activeLocale = app()->getLocale();
 
-        $translations = ArticleBlockTranslation::where('article_block_id', $this->block->id ?? '')->get()->keyBy('locale');
+        $service = resolve(ArticleBlockService::class);
+
+        $translations = $service->getTranslations($this->block->id ?? '');
 
         $this->uaFirstTitle = $translations['ua']->first_title ?? '';
         $this->enFirstTitle = $translations['en']->first_title ?? '';
@@ -74,7 +77,7 @@ class CreateEdit extends Component
 
         $types = ArticleBlockType::cases();
 
-        foreach($types as $type) {
+        foreach ($types as $type) {
             $this->types[] = $type->value;
         }
 
@@ -187,25 +190,22 @@ class CreateEdit extends Component
         ];
 
         $secondDescriptions = [
-            'ua' => $this->uaSecondTitle,
-            'en' => $this->enSecondTitle,
-            'ru' => $this->ruSecondTitle,
+            'ua' => $this->uaSecondDescription,
+            'en' => $this->enSecondDescription,
+            'ru' => $this->ruSecondDescription,
         ];
 
-        foreach ($locales as $locale) {
-            ArticleBlockTranslation::updateOrCreate(
-                [
-                    'locale' => $locale,
-                    'article_block_id' => $this->block->id,
-                ],
-                [
-                    'first_title' => $firstTitles[$locale],
-                    'second_title' => $secondTitles[$locale],
-                    'first_content' => $this->type !== ArticleBlockType::TWOBLOCKS->value ? $firstDescriptions[$locale] : '',
-                    'second_content' => $this->type !== ArticleBlockType::TWOBLOCKS->value ? $secondDescriptions[$locale] : '',
-                ]
-            );
-        }
+        $service = resolve(ArticleBlockService::class);
+
+        $service->saveTranslations(
+            $this->block->id,
+            $locales,
+            $firstTitles,
+            $secondTitles,
+            $firstDescriptions,
+            $secondDescriptions,
+            $this->type
+        );
 
         session()->flash('success', 'Дані успішно збережено');
 

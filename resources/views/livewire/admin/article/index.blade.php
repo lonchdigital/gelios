@@ -23,6 +23,7 @@
                             <tr>
                                 <th>Назва</th>
                                 <th>Зображення</th>
+                                <th>Чи відображати на сторінці Хірургія</th>
                                 <th style="text-align: right">Дії</th>
                             </tr>
                         </thead>
@@ -33,6 +34,27 @@
                                 <td>
                                     <img src="{{ $article->imageUrl }}" width="60">
                                 </td>
+                                <td>
+                                    {{-- <label class="switch">
+                                        <input type="checkbox" class="toggle toggle-primary toggle-xs"
+                                        wire:click="changeArticle('{{ $article->id }}', 'show_surgery')"
+                                        @if ($article->is_show_in_surgery_page) checked="checked" @endif />
+                                    </label> --}}
+                                    <div class="new-checkbox">
+                                        <label class="switch" style="width: 34px;">
+                                            <input type="checkbox">
+                                            <span class="slider round" style="position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;"></span>
+                                        </label>
+                                    </div>
+                                </td>
                                 <td style="text-align: right">
                                     <a href="{{ route('admin.articles.edit', $article) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
                                 </td>
@@ -40,11 +62,79 @@
                         @endforeach
                         </tbody>
                     </table>
+
+                    <div class="pagination-wrapper d-flex justify-content-center mt-4 mb-5">
+                        {{ $this->articles->links() }}
+                    </div>
                 </div>
+
+                <div class="d-flex justify-content-between align-items-center mb-20">
+                    <h5 class="card-title mb-0">Список блоків сторінки Акції</h5>
+
+                    {{-- <a href="{{ route('admin.doctors.create') }}" class="btn btn-primary waves-effect waves-light float-right mb-3">
+                        + Додати лікаря
+                    </a> --}}
+                </div>
+
+                @forelse($this->page2->pageBlocks->groupBy('block') as $group => $blocks)
+
+                <div class="d-flex justify-content-between align-items-center mb-20">
+                <h6 class="mt-3">{{ __('admin.pages.' . $group) }}</h6>
+
+                @if($group == 'main')
+                    <a href="{{ route('admin.articles.create-slide', ['page' => $this->page2]) }}"
+                        class="btn btn-primary waves-effect waves-light float-right mb-3">
+                        + Додати слайд
+                    </a>
+                @endif
+                </div>
+                    <table class="table mt-1">
+                        <thead>
+                            <tr style="background-color: rgba(149, 149, 149, 0.2)">
+                                <th>Ключ</th>
+                                <th>Зображення</th>
+                                <th>Заголовок</th>
+                                <th>Опис</th>
+                                <th style="text-align: right">Дії</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($blocks as $block)
+                                <tr class="hover">
+                                    <td>
+                                        {{ __('admin.pages.' . $block->key) }}
+                                    </td>
+                                    <td>
+                                        @if ($block->image)
+                                            <img src="{{ $block->imageUrl }}" width="40">
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {{ $block->title }}
+                                    </td>
+                                    <td>
+                                        {{ $block->description }}
+                                    </td>
+                                    <td>
+                                        {{ $block->url }}
+                                    </td>
+                                    <td>
+                                        <div style="text-align: right">
+                                            <a role="button"
+                                                href="{{ route('admin.articles.edit-slide', ['page' => $this->page2, 'block' => $block]) }}"
+                                                class="btn btn-accent btn-xs">
+                                                <i class="fa fa-edit text-info font-18"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @empty
+                            @endforelse
+                        </tbody>
+                    </table>
+                @empty
+                @endforelse
             </div>
-        </div>
-        <div class="pagination-wrapper d-flex justify-content-center mt-4 mb-5">
-            {{ $this->articles->links() }}
         </div>
     </div>
 </div>

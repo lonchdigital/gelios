@@ -52,6 +52,34 @@
                                                         <div class="row mb-3">
                                                             <div class="col-md-12">
                                                                 <div class="tab-content">
+                                                                    <div id="uaPrice"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>Вартість
+                                                                                <strong>UA</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="uaPrice"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('uaPrice')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
@@ -109,6 +137,34 @@
                                                         <div class="row mb-3">
                                                             <div class="col-md-12">
                                                                 <div class="tab-content">
+                                                                    <div id="ruPrice"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>Вартість
+                                                                                <strong>RU</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="ruPrice"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('ruPrice')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
@@ -150,6 +206,34 @@
                                                                     </div>
                                                                 </div>
                                                                 @error('enTitle')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="enPrice"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>Вартість
+                                                                                <strong>EN</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="enPrice"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('enPrice')
                                                                     <div class="mt-1 text-danger ajaxError">
                                                                         {{ $message }}
                                                                     </div>

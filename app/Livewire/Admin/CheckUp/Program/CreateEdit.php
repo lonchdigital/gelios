@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\CheckUp\Program;
 use App\Models\CheckUp;
 use App\Models\CheckUpProgram;
 use App\Models\CheckUpProgramTranslation;
+use App\Services\Admin\CheckUp\CreateEditService;
 use Livewire\Component;
 
 class CreateEdit extends Component
@@ -124,30 +125,11 @@ class CreateEdit extends Component
             'ru' => $this->ruTitle,
         ];
 
-        $optionsArray = [
-            'ua' => [],
-            'en' => [],
-            'ru' => []
-        ];
+        $optionsArray = $this->checkUpProgramService->prepareOptionsArray($this->options, $locales);
 
-        foreach ($this->options as $option) {
-            foreach ($locales as $locale) {
-                $optionsArray[$locale][] = $option[$locale] ?? '';
-            }
-        }
+        $service = resolve(CreateEditService::class);
 
-        foreach ($locales as $locale) {
-            CheckUpProgramTranslation::updateOrCreate(
-                [
-                    'locale' => $locale,
-                    'check_up_program_id' => $this->program->id,
-                ],
-                [
-                    'title' => $titles[$locale],
-                    'options' => $optionsArray[$locale],
-                ]
-            );
-        }
+        $service->saveProgramTranslations($this->program, $locales, $titles, $optionsArray);
 
         session()->flash('success', 'Дані успішно збережено');
 

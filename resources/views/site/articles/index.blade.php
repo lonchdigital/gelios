@@ -297,6 +297,14 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="mt-5 mt-lg-3">
+                        {{-- {{ $articles->links() }} --}}
+                        {{-- <ul class="pagination justify-content-center mb-0"></ul> --}}
+                    </nav>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <nav class="mt-5 mt-lg-3">
                         <ul class="pagination justify-content-center mb-0"></ul>
                     </nav>
                 </div>

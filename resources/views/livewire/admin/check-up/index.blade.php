@@ -2,6 +2,12 @@
     <div class="col-12">
         <div class="card mb-30">
             <div class="card-body pb-0">
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
                 <div class="d-flex justify-content-between align-items-center mb-20">
                     <h6 class="card-title mb-0">Список check ups</h6>
 
@@ -9,13 +15,6 @@
                         + Додати check up
                     </a>
                 </div>
-
-                @if(session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
-
 
                 <div class="table-responsive art-cars-list">
                     <table class="table table-nowrap">

@@ -19,6 +19,7 @@ class Promotion extends Model
     public $translatedAttributes = [
         'title',
         'description',
+        'price'
     ];
 
     public function getImageUrlAttribute()

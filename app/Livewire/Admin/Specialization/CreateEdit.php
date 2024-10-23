@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Specialization;
 
 use App\Models\Specialization;
 use App\Models\SpecializationTranslation;
+use App\Services\Admin\SpecializationService;
 use Livewire\Component;
 
 class CreateEdit extends Component
@@ -27,10 +28,9 @@ class CreateEdit extends Component
         $this->specialization = $specialization ?? new Specialization();
         $this->activeLocale = app()->getLocale();
 
-        $translations = SpecializationTranslation::where('specialization_id',
-                $this->specialization->id)
-            ->get()
-            ->keyBy('locale');
+        $service = resolve(SpecializationService::class);
+
+        $translations = $service->getTranslations($this->specialization->id);
 
         $this->uaTitle = $translations['ua']->title ?? '';
         $this->enTitle = $translations['en']->title ?? '';
@@ -66,28 +66,20 @@ class CreateEdit extends Component
     {
         $this->validate();
 
-        $this->specialization->save();
+        $service = resolve(SpecializationService::class);
 
         $locales = [
             'ua' => $this->uaTitle,
             'ru' => $this->ruTitle,
-            'en' => $this->enTitle
+            'en' => $this->enTitle,
         ];
 
-        foreach ($locales as $locale => $title) {
-            SpecializationTranslation::updateOrCreate([
-                'locale' => $locale,
-                'specialization_id' => $this->specialization->id,
-            ], [
-                'title' => $title,
-            ]);
-        }
+        $service->saveSpecialization($this->specialization, $locales);
 
         session()->flash('success', 'Дані успішно збережено');
 
         $this->redirectRoute('admin.specializations.index');
     }
-
 
     public function render()
     {

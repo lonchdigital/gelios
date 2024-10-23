@@ -13,6 +13,7 @@ class PromotionTranslation extends Model
         'promotion_id',
         'locale',
         'title',
-        'description'
+        'description',
+        'price'
     ];
 }

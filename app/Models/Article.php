@@ -16,7 +16,8 @@ class Article extends Model
         'slug',
         'image',
         'images',
-        'article_category_id'
+        'article_category_id',
+        'is_show_in_surgery_page'
     ];
 
     public $translatedAttributes = [

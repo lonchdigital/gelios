@@ -6,6 +6,8 @@ use App\Models\Doctor;
 use App\Models\DoctorCategory;
 use App\Models\DoctorTranslation;
 use App\Models\Specialization;
+use App\Services\Admin\DoctorService;
+use App\Services\Admin\ImageService;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -75,17 +77,32 @@ class CreateEdit extends Component
         $this->doctor = $doctor ?? new Doctor();
 
         $this->activeLocale = app()->getLocale();
-
         $this->slug = $this->doctor->slug ?? '';
-
         $this->age = $this->doctor->age ?? '';
-
         $this->expirience = $this->doctor->expirience ?? '';
 
-        $translations = DoctorTranslation::where('doctor_id',
-            $this->doctor->id)
-            ->get()
-            ->keyBy('locale');
+        $this->loadTranslations();
+        $this->loadImages();
+
+        $this->specializations = Specialization::get();
+        $this->specialization = $this->doctor->specialization_id ?? null;
+
+        $this->categories = DoctorCategory::get();
+        $this->category = $this->doctor->doctor_category_id ?? null;
+    }
+
+    private function loadImages()
+    {
+        $service = resolve(DoctorService::class);
+
+        $this->images = $service->getDoctorImages($this->doctor);
+    }
+
+    private function loadTranslations()
+    {
+        $service = resolve(DoctorService::class);
+
+        $translations = $service->getDoctorTranslations($this->doctor);
 
         $this->uaTitle = $translations['ua']->title ?? '';
         $this->enTitle = $translations['en']->title ?? '';
@@ -102,21 +119,6 @@ class CreateEdit extends Component
         $this->uaDescription = $translations['ua']->content ?? '';
         $this->enDescription = $translations['en']->content ?? '';
         $this->ruDescription = $translations['ru']->content ?? '';
-
-        foreach($this->doctor->images ?? [] as $image) {
-            $this->images[] = [
-                'image' => $image,
-                'imageUrl' => Storage::disk('public')->url($image),
-            ];
-        }
-
-        $this->specializations = Specialization::get();
-
-        $this->specialization = $this->doctor->specialization_id ?? null;
-
-        $this->categories = DoctorCategory::get();
-
-        $this->category = $this->doctor->doctor_category_id ?? null;
     }
 
     public function updatedNewImage($val)
@@ -232,108 +234,80 @@ class CreateEdit extends Component
         $this->imageTemporary = $val->temporaryUrl();
     }
 
-    public function downloadImage($file)
-    {
-        $image = Storage::disk('public')->put('/doctor', $file);
-
-        return $image;
-    }
-
-    public function deleteStorageImage($image)
-    {
-        if ($image && $this->doctor->image) {
-            Storage::disk('public')->delete($this->doctor->image);
-        }
-    }
-
     public function deleteImage()
     {
         $this->image = null;
         $this->imageTemporary = null;
     }
 
-    public function save()
+    public function save(DoctorService $doctorService, ImageService $imageService)
     {
         $this->validate();
 
-        if($this->image) {
-            $image = $this->downloadImage($this->image);
+        $imageService = resolve(ImageService::class);
 
-            $this->deleteStorageImage($image);
+        if ($this->image) {
+            $image = $imageService->downloadImage($this->image, '/doctor');
+
+            if (!empty($this->doctor->id) && !empty($this->doctor->image)) {
+                $imageService->deleteStorageImage($this->image, $this->doctor->image);
+            }
 
             $this->doctor->image = $image;
         }
 
         $images = [];
 
-        foreach($this->images as $image2) {
-            if(!in_array($image2['image'], $this->doctor->images ?? [])) {
-                $images[] = $this->downloadImage($image2['image']);
+        foreach ($this->images as $image2) {
+            if (!in_array($image2['image'], $this->doctor->images ?? [])) {
+                $images[] = $imageService->downloadImage($image2['image'], '/doctor');
             } else {
                 $images[] = $image2['image'];
             }
         }
 
-        foreach($this->doctor->images ?? [] as $image3) {
-            if(!in_array($image3, $images)) {
-                $this->deleteAdditionalImage($image3);
+        foreach ($this->doctor->images ?? [] as $image3) {
+            if (!in_array($image3, $images)) {
+                $imageService->deleteAdditionalImage($image3);
             }
         }
 
-        $this->doctor->slug = $this->slug;
-
-        $this->doctor->images = $images;
-
-        $this->doctor->age = $this->age;
-
-        $this->doctor->expirience = $this->expirience;
-
-        $this->doctor->specialization_id = $this->specialization;
-
-        $this->doctor->doctor_category_id = $this->category;
-
-        $this->doctor->save();
+        $doctorService->saveDoctor(
+            $this->doctor,
+            $this->slug,
+            $this->age,
+            $this->expirience,
+            $this->specialization,
+            $this->category,
+            $images
+        );
 
         $locales = ['ua', 'en', 'ru'];
 
-        $titles = [
-            'ua' => $this->uaTitle,
-            'en' => $this->enTitle,
-            'ru' => $this->ruTitle,
-        ];
-
-        $descriptions = [
-            'ua' => $this->uaDescription,
-            'en' => $this->enDescription,
-            'ru' => $this->ruDescription,
-        ];
-
-        $educations = [
-            'ua' => $this->uaEducation,
-            'en' => $this->enEducation,
-            'ru' => $this->ruEducation,
-        ];
-
-        $specialties = [
-            'ua' => $this->uaSpecialty,
-            'en' => $this->enSpecialty,
-            'ru' => $this->ruSpecialty,
-        ];
-
-        foreach ($locales as $locale) {
-            DoctorTranslation::updateOrCreate(
-                [
-                    'locale' => $locale,
-                    'doctor_id' => $this->doctor->id,
-                ],
-                [
-                    'title' => $titles[$locale],
-                    'content' => $descriptions[$locale],
-                    'specialty' => $specialties[$locale],
-                    'education' => $educations[$locale],
-                ]
-            );
-        }
+        $doctorService->saveTranslations(
+            $this->doctor,
+            [
+                'ua' => $this->uaTitle,
+                'en' => $this->enTitle,
+                'ru' => $this->ruTitle,
+            ],
+            [
+                'ua' => $this->uaDescription,
+                'en' => $this->enDescription,
+                'ru' => $this->ruDescription,
+            ],
+            [
+                'ua' => $this->uaSpecialty,
+                'en' => $this->enSpecialty,
+                'ru' => $this->ruSpecialty,
+            ],
+            [
+                'ua' => $this->uaEducation,
+                'en' => $this->enEducation,
+                'ru' => $this->ruEducation,
+            ],
+            $locales
+        );
 
         session()->flash('success', 'Дані успішно збережено');
 
@@ -344,13 +318,6 @@ class CreateEdit extends Component
     {
         if (isset($this->images[$key])) {
             unset($this->images[$key]);
-        }
-    }
-
-    public function deleteAdditionalImage($image)
-    {
-        if(Storage::disk('public')->exists($image)) {
-            Storage::disk('public')->delete($image);
         }
     }
 

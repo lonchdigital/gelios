@@ -78,7 +78,7 @@
                     <div class="user-profile-area">
                         {{--                        TODO: Add actions --}}
 
-                        <form action="{{ route('logout') }}" method="POST">
+                        <form action="{{ route('auth.logout') }}" method="POST">
                             @csrf
                             @method('POST')
                             <button type="submit" class="dropdown-item"><i class="bx bx-power-off font-15"

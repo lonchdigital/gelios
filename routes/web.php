@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PricesController;
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CheckUpController;
 use App\Http\Controllers\OfficesController;
@@ -36,7 +37,7 @@ Route::group([
         Route::get('/one-center/', [OneCenterController::class, 'page'])->name('one.center.page');
 
         Route::get('/about-us/', [AboutUsController::class, 'page'])->name('about.us.page');
-        
+
         Route::get('/prices/', [PricesController::class, 'page'])->name('prices.page');
 
         Route::get('/contacts/', [ContactsController::class, 'page'])->name('contacts.page');
@@ -66,10 +67,14 @@ Route::group([
         Route::get('/laboratories/', [LaboratoryController::class, 'index'])->name('laboratories.index');
 
         Route::get('/vzroslym/hirurgiya/', [SurgeryController::class, 'index'])->name('surgery.index');
+
+        Route::get('/vzroslym/hirurgiya/', [SurgeryController::class, 'index'])->name('surgery.index');
+
+        Route::get('/vakansii/', [VacancyController::class, 'index'])->name('vacancy.index');
 });
 
 Route::get('lang/{lang}', [LanguageController::class, 'changeLanguage'])->name('changeLanguage');
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

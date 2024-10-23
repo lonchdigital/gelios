@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Admin\CheckUp;
 
+use App\Enums\PageType;
 use App\Models\CheckUp;
+use App\Models\Page;
 use Livewire\Component;
 
 class Index extends Component

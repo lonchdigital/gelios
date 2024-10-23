@@ -26,22 +26,30 @@
                         <div class="col-12 col-xl-8 mb-11 mb-xl-0">
                             <div class="section-top--backdrop-swiper overflow-hidden h-100 position-relative">
                                 <div class="swiper-wrapper">
-                                    <div
-                                        class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white p-3 p-lg-6">
-                                        <div class="backdrop">
-                                            <div class="content">
-                                                <div class="h1 font-m font-weight-bolder mb-3">Консультація
-                                                    <br>акушера-гінеколога <br>у Дніпрі
+                                    @forelse($page->pageblocks->where('block', 'main') as $block)
+                                        <div
+                                            class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
+                                            <div class="backdrop p-3 p-lg-6">
+                                                <div class="content mt-18">
+                                                    <div class="h1 font-m font-weight-bolder mb-3">{!! $block->title !!}
+                                                    </div>
+                                                    <div class="h5 font-m font-weight-bold mb-3">{{ $block->description }}</div>
+                                                    @if(!empty($block->url))
+                                                        <a href="{{ $block->url }}" class="btn btn-white font-weight-bold">{{ $block->button }}</a>
+                                                    @endif
                                                 </div>
-                                                <div class="h5 font-m font-weight-bold mb-3">Обери свій CHECK-UP!</div>
-                                                <a href="##" class="btn btn-white font-weight-bold">Детальніше</a>
+                                            </div>
+                                            <div class="wrap-img">
+                                                @if(!empty($block->image))
+                                                    <img class="bg-down" src="{{ $block->imageUrl }}" alt="{{ $block->title }}">
+                                                @else
+                                                    <img class="bg-down" src="img/img-background-1.jpeg" alt="img">
+                                                @endif
                                             </div>
                                         </div>
-                                        <div class="wrap-img">
-                                            <img class="bg-down" src="img/img-background-1.jpeg" alt="img">
-                                        </div>
-                                    </div>
-                                    <div
+                                    @empty
+                                    @endforelse
+                                    {{-- <div
                                         class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white p-3 p-lg-6">
                                         <div class="backdrop">
                                             <div class="content">
@@ -82,7 +90,7 @@
                                         <div class="wrap-img">
                                             <img class="bg-down" src="img/img-background-2.jpeg" alt="img">
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="swiper-pagination"></div>
                             </div>

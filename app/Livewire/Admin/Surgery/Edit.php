@@ -8,6 +8,8 @@ use App\Models\DoctorTranslation;
 use App\Models\PageBlock;
 use App\Models\PageBlockTranslation;
 use App\Models\Specialization;
+use App\Services\Admin\ImageService;
+use App\Services\Admin\Surgery\SurgeryService;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -62,12 +64,16 @@ class Edit extends Component
 
         $this->link = $this->block->url ?? '';
 
-        $translations = PageBlockTranslation::where('page_block_id', $this->block->id)
-            ->whereIn('locale', ['ua', 'en', 'ru'])
-            ->get()
-            ->keyBy('locale');
+        $this->loadTranslations();
 
         $this->activeLocale = app()->getLocale();
+    }
+
+    private function loadTranslations()
+    {
+        $service = resolve(SurgeryService::class);
+
+        $translations = $service->getTranslations($this->block->id);
 
         $this->uaTitle = $translations['ua']->title ?? '';
         $this->enTitle = $translations['en']->title ?? '';
@@ -77,11 +83,11 @@ class Edit extends Component
         $this->enDescription = $translations['en']->description ?? '';
         $this->ruDescription = $translations['ru']->description ?? '';
 
-        $this->uaButtonName = $translations['en']->button_name ?? '';
+        $this->uaButtonName = $translations['ua']->button_name ?? '';
         $this->enButtonName = $translations['en']->button_name ?? '';
         $this->ruButtonName = $translations['ru']->button_name ?? '';
 
-        $this->uaContent = $translations['en']->content ?? '';
+        $this->uaContent = $translations['ua']->content ?? '';
         $this->enContent = $translations['en']->content ?? '';
         $this->ruContent = $translations['ru']->content ?? '';
     }
@@ -175,17 +181,6 @@ class Edit extends Component
         $this->imageTemporary = $val->temporaryUrl();
     }
 
-    public function downloadImage($file, $id)
-    {
-        $image = Storage::disk('public')->put('/pages', $file);
-
-        if ($image && $this->block->image && Storage::disk('public')->exists($this->block->image)) {
-            Storage::disk('public')->delete($this->block->image);
-        }
-
-        return $image;
-    }
-
     public function languageSwitched($lang)
     {
         $this->activeLocale = $lang;
@@ -201,12 +196,33 @@ class Edit extends Component
     {
         $this->validate();
 
-        $this->block->url = $this->link;
+        $this->saveImage();
+
+        $this->saveBlock();
+
+        session()->flash('message', 'Block successfully edited');
+
+        return $this->redirectRoute('admin.surgery.index');
+    }
+
+    private function saveImage()
+    {
+        $imageService = resolve(ImageService::class);
 
         if ($this->image) {
-            $this->block->image = $this->downloadImage($this->image, $this->block->id);
-        }
+            $image = $imageService->downloadImage($this->image, '/pages');
 
+            if (!empty($this->block->id) && !empty($this->block->image)) {
+                $imageService->deleteStorageImage($this->image, $this->block->image);
+            }
+
+            $this->block->image = $image;
+        }
+    }
+
+    private function saveBlock()
+    {
+        $this->block->url = $this->link;
         $this->block->save();
 
         $translations = [
@@ -227,19 +243,12 @@ class Edit extends Component
                 'description' => $this->ruDescription,
                 'content' => $this->ruContent,
                 'button_name' => $this->ruButtonName,
-            ]
+            ],
         ];
 
-        foreach ($translations as $locale => $data) {
-            PageBlockTranslation::updateOrCreate(
-                ['page_block_id' => $this->block->id, 'locale' => $locale],
-                $data
-            );
-        }
+        $service = resolve(SurgeryService::class);
 
-        session()->flash('message', 'Block successfully edited');
-
-        return $this->redirectRoute('admin.surgery.index');
+        $service->saveTranslations($this->block->id, $translations);
     }
 
     public function isShowTitle()

@@ -4,6 +4,8 @@ namespace App\Livewire\Admin\Promotion;
 
 use App\Models\Promotion;
 use App\Models\PromotionTranslation;
+use App\Services\Admin\ImageService;
+use App\Services\Admin\PromotionService;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -21,6 +23,12 @@ class CreateEdit extends Component
     public string $enTitle = '';
 
     public string $ruTitle = '';
+
+    public string $uaPrice = '';
+
+    public string $enPrice = '';
+
+    public string $ruPrice = '';
 
     public string $uaDescription = '';
 
@@ -41,22 +49,27 @@ class CreateEdit extends Component
     public function mount(Promotion $promotion = null)
     {
         $this->promotion = $promotion ?? new Promotion();
-
         $this->slug = $this->promotion->slug ?? '';
 
         $this->activeLocale = app()->getLocale();
 
-        $this->uaTitle = PromotionTranslation::where('locale', 'ua')->where('promotion_id', $this->promotion->id ?? null)->first()->title ?? '';
+        $service = resolve(PromotionService::class);
 
-        $this->enTitle = PromotionTranslation::where('locale', 'en')->where('promotion_id', $this->promotion->id ?? null)->first()->title ?? '';
+        $locales = ['ua', 'en', 'ru'];
 
-        $this->ruTitle = PromotionTranslation::where('locale', 'ru')->where('promotion_id', $this->promotion->id ?? null)->first()->title ?? '';
+        $translations = $service->getTranslationsForLocales($this->promotion->id ?? null, $locales);
 
-        $this->uaDescription = PromotionTranslation::where('locale', 'ua')->where('promotion_id', $this->promotion->id ?? null)->first()->description ?? '';
+        $this->uaTitle = $translations['ua']['title'];
+        $this->enTitle = $translations['en']['title'];
+        $this->ruTitle = $translations['ru']['title'];
 
-        $this->enDescription = PromotionTranslation::where('locale', 'en')->where('promotion_id', $this->promotion->id ?? null)->first()->description ?? '';
+        $this->uaPrice = $translations['ua']['price'];
+        $this->enPrice = $translations['en']['price'];
+        $this->ruPrice = $translations['ru']['price'];
 
-        $this->ruDescription = PromotionTranslation::where('locale', 'ru')->where('promotion_id', $this->promotion->id ?? null)->first()->description ?? '';
+        $this->uaDescription = $translations['ua']['description'];
+        $this->enDescription = $translations['en']['description'];
+        $this->ruDescription = $translations['ru']['description'];
     }
 
     public function languageSwitched($lang)
@@ -84,6 +97,21 @@ class CreateEdit extends Component
             ],
 
             'ruTitle' => [
+                'required',
+                'string',
+            ],
+
+            'uaPrice' => [
+                'required',
+                'string',
+            ],
+
+            'enPrice' => [
+                'required',
+                'string',
+            ],
+
+            'ruPrice' => [
                 'required',
                 'string',
             ],
@@ -118,17 +146,6 @@ class CreateEdit extends Component
         $this->imageTemporary = $val->temporaryUrl();
     }
 
-    public function downloadImage($file)
-    {
-        $image = Storage::disk('public')->put('/promotions', $file);
-
-        if ($image && $this->promotion->image) {
-            Storage::disk('public')->delete($this->promotion->image);
-        }
-
-        return $image;
-    }
-
     public function deleteImage()
     {
         $this->image = null;
@@ -138,40 +155,43 @@ class CreateEdit extends Component
     public function save()
     {
         $this->validate();
-        
-        if($this->image) {
-            $image = $this->downloadImage($this->image);
+
+        $imageService = resolve(ImageService::class);
+
+        if ($this->image) {
+            $image = $imageService->downloadImage($this->image, '/promotions');
+
+            if(!empty($this->promotion->id) && !empty($this->promotion->image)) {
+                $imageService->deleteStorageImage($this->image, $this->promotion->image);
+            }
 
             $this->promotion->image = $image;
         }
 
         $this->promotion->slug = $this->slug;
-
         $this->promotion->save();
 
-        PromotionTranslation::updateOrCreate([
-            'locale' => 'ua',
-            'promotion_id' => $this->promotion->id,
-        ], [
-            'title' => $this->uaTitle,
-            'description' => $this->uaDescription,
-        ]);
+        $translations = [
+            'ua' => [
+                'title' => $this->uaTitle,
+                'price' => $this->uaPrice,
+                'description' => $this->uaDescription,
+            ],
+            'en' => [
+                'title' => $this->enTitle,
+                'price' => $this->enPrice,
+                'description' => $this->enDescription,
+            ],
+            'ru' => [
+                'title' => $this->ruTitle,
+                'price' => $this->ruPrice,
+                'description' => $this->ruDescription,
+            ]
+        ];
 
-        PromotionTranslation::updateOrCreate([
-            'locale' => 'ru',
-            'promotion_id' => $this->promotion->id,
-        ], [
-            'title' => $this->ruTitle,
-            'description' => $this->ruDescription,
-        ]);
+        $service = resolve(PromotionService::class);
 
-        PromotionTranslation::updateOrCreate([
-            'locale' => 'en',
-            'promotion_id' => $this->promotion->id,
-        ], [
-            'title' => $this->enTitle,
-            'description' => $this->enDescription,
-        ]);
+        $service->saveTranslations($this->promotion->id, $translations);
 
         session()->flash('success', 'Дані успішно збережено');
 

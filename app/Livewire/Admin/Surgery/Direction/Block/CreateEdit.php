@@ -5,6 +5,8 @@ namespace App\Livewire\Admin\Surgery\Direction\Block;
 use App\Models\Surgery;
 use App\Models\SurgeryBlock;
 use App\Models\SurgeryBlockTranslation;
+use App\Services\Admin\ImageService;
+use App\Services\Admin\Surgery\DirectionBlockService;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -41,14 +43,12 @@ class CreateEdit extends Component
 
         $this->activeLocale = app()->getLocale();
 
-        $translations = SurgeryBlockTranslation::where('surgery_block_id',
-            $this->block->id)
-            ->get()
-            ->keyBy('locale');
+        $service = resolve(DirectionBlockService::class);
+        $translations = $service->getTranslations($this->block);
 
-        $this->uaDescription = $translations['ua']->description ?? '';
-        $this->enDescription = $translations['en']->description ?? '';
-        $this->ruDescription = $translations['ru']->description ?? '';
+        $this->uaDescription = $translations['ua'];
+        $this->enDescription = $translations['en'];
+        $this->ruDescription = $translations['ru'];
     }
 
     public function languageSwitched($lang)
@@ -89,20 +89,6 @@ class CreateEdit extends Component
         $this->imageTemporary = $val->temporaryUrl();
     }
 
-    public function downloadImage($file)
-    {
-        $image = Storage::disk('public')->put('/surgery', $file);
-
-        return $image;
-    }
-
-    public function deleteStorageImage($image)
-    {
-        if ($image && $this->block->image) {
-            Storage::disk('public')->delete($this->block->image);
-        }
-    }
-
     public function deleteImage()
     {
         $this->image = null;
@@ -113,36 +99,26 @@ class CreateEdit extends Component
     {
         $this->validate();
 
-        if($this->image) {
-            $image = $this->downloadImage($this->image);
+        $imageService = resolve(ImageService::class);
 
-            $this->deleteStorageImage($image);
+        if ($this->image) {
+            $image = $imageService->downloadImage($this->image, '/surgery');
+
+            if (!empty($this->block->id) && !empty($this->block->image)) {
+                $imageService->deleteStorageImage($this->image, $this->block->image);
+            }
 
             $this->block->image = $image;
         }
 
-        $this->block->surgery_id = $this->surgery->id;
-
-        $this->block->save();
-
-        $locales = ['ua', 'en', 'ru'];
         $descriptions = [
             'ua' => $this->uaDescription,
             'en' => $this->enDescription,
             'ru' => $this->ruDescription,
         ];
 
-        foreach ($locales as $locale) {
-            SurgeryBlockTranslation::updateOrCreate(
-                [
-                    'locale' => $locale,
-                    'surgery_block_id' => $this->block->id,
-                ],
-                [
-                    'description' => $descriptions[$locale],
-                ]
-            );
-        }
+        $service = resolve(DirectionBlockService::class);
+        $service->saveSurgeryBlock($this->block, $this->surgery->id, $descriptions);
 
         session()->flash('success', 'Дані успішно збережено');
 

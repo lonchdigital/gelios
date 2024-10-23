@@ -2,14 +2,10 @@
 
 namespace App\Livewire\Admin\ArticleCategory;
 
+use App\Services\Admin\Article\ArticleCategoryService;
 use App\Models\ArticleCategory;
 use App\Models\ArticleCategoryTranslation;
-use App\Models\CheckUp;
-use App\Models\CheckUpTranslation;
-use App\Models\PromotionTranslation;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 
 class CreateEdit extends Component
 {
@@ -22,30 +18,23 @@ class CreateEdit extends Component
     public string $enTitle = '';
 
     public string $ruTitle = '';
+
+    protected $service;
+
     protected $listeners = [
         'languageSwitched' => 'languageSwitched'
     ];
 
     public function mount(ArticleCategory $category = null)
     {
-        $this->category = $category ?? new ArticleCategory();
+        $this->service = resolve(ArticleCategoryService::class);
 
+        $this->category = $category ?? new ArticleCategory();
         $this->activeLocale = app()->getLocale();
 
-        $this->uaTitle = ArticleCategoryTranslation::where('locale', 'ua')
-            ->where('article_category_id', $this->category->id ?? null)
-            ->first()
-            ->title ?? '';
-
-        $this->enTitle = ArticleCategoryTranslation::where('locale', 'en')
-            ->where('article_category_id', $this->category->id ?? null)
-            ->first()
-            ->title ?? '';
-
-        $this->ruTitle = ArticleCategoryTranslation::where('locale', 'ru')
-            ->where('article_category_id', $this->category->id ?? null)
-            ->first()
-            ->title ?? '';
+        $this->uaTitle = $this->service->getTranslation($this->category, 'ua');
+        $this->enTitle = $this->service->getTranslation($this->category, 'en');
+        $this->ruTitle = $this->service->getTranslation($this->category, 'ru');
     }
 
     public function languageSwitched($lang)
@@ -75,28 +64,15 @@ class CreateEdit extends Component
 
     public function save()
     {
+        $this->validate();
+
         $this->category->save();
+        
+        $service = resolve(ArticleCategoryService::class);
 
-        ArticleCategoryTranslation::updateOrCreate([
-            'locale' => 'ua',
-            'article_category_id' => $this->category->id,
-        ], [
-            'title' => $this->uaTitle,
-        ]);
-
-        ArticleCategoryTranslation::updateOrCreate([
-            'locale' => 'ru',
-            'article_category_id' => $this->category->id,
-        ], [
-            'title' => $this->ruTitle,
-        ]);
-
-        ArticleCategoryTranslation::updateOrCreate([
-            'locale' => 'en',
-            'article_category_id' => $this->category->id,
-        ], [
-            'title' => $this->enTitle,
-        ]);
+        $service->saveTranslation($this->category, 'ua', $this->uaTitle);
+        $service->saveTranslation($this->category, 'ru', $this->ruTitle);
+        $service->saveTranslation($this->category, 'en', $this->enTitle);
 
         session()->flash('success', 'Дані успішно збережено');
 

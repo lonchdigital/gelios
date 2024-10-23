@@ -46,7 +46,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -71,7 +71,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         @endif
 
                                         @if ($this->activeLocale == 'ru')
@@ -103,7 +103,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -128,7 +128,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         @endif
 
                                         @if ($this->activeLocale == 'en')
@@ -160,7 +160,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -185,8 +185,74 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         @endif
+
+                                        {{-- <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                @foreach (config('app.available_languages') as $availableLanguage)
+
+                                                                    <input type="hidden" name="{{ $this->activeLocale . 'Description' }}"
+                                                                        value="{{ $this->activeLocale . 'Description' }}">
+                                                                    <div wire:ignore.self language="ua"
+                                                                        data-field-name="{{ $this->activeLocale . 'Description' }}"
+                                                                        class="multilang-content tab-pane fade
+                                                                        @if($this->activeLocale == $availableLanguage) active show @endif">
+                                                                        <label for="{{ $this->activeLocale . 'Description' }}">Опис
+                                                                            <strong>{{ $this->activeLocale }}</strong></label>
+                                                                        <div class="editor rich-editor"
+                                                                            id="editor-{{ $this->activeLocale }}"
+                                                                            style="min-height:100px;">
+                                                                            @if (true)
+                                                                                {!! '' !!}
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
+                                                            <div class="mt-1 text-danger ajaxError"
+                                                                id="error-field-field"></div>
+                                                            @error('*')
+                                                                <div class="text-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> --}}
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <x-admin.multilanguage-text-area-rich
+                                                        :is-required="false"
+                                                        :label="'Опис'"
+                                                        field-name="description"
+                                                        live-wire-field="description"
+                                                        :values="[
+                                                            'ua' => $this->uaDescription,
+                                                            'ru' => $this->ruDescription,
+                                                            'en' => $this->enDescription
+                                                        ]"
+                                                    />
+                                                    {{-- <x-admin.multilanguage-text-area
+                                                                :is-required="false"
+                                                                :label="trans('admin.description')"
+                                                                field-name="description"
+                                                                live-wire-field="description"
+                                                                :values="[
+                                                                    'ua' => $this->uaDescription,
+                                                                    'ru' => $this->ruDescription,
+                                                                    'en' => $this->enDescription
+                                                                ]"
+                                                            /> --}}
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="col-md-12">
                                             <div class="row">
@@ -363,3 +429,17 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
+    <script type="text/javascript">
+        document.addEventListener('livewire:load', () => {
+            initQuillEditors((quill, fieldName, language) => {
+                quill.on('text-change', function() {
+                    let value = quill.root.innerHTML;
+                    @this.set(`${fieldName}`, value);
+                });
+            });
+        });
+    </script>
+@endpush

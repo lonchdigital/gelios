@@ -10,6 +10,8 @@ use App\Models\ArticleTranslation;
 use App\Models\CheckUp;
 use App\Models\CheckUpTranslation;
 use App\Models\PromotionTranslation;
+use App\Services\Admin\Article\ArticleService;
+use App\Services\Admin\ImageService;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -19,6 +21,8 @@ class CreateEdit extends Component
     use WithFileUploads;
 
     public Article $article;
+
+    public string $description;
 
     public string $activeLocale;
 
@@ -52,16 +56,31 @@ class CreateEdit extends Component
 
     public function mount(Article $article = null)
     {
+        $this->dispatch('livewire:load');
+
         $this->article = $article ?? new Article();
-
         $this->activeLocale = app()->getLocale();
-
         $this->slug = $this->article->slug ?? '';
 
-        $translations = ArticleTranslation::where('article_id',
-            $this->article->id)
-            ->get()
-            ->keyBy('locale');
+        $this->loadTranslations();
+        $this->loadImages();
+    }
+
+    private function loadImages()
+    {
+        foreach ($this->article->images ?? [] as $image) {
+            $this->images[] = [
+                'image' => $image,
+                'imageUrl' => Storage::disk('public')->url($image),
+            ];
+        }
+    }
+
+    private function loadTranslations()
+    {
+        $service = resolve(ArticleService::class);
+
+        $translations = $service->getTranslations($this->article->id ?? null);
 
         $this->uaTitle = $translations['ua']->title ?? '';
         $this->enTitle = $translations['en']->title ?? '';
@@ -70,13 +89,6 @@ class CreateEdit extends Component
         $this->uaDescription = $translations['ua']->description ?? '';
         $this->enDescription = $translations['en']->description ?? '';
         $this->ruDescription = $translations['ru']->description ?? '';
-
-        foreach($this->article->images ?? [] as $image) {
-            $this->images[] = [
-                'image' => $image,
-                'imageUrl' => Storage::disk('public')->url($image),
-            ];
-        }
     }
 
     public function updatedNewImage($val)
@@ -96,6 +108,8 @@ class CreateEdit extends Component
     public function languageSwitched($lang)
     {
         $this->activeLocale = $lang;
+
+        // $this->dispatch('livewire:load');
     }
 
     public function rules()
@@ -134,9 +148,24 @@ class CreateEdit extends Component
             'slug' => [
                 'required',
                 'string',
-                'unique:articles,slug,' . $this->article->slug ?? ''
+                'unique:articles,slug,' . $this->article->id ?? ''
             ],
         ];
+    }
+
+    public function updatedDescription($val)
+    {
+        switch ($this->activeLocale) {
+            case 'ua':
+                $this->uaDescription = $val;
+                break;
+            case 'ru':
+                $this->ruDescription = $val;
+                break;
+            case 'en':
+                $this->enDescription = $val;
+                break;
+        }
     }
 
     public function updatedImage($val)
@@ -144,20 +173,6 @@ class CreateEdit extends Component
         $this->validateOnly('image');
         $this->image = $val;
         $this->imageTemporary = $val->temporaryUrl();
-    }
-
-    public function downloadImage($file)
-    {
-        $image = Storage::disk('public')->put('/article', $file);
-
-        return $image;
-    }
-
-    public function deleteStorageImage($image)
-    {
-        if ($image && $this->article->image) {
-            Storage::disk('public')->delete($this->article->image);
-        }
     }
 
     public function deleteImage()
@@ -170,66 +185,47 @@ class CreateEdit extends Component
     {
         $this->validate();
 
-        if($this->image) {
-            $image = $this->downloadImage($this->image);
+        $imageService = resolve(ImageService::class);
 
-            $this->deleteStorageImage($image);
+        if($this->image) {
+            $image = $imageService->downloadImage($this->image, '/article');
+
+            if(!empty($this->article->id) && !empty($this->article->image)) {
+                $imageService->deleteStorageImage($this->image, $this->article->image);
+            }
 
             $this->article->image = $image;
         }
 
-        $images = [];
-
-        foreach($this->images as $image2) {
-            if(!in_array($image2['image'], $this->article->images ?? [])) {
-                $images[] = $this->downloadImage($image2['image']);
-            } else {
-                $images[] = $image2['image'];
-            }
-        }
-
-        foreach($this->article->images ?? [] as $image3) {
-            if(!in_array($image3, $images)) {
-                $this->deleteAdditionalImage($image3);
-            }
-        }
+        $this->article->images = $imageService->processImages($this->article->images, $this->images);
 
         $this->article->slug = $this->slug;
-
-        $this->article->images = $images;
-
         $this->article->save();
 
-        $locales = ['ua', 'en', 'ru'];
-
-        $titles = [
-            'ua' => $this->uaTitle,
-            'en' => $this->enTitle,
-            'ru' => $this->ruTitle,
-        ];
-
-        $descriptions = [
-            'ua' => $this->uaDescription,
-            'en' => $this->enDescription,
-            'ru' => $this->ruDescription,
-        ];
-
-        foreach ($locales as $locale) {
-            ArticleTranslation::updateOrCreate(
-                [
-                    'locale' => $locale,
-                    'article_id' => $this->article->id,
-                ],
-                [
-                    'title' => $titles[$locale],
-                    'description' => $descriptions[$locale],
-                ]
-            );
-        }
+        $this->saveTranslations();
 
         session()->flash('success', 'Дані успішно збережено');
 
-        $this->redirectRoute('admin.articles.index');
+        return $this->redirectRoute('admin.articles.index');
+    }
+
+    private function saveTranslations()
+    {
+        $service = resolve(ArticleService::class);
+
+        $service->saveTranslations(
+            $this->article->id,
+            [
+                'ua' => $this->uaTitle,
+                'en' => $this->enTitle,
+                'ru' => $this->ruTitle,
+            ],
+            [
+                'ua' => $this->uaDescription,
+                'en' => $this->enDescription,
+                'ru' => $this->ruDescription,
+            ]
+        );
     }
 
     public function deleteNewImage($key)
@@ -239,22 +235,11 @@ class CreateEdit extends Component
         }
     }
 
-    public function deleteAdditionalImage($image)
-    {
-        if(Storage::disk('public')->exists($image)) {
-            Storage::disk('public')->delete($image);
-        }
-    }
-
     public function newPosition($val, ArticleBlock $block)
     {
-        ArticleBlock::where('sort', $block->sort + $val)->first()->update([
-            'sort' => $block->sort,
-        ]);
+        $service = resolve(ArticleService::class);
 
-        $block->update([
-            'sort' => $block->sort + $val,
-        ]);
+        $service->updatePosition($block, $val);
     }
 
     public function render()

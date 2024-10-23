@@ -19,21 +19,30 @@
                 <div class="col">
                     <div class="section-top--backdrop-swiper overflow-hidden h-100 position-relative">
                         <div class="swiper-wrapper">
-                            <div
-                                class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
-                                <div class="backdrop p-3 p-lg-6">
-                                    <div class="content mt-18">
-                                        <div class="h1 font-m font-weight-bolder mb-3">Підготовка <br>до здачі аналізів
+                            @forelse($page->pageblocks->where('block', 'main') as $block)
+                                <div
+                                    class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
+                                    <div class="backdrop p-3 p-lg-6">
+                                        <div class="content mt-18">
+                                            <div class="h1 font-m font-weight-bolder mb-3">{!! $block->title !!}
+                                            </div>
+                                            <div class="h5 font-m font-weight-bold mb-3">{{ $block->description }}</div>
+                                            @if(!empty($block->url))
+                                                <a href="{{ $block->url }}" class="btn btn-white font-weight-bold">{{ $block->button }}</a>
+                                            @endif
                                         </div>
-                                        <div class="h5 font-m font-weight-bold mb-3">Дізнайся, що потрібно</div>
-                                        <a href="##" class="btn btn-white font-weight-bold">Детальніше</a>
+                                    </div>
+                                    <div class="wrap-img">
+                                        @if(!empty($block->image))
+                                            <img class="bg-down" src="{{ $block->imageUrl }}" alt="{{ $block->title }}">
+                                        @else
+                                            <img class="bg-down" src="img/img-background-1.jpeg" alt="img">
+                                        @endif
                                     </div>
                                 </div>
-                                <div class="wrap-img">
-                                    <img class="bg-down" src="img/img-background-1.jpeg" alt="img">
-                                </div>
-                            </div>
-                            <div
+                            @empty
+                            @endforelse
+                            {{-- <div
                                 class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
                                 <div class="backdrop p-3 p-lg-6">
                                     <div class="content mt-18">
@@ -71,7 +80,7 @@
                                 <div class="wrap-img">
                                     <img class="bg-down" src="img/img-background-2.jpeg" alt="img">
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>
@@ -86,40 +95,40 @@
                     <div class="item">
                         <div class="wrap-svg">
                             <svg>
-                                <use xlink:href="img/icons/icons.svg#i-syringe"></use>
+                                <use xlink:href="{{ asset('styles/img/icons/icons.svg#i-syringe') }}"></use>
                             </svg>
                         </div>
-                        <div class="h4 text-blue font-weight-bolder">Прийом аналізів у дітей</div>
+                        <div class="h4 text-blue font-weight-bolder">{{ $page->pageBlocks->where('block', 'second_block')->where('key', 'first')->first()->title }}</div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-xl-3">
                     <div class="item">
                         <div class="wrap-svg">
                             <svg>
-                                <use xlink:href="img/icons/icons.svg#i-test-tube"></use>
+                                <use xlink:href="{{ asset('styles/img/icons/icons.svg#i-test-tube') }}"></use>
                             </svg>
                         </div>
-                        <div class="h4 text-blue font-weight-bolder">Можливість здачі ПЛР</div>
+                        <div class="h4 text-blue font-weight-bolder">{{ $page->pageBlocks->where('block', 'second_block')->where('key', 'second')->first()->title }}</div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-xl-3">
                     <div class="item">
                         <div class="wrap-svg">
                             <svg>
-                                <use xlink:href="img/icons/icons.svg#i-time"></use>
+                                <use xlink:href="{{ asset('styles/img/icons/icons.svg#i-time') }}"></use>
                             </svg>
                         </div>
-                        <div class="h4 text-blue font-weight-bolder">Цілодобова підтримка</div>
+                        <div class="h4 text-blue font-weight-bolder">{{ $page->pageBlocks->where('block', 'second_block')->where('key', 'third')->first()->title }}</div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-xl-3">
                     <div class="item">
                         <div class="wrap-svg">
                             <svg>
-                                <use xlink:href="img/icons/icons.svg#i-heart-add"></use>
+                                <use xlink:href="{{ asset('styles/img/icons/icons.svg#i-heart-add') }}"></use>
                             </svg>
                         </div>
-                        <div class="h4 text-blue font-weight-bolder">Комфортні умови здачі</div>
+                        <div class="h4 text-blue font-weight-bolder">{{ $page->pageBlocks->where('block', 'second_block')->where('key', 'fourth')->first()->title }}</div>
                     </div>
                 </div>
             </div>
@@ -330,18 +339,21 @@
                 <div class="row pt-16  pb-6 py-lg-16 text-white">
                     <div class="col col-md-8 col-xl-4">
                         <div class="content">
-                            <div class="h2 font-m font-weight-bolder mb-3 mb-lg-5">Ціни</div>
-                            <div class="h5 font-weight-bold mb-8 mb-lg-10">Наші фахівці – це лікарі з великим досвідом
-                                наукової діяльності та практичної медицини, які володіють найсучаснішими медичними
-                                технологіями та методиками. Діагностика, лікування, профілактика, реабілітація та надання
-                                медичних послуг усім членам сім'ї в рамках програми «Сімейний лікар».</div>
-                            <a href="##" class="btn btn-white font-weight-bold">Переглянути</a>
+                            <div class="h2 font-m font-weight-bolder mb-3 mb-lg-5">{{ $page->pageBlocks->where('block', 'prices')->first()->title ?? '' }}</div>
+                            <div class="h5 font-weight-bold mb-8 mb-lg-10">{{ $page->pageBlocks->where('block', 'prices')->first()->description ?? '' }}</div>
+                            @if($page->pageBlocks->where('block', 'prices')->first()->url)
+                                <a href="{{ $page->pageBlocks->where('block', 'prices')->first()->url }}" class="btn btn-white font-weight-bold">{{ $page->pageBlocks->where('block', 'prices')->first()->button ?? '' }}</a>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
             <div class="wrap-img">
-                <img class="bg-down" src="img/img-background-2.jpeg" alt="img">
+                @if(!empty($page->pageBlocks->where('block', 'prices')->first()->image))
+                    <img class="bg-down" src="{{ $page->pageBlocks->where('block', 'prices')->first()->imageUrl }}" alt="{{ $page->pageBlocks->where('block', 'prices')->first()->title }}">
+                @else
+                    <img class="bg-down" src="{{ asset('styles/img/img-background-2.jpeg') }}" alt="img">
+                @endif
             </div>
         </div>
     </section>

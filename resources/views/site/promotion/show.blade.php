@@ -28,6 +28,7 @@
                                     <div>
                                         <div class="h3 font-m font-weight-bolder text-blue mb-5">{{ $promotion->title }}
                                         </div>
+                                        <div class="price--consultation mb-5"><span class="price">{{ $promotion->price }}</span><span class="currency"></span></div>
                                         <div class="content os-scrollbar-overflow">
                                             <p>{{ $promotion->description }}</p>
                                         </div>

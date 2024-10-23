@@ -5,6 +5,8 @@ namespace App\Livewire\Admin\Surgery\Block;
 use App\Models\Page;
 use App\Models\PageBlock;
 use App\Models\PageBlockTranslation;
+use App\Services\Admin\ImageService;
+use App\Services\Admin\Surgery\BlockService;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -36,15 +38,11 @@ class CreateEdit extends Component
     public function mount(Page $page, PageBlock $block = null)
     {
         $this->page = $page;
-
         $this->block = $block ?? new PageBlock();
-
         $this->activeLocale = app()->getLocale();
 
-        $translations = PageBlockTranslation::where('page_block_id',
-            $this->block->id)
-            ->get()
-            ->keyBy('locale');
+        $service = resolve(BlockService::class);
+        $translations = $service->getTranslations($this->block);
 
         $this->uaDescription = $translations['ua']->description ?? '';
         $this->enDescription = $translations['en']->description ?? '';
@@ -89,20 +87,6 @@ class CreateEdit extends Component
         $this->imageTemporary = $val->temporaryUrl();
     }
 
-    public function downloadImage($file)
-    {
-        $image = Storage::disk('public')->put('/static-blocks', $file);
-
-        return $image;
-    }
-
-    public function deleteStorageImage($image)
-    {
-        if ($image && $this->block->image) {
-            Storage::disk('public')->delete($this->block->image);
-        }
-    }
-
     public function deleteImage()
     {
         $this->image = null;
@@ -113,40 +97,31 @@ class CreateEdit extends Component
     {
         $this->validate();
 
-        if($this->image) {
-            $image = $this->downloadImage($this->image);
+        $imageService = resolve(ImageService::class);
 
-            $this->deleteStorageImage($image);
+        if ($this->image) {
+            $image = $imageService->downloadImage($this->image, '/static-blocks');
+
+            if (!empty($this->block->id) && !empty($this->block->image)) {
+                $imageService->deleteStorageImage($this->image, $this->block->image);
+            }
 
             $this->block->image = $image;
         }
 
-        $this->block->page_id = $this->page->id;
-
-        $this->block->block = 'static_block';
-
-        $this->block->key = 'content';
-
-        $this->block->save();
-
-        $locales = ['ua', 'en', 'ru'];
         $descriptions = [
             'ua' => $this->uaDescription,
             'en' => $this->enDescription,
             'ru' => $this->ruDescription,
         ];
 
-        foreach ($locales as $locale) {
-            PageBlockTranslation::updateOrCreate(
-                [
-                    'locale' => $locale,
-                    'page_block_id' => $this->block->id,
-                ],
-                [
-                    'description' => $descriptions[$locale],
-                ]
-            );
-        }
+        $data = [
+            'page_id' => $this->page->id,
+        ];
+
+        $service = resolve(BlockService::class);
+
+        $service->saveBlock($this->block, $data, $descriptions);
 
         session()->flash('success', 'Дані успішно збережено');
 

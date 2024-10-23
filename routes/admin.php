@@ -22,6 +22,8 @@ use App\Http\Controllers\Admin\TypicalPagesController;
 use App\Http\Controllers\Admin\SpecializationController;
 use App\Http\Controllers\Admin\ArticleCategoryController;
 use App\Http\Controllers\Admin\InsuranceCompaniesController;
+use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\VacancyController;
 
 Route::group([
     'prefix' => 'admin',
@@ -53,7 +55,7 @@ Route::group([
             Route::get('/', [TextPagesController::class, 'index'])->name('text.pages.index');
             Route::get('/{page}/edit', [TextPagesController::class, 'edit'])->name('text.pages.edit');
         });
-        
+
         Route::prefix('/typical-pages')->group(function() {
             Route::get('/', [TypicalPagesController::class, 'index'])->name('typical.pages.index');
 
@@ -66,7 +68,7 @@ Route::group([
 
         Route::prefix('/hospitals')->group(function() {
             Route::get('/', [HospitalController::class, 'index'])->name('hospitals.index');
-            
+
             Route::get('/create', [HospitalController::class, 'create'])->name('hospitals.create');
             Route::get('/{hospital}/edit', [HospitalController::class, 'editHospital'])->name('hospitals.edit');
         });
@@ -84,7 +86,7 @@ Route::group([
 
         Route::prefix('/offices')->group(function() {
             Route::get('/', [OfficesController::class, 'index'])->name('offices.index');
-            
+
             Route::get('/create', [OfficesController::class, 'createOffice'])->name('offices.create');
             Route::get('/{contact}/edit', [OfficesController::class, 'editOffice'])->name('offices.edit');
         });
@@ -102,6 +104,10 @@ Route::group([
 
         Route::prefix('/promotions')->name('admin.promotions.')->group(function() {
             Route::get('/', [PromotionController::class, 'index'])->name('index');
+
+            Route::get('/create-slide/{page}', [PromotionController::class, 'createSlide'])->name('create-slide');
+            Route::get('/edit-slide/{page}/{block}', [PromotionController::class, 'editSlide'])->name('edit-slide');
+
             Route::get('/create', [PromotionController::class, 'create'])->name('create');
             Route::get('/{promotion}/edit', [PromotionController::class, 'edit'])->name('edit');
         });
@@ -123,6 +129,10 @@ Route::group([
 
         Route::prefix('/articles')->name('admin.articles.')->group(function() {
             Route::get('/', [ArticleController::class, 'index'])->name('index');
+
+            Route::get('/create-slide/{page}', [ArticleController::class, 'createSlide'])->name('create-slide');
+            Route::get('/edit-slide/{page}/{block}', [ArticleController::class, 'editSlide'])->name('edit-slide');
+
             Route::get('/create', [ArticleController::class, 'create'])->name('create');
             Route::get('/{article}/edit', [ArticleController::class, 'edit'])->name('edit');
 
@@ -151,6 +161,10 @@ Route::group([
         Route::prefix('/laboratories')->name('admin.laboratories.')->group(function() {
             Route::get('/', [LaboratoryController::class, 'index'])->name('index');
             Route::get('/create', [LaboratoryController::class, 'create'])->name('create');
+
+            Route::get('/create-slide/{page}', [LaboratoryController::class, 'createSlide'])->name('create-slide');
+            Route::get('/edit-slide/{page}/{block}', [LaboratoryController::class, 'editSlide'])->name('edit-slide');
+
             Route::get('/{laboratory}/edit', [LaboratoryController::class, 'edit'])->name('edit');
         });
 
@@ -170,10 +184,25 @@ Route::group([
             Route::get('/{surgery}/edit', [SurgeryController::class, 'editSurgery'])->name('edit');
 
             Route::get('/{page}/create-static-block', [SurgeryController::class, 'createStaticBlock'])->name('create-static-block');
-            Route::get('/{page}/{block}/edit-block', [SurgeryController::class, 'editStaticBlock'])->name('edit-static-block');
+            // Route::get('/{page}/{block}/edit-block', [SurgeryController::class, 'editStaticBlock'])->name('edit-static-block');
+            Route::get('/{page}/edit-block/{block}', [SurgeryController::class, 'editStaticBlock'])->name('edit-static-block');
 
             Route::get('/{surgery}/create', [SurgeryController::class, 'createSurgeryBlock'])->name('create-block');
             Route::get('/{surgery}/{block}/edit', [SurgeryController::class, 'editSurgeryBlock'])->name('edit-direction-block');
+        });
+
+        Route::prefix('/main-page')->name('admin.main-page.')->group(function() {
+            Route::get('/', [PageController::class, 'mainPage'])->name('show');
+            Route::get('/edit-block/{block}', [PageController::class, 'mainPageEdit'])->name('edit-block');
+        });
+
+        Route::prefix('/vacancies')->name('admin.vacancies.')->group(function() {
+            Route::get('/', [VacancyController::class, 'index'])->name('index');
+
+            Route::get('/edit-block/{page}/{block}', [VacancyController::class, 'editBlock'])->name('edit-block');
+
+            Route::get('/create', [VacancyController::class, 'create'])->name('create');
+            Route::get('/{vacancy}/edit', [VacancyController::class, 'edit'])->name('edit');
         });
 
         Route::get('/edit-robots', [RobotsController::class, 'edit'])->name('admin.edit-robots');

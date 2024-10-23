@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Surgery\Direction;
 
 use App\Models\Surgery;
 use App\Models\SurgeryTranslation;
+use App\Services\Admin\Surgery\DirectionService;
 use Livewire\Component;
 
 class CreateEdit extends Component
@@ -27,14 +28,12 @@ class CreateEdit extends Component
         $this->surgery = $surgery ?? new Surgery();
         $this->activeLocale = app()->getLocale();
 
-        $translations = SurgeryTranslation::where('surgery_id',
-                $this->surgery->id)
-            ->get()
-            ->keyBy('locale');
+        $service = resolve(DirectionService::class);
+        $translations = $service->getSurgeryTranslations($this->surgery);
 
-        $this->uaTitle = $translations['ua']->title ?? '';
-        $this->enTitle = $translations['en']->title ?? '';
-        $this->ruTitle = $translations['ru']->title ?? '';
+        $this->uaTitle = $translations['uaTitle'];
+        $this->enTitle = $translations['enTitle'];
+        $this->ruTitle = $translations['ruTitle'];
     }
 
     public function languageSwitched($lang)
@@ -66,28 +65,19 @@ class CreateEdit extends Component
     {
         $this->validate();
 
-        $this->surgery->save();
-
         $locales = [
             'ua' => $this->uaTitle,
             'ru' => $this->ruTitle,
-            'en' => $this->enTitle
+            'en' => $this->enTitle,
         ];
 
-        foreach ($locales as $locale => $title) {
-            SurgeryTranslation::updateOrCreate([
-                'locale' => $locale,
-                'surgery_id' => $this->surgery->id,
-            ], [
-                'title' => $title,
-            ]);
-        }
+        $service = resolve(DirectionService::class);
+        $service->saveSurgery($this->surgery, $locales);
 
         session()->flash('success', 'Дані успішно збережено');
 
         $this->redirectRoute('admin.surgery.index');
     }
-
 
     public function render()
     {

@@ -5,6 +5,9 @@ namespace App\Livewire\Admin\CheckUp;
 use App\Models\CheckUp;
 use App\Models\CheckUpTranslation;
 use App\Models\PromotionTranslation;
+use App\Services\Admin\CheckUp\CheckUpService;
+use App\Services\Admin\CheckUp\CreateEditService;
+use App\Services\Admin\ImageService;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -44,42 +47,20 @@ class CreateEdit extends Component
     public function mount(CheckUp $checkUp = null)
     {
         $this->checkUp = $checkUp ?? new CheckUp();
-
         $this->activeLocale = app()->getLocale();
-
         $this->price = $this->checkUp->price ?? '';
-
         $this->newPrice = $this->checkUp->new_price ?? '';
+        $service = resolve(CreateEditService::class);
 
-        $this->uaTitle = CheckUpTranslation::where('locale', 'ua')
-            ->where('check_up_id', $this->checkUp->id ?? null)
-            ->first()
-            ->title ?? '';
+        $translations = $service->getTranslations($this->checkUp->id, ['ua', 'en', 'ru']);
 
-        $this->enTitle = CheckUpTranslation::where('locale', 'en')
-            ->where('check_up_id', $this->checkUp->id ?? null)
-            ->first()
-            ->title ?? '';
+        $this->uaTitle = $translations['ua']['title'];
+        $this->enTitle = $translations['en']['title'];
+        $this->ruTitle = $translations['ru']['title'];
 
-        $this->ruTitle = CheckUpTranslation::where('locale', 'ru')
-            ->where('check_up_id', $this->checkUp->id ?? null)
-            ->first()
-            ->title ?? '';
-
-        $this->uaDescription = CheckUpTranslation::where('locale', 'ua')
-            ->where('check_up_id', $this->checkUp->id ?? null)
-            ->first()
-            ->description ?? '';
-
-        $this->enDescription = CheckUpTranslation::where('locale', 'en')
-            ->where('check_up_id', $this->checkUp->id ?? null)
-            ->first()
-            ->description ?? '';
-
-        $this->ruDescription = CheckUpTranslation::where('locale', 'ru')
-            ->where('check_up_id', $this->checkUp->id ?? null)
-            ->first()
-            ->description ?? '';
+        $this->uaDescription = $translations['ua']['description'];
+        $this->enDescription = $translations['en']['description'];
+        $this->ruDescription = $translations['ru']['description'];
     }
 
     public function languageSwitched($lang)
@@ -145,17 +126,6 @@ class CreateEdit extends Component
         $this->imageTemporary = $val->temporaryUrl();
     }
 
-    public function downloadImage($file)
-    {
-        $image = Storage::disk('public')->put('/check-up', $file);
-
-        if ($image && $this->checkUp->image) {
-            Storage::disk('public')->delete($this->checkUp->image);
-        }
-
-        return $image;
-    }
-
     public function deleteImage()
     {
         $this->image = null;
@@ -165,42 +135,32 @@ class CreateEdit extends Component
     public function save()
     {
         $this->validate();
-        
-        if($this->image) {
-            $image = $this->downloadImage($this->image);
+
+        $imageService = resolve(ImageService::class);
+
+        if ($this->image) {
+            $image = $imageService->downloadImage($this->image, '/check-up');
+
+            if(!empty($this->checkUp->id) && !empty($this->checkUp->image)) {
+                $imageService->deleteStorageImage($this->image, $this->checkUp->image);
+            }
 
             $this->checkUp->image = $image;
         }
 
         $this->checkUp->price = $this->price;
-
         $this->checkUp->new_price = $this->newPrice;
-
         $this->checkUp->save();
 
-        CheckUpTranslation::updateOrCreate([
-            'locale' => 'ua',
-            'check_up_id' => $this->checkUp->id,
-        ], [
-            'title' => $this->uaTitle,
-            'description' => $this->uaDescription,
-        ]);
+        $translations = [
+            'ua' => ['title' => $this->uaTitle, 'description' => $this->uaDescription],
+            'ru' => ['title' => $this->ruTitle, 'description' => $this->ruDescription],
+            'en' => ['title' => $this->enTitle, 'description' => $this->enDescription],
+        ];
 
-        CheckUpTranslation::updateOrCreate([
-            'locale' => 'ru',
-            'check_up_id' => $this->checkUp->id,
-        ], [
-            'title' => $this->ruTitle,
-            'description' => $this->ruDescription,
-        ]);
+        $service = resolve(CreateEditService::class);
 
-        CheckUpTranslation::updateOrCreate([
-            'locale' => 'en',
-            'check_up_id' => $this->checkUp->id,
-        ], [
-            'title' => $this->enTitle,
-            'description' => $this->enDescription,
-        ]);
+        $service->saveTranslations($this->checkUp->id, $translations);
 
         session()->flash('success', 'Дані успішно збережено');
 
