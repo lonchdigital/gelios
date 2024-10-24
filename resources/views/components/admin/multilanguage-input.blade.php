@@ -15,8 +15,9 @@
                 </div>
             @endforeach
         </div>
-        <div class="mt-1 text-danger ajaxError" id="error-field-{{$errorFieldName . '.*'}}"></div>
-        @error($errorFieldName . '.*')
+
+        <div class="mt-1 text-danger ajaxError" id="error-field-{{$liveWireField . '.*'}}"></div>
+        @error($liveWireField . '.*')
         <div class="text-danger">{{ $message }}</div>
         @enderror
     </div>
