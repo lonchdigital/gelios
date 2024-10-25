@@ -39,22 +39,51 @@ class Edit extends Component
 
     protected function rules()
     {
-        return [
-            'directionName.ua' => [
-                'required',
-                'string'
-                // 'nullable'
-            ],
-            'directionTemplate' => [
-                'required',
-                'integer'
-            ],
+        $rules = [];
+
+        $rules['contentData.slug'] = [
+            'required',
+            'string',
+            'unique:pages,slug,' . ($this->page->id ?? '')
         ];
+
+        foreach (config('translatable.locales') as $locale) {
+            $rules['contentData.title.' . $locale] = [
+                'required',
+                'string',
+                'max:255'
+            ];
+            $rules['contentData.text.' . $locale] = [
+                'nullable',
+                'string',
+            ];
+        }
+
+        return $rules;
+    }
+
+    protected function attributes()
+    {
+        $attributes = [];
+
+        // $attributes['contentData.iframe'] = 'iframe';
+
+        foreach (config('translatable.locales') as $locale) {
+            $attributes['contentData.title.' . $locale] = trans('admin.title') . ' ('. $locale .')';
+            $attributes['contentData.text.' . $locale] = trans('admin.text') . ' ('. $locale .')';
+        }
+
+        return $attributes;
+    }
+
+    public function getValidationAttributes()
+    {
+        return $this->attributes();
     }
 
     public function save()
     {
-        // $this->validate();
+        $this->validate();
 
         $this->textPagesService->updateContentData($this->page, $this->contentData);
 
