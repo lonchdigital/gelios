@@ -22,7 +22,29 @@
                                 <form wire:submit.prevent="save">
 
                                     <section class="mb-50 mt-30">
-                                        <h6 class="card-title">{{ trans('admin.content') }}</h6>
+
+                                        <x-admin.multilanguage-input
+                                            :is-required="false"
+                                            :label="trans('admin.title')"
+                                            field-name="title"
+                                            live-wire-field="contentData.title"
+                                            :values="$contentData['title']"
+                                        />
+
+                                        <div class="form-group mt-2 mb-0">
+                                            <label for="">slug</label>
+                                            <input 
+                                                    type="text"
+                                                    class="form-control"
+                                                    wire:model="contentData.slug"
+                                                >
+                
+                                            @error('contentData.slug')
+                                                <div class="mt-1 text-danger ajaxError">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
 
                                         <x-admin.multilanguage-text-area-rich
                                             :is-required="false"

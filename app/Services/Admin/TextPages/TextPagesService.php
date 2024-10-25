@@ -12,6 +12,13 @@ class TextPagesService
     {
         $dataToUpdate = [];
 
+        $dataToUpdate['slug'] = $data['slug'];
+
+        if($data['title']) {
+            foreach ($data['title'] as $lang => $value) {
+                $dataToUpdate[$lang]['title'] = $value;
+            }
+        }
         if($data['text']) {
             foreach ($data['text'] as $lang => $value) {
                 $dataToUpdate[$lang]['text'] = $value;
@@ -25,7 +32,10 @@ class TextPagesService
     {
         $data = [];
 
+        $data['slug'] = $page->slug;
+
         foreach ($page->getTranslationsArray() as $lang => $value) {
+            $data['title'][$lang] = $value['title'];
             $data['text'][$lang] = $value['text'];
         }
         
