@@ -95,7 +95,7 @@
                     <div class="item">
                         <div class="wrap-svg">
                             <svg>
-                                <use xlink:href="{{ asset('styles/img/icons/icons.svg#i-syringe') }}"></use>
+                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-syringe' }}"></use>
                             </svg>
                         </div>
                         <div class="h4 text-blue font-weight-bolder">{{ $page->pageBlocks->where('block', 'second_block')->where('key', 'first')->first()->title }}</div>
@@ -105,7 +105,7 @@
                     <div class="item">
                         <div class="wrap-svg">
                             <svg>
-                                <use xlink:href="{{ asset('styles/img/icons/icons.svg#i-test-tube') }}"></use>
+                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-test-tube' }}"></use>
                             </svg>
                         </div>
                         <div class="h4 text-blue font-weight-bolder">{{ $page->pageBlocks->where('block', 'second_block')->where('key', 'second')->first()->title }}</div>
@@ -115,7 +115,7 @@
                     <div class="item">
                         <div class="wrap-svg">
                             <svg>
-                                <use xlink:href="{{ asset('styles/img/icons/icons.svg#i-time') }}"></use>
+                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-time' }}"></use>
                             </svg>
                         </div>
                         <div class="h4 text-blue font-weight-bolder">{{ $page->pageBlocks->where('block', 'second_block')->where('key', 'third')->first()->title }}</div>
@@ -125,7 +125,7 @@
                     <div class="item">
                         <div class="wrap-svg">
                             <svg>
-                                <use xlink:href="{{ asset('styles/img/icons/icons.svg#i-heart-add') }}"></use>
+                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-heart-add' }}"></use>
                             </svg>
                         </div>
                         <div class="h4 text-blue font-weight-bolder">{{ $page->pageBlocks->where('block', 'second_block')->where('key', 'fourth')->first()->title }}</div>
@@ -352,7 +352,7 @@
                 @if(!empty($page->pageBlocks->where('block', 'prices')->first()->image))
                     <img class="bg-down" src="{{ $page->pageBlocks->where('block', 'prices')->first()->imageUrl }}" alt="{{ $page->pageBlocks->where('block', 'prices')->first()->title }}">
                 @else
-                    <img class="bg-down" src="{{ asset('styles/img/img-background-2.jpeg') }}" alt="img">
+                    <img class="bg-down" src="{{ asset('static_images/img-background-2.jpeg') }}" alt="img">
                 @endif
             </div>
         </div>

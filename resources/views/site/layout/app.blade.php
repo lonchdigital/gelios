@@ -9,8 +9,11 @@
     <meta name="app-url" content="{{ env('APP_URL') }}">
 	<title>Головна</title>
 	<link rel="shortcut icon" href="##" type="image/x-icon" />
-	<link rel="stylesheet" href="{{ asset('styles/css/libs.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('styles/css/main.min.css') }}">
+	{{-- <link rel="stylesheet" href="{{ asset('styles/css/libs.min.css') }}"> --}}
+	{{-- <link rel="stylesheet" href="{{ asset('styles/css/main.min.css') }}"> --}}
+
+	@vite(['resources/js/app.js'])
+
 	<style>
 		/**
 		* Reinstate scrolling for non-JS clients
@@ -54,7 +57,7 @@
 
 <div id="btnTop" class="btn btn-arrow-up">
 	<svg>
-		<use xlink:href="{{ asset('styles/img/icons/icons.svg#i-arrow-small-down') }}"></use>
+		<use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-arrow-small-down' }}"></use>
 	</svg>
 </div>
 	</div>
@@ -69,9 +72,24 @@
 								<div class="h2 font-m modal-title font-weight-bolder mb-0 pr-8">Записатися на прийом</div>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">
-										<svg>
-											<use xlink:href="img/icons/icons.svg#i-close"></use>
+										<svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+											<desc>
+													Created with Pixso.
+											</desc>
+											<defs>
+												<clipPath id="clip2452_21769">
+													<rect id="close-icon" width="24.000000" height="24.000000" fill="white" fill-opacity="0"/>
+												</clipPath>
+											</defs>
+											<rect id="close-icon" width="24.000000" height="24.000000" fill="#FFFFFF" fill-opacity="0"/>
+											<g clip-path="url(#clip2452_21769)">
+												<path id="Vector" d="M7.05 16.94L16.94 7.04" stroke="#3DA6D3" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+												<path id="Vector" d="M7.05 7.05L16.94 16.95" stroke="#3DA6D3" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+											</g>
 										</svg>
+										{{-- <svg>
+											<use xlink:href="img/icons/icons.svg#i-close"></use>
+										</svg> --}}
 									</span>
 								</button>
 							</div>
@@ -284,116 +302,118 @@
 	</div>
 </div>
 
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgMBbn1eBSqj8V9kKOn6CqiwTZhoTQP6s&callback=initMap&libraries=marker&v=beta" defer></script>
+	{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgMBbn1eBSqj8V9kKOn6CqiwTZhoTQP6s&callback=initMap&libraries=marker&v=beta" defer></script> --}}
 <script>
-	function initMap() {
-		const mapConfigs = [
-			{
-				elementId: "map",
-				center: { lat: 50.45668411158, lng: 30.50518209469263 },
-				zoom: 10.1,
-				tourStops: [
-					{ position: { lat: 51.64334524926339, lng: 32.82858348658312 }, title: "Офіс 1" },
-					{ position: { lat: 50.45853652359974, lng: 30.411489795412983 }, title: "Офіс 2" },
-				],
-			},
-			{
-				elementId: "map1",
-				center: { lat: 50.4501, lng: 30.5234 },
-				zoom: 10.0,
-				tourStops: [
-					{ position: { lat: 50.4501, lng: 30.5234 }, title: "Офіс 1-1" },
-					{ position: { lat: 50.45466, lng: 30.5238 }, title: "Офіс 1-2" },
-				],
-			},
-			{
-				elementId: "map2",
-				center: { lat: 49.839683, lng: 24.029717 },
-				zoom: 14.0,
-				tourStops: [
-					{ position: { lat: 49.839683, lng: 24.029717 }, title: "Офіс 2-1" },
-					{ position: { lat: 49.832213, lng: 24.029194 }, title: "Офіс 2-2" },
-				],
-			},
-			{
-				elementId: "map3",
-				center: { lat: 46.482526, lng: 30.7233095 },
-				zoom: 11.0,
-				tourStops: [
-					{ position: { lat: 46.482526, lng: 30.7233095 }, title: "Офіс 3-1" },
-					{ position: { lat: 46.47747, lng: 30.73262 }, title: "Офіс 3-2" },
-				],
-			},
-			{
-				elementId: "map4",
-				center: { lat: 50.4501, lng: 30.5234 },
-				zoom: 10.0,
-				tourStops: [
-					{ position: { lat: 50.4501, lng: 30.5234 }, title: "Офіс 4-1" },
-					{ position: { lat: 50.45466, lng: 30.5238 }, title: "Офіс 4-2" },
-				],
-			},
-		];
+	// function initMap() {
+	// 	const mapConfigs = [
+	// 		{
+	// 			elementId: "map",
+	// 			center: { lat: 50.45668411158, lng: 30.50518209469263 },
+	// 			zoom: 10.1,
+	// 			tourStops: [
+	// 				{ position: { lat: 51.64334524926339, lng: 32.82858348658312 }, title: "Офіс 1" },
+	// 				{ position: { lat: 50.45853652359974, lng: 30.411489795412983 }, title: "Офіс 2" },
+	// 			],
+	// 		},
+	// 		{
+	// 			elementId: "map1",
+	// 			center: { lat: 50.4501, lng: 30.5234 },
+	// 			zoom: 10.0,
+	// 			tourStops: [
+	// 				{ position: { lat: 50.4501, lng: 30.5234 }, title: "Офіс 1-1" },
+	// 				{ position: { lat: 50.45466, lng: 30.5238 }, title: "Офіс 1-2" },
+	// 			],
+	// 		},
+	// 		{
+	// 			elementId: "map2",
+	// 			center: { lat: 49.839683, lng: 24.029717 },
+	// 			zoom: 14.0,
+	// 			tourStops: [
+	// 				{ position: { lat: 49.839683, lng: 24.029717 }, title: "Офіс 2-1" },
+	// 				{ position: { lat: 49.832213, lng: 24.029194 }, title: "Офіс 2-2" },
+	// 			],
+	// 		},
+	// 		{
+	// 			elementId: "map3",
+	// 			center: { lat: 46.482526, lng: 30.7233095 },
+	// 			zoom: 11.0,
+	// 			tourStops: [
+	// 				{ position: { lat: 46.482526, lng: 30.7233095 }, title: "Офіс 3-1" },
+	// 				{ position: { lat: 46.47747, lng: 30.73262 }, title: "Офіс 3-2" },
+	// 			],
+	// 		},
+	// 		{
+	// 			elementId: "map4",
+	// 			center: { lat: 50.4501, lng: 30.5234 },
+	// 			zoom: 10.0,
+	// 			tourStops: [
+	// 				{ position: { lat: 50.4501, lng: 30.5234 }, title: "Офіс 4-1" },
+	// 				{ position: { lat: 50.45466, lng: 30.5238 }, title: "Офіс 4-2" },
+	// 			],
+	// 		},
+	// 	];
 
-		mapConfigs.forEach(({ elementId, center, zoom, tourStops }) => {
-			const mapElement = document.getElementById(elementId);
-			if (mapElement) {
-				const map = new google.maps.Map(mapElement, {
-					center,
-					zoom,
-					disableDefaultUI: true,
-					scaleControl: true,
-					zoomControl: true,
-					scrollwheel: false,
-					mapId: "cd19383a34cacd50",
-					styles: [
-						{
-							featureType: "administrative.province",
-							elementType: "geometry.stroke",
-							stylers: [{ visibility: "off" }],
-						},
-					],
-				});
+	// 	mapConfigs.forEach(({ elementId, center, zoom, tourStops }) => {
+	// 		const mapElement = document.getElementById(elementId);
+	// 		if (mapElement) {
+	// 			const map = new google.maps.Map(mapElement, {
+	// 				center,
+	// 				zoom,
+	// 				disableDefaultUI: true,
+	// 				scaleControl: true,
+	// 				zoomControl: true,
+	// 				scrollwheel: false,
+	// 				mapId: "cd19383a34cacd50",
+	// 				styles: [
+	// 					{
+	// 						featureType: "administrative.province",
+	// 						elementType: "geometry.stroke",
+	// 						stylers: [{ visibility: "off" }],
+	// 					},
+	// 				],
+	// 			});
 
-				const infoWindow = new google.maps.InfoWindow();
+	// 			const infoWindow = new google.maps.InfoWindow();
 
-				tourStops.forEach(({ position, title }) => {
-					const mapMarkerPlace = document.createElement("div");
-					mapMarkerPlace.className = "map-marker-place";
+	// 			tourStops.forEach(({ position, title }) => {
+	// 				const mapMarkerPlace = document.createElement("div");
+	// 				mapMarkerPlace.className = "map-marker-place";
 
-					const pinView = new google.maps.marker.PinView();
-					const marker = new google.maps.marker.AdvancedMarkerView({
-						position,
-						map,
-						title: `${title}`,
-						content: mapMarkerPlace,
-					});
+	// 				const pinView = new google.maps.marker.PinView();
+	// 				const marker = new google.maps.marker.AdvancedMarkerView({
+	// 					position,
+	// 					map,
+	// 					title: `${title}`,
+	// 					content: mapMarkerPlace,
+	// 				});
 
-					marker.addListener("click", ({ domEvent, latLng }) => {
-						const { target } = domEvent;
+	// 				marker.addListener("click", ({ domEvent, latLng }) => {
+	// 					const { target } = domEvent;
 
-						infoWindow.close();
-						infoWindow.setContent(marker.title);
-						infoWindow.open(marker.map, marker);
-					});
-				});
+	// 					infoWindow.close();
+	// 					infoWindow.setContent(marker.title);
+	// 					infoWindow.open(marker.map, marker);
+	// 				});
+	// 			});
 
-				map.data.setStyle({
-					strokeColor: "#FF0000",
-					strokeOpacity: 0.5,
-					strokeWeight: 1.5,
-					fillColor: "#dce2ff",
-					fillOpacity: 0.25,
-				});
-			}
-		});
-	}
+	// 			map.data.setStyle({
+	// 				strokeColor: "#FF0000",
+	// 				strokeOpacity: 0.5,
+	// 				strokeWeight: 1.5,
+	// 				fillColor: "#dce2ff",
+	// 				fillOpacity: 0.25,
+	// 			});
+	// 		}
+	// 	});
+	// }
 
 </script>
 
-	<script src="{{ asset('styles/js/jquery.min.js') }}"></script>
+	{{-- <script src="{{ asset('styles/js/jquery.min.js') }}"></script>
 <script src="{{ asset('styles/js/libs.min.js') }}"></script>
-<script src="{{ asset('styles/js/main.min.js') }}"></script>
+<script src="{{ asset('styles/js/main.min.js') }}"></script> --}}
+
+@vite(['resources/js/main.js'])
 </body>
 
 </html>
