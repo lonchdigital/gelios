@@ -128,4 +128,6 @@ return [
     // Default disk to save images
     'images_disk_default' => 'public',
 
+    'icons_path' => 'resources/src/img/icons/icons.svg'
+
 ];

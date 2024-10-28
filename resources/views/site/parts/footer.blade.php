@@ -7,7 +7,7 @@
 						<div class="col-12 col-md d-flex flex-md-column flex-wrap align-items-center align-items-md-start mb-11 mb-md-0">
 							<div class="footer-logo--wrap">
 								<div class="footer-logo mb-0 mb-md-3">
-									<img src="{{ asset('styles/img/logo-footer.png') }}" alt="logo">
+									<img src="{{ asset('static_images/logo-footer.png') }}" alt="logo">
 								</div>
 							</div>
 							<div class="footer-descrp mb-0 mb-md-4 mt-11 mt-md-0">
@@ -18,21 +18,21 @@
 									<li class="list-inline-item">
 										<a href="##">
 											<svg class="i-facebook">
-												<use xlink:href="{{ asset('styles/img/icons/icons.svg#i-facebook') }}"></use>
+												<use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-facebook' }}"></use>
 											</svg>
 										</a>
 									</li>
 									<li class="list-inline-item">
 										<a href="##">
 											<svg class="i-instagram">
-												<use xlink:href="{{ asset('styles/img/icons/icons.svg#i-instagram') }}"></use>
+												<use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-instagram' }}"></use>
 											</svg>
 										</a>
 									</li>
 									<li class="list-inline-item">
 										<a href="##">
 											<svg class="i-youtube">
-												<use xlink:href="{{ asset('styles/img/icons/icons.svg#i-youtube') }}"></use>
+												<use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-youtube' }}"></use>
 											</svg>
 										</a>
 									</li>
