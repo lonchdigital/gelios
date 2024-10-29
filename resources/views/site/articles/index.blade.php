@@ -159,7 +159,7 @@
                                                 {{ Carbon\Carbon::parse($article->created_at)->year }}</div>
                                         </div>
                                         <div class="h3 small mb-2">{{ $article->title }}</div>
-                                        <div class="h6 descrp">{{ $article->description }}</div>
+                                        <div class="h6 descrp">{!! $article->description !!}</div>
                                     </a>
                                 </div>
                             </div>

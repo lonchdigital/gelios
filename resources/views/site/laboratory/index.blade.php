@@ -26,7 +26,7 @@
                                         <div class="content mt-18">
                                             <div class="h1 font-m font-weight-bolder mb-3">{!! $block->title !!}
                                             </div>
-                                            <div class="h5 font-m font-weight-bold mb-3">{{ $block->description }}</div>
+                                            <div class="h5 font-m font-weight-bold mb-3">{!! $block->description !!}</div>
                                             @if(!empty($block->url))
                                                 <a href="{{ $block->url }}" class="btn btn-white font-weight-bold">{{ $block->button }}</a>
                                             @endif
@@ -340,7 +340,7 @@
                     <div class="col col-md-8 col-xl-4">
                         <div class="content">
                             <div class="h2 font-m font-weight-bolder mb-3 mb-lg-5">{{ $page->pageBlocks->where('block', 'prices')->first()->title ?? '' }}</div>
-                            <div class="h5 font-weight-bold mb-8 mb-lg-10">{{ $page->pageBlocks->where('block', 'prices')->first()->description ?? '' }}</div>
+                            <div class="h5 font-weight-bold mb-8 mb-lg-10">{!! $page->pageBlocks->where('block', 'prices')->first()->description ?? '' !!}</div>
                             @if($page->pageBlocks->where('block', 'prices')->first()->url)
                                 <a href="{{ $page->pageBlocks->where('block', 'prices')->first()->url }}" class="btn btn-white font-weight-bold">{{ $page->pageBlocks->where('block', 'prices')->first()->button ?? '' }}</a>
                             @endif

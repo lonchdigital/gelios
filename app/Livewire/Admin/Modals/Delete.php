@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Modals;
 
+use App\Models\Laboratory;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
@@ -32,6 +33,14 @@ class Delete extends Component
                 $this->type = 'user';
                 $this->modalTitle = 'Delete user';
                 $this->modalBody  = 'You really want to delete user: ' . $this->item->name . $this->item->second_name . '?';
+                $this->modalInfo  = '';
+                break;
+
+            case 'laboratory':
+                $this->item = Laboratory::find($modelId);
+                $this->type = 'laboratory';
+                $this->modalTitle = 'Delete laboratory';
+                $this->modalBody  = 'You really want to delete laboratory: ' . $this->item->address . '?';
                 $this->modalInfo  = '';
                 break;
 
@@ -69,6 +78,14 @@ class Delete extends Component
     {
         switch ($this->type) {
             case 'user':
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
+            case 'laboratory':
 
                 $this->item->delete();
 
