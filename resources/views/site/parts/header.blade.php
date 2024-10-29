@@ -169,8 +169,6 @@
                                         <div class="list-inline-item">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-													{{-- @dd( collect($allDirections[3]['children']) ) --}}
-													{{-- @dd( $allDirections[3] ) --}}
                                                     <span>Напрямки</span>
                                                 </div>
                                                 <div class="submenu position-absolute">
@@ -239,13 +237,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="list-inline-item"><a class="nav-link"
-                                                                         href="{{ route('surgery.index') }}">Хірургія</a>
+                                        <div class="list-inline-item">
+                                            <a class="nav-link" href="{{ route('surgery.index') }}">Хірургія</a>
                                         </div>
-                                        <div class="list-inline-item"><a class="nav-link" href="##">Про компанію</a>
+                                        <div class="list-inline-item">
+                                            <a class="nav-link" href="{{ route('about.us.page') }}">Про компанію</a>
                                         </div>
-                                        <div class="hover-aside-menu--item position-right list-inline-item"><a
-                                                    class="nav-link" href="{{ route('promotions.index') }}">Акції</a>
+                                        <div class="hover-aside-menu--item position-right list-inline-item">
+                                            <a class="nav-link" href="{{ route('promotions.index') }}">Акції</a>
                                             <div class="hover-aside-menu--list">
                                                 <div class="hover-aside-menu--inner">
                                                     <div class="hover-aside-menu--content">
@@ -256,13 +255,17 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="list-inline-item"><a class="nav-link"
-                                                                         href="{{ route('doctors.index') }}">Лікарі</a>
+                                        <div class="list-inline-item">
+                                            <a class="nav-link" href="{{ route('doctors.index') }}">Лікарі</a>
                                         </div>
-                                        <div class="list-inline-item"><a class="nav-link" href="##">Стаціонар</a></div>
-                                        <div class="list-inline-item"><a class="nav-link" href="##">Ціни</a></div>
-                                        <div class="hover-aside-menu--item position-left list-inline-item"><a
-                                                    class="nav-link" href="##">Контакти</a>
+                                        <div class="list-inline-item">
+                                            <a class="nav-link" href="{{ route('hospital.show') }}">Стаціонар</a>
+                                        </div>
+                                        <div class="list-inline-item">
+                                            <a class="nav-link" href="{{ route('prices.page') }}">Ціни</a>
+                                        </div>
+                                        <div class="hover-aside-menu--item position-left list-inline-item">
+                                            <a class="nav-link" href="{{ route('contacts.page') }}">Контакти</a>
                                             <div class="hover-aside-menu--list">
                                                 <div class="hover-aside-menu--inner">
                                                     <div class="hover-aside-menu--content">
