@@ -158,7 +158,7 @@
 				<div class="col">
 					<ul class="list-unstyled list-inline d-flex flex-column flex-xxl-row align-items-center justify-content-center justify-content-xxl-between text-center text-xxl-right mb-0">
 						@foreach ($footerPages as $footerPage)
-							<li class="list-inline-item"><a href="{{ route('text.page.show', ['page' => $footerPage->slug]) }}">{{ $footerPage->title }}</a></li>
+							<li class="list-inline-item text-center"><a href="{{ route('text.page.show', ['page' => $footerPage->slug]) }}">{{ $footerPage->title }}</a></li>
 						@endforeach
 					</ul>
 				</div>
