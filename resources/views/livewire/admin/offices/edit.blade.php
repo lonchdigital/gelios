@@ -43,6 +43,11 @@
 
                                 <input type="file"
                                     wire:model="sectionData.media.newImage">
+                                    @error('sectionData.media.newImage')
+                                        <div class="mt-1 text-danger ajaxError">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                             @endif
                         </div>
 
@@ -69,6 +74,12 @@
                                     class="form-control"
                                     wire:model="sectionData.iframe"
                                 >
+
+                            @error('sectionData.iframe')
+                                <div class="mt-1 text-danger ajaxError">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
 
                     </section>
@@ -114,6 +125,11 @@
                                                                 <div class="form-group mb-1">
                                                                     <label for="meta_title_ua">{{ trans('admin.phone') }}</label>
                                                                     <input type="text" wire:model="phones.{{ $index }}.item" name="phones.{{ $index }}.item" value="{{ $phone['item'] }}" class="form-control">
+                                                                    @error("phones.$index.item")
+                                                                        <div class="mt-1 text-danger ajaxError">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
                                                                 </div>
                                                             </div>
                 
@@ -190,6 +206,11 @@
                                                                 <div class="form-group mb-1">
                                                                     <label for="meta_title_ua">{{ trans('admin.email') }}</label>
                                                                     <input type="text" wire:model="emails.{{ $index }}.item" name="emails.{{ $index }}.item" value="{{ $email['item'] }}" class="form-control">
+                                                                    @error("emails.$index.item")
+                                                                        <div class="mt-1 text-danger ajaxError">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
                                                                 </div>
                                                             </div>
                 

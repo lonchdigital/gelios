@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                                 <div class="wrap-img">
-                                    <img class="bg-down" src="{{ asset('styles/img/img-background-1.jpeg') }}"
+                                    <img class="bg-down" src="{{ asset('static_images/img-background-1.jpeg') }}"
                                         alt="img">
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
                                 <div class="wrap-img">
-                                    <img class="bg-down" src="{{ asset('styles/img/img-background-2.jpeg') }}"
+                                    <img class="bg-down" src="{{ asset('static_images/img-background-2.jpeg') }}"
                                         alt="img">
                                 </div>
                             </div>
@@ -88,7 +88,7 @@
                                     </div>
                                 </div>
                                 <div class="wrap-img">
-                                    <img class="bg-down" src="{{ asset('styles/img/img-background-1.jpeg') }}"
+                                    <img class="bg-down" src="{{ asset('static_images/img-background-1.jpeg') }}"
                                         alt="img">
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                                     </div>
                                 </div>
                                 <div class="wrap-img">
-                                    <img class="bg-down" src="{{ asset('styles/img/img-background-2.jpeg') }}"
+                                    <img class="bg-down" src="{{ asset('static_images/img-background-2.jpeg') }}"
                                         alt="img">
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
                                     <div class="h4 font-weight-bolder mb-2">Підпиши <br>декларацію <br>за 5 хвилин</div>
                                 </div>
                                 <div class="wrap-img">
-                                    <img class="bg-down" src="{{ asset('styles/img/img-79.jpeg') }}" alt="img">
+                                    <img class="bg-down" src="{{ asset('static_images/img-79.jpeg') }}" alt="img">
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                                     <div class="h4 font-weight-bolder">Підпиши <br>декларацію <br>за 5 хвилин</div>
                                 </div>
                                 <div class="wrap-img">
-                                    <img class="bg-down" src="{{ asset('styles/img/img-77.jpeg') }}" alt="img">
+                                    <img class="bg-down" src="{{ asset('static_images/img-77.jpeg') }}" alt="img">
                                 </div>
                             </div>
                         </div>
@@ -151,7 +151,7 @@
                                             @if ($article->image)
                                                 <img src="{{ $article->imageUrl }}" alt="{{ $article->title }}">
                                             @else
-                                                <img src="{{ asset('styles/img/articles/article-1.jpeg') }}"
+                                                <img src="{{ asset('static_images/articles/article-1.jpeg') }}"
                                                     alt="img">
                                             @endif
                                             <div class="date-label">{{ Carbon\Carbon::parse($article->created_at)->day }}
@@ -169,7 +169,7 @@
                             <div class="news--item">
                                 <a href="##" class="inner">
                                     <div class="wrap-img mb-4">
-                                        <img src="{{ asset('styles/img/articles/article-2.jpeg') }}" alt="img">
+                                        <img src="{{ asset('static_images/articles/article-2.jpeg') }}" alt="img">
                                         <div class="date-label">13 березня 2024</div>
                                     </div>
                                     <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
@@ -183,7 +183,7 @@
                             <div class="news--item">
                                 <a href="##" class="inner">
                                     <div class="wrap-img mb-4">
-                                        <img src="{{ asset('styles/img/articles/article-3.jpeg') }}" alt="img">
+                                        <img src="{{ asset('static_images/articles/article-3.jpeg') }}" alt="img">
                                         <div class="date-label">13 березня 2024</div>
                                     </div>
                                     <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
@@ -197,7 +197,7 @@
                             <div class="news--item">
                                 <a href="##" class="inner">
                                     <div class="wrap-img mb-4">
-                                        <img src="{{ asset('styles/img/articles/article-1.jpeg') }}" alt="img">
+                                        <img src="{{ asset('static_images/articles/article-1.jpeg') }}" alt="img">
                                         <div class="date-label">13 березня 2024</div>
                                     </div>
                                     <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
@@ -211,7 +211,7 @@
                             <div class="news--item">
                                 <a href="##" class="inner">
                                     <div class="wrap-img mb-4">
-                                        <img src="{{ asset('styles/img/articles/article-2.jpeg') }}" alt="img">
+                                        <img src="{{ asset('static_images/articles/article-2.jpeg') }}" alt="img">
                                         <div class="date-label">13 березня 2024</div>
                                     </div>
                                     <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
@@ -225,7 +225,7 @@
                             <div class="news--item">
                                 <a href="##" class="inner">
                                     <div class="wrap-img mb-4">
-                                        <img src="{{ asset('styles/img/articles/article-3.jpeg') }}" alt="img">
+                                        <img src="{{ asset('static_images/articles/article-3.jpeg') }}" alt="img">
                                         <div class="date-label">13 березня 2024</div>
                                     </div>
                                     <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
@@ -239,7 +239,7 @@
                             <div class="news--item">
                                 <a href="##" class="inner">
                                     <div class="wrap-img mb-4">
-                                        <img src="{{ asset('styles/img/articles/article-1.jpeg') }}" alt="img">
+                                        <img src="{{ asset('static_images/articles/article-1.jpeg') }}" alt="img">
                                         <div class="date-label">13 березня 2024</div>
                                     </div>
                                     <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
@@ -253,7 +253,7 @@
                             <div class="news--item">
                                 <a href="##" class="inner">
                                     <div class="wrap-img mb-4">
-                                        <img src="{{ asset('styles/img/articles/article-2.jpeg') }}" alt="img">
+                                        <img src="{{ asset('static_images/articles/article-2.jpeg') }}" alt="img">
                                         <div class="date-label">13 березня 2024</div>
                                     </div>
                                     <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
@@ -267,7 +267,7 @@
                             <div class="news--item">
                                 <a href="##" class="inner">
                                     <div class="wrap-img mb-4">
-                                        <img src="{{ asset('styles/img/articles/article-3.jpeg') }}" alt="img">
+                                        <img src="{{ asset('static_images/articles/article-3.jpeg') }}" alt="img">
                                         <div class="date-label">13 березня 2024</div>
                                     </div>
                                     <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
@@ -281,7 +281,7 @@
                             <div class="news--item">
                                 <a href="##" class="inner">
                                     <div class="wrap-img mb-4">
-                                        <img src="{{ asset('styles/img/articles/article-1.jpeg') }}" alt="img">
+                                        <img src="{{ asset('static_images/articles/article-1.jpeg') }}" alt="img">
                                         <div class="date-label">13 березня 2024</div>
                                     </div>
                                     <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>

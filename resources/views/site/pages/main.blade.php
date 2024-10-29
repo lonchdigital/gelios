@@ -19,7 +19,7 @@
                                         </div>
                                     </div>
                                     <div class="wrap-img">
-                                        <img class="bg-down" src="{{ asset('styles/img/img-background-1.jpeg') }}" alt="img">
+                                        <img class="bg-down" src="{{ asset('static_images/img-background-1.jpeg') }}" alt="img">
                                     </div>
                                 </div>
                                 <div
@@ -33,7 +33,7 @@
                                         </div>
                                     </div>
                                     <div class="wrap-img">
-                                        <img class="bg-down" src="{{ asset('styles/img/img-background-2.jpeg') }}" alt="img">
+                                        <img class="bg-down" src="{{ asset('static_images/img-background-2.jpeg') }}" alt="img">
                                     </div>
                                 </div>
                                 <div
@@ -47,7 +47,7 @@
                                         </div>
                                     </div>
                                     <div class="wrap-img">
-                                        <img class="bg-down" src="{{ asset('styles/img/img-background-1.jpeg') }}" alt="img">
+                                        <img class="bg-down" src="{{ asset('static_images/img-background-1.jpeg') }}" alt="img">
                                     </div>
                                 </div>
                                 <div
@@ -61,7 +61,7 @@
                                         </div>
                                     </div>
                                     <div class="wrap-img">
-                                        <img class="bg-down" src="{{ asset('styles/img/img-background-2.jpeg') }}" alt="img">
+                                        <img class="bg-down" src="{{ asset('static_images/img-background-2.jpeg') }}" alt="img">
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                                         <div class="h4 font-weight-bolder mb-2">Підпиши <br>декларацію <br>за 5 хвилин</div>
                                     </div>
                                     <div class="wrap-img">
-                                        <img class="bg-down" src="{{ asset('styles/img/img-79.jpeg') }}" alt="img">
+                                        <img class="bg-down" src="{{ asset('static_images/img-79.jpeg') }}" alt="img">
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                                         <div class="h4 font-weight-bolder">Підпиши <br>декларацію <br>за 5 хвилин</div>
                                     </div>
                                     <div class="wrap-img">
-                                        <img class="bg-down" src="{{ asset('styles/img/img-77.jpeg') }}" alt="img">
+                                        <img class="bg-down" src="{{ asset('static_images/img-77.jpeg') }}" alt="img">
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                     <div class="col-12 col-lg-4 mb-4 mb-lg-0">
                         <div class="section-progress--item position-relative h-100 rounded overflow-hidden">
                             <div class="wrap-img">
-                                <img class="bg-down" src="{{ asset('styles/img/img-251.jpeg') }}" alt="img">
+                                <img class="bg-down" src="{{ asset('static_images/img-251.jpeg') }}" alt="img">
                             </div>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                                 <div class="swiper-slide shares--item">
                                     <a href="##" class="inner">
                                         <div class="wrap-img mb-4">
-                                            <img src="{{ asset('styles/img/shares/card-img-1.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/shares/card-img-1.jpeg') }}" alt="img">
                                         </div>
                                         <div class="h3 small font-m">Скористайтеся нашим осіннім обстеженням <div
                                                 class="underline">зі знижкою 15%!</div>
@@ -166,7 +166,7 @@
                                 <div class="swiper-slide shares--item">
                                     <a href="##" class="inner">
                                         <div class="wrap-img mb-4">
-                                            <img src="{{ asset('styles/img/shares/card-img-2.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/shares/card-img-2.jpeg') }}" alt="img">
                                         </div>
                                         <div class="h3 small font-m">Скористайтеся нашим осіннім обстеженням <div
                                                 class="underline">зі знижкою 15%!</div>
@@ -176,7 +176,7 @@
                                 <div class="swiper-slide shares--item">
                                     <a href="##" class="inner">
                                         <div class="wrap-img mb-4">
-                                            <img src="{{ asset('styles/img/shares/card-img-3.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/shares/card-img-3.jpeg') }}" alt="img">
                                         </div>
                                         <div class="h3 small font-m">Скористайтеся нашим осіннім обстеженням <div
                                                 class="underline">зі знижкою 15%!</div>
@@ -207,7 +207,7 @@
                     </div>
                 </div>
                 <div class="wrap-img">
-                    <img class="bg-down" src="{{ asset('styles/img/img-background-2.jpeg') }}" alt="img">
+                    <img class="bg-down" src="{{ asset('static_images/img-background-2.jpeg') }}" alt="img">
                 </div>
             </div>
         </section>
@@ -226,7 +226,7 @@
                                 <div class="doctors--item swiper-slide">
                                     <a href="##" class="inner">
                                         <div class="wrap-img mb-3">
-                                            <img src="{{ asset('styles/img/doctors/doctor-1.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/doctors/doctor-1.jpeg') }}" alt="img">
                                         </div>
                                         <div class="experience-quantity mb-3">Досвід роботи: 8 років</div>
                                         <div class="h4 mb-1 font-weight-bolder">Максаков Дмитро Миколайович</div>
@@ -236,7 +236,7 @@
                                 <div class="doctors--item swiper-slide">
                                     <a href="##" class="inner">
                                         <div class="wrap-img mb-3">
-                                            <img src="{{ asset('styles/img/doctors/doctor-2.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/doctors/doctor-2.jpeg') }}" alt="img">
                                         </div>
                                         <div class="experience-quantity mb-3">Досвід роботи: 8 років</div>
                                         <div class="h4 mb-1 font-weight-bolder">Максаков Дмитро Миколайович</div>
@@ -246,7 +246,7 @@
                                 <div class="doctors--item swiper-slide">
                                     <a href="##" class="inner">
                                         <div class="wrap-img mb-3">
-                                            <img src="{{ asset('styles/img/doctors/doctor-3.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/doctors/doctor-3.jpeg') }}" alt="img">
                                         </div>
                                         <div class="experience-quantity mb-3">Досвід роботи: 8 років</div>
                                         <div class="h4 mb-1 font-weight-bolder">Максаков Дмитро Миколайович</div>
@@ -256,7 +256,7 @@
                                 <div class="doctors--item swiper-slide">
                                     <a href="##" class="inner">
                                         <div class="wrap-img mb-4">
-                                            <img src="{{ asset('styles/img/doctors/doctor-1.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/doctors/doctor-1.jpeg') }}" alt="img">
                                         </div>
                                         <div class="experience-quantity mb-3">Досвід роботи: 8 років</div>
                                         <div class="h4 mb-1 font-weight-bolder">Максаков Дмитро Миколайович</div>
@@ -266,7 +266,7 @@
                                 <div class="doctors--item swiper-slide">
                                     <a href="##" class="inner">
                                         <div class="wrap-img mb-3">
-                                            <img src="{{ asset('styles/img/doctors/doctor-2.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/doctors/doctor-2.jpeg') }}" alt="img">
                                         </div>
                                         <div class="experience-quantity mb-3">Досвід роботи: 8 років</div>
                                         <div class="h4 mb-1 font-weight-bolder">Максаков Дмитро Миколайович</div>
@@ -276,7 +276,7 @@
                                 <div class="doctors--item swiper-slide">
                                     <a href="##" class="inner">
                                         <div class="wrap-img mb-3">
-                                            <img src="{{ asset('styles/img/doctors/doctor-3.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/doctors/doctor-3.jpeg') }}" alt="img">
                                         </div>
                                         <div class="experience-quantity mb-3">Досвід роботи: 8 років</div>
                                         <div class="h4 mb-1 font-weight-bolder">Максаков Дмитро Миколайович</div>
@@ -299,7 +299,7 @@
                     </div>
                     <div class="col-5 col-lg-6 d-none d-lg-flex">
                         <div class="wrap-img">
-                            <img src="{{ asset('styles/img/img-right-b.png') }}" alt="img">
+                            <img src="{{ asset('static_images/img-right-b.png') }}" alt="img">
                         </div>
                     </div>
                 </div>
@@ -320,7 +320,7 @@
                                 <div class="offices--item swiper-slide">
                                     <div class="inner">
                                         <div class="wrap-img mb-4">
-                                            <img src="{{ asset('styles/img/offices/img-office-1.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/offices/img-office-1.jpeg') }}" alt="img">
                                             <div class="city-label">м. Дніпро</div>
                                         </div>
                                         <div class="city-pin mb-3">м. Дніпро, <br>вул. Вернадського, 18а</div>
@@ -337,7 +337,7 @@
                                 <div class="offices--item swiper-slide">
                                     <div class="inner">
                                         <div class="wrap-img mb-4">
-                                            <img src="{{ asset('styles/img/offices/img-office-2.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/offices/img-office-2.jpeg') }}" alt="img">
                                             <div class="city-label">м. Дніпро</div>
                                         </div>
                                         <div class="city-pin mb-3">м. Дніпро, <br>вул. Вернадського, 18а</div>
@@ -354,7 +354,7 @@
                                 <div class="offices--item swiper-slide">
                                     <div class="inner">
                                         <div class="wrap-img mb-4">
-                                            <img src="{{ asset('styles/img/offices/img-office-3.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/offices/img-office-3.jpeg') }}" alt="img">
                                             <div class="city-label">м. Дніпро</div>
                                         </div>
                                         <div class="city-pin mb-3">м. Дніпро, <br>вул. Вернадського, 18а</div>
@@ -371,7 +371,7 @@
                                 <div class="offices--item swiper-slide">
                                     <div class="inner">
                                         <div class="wrap-img mb-4">
-                                            <img src="{{ asset('styles/img/offices/img-office-4.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/offices/img-office-4.jpeg') }}" alt="img">
                                             <div class="city-label">м. Дніпро</div>
                                         </div>
                                         <div class="city-pin mb-3">м. Дніпро, <br>вул. Вернадського, 18а</div>
@@ -388,7 +388,7 @@
                                 <div class="offices--item swiper-slide">
                                     <div class="inner">
                                         <div class="wrap-img mb-4">
-                                            <img src="{{ asset('styles/img/offices/img-office-3.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/offices/img-office-3.jpeg') }}" alt="img">
                                             <div class="city-label">м. Дніпро</div>
                                         </div>
                                         <div class="city-pin mb-3">м. Дніпро, <br>вул. Вернадського, 18а</div>
@@ -405,7 +405,7 @@
                                 <div class="offices--item swiper-slide">
                                     <div class="inner">
                                         <div class="wrap-img mb-4">
-                                            <img src="{{ asset('styles/img/offices/img-office-4.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/offices/img-office-4.jpeg') }}" alt="img">
                                             <div class="city-label">м. Дніпро</div>
                                         </div>
                                         <div class="city-pin mb-3">м. Дніпро, <br>вул. Вернадського, 18а</div>
@@ -440,7 +440,7 @@
                                 <div class="reviews--item swiper-slide">
                                     <div class="inner">
                                         <div class="wrap-img">
-                                            <img src="{{ asset('styles/img/users/user-1.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/users/user-1.jpeg') }}" alt="img">
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mb-2">
                                             <div class="user-name h4 font-weight-bolder">Вікторія</div>
@@ -459,7 +459,7 @@
                                 <div class="reviews--item swiper-slide">
                                     <div class="inner">
                                         <div class="wrap-img">
-                                            <img src="{{ asset('styles/img/users/user-2.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/users/user-2.jpeg') }}" alt="img">
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mb-2">
                                             <div class="user-name h4 font-weight-bolder">Вікторія</div>
@@ -478,7 +478,7 @@
                                 <div class="reviews--item swiper-slide">
                                     <div class="inner">
                                         <div class="wrap-img">
-                                            <img src="{{ asset('styles/img/users/user-1.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/users/user-1.jpeg') }}" alt="img">
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mb-2">
                                             <div class="user-name h4 font-weight-bolder">Вікторія</div>
@@ -497,7 +497,7 @@
                                 <div class="reviews--item swiper-slide">
                                     <div class="inner">
                                         <div class="wrap-img">
-                                            <img src="{{ asset('styles/img/users/user-2.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/users/user-2.jpeg') }}" alt="img">
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mb-2">
                                             <div class="user-name h4 font-weight-bolder">Вікторія</div>
@@ -575,7 +575,7 @@
                                 <div class="swiper-slide news--item">
                                     <a href="##" class="inner">
                                         <div class="wrap-img mb-4">
-                                            <img src="{{ asset('styles/img/articles/article-1.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/articles/article-1.jpeg') }}" alt="img">
                                             <div class="date-label">13 березня 2024</div>
                                         </div>
                                         <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
@@ -587,7 +587,7 @@
                                 <div class="swiper-slide news--item">
                                     <a href="##" class="inner">
                                         <div class="wrap-img mb-4">
-                                            <img src="{{ asset('styles/img/articles/article-2.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/articles/article-2.jpeg') }}" alt="img">
                                             <div class="date-label">13 березня 2024</div>
                                         </div>
                                         <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
@@ -599,7 +599,7 @@
                                 <div class="swiper-slide news--item">
                                     <a href="##" class="inner">
                                         <div class="wrap-img mb-4">
-                                            <img src="{{ asset('styles/img/articles/article-3.jpeg') }}" alt="img">
+                                            <img src="{{ asset('static_images/articles/article-3.jpeg') }}" alt="img">
                                             <div class="date-label">13 березня 2024</div>
                                         </div>
                                         <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
@@ -677,7 +677,7 @@
                     </div>
                     <div class="col-5 col-lg-6 d-none d-lg-flex">
                         <div class="wrap-img">
-                            <img src="{{ asset('styles/img/img-right-b.png') }}" alt="img">
+                            <img src="{{ asset('static_images/img-right-b.png') }}" alt="img">
                         </div>
                     </div>
                 </div>

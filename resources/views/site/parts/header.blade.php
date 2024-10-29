@@ -71,7 +71,7 @@
                                 </li>
                                 <li class="list-inline-item">
                                     <button type="button" class="contact-details" data-toggle="modal"
-                                            data-target="#popup--contacts">Переглянути
+                                        data-target="#popup--contacts">Переглянути
                                     </button>
                                 </li>
                             </ul>
@@ -79,7 +79,7 @@
                         <div class="item d-flex justify-content-between align-items-center mr-xxl-1">
                             <div class="d-xxl-none">
                                 <button type="button" class="btn btn-blue" data-toggle="modal"
-                                        data-target="#popup--sign-up-appointment">Записатися на прийом
+                                    data-target="#popup--sign-up-appointment">Записатися на прийом
                                 </button>
                             </div>
                             <div class="languages list-inline-item">
@@ -89,7 +89,7 @@
                                             <span>{{ LaravelLocalization::getCurrentLocale() }}</span>
                                         </div>
                                         <svg class="i-arrow-down">
-                                            <use xlink:href="{{ asset('styles/img/icons/icons.svg#i-arrow-small-down') }}"></use>
+                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-arrow-small-down' }}"></use>
                                         </svg>
                                     </div>
                                     <ul class="submenu list-unstyled mb-0 position-absolute py-1 px-2">
@@ -121,7 +121,7 @@
                     <nav class="navbar navbar-expand-lg flex-column p-0">
                         <div class="inner w-100">
                             <div class="content d-flex justify-content-between">
-                                <a class="navbar-brand p-0" href="/"><img src="{{ asset('styles/img/logo.png') }}"
+                                <a class="navbar-brand p-0" href="/"><img src="{{ asset('static_images/logo.png') }}"
                                                                           alt="logo"></a>
                                 <div class="navbar-nav--mob d-flex d-lg-none justify-content-between">
                                     <div class="languages">
@@ -131,7 +131,7 @@
                                                     <span>Ua</span>
                                                 </div>
                                                 <svg class="i-arrow-down">
-                                                    <use xlink:href="{{ asset('styles/img/icons/icons.svg#i-arrow-small-down') }}"></use>
+                                                    <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-arrow-small-down' }}"></use>
                                                 </svg>
                                             </div>
                                             <ul class="submenu list-unstyled mb-0 position-absolute py-1 px-2">
@@ -169,8 +169,6 @@
                                         <div class="list-inline-item">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-													{{-- @dd( collect($allDirections[3]['children']) ) --}}
-													{{-- @dd( $allDirections[3] ) --}}
                                                     <span>Напрямки</span>
                                                 </div>
                                                 <div class="submenu position-absolute">
@@ -239,13 +237,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="list-inline-item"><a class="nav-link"
-                                                                         href="{{ route('surgery.index') }}">Хірургія</a>
+                                        <div class="list-inline-item">
+                                            <a class="nav-link" href="{{ route('surgery.index') }}">Хірургія</a>
                                         </div>
-                                        <div class="list-inline-item"><a class="nav-link" href="##">Про компанію</a>
+                                        <div class="list-inline-item">
+                                            <a class="nav-link" href="{{ route('about.us.page') }}">Про компанію</a>
                                         </div>
-                                        <div class="hover-aside-menu--item position-right list-inline-item"><a
-                                                    class="nav-link" href="{{ route('promotions.index') }}">Акції</a>
+                                        <div class="hover-aside-menu--item position-right list-inline-item">
+                                            <a class="nav-link" href="{{ route('promotions.index') }}">Акції</a>
                                             <div class="hover-aside-menu--list">
                                                 <div class="hover-aside-menu--inner">
                                                     <div class="hover-aside-menu--content">
@@ -256,13 +255,17 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="list-inline-item"><a class="nav-link"
-                                                                         href="{{ route('doctors.index') }}">Лікарі</a>
+                                        <div class="list-inline-item">
+                                            <a class="nav-link" href="{{ route('doctors.index') }}">Лікарі</a>
                                         </div>
-                                        <div class="list-inline-item"><a class="nav-link" href="##">Стаціонар</a></div>
-                                        <div class="list-inline-item"><a class="nav-link" href="##">Ціни</a></div>
-                                        <div class="hover-aside-menu--item position-left list-inline-item"><a
-                                                    class="nav-link" href="##">Контакти</a>
+                                        <div class="list-inline-item">
+                                            <a class="nav-link" href="{{ route('hospital.show') }}">Стаціонар</a>
+                                        </div>
+                                        <div class="list-inline-item">
+                                            <a class="nav-link" href="{{ route('prices.page') }}">Ціни</a>
+                                        </div>
+                                        <div class="hover-aside-menu--item position-left list-inline-item">
+                                            <a class="nav-link" href="{{ route('contacts.page') }}">Контакти</a>
                                             <div class="hover-aside-menu--list">
                                                 <div class="hover-aside-menu--inner">
                                                     <div class="hover-aside-menu--content">
@@ -277,7 +280,7 @@
                                     </div>
                                     <div class="navbar-nav--other d-none d-xxl-flex align-items-center">
                                         <button type="button" class="btn btn-blue" data-toggle="modal"
-                                                data-target="#popup--sign-up-appointment">Записатися на прийом
+                                            data-target="#popup--sign-up-appointment">Записатися на прийом
                                         </button>
                                     </div>
                                 </div>
@@ -423,7 +426,7 @@
                                         </div>
                                         <div class="navbar-nav--other mb-5">
                                             <button type="button" class="btn btn-blue w-100 mb-5" data-toggle="modal"
-                                                    data-target="#popup--sign-up-appointment">Записатися на прийом
+                                            data-target="#popup--sign-up-appointment">Записатися на прийом
                                             </button>
                                             <div class="contact-offices">
                                                 <div class="contact-offices--label">Переглянути філії:</div>

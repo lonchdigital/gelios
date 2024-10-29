@@ -148,16 +148,86 @@ class Edit extends Component
     }
 
 
-    protected function rules()
+    protected function rules(): array
     {
-        return [
+        $rules = [
+            'sectionData.iframe' => [
+                'required',
+                'string',
+            ],
+            'sectionData.media.newImage' => [
+                'nullable',
+                'mimes:jpeg,jpg,png',
+                'image',
+            ],
 
+            'phones.*.item' => [
+                'required',
+                'string',
+            ],
+            'emails.*.item' => [
+                'required',
+                'email',
+            ],
+
+            'gallery.*.newImage' => [
+                'nullable',
+                'mimes:jpeg,jpg,png',
+                'image',
+            ],
         ];
+
+        foreach (config('translatable.locales') as $locale) {
+            $rules['sectionData.city.' . $locale] = [
+                'required',
+                'string',
+                'max:255'
+            ];
+            $rules['sectionData.street.' . $locale] = [
+                'required',
+                'string',
+                'max:255'
+            ];
+            $rules['sectionData.title.' . $locale] = [
+                'required',
+                'string',
+                'max:255'
+            ];
+            $rules['sectionData.text.' . $locale] = [
+                'required',
+                'string',
+            ];
+        }
+
+        return $rules;
+    }
+
+    protected function attributes()
+    {
+        $attributes = [];
+
+        $attributes['sectionData.iframe'] = 'iframe';
+        $attributes['phones.*.item'] = trans('admin.phone');
+        $attributes['emails.*.item'] = trans('admin.email');
+
+        foreach (config('translatable.locales') as $locale) {
+            $attributes['sectionData.city.' . $locale] = trans('admin.city') . ' ('. $locale .')';
+            $attributes['sectionData.street.' . $locale] = trans('admin.street') . ' ('. $locale .')';
+            $attributes['sectionData.title.' . $locale] = trans('admin.title') . ' ('. $locale .')';
+            $attributes['sectionData.text.' . $locale] = trans('admin.text') . ' ('. $locale .')';
+        }
+
+        return $attributes;
+    }
+
+    public function getValidationAttributes()
+    {
+        return $this->attributes();
     }
 
     public function save()
     {
-        // $this->validate();
+        $this->validate();
         
         $currentContact = $this->contactsService->updateContact($this->sectionData, $this->contact);
         

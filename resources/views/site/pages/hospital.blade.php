@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div class="wrap-img">
-                            <img class="bg-down" src="{{ asset('styles/img/img-background-1.jpeg') }}" alt="img">
+                            <img class="bg-down" src="{{ asset('static_images/img-background-1.jpeg') }}" alt="img">
                         </div>
                     </div>
                 </div>
