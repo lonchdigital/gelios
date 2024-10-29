@@ -2,14 +2,16 @@
     <div class="col-12">
         <div class="card mb-30">
             <div class="card-body pb-0">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                
                 <form wire:submit.prevent="save">
                     <section class="mb-50">
                         <h6 class="card-title">
-                            @if (!empty($this->checkUp->id))
-                                Редагування Check Up
-                            @else
-                                Створення Check Up
-                            @endif
+                            Редагування Хедера та Футера
                         </h6>
 
                         <div class="row">
@@ -24,38 +26,10 @@
                                                         <div class="row mb-3">
                                                             <div class="col-md-12">
                                                                 <div class="tab-content">
-                                                                    <div id="uaTitle"
-                                                                        class="multilang-content tab-pane fade active show">
-                                                                        <div class="form-group mb-1">
-                                                                            <label>Заголовок
-                                                                                <strong>UA</strong>
-                                                                            </label>
-                                                                            <input type="text" wire:model="uaTitle"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @error('uaTitle')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            {{-- <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Опис
+                                                                            <label>Опис в футері
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <textarea wire:model="uaDescription" class="form-control"></textarea>
@@ -71,7 +45,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div> --}}
+                                            </div>
                                         @endif
 
                                         @if ($this->activeLocale == 'ru')
@@ -81,38 +55,10 @@
                                                         <div class="row mb-3">
                                                             <div class="col-md-12">
                                                                 <div class="tab-content">
-                                                                    <div id="uaTitle"
-                                                                        class="multilang-content tab-pane fade active show">
-                                                                        <div class="form-group mb-1">
-                                                                            <label>Заголовок
-                                                                                <strong>RU</strong>
-                                                                            </label>
-                                                                            <input type="text" wire:model="ruTitle"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @error('ruTitle')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            {{-- <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Опис
+                                                                            <label>Опис в футері
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <textarea wire:model="ruDescription" class="form-control"></textarea>
@@ -128,7 +74,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div> --}}
+                                            </div>
                                         @endif
 
                                         @if ($this->activeLocale == 'en')
@@ -138,45 +84,17 @@
                                                         <div class="row mb-3">
                                                             <div class="col-md-12">
                                                                 <div class="tab-content">
-                                                                    <div id="uaTitle"
-                                                                        class="multilang-content tab-pane fade active show">
-                                                                        <div class="form-group mb-1">
-                                                                            <label>Заголовок
-                                                                                <strong>EN</strong>
-                                                                            </label>
-                                                                            <input type="text" wire:model="enTitle"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @error('enTitle')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            {{-- <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Опис
+                                                                            <label>Текст
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <textarea wire:model="enDescription" class="form-control"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @error('endescription')
+                                                                @error('enDescription')
                                                                     <div class="mt-1 text-danger ajaxError">
                                                                         {{ $message }}
                                                                     </div>
@@ -185,26 +103,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div> --}}
-                                        @endif
-
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <x-admin.multilanguage-text-area-rich
-                                                        :is-required="false"
-                                                        :label="'Опис'"
-                                                        field-name="description"
-                                                        live-wire-field="description"
-                                                        :values="[
-                                                            'ua' => $this->uaDescription,
-                                                            'ru' => $this->ruDescription,
-                                                            'en' => $this->enDescription
-                                                        ]"
-                                                    />
-                                                </div>
                                             </div>
-                                        </div>
+                                        @endif
 
                                         <div class="col-md-12">
                                             <div class="row">
@@ -215,14 +115,14 @@
                                                                 <div id="uaTitle"
                                                                     class="multilang-content tab-pane fade active show">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Ціна
+                                                                        <label>Посилання на Facebook
                                                                         </label>
-                                                                        <input type="text" wire:model="price"
+                                                                        <input type="text" wire:model="facebook"
                                                                             class="form-control">
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            @error('price')
+                                                            @error('facebook')
                                                                 <div class="mt-1 text-danger ajaxError">
                                                                     {{ $message }}
                                                                 </div>
@@ -242,14 +142,41 @@
                                                                 <div id="uaTitle"
                                                                     class="multilang-content tab-pane fade active show">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Нова ціна
+                                                                        <label>Посилання на Instagram
                                                                         </label>
-                                                                        <input type="text" wire:model="newPrice"
+                                                                        <input type="text" wire:model="inst"
                                                                             class="form-control">
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            @error('newPrice')
+                                                            @error('inst')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div id="uaTitle"
+                                                                    class="multilang-content tab-pane fade active show">
+                                                                    <div class="form-group mb-1">
+                                                                        <label>Посилання на YouTube
+                                                                        </label>
+                                                                        <input type="text" wire:model="youtube"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('youtube')
                                                                 <div class="mt-1 text-danger ajaxError">
                                                                     {{ $message }}
                                                                 </div>
@@ -269,30 +196,71 @@
                                                                 <div
                                                                     class="multilang-content tab-pane fade active show ">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Зображення</label>
-                                                                        <input type="file" wire:model="image"
+                                                                        <label>Зображення в Хедері</label>
+                                                                        <input type="file" wire:model="headerImage"
                                                                             class="form-control">
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            @error('uaDescription')
+                                                            @error('headerImage')
                                                                 <div class="mt-1 text-danger ajaxError">
                                                                     {{ $message }}
                                                                 </div>
                                                             @enderror
 
-                                                            @if ($this->imageTemporary)
+                                                            @if ($this->headerImageTemporary)
                                                                 <div class="flex">
-                                                                    <img src="{{ $this->imageTemporary }}"
+                                                                    <img src="{{ $this->headerImageTemporary }}"
                                                                         width="60">
-                                                                    <a wire:click="deleteImage()"
+                                                                    <a wire:click="deleteHeaderImage()"
                                                                         style="cursor: pointer;">
                                                                         <i class="ti-close font-weight-bold mr-2"></i>
                                                                         Видалити зображення
                                                                     </a>
                                                                 </div>
-                                                            @elseif(!empty($this->checkUp->image))
-                                                                <img src="{{ $this->checkUp->imageUrl }}"
+                                                            @elseif(!empty($this->headImage->value))
+                                                                <img src="{{ $this->headImage->imageUrl }}"
+                                                                    width="60">
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div
+                                                                    class="multilang-content tab-pane fade active show ">
+                                                                    <div class="form-group mb-1">
+                                                                        <label>Зображення в Футері</label>
+                                                                        <input type="file" wire:model="footerImage"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('footerImage')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+
+                                                            @if ($this->footerImageTemporary)
+                                                                <div class="flex">
+                                                                    <img src="{{ $this->footerImageTemporary }}"
+                                                                        width="60">
+                                                                    <a wire:click="deleteFooterImage()"
+                                                                        style="cursor: pointer;">
+                                                                        <i class="ti-close font-weight-bold mr-2"></i>
+                                                                        Видалити зображення
+                                                                    </a>
+                                                                </div>
+                                                            @elseif(!empty($this->footImage->value))
+                                                                <img src="{{ $this->footImage->imageUrl }}"
                                                                     width="60">
                                                             @endif
                                                         </div>
@@ -306,60 +274,9 @@
                         </div>
                     </section>
 
-                    @if(!empty($this->checkUp->id))
-                        {{-- <div class="col-12"> --}}
-                            <div class="card mb-30">
-                                <div class="card-body pb-0">
-                                    <div class="d-flex justify-content-between align-items-center mb-20">
-                                        <h6 class="card-title mb-0">Список програм</h6>
-
-                                        <a href="{{ route('admin.check-ups.create-program', ['checkUp' => $this->checkUp]) }}" class="btn btn-primary waves-effect waves-light float-right mb-3">
-                                            + Додати програму
-                                        </a>
-                                    </div>
-
-                                    <div class="table-responsive art-cars-list">
-                                        <table class="table table-nowrap">
-                                            <thead>
-                                                <tr>
-                                                    <th>Назва</th>
-                                                    <th style="text-align: right">Дії</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach($this->checkUp->checkUpPrograms as $program)
-                                                <tr>
-                                                    <td>{{ $program->title }}</td>
-                                                    <td style="text-align: right">
-                                                        <a href="{{ route('admin.check-ups.edit-program', ['checkUp' => $checkUp, 'program' => $program]) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        {{-- </div> --}}
-                    @endif
-
                     <button type="submit" class="btn btn-primary mr-2 mb-3">Зберегти</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-@push('scripts')
-    <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
-    <script type="text/javascript">
-        document.addEventListener('livewire:load', () => {
-            initQuillEditors((quill, fieldName, language) => {
-                quill.on('text-change', function() {
-                    let value = quill.root.innerHTML;
-                    @this.set(`${fieldName}`, value);
-                });
-            });
-        });
-    </script>
-@endpush

@@ -24,7 +24,7 @@
                                     <div>
                                         <div class="h2 font-m font-weight-bolder text-blue mb-5">{{ $page->pageBlocks->first()->title ?? '' }}</div>
                                         <div class="content os-scrollbar-overflow text-justify">
-                                            <p>{{ $page->pageBlocks->first()->description ?? '' }}</p>
+                                            <p>{!! $page->pageBlocks->first()->description ?? '' !!}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-12 col-lg-9">
-                                                <p>{{ $vacancy->description }}</p>
+                                                <p>{!! $vacancy->description !!}</p>
                                             </div>
                                         </div>
                                         <div class="row">

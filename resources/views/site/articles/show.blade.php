@@ -29,7 +29,7 @@
                                     <div class="content mt-16">
                                         <div class="h1 font-m font-weight-bolder mb-3">{{ $article->title }}
                                         </div>
-                                        <div class="h5 font-m font-weight-bold mb-3">{{ $article->description }}</div>
+                                        <div class="h5 font-m font-weight-bold mb-3">{!! $article->description !!}</div>
                                     </div>
                                 </div>
                                 <div class="wrap-img">
@@ -44,7 +44,7 @@
                                         <div class="content mt-16">
                                             <div class="h1 font-m font-weight-bolder mb-3">{{ $article->title }}
                                             </div>
-                                            <div class="h5 font-m font-weight-bold mb-3">{{ $article->description }}</div>
+                                            <div class="h5 font-m font-weight-bold mb-3">{!! $article->description !!}</div>
                                         </div>
                                     </div>
                                     <div class="wrap-img">
@@ -224,7 +224,7 @@
                                             <div class="date-label">{{ Carbon\Carbon::parse($relatedArticle->created_at)->day }}  {{ Carbon\Carbon::parse($relatedArticle->created_at)->translatedFormat('F') }} {{ Carbon\Carbon::parse($relatedArticle->created_at)->year }}</div>
                                         </div>
                                         <div class="h3 small mb-2">{{ $relatedArticle->title }}</div>
-                                        <div class="descrp">{{ $relatedArticle->description }}</div>
+                                        <div class="descrp">{!! $relatedArticle->description !!}</div>
                                     </a>
                                 </div>
                             @empty

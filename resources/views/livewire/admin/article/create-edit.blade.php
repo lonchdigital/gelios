@@ -239,17 +239,6 @@
                                                             'en' => $this->enDescription
                                                         ]"
                                                     />
-                                                    {{-- <x-admin.multilanguage-text-area
-                                                                :is-required="false"
-                                                                :label="trans('admin.description')"
-                                                                field-name="description"
-                                                                live-wire-field="description"
-                                                                :values="[
-                                                                    'ua' => $this->uaDescription,
-                                                                    'ru' => $this->ruDescription,
-                                                                    'en' => $this->enDescription
-                                                                ]"
-                                                            /> --}}
                                                 </div>
                                             </div>
                                         </div>

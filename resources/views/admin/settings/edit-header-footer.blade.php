@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="container-fluid">
-        @livewire('admin.laboratory.create-edit')
+        @livewire('admin.settings.edit-footer-header')
     </div>
 @endsection

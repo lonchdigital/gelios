@@ -46,8 +46,8 @@
                                                 </div>
                                             </div>
 
-                                            @if($this->block->block == 'prices' || $this->block->key == 'slider')
-                                                <div class="col-md-12">
+                                            {{-- @if($this->block->block == 'prices' || $this->block->key == 'slider') --}}
+                                                {{-- <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="row mb-3">
@@ -72,7 +72,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 <div class="col-md-12">
                                                     <div class="row">
@@ -101,7 +101,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            @endif
+                                            {{-- @endif --}}
                                         @endif
 
                                         @if ($this->activeLocale == 'ru')
@@ -133,8 +133,8 @@
                                                 </div>
                                             </div>
 
-                                            @if($this->block->block == 'prices' || $this->block->key == 'slider')
-                                                <div class="col-md-12">
+                                            {{-- @if($this->block->block == 'prices' || $this->block->key == 'slider') --}}
+                                                {{-- <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="row mb-3">
@@ -159,7 +159,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 <div class="col-md-12">
                                                     <div class="row">
@@ -188,7 +188,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            @endif
+                                            {{-- @endif --}}
                                         @endif
 
                                         @if ($this->activeLocale == 'en')
@@ -220,8 +220,8 @@
                                                 </div>
                                             </div>
 
-                                            @if($this->block->block == 'prices' || $this->block->key == 'slider')
-                                                <div class="col-md-12">
+                                            {{-- @if($this->block->block == 'main' || $this->block->block == 'prices' || $this->block->key == 'slider') --}}
+                                                {{-- <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="row mb-3">
@@ -246,7 +246,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 <div class="col-md-12">
                                                     <div class="row">
@@ -275,10 +275,28 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            @endif
+                                            {{-- @endif --}}
                                         @endif
 
-                                        @if($this->block->block == 'prices' || $this->block->key == 'slider')
+                                        {{-- @if($this->block->block == 'prices' || $this->block->key == 'slider') --}}
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <x-admin.multilanguage-text-area-rich
+                                                            :is-required="false"
+                                                            :label="'Опис'"
+                                                            field-name="description"
+                                                            live-wire-field="description"
+                                                            :values="[
+                                                                'ua' => $this->uaDescription,
+                                                                'ru' => $this->ruDescription,
+                                                                'en' => $this->enDescription
+                                                            ]"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -346,7 +364,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endif
+                                        {{-- @endif --}}
                                     </div>
                                 </div>
                             </div>
@@ -359,3 +377,17 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
+    <script type="text/javascript">
+        document.addEventListener('livewire:load', () => {
+            initQuillEditors((quill, fieldName, language) => {
+                quill.on('text-change', function() {
+                    let value = quill.root.innerHTML;
+                    @this.set(`${fieldName}`, value);
+                });
+            });
+        });
+    </script>
+@endpush

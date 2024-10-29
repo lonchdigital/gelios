@@ -25,7 +25,7 @@
                                     {{ $page->pageBlocks->where('block', 'main')->first()->title ?? '' }}
                                 </div>
                                 <div class="h5 font-weight-bold">
-                                    {{ $page->pageBlocks->where('block', 'main')->first()->description ?? '' }}</div>
+                                    {!! $page->pageBlocks->where('block', 'main')->first()->description ?? '' !!}</div>
                             </div>
                         </div>
                         <div class="wrap-img">
@@ -116,13 +116,13 @@
                         <div class="col-6 mb-3 mb-sm-4 mb-lg-5">
                             <div class="section-progress--item item-small bg-blue p-2 p-lg-3 p-xl-6 rounded">
                                 <div class="quantity h2 font-m font-weight-bolder mb-2">{{ $page->pageBlocks->where('block', 'second')->where('key', 'first')->first()->title ?? '' }}</div>
-                                <div class="h5 text-uppercase">{{ $page->pageBlocks->where('block', 'second')->where('key', 'first')->first()->description ?? '' }}</div>
+                                <div class="h5 text-uppercase">{!! $page->pageBlocks->where('block', 'second')->where('key', 'first')->first()->description ?? '' !!}</div>
                             </div>
                         </div>
                         <div class="col-6 mb-3 mb-sm-4 mb-lg-5">
                             <div class="section-progress--item item-small bg-blue p-2 p-lg-3 p-xl-6 rounded">
                                 <div class="quantity h2 font-m font-weight-bolder mb-2">{{ $page->pageBlocks->where('block', 'second')->where('key', 'second')->first()->title ?? '' }}</div>
-                                <div class="h5 text-uppercase">{{ $page->pageBlocks->where('block', 'second')->where('key', 'second')->first()->description ?? '' }}</div>
+                                <div class="h5 text-uppercase">{!! $page->pageBlocks->where('block', 'second')->where('key', 'second')->first()->description ?? '' !!}</div>
                             </div>
                         </div>
                     </div>
@@ -130,13 +130,13 @@
                         <div class="col-6">
                             <div class="section-progress--item item-small bg-blue p-2 p-lg-3 p-xl-6 rounded">
                                 <div class="quantity h2 font-m font-weight-bolder mb-2">{{ $page->pageBlocks->where('block', 'second')->where('key', 'third')->first()->title ?? '' }}</div>
-                                <div class="h5 text-uppercase">{{ $page->pageBlocks->where('block', 'second')->where('key', 'third')->first()->description ?? '' }}</div>
+                                <div class="h5 text-uppercase">{!! $page->pageBlocks->where('block', 'second')->where('key', 'third')->first()->description ?? '' !!}</div>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="section-progress--item item-small bg-blue p-2 p-lg-3 p-xl-6 rounded">
                                 <div class="quantity h2 font-m font-weight-bolder mb-2">{{ $page->pageBlocks->where('block', 'second')->where('key', 'fourth')->first()->title ?? '' }}</div>
-                                <div class="h5 text-uppercase">{{ $page->pageBlocks->where('block', 'second')->where('key', 'fourth')->first()->description ?? '' }}</div>
+                                <div class="h5 text-uppercase">{!! $page->pageBlocks->where('block', 'second')->where('key', 'fourth')->first()->description ?? '' !!}</div>
                             </div>
                         </div>
                     </div>
@@ -170,7 +170,7 @@
                                                     <div class="col-12 col-lg-6">
                                                         <div class="content-wrap">
                                                             <div class="content os-scrollbar-overflow">
-                                                                <p>{{ $block->description ?? '' }}</p>
+                                                                <p>{!! $block->description ?? '' !!}</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -191,7 +191,7 @@
                                                     <div class="col-12 col-lg-6">
                                                         <div class="content-wrap">
                                                             <div class="content os-scrollbar-overflow">
-                                                                <p>{{ $block->description ?? '' }}</p>
+                                                                <p>{!! $block->description ?? '' !!}</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -621,7 +621,7 @@
                         <div class="col-12 col-lg-6">
                             <div class="content-wrap">
                                 <div class="content os-scrollbar-overflow">
-                                    <p>{{ $block2->description }}</p>
+                                    <p>{!! $block2->description !!}</p>
                                 </div>
                             </div>
                         </div>
@@ -638,7 +638,7 @@
                         <div class="col-12 col-lg-6">
                             <div class="content-wrap">
                                 <div class="content os-scrollbar-overflow">
-                                    <p>{{ $block2->description }}</p>
+                                    <p>{!! $block2->description !!}</p>
                                 </div>
                             </div>
                         </div>

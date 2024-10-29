@@ -21,6 +21,8 @@ class CreateEdit extends Component
 
     public string $activeLocale;
 
+    public string $description;
+
     public string $uaTitle = '';
 
     public string $enTitle = '';
@@ -51,6 +53,8 @@ class CreateEdit extends Component
 
     public function mount(Page $page, PageBlock $block = null)
     {
+        $this->dispatch('livewire:load');
+
         $this->page = $page;
         $this->block = $block ?? new PageBlock();
         $this->activeLocale = app()->getLocale();
@@ -70,6 +74,9 @@ class CreateEdit extends Component
         $this->uaButton = $translations['ua']->button ?? '';
         $this->enButton = $translations['en']->button ?? '';
         $this->ruButton = $translations['ru']->button ?? '';
+
+        $this->block->block = $block->block ?? 'main';
+        $this->block->key = $block->key ?? 'slider';
     }
 
     public function languageSwitched($lang)
@@ -81,17 +88,17 @@ class CreateEdit extends Component
     {
         return [
             'uaDescription' => [
-                'required',
+                'nullable',
                 'string',
             ],
 
             'enDescription' => [
-                'required',
+                'nullable',
                 'string',
             ],
 
             'ruDescription' => [
-                'required',
+                'nullable',
                 'string',
             ],
 
@@ -111,22 +118,22 @@ class CreateEdit extends Component
             ],
 
             'uaButton' => [
-                'required',
+                'nullable',
                 'string',
             ],
 
             'enButton' => [
-                'required',
+                'nullable',
                 'string',
             ],
 
             'ruButton' => [
-                'required',
+                'nullable',
                 'string',
             ],
 
             'link' => [
-                'required',
+                'nullable',
                 'string',
             ],
 
@@ -136,6 +143,21 @@ class CreateEdit extends Component
                 'image',
             ],
         ];
+    }
+
+    public function updatedDescription($val)
+    {
+        switch ($this->activeLocale) {
+            case 'ua':
+                $this->uaDescription = $val;
+                break;
+            case 'ru':
+                $this->ruDescription = $val;
+                break;
+            case 'en':
+                $this->enDescription = $val;
+                break;
+        }
     }
 
     public function updatedImage($val)

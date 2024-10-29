@@ -196,6 +196,8 @@ Route::group([
             Route::get('/edit-block/{block}', [PageController::class, 'mainPageEdit'])->name('edit-block');
         });
 
+        Route::get('/header-footer', [PageController::class, 'editHeaderFooter'])->name('admin.header-footer.edit');
+
         Route::prefix('/vacancies')->name('admin.vacancies.')->group(function() {
             Route::get('/', [VacancyController::class, 'index'])->name('index');
 

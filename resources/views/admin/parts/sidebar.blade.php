@@ -213,12 +213,17 @@
 
                     <li class="treeview @if(
                         Route::is('admin.main-page.*')
-                        || Route::is('admin.main-page.*')
+                        || Route::is('admin.header-footer.*')
                     ) menu-open @endif">
                         <a href="javascript:void(0)"><i class="fa fa-hospital-o"></i> <span>Сторінки</span> <i class="fa fa-angle-right"></i></a>
-                        <ul class="treeview-menu" @if(Route::is('admin.laboratory-cities.*') || Route::is('admin.laboratories.*')) style="display: block;" @else style="display: none;" @endif>
+                        <ul class="treeview-menu" @if(Route::is('admin.main-page.*') || Route::is('admin.header-footer.*')) style="display: block;" @else style="display: none;" @endif>
                             <li @if(Route::is('admin.main-page.*')) class="active" @endif>
                                 <a href="{{ route('admin.main-page.show') }}">Головна сторінка
+                                </a>
+                            </li>
+
+                            <li @if(Route::is('admin.header-footer.*')) class="active" @endif>
+                                <a href="{{ route('admin.header-footer.edit') }}">Хедер та Футер
                                 </a>
                             </li>
                         </ul>

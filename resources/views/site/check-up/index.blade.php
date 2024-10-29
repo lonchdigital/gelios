@@ -120,7 +120,7 @@
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="content-more--txt os-scrollbar-overflow">
-                                                            <p>{{ $checkUp->description }}</p>
+                                                            <p>{!! $checkUp->description !!}</p>
                                                         </div>
                                                     </div>
                                                 </div>

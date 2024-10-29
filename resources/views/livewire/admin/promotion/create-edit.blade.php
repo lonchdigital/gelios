@@ -74,7 +74,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -99,7 +99,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         @endif
 
                                         @if ($this->activeLocale == 'ru')
@@ -159,7 +159,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -184,7 +184,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         @endif
 
                                         @if ($this->activeLocale == 'en')
@@ -244,7 +244,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -269,8 +269,26 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         @endif
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <x-admin.multilanguage-text-area-rich
+                                                        :is-required="false"
+                                                        :label="'Опис'"
+                                                        field-name="description"
+                                                        live-wire-field="description"
+                                                        :values="[
+                                                            'ua' => $this->uaDescription,
+                                                            'ru' => $this->ruDescription,
+                                                            'en' => $this->enDescription
+                                                        ]"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="col-md-12">
                                             <div class="row">
@@ -283,7 +301,9 @@
                                                                     <div class="form-group mb-1">
                                                                         <label>Слаг
                                                                         </label>
-                                                                        <textarea wire:model="slug" class="form-control"></textarea>
+                                                                        {{-- <textarea wire:model="slug" class="form-control"></textarea> --}}
+                                                                        <input type="text" wire:model="slug"
+                                                                                class="form-control">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -350,3 +370,17 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
+    <script type="text/javascript">
+        document.addEventListener('livewire:load', () => {
+            initQuillEditors((quill, fieldName, language) => {
+                quill.on('text-change', function() {
+                    let value = quill.root.innerHTML;
+                    @this.set(`${fieldName}`, value);
+                });
+            });
+        });
+    </script>
+@endpush

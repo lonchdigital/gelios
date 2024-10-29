@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Vacancy;
 use App\Models\Vacancy;
 use App\Models\VacancyTranslation;
 use App\Services\Admin\ImageService;
+use App\Services\Admin\Vacancy\VacancyService;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -16,6 +17,8 @@ class CreateEdit extends Component
     public Vacancy $vacancy;
 
     public string $activeLocale;
+
+    public string $description;
 
     public string $uaTitle = '';
 
@@ -39,22 +42,41 @@ class CreateEdit extends Component
 
     public function mount(Vacancy $vacancy = null)
     {
+        $this->dispatch('livewire:load');
+
         $this->vacancy = $vacancy ?? new Vacancy();
 
         $this->activeLocale = app()->getLocale();
 
-        $translations = VacancyTranslation::where('vacancy_id',
-            $this->vacancy->id)
-            ->get()
-            ->keyBy('locale');
+        $this->loadTranslations();
+
+        // $translations = VacancyTranslation::where('vacancy_id',
+        //     $this->vacancy->id)
+        //     ->get()
+        //     ->keyBy('locale');
+
+        // $this->uaTitle = $translations['ua']->title ?? '';
+        // $this->enTitle = $translations['en']->title ?? '';
+        // $this->ruTitle = $translations['ru']->title ?? '';
+
+        // $this->uaDescription = $translations['ua']->description ?? '';
+        // $this->enDescription = $translations['en']->description ?? '';
+        // $this->ruDescription = $translations['ru']->description ?? '';
+    }
+
+    public function loadTranslations()
+    {
+        $service = resolve(VacancyService::class);
+
+        $translations = $service->getTranslations($this->vacancy);
 
         $this->uaTitle = $translations['ua']->title ?? '';
         $this->enTitle = $translations['en']->title ?? '';
         $this->ruTitle = $translations['ru']->title ?? '';
 
-        $this->uaDescription = $translations['ua']->content ?? '';
-        $this->enDescription = $translations['en']->content ?? '';
-        $this->ruDescription = $translations['ru']->content ?? '';
+        $this->uaDescription = $translations['ua']->description ?? '';
+        $this->enDescription = $translations['en']->description ?? '';
+        $this->ruDescription = $translations['ru']->description ?? '';
     }
 
     public function languageSwitched($lang)
@@ -101,6 +123,21 @@ class CreateEdit extends Component
                 'image',
             ],
         ];
+    }
+
+    public function updatedDescription($val)
+    {
+        switch ($this->activeLocale) {
+            case 'ua':
+                $this->uaDescription = $val;
+                break;
+            case 'ru':
+                $this->ruDescription = $val;
+                break;
+            case 'en':
+                $this->enDescription = $val;
+                break;
+        }
     }
 
     public function updatedImage($val)

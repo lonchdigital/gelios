@@ -22,6 +22,8 @@ class Edit extends Component
 
     public string $activeLocale;
 
+    public string $description;
+
     public string $uaTitle = '';
 
     public string $enTitle = '';
@@ -64,6 +66,8 @@ class Edit extends Component
 
     public function mount(PageBlock $block)
     {
+        $this->dispatch('livewire:load');
+
         $this->block = $block;
 
         $this->link = $this->block->url ?? '';
@@ -103,67 +107,67 @@ class Edit extends Component
     {
         return [
             'uaTitle' => [
-                $this->isShowTitle() ? 'required' : 'nullable',
+                'nullable',
                 'string',
             ],
 
             'enTitle' => [
-                $this->isShowTitle() ? 'required' : 'nullable',
+                'nullable',
                 'string',
             ],
 
             'ruTitle' => [
-                $this->isShowTitle() ? 'required' : 'nullable',
+                'nullable',
                 'string',
             ],
 
             'uaDescription' => [
-                $this->isShowDescription() ? 'required' : 'nullable',
+                'nullable',
                 'string',
             ],
 
             'enDescription' => [
-                $this->isShowDescription() ? 'required' : 'nullable',
+                'nullable',
                 'string',
             ],
 
             'ruDescription' => [
-                $this->isShowDescription() ? 'required' : 'nullable',
+                'nullable',
                 'string',
             ],
 
             'uaContent' => [
-                $this->isShowContent() ? 'required' : 'nullable',
+                'nullable',
                 'string',
             ],
 
             'enContent' => [
-                $this->isShowContent() ? 'required' : 'nullable',
+                'nullable',
                 'string',
             ],
 
             'ruContent' => [
-                $this->isShowContent() ? 'required' : 'nullable',
+                'nullable',
                 'string',
             ],
 
             'uaButtonName' => [
-                $this->isShowButtonName() ? 'required' : 'nullable',
+                'nullable',
                 'string',
             ],
 
             'enButtonName' => [
-                $this->isShowButtonName() ? 'required' : 'nullable',
+                'nullable',
                 'string',
             ],
 
             'ruButtonName' => [
-                $this->isShowButtonName() ? 'required' : 'nullable',
+                'nullable',
                 'string',
             ],
 
             'link' => [
-                $this->isShowLink() ? 'required' : 'nullable',
+                'nullable',
                 'string',
             ],
 
@@ -173,6 +177,21 @@ class Edit extends Component
                 'image',
             ],
         ];
+    }
+
+    public function updatedDescription($val)
+    {
+        switch ($this->activeLocale) {
+            case 'ua':
+                $this->uaDescription = $val;
+                break;
+            case 'ru':
+                $this->ruDescription = $val;
+                break;
+            case 'en':
+                $this->enDescription = $val;
+                break;
+        }
     }
 
     public function updatedNewImage($val)
@@ -311,7 +330,7 @@ class Edit extends Component
                 'third',
                 'fourth',
             ])
-            || $this->block->block == 'banner' && $this->block->key !== 'content';
+            || $this->block->block == 'banner' && $this->block->key == 'content';
     }
 
     public function isShowButtonName()

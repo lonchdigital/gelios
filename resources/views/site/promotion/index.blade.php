@@ -33,7 +33,7 @@
                                                 <div class="content mt-18">
                                                     <div class="h1 font-m font-weight-bolder mb-3">{!! $block->title !!}
                                                     </div>
-                                                    <div class="h5 font-m font-weight-bold mb-3">{{ $block->description }}</div>
+                                                    <div class="h5 font-m font-weight-bold mb-3">{!! $block->description !!}</div>
                                                     @if(!empty($block->url))
                                                         <a href="{{ $block->url }}" class="btn btn-white font-weight-bold">{{ $block->button }}</a>
                                                     @endif

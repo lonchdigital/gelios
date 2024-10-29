@@ -19,4 +19,9 @@ class PageController extends Controller
     {
         return view('admin.main-page.edit', compact('block'));
     }
+
+    public function editHeaderFooter()
+    {
+        return view('admin.settings.edit-header-footer');
+    }
 }

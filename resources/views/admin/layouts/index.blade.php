@@ -18,7 +18,7 @@
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
 
-<!-- Master Stylesheet [If you remove this CSS file, your file will be broken undoubtedly.] -->
+    <!-- Master Stylesheet [If you remove this CSS file, your file will be broken undoubtedly.] -->
     @stack('head')
 
     <link rel="stylesheet" href="{{ asset('admin_src/css/quill.snow.css') }}">
@@ -30,55 +30,57 @@
 </head>
 
 <body>
-<!-- Preloader Start -->
-<div id="preloader">
-    <div class="preload-content">
-        <div id="hasro-load"></div>
-    </div>
-</div>
-<!-- Preloader End -->
-
-<!-- ======================================
-******* Page Wrapper Area Start **********
-======================================= -->
-<div class="ecaps-page-wrapper">
-    @include('admin.parts.sidebar')
-
-    <div class="ecaps-page-content">
-        @include('admin.parts.header')
-
-        <div class="main-content">
-            @yield('content')
+    <!-- Preloader Start -->
+    <div id="preloader">
+        <div class="preload-content">
+            <div id="hasro-load"></div>
         </div>
     </div>
-</div>
+    <!-- Preloader End -->
 
-<!-- ======================================
+    <!-- ======================================
+******* Page Wrapper Area Start **********
+======================================= -->
+    <div class="ecaps-page-wrapper">
+        @include('admin.parts.sidebar')
+
+        <div class="ecaps-page-content">
+            @include('admin.parts.header')
+
+            <div class="main-content">
+                @yield('content')
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================
 ********* Page Wrapper Area End ***********
 ======================================= -->
 
-<!-- Must needed plugins to the run this Template -->
-<script src="{{ asset('admin_src/js/jquery.min.js') }}"></script>
-<script src="{{ asset('admin_src/js/popper.min.js') }}"></script>
-<script src="{{ asset('admin_src/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('admin_src/js/bundle.js') }}"></script>
-<script src="{{ asset('admin_src/js/default-assets/setting.js') }}"></script>
-<script src="{{ asset('admin_src/js/default-assets/fullscreen.js') }}"></script>
-<script src="{{ asset('admin_src/js/select2.min.js') }}"></script>
+    <!-- Must needed plugins to the run this Template -->
+    <script src="{{ asset('admin_src/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('admin_src/js/popper.min.js') }}"></script>
+    <script src="{{ asset('admin_src/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('admin_src/js/bundle.js') }}"></script>
+    <script src="{{ asset('admin_src/js/default-assets/setting.js') }}"></script>
+    <script src="{{ asset('admin_src/js/default-assets/fullscreen.js') }}"></script>
+    <script src="{{ asset('admin_src/js/select2.min.js') }}"></script>
 
-<!-- Active JS -->
-<script src="{{ asset('admin_src/js/default-assets/active.js') }}"></script>
+    <!-- Active JS -->
+    <script src="{{ asset('admin_src/js/default-assets/active.js') }}"></script>
 
-<script src="{{ asset('admin_src/js/default-assets/modal-classes.js') }}"></script>
-<script src="{{ asset('admin_src/js/default-assets/modaleffects.js') }}"></script>
+    <script src="{{ asset('admin_src/js/default-assets/modal-classes.js') }}"></script>
+    <script src="{{ asset('admin_src/js/default-assets/modaleffects.js') }}"></script>
 
-<!-- custom JS -->
+    <!-- custom JS -->
 
-<script src="{{ asset('admin_src/js/quill.min.js') }}"></script>
+    <script src="{{ asset('admin_src/js/quill.min.js') }}"></script>
 
-@stack('scripts')
-@livewireScripts
-<script src="{{ asset('admin_src/js/default-assets/livewire-sortable.js') }}"></script>
+    @stack('scripts')
+    @livewireScripts
+    <script src="{{ asset('admin_src/js/default-assets/livewire-sortable.js') }}"></script>
+
+
 </body>
 
 </html>

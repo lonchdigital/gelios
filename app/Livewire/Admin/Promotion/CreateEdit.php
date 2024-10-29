@@ -18,6 +18,8 @@ class CreateEdit extends Component
 
     public string $activeLocale;
 
+    public string $description;
+
     public string $uaTitle = '';
 
     public string $enTitle = '';
@@ -48,6 +50,8 @@ class CreateEdit extends Component
 
     public function mount(Promotion $promotion = null)
     {
+        $this->dispatch('livewire:load');
+        
         $this->promotion = $promotion ?? new Promotion();
         $this->slug = $this->promotion->slug ?? '';
 
@@ -137,6 +141,21 @@ class CreateEdit extends Component
                 'image',
             ],
         ];
+    }
+
+    public function updatedDescription($val)
+    {
+        switch ($this->activeLocale) {
+            case 'ua':
+                $this->uaDescription = $val;
+                break;
+            case 'ru':
+                $this->ruDescription = $val;
+                break;
+            case 'en':
+                $this->enDescription = $val;
+                break;
+        }
     }
 
     public function updatedImage($val)
