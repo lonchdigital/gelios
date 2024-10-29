@@ -2,15 +2,14 @@
     <div class="container">
         <div class="row flex-column flex-xl-row py-12">
             <div class="col-12 col-xl-3 text-white mb-5 mb-xl-0 d-flex flex-column">
-                <div class="h2 font-m font-weight-bolder mb-5">Наші напрямки</div>
-                <div class="h5 font-weight-bold mb-5">Передові медичні технології діагностики, лікування та
-                    реабілітації пацієнтів усіх вікових груп.</div>
+                @if(!is_null($commonDirectionsBlock))
+                    <div class="h2 font-m font-weight-bolder mb-5">{{ $commonDirectionsBlock->title }}</div>
+                    <div class="h5 font-weight-bold mb-5">{!! $commonDirectionsBlock->description !!}</div>
+                @endif
                 <div class="row">
                     <div class="col-auto">
-                        <a href="##"
-                            class="btn btn-fz-20 btn-outline-white font-weight-bold d-none d-xl-block">Усі
-                            напрямки</a>
-                        <a href="##" class="btn btn-white font-weight-bold d-xl-none">Усі напрямки</a>
+                        <a href="{{ route('directions.page') }}" class="btn btn-fz-20 btn-outline-white font-weight-bold d-none d-xl-block">{{ trans('web.all_directions') }}</a>
+                        <a href="{{ route('directions.page') }}" class="btn btn-white font-weight-bold d-xl-none">{{ trans('web.all_directions') }}</a>
                     </div>
                 </div>
             </div>
@@ -20,7 +19,7 @@
                         <div class="push-menu">
                             <div class="push-menu--nav">
                                 <div class="nav-toggle">
-                                    <a href="##" class="btn-nav-back btn-nav-direction btn font-weight-bold ml-auto mb-6"><span>Назад</span><span class="icon"></span></a>
+                                    <a href="##" class="btn-nav-back btn-nav-direction btn font-weight-bold ml-auto mb-6"><span>{{ trans('web.back') }}</span><span class="icon"></span></a>
                                 </div>
                                 <div class="push-menu--lvl position-relative">
                                     <div class="item has-dropdown">

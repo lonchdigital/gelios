@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'all_directions' => 'Все направления',
     'back' => 'Назад',
     'show_more' => 'Показать больше',
     'show_more_histories' => 'Больше историй',

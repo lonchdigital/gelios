@@ -4,6 +4,7 @@ namespace App\Http\View\Composers;
 
 use App\Models\Direction;
 use Illuminate\View\View;
+use App\Models\BriefBlock;
 use App\Services\Admin\Directions\DirectionsService;
 
 class DirectionsComposer
@@ -12,6 +13,9 @@ class DirectionsComposer
     {
         $directionsService = app(DirectionsService::class);
         $directions = $directionsService->buildTree($directionsService->getAllDirections(), true);
-        $view->with('allDirections', $directions);
+        $view->with([
+            'allDirections' => $directions,
+            'commonDirectionsBlock' => BriefBlock::where('type', 'directions')->first(),
+        ]);
     }
 }
