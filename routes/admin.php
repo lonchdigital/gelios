@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PriceController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\ReviewController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\Admin\CheckUpController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\OfficesController;
 use App\Http\Controllers\Admin\SurgeryController;
+use App\Http\Controllers\Admin\VacancyController;
 use App\Http\Controllers\Admin\HospitalController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OneCenterController;
@@ -18,12 +20,11 @@ use App\Http\Controllers\Admin\PromotionController;
 use App\Http\Controllers\Admin\TextPagesController;
 use App\Http\Controllers\Admin\DirectionsController;
 use App\Http\Controllers\Admin\LaboratoryController;
+use App\Http\Controllers\Admin\CommonBlocksController;
 use App\Http\Controllers\Admin\TypicalPagesController;
 use App\Http\Controllers\Admin\SpecializationController;
 use App\Http\Controllers\Admin\ArticleCategoryController;
 use App\Http\Controllers\Admin\InsuranceCompaniesController;
-use App\Http\Controllers\Admin\PageController;
-use App\Http\Controllers\Admin\VacancyController;
 
 Route::group([
     'prefix' => 'admin',
@@ -100,6 +101,10 @@ Route::group([
 
             Route::get('/create', [ReviewController::class, 'createReview'])->name('reviews.create');
             Route::get('/{review}/edit', [ReviewController::class, 'editReview'])->name('reviews.edit');
+        });
+
+        Route::prefix('/common-blocks')->group(function() {
+            Route::get('/', [CommonBlocksController::class, 'directions'])->name('common-blocks.directions');
         });
 
         Route::prefix('/promotions')->name('admin.promotions.')->group(function() {

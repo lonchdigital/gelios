@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'common_blocks' => 'Сквозные блоки',
     'deleted_contact' => 'Филиал был удален',
     'add_office' => 'Добавить филиал',
     'offices' => 'Филиалы',
