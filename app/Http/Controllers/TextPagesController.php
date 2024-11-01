@@ -10,8 +10,19 @@ use App\Http\Controllers\Controller;
 class TextPagesController extends Controller
 {
 
-    public function show(Page $page)
+    // public function show(Page $page)
+    // {
+    //     if( $page->type !== "text" ) { abort(404); }
+
+    //     return view('site.text-pages.show', [
+    //         'page' => $page
+    //     ]);
+    // }
+
+    public function rootPageShow($slug)
     {
+        $page = Page::where('slug', $slug)->first();
+
         if( $page->type !== "text" ) { abort(404); }
 
         return view('site.text-pages.show', [

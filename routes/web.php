@@ -51,15 +51,13 @@ Route::group([
         Route::get('/direction/category/{pageDirection:slug}', [DirectionController::class, 'category'])->name('direction.category');
         Route::get('/direction/sub-category/{pageDirection:slug}', [DirectionController::class, 'subCategory'])->name('direction.sub-category');
 
-        Route::get('/text-page/{page:slug}', [TextPagesController::class, 'show'])->name('text.page.show');
-
         Route::get('/akczii-i-speczialnye-predlozheniya/', [PromotionController::class, 'index'])->name('promotions.index');
         Route::get('/akczii-i-speczialnye-predlozheniya/{promotion:slug}', [PromotionController::class, 'show'])->name('promotions.show');
 
         Route::get('/check-up/', [CheckUpController::class, 'index'])->name('check-ups.index');
 
         Route::get('/dlya-paczientov/', [ArticleController::class, 'index'])->name('articles.index');
-        Route::get('/dlya-paczientov/{article:slug}', [ArticleController::class, 'show'])->name('articles.show');
+        Route::get('/dlya-paczientov/{slug}', [ArticleController::class, 'show'])->name('articles.show');
 
         Route::get('/nashi-speczialisty/', [DoctorController::class, 'index'])->name('doctors.index');
         Route::get('/nashi-speczialisty/{doctor:slug}', [DoctorController::class, 'show'])->name('doctors.show');
@@ -71,6 +69,9 @@ Route::group([
         Route::get('/vzroslym/hirurgiya/', [SurgeryController::class, 'index'])->name('surgery.index');
 
         Route::get('/vakansii/', [VacancyController::class, 'index'])->name('vacancy.index');
+
+        // Route::get('/dlya-paczientov/{page:slug}', [TextPagesController::class, 'show'])->name('text.page.show');
+        Route::get('/{slug}', [TextPagesController::class, 'rootPageShow'])->name('root.text.page.show');
 });
 
 Route::get('lang/{lang}', [LanguageController::class, 'changeLanguage'])->name('changeLanguage');

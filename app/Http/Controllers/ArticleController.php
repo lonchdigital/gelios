@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Page;
 use App\Models\Article;
-use App\Models\ArticleCategory;
 use Illuminate\Http\Request;
+use App\Models\ArticleCategory;
 
 class ArticleController extends Controller
 {
@@ -17,13 +18,31 @@ class ArticleController extends Controller
         return view('site.articles.index', compact('articles', 'categories'));
     }
 
-    public function show(Article $article)
+    public function show($slug)
     {
-        $relatedArticles = Article::where('id', '!=', $article->id)
+        $article = Article::where('slug', $slug)->first();
+
+        if ($article) {
+            $relatedArticles = Article::where('id', '!=', $article->id)
             ->inrandomOrder()
             ->take(3)
             ->get();
 
-        return view('site.articles.show', compact('article', 'relatedArticles'));
+            return view('site.articles.show', compact('article', 'relatedArticles'));
+        } else {
+
+            if( $slug === 'dogovor-oferty' ) {
+                abort(404);
+            }
+
+            $page = Page::where('slug', $slug)->first();
+
+            if( $page->type !== "text" ) { abort(404); }
+
+            return view('site.text-pages.show', [
+                'page' => $page
+            ]);
+        }
+        
     }
 }
