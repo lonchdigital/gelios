@@ -43,7 +43,9 @@ class CreateEdit extends Component
     public $imageTemporary;
 
     protected $listeners = [
-        'languageSwitched' => 'languageSwitched'
+        'languageSwitched' => 'languageSwitched',
+        'refreshItemsAfterDelete' => 'refreshItemsAfterDelete',
+        'refresh' => '$refresh',
     ];
 
     public function mount(CheckUp $checkUp = null)
@@ -65,6 +67,11 @@ class CreateEdit extends Component
         $this->uaDescription = $translations['ua']['description'];
         $this->enDescription = $translations['en']['description'];
         $this->ruDescription = $translations['ru']['description'];
+    }
+
+    public function refreshItemsAfterDelete()
+    {
+        $this->dispatch('refresh');
     }
 
     public function languageSwitched($lang)
@@ -136,6 +143,11 @@ class CreateEdit extends Component
                 $this->enDescription = $val;
                 break;
         }
+    }
+
+    public function deleteItem($id, $type)
+    {
+        $this->dispatch('openModalDeleteItem', $type, $id);
     }
 
     public function updatedImage($val)

@@ -55,7 +55,7 @@
                                                                 </div>
                                                                 <div class="spoiler-list">
                                                                     <ul class="list-unstyled mb-0">
-                                                                        @forelse($program->options as $option)
+                                                                        @forelse($program->options ?? [] as $option)
                                                                             <li>{{ $option }}</li>
                                                                         @empty
                                                                         @endforelse

@@ -2,7 +2,10 @@
 
 namespace App\Livewire\Admin\Modals;
 
+use App\Models\CheckUp;
+use App\Models\CheckUpProgram;
 use App\Models\Laboratory;
+use App\Models\Promotion;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
@@ -41,6 +44,30 @@ class Delete extends Component
                 $this->type = 'laboratory';
                 $this->modalTitle = 'Delete laboratory';
                 $this->modalBody  = 'You really want to delete laboratory: ' . $this->item->address . '?';
+                $this->modalInfo  = '';
+                break;
+
+            case 'checkUpProgram':
+                $this->item = CheckUpProgram::find($modelId);
+                $this->type = 'checkUpProgram';
+                $this->modalTitle = 'Delete program';
+                $this->modalBody  = 'You really want to delete program: ' . $this->item->title . '?';
+                $this->modalInfo  = '';
+                break;
+
+            case 'checkUp':
+                $this->item = CheckUp::find($modelId);
+                $this->type = 'checkUp';
+                $this->modalTitle = 'Delete Check Up';
+                $this->modalBody  = 'You really want to delete Check Up: ' . $this->item->title . '?';
+                $this->modalInfo  = '';
+                break;
+
+            case 'promotion':
+                $this->item = Promotion::find($modelId);
+                $this->type = 'promotion';
+                $this->modalTitle = 'Delete Promotion';
+                $this->modalBody  = 'You really want to delete Promotion: ' . $this->item->title . '?';
                 $this->modalInfo  = '';
                 break;
 
@@ -86,6 +113,34 @@ class Delete extends Component
                 return true;
 
             case 'laboratory':
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
+            case 'checkUpProgram':
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
+            case 'checkUp':
+
+                $this->deleteImage($this->item->image);
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
+            case 'promotion':
+
+                $this->deleteImage($this->item->image);
 
                 $this->item->delete();
 

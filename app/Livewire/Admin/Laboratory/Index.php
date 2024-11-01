@@ -38,8 +38,6 @@ class Index extends Component
 
     public function refreshItemsAfterDelete()
     {
-        $this->getUsersProperty();
-
         $this->dispatch('refresh');
     }
 

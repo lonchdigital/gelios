@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Doctor;
 
 use App\Models\Doctor;
+use App\Services\Admin\DoctorService;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -15,6 +16,13 @@ class Index extends Component
         $doctors = Doctor::paginate(10);
 
         return $doctors;
+    }
+
+    public function changeActive($id)
+    {
+        $service = resolve(DoctorService::class);
+
+        $service->changeIsShowInMainPage($id);
     }
 
     public function render()

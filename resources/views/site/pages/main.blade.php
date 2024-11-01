@@ -8,21 +8,41 @@
                     <div class="col-12 col-lg-7 col-xxl-8 mb-4 mb-lg-0">
                         <div class="section-top--backdrop-swiper overflow-hidden h-100 position-relative">
                             <div class="swiper-wrapper">
-                                <div
-                                    class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
-                                    <div class="backdrop p-3 p-lg-6">
-                                        <div class="content">
-                                            <div class="h1 font-m font-weight-bolder mb-3">Піклуєшся <br> про здоров’я?
+                                @forelse($page->pageBlocks->where('block', 'main')->where('key', 'slider') as $slide)
+                                    <div
+                                        class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
+                                        <div class="backdrop p-3 p-lg-6">
+                                            <div class="content">
+                                                <div class="h1 font-m font-weight-bolder mb-3">{!! $slide->title !!}
+                                                </div>
+                                                <div class="h5 font-m font-weight-bold mb-3">{!! $slide->description !!}</div>
+                                                <a href="{{ $slide->url ?? '##' }}" class="btn btn-white font-weight-bold">{{ $slide->button }}</a>
                                             </div>
-                                            <div class="h5 font-m font-weight-bold mb-3">Обери свій CHECK-UP!</div>
-                                            <a href="##" class="btn btn-white font-weight-bold">Детальніше</a>
+                                        </div>
+                                        <div class="wrap-img">
+                                            @if(!empty($slide->image))
+                                            @else
+                                                <img class="bg-down" src="{{ asset('static_images/img-background-1.jpeg') }}" alt="{!! $slide->title !!}">
+                                            @endif
                                         </div>
                                     </div>
-                                    <div class="wrap-img">
-                                        <img class="bg-down" src="{{ asset('static_images/img-background-1.jpeg') }}" alt="img">
+                                @empty
+                                    <div
+                                            class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
+                                        <div class="backdrop p-3 p-lg-6">
+                                            <div class="content">
+                                                <div class="h1 font-m font-weight-bolder mb-3">Піклуєшся <br> про здоров’я?
+                                                </div>
+                                                <div class="h5 font-m font-weight-bold mb-3">Обери свій CHECK-UP!</div>
+                                                <a href="##" class="btn btn-white font-weight-bold">Детальніше</a>
+                                            </div>
+                                        </div>
+                                        <div class="wrap-img">
+                                            <img class="bg-down" src="{{ asset('static_images/img-background-2.jpeg') }}" alt="img">
+                                        </div>
                                     </div>
-                                </div>
-                                <div
+                                @endforelse
+                                {{-- <div
                                     class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
                                     <div class="backdrop p-3 p-lg-6">
                                         <div class="content">
@@ -63,7 +83,7 @@
                                     <div class="wrap-img">
                                         <img class="bg-down" src="{{ asset('static_images/img-background-2.jpeg') }}" alt="img">
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="swiper-pagination"></div>
                         </div>
@@ -73,20 +93,33 @@
                             <div class="col-12 col-md-6 col-lg-12 mb-4 mb-md-0 mb-lg-5">
                                 <div class="position-relative rounded-sm overflow-hidden text-white h-100">
                                     <div class="backdrop-small align-content-end d-flex align-items-end p-3 p-lg-6 ">
-                                        <div class="h4 font-weight-bolder mb-2">Підпиши <br>декларацію <br>за 5 хвилин</div>
+                                        <div class="h4 font-weight-bolder mb-2">
+                                            {!! $page->pageBlocks->where('block', 'main')->where('key', 'second')->first()->title ?? 'Підпиши <br>декларацію <br>за 5 хвилин' !!}
+                                        </div>
                                     </div>
                                     <div class="wrap-img">
-                                        <img class="bg-down" src="{{ asset('static_images/img-79.jpeg') }}" alt="img">
+                                        @if(!empty($page->pageBlocks->where('block', 'main')->where('key', 'second')->first()->image))
+                                            <img class="bg-down" src="{{ $page->pageBlocks->where('block', 'main')->where('key', 'second')->first()->imageUrl }}"
+                                                alt="{!! $page->pageBlocks->where('block', 'main')->where('key', 'second')->first()->title ?? 'Підпиши <br>декларацію <br>за 5 хвилин' !!}">
+                                        @else
+                                            <img class="bg-down" src="{{ asset('static_images/img-79.jpeg') }}" alt="img">
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-12">
                                 <div class="position-relative rounded-sm overflow-hidden text-white h-100">
                                     <div class="backdrop-small text-right p-3 p-lg-6">
-                                        <div class="h4 font-weight-bolder">Підпиши <br>декларацію <br>за 5 хвилин</div>
+                                        <div class="h4 font-weight-bolder">
+                                            {!! $page->pageBlocks->where('block', 'main')->where('key', 'third')->first()->title ?? 'Підпиши <br>декларацію <br>за 5 хвилин' !!}
                                     </div>
                                     <div class="wrap-img">
-                                        <img class="bg-down" src="{{ asset('static_images/img-77.jpeg') }}" alt="img">
+                                        @if(!empty($page->pageBlocks->where('block', 'main')->where('key', 'third')->first()->image))
+                                            <img class="bg-down" src="{{ $page->pageBlocks->where('block', 'main')->where('key', 'third')->first()->imageUrl }}"
+                                                alt="{!! $page->pageBlocks->where('block', 'main')->where('key', 'third')->first()->title ?? 'Підпиши <br>декларацію <br>за 5 хвилин' !!}">
+                                        @else
+                                            <img class="bg-down" src="{{ asset('static_images/img-77.jpeg') }}" alt="img">
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +134,11 @@
                     <div class="col-12 col-lg-4 mb-4 mb-lg-0">
                         <div class="section-progress--item position-relative h-100 rounded overflow-hidden">
                             <div class="wrap-img">
-                                <img class="bg-down" src="{{ asset('static_images/img-251.jpeg') }}" alt="img">
+                                @if(!empty($page->pageBlocks->where('block', 'second')->where('key', 'image')->first()->image))
+                                    <img class="bg-down" src="{{ $page->pageBlocks->where('block', 'second')->where('key', 'image')->first()->imageUrl }}" alt="img">
+                                @else
+                                    <img class="bg-down" src="{{ asset('static_images/img-251.jpeg') }}" alt="img">
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -109,28 +146,44 @@
                         <div class="row">
                             <div class="col-6 mb-3 mb-sm-4 mb-lg-5">
                                 <div class="section-progress--item item-small bg-blue p-2 p-lg-3 p-xl-6 rounded">
-                                    <div class="quantity h2 font-m font-weight-bolder mb-2">2&nbsp;640</div>
-                                    <div class="h5 text-uppercase">Проведено операцій</div>
+                                    <div class="quantity h2 font-m font-weight-bolder mb-2">
+                                        {!! $page->pageBlocks->where('block', 'second')->where('key', 'first')->first()->title ?? '2&nbsp;640' !!}
+                                    </div>
+                                    <div class="h5 text-uppercase">
+                                        {!! $page->pageBlocks->where('block', 'second')->where('key', 'first')->first()->description ?? 'Проведено операцій' !!}
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-6 mb-3 mb-sm-4 mb-lg-5">
                                 <div class="section-progress--item item-small bg-blue p-2 p-lg-3 p-xl-6 rounded">
-                                    <div class="quantity h2 font-m font-weight-bolder mb-2">14</div>
-                                    <div class="h5 text-uppercase">Років досвіду</div>
+                                    <div class="quantity h2 font-m font-weight-bolder mb-2">
+                                        {!! $page->pageBlocks->where('block', 'second')->where('key', 'second')->first()->title ?? '14' !!}
+                                    </div>
+                                    <div class="h5 text-uppercase">
+                                        {!! $page->pageBlocks->where('block', 'second')->where('key', 'second')->first()->description ?? 'Років досвіду' !!}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <div class="section-progress--item item-small bg-blue p-2 p-lg-3 p-xl-6 rounded">
-                                    <div class="quantity h2 font-m font-weight-bolder mb-2">24/7</div>
-                                    <div class="h5 text-uppercase">Ми поряд</div>
+                                    <div class="quantity h2 font-m font-weight-bolder mb-2">
+                                        {!! $page->pageBlocks->where('block', 'second')->where('key', 'third')->first()->title ?? '24/7' !!}
+                                    </div>
+                                    <div class="h5 text-uppercase">
+                                        {!! $page->pageBlocks->where('block', 'second')->where('key', 'third')->first()->description ?? 'Ми поряд' !!}
+                                        </div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="section-progress--item item-small bg-blue p-2 p-lg-3 p-xl-6 rounded">
-                                    <div class="quantity h2 font-m font-weight-bolder mb-2">100 000</div>
-                                    <div class="h5 text-uppercase">Відвідувань щороку</div>
+                                    <div class="quantity h2 font-m font-weight-bolder mb-2">
+                                        {!! $page->pageBlocks->where('block', 'second')->where('key', 'fourth')->first()->title ?? '100 000' !!}
+                                        </div>
+                                    <div class="h5 text-uppercase">
+                                        {!! $page->pageBlocks->where('block', 'second')->where('key', 'fourth')->first()->description ?? 'Відвідувань щороку' !!}
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -140,30 +193,35 @@
         </section>
 
         @include('site.directions.partials.our-directions-section')
-        
+
         <section class="shares mb-24">
             <div class="container overflow-hidden">
                 <div class="row mb-8">
                     <div class="col d-flex align-items-center justify-content-between">
                         <div class="h2 font-m font-weight-bolder">Акції</div>
-                        <a href="##" class="h5 btn btn-white font-weight-bold">Усі акції</a>
+                        <a href="{{ route('promotions.index') }}" class="h5 btn btn-white font-weight-bold">Усі акції</a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="shares--swiper">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide shares--item">
-                                    <a href="##" class="inner">
-                                        <div class="wrap-img mb-4">
-                                            <img src="{{ asset('static_images/shares/card-img-1.jpeg') }}" alt="img">
-                                        </div>
-                                        <div class="h3 small font-m">Скористайтеся нашим осіннім обстеженням <div
-                                                class="underline">зі знижкою 15%!</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide shares--item">
+                                @forelse($promotions as $promotion)
+                                    <div class="swiper-slide shares--item">
+                                        <a href="{{ route('promotions.show', ['promotion' => $promotion]) }}" class="inner">
+                                            <div class="wrap-img mb-4">
+                                                <img src="{{ $promotion->imageUrl }}" alt="{{ $promotion->title }}">
+                                            </div>
+                                            <div class="h3 small font-m">
+                                                {!! $promotion->title !!}
+                                                {{-- Скористайтеся нашим осіннім обстеженням <div
+                                                    class="underline">зі знижкою 15%!</div> --}}
+                                            </div>
+                                        </a>
+                                    </div>
+                                @empty
+                                @endforelse
+                                {{-- <div class="swiper-slide shares--item">
                                     <a href="##" class="inner">
                                         <div class="wrap-img mb-4">
                                             <img src="{{ asset('static_images/shares/card-img-2.jpeg') }}" alt="img">
@@ -182,7 +240,7 @@
                                                 class="underline">зі знижкою 15%!</div>
                                         </div>
                                     </a>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="swiper-pagination mt-2 d-xl-none"></div>
                         </div>
@@ -196,18 +254,31 @@
                     <div class="row pt-16  pb-6 py-lg-16 text-white">
                         <div class="col col-md-8 col-xl-4">
                             <div class="content">
-                                <div class="h2 font-m font-weight-bolder mb-3 mb-lg-5">Про клініку <br>”ГЕЛІОС”</div>
-                                <div class="h5 font-weight-bold mb-8 mb-lg-10">Наші фахівці – це лікарі з великим досвідом
+                                <div class="h2 font-m font-weight-bolder mb-3 mb-lg-5">
+                                    {!! $page->pageBlocks->where('block', 'banner')->first()->title ?? '' !!}
+                                </div>
+                                <div class="h5 font-weight-bold mb-8 mb-lg-10">
+                                    {!! $page->pageBlocks->where('block', 'banner')->first()->description ?? '' !!}
+                                    {{-- Наші фахівці – це лікарі з великим досвідом
                                     наукової діяльності та практичної медицини, які володіють найсучаснішими медичними
                                     технологіями та методиками. Діагностика, лікування, профілактика, реабілітація та
-                                    надання медичних послуг усім членам сім'ї в рамках програми «Сімейний лікар».</div>
-                                <a href="##" class="btn btn-white font-weight-bold">Детальніше</a>
+                                    надання медичних послуг усім членам сім'ї в рамках програми «Сімейний лікар». --}}
+                                </div>
+                                <a href="{{ $page->pageBlocks->where('block', 'banner')->first()->url ?? '##' }}" class="btn btn-white font-weight-bold">
+                                    {{ $page->pageBlocks->where('block', 'banner')->first()->button ?? '' }}
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="wrap-img">
-                    <img class="bg-down" src="{{ asset('static_images/img-background-2.jpeg') }}" alt="img">
+                    @if(!empty($page->pageBlocks->where('block', 'banner')->first()->image))
+                        <img class="bg-down" src="{{ $page->pageBlocks->where('block', 'banner')->first()->imageUrl ?? asset('/static_images/img-background-2.jpeg') }}"
+                            alt="{!! $page->pageBlocks->where('block', 'banner')->first()->title ?? '' !!}">
+                    @else
+                        <img class="bg-down" src="{{ asset('/static_images/img-background-2.jpeg') }}"
+                            alt="{!! $page->pageBlocks->where('block', 'banner')->first()->title ?? '' !!}">
+                    @endif
                 </div>
             </div>
         </section>
@@ -216,24 +287,27 @@
                 <div class="row mb-8">
                     <div class="col d-flex align-items-center justify-content-between">
                         <div class="h2 font-m font-weight-bolder">Лікарі</div>
-                        <a href="##" class="h5 btn btn-white font-weight-bold">Усі лікарі</a>
+                        <a href="{{ route('doctors.index') }}" class="h5 btn btn-white font-weight-bold">Усі лікарі</a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="doctors--swiper">
                             <div class="swiper-wrapper">
-                                <div class="doctors--item swiper-slide">
-                                    <a href="##" class="inner">
-                                        <div class="wrap-img mb-3">
-                                            <img src="{{ asset('static_images/doctors/doctor-1.jpeg') }}" alt="img">
-                                        </div>
-                                        <div class="experience-quantity mb-3">Досвід роботи: 8 років</div>
-                                        <div class="h4 mb-1 font-weight-bolder">Максаков Дмитро Миколайович</div>
-                                        <div class="position-work">Алерголог</div>
-                                    </a>
-                                </div>
-                                <div class="doctors--item swiper-slide">
+                                @forelse($doctors as $doctor)
+                                    <div class="doctors--item swiper-slide">
+                                        <a href="{{ route('doctors.show', ['doctor' => $doctor]) }}" class="inner">
+                                            <div class="wrap-img mb-3">
+                                                <img src="{{ $doctor->imageUrl }}" alt="{{ $doctor->title }}">
+                                            </div>
+                                            <div class="experience-quantity mb-3">Досвід роботи: {{ $doctor->expirience }} років</div>
+                                            <div class="h4 mb-1 font-weight-bolder">{{ $doctor->title }}</div>
+                                            <div class="position-work">{{ $doctor->specialty }}</div>
+                                        </a>
+                                    </div>
+                                @empty
+                                @endforelse
+                                {{-- <div class="doctors--item swiper-slide">
                                     <a href="##" class="inner">
                                         <div class="wrap-img mb-3">
                                             <img src="{{ asset('static_images/doctors/doctor-2.jpeg') }}" alt="img">
@@ -282,7 +356,7 @@
                                         <div class="h4 mb-1 font-weight-bolder">Максаков Дмитро Миколайович</div>
                                         <div class="position-work">Алерголог</div>
                                     </a>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="swiper-pagination mt-8"></div>
                         </div>

@@ -332,6 +332,7 @@
                                                     <td>{{ $program->title }}</td>
                                                     <td style="text-align: right">
                                                         <a href="{{ route('admin.check-ups.edit-program', ['checkUp' => $checkUp, 'program' => $program]) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                                        <a wire:click="deleteItem('{{ $program->id }}', 'checkUpProgram')" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
                                                     </td>
                                                 </tr>
                                             @endforeach

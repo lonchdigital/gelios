@@ -58,5 +58,14 @@ class DoctorService
             );
         }
     }
+
+    public function changeIsShowInMainPage($id)
+    {
+        $doctor = Doctor::find($id);
+
+        $doctor->update([
+            'is_show_in_main_page' => !$doctor->is_show_in_main_page
+        ]);
+    }
 }
 

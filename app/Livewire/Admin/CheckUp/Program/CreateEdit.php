@@ -25,7 +25,9 @@ class CreateEdit extends Component
     public array $options = [];
 
     protected $listeners = [
-        'languageSwitched' => 'languageSwitched'
+        'languageSwitched' => 'languageSwitched',
+        'refreshItemsAfterDelete' => 'refreshItemsAfterDelete',
+        'refresh' => '$refresh',
     ];
 
     public function mount(CheckUp $checkUp, CheckUpProgram $program = null)
@@ -125,7 +127,9 @@ class CreateEdit extends Component
             'ru' => $this->ruTitle,
         ];
 
-        $optionsArray = $this->checkUpProgramService->prepareOptionsArray($this->options, $locales);
+        $service = resolve(CreateEditService::class);
+
+        $optionsArray = $service->prepareOptionsArray($this->options, $locales);
 
         $service = resolve(CreateEditService::class);
 
@@ -135,7 +139,6 @@ class CreateEdit extends Component
 
         return $this->redirectRoute('admin.check-ups.edit', ['checkUp' => $this->checkUp]);
     }
-
 
     public function render()
     {

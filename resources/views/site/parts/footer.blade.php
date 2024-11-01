@@ -11,26 +11,28 @@
 								</div>
 							</div>
 							<div class="footer-descrp mb-0 mb-md-4 mt-11 mt-md-0">
-								<p class="mb-0 font-weight-normal">Медичний центр сімейного здоров'я та реабілітації Геліос - це сучасне обладнання, кваліфіковані лікарі, індивідуальний підхід до кожного пацієнта. </p>
+                                {!! $description ?? '<p class="mb-0 font-weight-normal">
+                                    Медичний центр сімейного здоров\'я та реабілітації Геліос - це сучасне обладнання, кваліфіковані лікарі, індивідуальний підхід до кожного пацієнта.
+                                </p>' !!}
 							</div>
 							<div class="socials">
 								<ul class="list-inline mb-0">
 									<li class="list-inline-item">
-										<a href="##">
+										<a href="{{ $facebook ?? '##' }}">
 											<svg class="i-facebook">
 												<use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-facebook' }}"></use>
 											</svg>
 										</a>
 									</li>
 									<li class="list-inline-item">
-										<a href="##">
+										<a href="{{ $instagram ?? '##' }}">
 											<svg class="i-instagram">
 												<use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-instagram' }}"></use>
 											</svg>
 										</a>
 									</li>
 									<li class="list-inline-item">
-										<a href="##">
+										<a href="{{ $youtube ?? '##' }}">
 											<svg class="i-youtube">
 												<use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-youtube' }}"></use>
 											</svg>

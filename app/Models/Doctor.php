@@ -20,6 +20,7 @@ class Doctor extends Model
         'slug',
         'age',
         'expirience',
+        'is_show_in_main_page'
     ];
 
     protected $translatedAttributes = [
@@ -50,6 +51,12 @@ class Doctor extends Model
 
         return $array;
     }
+
+    public function scopeMainPage($query)
+    {
+        return $query->where('is_show_in_main_page', 1);
+    }
+
 
     public function specialization(): BelongsTo
     {
