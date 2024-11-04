@@ -26,7 +26,7 @@ class CreateEdit extends Component
     public function mount(Specialization $specialization = null)
     {
         $this->specialization = $specialization ?? new Specialization();
-        $this->activeLocale = app()->getLocale();
+        $this->activeLocale = config('app.active_lang');
 
         $service = resolve(SpecializationService::class);
 

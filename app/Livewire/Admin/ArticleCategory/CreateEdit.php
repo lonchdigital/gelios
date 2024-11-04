@@ -30,7 +30,7 @@ class CreateEdit extends Component
         $this->service = resolve(ArticleCategoryService::class);
 
         $this->category = $category ?? new ArticleCategory();
-        $this->activeLocale = app()->getLocale();
+        $this->activeLocale = config('app.active_lang');
 
         $this->uaTitle = $this->service->getTranslation($this->category, 'ua');
         $this->enTitle = $this->service->getTranslation($this->category, 'en');

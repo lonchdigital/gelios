@@ -34,7 +34,7 @@ class CreateEdit extends Component
     {
         $this->checkUp = $checkUp;
         $this->program = $program ?? new CheckUpProgram();
-        $this->activeLocale = app()->getLocale();
+        $this->activeLocale = config('app.active_lang');
 
         $translations = CheckUpProgramTranslation::where('check_up_program_id', $this->program->id)->get()->keyBy('locale');
 

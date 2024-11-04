@@ -26,7 +26,7 @@ class CreateEdit extends Component
     public function mount(Surgery $surgery = null)
     {
         $this->surgery = $surgery ?? new Surgery();
-        $this->activeLocale = app()->getLocale();
+        $this->activeLocale = config('app.active_lang');
 
         $service = resolve(DirectionService::class);
         $translations = $service->getSurgeryTranslations($this->surgery);

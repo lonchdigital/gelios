@@ -25,7 +25,7 @@ class CreateEdit extends Component
     {
         $this->category = $category ?? new DoctorCategory();
 
-        $this->activeLocale = app()->getLocale();
+        $this->activeLocale = config('app.active_lang');
 
         $this->uaTitle = DoctorCategoryTranslation::where('locale', 'ua')
             ->where('doctor_category_id', $this->category->id ?? null)

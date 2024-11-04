@@ -45,7 +45,7 @@ class EditFooterHeader extends Component
 
     public function mount()
     {
-        $this->activeLocale = app()->getLocale();
+        $this->activeLocale = config('app.active_lang');
         $this->loadValues();
     }
 

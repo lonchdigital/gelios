@@ -77,7 +77,7 @@ class Edit extends Component
             ->get()
             ->keyBy('locale');
 
-        $this->activeLocale = app()->getLocale();
+        $this->activeLocale = config('app.active_lang');
 
         $this->uaTitle = $translations['ua']->title ?? '';
         $this->enTitle = $translations['en']->title ?? '';

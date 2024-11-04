@@ -46,7 +46,7 @@ class CreateEdit extends Component
 
         $this->vacancy = $vacancy ?? new Vacancy();
 
-        $this->activeLocale = app()->getLocale();
+        $this->activeLocale = config('app.active_lang');
 
         $this->loadTranslations();
 

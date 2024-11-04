@@ -57,7 +57,7 @@ class CreateEdit extends Component
 
         $this->page = $page;
         $this->block = $block ?? new PageBlock();
-        $this->activeLocale = app()->getLocale();
+        $this->activeLocale = config('app.active_lang');
         $this->link = $this->block->url ?? '';
 
         $service = resolve(BlockService::class);

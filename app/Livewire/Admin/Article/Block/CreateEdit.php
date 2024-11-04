@@ -53,7 +53,7 @@ class CreateEdit extends Component
     {
         $this->article = $article;
         $this->block = $block ?? new ArticleBlock();
-        $this->activeLocale = app()->getLocale();
+        $this->activeLocale = config('app.active_lang');
 
         $service = resolve(ArticleBlockService::class);
 

@@ -55,7 +55,7 @@ class CreateEdit extends Component
         $this->promotion = $promotion ?? new Promotion();
         $this->slug = $this->promotion->slug ?? '';
 
-        $this->activeLocale = app()->getLocale();
+        $this->activeLocale = config('app.active_lang');
 
         $service = resolve(PromotionService::class);
 
