@@ -41,7 +41,7 @@ class CreateEdit extends Component
 
         $this->block = $block ?? new SurgeryBlock();
 
-        $this->activeLocale = app()->getLocale();
+        $this->activeLocale = config('app.active_lang');
 
         $service = resolve(DirectionBlockService::class);
         $translations = $service->getTranslations($this->block);

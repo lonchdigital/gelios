@@ -59,7 +59,7 @@ class CreateEdit extends Component
         $this->dispatch('livewire:load');
 
         $this->article = $article ?? new Article();
-        $this->activeLocale = app()->getLocale();
+        $this->activeLocale = config('app.active_lang');
         $this->slug = $this->article->slug ?? '';
 
         $this->loadTranslations();

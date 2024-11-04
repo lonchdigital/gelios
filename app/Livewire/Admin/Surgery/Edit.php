@@ -66,7 +66,7 @@ class Edit extends Component
 
         $this->loadTranslations();
 
-        $this->activeLocale = app()->getLocale();
+        $this->activeLocale = config('app.active_lang');
     }
 
     private function loadTranslations()

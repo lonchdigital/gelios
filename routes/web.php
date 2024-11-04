@@ -29,7 +29,12 @@ Route::post('/feedback-store', [FeedbackController::class, 'store'])->name('feed
 
 Route::group([
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+        'middleware' => [ 
+            'localeSessionRedirect',
+            'localizationRedirect',
+            'localeViewPath',
+            // 'forceLocalePrefix'
+            ]
     ], function () {
 
         Route::get('/', [HomeController::class, 'index'])->name('main');

@@ -35,7 +35,10 @@ Route::group([
 //    Route::get('/logout', [AdminAuthController::class, 'adminLogout'])->name('adminLogout');
 
     Route::group([
-//        'middleware' => ['admin_auth']
+       'middleware' => [
+        // 'admin_auth',
+        'setDefaultLanguage',
+        ]
     ], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('adminDashboard');
 

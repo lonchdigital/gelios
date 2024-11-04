@@ -53,7 +53,7 @@ class CreateEdit extends Component
         $this->dispatch('livewire:load');
 
         $this->checkUp = $checkUp ?? new CheckUp();
-        $this->activeLocale = app()->getLocale();
+        $this->activeLocale = config('app.active_lang');
         $this->price = $this->checkUp->price ?? '';
         $this->newPrice = $this->checkUp->new_price ?? '';
         $service = resolve(CreateEditService::class);

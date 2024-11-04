@@ -80,7 +80,7 @@ class CreateEdit extends Component
 
         $this->doctor = $doctor ?? new Doctor();
 
-        $this->activeLocale = app()->getLocale();
+        $this->activeLocale = config('app.active_lang');
         $this->slug = $this->doctor->slug ?? '';
         $this->age = $this->doctor->age ?? '';
         $this->expirience = $this->doctor->expirience ?? '';

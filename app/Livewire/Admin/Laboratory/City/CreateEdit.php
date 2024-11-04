@@ -26,7 +26,7 @@ class CreateEdit extends Component
     {
         $this->city = $city ?? new LaboratoryCity();
 
-        $this->activeLocale = app()->getLocale();
+        $this->activeLocale = config('app.active_lang');
 
         $this->uaTitle = LaboratoryCityTranslation::where('locale', 'ua')
             ->where('laboratory_city_id', $this->city->id ?? null)
