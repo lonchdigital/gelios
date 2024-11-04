@@ -15,6 +15,19 @@ use Illuminate\Database\Eloquent\Collection;
 
 class DirectionsService 
 {
+    public function setCurrentDirectionData(Direction $direction)
+    {
+        $data = [];
+
+        $data['slug'] = $direction->page->slug;
+
+        foreach ($direction->getTranslationsArray() as $lang => $value) {
+            $data['name'][$lang] = $value['name'];
+        }
+        
+        return $data;
+    }
+
     public function getAllOffices(): Collection
     {
         return Contact::all();
@@ -149,6 +162,12 @@ class DirectionsService
         $dataToUpdate = [];
         $dataToUpdate['parent_id'] = $data['parent_id'];
 
+        if($data['name']) {
+            foreach ($data['name'] as $lang => $value) {
+                $dataToUpdate[$lang]['name'] = $value;
+            }
+        }
+
         $direction->update($dataToUpdate);
     }
 
@@ -186,9 +205,17 @@ class DirectionsService
         return $directions->merge($parents);
     }
 
-    public function updatePage(PageDirection $page, array $data)
+    public function updatePage(PageDirection $page, array $data, array $directionData)
     {
         $dataToUpdate = [];
+
+        $dataToUpdate['slug'] = $directionData['slug'];
+
+        if($directionData['name']) {
+            foreach ($directionData['name'] as $lang => $value) {
+                $dataToUpdate[$lang]['name'] = $value;
+            }
+        }
 
         if($data['meta_title']) {
             foreach ($data['meta_title'] as $lang => $value) {

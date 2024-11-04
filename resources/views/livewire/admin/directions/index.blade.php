@@ -25,12 +25,7 @@
                                         field-display="name"
                                         live-wire-field="directionName"
                                         :values="[]"
-                                        />
-                                        @error('directionName.ua')
-                                            <div class="mt-1 text-danger ajaxError">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror                               
+                                        />                           
                                         <div class="mb-3">
                                             <label>{{ trans('admin.template') }}</label>
                                                 <select class="form-control" wire:model="directionTemplate">
