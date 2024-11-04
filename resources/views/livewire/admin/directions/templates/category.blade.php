@@ -21,6 +21,33 @@
 
                                 <form wire:submit.prevent="save">
 
+                                    <section class="mb-50 mt-30">
+
+                                        <x-admin.multilanguage-input
+                                        :is-required="false"
+                                        :label="trans('admin.name')"
+                                        field-name="name"
+                                        live-wire-field="сurrentDirectionData.name"
+                                        :values="$сurrentDirectionData['name']"
+                                        />
+
+                                        <div class="form-group mt-2 mb-0">
+                                            <label for="">slug</label>
+                                            <input 
+                                                    type="text"
+                                                    class="form-control"
+                                                    wire:model="сurrentDirectionData.slug"
+                                                >
+                
+                                            @error('сurrentDirectionData.slug')
+                                                <div class="mt-1 text-danger ajaxError">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                    </section>
+
                                     <section class="mb-50">
                                         <div wire:ignore class="mt-3">
                                             <label>{{ trans('admin.offices') }}</label>

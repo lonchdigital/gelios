@@ -16,7 +16,10 @@ class SubCategory extends Component
 {
     use WithFileUploads;
 
-    public Direction $direction; 
+    public Direction $direction;
+
+    public array $сurrentDirectionData = [];
+
     public DirectionTextBlock|null $directionTextBlockOne = null;
     public DirectionTextBlock|null $directionTextBlockTwo = null;
 
@@ -38,6 +41,8 @@ class SubCategory extends Component
     {
         $this->directionsService = app(DirectionsService::class);
         $this->dispatch('livewire:load');
+
+        $this->сurrentDirectionData = $this->directionsService->setCurrentDirectionData($this->direction);
 
         $this->allDirectionContacts = $this->directionsService->getAllOffices();
         $allDirections = $this->directionsService->getAllDirectionsExceptOne($this->direction);
@@ -173,23 +178,34 @@ class SubCategory extends Component
 
     protected function rules()
     {
-        return [
-            'directionName.ua' => [
-                'required',
-                'string'
-                // 'nullable'
-            ],
-            'directionTemplate' => [
-                'required',
-                'integer'
-            ],
+        $rules = [];
+
+        $rules['сurrentDirectionData.slug'] = [
+            'required',
+            'string',
+            'unique:page_directions,slug,' . ($this->direction->page->id ?? '')
         ];
+
+        return $rules;
+    }
+
+    protected function attributes()
+    {
+        $attributes = [];
+
+        $attributes['сurrentDirectionData.slug'] = 'slug';
+
+        return $attributes;
+    }
+
+    public function getValidationAttributes()
+    {
+        return $this->attributes();
     }
 
     public function save()
     {
-        // $this->validate();
-        // dd('yellow', $this->directionParent);
+        $this->validate();
 
         $this->direction->update([
             'parent_id' => $this->directionParent,
@@ -229,12 +245,14 @@ class SubCategory extends Component
 
         // Update Direction Page
         $directionData = [
+            'name' => $this->сurrentDirectionData['name'],
+            'slug' => $this->сurrentDirectionData['slug'],
             'parent_id' => $this->directionParent
         ];
         $this->directionsService->updateDirection($this->direction, $directionData);
 
         // Update Direction Page
-        $this->directionsService->updatePage($this->direction->page, $this->seoData);
+        $this->directionsService->updatePage($this->direction->page, $this->seoData, $directionData);
 
         redirect()->route('directions.edit', ['directionId' => $this->direction->id])->with('success', trans('admin.data_updated'));
     }
