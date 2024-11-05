@@ -5,11 +5,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PricesController;
 use App\Http\Controllers\AboutUsController;
-use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CheckUpController;
 use App\Http\Controllers\OfficesController;
+use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\SurgeryController;
+use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\HospitalController;
@@ -42,6 +43,8 @@ Route::group([
         Route::get('/one-center/', [OneCenterController::class, 'page'])->name('one.center.page');
 
         Route::get('/about-us/', [AboutUsController::class, 'page'])->name('about.us.page');
+
+        Route::get('/otzyvy/', [ReviewsController::class, 'page'])->name('reviews.page');
 
         Route::get('/prices/', [PricesController::class, 'page'])->name('prices.page');
 
