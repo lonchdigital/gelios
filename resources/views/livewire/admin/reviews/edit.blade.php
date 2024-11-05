@@ -79,6 +79,7 @@
             initQuillEditors((quill, fieldName, language) => {
                 quill.on('text-change', function () {
                     let value = quill.root.innerHTML;
+                    value = value.replace(/(\s?style="[^"]*")|(\s?class="[^"]*")/g, '');
                     @this.set(`${fieldName}.${language}`, value);
                 });
             });
