@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'reviews_page' => 'Сторінка відгуків',
     'common_blocks' => 'Наскрізні блоки',
     'deleted_contact' => 'Філію було видалено',
     'add_office' => 'Додати філію',

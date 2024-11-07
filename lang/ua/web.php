@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'leave_review' => 'Залишити відгук',
     'all_directions' => 'Усі напрямки',
     'back' => 'Назад',
     'show_more' => 'Показати більше',

@@ -100,6 +100,7 @@ Route::group([
         });
 
         Route::prefix('/reviews')->group(function() {
+            Route::get('/page', [ReviewController::class, 'page'])->name('reviews.page.edit');
             Route::get('/', [ReviewController::class, 'index'])->name('reviews.index');
 
             Route::get('/create', [ReviewController::class, 'createReview'])->name('reviews.create');
