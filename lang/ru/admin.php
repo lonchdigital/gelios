@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'reviews_page' => 'Страница отзывов',
     'common_blocks' => 'Сквозные блоки',
     'deleted_contact' => 'Филиал был удален',
     'add_office' => 'Добавить филиал',

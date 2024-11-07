@@ -129,6 +129,9 @@
                             <i class="fa fa-angle-right"></i>
                         </a>
                         <ul class="treeview-menu" @if(Route::is('reviews.*')) style="display: block;" @else style="display: none;" @endif>
+                            <li @if(Route::is('reviews.page.edit')) class="active" @endif>
+                                <a href="{{ route('reviews.page.edit') }}">{{ trans('admin.reviews_page') }}</a>
+                            </li>
                             <li @if(Route::is('reviews.index')) class="active" @endif>
                                 <a href="{{ route('reviews.index') }}">{{ trans('admin.reviews') }}</a>
                             </li>
@@ -137,6 +140,7 @@
                             </li> --}}
                         </ul>
                     </li>
+
 
                     <li @if(Route::is('admin.promotions.*')) class="active" @endif>
                         <a href="{{ route('admin.promotions.index') }}">

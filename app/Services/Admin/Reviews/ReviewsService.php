@@ -4,14 +4,38 @@ namespace App\Services\Admin\Reviews;
 
 use App\Models\Page;
 use App\Models\Review;
-use App\Models\Contact;
-use App\Models\ContactItem;
+use App\Models\PageTextBlock;
 use Illuminate\Database\Eloquent\Collection;
 
 
 class ReviewsService 
 {
     const IMAGE_PATH = '/reviews';
+
+    public function setPageData(Page $page)
+    {
+        $data = [];
+
+        foreach ($page->getTranslationsArray() as $lang => $value) {
+            $data['title'][$lang] = $value['title'];
+        }
+        
+        return $data;
+    }
+
+    public function updatePageData(Page $page, array $data)
+    {
+        $dataToUpdate = [];
+
+        if($data['title']) {
+            foreach ($data['title'] as $lang => $value) {
+                $dataToUpdate[$lang]['title'] = $value;
+            }
+        }
+
+        $page->update($dataToUpdate);
+    }
+
 
     public function setReviewData(null|Review $review)
     {
@@ -71,7 +95,6 @@ class ReviewsService
             return Review::create($dataToUpdate);
         }
     }
-
 
     public function removeReview(int $reviewID)
     {
