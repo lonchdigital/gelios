@@ -18,6 +18,7 @@ class DirectionsPage extends Component
     use WithFileUploads, SeoPages;
 
     public Page $page;
+    public array $sectionData = [];
     public array $seoData = [];
 
     protected DirectionsService $directionsService;
@@ -28,6 +29,9 @@ class DirectionsPage extends Component
         $this->dispatch('livewire:load');
 
         $this->page = Page::where('type', PageType::DIRECTIONS->value)->first();
+
+        // set page data
+        $this->sectionData = $this->directionsService->setMainDirectionPage($this->page);
 
         // Set SEO data
         $this->seoData = $this->setSeoDataPage($this->page);
@@ -43,22 +47,14 @@ class DirectionsPage extends Component
 
     protected function rules()
     {
-        return [
-            'directionName.ua' => [
-                'required',
-                'string'
-                // 'nullable'
-            ],
-            'directionTemplate' => [
-                'required',
-                'integer'
-            ],
-        ];
+        return [];
     }
 
     public function save()
     {
         // $this->validate();
+
+        $this->directionsService->updateMainDirectionPage($this->page, $this->sectionData);
 
         $this->updateSeoDataPage($this->page, $this->seoData);
 

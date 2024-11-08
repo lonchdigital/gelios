@@ -2,12 +2,13 @@
 
 namespace App\Services\Admin\Directions;
 
+use App\Models\Page;
 use App\Models\Contact;
 use App\Models\Direction;
-use App\Models\DirectionInfoBlock;
 use Illuminate\Support\Str;
 use App\Models\PageDirection;
 use App\Models\DirectionPrice;
+use App\Models\DirectionInfoBlock;
 use App\Models\DirectionTextBlock;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
@@ -63,7 +64,8 @@ class DirectionsService
                 return $this->filterDirection($direction, $excludedId);
             })->filter(); 
     }
-    private function filterDirection($direction, $excludedId) {
+    private function filterDirection($direction, $excludedId) 
+    {
 
         if ($direction->id == $excludedId) {
             return null;
@@ -235,6 +237,30 @@ class DirectionsService
         if($data['seo_text']) {
             foreach ($data['seo_text'] as $lang => $value) {
                 $dataToUpdate[$lang]['seo_text'] = $value;
+            }
+        }
+
+        $page->update($dataToUpdate);
+    }
+
+    public function setMainDirectionPage(Page $page)
+    {
+        $data = [];
+
+        foreach ($page->getTranslationsArray() as $lang => $value) {
+            $data['title'][$lang] = $value['title'];
+        }
+        
+        return $data;
+    }
+
+    public function updateMainDirectionPage(Page $page, array $data)
+    {
+        $dataToUpdate = [];
+
+        if($data['title']) {
+            foreach ($data['title'] as $lang => $value) {
+                $dataToUpdate[$lang]['title'] = $value;
             }
         }
 
