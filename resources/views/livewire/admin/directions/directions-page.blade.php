@@ -16,10 +16,20 @@
 
 
                                 <div class="card-head mb-20">
-                                    <h4 class="card-head-title">{{ $page->id }}</h4>
+                                    <h4 class="card-head-title">{{ $page->title }}</h4>
                                 </div>
 
                                 <form wire:submit.prevent="save">
+
+                                    <section class="mb-50 mt-30">
+                                        <x-admin.multilanguage-input
+                                            :is-required="false"
+                                            :label="trans('admin.title')"
+                                            field-name="title"
+                                            live-wire-field="sectionData.title"
+                                            :values="$sectionData['title']"
+                                        />
+                                    </section>
 
                                     <section class="mb-50 mt-30">
                                         <h6 class="card-title">SEO</h6>

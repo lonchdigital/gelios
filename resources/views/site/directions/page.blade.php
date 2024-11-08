@@ -9,7 +9,7 @@
                 'url' => route('main'),
             ],
             [
-                'title' => trans('web.directions'),
+                'title' => $page->title,
             ],
         ],
     ])
