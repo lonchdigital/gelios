@@ -8,7 +8,7 @@
                 'url' => route('main'),
             ],
             [
-                'title' => 'Лабораторії',
+                'title' => $page->title,
                 'url' => null,
             ],
         ],
