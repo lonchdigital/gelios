@@ -129,6 +129,31 @@ class AboutUsService
         }
     }
 
-    
+    public function setPageData(Page $page)
+    {
+        $data = [];
 
+        if( !empty($page->getTranslationsArray()) ) {
+            foreach ($page->getTranslationsArray() as $lang => $value) {
+                $data['title'][$lang] = $value['title'];
+            }
+        } else {
+            $data['title'] = [];
+        }
+
+        return $data;
+    }
+
+    public function updatePageData(Page $page, array $data)
+    {
+        $dataToUpdate = [];
+
+        if($data['title']) {
+            foreach ($data['title'] as $lang => $value) {
+                $dataToUpdate[$lang]['title'] = $value;
+            }
+        }
+
+        $page->update($dataToUpdate);
+    }
 }
