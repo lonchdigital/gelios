@@ -194,4 +194,29 @@ class ContactsService
             $galleryToDelete->delete();
         }
     }
+
+
+    public function setPageData(Page $page)
+    {
+        $data = [];
+
+        foreach ($page->getTranslationsArray() as $lang => $value) {
+            $data['title'][$lang] = $value['title'];
+        }
+        
+        return $data;
+    }
+
+    public function updatePageData(Page $page, array $data)
+    {
+        $dataToUpdate = [];
+
+        if($data['title']) {
+            foreach ($data['title'] as $lang => $value) {
+                $dataToUpdate[$lang]['title'] = $value;
+            }
+        }
+
+        $page->update($dataToUpdate);
+    }
 }

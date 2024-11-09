@@ -18,6 +18,7 @@ class Index extends Component
 
     public Page $page;
     public array $sectionData = [];
+    public array $pageData = [];
 
     public array $seoData = [];
 
@@ -30,6 +31,9 @@ class Index extends Component
         $this->dispatch('livewire:load');
 
         $this->page = Page::where('type', PageType::CONTACTS->value)->first();
+
+        // Set page data
+        $this->pageData = $this->contactsService->setPageData($this->page);
 
         // Set SEO data
         $this->seoData = $this->setSeoDataPage($this->page);
@@ -60,6 +64,7 @@ class Index extends Component
     {
         // $this->validate();
 
+        $this->contactsService->updatePageData($this->page, $this->pageData);
 
         $this->updateSeoDataPage($this->page, $this->seoData);
 
