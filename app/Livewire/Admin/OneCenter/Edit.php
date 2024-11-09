@@ -3,16 +3,13 @@
 namespace App\Livewire\Admin\OneCenter;
 
 use App\Models\Page;
-use App\Enums\PageType;
 use Livewire\Component;
 use App\Models\BriefBlock;
 use Livewire\WithPagination;
 use App\Models\PageTextBlock;
 use Livewire\WithFileUploads;
-use App\Models\InsuranceCompany;
-use Illuminate\Support\Facades\Storage;
+use App\Traits\Livewire\SeoPages;
 use App\Traits\Livewire\HandlesPageBlocks;
-use Illuminate\Database\Eloquent\Collection;
 use App\Traits\Livewire\OneCenter\HandlesSlider;
 use App\Services\Admin\OneCenter\OneCenterService;
 use App\Traits\Livewire\OneCenter\HandlesBriefBlocks;
@@ -23,13 +20,15 @@ class Edit extends Component
         WithFileUploads, 
         HandlesSlider,
         HandlesBriefBlocks,
-        HandlesPageBlocks;
+        HandlesPageBlocks,
+        SeoPages;
 
-    public Page $page;
+    public Page|null $page = null;
     public array $slides = [];
     public array $briefBlocks = [];
     public array $sectionOneData = [];
     public array $sectionTwoData = [];
+    public array $pageData = [];
     public array $seoData = [];
 
     protected OneCenterService $oneCenterService;
@@ -38,71 +37,84 @@ class Edit extends Component
     {
         $this->oneCenterService = app(OneCenterService::class);
         $this->dispatch('livewire:load');
-        
-        $this->page = Page::where('type', PageType::ONECENTER->value)->first();
 
-        // Set Slides
-        $slides = BriefBlock::where('page_id', $this->page->id)->where('type', 'slider')->orderBy('sort', 'asc')->get();
-        updateSort($slides);
-        foreach($slides as $slide) {
-            $title = [];
-            $description = [];
+        $this->page = $this->page;
 
-            if(!is_null($slide)) {
-                foreach ($slide->getTranslationsArray() as $lang => $value) {
-                    $title[$lang] = $value['title'];
+        if( !is_null($this->page) ) {
+            
+            // Set Slides
+            $slides = BriefBlock::where('page_id', $this->page->id)->where('type', 'slider')->orderBy('sort', 'asc')->get();
+            updateSort($slides);
+            foreach($slides as $slide) {
+                $title = [];
+                $description = [];
+
+                if(!is_null($slide)) {
+                    foreach ($slide->getTranslationsArray() as $lang => $value) {
+                        $title[$lang] = $value['title'];
+                    }
+                    foreach ($slide->getTranslationsArray() as $lang => $value) {
+                        $description[$lang] = $value['description'];
+                    }
                 }
-                foreach ($slide->getTranslationsArray() as $lang => $value) {
-                    $description[$lang] = $value['description'];
-                }
+
+                $this->slides[] = [
+                    'id' => $slide->id,
+                    'sort' => $slide->sort,
+                    'oldImage' => $slide->image ?? '',
+                    'newImage' => null,
+                    'image' => $slide->image,
+                    'title' => $title,
+                    'description' => $description,
+                ];
             }
+            $this->slides = makeUsort($this->slides);
 
-            $this->slides[] = [
-                'id' => $slide->id,
-                'sort' => $slide->sort,
-                'oldImage' => $slide->image ?? '',
-                'newImage' => null,
-                'image' => $slide->image,
-                'title' => $title,
-                'description' => $description,
-            ];
-        }
-        $this->slides = makeUsort($this->slides);
+            // Set Brief blocks
+            $briefBlocks = BriefBlock::where('page_id', $this->page->id)->where('type', 'briefBlocks')->orderBy('sort', 'asc')->get();
+            updateSort($briefBlocks);
+            foreach($briefBlocks as $briefBlock) {
+                $title = [];
 
-        // Set Brief blocks
-        $briefBlocks = BriefBlock::where('page_id', $this->page->id)->where('type', 'briefBlocks')->orderBy('sort', 'asc')->get();
-        updateSort($briefBlocks);
-        foreach($briefBlocks as $briefBlock) {
-            $title = [];
-
-            if(!is_null($briefBlock)) {
-                foreach ($briefBlock->getTranslationsArray() as $lang => $value) {
-                    $title[$lang] = $value['title'];
+                if(!is_null($briefBlock)) {
+                    foreach ($briefBlock->getTranslationsArray() as $lang => $value) {
+                        $title[$lang] = $value['title'];
+                    }
                 }
+
+                $this->briefBlocks[] = [
+                    'id' => $briefBlock->id,
+                    'sort' => $briefBlock->sort,
+                    'oldImage' => $briefBlock->image ?? '',
+                    'newImage' => null,
+                    'image' => $briefBlock->image,
+                    'title' => $title
+                ];
             }
+            $this->briefBlocks = makeUsort($this->briefBlocks);
 
-            $this->briefBlocks[] = [
-                'id' => $briefBlock->id,
-                'sort' => $briefBlock->sort,
-                'oldImage' => $briefBlock->image ?? '',
-                'newImage' => null,
-                'image' => $briefBlock->image,
-                'title' => $title
-            ];
+            // set text block
+            $pageTextBlock = PageTextBlock::where('number', 1)->where('page_id', $this->page->id)->first();
+            $this->sectionOneData = $this->setPageTextBlock($pageTextBlock);
+            
+            // set text block
+            $pageTextBlockTwo = PageTextBlock::where('number', 2)->where('page_id', $this->page->id)->first();
+            $this->sectionTwoData = $this->setPageTextBlock($pageTextBlockTwo);
+
+            // Set page data
+            $this->pageData = $this->oneCenterService->setPageData($this->page);
+
+            // Set SEO data
+            $this->seoData = $this->setSeoDataPage($this->page);
+
+        } else {
+            $this->sectionOneData = $this->setPageTextBlock(null);
+            $this->sectionTwoData = $this->setPageTextBlock(null);
+
+            $this->pageData = $this->oneCenterService->setPageData(null);
+            $this->seoData = $this->setSeoDataPage(null);
         }
-        $this->briefBlocks = makeUsort($this->briefBlocks);
 
-        // set text block
-        $pageTextBlock = PageTextBlock::where('number', 1)->where('page_id', $this->page->id)->first();
-        $this->sectionOneData = $this->setPageTextBlock($pageTextBlock);
-        
-        
-        // set text block
-        $pageTextBlockTwo = PageTextBlock::where('number', 2)->where('page_id', $this->page->id)->first();
-        $this->sectionTwoData = $this->setPageTextBlock($pageTextBlockTwo);
-
-        // Set SEO data
-        $this->seoData = $this->oneCenterService->setSeoData($this->page);
     }
 
     public function hydrate()
@@ -168,19 +180,40 @@ class Edit extends Component
 
     protected function rules()
     {
-        return [
-            'companiesRowOne.*.newImage' => [
-                'nullable'
-            ],
-            'companiesRowTwo.*.newImage' => [
-                'nullable'
-            ],
+        $rules = [];
+
+        $rules['pageData.slug'] = [
+            'required',
+            'string',
+            'unique:pages,slug,' . ($this->page->id ?? '')
         ];
+
+        return $rules;
+    }
+
+    protected function attributes()
+    {
+        $attributes = [];
+
+        $attributes['pageData.slug'] = 'slug';
+
+        return $attributes;
+    }
+
+    public function getValidationAttributes()
+    {
+        return $this->attributes();
     }
 
     public function save()
     {
-        // $this->validate();
+        $this->validate();
+
+        if( !is_null($this->page) ) {
+            $this->oneCenterService->updatePageData($this->page, $this->pageData);
+        } else {
+            $this->page = $this->oneCenterService->createPage($this->pageData);
+        }
 
         $existingSlides = BriefBlock::where('page_id', $this->page->id)->where('type', 'slider')->get();
         $this->oneCenterService->syncSlides($this->slides, $existingSlides, $this->page->id);
@@ -206,10 +239,9 @@ class Edit extends Component
         ];
         $this->updatePageTextBlock($formDataTwo, $this->page->id, 2);
 
-        // Update Direction Page
-        $this->oneCenterService->updatePage($this->page, $this->seoData);
+        $this->updateSeoDataPage($this->page, $this->seoData);
 
-        redirect()->route('one.center.show')->with('success', trans('admin.document_updated'));
+        redirect()->route('one.center.edit', ['page' => $this->page])->with('success', trans('admin.document_updated'));
     }
 
     public function render()

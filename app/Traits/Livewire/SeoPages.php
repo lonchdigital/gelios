@@ -35,36 +35,45 @@ trait SeoPages
         $page->update($dataToUpdate);
     }
 
-    public function setSeoDataPage(Page $page)
+    public function setSeoDataPage(Page|null $page)
     {
         $data = [];
 
-        if(!is_null($page->meta_title)) {
-            foreach ($page->getTranslationsArray() as $lang => $value) {
-                $data['meta_title'][$lang] = $value['meta_title'];
+        if( !is_null($page) ) {
+
+            if(!is_null($page->meta_title)) {
+                foreach ($page->getTranslationsArray() as $lang => $value) {
+                    $data['meta_title'][$lang] = $value['meta_title'];
+                }
+            } else {
+                $data['meta_title'] = [];
             }
+            if(!is_null($page->meta_description)) {
+                foreach ($page->getTranslationsArray() as $lang => $value) {
+                    $data['meta_description'][$lang] = $value['meta_description'];
+                }
+            } else {
+                $data['meta_description'] = [];
+            }
+            if(!is_null($page->meta_keywords)) {
+                foreach ($page->getTranslationsArray() as $lang => $value) {
+                    $data['meta_keywords'][$lang] = $value['meta_keywords'];
+                }
+            } else {
+                $data['meta_keywords'] = [];
+            }
+            if(!is_null($page->seo_text)) {
+                foreach ($page->getTranslationsArray() as $lang => $value) {
+                    $data['seo_text'][$lang] = $value['seo_text'];
+                }
+            } else {
+                $data['seo_text'] = [];
+            }
+
         } else {
             $data['meta_title'] = [];
-        }
-        if(!is_null($page->meta_description)) {
-            foreach ($page->getTranslationsArray() as $lang => $value) {
-                $data['meta_description'][$lang] = $value['meta_description'];
-            }
-        } else {
             $data['meta_description'] = [];
-        }
-        if(!is_null($page->meta_keywords)) {
-            foreach ($page->getTranslationsArray() as $lang => $value) {
-                $data['meta_keywords'][$lang] = $value['meta_keywords'];
-            }
-        } else {
             $data['meta_keywords'] = [];
-        }
-        if(!is_null($page->seo_text)) {
-            foreach ($page->getTranslationsArray() as $lang => $value) {
-                $data['seo_text'][$lang] = $value['seo_text'];
-            }
-        } else {
             $data['seo_text'] = [];
         }
 

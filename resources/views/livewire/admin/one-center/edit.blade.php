@@ -10,10 +10,43 @@
                 @endif
 
                 <div class="card-head mb-20">
-                    <h4 class="card-head-title">{{ trans('admin.one_center') }}</h4>
+                    @if(is_null($page))
+                        <h4 class="card-head-title">{{ trans('admin.one_center') }}</h4>
+                    @else
+                        <h4 class="card-head-title">{{ $page->title }}</h4>
+                    @endif
                 </div>
 
                 <form wire:submit.prevent="save">
+
+                    <section class="mb-50 mt-30">
+
+                        <x-admin.multilanguage-input
+                        :is-required="false"
+                        :label="trans('admin.title')"
+                        field-name="title"
+                        live-wire-field="pageData.title"
+                        :values="$pageData['title']"
+                        />
+
+                        <div class="form-group mt-2 mb-0">
+                            <label for="">slug</label>
+                            <input 
+                                    type="text"
+                                    class="form-control"
+                                    wire:model="pageData.slug"
+                                >
+
+                            @error('pageData.slug')
+                                <div class="mt-1 text-danger ajaxError">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                    </section>
+
+                    <hr>
 
                     <section class="mb-50">
                         <h6 class="card-title">{{ trans('admin.slides') }}</h6>
@@ -399,9 +432,6 @@
                     <button type="submit" class="btn btn-primary mr-2 mb-3">{{ trans('admin.save') }}</button>
                 </form>
             </div>
-        </div>
-        <div class="pagination-wrapper d-flex justify-content-center mt-4 mb-5">
-            {{-- {{ $this->faqs->links('vendor.pagination.default') }} --}}
         </div>
     </div>
 </div>
