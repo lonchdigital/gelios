@@ -3,12 +3,7 @@
 namespace App\Services\Admin\OneCenter;
 
 use App\Models\Page;
-use App\Models\Hospital;
 use App\Models\BriefBlock;
-use Illuminate\Support\Str;
-use App\Models\PageDirection;
-use App\Models\HospitalGallery;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
 
 
@@ -146,69 +141,83 @@ class OneCenterService
 
     
 
-
-    public function setSeoData(Page $page)
+    public function setPageData(Page|null $page)
     {
         $data = [];
 
-        if(!is_null($page->meta_title)) {
-            foreach ($page->getTranslationsArray() as $lang => $value) {
-                $data['meta_title'][$lang] = $value['meta_title'];
+        if( !is_null($page) ) {
+
+            if( !empty($page->getTranslationsArray()) ) {
+                foreach ($page->getTranslationsArray() as $lang => $value) {
+                    $data['title'][$lang] = $value['title'];
+                }
+            } else {
+                $data['title'] = [];
             }
+
+            $data['slug'] = $page->slug;
+
         } else {
-            $data['meta_title'] = [];
-        }
-        if(!is_null($page->meta_description)) {
-            foreach ($page->getTranslationsArray() as $lang => $value) {
-                $data['meta_description'][$lang] = $value['meta_description'];
-            }
-        } else {
-            $data['meta_description'] = [];
-        }
-        if(!is_null($page->meta_keywords)) {
-            foreach ($page->getTranslationsArray() as $lang => $value) {
-                $data['meta_keywords'][$lang] = $value['meta_keywords'];
-            }
-        } else {
-            $data['meta_keywords'] = [];
-        }
-        if(!is_null($page->seo_text)) {
-            foreach ($page->getTranslationsArray() as $lang => $value) {
-                $data['seo_text'][$lang] = $value['seo_text'];
-            }
-        } else {
-            $data['seo_text'] = [];
+            $data['slug'] = '';
+            $data['title'] = [];
         }
 
         return $data;
     }
 
-    public function updatePage(Page $page, array $data)
+    public function createPage(array $data): Page
     {
         $dataToUpdate = [];
 
-        if($data['meta_title']) {
-            foreach ($data['meta_title'] as $lang => $value) {
-                $dataToUpdate[$lang]['meta_title'] = $value;
-            }
-        }
-        if($data['meta_description']) {
-            foreach ($data['meta_description'] as $lang => $value) {
-                $dataToUpdate[$lang]['meta_description'] = $value;
-            }
-        }
-        if($data['meta_keywords']) {
-            foreach ($data['meta_keywords'] as $lang => $value) {
-                $dataToUpdate[$lang]['meta_keywords'] = $value;
-            }
-        }
-        if($data['seo_text']) {
-            foreach ($data['seo_text'] as $lang => $value) {
-                $dataToUpdate[$lang]['seo_text'] = $value;
+        if($data['title']) {
+            foreach ($data['title'] as $lang => $value) {
+                $dataToUpdate[$lang]['title'] = $value;
             }
         }
 
+        $dataToUpdate['type'] = 'one_center';
+        $dataToUpdate['slug'] = $data['slug'];
+
+        $page = Page::create($dataToUpdate);
+        return $page;
+    }
+
+    public function updatePageData(Page $page, array $data)
+    {
+        $dataToUpdate = [];
+
+        if($data['title']) {
+            foreach ($data['title'] as $lang => $value) {
+                $dataToUpdate[$lang]['title'] = $value;
+            }
+        }
+
+        $dataToUpdate['slug'] = $data['slug'];
+
         $page->update($dataToUpdate);
+    }
+
+    public function removeOneCenter(int $id)
+    {
+        $page = Page::find($id);
+
+        foreach($page->briefBlocks as $briefBlock) {
+            if(!is_null($briefBlock->image)){
+                removeImageFromStorage($briefBlock->image);
+            }
+            
+            $briefBlock->delete();
+        }
+
+        foreach($page->pageTextBlocks as $pageTextBlock) {
+            if(!is_null($pageTextBlock->image)){
+                removeImageFromStorage($pageTextBlock->image);
+            }
+            
+            $pageTextBlock->delete();
+        }
+
+        $page->delete();
     }
 
 }

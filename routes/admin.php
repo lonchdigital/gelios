@@ -53,7 +53,13 @@ Route::group([
             Route::get('/', [InsuranceCompaniesController::class, 'index'])->name('insurance.companies.index');
         });
         Route::prefix('/one-center')->group(function() {
-            Route::get('/', [OneCenterController::class, 'show'])->name('one.center.show');
+            // Route::get('/', [OneCenterController::class, 'show'])->name('one.center.show');
+
+            Route::get('/', [OneCenterController::class, 'index'])->name('one.center.index');
+
+            Route::get('/create', [OneCenterController::class, 'create'])->name('one.center.create');
+            Route::get('/{page}/edit', [OneCenterController::class, 'edit'])->name('one.center.edit');
+
         });
         Route::prefix('/text-pages')->group(function() {
             Route::get('/', [TextPagesController::class, 'index'])->name('text.pages.index');

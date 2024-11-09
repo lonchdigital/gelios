@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'page_deleted' => 'Сторінку видалено',
     'reviews_page' => 'Сторінка відгуків',
     'common_blocks' => 'Наскрізні блоки',
     'deleted_contact' => 'Філію було видалено',
@@ -62,6 +63,7 @@ return [
     'new_review' => 'Новий відгук',
     'added_review' => 'Відгук доданий',
     'one_center' => 'Один центр',
+    'all_centers' => 'Всі центри',
     'slides' => 'Слайди',
     'settings' => 'Налаштування',
     'car_common_settings' => 'Налаштування картки авто',

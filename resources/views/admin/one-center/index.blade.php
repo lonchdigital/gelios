@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="container-fluid">
-        @livewire('admin.one-center.edit', ['page' => $page])
+        @livewire('admin.one-center.index', ['pages' => $pages])
     </div>
 @endsection
 

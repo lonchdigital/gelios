@@ -115,10 +115,10 @@
                         </a>
                     </li>
 
-                    <li @if( Route::is('one.center.show') ) class="active"@endif>
-                        <a href="{{ route('one.center.show') }}">
+                    <li @if( Route::is('one.center.index') ) class="active"@endif>
+                        <a href="{{ route('one.center.index') }}">
                             <i class='fa fa-building-o'></i>
-                            <span>{{ trans('admin.one_center') }}</span>
+                            <span>{{ trans('admin.all_centers') }}</span>
                         </a>
                     </li>
 

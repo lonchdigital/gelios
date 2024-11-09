@@ -40,6 +40,11 @@ class Page extends Model implements TranslatableContract
     {
         return $this->hasMany(PageTextBlock::class);
     }
+    
+    public function briefBlocks(): HasMany
+    {
+        return $this->hasMany(BriefBlock::class);
+    }
 
     public function tests(): HasMany
     {
