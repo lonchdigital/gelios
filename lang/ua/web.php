@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'free_consultation' => 'Безкоштовна консультація',
+    'staczionar' => 'Стаціонар',
     'leave_review' => 'Залишити відгук',
     'all_directions' => 'Усі напрямки',
     'back' => 'Назад',

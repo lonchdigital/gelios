@@ -2,26 +2,17 @@
 
 @section('content')
 
-    <section class="nav-breadcrumb mt-8 mb-8">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <nav aria-label="breadcrumb" class="breadcrumb-nav">
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item">
-                                <a href="index.html">
-                                    <svg class="i-home">
-                                        <use xlink:href="img/icons/icons.svg#i-home"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">Стаціонар</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('site.components.breadcrumbs', [
+        'breadcrumbs' => [
+            [
+                'title' => 'Головна',
+                'url' => route('main'),
+            ],
+            [
+                'title' => $page->title,
+            ],
+        ],
+    ])
 
     <section class="section-top-2 mb-24">
         <div class="container">
@@ -31,8 +22,8 @@
                         class="d-flex flex-column justify-content-end position-relative align-content-end h-100 rounded-sm overflow-hidden text-white p-3 p-lg-6">
                         <div class="backdrop">
                             <div class="content">
-                                <div class="h1 font-m font-weight-bolder mb-3">Стаціонар</div>
-                                <div class="h5 font-weight-bold">Безкоштовна консультація</div>
+                                <div class="h1 font-m font-weight-bolder mb-3">{{ trans('web.staczionar') }}</div>
+                                <div class="h5 font-weight-bold">{{ trans('web.free_consultation') }}</div>
                             </div>
                         </div>
                         <div class="wrap-img">

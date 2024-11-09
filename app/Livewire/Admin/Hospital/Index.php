@@ -9,16 +9,18 @@ use App\Models\Hospital;
 use Livewire\WithPagination;
 use App\Models\PageTextBlock;
 use Livewire\WithFileUploads;
+use App\Traits\Livewire\SeoPages;
 use App\Traits\Livewire\HandlesPageBlocks;
 use Illuminate\Database\Eloquent\Collection;
 use App\Services\Admin\Hospitals\HospitalsService;
 
 class Index extends Component
 {
-    use WithPagination, WithFileUploads, HandlesPageBlocks;
+    use WithPagination, WithFileUploads, HandlesPageBlocks, SeoPages;
 
     public Page $page;
     public array $sectionData = [];
+    public array $pageData = [];
     public Collection $hospitals;
 
     public array $seoData = [];
@@ -39,8 +41,11 @@ class Index extends Component
 
         $this->hospitals = Hospital::all();
 
+        // set page data
+        $this->pageData = $this->hospitalsService->setPageData($this->page);
+
         // Set SEO data
-        $this->seoData = $this->hospitalsService->setSeoData($this->page);
+        $this->seoData = $this->setSeoDataPage($this->page);
     }
 
     public function hydrate()
@@ -87,6 +92,9 @@ class Index extends Component
     {
         // $this->validate();
 
+        $this->hospitalsService->updatePageData($this->page, $this->pageData);
+
+
         $formData = [
             'image' => $this->sectionData['media'] ?? null,
             'text_one' => $this->sectionData['text_one'],
@@ -97,8 +105,8 @@ class Index extends Component
         $this->updatePageTextBlock($formData, $this->page->id, 1);
 
 
-        // Update Direction Page
-        $this->hospitalsService->updatePage($this->page, $this->seoData);
+        // Update SEO Page
+        $this->updateSeoDataPage($this->page, $this->seoData);
 
         redirect()->route('hospitals.index')->with('success', trans('admin.document_updated'));
     }
