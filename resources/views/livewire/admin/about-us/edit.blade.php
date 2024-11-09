@@ -10,10 +10,22 @@
                 @endif
 
                 <div class="card-head mb-20">
-                    <h4 class="card-head-title">{{ trans('admin.about_us') }}</h4>
+                    <h4 class="card-head-title">{{ $page->title }}</h4>
                 </div>
 
                 <form wire:submit.prevent="save">
+
+                    <section class="mb-50 mt-30">
+                        <x-admin.multilanguage-input
+                            :is-required="false"
+                            :label="trans('admin.title')"
+                            field-name="title"
+                            live-wire-field="pageData.title"
+                            :values="$pageData['title']"
+                        />
+                    </section>
+
+                    <hr>
 
                     <section class="mb-50">
                         <h6 class="card-title">{{ trans('admin.briefBlocks') }}</h6>
@@ -366,6 +378,43 @@
                                 </a>
                             </div>
                         </div>
+                    </section>
+
+                    <hr>
+
+                    <section class="mb-50 mt-30">
+                        <h6 class="card-title">SEO</h6>
+
+                        <x-admin.multilanguage-input
+                            :is-required="false"
+                            :label="trans('admin.meta_title')"
+                            field-name="meta_title"
+                            live-wire-field="seoData.meta_title"
+                            :values="$seoData['meta_title']"
+                        />
+                    
+                        <x-admin.multilanguage-text-area-rich
+                            :is-required="false"
+                            :label="trans('admin.meta_description')"
+                            field-name="meta_description"
+                            live-wire-field="seoData.meta_description"
+                            :values="$seoData['meta_description']"
+                        />
+                        <x-admin.multilanguage-text-area-rich
+                            :is-required="false"
+                            :label="trans('admin.meta_keywords')"
+                            field-name="meta_keywords"
+                            live-wire-field="seoData.meta_keywords"
+                            :values="$seoData['meta_keywords']"
+                        />
+                        <x-admin.multilanguage-text-area-rich
+                            :is-required="false"
+                            :label="trans('admin.seo_text')"
+                            field-name="seo_text"
+                            live-wire-field="seoData.seo_text"
+                            :values="$seoData['seo_text']"
+                        />
+
                     </section>
 
                     <button type="submit" class="btn btn-primary mr-2 mb-3">{{ trans('admin.save') }}</button>

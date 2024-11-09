@@ -16,10 +16,14 @@ class ReviewsService
     {
         $data = [];
 
-        foreach ($page->getTranslationsArray() as $lang => $value) {
-            $data['title'][$lang] = $value['title'];
+        if( !empty($page->getTranslationsArray()) ) {
+            foreach ($page->getTranslationsArray() as $lang => $value) {
+                $data['title'][$lang] = $value['title'];
+            }
+        } else {
+            $data['title'] = [];
         }
-        
+
         return $data;
     }
 

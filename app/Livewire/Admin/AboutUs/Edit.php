@@ -10,6 +10,7 @@ use App\Models\SectionImage;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use App\Models\PageMediaBlock;
+use App\Traits\Livewire\SeoPages;
 use App\Traits\Livewire\HandlesPageBlocks;
 use App\Services\Admin\AboutUs\AboutUsService;
 use App\Traits\Livewire\AboutUs\HandlesPhotos;
@@ -23,9 +24,14 @@ class Edit extends Component
         HandlesBriefBlocks, 
         HandlesPageBlocks, 
         HandlesCertificates,
-        HandlesPhotos;
+        HandlesPhotos,
+        SeoPages;
 
     public Page $page;
+
+    public array $pageData = [];
+    public array $seoData = [];
+
     public array $briefBlocks = [];
     public array $sectionData = [];
     public array $сertificates = [];
@@ -39,6 +45,12 @@ class Edit extends Component
         $this->dispatch('livewire:load');
 
         $this->page = Page::where('type', PageType::ABOUT->value)->first();
+
+        // Set page data
+        $this->pageData = $this->aboutUsService->setPageData($this->page);
+
+        // Set SEO data
+        $this->seoData = $this->setSeoDataPage($this->page);
 
         // Set Brief blocks
         $briefBlocks = BriefBlock::where('page_id', $this->page->id)->orderBy('sort', 'asc')->get();
@@ -68,7 +80,6 @@ class Edit extends Component
             ];
         }
         $this->briefBlocks = makeUsort($this->briefBlocks);
-
 
         // set media block
         $pageMediaBlock = PageMediaBlock::where('number', 1)->where('page_id', $this->page->id)->first();
@@ -150,6 +161,10 @@ class Edit extends Component
     public function save()
     {
         // $this->validate();
+
+        $this->aboutUsService->updatePageData($this->page, $this->pageData);
+
+        $this->updateSeoDataPage($this->page, $this->seoData);
 
         $existingBriefBlocks = BriefBlock::where('page_id', $this->page->id)->get();
         $this->aboutUsService->syncBriefBlocks($this->briefBlocks, $existingBriefBlocks, $this->page->id);
