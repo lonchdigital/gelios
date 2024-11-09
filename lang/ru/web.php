@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'free_consultation' => 'Бесплатная консультация',
+    'staczionar' => 'Стационар',
     'leave_review' => 'Оставить отзыв',
     'all_directions' => 'Все направления',
     'back' => 'Назад',
