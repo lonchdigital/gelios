@@ -14,6 +14,16 @@
 
                 <form wire:submit.prevent="save">
 
+                    <section class="mb-50 mt-30">
+                        <x-admin.multilanguage-input
+                            :is-required="false"
+                            :label="trans('admin.title')"
+                            field-name="title"
+                            live-wire-field="pageData.title"
+                            :values="$pageData['title']"
+                        />
+                    </section>
+
                     <table class="table mt-1">
                         <thead>
                             <tr style="background-color: rgba(149, 149, 149, 0.2)">

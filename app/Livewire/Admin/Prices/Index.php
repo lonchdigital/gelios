@@ -18,6 +18,7 @@ class Index extends Component
 
     public Page $page;
     public array $sectionData = [];
+    public array $pageData = [];
     public Collection $tests;
 
     public array $seoData = [];
@@ -33,6 +34,9 @@ class Index extends Component
         // $this->page = Page::where('type', PageType::PRICES->value)->first();
 
         $this->tests = $this->page->tests;
+
+        // Set page data
+        $this->pageData = $this->pricesService->setPageData($this->page);
 
         // Set SEO data
         $this->seoData = $this->setSeoDataPage($this->page);
@@ -61,7 +65,7 @@ class Index extends Component
     {
         // $this->validate();
 
-
+        $this->pricesService->updatePageData($this->page, $this->pageData);
 
 
         $this->updateSeoDataPage($this->page, $this->seoData);
