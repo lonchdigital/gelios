@@ -47,6 +47,7 @@ Route::group([
         Route::get('/otzyvy/', [ReviewsController::class, 'page'])->name('reviews.page');
 
         Route::get('/prices/', [PricesController::class, 'page'])->name('prices.page');
+        Route::post('/prices-search-filter/', [PricesController::class, 'searchFilter']);
 
         Route::get('/contacts/', [ContactsController::class, 'page'])->name('contacts.page');
 

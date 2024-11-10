@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'search_input' => 'Пошук...',
     'free_consultation' => 'Безкоштовна консультація',
     'staczionar' => 'Стаціонар',
     'leave_review' => 'Залишити відгук',

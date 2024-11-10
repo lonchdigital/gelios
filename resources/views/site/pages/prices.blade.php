@@ -1,5 +1,9 @@
 @extends('site.layout.app')
 
+@section('head')
+    @vite(['resources/js/filters/prices/pricesFilter.js'])
+@endsection
+
 @section('content')
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
@@ -13,7 +17,6 @@
             ],
         ],
     ])
-
 
     <section class="mb-8">
         <div class="container">
@@ -30,7 +33,7 @@
                 <div class="col">
                     <div class="search">
                         <div class="input-search">
-                            <input type="search" class="search-input" placeholder="Пошук по адресі">
+                            <input id="search-input" type="search" class="search-input" placeholder="{{ trans('web.search_input') }}">
                             <button type="button" class="search-icon btn p-0"></button>
                         </div>
                         <div class="results-search"></div>
@@ -44,28 +47,12 @@
             <div class="row">
                 <div class="col">
                     <div class="accordion" id="accordion-prices-list">
-                        @foreach ($page->tests as $test)
-                            <div class="card">
-                                <div class="card-header p-0" id="heading-accordion-prices-list-{{ $loop->iteration }}">
-                                    <div class="h4 mb-0">
-                                        <div class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-accordion-prices-list-{{ $loop->iteration }}" aria-expanded="false" aria-controls="collapse-accordion-prices-list-{{ $loop->iteration }}">{{ $test->title }}</div>
-                                    </div>
-                                </div>
-                                <div id="collapse-accordion-prices-list-{{ $loop->iteration }}" class="collapse" aria-labelledby="heading-accordion-prices-list-{{ $loop->iteration }}" data-parent="#accordion-prices-list">
-                                    <div class="card-body">
-                                        @foreach ($test->prices as $price)
-                                            @include('site.components.price', ['price' => $price])
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+                        {{-- got from ajax --}}
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
 
     <section class="meeting mb-24 py-lg-16">
         <div class="container">
