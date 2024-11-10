@@ -1,4 +1,8 @@
 {
+  "_jquery-CqDs7TUd.js": {
+    "file": "assets/jquery-CqDs7TUd.js",
+    "name": "jquery"
+  },
   "resources/fonts/Inter-Bold.ttf": {
     "file": "assets/Inter-Bold-D0m5Xa5u.ttf",
     "src": "resources/fonts/Inter-Bold.ttf"
@@ -79,11 +83,23 @@
       "assets/img-background-5-mobile-DDBtWwvK.png"
     ]
   },
+  "resources/js/filters/prices/pricesFilter.js": {
+    "file": "assets/pricesFilter-iyOlq5M_.js",
+    "name": "pricesFilter",
+    "src": "resources/js/filters/prices/pricesFilter.js",
+    "isEntry": true,
+    "imports": [
+      "_jquery-CqDs7TUd.js"
+    ]
+  },
   "resources/js/main.js": {
-    "file": "assets/main-tfuqpgKN.js",
+    "file": "assets/main-CFO8_pl8.js",
     "name": "main",
     "src": "resources/js/main.js",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "_jquery-CqDs7TUd.js"
+    ]
   },
   "resources/src/img/icons/icons.svg": {
     "file": "assets/icons-Z_XW-oDk.svg",

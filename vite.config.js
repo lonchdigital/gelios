@@ -10,7 +10,10 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/js/app.js',
-                'resources/js/main.js'
+                'resources/js/main.js',
+
+                // filters for prices
+                'resources/js/filters/prices/pricesFilter.js'
             ],
             refresh: true,
         })
