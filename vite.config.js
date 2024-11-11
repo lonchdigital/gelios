@@ -12,8 +12,9 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/main.js',
 
-                // filters for prices
-                'resources/js/filters/prices/pricesFilter.js'
+                // filters
+                'resources/js/filters/prices/pricesFilter.js',
+                'resources/js/filters/contacts/contactsFilter.js'
             ],
             refresh: true,
         })
