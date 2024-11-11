@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'search_input_contacts' => 'Введіть назву міста / вулиці',
     'search_input' => 'Пошук...',
     'free_consultation' => 'Безкоштовна консультація',
     'staczionar' => 'Стаціонар',

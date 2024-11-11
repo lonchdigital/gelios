@@ -50,6 +50,7 @@ Route::group([
         Route::post('/prices-search-filter/', [PricesController::class, 'searchFilter']);
 
         Route::get('/contacts/', [ContactsController::class, 'page'])->name('contacts.page');
+        Route::post('/contacts-search-filter/', [ContactsController::class, 'searchFilter']);
 
         Route::get('/offices/', [OfficesController::class, 'page'])->name('offices.page');
 

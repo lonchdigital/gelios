@@ -3,23 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
-use App\Models\Doctor;
 use App\Enums\PageType;
-use App\Models\BriefBlock;
 use App\Models\Contact;
-use App\Models\SectionImage;
-use App\Models\PageTextBlock;
-use App\Models\PageMediaBlock;
+use Illuminate\Http\Request;
+use App\Services\Site\ContactsService;
 
 class ContactsController extends Controller
 {
+
+    private ContactsService $service;
+    private Page $page;
+
+    public function __construct(ContactsService $service)
+    {
+        $this->service = $service;
+        $this->page = Page::where('type', PageType::CONTACTS->value)->first();
+    }
+
     public function page()
     {
-        $page = Page::where('type', PageType::CONTACTS->value)->first();
-
         return view('site.pages.contacts',[
-            'page' => $page,
-            'contacts' => Contact::all(),
+            'page' => $this->page
         ]);
+    }
+
+    public function searchFilter(Request $request): array
+    {
+        $request->validate([
+            'query' => 'required|array'
+        ]);
+        
+        return $this->service->getFilteredItems($request);
     }
 }

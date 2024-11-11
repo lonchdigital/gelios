@@ -1,5 +1,9 @@
 @extends('site.layout.app')
 
+@section('head')
+    @vite(['resources/js/filters/contacts/contactsFilter.js'])
+@endsection
+
 @section('content')
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
@@ -14,14 +18,13 @@
         ],
     ])
 
-
     <section class="mb-8">
         <div class="container">
             <div class="row">
                 <div class="col">
                     <div class="row mb-8">
                         <div class="col d-flex align-items-center justify-content-between">
-                            <div class="h2 font-m font-weight-bolder text-blue">Контакти</div>
+                            <div class="h2 font-m font-weight-bolder text-blue">{{ $page->title ?? '' }}</div>
                         </div>
                     </div>
                 </div>
@@ -30,7 +33,7 @@
                 <div class="col">
                     <div class="search">
                         <div class="input-search">
-                            <input type="search" class="search-input" placeholder="Введіть назву міста / вулиці">
+                            <input id="search-input" type="search" class="search-input" placeholder="{{ trans('web.search_input_contacts') }}">
                             <button type="button" class="search-icon btn p-0"></button>
                         </div>
                         <div class="results-search"></div>
@@ -44,44 +47,8 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="row row-gap">
-                        @foreach ($contacts as $contact)
-                            <div class="col-12 col-md-6">
-                                <div class="offices--item">
-                                    <div class="map-body h-100 rounded-top overflow-hidden">
-                                        <div class="wrap-img h-100">
-                                            <div class="map">
-                                                {!! $contact->iframe !!}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="inner">
-                                        <div class="row">
-                                            <div class="col-12 col-xl-auto mb-3 mb-xl-0">
-                                                <div class="wrap-img">
-                                                    <img src="{{ '/storage/' . $contact->image }}" alt="img">
-                                                    <div class="city-label">{{ $contact->city }}</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-xl ml-xl-n2">
-                                                <div class="city-pin mb-3 mt-xl-1">{{ $contact->city }}, <br>{{ $contact->street }}</div>
-                                                @foreach ($contact->items->where('type', 'email') as $email)
-                                                    <div class="email mb-3"><a href="mailto:{{ $email->item }}">{{ $email->item }}</a></div>
-                                                @endforeach
-                                                @foreach ($contact->items->where('type', 'phone') as $phone)
-                                                    <div class="phone mb-2"><a href="tel{{ $phone->item }}">{{ $phone->item }}</a></div>
-                                                @endforeach
-                                                
-                                                <div class="buttons d-flex flex-wrap">
-                                                    <a href="##" class="btn btn-fz-20 btn-blue font-weight-bold w-100">Записатись на прийом</a>
-                                                    <a href="##" class="btn btn-fz-20 btn-outline-blue font-weight-bold w-100">Прокласти маршрут</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+                    <div id="art-contacts-list" class="row row-gap">
+                        {{-- got from ajax --}}
                     </div>
                 </div>
             </div>

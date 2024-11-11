@@ -83,6 +83,15 @@
       "assets/img-background-5-mobile-DDBtWwvK.png"
     ]
   },
+  "resources/js/filters/contacts/contactsFilter.js": {
+    "file": "assets/contactsFilter-DoWAuPJk.js",
+    "name": "contactsFilter",
+    "src": "resources/js/filters/contacts/contactsFilter.js",
+    "isEntry": true,
+    "imports": [
+      "_jquery-CqDs7TUd.js"
+    ]
+  },
   "resources/js/filters/prices/pricesFilter.js": {
     "file": "assets/pricesFilter-iyOlq5M_.js",
     "name": "pricesFilter",

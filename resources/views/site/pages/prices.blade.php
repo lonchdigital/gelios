@@ -24,7 +24,7 @@
                 <div class="col">
                     <div class="row mb-8">
                         <div class="col d-flex align-items-center justify-content-between">
-                            <div class="h2 font-m font-weight-bolder text-blue">Ціни</div>
+                            <div class="h2 font-m font-weight-bolder text-blue">{{ $page->title ?? '' }}</div>
                         </div>
                     </div>
                 </div>
