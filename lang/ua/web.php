@@ -6,6 +6,7 @@ return [
     'free_consultation' => 'Безкоштовна консультація',
     'staczionar' => 'Стаціонар',
     'leave_review' => 'Залишити відгук',
+    'directions' => 'Напрямки',
     'all_directions' => 'Усі напрямки',
     'back' => 'Назад',
     'show_more' => 'Показати більше',

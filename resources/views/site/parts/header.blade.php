@@ -169,15 +169,15 @@
                                         <div class="list-inline-item">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span>Напрямки</span>
+                                                    <span>{{ trans('web.directions') }}</span>
                                                 </div>
                                                 <div class="submenu position-absolute">
                                                     <div class="container">
                                                         <div class="push-menu">
                                                             <div class="push-menu--nav">
                                                                 <div class="nav-toggle">
-                                                                    <span class="nav-back">Назад</span>
-                                                                    <span class="nav-title h3">Напрямки</span>
+                                                                    <span class="nav-back">{{ trans('web.back') }}</span>
+                                                                    <span class="nav-title h3">{{ trans('web.directions') }}</span>
                                                                     <span class="nav-close"></span>
                                                                 </div>
                                                                 <div class="push-menu--lvl">
@@ -194,7 +194,7 @@
 
                                                                                 @if( $category['children'] )
                                                                                     <div class="item has-dropdown main-title">
-                                                                                        <a href="##" class="heading">{{ $category['name'] }}</a>
+                                                                                        <a href="##" class="heading" data-slug="{{ route('direction.category', ['pageDirection' => $category['slug']]) }}">{{ $category['name'] }}</a>
                                                                                         <div class="push-menu--lvl">
                                                                                             @include('site.directions.partials.header-menu', ['data' => collect($category['children'])])
                                                                                         </div>
@@ -208,7 +208,11 @@
                                                                                 @foreach (collect($category['children']) as $subCategory)
                                                                                     @if( $subCategory['children'] )
                                                                                         <div class="item has-dropdown">
-                                                                                            <a href="##">{{ $subCategory['name'] }}</a>
+                                                                                            @if ($subCategory['template'] === 2)
+                                                                                                <a href="##" data-slug="{{ route('direction.sub-category', ['pageDirection' => $subCategory['slug']]) }}">{{ $subCategory['name'] }}</a>
+                                                                                            @elseif ($subCategory['template'] === 3)
+                                                                                                <a href="##" data-slug="{{ route('direction.itself', ['pageDirection' => $subCategory['slug']]) }}">{{ $subCategory['name'] }}</a>
+                                                                                            @endif
                                                                                             <div class="push-menu--lvl">
                                                                                                 @include('site.directions.partials.header-menu', ['data' => collect($subCategory['children'])])
                                                                                             </div>
