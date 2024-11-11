@@ -62,7 +62,7 @@
                             :values="$sectionData['text_one']"
                         />
 
-                        @if(!$sectionData['is_image'])
+                        <div class="{{ ($sectionData['is_image']) ? 'd-none' : '' }}">
                             <x-admin.multilanguage-text-area-rich
                             :is-required="false"
                             :label="trans('admin.text')"
@@ -70,7 +70,7 @@
                             live-wire-field="sectionData.text_two"
                             :values="$sectionData['text_two']"
                             />
-                        @endif
+                        </div>
 
                         @if($sectionData['is_image'])
                             <div class="form-group mt-2 mb-3">

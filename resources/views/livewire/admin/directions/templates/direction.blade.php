@@ -107,7 +107,7 @@
                                             :values="$sectionOneData['text_one']"
                                         />
 
-                                        @if(!$sectionOneData['is_image'])
+                                        <div class="{{ ($sectionOneData['is_image']) ? 'd-none' : '' }}">
                                             <x-admin.multilanguage-text-area-rich
                                             :is-required="false"
                                             :label="trans('admin.text')"
@@ -115,7 +115,7 @@
                                             live-wire-field="sectionOneData.text_two"
                                             :values="$sectionOneData['text_two']"
                                             />
-                                        @endif
+                                        </div>
 
                                         @if($sectionOneData['is_image'])
                                             <div class="form-group mt-2 mb-3">
@@ -219,7 +219,7 @@
                                             :values="$sectionThreeData['text_one']"
                                         />
 
-                                        @if(!$sectionThreeData['is_image'])
+                                        <div class="{{ ($sectionThreeData['is_image']) ? 'd-none' : '' }}">
                                             <x-admin.multilanguage-text-area-rich
                                             :is-required="false"
                                             :label="trans('admin.text')"
@@ -227,7 +227,7 @@
                                             live-wire-field="sectionThreeData.text_two"
                                             :values="$sectionThreeData['text_two']"
                                             />
-                                        @endif
+                                        </div>
 
                                         @if($sectionThreeData['is_image'])
                                             <div class="form-group mt-2 mb-3">
@@ -292,7 +292,7 @@
                                             :values="$sectionFourData['text_one']"
                                         />
 
-                                        @if(!$sectionFourData['is_image'])
+                                        <div class="{{ ($sectionFourData['is_image']) ? 'd-none' : '' }}">
                                             <x-admin.multilanguage-text-area-rich
                                             :is-required="false"
                                             :label="trans('admin.text')"
@@ -300,7 +300,7 @@
                                             live-wire-field="sectionFourData.text_two"
                                             :values="$sectionFourData['text_two']"
                                             />
-                                        @endif
+                                        </div>
 
                                         @if($sectionFourData['is_image'])
                                             <div class="form-group mt-2 mb-3">
@@ -365,7 +365,7 @@
                                             :values="$sectionFiveData['text_one']"
                                         />
 
-                                        @if(!$sectionFiveData['is_image'])
+                                        <div class="{{ ($sectionFiveData['is_image']) ? 'd-none' : '' }}">
                                             <x-admin.multilanguage-text-area-rich
                                             :is-required="false"
                                             :label="trans('admin.text')"
@@ -373,7 +373,7 @@
                                             live-wire-field="sectionFiveData.text_two"
                                             :values="$sectionFiveData['text_two']"
                                             />
-                                        @endif
+                                        </div>
 
                                         @if($sectionFiveData['is_image'])
                                             <div class="form-group mt-2 mb-3">

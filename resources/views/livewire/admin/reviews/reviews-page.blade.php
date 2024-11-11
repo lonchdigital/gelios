@@ -63,8 +63,8 @@
                                             live-wire-field="textBlockOneData.text_one"
                                             :values="$textBlockOneData['text_one']"
                                         />
-                
-                                        @if(!$textBlockOneData['is_image'])
+
+                                        <div class="{{ ($textBlockOneData['is_image']) ? 'd-none' : '' }}">
                                             <x-admin.multilanguage-text-area-rich
                                             :is-required="false"
                                             :label="trans('admin.text')"
@@ -72,7 +72,7 @@
                                             live-wire-field="textBlockOneData.text_two"
                                             :values="$textBlockOneData['text_two']"
                                             />
-                                        @endif
+                                        </div>
                 
                                         @if($textBlockOneData['is_image'])
                                             <div class="form-group mt-2 mb-3">
