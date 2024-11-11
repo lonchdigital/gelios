@@ -11,7 +11,7 @@
 
             @if( $childCatDir['children'] )
                 <div class="item has-dropdown main-title">
-                    <a href="##" class="heading">{{ $childCatDir['name'] }}</a>
+                    <a href="##" class="heading" data-slug="{{ route('direction.sub-category', ['pageDirection' => $childCatDir['slug']]) }}">{{ $childCatDir['name'] }}</a>
                     <div class="push-menu--lvl">
                         @include('site.directions.partials.header-menu', ['data' => collect($childCatDir['children'])])
                     </div>
@@ -26,7 +26,11 @@
 
                 @if( $childSubCatDir['children'] )
                     <div class="item has-dropdown">
-                        <a href="##">{{ $childSubCatDir['name'] }}</a>
+                        @if ($childSubCatDir['template'] === 2)
+                            <a href="##" data-slug="{{ route('direction.sub-category', ['pageDirection' => $childSubCatDir['slug']]) }}">{{ $childSubCatDir['name'] }}</a>
+                        @elseif ($childSubCatDir['template'] === 3)
+                            <a href="##" data-slug="{{ route('direction.itself', ['pageDirection' => $childSubCatDir['slug']]) }}">{{ $childSubCatDir['name'] }}</a>
+                        @endif
                         <div class="push-menu--lvl">
                             @include('site.directions.partials.header-menu', ['data' => collect($childSubCatDir['children'])])
                         </div>
