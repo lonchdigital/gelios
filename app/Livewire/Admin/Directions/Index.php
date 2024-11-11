@@ -18,7 +18,7 @@ class Index extends Component
     public Direction|null $direction = null;
 
     public array $directionName = [];
-    public $directionTemplate;
+    public int $directionTemplate = 1;
 
     public int|null $directionParent = null;
     public array $directionContacts = [];
@@ -34,7 +34,7 @@ class Index extends Component
 
         $this->allDirectionContacts = $this->directionsService->getAllOffices();
 
-        $this->directionTemplate = 1;
+        // $this->directionTemplate = 1;
 
         if(is_null($this->direction)) {
             $allDirections = $this->directionsService->getAllDirections();
@@ -97,12 +97,11 @@ class Index extends Component
     {
         // $this->validate();
 
-        // dd('hello', $this->directionTemplate);
-
+        $beloning = ( $this->directionTemplate === 1 ) ? null : $this->directionParent;
         $formData = [
             'directionName' => $this->directionName,
             'directionTemplate' => $this->directionTemplate,
-            'directionParent' => $this->directionParent,
+            'directionParent' =>  $beloning,
             'directionContacts' => $this->directionContacts,
         ];
         $this->directionsService->addDirection($formData);

@@ -28,7 +28,7 @@
                                         />                           
                                         <div class="mb-3">
                                             <label>{{ trans('admin.template') }}</label>
-                                                <select class="form-control" wire:model="directionTemplate">
+                                                <select class="js-direction-template form-control" wire:model="directionTemplate" name="template_id">
                                                     @foreach(App\DataClasses\DirectionTemplateTypeClass::get() as $template)
                                                         <option value="{{ $template['id'] }}">{{ $template['name'] }}</option>
                                                     @endforeach
@@ -37,15 +37,17 @@
 
                                         <section class="mb-3">
 
-                                            <div wire:ignore>
-                                                <label>{{ trans('admin.belonging') }}</label>
-                                                <select class="js-parent-cat form-control" id="status-select" wire:model="directionParent" name="parent_id">
-                                                    <option value="{{ null }}">- {{ trans('admin.not_chosen') }} -</option>
-                                                    @foreach($allDirections as $cat)
-                                                        @include('admin.directions.partials.direction-option', ['direction' => $cat, 'depth' => 0])
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                            @if( $directionTemplate !== 1 )
+                                                <div wire:ignore>
+                                                    <label>{{ trans('admin.belonging') }}</label>
+                                                    <select class="js-parent-cat form-control" id="status-select" wire:model="directionParent" name="parent_id">
+                                                        <option value="{{ null }}">- {{ trans('admin.not_chosen') }} -</option>
+                                                        @foreach($allDirections as $cat)
+                                                            @include('admin.directions.partials.direction-option', ['direction' => $cat, 'depth' => 0])
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            @endif
     
                                             <div wire:ignore class="mt-3">
                                                 <label>{{ trans('admin.offices') }}</label>
@@ -191,6 +193,14 @@
     <script type="text/javascript">
         document.addEventListener('livewire:load', () => {
             
+            // Handle direction template
+            let directionTemplate = $('.js-direction-template');
+            directionTemplate.val(@json($directionTemplate)).trigger('change');
+            directionTemplate.on('change', function () {
+                let selectedValue = $(this).val();
+                @this.set('directionTemplate', selectedValue);
+            });
+
             // Handle directionParent
             let parentCat = $('.js-parent-cat').select2();
             parentCat.val(@json($directionParent)).trigger('change');
