@@ -107,7 +107,7 @@
                                             :values="$sectionOneData['text_one']"
                                         />
 
-                                        @if(!$sectionOneData['is_image'])
+                                        <div class="{{ ($sectionOneData['is_image']) ? 'd-none' : '' }}">
                                             <x-admin.multilanguage-text-area-rich
                                             :is-required="false"
                                             :label="trans('admin.text')"
@@ -115,7 +115,7 @@
                                             live-wire-field="sectionOneData.text_two"
                                             :values="$sectionOneData['text_two']"
                                             />
-                                        @endif
+                                        </div>
 
                                         @if($sectionOneData['is_image'])
                                             <div class="form-group mt-2 mb-3">
@@ -171,7 +171,7 @@
                                             :values="$sectionTwoData['text_one']"
                                         />
 
-                                        @if(!$sectionTwoData['is_image'])
+                                        <div class="{{ ($sectionTwoData['is_image']) ? 'd-none' : '' }}">
                                             <x-admin.multilanguage-text-area-rich
                                             :is-required="false"
                                             :label="trans('admin.text')"
@@ -179,7 +179,7 @@
                                             live-wire-field="sectionTwoData.text_two"
                                             :values="$sectionTwoData['text_two']"
                                             />
-                                        @endif
+                                        </div>
 
                                         @if($sectionTwoData['is_image'])
                                             <div class="form-group mt-2 mb-3">
