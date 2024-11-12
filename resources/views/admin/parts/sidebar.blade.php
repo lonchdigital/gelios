@@ -128,16 +128,16 @@
                             <span>{{ trans('admin.reviews') }}</span>
                             <i class="fa fa-angle-right"></i>
                         </a>
-                        <ul class="treeview-menu" @if(Route::is('reviews.*')) style="display: block;" @else style="display: none;" @endif>
+                        <ul class="treeview-menu" @if( Route::is('reviews.*') || Route::is('unpublished.reviews.index') ) style="display: block;" @else style="display: none;" @endif>
                             <li @if(Route::is('reviews.page.edit')) class="active" @endif>
                                 <a href="{{ route('reviews.page.edit') }}">{{ trans('admin.reviews_page') }}</a>
                             </li>
                             <li @if(Route::is('reviews.index')) class="active" @endif>
                                 <a href="{{ route('reviews.index') }}">{{ trans('admin.reviews') }}</a>
                             </li>
-                            {{-- <li @if(Route::is('directions.index')) class="active" @endif >
-                                <a href="{{ route('directions.index') }}">{{ trans('admin.directions') }}</a>
-                            </li> --}}
+                            <li @if(Route::is('unpublished.reviews.index')) class="active" @endif >
+                                <a href="{{ route('unpublished.reviews.index') }}">{{ trans('admin.unpublished_reviews') }}</a>
+                            </li>
                         </ul>
                     </li>
 

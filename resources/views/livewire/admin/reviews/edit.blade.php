@@ -21,6 +21,14 @@
 
                 <form wire:submit.prevent="save">
 
+                    <div class="new-checkbox art-text-block-switcher">
+                        <label class="switch mr-3">
+                            <input type="checkbox" wire:model="sectionData.published" @if($sectionData['published']) checked @endif>
+                            <span class="slider"></span>
+                        </label>
+                        <span>{{ trans('admin.show_review') }}</span>
+                    </div>
+
                     <section class="mb-50 mt-30">
 
                         <div class="form-group mt-2 mb-3">

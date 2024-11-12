@@ -2,14 +2,8 @@
     <div class="col-12">
         <div class="card mb-30">
             <div class="card-body pb-0">
-
                 <div class="d-flex justify-content-between align-items-center mb-20">
-                    <h5 class="card-title mb-0">{{ trans('admin.reviews_list') }}</h5>
-
-                    <a href="{{ route('reviews.create') }}"
-                        class="btn btn-primary waves-effect waves-light float-right mb-3">
-                        + {{ trans('admin.add_review') }}
-                    </a>
+                    <h5 class="card-title mb-0">{{ trans('admin.unpublished_reviews') }}</h5>
                 </div>
 
                 @if (session('success'))
@@ -67,6 +61,7 @@
                 <div class="pagination-wrapper d-flex justify-content-center mt-4 mb-5">
                     {{ $reviews->links('vendor.pagination.default') }}
                 </div>
+
             </div>
         </div>
 

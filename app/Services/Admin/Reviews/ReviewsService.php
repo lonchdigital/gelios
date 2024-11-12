@@ -45,10 +45,12 @@ class ReviewsService
     {
         $data = [];
 
+        $data['published'] = false;
         $data['name'] = [];
         $data['text'] = [];
 
         if(!is_null($review)) {
+            $data['published'] = $review->published;
             foreach ($review->getTranslationsArray() as $lang => $value) {
                 $data['name'][$lang] = $value['name'];
             }
@@ -90,7 +92,7 @@ class ReviewsService
             $dataToUpdate['image'] = $image;
         }
 
-        $dataToUpdate['published'] = true;
+        $dataToUpdate['published'] = $sectionData['published'];
 
         if(!is_null($review)) {
             $review->update($dataToUpdate);

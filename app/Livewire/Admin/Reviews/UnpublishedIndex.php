@@ -7,7 +7,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Services\Admin\Reviews\ReviewsService;
 
-class Index extends Component
+class UnpublishedIndex extends Component
 {
     use WithPagination;
 
@@ -28,13 +28,13 @@ class Index extends Component
     {
         $this->reviewsService->removeReview($reviewID);
 
-        redirect()->route('reviews.index')->with('success', trans('admin.deleted_review'));
+        redirect()->route('unpublished.reviews.index')->with('success', trans('admin.deleted_review'));
     }
     
     public function render()
     {
-        $reviews = Review::where('published', true)->paginate(10);
+        $reviews = Review::where('published', false)->paginate(10);
 
-        return view('livewire.admin.reviews.index', ['reviews' => $reviews]);
+        return view('livewire.admin.reviews.unpublished-index', ['reviews' => $reviews]);
     }
 }

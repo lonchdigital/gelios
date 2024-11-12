@@ -14,7 +14,10 @@ export default defineConfig({
 
                 // filters
                 'resources/js/filters/prices/pricesFilter.js',
-                'resources/js/filters/contacts/contactsFilter.js'
+                'resources/js/filters/contacts/contactsFilter.js',
+
+                // forms
+                'resources/js/forms/reviewForm.js'
             ],
             refresh: true,
         })
