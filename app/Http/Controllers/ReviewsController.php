@@ -3,23 +3,44 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
-use App\Models\Doctor;
 use App\Models\Review;
 use App\Enums\PageType;
-use App\Models\BriefBlock;
-use App\Models\SectionImage;
-use App\Models\PageTextBlock;
-use App\Models\PageMediaBlock;
+use Illuminate\Http\Request;
+use App\Services\Site\ReviewsService;
+use Illuminate\Support\Facades\App;
 
 class ReviewsController extends Controller
 {
+
+    private ReviewsService $service;
+    private Page $page;
+
+    public function __construct(ReviewsService $service)
+    {
+        $this->service = $service;
+        $this->page = Page::where('type', PageType::REVIEWS->value)->first();
+    }
+
     public function page()
     {
-        $page = Page::where('type', PageType::REVIEWS->value)->first();
-
         return view('site.pages.reviews',[
-            'page' => $page,
-            'reviews' => Review::latest()->paginate(8)
+            'page' => $this->page,
+            'reviews' => Review::where('published', true)->latest()->paginate(8)
         ]);
+    }
+
+    public function userWriteReview(Request $request) : bool
+    {
+        $usersLocale = $request->input('locale');
+        App::setLocale($usersLocale);
+
+        $request->validate([
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,|max:1048',
+            'name' => 'required|string|max:100',
+            'review' => 'required|string|max:300',
+            'locale' => 'required|string|max:10'
+        ]);
+
+        return $this->service->saveUserReviewToDB($request->all(), $usersLocale);
     }
 }

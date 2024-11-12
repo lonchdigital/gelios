@@ -45,6 +45,7 @@ Route::group([
         Route::get('/about-us/', [AboutUsController::class, 'page'])->name('about.us.page');
 
         Route::get('/otzyvy/', [ReviewsController::class, 'page'])->name('reviews.page');
+        Route::post('/user-write-review/', [ReviewsController::class, 'userWriteReview']);
 
         Route::get('/prices/', [PricesController::class, 'page'])->name('prices.page');
         Route::post('/prices-search-filter/', [PricesController::class, 'searchFilter']);

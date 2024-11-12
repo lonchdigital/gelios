@@ -63,9 +63,13 @@ class Edit extends Component
     {
         // $this->validate();
         
-        $currentContact = $this->reviewsService->updateReview($this->sectionData, $this->review);
+        $this->reviewsService->updateReview($this->sectionData, $this->review);
 
-        redirect()->route('reviews.index')->with('success', trans('admin.added_review'));
+        if($this->sectionData['published']) {
+            redirect()->route('reviews.index')->with('success', trans('admin.updated_review'));
+        } else {
+            redirect()->route('unpublished.reviews.index')->with('success', trans('admin.updated_review'));
+        }
     }
 
     public function render()
