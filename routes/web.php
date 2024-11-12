@@ -48,7 +48,7 @@ Route::group([
         Route::post('/user-write-review/', [ReviewsController::class, 'userWriteReview']);
 
         Route::get('/prices/', [PricesController::class, 'page'])->name('prices.page');
-        Route::post('prices-search-filter', [PricesController::class, 'searchFilter']);
+        Route::post('/prices-search-filter/', [PricesController::class, 'searchFilter']);
 
         Route::get('/contacts/', [ContactsController::class, 'page'])->name('contacts.page');
         Route::post('/contacts-search-filter/', [ContactsController::class, 'searchFilter']);
