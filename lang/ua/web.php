@@ -1,7 +1,13 @@
 <?php
 
 return [
+    'photo_of_the_hospital' => 'Фото клініки',
+    'make_appointment' => 'Записатися на прийом',
+    'diplomas_certificates' => 'Дипломи та сертифікати',
+    'more_details' => 'Детальніше',
+    'our_offices' => 'Наші філії',
     'thank_you_for_review' => 'Дякуємо за відгук!',
+    'welcome_to_our_hospital' => 'Ласкаво просимо Медичний центр сімейного здоров’я і реабілітації “Геліос”',
     'review_example' => 'Наприклад, усе дуже професійно в цьому медичному центрі для реабілітації після травми...',
     'leave_an_review' => 'Залиште відгук',
     'enter_full_name' => 'Вкажіть ПІБ',
