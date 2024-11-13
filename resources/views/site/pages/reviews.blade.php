@@ -72,7 +72,7 @@
 						<div class="row">
 							<div class="col position-static">
 								<div class="d-flex align-items-start justify-content-between mb-5">
-									<div class="h2 font-m modal-title font-weight-bolder mb-0 pr-8">Залишити відгук</div>
+									<div class="h2 font-m modal-title font-weight-bolder mb-0 pr-8">{{ trans('web.leave_review') }}</div>
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">
 											<svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -153,11 +153,23 @@
 							<div class="col">
 								<div class="text-center py-4 py-md-0 my-lg-7">
 									<div class="i-check mb-5">
-										<svg>
-											<use xlink:href="img/icons/icons.svg#i-double-check"></use>
+										<svg width="80.000000" height="80.000000" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+											<desc>
+													Created with Pixso.
+											</desc>
+											<defs>
+												<clipPath id="clip2474_9985">
+													<rect id="double-check" width="80.000000" height="80.000000" fill="white" fill-opacity="0"/>
+												</clipPath>
+											</defs>
+											<rect id="double-check" width="80.000000" height="80.000000" fill="#FFFFFF" fill-opacity="0"/>
+											<g clip-path="url(#clip2474_9985)">
+												<path id="Vector" d="M60 20L23.33 56.66L6.66 40" stroke="#3DA6D3" stroke-opacity="1.000000" stroke-width="6.000000" stroke-linejoin="round" stroke-linecap="round"/>
+												<path id="Vector" d="M73.33 33.33L48.33 58.33L43.33 53.33" stroke="#3DA6D3" stroke-opacity="1.000000" stroke-width="6.000000" stroke-linejoin="round" stroke-linecap="round"/>
+											</g>
 										</svg>
 									</div>
-									<div class="h4 font-m font-weight-bolder">Дякуємо за відгук!</div>
+									<div class="h4 font-m font-weight-bolder">{{ trans('web.thank_you_for_review') }}</div>
 								</div>
 							</div>
 						</div>
