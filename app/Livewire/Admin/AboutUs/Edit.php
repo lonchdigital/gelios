@@ -173,7 +173,8 @@ class Edit extends Component
             'image' => $this->sectionData['media'] ?? null,
             'text' => $this->sectionData['text'],
             'is_reverse' => $this->sectionData['is_reverse'],
-            'is_image' => $this->sectionData['is_image'],
+            // 'is_image' => $this->sectionData['is_image'],
+            'is_image' => false,
             'video' => $this->sectionData['video'],
         ];
         $this->updatePageMediaBlock($formData, $this->page->id, 1);

@@ -284,7 +284,7 @@
                                     </div>
                                     <div class="navbar-nav--other d-none d-xxl-flex align-items-center">
                                         <button type="button" class="btn btn-blue" data-toggle="modal"
-                                            data-target="#popup--sign-up-appointment">Записатися на прийом
+                                            data-target="#popup--sign-up-appointment">{{ trans('web.make_appointment') }}
                                         </button>
                                     </div>
                                 </div>

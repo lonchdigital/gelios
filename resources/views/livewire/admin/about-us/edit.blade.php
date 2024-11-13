@@ -149,10 +149,10 @@
                                     type="checkbox" 
                                     wire:model="sectionData.is_image"
                                     wire:click="handleDisplayFields()"
-                                    id="is_image_1" 
+                                    id="is_image" 
                                     @if($sectionData['is_image']) checked @endif
                                 >
-                                <label for="is_image_1" class="cr">{{ trans('admin.is_image') }}</label>
+                                <label for="is_image" class="cr">{{ trans('admin.is_image') }}</label>
                             </div>
                         </div> --}}
                         
