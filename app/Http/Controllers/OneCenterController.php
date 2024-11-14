@@ -10,9 +10,11 @@ use App\Models\PageTextBlock;
 
 class OneCenterController extends Controller
 {
-    public function page()
+    public function page($slug)
     {
-        $page = Page::where('type', PageType::ONECENTER->value)->first();
+        $page = Page::where('type', PageType::ONECENTER->value)->where('slug', $slug)->first();
+        if( is_null($page) ) { abort(404); }
+        
         $allBriefBlocks = BriefBlock::where('page_id', $page->id)->get();
         $allPageTextBlocks = PageTextBlock::where('page_id', $page->id)->get();
         $doctors = Doctor::limit(10)->get();

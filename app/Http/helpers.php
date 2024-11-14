@@ -83,3 +83,20 @@ function isEmptyHtml($html) {
 
     return empty($cleanedHtml);
 }
+
+
+function downloadVideoFile(string $folderName, $file)
+{
+    $image = Storage::disk('public')->put($folderName, $file);
+    return $image;
+}
+function removeVideoFileFromStorage($path)
+{
+    if(is_null($path)){
+        return;
+    }
+
+    if (Storage::disk(config('app.images_disk_default'))->exists($path)) {
+        Storage::disk(config('app.images_disk_default'))->delete($path);
+    }
+}
