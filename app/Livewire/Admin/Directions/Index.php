@@ -18,6 +18,7 @@ class Index extends Component
     public Direction|null $direction = null;
 
     public array $directionName = [];
+    public string $directionSlug = '';
     public int $directionTemplate = 1;
 
     public int|null $directionParent = null;
@@ -80,26 +81,54 @@ class Index extends Component
 
     protected function rules()
     {
-        return [
-            'directionName.ua' => [
-                'required',
-                'string'
-                // 'nullable'
-            ],
-            'directionTemplate' => [
-                'required',
-                'integer'
-            ],
+        $rules = [];
+
+        $rules['directionName.ua'] = [
+            'required',
+            'string',
+            'max:255'
         ];
+
+        $rules['directionSlug'] = [
+            'required',
+            'string',
+            'unique:page_directions,slug',
+            'unique:pages,slug'
+        ];
+        $rules['directionTemplate'] = [
+            'required',
+            'integer'
+        ];
+
+        return $rules;
+    }
+
+    protected function attributes()
+    {
+        $attributes = [];
+
+        foreach (config('translatable.locales') as $locale) {
+            $attributes['directionName.' . $locale] = trans('admin.title') . ' ('. $locale .')';
+        }
+
+        $attributes['directionSlug'] = 'slug';
+
+        return $attributes;
+    }
+
+    public function getValidationAttributes()
+    {
+        return $this->attributes();
     }
 
     public function save()
     {
-        // $this->validate();
+        $this->validate();
 
         $beloning = ( $this->directionTemplate === 1 ) ? null : $this->directionParent;
         $formData = [
             'directionName' => $this->directionName,
+            'directionSlug' => $this->directionSlug,
             'directionTemplate' => $this->directionTemplate,
             'directionParent' =>  $beloning,
             'directionContacts' => $this->directionContacts,

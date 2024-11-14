@@ -240,7 +240,8 @@ class Direction extends Component
         $rules['сurrentDirectionData.slug'] = [
             'required',
             'string',
-            'unique:page_directions,slug,' . ($this->direction->page->id ?? '')
+            'unique:page_directions,slug,' . ($this->direction->page->id ?? ''),
+            'unique:pages,slug'
         ];
 
         return $rules;
