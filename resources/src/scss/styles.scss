@@ -845,15 +845,10 @@
 
 .media-content--inner {
 
-	&.flex-lg-row-reverse {
-
-		ul {
-			padding-left: 0;
-		}
-	}
-
 	ul {
 		list-style-type: none;
+		padding-left: 0;
+		color: #65738A;
 	}
 }
 
