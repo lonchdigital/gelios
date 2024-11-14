@@ -185,7 +185,8 @@ class Edit extends Component
         $rules['pageData.slug'] = [
             'required',
             'string',
-            'unique:pages,slug,' . ($this->page->id ?? '')
+            'unique:pages,slug,' . ($this->page->id ?? ''),
+            'unique:page_directions,slug'
         ];
 
         $rules['pageData.video_file'] = [

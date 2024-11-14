@@ -133,7 +133,7 @@ class DirectionsService
     {
         $dataToUpdate = [];
 
-        $dataToUpdate['slug'] = Str::slug($data['directionName']['ua']);
+        $dataToUpdate['slug'] = $data['directionSlug'];
 
         foreach ($data['directionName'] as $lang => $value) {
             $dataToUpdate[$lang]['name'] = $value;

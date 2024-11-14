@@ -25,7 +25,23 @@
                                         field-display="name"
                                         live-wire-field="directionName"
                                         :values="[]"
-                                        />                           
+                                        />
+                                        
+                                        <div class="form-group mb-3">
+                                            <label for="">slug</label>
+                                            <input 
+                                                    type="text"
+                                                    class="form-control"
+                                                    wire:model="directionSlug"
+                                                >
+                
+                                            @error('directionSlug')
+                                                <div class="mt-1 text-danger ajaxError">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        
                                         <div class="mb-3">
                                             <label>{{ trans('admin.template') }}</label>
                                                 <select class="js-direction-template form-control" wire:model="directionTemplate" name="template_id">
