@@ -322,6 +322,33 @@
 
                     <hr>
 
+                    <section class="mb-50 mt-30">
+                        
+                        <div class="form-group">
+                            <label for="video">video (MP4)</label>
+                            <input type="file" class="form-control" wire:model="pageData.media.new_video_file" accept="video/mp4">
+
+                            @if(!is_null($page))
+                                <div class="mt-2">
+                                    <span class="video-string">{{ $page->video_file }}</span>
+                                    {{-- @if($page->video_file)
+                                        <button type="button" class="btn btn-danger ml-5" id="delete-video-button">{{ trans('admin.delete_video') }}</button>
+                                    @endif
+                                    <input type="hidden" name="delete_video" id="delete-video-input" value="0"> --}}
+                                </div>
+                            @endif
+
+                            @error('pageData.video_file')
+                                <div class="mt-1 text-danger ajaxError">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                    </section>
+
+                    <hr>
+
                     {{-- Section 2 --}}
                     <section class="mb-50 mt-30">
                         <h6 class="card-title">{{ trans('admin.section_two') }}</h6>

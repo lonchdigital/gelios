@@ -40,7 +40,7 @@ Route::group([
 
         Route::get('/', [HomeController::class, 'index'])->name('main');
 
-        // Route::get('/one-center/', [OneCenterController::class, 'page'])->name('one.center.page');
+        Route::get('/one-center/{slug}', [OneCenterController::class, 'page'])->name('one.center.page');
 
         Route::get('/about-us/', [AboutUsController::class, 'page'])->name('about.us.page');
 

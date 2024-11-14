@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class OneCenterService 
 {
-    const IMAGES_FOLDER = '/one-center';
+    const MEDIA_FOLDER = '/one-center';
 
     public function syncSlides(array $items, Collection $existingItems, int $pageID)
     {
@@ -22,7 +22,7 @@ class OneCenterService
                 if(isset($oneItem['newImage'])) {
                     $image = null;
                     removeImageFromStorage($oneItem['oldImage']);
-                    $image = downloadImage(self::IMAGES_FOLDER, $oneItem['newImage']);
+                    $image = downloadImage(self::MEDIA_FOLDER, $oneItem['newImage']);
                     $dataToUpdate['image'] = $image;
                 }
 
@@ -44,7 +44,7 @@ class OneCenterService
                 $dataToUpdate = [];
                 $image = null;
                 if(isset($oneItem['newImage'])) {
-                    $image = downloadImage(self::IMAGES_FOLDER, $oneItem['newImage']);
+                    $image = downloadImage(self::MEDIA_FOLDER, $oneItem['newImage']);
                 }
 
                 $dataToUpdate['page_id'] = $pageID;
@@ -91,7 +91,7 @@ class OneCenterService
                 if(isset($oneItem['newImage'])) {
                     $image = null;
                     removeImageFromStorage($oneItem['oldImage']);
-                    $image = downloadImage(self::IMAGES_FOLDER, $oneItem['newImage']);
+                    $image = downloadImage(self::MEDIA_FOLDER, $oneItem['newImage']);
                     $dataToUpdate['image'] = $image;
                 }
 
@@ -108,7 +108,7 @@ class OneCenterService
                 $dataToUpdate = [];
                 $image = null;
                 if(isset($oneItem['newImage'])) {
-                    $image = downloadImage(self::IMAGES_FOLDER, $oneItem['newImage']);
+                    $image = downloadImage(self::MEDIA_FOLDER, $oneItem['newImage']);
                 }
 
                 $dataToUpdate['page_id'] = $pageID;
@@ -156,10 +156,12 @@ class OneCenterService
             }
 
             $data['slug'] = $page->slug;
+            $data['media']['video_file'] = $page->video_file;
 
         } else {
             $data['slug'] = '';
             $data['title'] = [];
+            $data['media']['video_file'] = null;
         }
 
         return $data;
@@ -178,6 +180,11 @@ class OneCenterService
         $dataToUpdate['type'] = 'one_center';
         $dataToUpdate['slug'] = $data['slug'];
 
+        if(isset($data['media']['new_video_file'])) {
+            $image = downloadVideoFile(self::MEDIA_FOLDER, $data['media']['new_video_file']);
+            $dataToUpdate['video_file'] = $image;
+        }
+
         $page = Page::create($dataToUpdate);
         return $page;
     }
@@ -193,6 +200,13 @@ class OneCenterService
         }
 
         $dataToUpdate['slug'] = $data['slug'];
+
+        if(isset($data['media']['new_video_file'])) {
+            $image = downloadVideoFile(self::MEDIA_FOLDER, $data['media']['new_video_file']);
+            $dataToUpdate['video_file'] = $image;
+
+            removeVideoFileFromStorage($page->video_file);
+        }
 
         $page->update($dataToUpdate);
     }
@@ -216,6 +230,8 @@ class OneCenterService
             
             $pageTextBlock->delete();
         }
+
+        removeVideoFileFromStorage($page->video_file);
 
         $page->delete();
     }

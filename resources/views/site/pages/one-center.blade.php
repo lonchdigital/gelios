@@ -80,7 +80,7 @@
     <section class="section-video mb-24">
         <div class="video-wrap">
             <video class="js-player specific-player" playsinline controls data-poster="img/tour.jpeg">
-                <source src="assets/video/example.mp4" type="video/mp4" />
+                <source src="{{ '/storage/' . $page->video_file }}" type="video/mp4" />
             </video>
         </div>
     </section>

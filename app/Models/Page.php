@@ -18,6 +18,7 @@ class Page extends Model implements TranslatableContract
         'slug',
         'show_in_footer',
         'image',
+        'video_file',
     ];
 
     public $translatedAttributes = [

@@ -188,6 +188,12 @@ class Edit extends Component
             'unique:pages,slug,' . ($this->page->id ?? '')
         ];
 
+        $rules['pageData.video_file'] = [
+            'nullable',
+            // 'file',
+            'max:51200',
+        ];
+
         return $rules;
     }
 
@@ -204,6 +210,13 @@ class Edit extends Component
     {
         return $this->attributes();
     }
+
+    // public function updatedPageDataVideoFile()
+    // {
+    //     $this->validateOnly('pageData.video_file', [
+    //         'pageData.video_file' => 'nullable|file|max:51200', // до 50MB
+    //     ]);
+    // }
 
     public function save()
     {

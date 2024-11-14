@@ -2,7 +2,8 @@
 
 namespace App\Http\View\Composers;
 
-use App\Models\Direction;
+use App\Models\Page;
+use App\Enums\PageType;
 use Illuminate\View\View;
 use App\Models\BriefBlock;
 use App\Services\Admin\Directions\DirectionsService;
@@ -16,6 +17,7 @@ class DirectionsComposer
         $view->with([
             'allDirections' => $directions,
             'commonDirectionsBlock' => BriefBlock::where('type', 'directions')->first(),
+            'allCenters' => Page::where('type', PageType::ONECENTER->value)->get()
         ]);
     }
 }

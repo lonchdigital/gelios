@@ -244,8 +244,19 @@
                                         <div class="list-inline-item">
                                             <a class="nav-link" href="{{ route('surgery.index') }}">Хірургія</a>
                                         </div>
-                                        <div class="list-inline-item">
+                                        <div class="hover-aside-menu--item list-inline-item">
                                             <a class="nav-link" href="{{ route('about.us.page') }}">Про компанію</a>
+                                            @if($allCenters->count() > 0)
+                                                <div class="hover-aside-menu--list">
+                                                    <div class="hover-aside-menu--inner">
+                                                        <div class="hover-aside-menu--content">
+                                                            @foreach ($allCenters as $oneCenter)
+                                                                <div class="hover-aside-menu--item"><a class="link" href="{{ route('one.center.page', ['slug' => $oneCenter->slug]) }}">{{ $oneCenter->title }}</a></div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         </div>
                                         <div class="hover-aside-menu--item position-right list-inline-item">
                                             <a class="nav-link" href="{{ route('promotions.index') }}">Акції</a>
