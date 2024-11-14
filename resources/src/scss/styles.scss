@@ -843,6 +843,20 @@
 	}
 }
 
+.media-content--inner {
+
+	&.flex-lg-row-reverse {
+
+		ul {
+			padding-left: 0;
+		}
+	}
+
+	ul {
+		list-style-type: none;
+	}
+}
+
 .procedures {
 	font-size: 20px;
 	font-weight: 500;
