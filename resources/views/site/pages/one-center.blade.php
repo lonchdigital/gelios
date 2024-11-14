@@ -77,13 +77,17 @@
             @include('site.components.text-section', ['data' => $pageTextBlockOne])
         </div>
     </section>
-    <section class="section-video mb-24">
-        <div class="video-wrap">
-            <video class="js-player specific-player" playsinline controls data-poster="img/tour.jpeg">
-                <source src="{{ '/storage/' . $page->video_file }}" type="video/mp4" />
-            </video>
-        </div>
-    </section>
+
+    @if($page->video_file)
+        <section class="section-video mb-24">
+            <div class="video-wrap">
+                <video class="js-player specific-player" playsinline controls data-poster="img/tour.jpeg">
+                    <source src="{{ '/storage/' . $page->video_file }}" type="video/mp4" />
+                </video>
+            </div>
+        </section>
+    @endif
+    
     <section class="media-content">
         <div class="container">
             @include('site.components.text-section', ['data' => $pageTextBlockTwo])
