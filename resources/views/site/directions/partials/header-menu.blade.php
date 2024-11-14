@@ -1,7 +1,7 @@
 
 <div class="push-menu--aside">
     @foreach ($data->where('template', 3) as $childDirection)
-        <div class="item"><a href="{{ route('direction.itself', ['pageDirection' => $childDirection['slug']]) }}">{{ $childDirection['name'] }}</a></div>
+        <div class="item"><a href="{{ route('web.page.show', ['slug' => $childDirection['slug']]) }}">{{ $childDirection['name'] }}</a></div>
     @endforeach
 </div>
 
@@ -11,14 +11,14 @@
 
             @if( $childCatDir['children'] )
                 <div class="item has-dropdown main-title">
-                    <a href="##" class="heading" data-slug="{{ route('direction.sub-category', ['pageDirection' => $childCatDir['slug']]) }}">{{ $childCatDir['name'] }}</a>
+                    <a href="##" class="heading" data-slug="{{ route('web.page.show', ['slug' => $childCatDir['slug']]) }}">{{ $childCatDir['name'] }}</a>
                     <div class="push-menu--lvl">
                         @include('site.directions.partials.header-menu', ['data' => collect($childCatDir['children'])])
                     </div>
                 </div>
             @else
                 <div class="item main-title">
-                    <a href="{{ route('direction.sub-category', ['pageDirection' => $childCatDir['slug']]) }}" class="heading">{{ $childCatDir['name'] }}</a>
+                    <a href="{{ route('web.page.show', ['slug' => $childCatDir['slug']]) }}" class="heading">{{ $childCatDir['name'] }}</a>
                 </div>
             @endif
 
@@ -26,26 +26,16 @@
 
                 @if( $childSubCatDir['children'] )
                     <div class="item has-dropdown">
-                        @if ($childSubCatDir['template'] === 2)
-                            <a href="##" data-slug="{{ route('direction.sub-category', ['pageDirection' => $childSubCatDir['slug']]) }}">{{ $childSubCatDir['name'] }}</a>
-                        @elseif ($childSubCatDir['template'] === 3)
-                            <a href="##" data-slug="{{ route('direction.itself', ['pageDirection' => $childSubCatDir['slug']]) }}">{{ $childSubCatDir['name'] }}</a>
-                        @endif
+                        <a href="##" data-slug="{{ route('web.page.show', ['slug' => $childSubCatDir['slug']]) }}">{{ $childSubCatDir['name'] }}</a>
                         <div class="push-menu--lvl">
                             @include('site.directions.partials.header-menu', ['data' => collect($childSubCatDir['children'])])
                         </div>
                     </div>
                 @else
                     <div class="item">
-                        @if ($childSubCatDir['template'] === 2)
-                            <a href="{{ route('direction.sub-category', ['pageDirection' => $childSubCatDir['slug']]) }}">
-                                {{ $childSubCatDir['name'] }}
-                            </a>
-                        @elseif ($childSubCatDir['template'] === 3)
-                            <a href="{{ route('direction.itself', ['pageDirection' => $childSubCatDir['slug']]) }}">
-                                {{ $childSubCatDir['name'] }}
-                            </a>
-                        @endif
+                        <a href="{{ route('web.page.show', ['slug' => $childSubCatDir['slug']]) }}">
+                            {{ $childSubCatDir['name'] }}
+                        </a>
                     </div>
                 @endif
                 

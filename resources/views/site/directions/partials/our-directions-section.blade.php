@@ -41,19 +41,9 @@
                                                             @else
                                                                 <div class="directions-item">
                                                                     <div class="content">
-                                                                        @if ($oneDirection['template'] === 1)
-                                                                            <a class="link" href="{{ route('direction.category', ['pageDirection' => $oneDirection['slug']]) }}">
-                                                                                {{ $oneDirection['name'] }}
-                                                                            </a>
-                                                                        @elseif ($oneDirection['template'] === 2)
-                                                                            <a class="link" href="{{ route('direction.sub-category', ['pageDirection' => $oneDirection['slug']]) }}">
-                                                                                {{ $oneDirection['name'] }}
-                                                                            </a>
-                                                                        @elseif ($oneDirection['template'] === 3)
-                                                                            <a class="link" href="{{ route('direction.itself', ['pageDirection' => $oneDirection['slug']]) }}">
-                                                                                {{ $oneDirection['name'] }}
-                                                                            </a>
-                                                                        @endif
+                                                                        <a class="link" href="{{ route('web.page.show', ['slug' => $oneDirection['slug']]) }}">
+                                                                            {{ $oneDirection['name'] }}
+                                                                        </a>
                                                                     </div>
                                                                 </div>
                                                             @endif

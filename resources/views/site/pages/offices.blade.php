@@ -237,19 +237,9 @@
                                                                             @else
                                                                                 <div class="directions-item">
                                                                                     <div class="content">
-                                                                                        @if ($item['template'] === 1)
-                                                                                            <a class="link" href="{{ route('direction.category', ['pageDirection' => $item['slug']]) }}">
-                                                                                                {{ $item['name'] }}
-                                                                                            </a>
-                                                                                        @elseif ($item['template'] === 2)
-                                                                                            <a class="link" href="{{ route('direction.sub-category', ['pageDirection' => $item['slug']]) }}">
-                                                                                                {{ $item['name'] }}
-                                                                                            </a>
-                                                                                        @elseif ($item['template'] === 3)
-                                                                                            <a class="link" href="{{ route('direction.itself', ['pageDirection' => $item['slug']]) }}">
-                                                                                                {{ $item['name'] }}
-                                                                                            </a>
-                                                                                        @endif
+                                                                                        <a class="link" href="{{ route('web.page.show', ['slug' => $item['slug']]) }}">
+                                                                                            {{ $item['name'] }}
+                                                                                        </a>
                                                                                     </div>
                                                                                 </div>
                                                                             @endif

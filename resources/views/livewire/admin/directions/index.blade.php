@@ -126,13 +126,7 @@
                                                         style="cursor:move"></i>
                                                     </td>
                                                     <td>
-                                                        @if ($direction['template'] === 1)
-                                                            <a href="{{ route('direction.category', ['pageDirection' => $direction['slug']]) }}" target="_blank"><i class="fa fa-eye text-info font-18"></i></a>
-                                                        @elseif ($direction['template'] === 2)
-                                                            <a href="{{ route('direction.sub-category', ['pageDirection' => $direction['slug']]) }}" target="_blank"><i class="fa fa-eye text-info font-18"></i></a>
-                                                        @elseif ($direction['template'] === 3)
-                                                            <a href="{{ route('direction.itself', ['pageDirection' => $direction['slug']]) }}" target="_blank"><i class="fa fa-eye text-info font-18"></i></a>
-                                                        @endif
+                                                        <a href="{{ route('web.page.show', ['slug' => $direction['slug']]) }}" target="_blank"><i class="fa fa-eye text-info font-18"></i></a>
                                                     </td>
                                                     <td>
                                                         <a href="{{ route('directions.edit', ['directionId' => $direction['id']]) }}">{{ $direction['name'] }}</a>

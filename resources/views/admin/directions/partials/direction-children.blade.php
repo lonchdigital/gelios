@@ -5,13 +5,7 @@
 
         </td>
         <td>
-            @if ($child['template'] === 1)
-                <a href="{{ route('direction.category', ['pageDirection' => $child['slug']]) }}" target="_blank"><i class="fa fa-eye text-info font-18"></i></a>
-            @elseif ($child['template'] === 2)
-                <a href="{{ route('direction.sub-category', ['pageDirection' => $child['slug']]) }}" target="_blank"><i class="fa fa-eye text-info font-18"></i></a>
-            @elseif ($child['template'] === 3)
-                <a href="{{ route('direction.itself', ['pageDirection' => $child['slug']]) }}" target="_blank"><i class="fa fa-eye text-info font-18"></i></a>
-            @endif
+            <a href="{{ route('web.page.show', ['slug' => $child['slug']]) }}" target="_blank"><i class="fa fa-eye text-info font-18"></i></a>
         </td>
         <td>
             <a href="{{ route('directions.edit', ['directionId' => $child['id']]) }}">
