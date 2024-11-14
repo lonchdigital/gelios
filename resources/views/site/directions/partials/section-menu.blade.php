@@ -17,19 +17,9 @@
                         @else
                             <div class="directions-item">
                                 <div class="content">
-                                    @if ($oneChildDirection['template'] === 1)
-                                        <a class="link" href="{{ route('direction.category', ['pageDirection' => $oneChildDirection['slug']]) }}">
-                                            {{ $oneChildDirection['name'] }}
-                                        </a>
-                                    @elseif ($oneChildDirection['template'] === 2)
-                                        <a class="link" href="{{ route('direction.sub-category', ['pageDirection' => $oneChildDirection['slug']]) }}">
-                                            {{ $oneChildDirection['name'] }}
-                                        </a>
-                                    @elseif ($oneChildDirection['template'] === 3)
-                                        <a class="link" href="{{ route('direction.itself', ['pageDirection' => $oneChildDirection['slug']]) }}">
-                                            {{ $oneChildDirection['name'] }}
-                                        </a>
-                                    @endif
+                                    <a class="link" href="{{ route('web.page.show', ['slug' => $oneChildDirection['slug']]) }}">
+                                        {{ $oneChildDirection['name'] }}
+                                    </a>
                                 </div>
                             </div>
                         @endif

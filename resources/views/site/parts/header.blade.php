@@ -184,7 +184,7 @@
 
                                                                     <div class="push-menu--aside">
                                                                         @foreach ($allDirections->where('template', 3) as $direction)
-                                                                            <div class="item"><a href="{{ route('direction.itself', ['pageDirection' => $direction['slug']]) }}">{{ $direction['name'] }}</a></div>
+                                                                            <div class="item"><a href="{{ route('web.page.show', ['slug' => $direction['slug']]) }}">{{ $direction['name'] }}</a></div>
                                                                         @endforeach
                                                                     </div>
 
@@ -194,40 +194,30 @@
 
                                                                                 @if( $category['children'] )
                                                                                     <div class="item has-dropdown main-title">
-                                                                                        <a href="##" class="heading" data-slug="{{ route('direction.category', ['pageDirection' => $category['slug']]) }}">{{ $category['name'] }}</a>
+                                                                                        <a href="##" class="heading" data-slug="{{ route('web.page.show', ['slug' => $category['slug']]) }}">{{ $category['name'] }}</a>
                                                                                         <div class="push-menu--lvl">
                                                                                             @include('site.directions.partials.header-menu', ['data' => collect($category['children'])])
                                                                                         </div>
                                                                                     </div>
                                                                                 @else
                                                                                     <div class="item main-title">
-                                                                                        <a href="{{ route('direction.category', ['pageDirection' => $category['slug']]) }}" class="heading">{{ $category['name'] }}</a>
+                                                                                        <a href="{{ route('web.page.show', ['slug' => $category['slug']]) }}" class="heading">{{ $category['name'] }}</a>
                                                                                     </div>
                                                                                 @endif
 
                                                                                 @foreach (collect($category['children']) as $subCategory)
                                                                                     @if( $subCategory['children'] )
                                                                                         <div class="item has-dropdown">
-                                                                                            @if ($subCategory['template'] === 2)
-                                                                                                <a href="##" data-slug="{{ route('direction.sub-category', ['pageDirection' => $subCategory['slug']]) }}">{{ $subCategory['name'] }}</a>
-                                                                                            @elseif ($subCategory['template'] === 3)
-                                                                                                <a href="##" data-slug="{{ route('direction.itself', ['pageDirection' => $subCategory['slug']]) }}">{{ $subCategory['name'] }}</a>
-                                                                                            @endif
+                                                                                            <a href="##" data-slug="{{ route('web.page.show', ['slug' => $subCategory['slug']]) }}">{{ $subCategory['name'] }}</a>
                                                                                             <div class="push-menu--lvl">
                                                                                                 @include('site.directions.partials.header-menu', ['data' => collect($subCategory['children'])])
                                                                                             </div>
                                                                                         </div>
                                                                                     @else
                                                                                         <div class="item">
-                                                                                            @if ($subCategory['template'] === 2)
-                                                                                                <a href="{{ route('direction.sub-category', ['pageDirection' => $subCategory['slug']]) }}">
-                                                                                                    {{ $subCategory['name'] }}
-                                                                                                </a>
-                                                                                            @elseif ($subCategory['template'] === 3)
-                                                                                                <a href="{{ route('direction.itself', ['pageDirection' => $subCategory['slug']]) }}">
-                                                                                                    {{ $subCategory['name'] }}
-                                                                                                </a>
-                                                                                            @endif
+                                                                                            <a href="{{ route('web.page.show', ['slug' => $subCategory['slug']]) }}">
+                                                                                                {{ $subCategory['name'] }}
+                                                                                            </a>
                                                                                         </div>
                                                                                     @endif
                                                                                 @endforeach

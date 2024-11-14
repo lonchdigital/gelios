@@ -161,7 +161,7 @@
 					<ul class="list-unstyled list-inline d-flex flex-column flex-xxl-row align-items-center justify-content-center justify-content-xxl-between text-center text-xxl-right mb-0">
 						@foreach ($footerPages as $footerPage)
 							@if($footerPage->slug === 'dogovor-oferty')
-								<li class="list-inline-item text-center"><a href="{{ route('root.text.page.show', ['slug' => $footerPage->slug]) }}">{{ $footerPage->title }}</a></li>
+								<li class="list-inline-item text-center"><a href="{{ route('web.page.show', ['slug' => $footerPage->slug]) }}">{{ $footerPage->title }}</a></li>
 							@else
 								<li class="list-inline-item text-center"><a href="{{ route('articles.show', ['slug' => $footerPage->slug]) }}">{{ $footerPage->title }}</a></li>
 							@endif

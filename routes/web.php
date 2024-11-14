@@ -18,7 +18,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\DirectionController;
 use App\Http\Controllers\OneCenterController;
 use App\Http\Controllers\PromotionController;
-use App\Http\Controllers\TextPagesController;
+use App\Http\Controllers\WebPagesController;
 use App\Http\Controllers\LaboratoryController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -58,9 +58,10 @@ Route::group([
         Route::get('/staczionar/', [HospitalController::class, 'show'])->name('hospital.show');
 
         Route::get('/directions/', [DirectionController::class, 'page'])->name('directions.page');
-        Route::get('/direction/{pageDirection:slug}', [DirectionController::class, 'direction'])->name('direction.itself');
-        Route::get('/direction/category/{pageDirection:slug}', [DirectionController::class, 'category'])->name('direction.category');
-        Route::get('/direction/sub-category/{pageDirection:slug}', [DirectionController::class, 'subCategory'])->name('direction.sub-category');
+        // TODO:: use them for redirects
+        // Route::get('/direction/{pageDirection:slug}', [DirectionController::class, 'direction'])->name('direction.itself');
+        // Route::get('/direction/category/{pageDirection:slug}', [DirectionController::class, 'category'])->name('direction.category');
+        // Route::get('/direction/sub-category/{pageDirection:slug}', [DirectionController::class, 'subCategory'])->name('direction.sub-category');
 
         Route::get('/akczii-i-speczialnye-predlozheniya/', [PromotionController::class, 'index'])->name('promotions.index');
         Route::get('/akczii-i-speczialnye-predlozheniya/{promotion:slug}', [PromotionController::class, 'show'])->name('promotions.show');
@@ -82,7 +83,7 @@ Route::group([
         Route::get('/vakansii/', [VacancyController::class, 'index'])->name('vacancy.index');
 
         // Route::get('/dlya-paczientov/{page:slug}', [TextPagesController::class, 'show'])->name('text.page.show');
-        Route::get('/{slug}', [TextPagesController::class, 'rootPageShow'])->name('root.text.page.show');
+        Route::get('/{slug}', [WebPagesController::class, 'webPageShow'])->name('web.page.show');
 });
 
 Route::get('lang/{lang}', [LanguageController::class, 'changeLanguage'])->name('changeLanguage');
