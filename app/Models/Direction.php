@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
@@ -53,5 +52,22 @@ class Direction extends Model implements TranslatableContract
     public function contacts()
     {
         return $this->belongsToMany(Contact::class, 'contact_directions');
+    }
+
+    public function buildBreadcrumbs()
+    {
+        $breadcrumbs = [];
+        $current = $this;
+
+        while ($current) {
+            $breadcrumbs[] = [
+                'id' => $current->id,
+                'name' => $current->name ?? null,
+                'slug' => $current->page->slug ?? null,
+            ];
+            $current = $current->parent; // parent
+        }
+
+        return array_reverse($breadcrumbs);
     }
 }
