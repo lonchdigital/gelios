@@ -8,6 +8,7 @@ use App\Http\View\Composers\DoctorComposer;
 use App\Http\View\Composers\FooterComposer;
 use App\Http\View\Composers\DirectionsComposer;
 use App\View\Composers\FooterComposer as ComposersFooterComposer;
+use App\View\Composers\HeaderComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,5 +29,6 @@ class AppServiceProvider extends ServiceProvider
         View::composer('site.*', DirectionsComposer::class);
         View::composer('site.parts.footer', FooterComposer::class);
         View::composer('site.parts.footer', ComposersFooterComposer::class);
+        View::composer('site.parts.header', HeaderComposer::class);
     }
 }

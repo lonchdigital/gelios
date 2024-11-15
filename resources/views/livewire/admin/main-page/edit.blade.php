@@ -14,33 +14,95 @@
                                     {{-- <div class="row justify-content-between align-items-center" wire:ignore.self> --}}
 
                                     @if ($this->isShowTitle())
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="row mb-3">
-                                                        <div class="col-md-12">
-                                                            <div class="tab-content">
-                                                                <div id="uaTitle"
-                                                                    class="multilang-content tab-pane fade active show">
-                                                                    <div class="form-group mb-1">
-                                                                        <label>Заголовок
-                                                                            <strong>{{ strtoupper($this->activeLocale) }}</strong>
-                                                                        </label>
-                                                                        <input type="text" wire:model="{{ $this->activeLocale }}Title"
-                                                                            class="form-control">
+                                        @if($this->activeLocale == 'ua')
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>Заголовок
+                                                                                <strong>UA</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="uaTitle"
+                                                                                class="form-control">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+                                                                @error('uaTitle')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
                                                             </div>
-                                                            @error($this->activeLocale . 'Title')
-                                                                <div class="mt-1 text-danger ajaxError">
-                                                                    {{ $message }}
-                                                                </div>
-                                                            @enderror
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endif
+
+                                        @if($this->activeLocale == 'ru')
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>Заголовок
+                                                                                <strong>RU</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="ruTitle"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('ruTitle')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+
+                                        @if($this->activeLocale == 'en')
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>Заголовок
+                                                                                <strong>EN</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="enTitle"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('enTitle')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
                                     @endif
 
                                     @if ($this->isShowDescription())

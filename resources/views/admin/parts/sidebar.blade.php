@@ -230,17 +230,27 @@
 
                     <li class="treeview @if(
                         Route::is('admin.main-page.*')
-                        || Route::is('admin.header-footer.*')
+                        || Route::is('admin.header.*')
+                        || Route::is('admin.footer.*')
                     ) menu-open @endif">
                         <a href="javascript:void(0)"><i class="fa fa-hospital-o"></i> <span>Сторінки</span> <i class="fa fa-angle-right"></i></a>
-                        <ul class="treeview-menu" @if(Route::is('admin.main-page.*') || Route::is('admin.header-footer.*')) style="display: block;" @else style="display: none;" @endif>
+                        <ul class="treeview-menu" @if(
+                        Route::is('admin.main-page.*')
+                        || Route::is('admin.footer.*')
+                        || Route::is('admin.header.*')
+                        ) style="display: block;" @else style="display: none;" @endif>
                             <li @if(Route::is('admin.main-page.*')) class="active" @endif>
                                 <a href="{{ route('admin.main-page.show') }}">Головна сторінка
                                 </a>
                             </li>
 
-                            <li @if(Route::is('admin.header-footer.*')) class="active" @endif>
-                                <a href="{{ route('admin.header-footer.edit') }}">Хедер та Футер
+                            <li @if(Route::is('admin.header.*')) class="active" @endif>
+                                <a href="{{ route('admin.header.edit') }}">Хедер
+                                </a>
+                            </li>
+
+                            <li @if(Route::is('admin.footer.*')) class="active" @endif>
+                                <a href="{{ route('admin.footer.edit') }}">Футер
                                 </a>
                             </li>
                         </ul>

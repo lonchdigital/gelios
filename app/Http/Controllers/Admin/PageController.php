@@ -20,8 +20,13 @@ class PageController extends Controller
         return view('admin.main-page.edit', compact('block'));
     }
 
-    public function editHeaderFooter()
+    public function editHeader()
     {
-        return view('admin.settings.edit-header-footer');
+        return view('admin.settings.edit-header');
+    }
+
+    public function editFooter()
+    {
+        return view('admin.settings.edit-footer');
     }
 }

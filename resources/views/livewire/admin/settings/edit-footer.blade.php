@@ -7,11 +7,11 @@
                         {{ session('success') }}
                     </div>
                 @endif
-                
+
                 <form wire:submit.prevent="save">
                     <section class="mb-50">
                         <h6 class="card-title">
-                            Редагування Хедера та Футера
+                            Редагування Футера
                         </h6>
 
                         <div class="row">
@@ -181,47 +181,6 @@
                                                                     {{ $message }}
                                                                 </div>
                                                             @enderror
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="row mb-3">
-                                                        <div class="col-md-12">
-                                                            <div class="tab-content">
-                                                                <div
-                                                                    class="multilang-content tab-pane fade active show ">
-                                                                    <div class="form-group mb-1">
-                                                                        <label>Зображення в Хедері</label>
-                                                                        <input type="file" wire:model="headerImage"
-                                                                            class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            @error('headerImage')
-                                                                <div class="mt-1 text-danger ajaxError">
-                                                                    {{ $message }}
-                                                                </div>
-                                                            @enderror
-
-                                                            @if ($this->headerImageTemporary)
-                                                                <div class="flex">
-                                                                    <img src="{{ $this->headerImageTemporary }}"
-                                                                        width="60">
-                                                                    <a wire:click="deleteHeaderImage()"
-                                                                        style="cursor: pointer;">
-                                                                        <i class="ti-close font-weight-bold mr-2"></i>
-                                                                        Видалити зображення
-                                                                    </a>
-                                                                </div>
-                                                            @elseif(!empty($this->headImage->value))
-                                                                <img src="{{ $this->headImage->imageUrl }}"
-                                                                    width="60">
-                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>

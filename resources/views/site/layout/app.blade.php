@@ -162,11 +162,11 @@
 				<div class="row">
 					<div class="col position-static">
 						<div class="d-flex align-items-start justify-content-between mb-5">
-							<div class="h1 font-m modal-title font-weight-bolder mb-0 pr-8">Дніпро</div>
+							<div class="h1 font-m modal-title font-weight-bolder mb-0 pr-8" id="modal-city"></div>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">
 									<svg>
-										<use xlink:href="img/icons/icons.svg#i-close"></use>
+										<use xlink:href="{{ asset('styles/img/icons/icons.svg#i-close') }}"></use>
 									</svg>
 								</span>
 							</button>
@@ -412,6 +412,14 @@
 	// 	});
 	// }
 
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $('.contact-details').on('click', function() {
+        var city = $(this).data('city');
+
+        $('#popup--contacts #modal-city').text(city);
+    });
 </script>
 
 	{{-- <script src="{{ asset('styles/js/jquery.min.js') }}"></script>

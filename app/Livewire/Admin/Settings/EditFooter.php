@@ -9,7 +9,7 @@ use App\Services\Admin\Laboratory\BlockService;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class EditFooterHeader extends Component
+class EditFooter extends Component
 {
     use WithFileUploads;
 
@@ -27,17 +27,11 @@ class EditFooterHeader extends Component
 
     public string $youtube = '';
 
-    public Setting $headImage;
-
     public Setting $footImage;
 
     public $footerImage;
 
     public $footerImageTemporary;
-
-    public $headerImage;
-
-    public $headerImageTemporary;
 
     protected $listeners = [
         'languageSwitched' => 'languageSwitched'
@@ -61,7 +55,6 @@ class EditFooterHeader extends Component
         $this->enDescription = $description->translate('en')->text ?? '';
         $this->ruDescription = $description->translate('ru')->text ?? '';
 
-        $this->headImage = $values->where('key', 'header_image')->first();
         $this->footImage = $values->where('key', 'footer_image')->first();
 
         $this->facebook = $values->where('key', 'facebook_link')->first()->value ?? '';
@@ -107,12 +100,6 @@ class EditFooterHeader extends Component
                 'string',
             ],
 
-            'headerImage' => [
-                'nullable',
-                'mimes:jpeg,jpg,png,gif',
-                'image',
-            ],
-
             'footerImage' => [
                 'nullable',
                 'mimes:jpeg,jpg,png,gif',
@@ -121,24 +108,11 @@ class EditFooterHeader extends Component
         ];
     }
 
-    public function updatedHeaderImage($val)
-    {
-        $this->validateOnly('headerImage');
-        $this->headerImage = $val;
-        $this->headerImageTemporary = $val->temporaryUrl();
-    }
-
     public function updatedFooterImage($val)
     {
         $this->validateOnly('footerImage');
         $this->footerImage = $val;
         $this->footerImageTemporary = $val->temporaryUrl();
-    }
-
-    public function deleteHeaderImage()
-    {
-        $this->headerImage = null;
-        $this->headerImageTemporary = null;
     }
 
     public function deleteFooterImage()
@@ -159,27 +133,15 @@ class EditFooterHeader extends Component
 
         session()->flash('success', 'Дані успішно збережено');
 
-        $this->redirectRoute('admin.header-footer.edit');
+        $this->redirectRoute('admin.footer.edit');
     }
 
     public function saveImages()
     {
         $imageService = resolve(ImageService::class);
 
-        if ($this->headerImage) {
-            $image = $imageService->downloadImage($this->headerImage, '/settings');
-
-            if (!empty($this->headImage->value)) {
-                $imageService->deleteStorageImage($image, $this->headImage->value);
-            }
-
-            Setting::where('key', 'header_image')->first()->update([
-                'value' => $image,
-            ]);
-        }
-
         if ($this->footerImage) {
-            $image = $imageService->downloadImage($this->footerImage, '/settings');
+            $image = $imageService->downloadImage($this->footerImage, '/footer');
 
             if (!empty(Setting::where('key', 'footer_image')->first()->value)) {
                 $imageService->deleteStorageImage($image,
@@ -220,6 +182,6 @@ class EditFooterHeader extends Component
 
     public function render()
     {
-        return view('livewire.admin.settings.edit-footer-header');
+        return view('livewire.admin.settings.edit-footer');
     }
 }

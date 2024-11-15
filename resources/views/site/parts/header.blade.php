@@ -6,6 +6,91 @@
                     <div class="inner d-flex justify-content-between align-items-center py-2">
                         <ul class="list-inline mb-0 d-none d-xxl-flex align-items-center">
                             <li class="list-inline-item">
+                                <div class="city">{{ $firstCity->title ?? '' }}</div>
+                            </li>
+                            @if(!empty($firstCity->first_phone))
+                                <li class="list-inline-item">
+                                    <a href="tel:+38 (095) 000-01-50">
+                                        <div class="link-phone">{{ $firstCity->first_phone ?? '' }}</div>
+                                    </a>
+                                </li>
+                            @endif
+                            @if(!empty($firstCity->second_phone))
+                                <li class="list-inline-item">
+                                    <a href="tel:+38 (050) 325-62-93">
+                                        <div class="link-phone">{{ $firstCity->second_phone ?? '' }}</div>
+                                    </a>
+                                </li>
+                            @endif
+                            <li class="list-inline-item">
+                                <button type="button" class="contact-details" data-toggle="modal"
+                                        data-target="#popup--contacts" data-city="{{ $firstCity->title ?? '' }}">Переглянути
+                                </button>
+                            </li>
+                        </ul>
+                        <ul class="list-inline mb-0 d-none d-xxl-flex align-items-center mr-xxl-2">
+                            <li class="list-inline-item">
+                                <div class="city">{{ $secondCity->title ?? '' }}</div>
+                            </li>
+                            @if(!empty($secondCity->first_phone))
+                                <li class="list-inline-item">
+                                    <a href="tel:{{ $secondCity->first_phone ?? '' }}">
+                                        <div class="link-phone">{{ $secondCity->first_phone ?? '' }}</div>
+                                    </a>
+                                </li>
+                            @endif
+                            <li class="list-inline-item">
+                                <button type="button" class="contact-details" data-toggle="modal" data-city="{{ $secondCity->title ?? '' }}"
+                                        data-target="#popup--contacts">Переглянути
+                                </button>
+                            </li>
+                        </ul>
+                        <div class="item d-flex d-xxl-none flex-column flex-xxl-row justify-content-between align-items-end align-items-xxl-center">
+                            <ul class="list-inline mb-0 d-flex align-items-center">
+                                <li class="list-inline-item">
+                                    <div class="city">{{ $firstCity->title ?? '' }}</div>
+                                </li>
+                                @if(!empty($firstCity->first_phone))
+                                    <li class="list-inline-item">
+                                        <a href="tel:{{ $firstCity->first_phone ?? '' }}">
+                                            <div class="link-phone">{{ $firstCity->first_phone ?? '' }}</div>
+                                        </a>
+                                    </li>
+                                @endif
+                                @if(!empty($firstCity->second_phone))
+                                    <li class="list-inline-item">
+                                        <a href="tel:{{ $firstCity->second_phone ?? '' }}">
+                                            <div class="link-phone">{{ $firstCity->second_phone ?? '' }}</div>
+                                        </a>
+                                    </li>
+                                @endif
+                                <li class="list-inline-item">
+                                    <button type="button" class="contact-details" data-toggle="modal" data-city="{{ $firstCity->title ?? '' }}"
+                                        data-target="#popup--contacts">Переглянути
+                                    </button>
+                                </li>
+                            </ul>
+                            <ul class="list-inline mb-0 d-flex align-items-center">
+                                <li class="list-inline-item">
+                                    <div class="city">{{ $secondCity->title ?? '' }}</div>
+                                </li>
+                                @if(!empty($secondCity->first_phone))
+                                    <li class="list-inline-item">
+                                        <a href="tel:{{ $secondCity->first_phone ?? '' }}"">
+                                            <div class="link-phone">{{ $secondCity->first_phone ?? '' }}"</div>
+                                        </a>
+                                    </li>
+                                @endif
+                                <li class="list-inline-item">
+                                    <button type="button" class="contact-details" data-toggle="modal" data-city="{{ $secondCity->title ?? '' }}"
+                                        data-target="#popup--contacts">Переглянути
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        {{-- <ul class="list-inline mb-0 d-none d-xxl-flex align-items-center">
+                            <li class="list-inline-item">
                                 <div class="city">Дніпро</div>
                             </li>
                             <li class="list-inline-item">
@@ -75,7 +160,7 @@
                                     </button>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
                         <div class="item d-flex justify-content-between align-items-center mr-xxl-1">
                             <div class="d-xxl-none">
                                 <button type="button" class="btn btn-blue" data-toggle="modal"
@@ -437,10 +522,10 @@
                                                 <div class="contact-offices--label">Переглянути філії:</div>
                                                 <div class="buttons">
                                                     <button type="button" class="contact-details btn"
-                                                            data-toggle="modal" data-target="#popup--contacts"><span>Дніпро</span>
+                                                            data-toggle="modal" data-target="#popup--contacts" data-city="{{ $firstCity->title ?? '' }}"><span>{{ $firstCity->title ?? '' }}</span>
                                                     </button>
                                                     <button type="button" class="contact-details btn"
-                                                            data-toggle="modal" data-target="#popup--contacts"><span>Новомосковськ</span>
+                                                            data-toggle="modal" data-target="#popup--contacts" data-city="{{ $secondCity->title ?? '' }}"><span>{{ $secondCity->title ?? '' }}</span>
                                                     </button>
                                                 </div>
                                             </div>
@@ -455,4 +540,3 @@
         </div>
     </div>
 </header>
- 
