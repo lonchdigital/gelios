@@ -2,21 +2,8 @@
 
 @section('content')
 
-    @include('site.components.breadcrumbs', [
-        'breadcrumbs' => [
-            [
-                'title' => 'Головна',
-                'url' => route('main'),
-            ],
-            [
-                'title' => '111111111111',
-                'url' => route('doctors.index'),
-            ],
-            [
-                'title' => $direction->name ?? '',
-                'url' => null,
-            ],
-        ],
+    @include('site.directions.partials.breadcrumbs', [
+        'breadcrumbs' => $direction->buildBreadcrumbs(),
     ])
     
     <section class="category-direction-column-item offices-direction mb-24">

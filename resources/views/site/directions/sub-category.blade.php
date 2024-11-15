@@ -1,21 +1,9 @@
 @extends('site.layout.app')
 
 @section('content')
-    @include('site.components.breadcrumbs', [
-        'breadcrumbs' => [
-            [
-                'title' => 'Головна',
-                'url' => route('main'),
-            ],
-            [
-                'title' => '22222222222222',
-                'url' => route('doctors.index'),
-            ],
-            [
-                'title' => $direction->name ?? '',
-                'url' => null,
-            ],
-        ],
+
+    @include('site.directions.partials.breadcrumbs', [
+        'breadcrumbs' => $direction->buildBreadcrumbs(),
     ])
 
     <section class="section-top section-top-3 section-top-6 mb-24">
