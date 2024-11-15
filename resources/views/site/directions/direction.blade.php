@@ -51,11 +51,11 @@
                         
                         <div class="row">
                             <div class="col-auto">
-                                <a href="##" class="btn btn-fz-20 btn-outline-blue font-weight-bold d-none d-lg-block">Детальніше</a>
+                                <a href="##" class="btn btn-fz-20 btn-outline-blue font-weight-bold d-none d-lg-block">{{ trans('web.more_details') }}</a>
                             </div>
                         </div>
                     </div>
-                    <a href="##" class="btn btn-outline-blue font-weight-bold d-lg-none">Детальніше</a>
+                    <a href="##" class="btn btn-outline-blue font-weight-bold d-lg-none">{{ trans('web.more_details') }}</a>
                 </div>
 
                 <div class="col-12 col-lg-5 col-xl-4">
@@ -78,11 +78,13 @@
                             @foreach ($promotions as $promotion)
                                 <div class="swiper-slide shares--item">
                                     <a href="{{ route('promotions.show', ['promotion' => $promotion->slug]) }}" class="inner">
-                                        <div class="wrap-img mb-4">
-                                            <img src="{{ '/storage/' . $promotion->image }}" alt="img">
-                                        </div>
+                                        @if($promotion->image)
+                                            <div class="wrap-img mb-4">
+                                                <img src="{{ '/storage/' . $promotion->image }}" alt="img">
+                                            </div>
+                                        @endif
                                         <div class="h3 font-m text-white font-weight-bolder mb-4">{{ $promotion->title }}</div>
-                                        <div class="h5 text-white">{{ $promotion->description }}</div>
+                                        <div class="h5 text-white">{!! $promotion->description !!}</div>
                                     </a>
                                 </div>
                             @endforeach
@@ -90,13 +92,37 @@
                         <div class="swiper-pagination mt-5"></div>
                         <div class="swiper-buttons d-none d-md-flex">
                             <div class="button-slider-prev">
-                                <svg>
-                                    <use xlink:href="img/icons/icons.svg#i-arrow-right"></use>
+                                <svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <desc>
+                                            Created with Pixso.
+                                    </desc>
+                                    <defs>
+                                        <clipPath id="clip12_3808">
+                                            <rect id="arrow-icon" width="24.000000" height="24.000000" fill="white" fill-opacity="0"/>
+                                        </clipPath>
+                                    </defs>
+                                    <rect id="arrow-icon" width="24.000000" height="24.000000" fill="#FFFFFF" fill-opacity="0"/>
+                                    <g clip-path="url(#clip12_3808)">
+                                        <path id="Vector" d="M5 12L19 12" stroke="#EDEEF1" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+                                        <path id="Vector" d="M12 5L19 12L12 19" stroke="#EDEEF1" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+                                    </g>
                                 </svg>
                             </div>
                             <div class="button-slider-next">
-                                <svg>
-                                    <use xlink:href="img/icons/icons.svg#i-arrow-right"></use>
+                                <svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <desc>
+                                            Created with Pixso.
+                                    </desc>
+                                    <defs>
+                                        <clipPath id="clip12_3808">
+                                            <rect id="arrow-icon" width="24.000000" height="24.000000" fill="white" fill-opacity="0"/>
+                                        </clipPath>
+                                    </defs>
+                                    <rect id="arrow-icon" width="24.000000" height="24.000000" fill="#FFFFFF" fill-opacity="0"/>
+                                    <g clip-path="url(#clip12_3808)">
+                                        <path id="Vector" d="M5 12L19 12" stroke="#EDEEF1" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+                                        <path id="Vector" d="M12 5L19 12L12 19" stroke="#EDEEF1" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+                                    </g>
                                 </svg>
                             </div>
                         </div>
