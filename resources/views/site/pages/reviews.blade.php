@@ -54,7 +54,6 @@
                 <div class="col-12">
                     <nav class="mt-5 mt-lg-3">
                         {{ $reviews->links('vendor.pagination.plain') }}
-                        {{-- <ul class="pagination justify-content-center mb-0"></ul> --}}
                     </nav>
                 </div>
             </div>

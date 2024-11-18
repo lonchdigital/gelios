@@ -71,6 +71,7 @@ class Index extends Component
 
     public function removeDirectionFromDB(int $id)
     {
+        // dd('remove | ' . $id);
         if($id) {
             $this->directionsService->removeDirectionWithChildren($id);
             redirect()->route('directions.index')->with('success', trans('admin.removed'));
