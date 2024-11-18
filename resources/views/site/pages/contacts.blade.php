@@ -8,7 +8,7 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => 'Головна',
+                'title' => trans('web.main'),
                 'url' => route('main'),
             ],
             [

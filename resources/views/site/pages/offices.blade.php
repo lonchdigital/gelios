@@ -4,7 +4,7 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => 'Головна',
+                'title' => trans('web.main'),
                 'url' => route('main'),
             ],
             [
@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row mb-8">
                 <div class="col">
-                    <div class="h2 font-m font-weight-bolder text-blue">Філії</div>
+                    <div class="h2 font-m font-weight-bolder text-blue">{{ $page->title ?? '' }}</div>
                 </div>
             </div>
             <div class="row">
@@ -79,7 +79,7 @@
 
     <section class="offices-direction mb-24 mb-lg-0">
         @foreach ($contacts as $contact)
-            <div class="offices-direction--item py-12 bg-white mb-8">
+            <div class="offices-direction--item py-12 bg-white mb-8" id="office-{{ $contact->id }}">
                 <div class="container">
                     <div class="offices-direction--content">
                         <div class="row">

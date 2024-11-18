@@ -4,7 +4,7 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => 'Головна',
+                'title' => trans('web.main'),
                 'url' => route('main'),
             ],
             [
@@ -96,8 +96,9 @@
                                             <div class="phone mb-3"><a href="tel:{{ $phone->item }}">{{ $phone->item }}</a></div>
                                         @endforeach
                                         
-                                        <a href="##"
-                                            class="btn btn-fz-20 btn-outline-blue font-weight-bold w-100">{{ trans('web.more_details') }}</a>
+                                        <a href="{{ route('offices.page') . '#office-' . $contact->id }}"class="btn btn-fz-20 btn-outline-blue font-weight-bold w-100">
+                                            {{ trans('web.more_details') }}
+                                        </a>
                                     </div>
                                 </div>
                             @endforeach
