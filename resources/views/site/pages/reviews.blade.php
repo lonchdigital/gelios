@@ -8,7 +8,7 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => 'Головна',
+                'title' => trans('web.main'),
                 'url' => route('main'),
             ],
             [
@@ -53,7 +53,7 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="mt-5 mt-lg-3">
-                        {{ $reviews->links('vendor.pagination.default') }}
+                        {{ $reviews->links('vendor.pagination.plain') }}
                         {{-- <ul class="pagination justify-content-center mb-0"></ul> --}}
                     </nav>
                 </div>

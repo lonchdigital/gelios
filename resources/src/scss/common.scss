@@ -7,6 +7,10 @@
 	box-shadow: none !important;
 }
 
+.no-hover {
+	pointer-events: none;
+}
+
 textarea {
 	resize: none;
 }
@@ -1427,11 +1431,10 @@ form {
 			}
 		}
 	}
-}
+}  
 
 //pagination
 .pagination {
-	display: block !important;
 	position: relative;
 	padding: 10px 0;
 	gap: 8px;

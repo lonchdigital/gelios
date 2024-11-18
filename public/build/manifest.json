@@ -56,12 +56,12 @@
     "src": "resources/fonts/Montserrat-Thin.ttf"
   },
   "resources/js/app.js": {
-    "file": "assets/app-BcGgmKaO.js",
+    "file": "assets/app-DUyqTlkr.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-BZF1JCK1.css"
+      "assets/app-BXLNfrl7.css"
     ],
     "assets": [
       "assets/Inter-Bold-D0m5Xa5u.ttf",
@@ -111,7 +111,7 @@
     ]
   },
   "resources/js/main.js": {
-    "file": "assets/main-p7-8LBTj.js",
+    "file": "assets/main-LgeRwLig.js",
     "name": "main",
     "src": "resources/js/main.js",
     "isEntry": true,
