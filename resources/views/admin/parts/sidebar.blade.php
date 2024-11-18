@@ -239,8 +239,13 @@
                         || Route::is('admin.footer.*')
                         || Route::is('admin.header.*')
                         ) style="display: block;" @else style="display: none;" @endif>
-                            <li @if(Route::is('admin.main-page.*')) class="active" @endif>
+                            <li @if(Route::is('admin.main-page.show') || Route::is('admin.main-page.edit-block')) class="active" @endif>
                                 <a href="{{ route('admin.main-page.show') }}">Головна сторінка
+                                </a>
+                            </li>
+
+                            <li @if(Route::is('admin.main-page.edit-seo')) class="active" @endif>
+                                <a href="{{ route('admin.main-page.edit-seo') }}">Головна сторінка SEO
                                 </a>
                             </li>
 

@@ -87,11 +87,11 @@ class Edit extends Component
         $this->enDescription = $translations['en']->description ?? '';
         $this->ruDescription = $translations['ru']->description ?? '';
 
-        $this->uaButtonName = $translations['en']->button ?? '';
+        $this->uaButtonName = $translations['ua']->button ?? '';
         $this->enButtonName = $translations['en']->button ?? '';
         $this->ruButtonName = $translations['ru']->button ?? '';
 
-        $this->uaContent = $translations['en']->content ?? '';
+        $this->uaContent = $translations['ua']->content ?? '';
         $this->enContent = $translations['en']->content ?? '';
         $this->ruContent = $translations['ru']->content ?? '';
 

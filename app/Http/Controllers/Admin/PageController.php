@@ -29,4 +29,9 @@ class PageController extends Controller
     {
         return view('admin.settings.edit-footer');
     }
+
+    public function mainPageSeo()
+    {
+        return view('admin.main-page.seo');
+    }
 }

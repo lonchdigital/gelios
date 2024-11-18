@@ -209,6 +209,7 @@ Route::group([
 
         Route::prefix('/main-page')->name('admin.main-page.')->group(function() {
             Route::get('/', [PageController::class, 'mainPage'])->name('show');
+            Route::get('/edit-seo', [PageController::class, 'mainPageSeo'])->name('edit-seo');
             Route::get('/edit-block/{block}', [PageController::class, 'mainPageEdit'])->name('edit-block');
         });
 
