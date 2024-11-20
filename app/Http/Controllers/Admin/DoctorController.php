@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\PageType;
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Models\DoctorCategory;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
@@ -37,5 +39,21 @@ class DoctorController extends Controller
     public function categoryEdit(DoctorCategory $category)
     {
         return view('admin.doctor-category.edit', compact('category'));
+    }
+
+    public function mainPageSeo()
+    {
+        $page = Page::where('type', PageType::DOCTOR->value)
+            ->first();
+
+        return view('admin.doctor.main-page-seo', compact('page'));
+    }
+
+    public function onePageSeo()
+    {
+        $page = Page::where('type', PageType::ONEDOCTOR->value)
+            ->first();
+
+        return view('admin.doctor.one-page-seo', compact('page'));
     }
 }

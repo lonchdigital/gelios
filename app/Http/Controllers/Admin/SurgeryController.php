@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\PageType;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\PageBlock;
@@ -54,5 +55,13 @@ class SurgeryController extends Controller
     public function editStaticBlock(Page $page, PageBlock $block)
     {
         return view('admin.surgery.static-block.edit-block', compact('page', 'block'));
+    }
+
+    public function mainPageSeo()
+    {
+        $page = Page::where('type', PageType::SURGERY->value)
+            ->first();
+
+        return view('admin.surgery.main-page-seo', compact('page'));
     }
 }

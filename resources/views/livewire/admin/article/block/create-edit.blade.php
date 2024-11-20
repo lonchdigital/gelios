@@ -68,11 +68,13 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @error('uaFirstTitle')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
+                                                                @if($errors->has('uaFirstTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaFirstTitle') }}</div>
+                                                                @elseif($errors->has('ruFirstTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruFirstTitle') }}</div>
+                                                                @elseif($errors->has('enFirstTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enFirstTitle') }}</div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -95,11 +97,13 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @error('uaFirstDescription')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
+                                                                @if($errors->has('uaFirstDescription'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaFirstDescription') }}</div>
+                                                                @elseif($errors->has('ruFirstDescription'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruFirstDescription') }}</div>
+                                                                @elseif($errors->has('enFirstDescription'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enFirstDescription') }}</div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -125,11 +129,13 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    @error('uaSecondTitle')
-                                                                        <div class="mt-1 text-danger ajaxError">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
+                                                                    @if($errors->has('uaSecondTitle'))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSecondTitle') }}</div>
+                                                                    @elseif($errors->has('ruSecondTitle'))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSecondTitle') }}</div>
+                                                                    @elseif($errors->has('enSecondTitle'))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSecondTitle') }}</div>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -152,11 +158,13 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    @error('uaSecondDescription')
-                                                                        <div class="mt-1 text-danger ajaxError">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
+                                                                    @if($errors->has('uaSecondDescription'))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSecondDescription') }}</div>
+                                                                    @elseif($errors->has('ruSecondDescription'))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSecondDescription') }}</div>
+                                                                    @elseif($errors->has('enSecondDescription'))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSecondDescription') }}</div>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -184,11 +192,13 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @error('ruFirstTitle')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
+                                                                @if($errors->has('ruFirstTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruFirstTitle') }}</div>
+                                                                @elseif($errors->has('uaFirstTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaFirstTitle') }}</div>
+                                                                @elseif($errors->has('enFirstTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enFirstTitle') }}</div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -211,11 +221,13 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @error('ruFirstDescription')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
+                                                                @if($errors->has('ruFirstDescription'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruFirstDescription') }}</div>
+                                                                @elseif($errors->has('uaFirstDescription'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaFirstDescription') }}</div>
+                                                                @elseif($errors->has('enFirstDescription'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enFirstDescription') }}</div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -241,11 +253,13 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    @error('ruSecondTitle')
-                                                                        <div class="mt-1 text-danger ajaxError">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
+                                                                    @if($errors->has('ruSecondTitle'))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSecondTitle') }}</div>
+                                                                    @elseif($errors->has('uaSecondTitle'))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSecondTitle') }}</div>
+                                                                    @elseif($errors->has('enSecondTitle'))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSecondTitle') }}</div>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -268,11 +282,13 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    @error('ruSecondDescription')
-                                                                        <div class="mt-1 text-danger ajaxError">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
+                                                                    @if($errors->has('ruSecondDescription'))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSecondDescription') }}</div>
+                                                                    @elseif($errors->has('uaSecondDescription'))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSecondDescription') }}</div>
+                                                                    @elseif($errors->has('enSecondDescription'))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSecondDescription') }}</div>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -300,11 +316,13 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @error('enFirstTitle')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
+                                                                @if($errors->has('enFirstTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enFirstTitle') }}</div>
+                                                                @elseif($errors->has('ruFirstTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruFirstTitle') }}</div>
+                                                                @elseif($errors->has('uaFirstTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaFirstTitle') }}</div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -327,11 +345,13 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @error('enFirstDescription')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
+                                                                @if($errors->has('enFirstDescription'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enFirstDescription') }}</div>
+                                                                @elseif($errors->has('ruFirstDescription'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruFirstDescription') }}</div>
+                                                                @elseif($errors->has('uaFirstDescription'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaFirstDescription') }}</div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -357,11 +377,13 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    @error('enSecondTitle')
-                                                                        <div class="mt-1 text-danger ajaxError">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
+                                                                    @if($errors->has('enSecondTitle'))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSecondTitle') }}</div>
+                                                                    @elseif($errors->has('ruSecondTitle'))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSecondTitle') }}</div>
+                                                                    @elseif($errors->has('uaSecondTitle'))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSecondTitle') }}</div>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -384,11 +406,13 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    @error('enSecondDescription')
-                                                                        <div class="mt-1 text-danger ajaxError">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
+                                                                    @if($errors->has('enSecondDescription'))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSecondDescription') }}</div>
+                                                                    @elseif($errors->has('ruSecondDescription'))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSecondDescription') }}</div>
+                                                                    @elseif($errors->has('uaSecondDescription'))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSecondDescription') }}</div>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>

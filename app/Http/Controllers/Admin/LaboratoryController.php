@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\PageType;
 use App\Http\Controllers\Controller;
 use App\Models\Laboratory;
 use App\Models\LaboratoryCity;
@@ -49,5 +50,21 @@ class LaboratoryController extends Controller
     public function editSlide(Page $page, PageBlock $block)
     {
         return view('admin.laboratory.slider.edit', compact('page', 'block'));
+    }
+
+    public function mainPageSeo()
+    {
+        $page = Page::where('type', PageType::LABORATORY->value)
+            ->first();
+
+        return view('admin.laboratory.main-page-seo', compact('page'));
+    }
+
+    public function onePageSeo()
+    {
+        $page = Page::where('type', PageType::ONELABORATORY->value)
+            ->first();
+
+        return view('admin.laboratory.one-page-seo', compact('page'));
     }
 }

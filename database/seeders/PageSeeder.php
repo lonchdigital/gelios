@@ -172,6 +172,10 @@ class PageSeeder extends Seeder
             'type' => PageType::LABORATORY->value,
         ]);
 
+        $page = Page::firstOrCreate([
+            'type' => PageType::ONELABORATORY->value,
+        ]);
+
         $pageBlock = PageBlock::firstOrCreate([
             'page_id' => $page->id,
             'block' => 'main',
@@ -346,6 +350,18 @@ class PageSeeder extends Seeder
 
 
         $pageBlock->save();
+
+        $page = Page::firstOrCreate([
+            'type' => PageType::ARTICLE->value,
+        ]);
+
+        $page = Page::firstOrCreate([
+            'type' => PageType::DOCTOR->value,
+        ]);
+
+        $page = Page::firstOrCreate([
+            'type' => PageType::ONEDOCTOR->value,
+        ]);
 
         Page::firstOrCreate([
             'type' => PageType::OFFICES->value,

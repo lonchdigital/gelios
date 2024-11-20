@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\PageType;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\PageBlock;
@@ -28,5 +29,13 @@ class VacancyController extends Controller
     public function editBlock(Page $page, PageBlock $block)
     {
         return view('admin.vacancy.block.edit', compact('page', 'block'));
+    }
+
+    public function mainPageSeo()
+    {
+        $page = Page::where('type', PageType::OPENING->value)
+            ->first();
+
+        return view('admin.vacancy.main-page-seo', compact('page'));
     }
 }

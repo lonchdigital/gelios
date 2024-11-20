@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PageType;
 use App\Models\Page;
 use App\Models\Article;
 use Illuminate\Http\Request;
@@ -15,12 +16,20 @@ class ArticleController extends Controller
 
         $categories = ArticleCategory::get();
 
-        return view('site.articles.index', compact('articles', 'categories'));
+        $page = Page::where('type', PageType::BLOG->value)
+            ->with('translations')
+            ->first();
+
+        return view('site.articles.index', compact('articles', 'categories', 'page'));
     }
 
     public function show($slug)
     {
         $article = Article::where('slug', $slug)->first();
+
+        $page = Page::where('type', PageType::ARTICLE->value)
+            ->with('translations')
+            ->first();
 
         if ($article) {
             $relatedArticles = Article::where('id', '!=', $article->id)
@@ -43,6 +52,6 @@ class ArticleController extends Controller
                 'page' => $page
             ]);
         }
-        
+
     }
 }

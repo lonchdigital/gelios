@@ -14,5 +14,6 @@ class CheckUpTranslation extends Model
         'locale',
         'title',
         'description',
+        'slug'
     ];
 }

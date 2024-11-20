@@ -27,6 +27,10 @@ class PromotionController extends Controller
             ->take(3)
             ->get();
 
-        return view('site.promotion.show', compact('promotion', 'promotions'));
+        $page = Page::where('type', PageType::SHARESITEM->value)
+            ->with('translations')
+            ->first();
+
+        return view('site.promotion.show', compact('promotion', 'promotions', 'page'));
     }
 }

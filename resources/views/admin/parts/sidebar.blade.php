@@ -141,19 +141,56 @@
                         </ul>
                     </li>
 
-
-                    <li @if(Route::is('admin.promotions.*')) class="active" @endif>
+                    {{-- <li @if(Route::is('admin.promotions.*')) class="active" @endif>
                         <a href="{{ route('admin.promotions.index') }}">
                             <i class="fa fa-star-o"></i>
                             <span>{{ trans('admin.promotions') }}</span>
                         </a>
+                    </li> --}}
+
+                    <li class="treeview @if(Route::is('admin.promotions.*')) menu-open @endif">
+                        <a href="javascript:void(0)"><i class="fa fa-star-o"></i> <span>{{ trans('admin.promotions') }}</span> <i class="fa fa-angle-right"></i></a>
+                        <ul class="treeview-menu" @if(Route::is('admin.promotions.*')) style="display: block;" @else style="display: none;" @endif>
+                            <li @if(Route::is('admin.promotions.index')) class="active" @endif>
+                                <a href="{{ route('admin.promotions.index') }}">
+                                    <span>{{ trans('admin.promotions') }}</span>
+                                </a>
+                            </li>
+                            <li @if(Route::is('admin.promotions.edit-main-seo')) class="active" @endif >
+                                <a href="{{ route('admin.promotions.edit-main-seo') }}">SEO сторінки акцій
+                                </a>
+                            </li>
+                            <li @if(Route::is('admin.promotions.edit-one-page-seo')) class="active" @endif >
+                                <a href="{{ route('admin.promotions.edit-one-page-seo') }}">SEO однієї акції
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
-                    <li @if(Route::is('admin.check-ups.*')) class="active" @endif>
+                    {{-- <li @if(Route::is('admin.check-ups.*')) class="active" @endif>
                         <a href="{{ route('admin.check-ups.index') }}">
                             <i class="fa fa-check-circle-o"></i>
                             <span>{{ trans('admin.check_ups') }}</span>
                         </a>
+                    </li> --}}
+
+                    <li class="treeview @if(Route::is('admin.check-ups.*')) menu-open @endif">
+                        <a href="javascript:void(0)"><i class="fa fa-check-circle-o"></i> <span>{{ trans('admin.check_ups') }}</span> <i class="fa fa-angle-right"></i></a>
+                        <ul class="treeview-menu" @if(Route::is('admin.check-ups.*')) style="display: block;" @else style="display: none;" @endif>
+                            <li @if(Route::is('admin.check-ups.index')) class="active" @endif>
+                                <a href="{{ route('admin.check-ups.index') }}">
+                                    <span>{{ trans('admin.check_ups') }}</span>
+                                </a>
+                            </li>
+                            <li @if(Route::is('admin.check-ups.edit-main-seo')) class="active" @endif >
+                                <a href="{{ route('admin.check-ups.edit-main-seo') }}">SEO сторінки Check Up
+                                </a>
+                            </li>
+                            <li @if(Route::is('admin.check-ups.edit-one-page-seo')) class="active" @endif >
+                                <a href="{{ route('admin.check-ups.edit-one-page-seo') }}">SEO одного Check Up
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li class="treeview @if(Route::is('admin.article-categories.*') || Route::is('admin.articles.*')) menu-open @endif">
@@ -163,9 +200,17 @@
                                 <a href="{{ route('admin.article-categories.index') }}">{{ trans('admin.categories') }}
                                 </a>
                             </li>
-                            <li @if(Route::is('admin.articles.*')) class="active" @endif >
+                            <li @if(Route::is('admin.articles.index') || Route::is('admin.articles.create') || Route::is('admin.articles.edit')) class="active" @endif >
                                 <a href="{{ route('admin.articles.index') }}">{{ trans('admin.articles_list') }}
 
+                                </a>
+                            </li>
+                            <li @if(Route::is('admin.articles.edit-main-seo')) class="active" @endif >
+                                <a href="{{ route('admin.articles.edit-main-seo') }}">SEO блогу
+                                </a>
+                            </li>
+                            <li @if(Route::is('admin.articles.edit-one-page-seo')) class="active" @endif >
+                                <a href="{{ route('admin.articles.edit-one-page-seo') }}">SEO однієї статті
                                 </a>
                             </li>
                         </ul>
@@ -178,9 +223,17 @@
                                 <a href="{{ route('admin.doctor-categories.index') }}">Категорії
                                 </a>
                             </li>
-                            <li @if(Route::is('admin.doctors.*')) class="active" @endif >
+                            <li @if(Route::is('admin.doctors.index') || Route::is('admin.doctors.create') || Route::is('admin.doctors.edit')) class="active" @endif >
                                 <a href="{{ route('admin.doctors.index') }}">Список лікарів
 
+                                </a>
+                            </li>
+                            <li @if(Route::is('admin.doctors.edit-main-seo')) class="active" @endif >
+                                <a href="{{ route('admin.doctors.edit-main-seo') }}">SEO сторінки лікарів
+                                </a>
+                            </li>
+                            <li @if(Route::is('admin.doctors.edit-one-page-seo')) class="active" @endif >
+                                <a href="{{ route('admin.doctors.edit-one-page-seo') }}">SEO сторінки одного лікаря
                                 </a>
                             </li>
                         </ul>
@@ -200,25 +253,64 @@
                                 <a href="{{ route('admin.laboratory-cities.index') }}">Міста лабораторій
                                 </a>
                             </li>
-                            <li @if(Route::is('admin.laboratories.*')) class="active" @endif >
+                            <li @if(Route::is('admin.laboratories.index') || Route::is('admin.laboratories.create') || Route::is('admin.laboratories.edit')) class="active" @endif >
                                 <a href="{{ route('admin.laboratories.index') }}">Список лабораторій
+                                </a>
+                            </li>
+
+                            <li @if(Route::is('admin.laboratories.edit-main-seo')) class="active" @endif >
+                                <a href="{{ route('admin.laboratories.edit-main-seo') }}">SEO сторінки лабораторій
+                                </a>
+                            </li>
+                            <li @if(Route::is('admin.laboratories.edit-one-page-seo')) class="active" @endif >
+                                <a href="{{ route('admin.laboratories.edit-one-page-seo') }}">SEO сторінки однієї лабораторії
                                 </a>
                             </li>
                         </ul>
                     </li>
 
-                    <li @if(Route::is('admin.surgery.*')) class="active" @endif>
+                    {{-- <li @if(Route::is('admin.surgery.*')) class="active" @endif>
                         <a href="{{ route('admin.surgery.index') }}">
                             <i class="fa fa-medkit"></i>
                             <span>Хірургія</span>
                         </a>
+                    </li> --}}
+
+                    <li class="treeview @if(Route::is('admin.surgery.*')) menu-open @endif">
+                        <a href="javascript:void(0)"><i class="fa fa-medkit"></i> <span>{{ 'Хірургія' }}</span> <i class="fa fa-angle-right"></i></a>
+                        <ul class="treeview-menu" @if(Route::is('admin.surgery.*')) style="display: block;" @else style="display: none;" @endif>
+                            <li @if(Route::is('admin.surgery.index')) class="active" @endif>
+                                <a href="{{ route('admin.surgery.index') }}">
+                                    <span>{{ 'Хірургія' }}</span>
+                                </a>
+                            </li>
+                            <li @if(Route::is('admin.surgery.edit-main-seo')) class="active" @endif >
+                                <a href="{{ route('admin.check-ups.edit-main-seo') }}">SEO сторінки Хірургія
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
-                    <li @if(Route::is('admin.vacancies.*')) class="active" @endif>
+                    {{-- <li @if(Route::is('admin.vacancies.*')) class="active" @endif>
                         <a href="{{ route('admin.vacancies.index') }}">
                             <i class="fa fa-address-book-o"></i>
                             <span>Вакансії</span>
                         </a>
+                    </li> --}}
+
+                    <li class="treeview @if(Route::is('admin.vacancies.*')) menu-open @endif">
+                        <a href="javascript:void(0)"><i class="fa fa-address-book-o"></i> <span>{{ 'Вакансії' }}</span> <i class="fa fa-angle-right"></i></a>
+                        <ul class="treeview-menu" @if(Route::is('admin.vacancies.*')) style="display: block;" @else style="display: none;" @endif>
+                            <li @if(Route::is('admin.vacancies.index') || Route::is('admin.vacancies.create' || Route::is('admin.vacancies.edit'))) class="active" @endif>
+                                <a href="{{ route('admin.vacancies.index') }}">
+                                    <span>{{ 'Вакансії' }}</span>
+                                </a>
+                            </li>
+                            <li @if(Route::is('admin.vacancies.edit-main-seo')) class="active" @endif >
+                                <a href="{{ route('admin.vacancies.edit-main-seo') }}">SEO сторінки Вакансії
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li @if(Route::is('admin.edit-robots')) class="active" @endif>

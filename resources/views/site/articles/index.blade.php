@@ -1,5 +1,12 @@
 @extends('site.layout.app')
 
+@section('head')
+    @include('site.components.head', [
+        'title' => $page->meta_title ?: $page->title,
+        'description' => $page->meta_description,
+    ])
+@endsection
+
 @section('content')
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
@@ -146,7 +153,7 @@
                         @forelse($articles as $article)
                             <div class="content-item col-12 col-md-6 col-xl-4">
                                 <div class="news--item">
-                                    <a href="{{ route('articles.show', ['article' => $article->slug]) }}" class="inner">
+                                    <a href="{{ route('articles.show', ['slug' => $article->slug]) }}" class="inner">
                                         <div class="wrap-img mb-4">
                                             @if ($article->image)
                                                 <img src="{{ $article->imageUrl }}" alt="{{ $article->title }}">

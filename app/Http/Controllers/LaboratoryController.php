@@ -15,7 +15,7 @@ class LaboratoryController extends Controller
         $cities = LaboratoryCity::with('laboratories')->get();
 
         $page = Page::where('type', PageType::LABORATORY)
-            ->with('pageBlocks', 'pageBlocks.translations')
+            ->with('translations', 'pageBlocks', 'pageBlocks.translations')
             ->firstOrFail();
 
         return view('site.laboratory.index', compact('cities', 'page'));

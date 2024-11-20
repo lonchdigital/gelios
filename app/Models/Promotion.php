@@ -13,17 +13,28 @@ class Promotion extends Model
 
     protected $fillable = [
         'image',
-        'slug',
     ];
 
     public $translatedAttributes = [
         'title',
         'description',
-        'price'
+        'price',
+        'slug'
     ];
 
     public function getImageUrlAttribute()
     {
         return Storage::disk('public')->url($this->image);
+    }
+
+    public function resolveRouteBinding($value, $field = null)
+    {
+        $field = $field ?? 'slug';
+
+        if (is_numeric($value)) {
+            return $this->where('id', $value)->firstOrFail();
+        }
+
+        return $this->whereTranslation($field, $value)->firstOrFail();
     }
 }

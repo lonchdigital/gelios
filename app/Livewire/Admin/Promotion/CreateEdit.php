@@ -7,6 +7,7 @@ use App\Models\PromotionTranslation;
 use App\Services\Admin\ImageService;
 use App\Services\Admin\PromotionService;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -38,7 +39,11 @@ class CreateEdit extends Component
 
     public string $ruDescription = '';
 
-    public string $slug = '';
+    public string $uaSlug = '';
+
+    public string $enSlug = '';
+
+    public string $ruSlug = '';
 
     public $image;
 
@@ -51,9 +56,8 @@ class CreateEdit extends Component
     public function mount(Promotion $promotion = null)
     {
         $this->dispatch('livewire:load');
-        
+
         $this->promotion = $promotion ?? new Promotion();
-        $this->slug = $this->promotion->slug ?? '';
 
         $this->activeLocale = config('app.active_lang');
 
@@ -71,6 +75,10 @@ class CreateEdit extends Component
         $this->enPrice = $translations['en']['price'];
         $this->ruPrice = $translations['ru']['price'];
 
+        $this->uaSlug = $translations['ua']['slug'];
+        $this->enSlug = $translations['en']['slug'];
+        $this->ruSlug = $translations['ru']['slug'];
+
         $this->uaDescription = $translations['ua']['description'];
         $this->enDescription = $translations['en']['description'];
         $this->ruDescription = $translations['ru']['description'];
@@ -84,10 +92,28 @@ class CreateEdit extends Component
     public function rules()
     {
         return [
-            'slug' => [
+            'uaSlug' => [
                 'required',
                 'string',
-                'unique:promotions,slug,' . $this->promotion->id ?? ''
+                Rule::unique('promotion_translations', 'slug')->where(function ($query) {
+                    return $query->where('promotion_id', '!=', $this->promotion->id);
+                }),
+            ],
+
+            'ruSlug' => [
+                'required',
+                'string',
+                Rule::unique('promotion_translations', 'slug')->where(function ($query) {
+                    return $query->where('promotion_id', '!=', $this->promotion->id);
+                }),
+            ],
+
+            'enSlug' => [
+                'required',
+                'string',
+                Rule::unique('promotion_translations', 'slug')->where(function ($query) {
+                    return $query->where('promotion_id', '!=', $this->promotion->id);
+                }),
             ],
 
             'uaTitle' => [
@@ -187,7 +213,6 @@ class CreateEdit extends Component
             $this->promotion->image = $image;
         }
 
-        $this->promotion->slug = $this->slug;
         $this->promotion->save();
 
         $translations = [
@@ -195,16 +220,19 @@ class CreateEdit extends Component
                 'title' => $this->uaTitle,
                 'price' => $this->uaPrice,
                 'description' => $this->uaDescription,
+                'slug' => $this->uaSlug,
             ],
             'en' => [
                 'title' => $this->enTitle,
                 'price' => $this->enPrice,
                 'description' => $this->enDescription,
+                'slug' => $this->enSlug,
             ],
             'ru' => [
                 'title' => $this->ruTitle,
                 'price' => $this->ruPrice,
                 'description' => $this->ruDescription,
+                'slug' => $this->ruSlug,
             ]
         ];
 

@@ -9,7 +9,11 @@ enum PageType: string
     case CONTACTS = 'contacts';
     case HOSPITAL = 'hospital';
     case LABORATORY = 'laboratory';
+    case ONELABORATORY = 'one_laboratory';
     case BLOG = 'blog';
+    case ARTICLE = 'article';
+    case DOCTOR = 'doctor';
+    case ONEDOCTOR = 'one_doctor';
     case OFFICES = 'offices';
     case OPENING = 'opening';
     case DIRECTIONS = 'directions';

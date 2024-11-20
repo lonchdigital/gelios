@@ -14,6 +14,7 @@ class PromotionTranslation extends Model
         'locale',
         'title',
         'description',
-        'price'
+        'price',
+        'slug',
     ];
 }

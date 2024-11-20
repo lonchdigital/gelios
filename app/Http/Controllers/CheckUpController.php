@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PageType;
 use App\Models\CheckUp;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class CheckUpController extends Controller
@@ -11,6 +13,10 @@ class CheckUpController extends Controller
     {
         $checkUps = CheckUp::get();
 
-        return view('site.check-up.index', compact('checkUps'));
+        $page = Page::where('type', PageType::CHECKUP->value)
+            ->with('translations')
+            ->first();
+
+        return view('site.check-up.index', compact('checkUps', 'page'));
     }
 }

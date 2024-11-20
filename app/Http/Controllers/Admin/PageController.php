@@ -32,6 +32,9 @@ class PageController extends Controller
 
     public function mainPageSeo()
     {
-        return view('admin.main-page.seo');
+        $page = Page::where('type', PageType::MAINPAGE->value)
+            ->first();
+
+        return view('admin.main-page.seo', compact('page'));
     }
 }

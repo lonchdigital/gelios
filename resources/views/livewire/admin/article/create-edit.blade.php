@@ -35,11 +35,13 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @error('uaTitle')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
+                                                                @if($errors->has('uaTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaTitle') }}</div>
+                                                                @elseif($errors->has('ruTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruTitle') }}</div>
+                                                                @elseif($errors->has('enTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enTitle') }}</div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -92,11 +94,13 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @error('ruTitle')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
+                                                                @if($errors->has('ruTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruTitle') }}</div>
+                                                                @elseif($errors->has('uaTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaTitle') }}</div>
+                                                                @elseif($errors->has('enTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enTitle') }}</div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -149,11 +153,13 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @error('enTitle')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
+                                                                @if($errors->has('enTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enTitle') }}</div>
+                                                                @elseif($errors->has('ruTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruTitle') }}</div>
+                                                                @elseif($errors->has('uaTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaTitle') }}</div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -239,6 +245,13 @@
                                                             'en' => $this->enDescription
                                                         ]"
                                                     />
+                                                    @if($errors->has('uaDescription'))
+                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaDescription') }}</div>
+                                                    @elseif($errors->has('ruDescription'))
+                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruDescription') }}</div>
+                                                    @elseif($errors->has('enDescription'))
+                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('enDescription') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

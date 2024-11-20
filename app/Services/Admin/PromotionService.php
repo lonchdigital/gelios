@@ -24,6 +24,7 @@ class PromotionService
                 'title' => $translation->title ?? '',
                 'price' => $translation->price ?? '',
                 'description' => $translation->description ?? '',
+                'slug' => $translation->slug ?? '',
             ];
         }
 
@@ -42,6 +43,7 @@ class PromotionService
                     'title' => $data['title'],
                     'price' => $data['price'],
                     'description' => $data['description'],
+                    'slug' => $data['slug'],
                 ]
             );
         }

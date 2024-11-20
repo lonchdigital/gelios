@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\PageType;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\ArticleBlock;
@@ -44,5 +45,21 @@ class ArticleController extends Controller
     public function editSlide(Page $page, PageBlock $block)
     {
         return view('admin.article.slider.edit', compact('page', 'block'));
+    }
+
+    public function mainPageSeo()
+    {
+        $page = Page::where('type', PageType::BLOG->value)
+            ->first();
+
+        return view('admin.article.main-page-seo', compact('page'));
+    }
+
+    public function onePageSeo()
+    {
+        $page = Page::where('type', PageType::ARTICLE->value)
+            ->first();
+
+        return view('admin.article.one-page-seo', compact('page'));
     }
 }

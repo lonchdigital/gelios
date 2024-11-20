@@ -23,6 +23,7 @@ class CheckUp extends Model
     public $translatedAttributes = [
         'title',
         'description',
+        'slug'
     ];
 
     public function getImageUrlAttribute()
@@ -33,5 +34,16 @@ class CheckUp extends Model
     public function checkUpPrograms(): HasMany
     {
         return $this->hasMany(CheckUpProgram::class);
+    }
+
+    public function resolveRouteBinding($value, $field = null)
+    {
+        $field = $field ?? 'slug';
+
+        if (is_numeric($value)) {
+            return $this->where('id', $value)->firstOrFail();
+        }
+
+        return $this->whereTranslation($field, $value)->firstOrFail();
     }
 }

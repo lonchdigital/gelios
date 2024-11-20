@@ -57,11 +57,11 @@ class Seo extends Component
         'languageSwitched' => 'languageSwitched'
     ];
 
-    public function mount()
+    public function mount(Page $page)
     {
         $this->dispatch('livewire:load');
 
-        $this->page = Page::where('type', PageType::MAINPAGE->value)->first() ?? new (Page::class);
+        $this->page = $page;
 
         $translations = PageTranslation::where('page_id', $this->page->id)
             ->whereIn('locale', ['ua', 'en', 'ru'])

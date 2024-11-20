@@ -120,6 +120,8 @@ Route::group([
 
         Route::prefix('/promotions')->name('admin.promotions.')->group(function() {
             Route::get('/', [PromotionController::class, 'index'])->name('index');
+            Route::get('/edit-main-seo', [PromotionController::class, 'mainPageSeo'])->name('edit-main-seo');
+            Route::get('/edit-one-page-seo', [PromotionController::class, 'onePageSeo'])->name('edit-one-page-seo');
 
             Route::get('/create-slide/{page}', [PromotionController::class, 'createSlide'])->name('create-slide');
             Route::get('/edit-slide/{page}/{block}', [PromotionController::class, 'editSlide'])->name('edit-slide');
@@ -130,6 +132,8 @@ Route::group([
 
         Route::prefix('/check-ups')->name('admin.check-ups.')->group(function() {
             Route::get('/', [CheckUpController::class, 'index'])->name('index');
+            Route::get('/edit-main-seo', [CheckUpController::class, 'mainPageSeo'])->name('edit-main-seo');
+            Route::get('/edit-one-page-seo', [CheckUpController::class, 'onePageSeo'])->name('edit-one-page-seo');
             Route::get('/create', [CheckUpController::class, 'create'])->name('create');
             Route::get('/{checkUp}/edit', [CheckUpController::class, 'edit'])->name('edit');
 
@@ -146,6 +150,9 @@ Route::group([
         Route::prefix('/articles')->name('admin.articles.')->group(function() {
             Route::get('/', [ArticleController::class, 'index'])->name('index');
 
+            Route::get('/edit-main-seo', [ArticleController::class, 'mainPageSeo'])->name('edit-main-seo');
+            Route::get('/edit-one-page-seo', [ArticleController::class, 'onePageSeo'])->name('edit-one-page-seo');
+
             Route::get('/create-slide/{page}', [ArticleController::class, 'createSlide'])->name('create-slide');
             Route::get('/edit-slide/{page}/{block}', [ArticleController::class, 'editSlide'])->name('edit-slide');
 
@@ -158,6 +165,10 @@ Route::group([
 
         Route::prefix('/doctors')->name('admin.doctors.')->group(function() {
             Route::get('/', [DoctorController::class, 'index'])->name('index');
+
+            Route::get('/edit-main-seo', [DoctorController::class, 'mainPageSeo'])->name('edit-main-seo');
+            Route::get('/edit-one-page-seo', [DoctorController::class, 'onePageSeo'])->name('edit-one-page-seo');
+
             Route::get('/create', [DoctorController::class, 'create'])->name('create');
             Route::get('/{doctor}/edit', [DoctorController::class, 'edit'])->name('edit');
         });
@@ -178,6 +189,9 @@ Route::group([
             Route::get('/', [LaboratoryController::class, 'index'])->name('index');
             Route::get('/create', [LaboratoryController::class, 'create'])->name('create');
 
+            Route::get('/edit-main-seo', [LaboratoryController::class, 'mainPageSeo'])->name('edit-main-seo');
+            Route::get('/edit-one-page-seo', [LaboratoryController::class, 'onePageSeo'])->name('edit-one-page-seo');
+
             Route::get('/create-slide/{page}', [LaboratoryController::class, 'createSlide'])->name('create-slide');
             Route::get('/edit-slide/{page}/{block}', [LaboratoryController::class, 'editSlide'])->name('edit-slide');
 
@@ -192,6 +206,8 @@ Route::group([
 
         Route::prefix('/surgery')->name('admin.surgery.')->group(function() {
             Route::get('/', [SurgeryController::class, 'index'])->name('index');
+
+            Route::get('/edit-main-seo', [SurgeryController::class, 'mainPageSeo'])->name('edit-main-seo');
 
             Route::get('/edit-block/{block}', [SurgeryController::class, 'edit'])->name('edit-block');
 
@@ -218,6 +234,9 @@ Route::group([
 
         Route::prefix('/vacancies')->name('admin.vacancies.')->group(function() {
             Route::get('/', [VacancyController::class, 'index'])->name('index');
+
+            Route::get('/edit-main-seo', [VacancyController::class, 'mainPageSeo'])->name('edit-main-seo');
+            Route::get('/edit-one-page-seo', [VacancyController::class, 'onePageSeo'])->name('edit-one-page-seo');
 
             Route::get('/edit-block/{page}/{block}', [VacancyController::class, 'editBlock'])->name('edit-block');
 
