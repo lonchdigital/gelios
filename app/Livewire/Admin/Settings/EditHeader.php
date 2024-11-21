@@ -123,7 +123,8 @@ class EditHeader extends Component
 
             'headerAffiliates.*.first_phone' => [
                 'required',
-                'string|max:255',
+                'string',
+                'max:255',
             ],
 
             'headerAffiliates.*.second_phone' => [
