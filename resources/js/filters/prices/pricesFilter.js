@@ -21,7 +21,7 @@ function runAjaxfilter()
             if( data['items'].length > 0 ) {
                 handleItemsResult(data['items']);
             } else {
-                // nothingFound();
+                nothingFound();
             }
         },
         function () {
@@ -59,6 +59,11 @@ function getQueryData()
     return queryData;
 }
 
+function nothingFound()
+{
+    $itemsWrapper.html(`<div>${translations['nothing_found']}</div>`);
+}
+
 function handleItemsResult(data)
 {
     let itemsToAppend = '';
@@ -90,14 +95,16 @@ function buildItemHTML(item, iteration)
         `;
     });
 
+    let isActive = iteration === 1 ? true : false;
+
     return `
         <div class="card">
             <div class="card-header p-0" id="heading-accordion-prices-list-${iteration}">
                 <div class="h4 mb-0">
-                    <div class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-accordion-prices-list-${iteration}" aria-expanded="false" aria-controls="collapse-accordion-prices-list-${iteration}">${title}</div>
+                    <div class="btn btn-link ${isActive ? '' : 'collapsed'}" data-toggle="collapse" data-target="#collapse-accordion-prices-list-${iteration}" aria-expanded="${isActive ? 'true' : 'false'}" aria-controls="collapse-accordion-prices-list-${iteration}">${title}</div>
                 </div>
             </div>
-            <div id="collapse-accordion-prices-list-${iteration}" class="collapse" aria-labelledby="heading-accordion-prices-list-${iteration}" data-parent="#accordion-prices-list">
+            <div id="collapse-accordion-prices-list-${iteration}" class="collapse ${isActive ? 'show' : ''}" aria-labelledby="heading-accordion-prices-list-${iteration}" data-parent="#accordion-prices-list">
                 <div class="card-body">
                     ${allPrices}
                 </div>

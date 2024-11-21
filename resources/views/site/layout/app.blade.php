@@ -9,6 +9,12 @@
     <meta name="app-url" content="{{ env('APP_URL') }}">
     <meta name="app-locale" content="{{ app()->getLocale() }}">
 
+	<script>
+		const translations = @json([
+			'nothing_found' => trans('web.nothing_found'),
+		]);
+	</script>
+
 	@yield('head')
 
 	<link rel="shortcut icon" href="##" type="image/x-icon" />

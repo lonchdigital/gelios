@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'nothing_found' => 'Нічого не знайдено',
     'photo_of_the_hospital' => 'Фото клініки',
     'make_appointment' => 'Записатися на прийом',
     'diplomas_certificates' => 'Дипломи та сертифікати',
