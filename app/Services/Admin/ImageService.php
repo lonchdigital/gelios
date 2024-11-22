@@ -22,6 +22,7 @@ class ImageService
     public function convertToWebp(UploadedFile $file, $folder)
     {
         $name = $file->getClientOriginalName();
+        $name = pathinfo($name, PATHINFO_FILENAME);
 
         $manager = new ImageManager(
             new (Driver::class)
