@@ -41,7 +41,7 @@ class ImageService
             $counter++;
         }
 
-        Storage::put('public/' . $filePath, $encoded);
+        Storage::disk('public')->put($filePath, $encoded);
 
         return $filePath;
     }
