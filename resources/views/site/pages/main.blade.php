@@ -221,7 +221,7 @@
                             <div class="swiper-wrapper">
                                 @forelse($promotions as $promotion)
                                     <div class="swiper-slide shares--item">
-                                        <a href="{{ route('promotions.show', ['promotion' => $promotion]) }}" class="inner">
+                                        <a href="{{ route('promotions.show', ['promotion' => $promotion->slug]) }}" class="inner">
                                             <div class="wrap-img mb-4">
                                                 <img src="{{ $promotion->imageUrl }}" alt="{{ $promotion->title }}">
                                             </div>
