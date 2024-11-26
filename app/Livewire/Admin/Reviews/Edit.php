@@ -2,10 +2,11 @@
 
 namespace App\Livewire\Admin\Reviews;
 
+use App\Models\Doctor;
 use App\Models\Review;
 use Livewire\Component;
-use App\Models\ContactItem;
 use Livewire\WithFileUploads;
+use Illuminate\Database\Eloquent\Collection;
 use App\Services\Admin\Reviews\ReviewsService;
 
 
@@ -16,6 +17,12 @@ class Edit extends Component
     public Review|null $review = null;
 
     public array $sectionData = [];
+
+    public array $reviewDoctors = [];
+    public array $reviewPages = [];
+    public Collection $allPages;
+    public Collection $allDoctos;
+
     public array $phones = [];
     public array $emails = [];
 
@@ -25,6 +32,12 @@ class Edit extends Component
     {
         $this->reviewsService = app(ReviewsService::class);
         $this->dispatch('livewire:load');
+
+        $this->allPages = $this->reviewsService->getAllPages();
+        $this->allDoctos = $this->reviewsService->getAlldoctors();
+
+        $this->reviewDoctors = $this->reviewsService->setCurrentReviewDoctors($this->review);
+        $this->reviewPages = $this->reviewsService->setCurrentReviewPages($this->review);
 
         $this->sectionData = $this->reviewsService->setReviewData($this->review);
     }
@@ -62,6 +75,9 @@ class Edit extends Component
     public function save()
     {
         // $this->validate();
+
+        $this->review->doctors()->sync($this->reviewDoctors);
+        $this->review->pages()->sync($this->reviewPages);
         
         $this->reviewsService->updateReview($this->sectionData, $this->review);
 

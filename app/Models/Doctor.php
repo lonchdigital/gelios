@@ -57,9 +57,14 @@ class Doctor extends Model
         return $query->where('is_show_in_main_page', 1);
     }
 
-
     public function specialization(): BelongsTo
     {
         return $this->belongsTo(Specialization::class);
     }
+
+    public function reviews()
+    {
+        return $this->morphToMany(Review::class, 'reviewable');
+    }
+
 }

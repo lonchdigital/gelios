@@ -31,6 +31,28 @@
 
                     <section class="mb-50 mt-30">
 
+                        <div wire:ignore class="mt-3">
+                            <label>{{ trans('admin.doctors') }}</label>
+                            <select id="doctors" class="js-doctors-multiple form-control" name="doctors[]" wire:model="reviewDoctors" multiple>
+                                @foreach ($allDoctos as $doctor)
+                                    <option value="{{ $doctor->id }}">{{ $doctor->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div wire:ignore class="mt-3">
+                            <label>{{ trans('admin.all_pages') }}</label>
+                            <select id="pages" class="js-pages-multiple form-control" name="pages[]" wire:model="reviewPages" multiple>
+                                @foreach ($allPages as $page)
+                                    <option value="{{ $page->id }}">{{ $page->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                    </section>
+
+                    <section class="mb-50 mt-30">
+
                         <div class="form-group mt-2 mb-3">
                             <label for="">{{ trans('admin.image') }}</label></br>
                             @if (isset($sectionData['media']['temporaryImage']))
@@ -84,12 +106,30 @@
     <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
     <script type="text/javascript">
         document.addEventListener('livewire:load', () => {
+
             initQuillEditors((quill, fieldName, language) => {
                 quill.on('text-change', function () {
                     let value = quill.root.innerHTML;
                     @this.set(`${fieldName}.${language}`, value);
                 });
             });
+
+            // Handle doctors
+            let reviewDoctors = $('#doctors').select2();
+            reviewDoctors.val(@json($reviewDoctors)).trigger('change');
+            reviewDoctors.on('change', function () {
+                let selectedValues = $(this).val();
+                @this.set('reviewDoctors', selectedValues);
+            });
+
+            // Handle pages
+            let reviewPages = $('#pages').select2();
+            reviewPages.val(@json($reviewPages)).trigger('change');
+            reviewPages.on('change', function () {
+                let selectedValues = $(this).val();
+                @this.set('reviewPages', selectedValues);
+            });
+
         });
     </script>
 @endpush
