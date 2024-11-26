@@ -51,4 +51,10 @@ class Page extends Model implements TranslatableContract
     {
         return $this->hasMany(Test::class);
     }
+
+    public function reviews()
+    {
+        return $this->morphToMany(Review::class, 'reviewable');
+    }
+
 }

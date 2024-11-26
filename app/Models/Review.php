@@ -18,4 +18,14 @@ class Review extends Model implements TranslatableContract
         'published',
         'image'
     ];
+
+    public function pages()
+    {
+        return $this->morphedByMany(Page::class, 'reviewable');
+    }
+
+    public function doctors()
+    {
+        return $this->morphedByMany(Doctor::class, 'reviewable');
+    }
 }

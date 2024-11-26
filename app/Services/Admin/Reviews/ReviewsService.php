@@ -3,6 +3,7 @@
 namespace App\Services\Admin\Reviews;
 
 use App\Models\Page;
+use App\Models\Doctor;
 use App\Models\Review;
 use App\Models\PageTextBlock;
 use Illuminate\Database\Eloquent\Collection;
@@ -109,8 +110,49 @@ class ReviewsService
         if(!is_null($review->image)){
             removeImageFromStorage($review->image);
         }
+
+        $review->doctors()->sync([]);
+        $review->pages()->sync([]);
         
         $review->delete();
+    }
+
+    public function getAllPages() : Collection
+    {
+        return Page::all();
+    }
+
+    public function getAlldoctors() : Collection
+    {
+        return Doctor::all();
+    }
+
+    public function setCurrentReviewDoctors(null|Review $review): array
+    {
+        if(is_null($review)) {
+            return [];
+        }
+
+        $data = [];
+        foreach($review->doctors as $doctor) {
+            $data[] = $doctor->id;
+        }
+
+        return $data;
+    }
+
+    public function setCurrentReviewPages(null|Review $review): array
+    {
+        if(is_null($review)) {
+            return [];
+        }
+
+        $data = [];
+        foreach($review->pages as $page) {
+            $data[] = $page->id;
+        }
+
+        return $data;
     }
 
 }
