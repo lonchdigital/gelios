@@ -150,6 +150,13 @@
                                             live-wire-field="seoData.meta_keywords"
                                             :values="[]"
                                         />
+                                        <x-admin.multilanguage-input
+                                            :is-required="false"
+                                            :label="trans('admin.seo_title')"
+                                            field-name="seo_title"
+                                            live-wire-field="seoData.seo_title"
+                                            :values="[]"
+                                        />
                                         <x-admin.multilanguage-text-area-rich
                                             :is-required="false"
                                             :label="trans('admin.seo_text')"

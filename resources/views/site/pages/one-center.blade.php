@@ -123,7 +123,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="h2 font-weight-bolder text-blue mb-8">SEO</div>
+                        <div class="h2 font-weight-bolder text-blue mb-8">{{ $page->seo_title }}</div>
                         <div class="seo-wrapper">
                             <div class="content os-scrollbar-overflow">
                                 {!! $page->seo_text !!}

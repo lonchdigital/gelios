@@ -29,6 +29,7 @@ class Page extends Model implements TranslatableContract
         'meta_title',
         'meta_description',
         'meta_keywords',
+        'seo_title',
         'seo_text'
     ];
 

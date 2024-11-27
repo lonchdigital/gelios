@@ -5,12 +5,8 @@ namespace App\Livewire\Admin\Directions;
 use App\Models\Page;
 use App\Enums\PageType;
 use Livewire\Component;
-use App\Models\Direction;
 use Livewire\WithFileUploads;
-use App\Models\InsuranceCompany;
 use App\Traits\Livewire\SeoPages;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Database\Eloquent\Collection;
 use App\Services\Admin\Directions\DirectionsService;
 
 class DirectionsPage extends Component

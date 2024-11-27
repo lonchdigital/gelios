@@ -173,6 +173,7 @@ return [
     ],
     'show_left' => 'Відображати ліворуч',
     'data_updated' => 'Дані оновлено',
+    'seo_title' => 'SEO заголовок',
     'seo_text' => 'SEO текст',
     'pages' => [
         'main'          => 'Головний блок',
