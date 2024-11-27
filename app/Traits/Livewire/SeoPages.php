@@ -16,16 +16,25 @@ trait SeoPages
                 $dataToUpdate[$lang]['meta_title'] = $value;
             }
         }
+
         if($data['meta_description']) {
             foreach ($data['meta_description'] as $lang => $value) {
                 $dataToUpdate[$lang]['meta_description'] = $value;
             }
         }
+
         if($data['meta_keywords']) {
             foreach ($data['meta_keywords'] as $lang => $value) {
                 $dataToUpdate[$lang]['meta_keywords'] = $value;
             }
         }
+
+        if($data['seo_title']) {
+            foreach ($data['seo_title'] as $lang => $value) {
+                $dataToUpdate[$lang]['seo_title'] = $value;
+            }
+        }
+        
         if($data['seo_text']) {
             foreach ($data['seo_text'] as $lang => $value) {
                 $dataToUpdate[$lang]['seo_text'] = $value;
@@ -48,6 +57,7 @@ trait SeoPages
             } else {
                 $data['meta_title'] = [];
             }
+
             if(!is_null($page->meta_description)) {
                 foreach ($page->getTranslationsArray() as $lang => $value) {
                     $data['meta_description'][$lang] = $value['meta_description'];
@@ -55,6 +65,7 @@ trait SeoPages
             } else {
                 $data['meta_description'] = [];
             }
+
             if(!is_null($page->meta_keywords)) {
                 foreach ($page->getTranslationsArray() as $lang => $value) {
                     $data['meta_keywords'][$lang] = $value['meta_keywords'];
@@ -62,6 +73,15 @@ trait SeoPages
             } else {
                 $data['meta_keywords'] = [];
             }
+
+            if(!is_null($page->seo_title)) {
+                foreach ($page->getTranslationsArray() as $lang => $value) {
+                    $data['seo_title'][$lang] = $value['seo_title'];
+                }
+            } else {
+                $data['seo_title'] = [];
+            }
+            
             if(!is_null($page->seo_text)) {
                 foreach ($page->getTranslationsArray() as $lang => $value) {
                     $data['seo_text'][$lang] = $value['seo_text'];
@@ -74,6 +94,7 @@ trait SeoPages
             $data['meta_title'] = [];
             $data['meta_description'] = [];
             $data['meta_keywords'] = [];
+            $data['seo_title'] = [];
             $data['seo_text'] = [];
         }
 

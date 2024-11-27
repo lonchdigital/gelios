@@ -163,6 +163,7 @@ return [
     'is_reverse' => 'Перевернуть',
     'show_left' => 'Отображать Слева',
     'data_updated' => 'Данные обновленны',
+    'seo_title' => 'SEO заголовок',
     'seo_text' => 'SEO текст',
     'service' => 'Услуга',
     'price' => 'Цена',
