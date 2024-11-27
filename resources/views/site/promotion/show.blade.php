@@ -61,72 +61,76 @@
             </div>
         </div>
     </section>
+
     <section class="meeting mb-24 py-lg-16">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-12 col-7 col-lg-6">
-                    <form id="form-meeting" class="p-3 p-lg-5 bg-white">
-                        <div class="h2 font-m font-weight-bolder mb-5">Записатися на прийом</div>
-                        <div class="row field-wrap">
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <label class="control-label mb-2" for="form-meeting-name">Вкажіть ПІБ</label>
-                                    <input type="text" id="form-meeting-name" class="form-control mb-2">
-                                    <div class="field--help-info small-txt text-red mb-2">Вкажіть ПІБ</div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <label class="control-label mb-2" for="form-meeting-phone">Вкажіть номер
-                                        телефону</label>
-                                    <input type="tel" id="form-meeting-phone" class="form-control mb-2">
-                                    <div class="field--help-info small-txt text-red mb-2">Вкажіть номер телефону</div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <div class="control-label mb-2">Оберіть фахівця</div>
-                                    <div class="select-wrap">
-                                        <select class="select-choose-specialist">
-                                            <option></option>
-                                            <option value="1">Фахівeць 1</option>
-                                            <option value="2">Фахівeць 2</option>
-                                            <option value="3">Фахівeць 3</option>
-                                            <option value="4">Фахівeць 4</option>
-                                        </select>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-7 col-lg-6">
+                        {{-- <form id="form-meeting-2" class="p-3 p-lg-5 bg-white">
+                            <div class="h2 font-m font-weight-bolder mb-5">Записатися на прийом</div>
+                            <div class="row field-wrap">
+                                <div class="col-12">
+                                    <div class="field mb-2">
+                                        <label class="control-label mb-2" for="form-meeting-name-2">Вкажіть ПІБ</label>
+                                        <input type="text" id="form-meeting-name-2" class="form-control mb-2">
+                                        <div class="field--help-info small-txt text-red mb-2">Вкажіть ПІБ</div>
                                     </div>
-                                    <div class="field--help-info small-txt text-red mb-2">Оберіть фахівця</div>
                                 </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <div class="control-label mb-2">Оберіть клініку</div>
-                                    <div class="select-wrap">
-                                        <select class="select-choose-clinic">
-                                            <option></option>
-                                            <option value="1">Клініка 1</option>
-                                            <option value="2">Клініка 2</option>
-                                            <option value="3">Клініка 3</option>
-                                            <option value="4">Клініка 4</option>
-                                        </select>
+                                <div class="col-12">
+                                    <div class="field mb-2">
+                                        <label class="control-label mb-2" for="form-meeting-phone-2">Вкажіть номер
+                                            телефону</label>
+                                        <input type="tel" id="form-meeting-phone-2" class="form-control mb-2">
+                                        <div class="field--help-info small-txt text-red mb-2">Вкажіть номер телефону</div>
                                     </div>
-                                    <div class="field--help-info small-txt text-red mb-2">Оберіть клініку</div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="field mb-2">
+                                        <div class="control-label mb-2">Оберіть фахівця</div>
+                                        <div class="select-wrap">
+                                            <select class="select-choose-specialist">
+                                                <option></option>
+                                                <option value="1">Фахівeць 1</option>
+                                                <option value="2">Фахівeць 2</option>
+                                                <option value="3">Фахівeць 3</option>
+                                                <option value="4">Фахівeць 4</option>
+                                            </select>
+                                        </div>
+                                        <div class="field--help-info small-txt text-red mb-2">Оберіть фахівця</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="field mb-2">
+                                        <div class="control-label mb-2">Оберіть клініку</div>
+                                        <div class="select-wrap">
+                                            <select class="select-choose-clinic">
+                                                <option></option>
+                                                <option value="1">Клініка 1</option>
+                                                <option value="2">Клініка 2</option>
+                                                <option value="3">Клініка 3</option>
+                                                <option value="4">Клініка 4</option>
+                                            </select>
+                                        </div>
+                                        <div class="field--help-info small-txt text-red mb-2">Оберіть клініку</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="button"
+                                        class="btn btn-blue font-weight-bold w-100 mt-2">Записатися</button>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <button type="button" class="btn btn-blue font-weight-bold w-100 mt-2">Записатися</button>
-                            </div>
+                        </form> --}}
+                        @include('site.components.appointment-form')
+                    </div>
+                    <div class="col-5 col-lg-6 d-none d-lg-flex">
+                        <div class="wrap-img">
+                            <img src="{{ asset('static_images/img-right-b.png') }}" alt="img">
                         </div>
-                    </form>
-                </div>
-                <div class="col-5 col-lg-6 d-none d-lg-flex">
-                    <div class="wrap-img">
-                        <img src="img/img-right-b.png" alt="img">
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
     <section class="shares news mb-24">
         <div class="container overflow-hidden">
             <div class="row mb-8">
@@ -153,53 +157,11 @@
                                 </div>
                             @empty
                             @endforelse
-                            {{-- <div class="swiper-slide news--item">
-                                <a href="##" class="inner">
-                                    <div class="wrap-img mb-4">
-                                        <img src="img/articles/article-2.jpeg" alt="img">
-                                    </div>
-                                    <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide news--item">
-                                <a href="##" class="inner">
-                                    <div class="wrap-img mb-4">
-                                        <img src="img/articles/article-3.jpeg" alt="img">
-                                    </div>
-                                    <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                </a>
-                            </div> --}}
                         </div>
                         <div class="swiper-pagination mt-6 d-xl-none"></div>
                     </div>
                 </div>
             </div>
-            <!-- <div class="shares-list row">
-                        <div class="shares--item content-item col-12 col-md-6 col-xl-4">
-                            <a href="##" class="inner">
-                                <div class="wrap-img mb-4">
-                                    <img src="img/shares/card-img-1.jpeg" alt="img">
-                                </div>
-                                <div class="h3">Консультація анестезіолога у Дніпрі</div>
-                            </a>
-                        </div>
-                        <div class="shares--item content-item col-12 col-md-6 col-xl-4">
-                            <a href="##" class="inner">
-                                <div class="wrap-img mb-4">
-                                    <img src="img/shares/card-img-2.jpeg" alt="img">
-                                </div>
-                                <div class="h3">Консультація анестезіолога у Дніпрі</div>
-                            </a>
-                        </div>
-                        <div class="shares--item content-item col-12 col-md-6 col-xl-4">
-                            <a href="##" class="inner">
-                                <div class="wrap-img mb-4">
-                                    <img src="img/shares/card-img-3.jpeg" alt="img">
-                                </div>
-                                <div class="h3">Консультація анестезіолога у Дніпрі</div>
-                            </a>
-                        </div>
-                    </div> -->
         </div>
     </section>
 @endsection

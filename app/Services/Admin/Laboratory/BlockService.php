@@ -18,8 +18,8 @@ class BlockService
     {
         $block->page_id = $data['page_id'];
         $block->url = $data['link'];
-        // $block->block = 'main';
-        // $block->key = 'slider';
+        $block->block = $data['block'] ?? '';
+        $block->key = $data['key'] ?? '';
         $block->save();
 
         foreach ($descriptions as $locale => $description) {

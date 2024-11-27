@@ -25,6 +25,7 @@ class SitemapValidatorService
             $urls = $this->filterDisallowedUrls($urls);
             $urls = array_merge($urls, $this->allows);
         }
+        
         return $urls;
     }
 

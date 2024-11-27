@@ -45,13 +45,17 @@
 							<div class="ml-xxl-2">
 								<div class="h4 mb-5 font-weight-bold">Напрямки</div>
 								<ul class="list-unstyled mb-0">
-									<li><a href="##">Сімейна медицина</a></li>
+                                    @forelse($directions as $direction)
+                                        <li><a href="{{ '/' . $direction->page->slug }}">{{ $direction->page->name ?? '' }}</a></li>
+                                    @empty
+                                    @endforelse
+									{{-- <li><a href="##">Сімейна медицина</a></li>
 									<li><a href="##">Реабілітація</a></li>
 									<li><a href="##">Дітям</a></li>
 									<li><a href="##">Дорослим</a></li>
 									<li><a href="##">Функціональна діагностика</a></li>
 									<li><a href="##">Лабораторна діагностика</a></li>
-									<li><a href="##">Хірургія</a></li>
+									<li><a href="##">Хірургія</a></li> --}}
 								</ul>
 							</div>
 						</div>
@@ -59,13 +63,17 @@
 							<div class="ml-xxl-3">
 								<div class="h4 mb-5 font-weight-bold">Інформація</div>
 								<ul class="list-unstyled mb-0">
-									<li><a href="##">Про компанію</a></li>
+                                    @forelse($infos as $info)
+                                        <li><a href="{{ '/' . $info->page->slug }}">{{ $info->page->title ?? '' }}</a></li>
+                                    @empty
+                                    @endforelse
+									{{-- <li><a href="##">Про компанію</a></li>
 									<li><a href="##">Лікарі</a></li>
 									<li><a href="##">Акції</a></li>
 									<li><a href="##">Новини</a></li>
 									<li><a href="##">Ціни</a></li>
 									<li><a href="##">Станіонар</a></li>
-									<li><a href="##">Контакти</a></li>
+									<li><a href="##">Контакти</a></li> --}}
 								</ul>
 							</div>
 						</div>

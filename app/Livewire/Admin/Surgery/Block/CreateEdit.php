@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Surgery\Block;
 
+use App\Enums\PageType;
 use App\Models\Page;
 use App\Models\PageBlock;
 use App\Models\PageBlockTranslation;
@@ -29,6 +30,12 @@ class CreateEdit extends Component
 
     public string $ruDescription = '';
 
+    public string $uaTitle = '';
+
+    public string $enTitle = '';
+
+    public string $ruTitle = '';
+
     public $image;
 
     public $imageTemporary;
@@ -37,11 +44,11 @@ class CreateEdit extends Component
         'languageSwitched' => 'languageSwitched'
     ];
 
-    public function mount(Page $page, PageBlock $block = null)
+    public function mount(PageBlock $block = null)
     {
         $this->dispatch('livewire:load');
 
-        $this->page = $page;
+        $this->page = Page::where('type', PageType::SURGERY->value)->first();
         $this->block = $block ?? new PageBlock();
         $this->activeLocale = config('app.active_lang');
 
@@ -51,6 +58,10 @@ class CreateEdit extends Component
         $this->uaDescription = $translations['ua']->description ?? '';
         $this->enDescription = $translations['en']->description ?? '';
         $this->ruDescription = $translations['ru']->description ?? '';
+
+        $this->uaTitle = $translations['ua']->title ?? '';
+        $this->enTitle = $translations['ua']->title ?? '';
+        $this->ruTitle = $translations['ua']->title ?? '';
     }
 
     public function languageSwitched($lang)
@@ -72,6 +83,21 @@ class CreateEdit extends Component
             ],
 
             'ruDescription' => [
+                'required',
+                'string',
+            ],
+
+            'uaTitle' => [
+                'required',
+                'string',
+            ],
+
+            'enTitle' => [
+                'required',
+                'string',
+            ],
+
+            'ruTitle' => [
                 'required',
                 'string',
             ],
@@ -134,13 +160,19 @@ class CreateEdit extends Component
             'ru' => $this->ruDescription,
         ];
 
+        $titles = [
+            'ua' => $this->uaTitle,
+            'en' => $this->enTitle,
+            'ru' => $this->ruTitle,
+        ];
+
         $data = [
             'page_id' => $this->page->id,
         ];
 
         $service = resolve(BlockService::class);
 
-        $service->saveBlock($this->block, $data, $descriptions);
+        $service->saveBlock($this->block, $data, $descriptions, $titles);
 
         session()->flash('success', 'Дані успішно збережено');
 

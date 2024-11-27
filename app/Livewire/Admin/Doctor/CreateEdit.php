@@ -9,6 +9,7 @@ use App\Models\Specialization;
 use App\Services\Admin\DoctorService;
 use App\Services\Admin\ImageService;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -45,6 +46,12 @@ class CreateEdit extends Component
     public string $enSpecialty = '';
 
     public string $ruSpecialty = '';
+
+    public string $uaSlug = '';
+
+    public string $enSlug = '';
+
+    public string $ruSlug = '';
 
     public string $age = '';
 
@@ -123,6 +130,10 @@ class CreateEdit extends Component
         $this->uaDescription = $translations['ua']->content ?? '';
         $this->enDescription = $translations['en']->content ?? '';
         $this->ruDescription = $translations['ru']->content ?? '';
+
+        $this->uaSlug = $translations['ua']['slug'] ?? '';
+        $this->enSlug = $translations['en']['slug'] ?? '';
+        $this->ruSlug = $translations['ru']['slug'] ?? '';
     }
 
     public function updatedNewImage($val)
@@ -217,11 +228,31 @@ class CreateEdit extends Component
                 'string',
             ],
 
-            'slug' => [
+            'uaSlug' => [
                 'required',
                 'string',
-                'unique:doctors,slug,' . ($this->doctor->id ?? '')
+                Rule::unique('doctor_translations', 'slug')->where(function ($query) {
+                    return $query->where('doctor_id', '!=', $this->doctor->id);
+                }),
             ],
+
+            'ruSlug' => [
+                'required',
+                'string',
+                Rule::unique('doctor_translations', 'slug')->where(function ($query) {
+                    return $query->where('doctor_id', '!=', $this->doctor->id);
+                }),
+            ],
+
+            'enSlug' => [
+                'required',
+                'string',
+                Rule::unique('doctor_translations', 'slug')->where(function ($query) {
+                    return $query->where('doctor_id', '!=', $this->doctor->id);
+                }),
+            ],
+
+
 
             'image' => [
                 empty($this->doctor->id) ? 'required' : 'nullable',
@@ -325,7 +356,12 @@ class CreateEdit extends Component
                 'en' => $this->enEducation,
                 'ru' => $this->ruEducation,
             ],
-            $locales
+            $locales,
+            [
+                'ua' => $this->uaSlug,
+                'en' => $this->enSlug,
+                'ru' => $this->ruSlug,
+            ]
         );
 
         session()->flash('success', 'Дані успішно збережено');

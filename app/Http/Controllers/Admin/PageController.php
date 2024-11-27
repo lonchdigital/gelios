@@ -37,4 +37,9 @@ class PageController extends Controller
 
         return view('admin.main-page.seo', compact('page'));
     }
+
+    public function editFooterLinks()
+    {
+        return view('admin.settings.edit-footer-links');
+    }
 }

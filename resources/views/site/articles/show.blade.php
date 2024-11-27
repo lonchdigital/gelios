@@ -218,7 +218,7 @@
                         <div class="swiper-wrapper">
                             @forelse($relatedArticles as $relatedArticle)
                                 <div class="swiper-slide news--item">
-                                    <a href="{{ route('articles.show', ['article' => $relatedArticle]) }}" class="inner">
+                                    <a href="{{ route('articles.show', ['slug' => $relatedArticle->slug]) }}" class="inner">
                                         <div class="wrap-img mb-4">
                                             <img src="{{ $relatedArticle->imageUrl }}" alt="{{ $relatedArticle->title }}">
                                             <div class="date-label">{{ Carbon\Carbon::parse($relatedArticle->created_at)->day }}  {{ Carbon\Carbon::parse($relatedArticle->created_at)->translatedFormat('F') }} {{ Carbon\Carbon::parse($relatedArticle->created_at)->year }}</div>

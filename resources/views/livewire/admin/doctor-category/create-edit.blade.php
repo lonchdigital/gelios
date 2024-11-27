@@ -106,6 +106,38 @@
                                                 </div>
                                             </div>
                                         @endif
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div id="uaTitle"
+                                                                    class="multilang-content tab-pane fade active show">
+                                                                    <div class="form-group mb-1">
+                                                                        <label>Тип категорії
+                                                                        </label>
+                                                                        <select class="form-control rounded-0"
+                                                                            wire:model.live="type">
+                                                                            @forelse($this->types as $type2)
+                                                                                <option value="{{ $type2 }}">{{ __('doctor.'.$type2) }}</option>
+                                                                            @empty
+                                                                            @endforelse
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('type')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

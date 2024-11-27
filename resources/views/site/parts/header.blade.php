@@ -24,7 +24,31 @@
                             @endif
                             <li class="list-inline-item">
                                 <button type="button" class="contact-details" data-toggle="modal"
-                                        data-target="#popup--contacts" data-city="{{ $firstCity->title ?? '' }}">Переглянути
+                                        data-target="#popup--contacts" data-city="{{ $firstCity->title ?? '' }}"
+                                        @forelse($firstCity->headerAffiliates as $affiliate)
+                                            @switch($loop->iteration)
+                                                @case(1)
+                                                    data-first="{{ $affiliate }}"
+                                                    @break
+
+                                                @case(2)
+                                                    data-second="{{ $affiliate }}"
+                                                    @break
+
+                                                @case(3)
+                                                    data-third="{{ $affiliate }}"
+                                                    @break
+
+                                                @case(4)
+                                                    data-fourth="{{ $affiliate }}"
+                                                    @break
+
+                                                @default
+
+                                            @endswitch
+                                        @empty
+                                        @endforelse
+                                        >Переглянути
                                 </button>
                             </li>
                         </ul>
@@ -41,6 +65,29 @@
                             @endif
                             <li class="list-inline-item">
                                 <button type="button" class="contact-details" data-toggle="modal" data-city="{{ $secondCity->title ?? '' }}"
+                                    @forelse($secondCity->headerAffiliates as $affiliate)
+                                    @switch($loop->iteration)
+                                        @case(1)
+                                            data-first="{{ $affiliate }}"
+                                            @break
+
+                                        @case(2)
+                                            data-second="{{ $affiliate }}"
+                                            @break
+
+                                        @case(3)
+                                            data-third="{{ $affiliate }}"
+                                            @break
+
+                                        @case(4)
+                                            data-fourth="{{ $affiliate }}"
+                                            @break
+
+                                        @default
+
+                                    @endswitch
+                                @empty
+                                @endforelse
                                         data-target="#popup--contacts">Переглянути
                                 </button>
                             </li>
@@ -66,6 +113,29 @@
                                 @endif
                                 <li class="list-inline-item">
                                     <button type="button" class="contact-details" data-toggle="modal" data-city="{{ $firstCity->title ?? '' }}"
+                                        @forelse($firstCity->headerAffiliates as $affiliate)
+                                            @switch($loop->iteration)
+                                                @case(1)
+                                                    data-first="{{ $affiliate }}"
+                                                    @break
+
+                                                @case(2)
+                                                    data-second="{{ $affiliate }}"
+                                                    @break
+
+                                                @case(3)
+                                                    data-third="{{ $affiliate }}"
+                                                    @break
+
+                                                @case(4)
+                                                    data-fourth="{{ $affiliate }}"
+                                                    @break
+
+                                                @default
+
+                                            @endswitch
+                                        @empty
+                                        @endforelse
                                         data-target="#popup--contacts">Переглянути
                                     </button>
                                 </li>
@@ -83,6 +153,29 @@
                                 @endif
                                 <li class="list-inline-item">
                                     <button type="button" class="contact-details" data-toggle="modal" data-city="{{ $secondCity->title ?? '' }}"
+                                        @forelse($secondCity->headerAffiliates as $affiliate)
+                                            @switch($loop->iteration)
+                                                @case(1)
+                                                    data-first="{{ $affiliate }}"
+                                                    @break
+
+                                                @case(2)
+                                                    data-second="{{ $affiliate }}"
+                                                    @break
+
+                                                @case(3)
+                                                    data-third="{{ $affiliate }}"
+                                                    @break
+
+                                                @case(4)
+                                                    data-fourth="{{ $affiliate }}"
+                                                    @break
+
+                                                @default
+
+                                            @endswitch
+                                        @empty
+                                        @endforelse
                                         data-target="#popup--contacts">Переглянути
                                     </button>
                                 </li>
@@ -361,7 +454,7 @@
                                                     <div class="hover-aside-menu--content">
                                                         <div class="hover-aside-menu--item"><a class="link" href="##">Страхові</a>
                                                         </div>
-                                                        <div class="hover-aside-menu--item"><a class="link" href="##">Вакансії</a>
+                                                        <div class="hover-aside-menu--item"><a class="link" href="{{ route('vacancy.index') }}">Вакансії</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -507,7 +600,7 @@
                                                             <div class="scrollable-content--inner">
                                                                 <div class="item"><a href="##">Контакти</a></div>
                                                                 <div class="item"><a href="##">Страхові</a></div>
-                                                                <div class="item"><a href="##">Вакансії</a></div>
+                                                                <div class="item"><a href="{{ route('vacancy.index') }}">Вакансії</a></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -522,10 +615,58 @@
                                                 <div class="contact-offices--label">Переглянути філії:</div>
                                                 <div class="buttons">
                                                     <button type="button" class="contact-details btn"
-                                                            data-toggle="modal" data-target="#popup--contacts" data-city="{{ $firstCity->title ?? '' }}"><span>{{ $firstCity->title ?? '' }}</span>
+                                                            data-toggle="modal" data-target="#popup--contacts" data-city="{{ $firstCity->title ?? '' }}"
+                                                            @forelse($firstCity->headerAffiliates as $affiliate)
+                                                                @switch($loop->iteration)
+                                                                    @case(1)
+                                                                        data-first="{{ $affiliate }}"
+                                                                        @break
+
+                                                                    @case(2)
+                                                                        data-second="{{ $affiliate }}"
+                                                                        @break
+
+                                                                    @case(3)
+                                                                        data-third="{{ $affiliate }}"
+                                                                        @break
+
+                                                                    @case(4)
+                                                                        data-fourth="{{ $affiliate }}"
+                                                                        @break
+
+                                                                    @default
+
+                                                                @endswitch
+                                                            @empty
+                                                            @endforelse
+                                                            ><span>{{ $firstCity->title ?? '' }}</span>
                                                     </button>
                                                     <button type="button" class="contact-details btn"
-                                                            data-toggle="modal" data-target="#popup--contacts" data-city="{{ $secondCity->title ?? '' }}"><span>{{ $secondCity->title ?? '' }}</span>
+                                                            data-toggle="modal" data-target="#popup--contacts" data-city="{{ $secondCity->title ?? '' }}"
+                                                            @forelse($secondCity->headerAffiliates as $affiliate)
+                                                                @switch($loop->iteration)
+                                                                    @case(1)
+                                                                        data-first="{{ $affiliate }}"
+                                                                        @break
+
+                                                                    @case(2)
+                                                                        data-second="{{ $affiliate }}"
+                                                                        @break
+
+                                                                    @case(3)
+                                                                        data-third="{{ $affiliate }}"
+                                                                        @break
+
+                                                                    @case(4)
+                                                                        data-fourth="{{ $affiliate }}"
+                                                                        @break
+
+                                                                    @default
+
+                                                                @endswitch
+                                                            @empty
+                                                            @endforelse
+                                                            ><span>{{ $secondCity->title ?? '' }}</span>
                                                     </button>
                                                 </div>
                                             </div>

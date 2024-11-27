@@ -17,7 +17,6 @@ class Doctor extends Model
         'doctor_category_id',
         'image',
         'images',
-        'slug',
         'age',
         'expirience',
         'is_show_in_main_page'
@@ -30,6 +29,7 @@ class Doctor extends Model
         'specialty',
         'education',
         'content',
+        'slug',
     ];
 
     protected $casts = [
@@ -67,4 +67,14 @@ class Doctor extends Model
         return $this->morphToMany(Review::class, 'reviewable');
     }
 
+    public function resolveRouteBinding($value, $field = null)
+    {
+        $field = $field ?? 'slug';
+
+        if (is_numeric($value)) {
+            return $this->where('id', $value)->firstOrFail();
+        }
+
+        return $this->whereTranslation($field, $value)->firstOrFail();
+    }
 }

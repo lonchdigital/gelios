@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\DoctorCategoryType;
 use App\Enums\PageType;
 use App\Models\Doctor;
 use App\Models\DoctorCategory;
@@ -13,17 +14,31 @@ class DoctorController extends Controller
 {
     public function index()
     {
-        $doctors = Doctor::paginate(9);
+        $types = [
+            DoctorCategoryType::ADULT->value,
+            DoctorCategoryType::CHILDREN->value,
+        ];
+
+        $doctors = Doctor::paginate(10);
 
         $categories = DoctorCategory::get();
 
-        $specializations = Specialization::get();
+        $adultCategories = DoctorCategory::where('type', DoctorCategoryType::ADULT->value)
+            ->get();
+
+        $childrenCategories = DoctorCategory::where('type', DoctorCategoryType::ADULT->value)
+            ->get();
 
         $page = Page::where('type', PageType::DOCTOR->value)
             ->with('translations')
             ->first();
 
-        return view('site.doctors.index', compact('doctors', 'categories', 'specializations', 'page'));
+        return view('site.doctors.index', compact(
+            'doctors',
+            'categories',
+            'page',
+            'types'
+        ));
     }
 
     public function show(Doctor $doctor)

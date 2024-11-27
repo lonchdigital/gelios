@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Modals;
 use App\Models\CheckUp;
 use App\Models\CheckUpProgram;
 use App\Models\Laboratory;
+use App\Models\PageBlock;
 use App\Models\Promotion;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
@@ -68,6 +69,14 @@ class Delete extends Component
                 $this->type = 'promotion';
                 $this->modalTitle = 'Delete Promotion';
                 $this->modalBody  = 'You really want to delete Promotion: ' . $this->item->title . '?';
+                $this->modalInfo  = '';
+                break;
+
+            case 'pageBlock':
+                $this->item = PageBlock::find($modelId);
+                $this->type = 'pageBlock';
+                $this->modalTitle = 'Delete slide';
+                $this->modalBody  = 'You really want to delete slide: ' . $this->item->title . '?';
                 $this->modalInfo  = '';
                 break;
 
@@ -148,6 +157,16 @@ class Delete extends Component
 
                 return true;
 
+            case 'pageBlock':
+
+                $this->deleteImage($this->item->image);
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
             default:
 
                 return false;
@@ -156,9 +175,10 @@ class Delete extends Component
 
     public function deleteImage($image)
     {
-        Storage::disk('public')->delete($image);
+        if (Storage::disk('public')->exists($image)) {
+            Storage::disk('public')->delete($image);
+        }
     }
-
 
     public function render()
     {

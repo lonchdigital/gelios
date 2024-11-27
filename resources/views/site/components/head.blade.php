@@ -10,12 +10,12 @@
     <meta property="twitter:description" content="{{ strip_tags($description) ?? strip_tags($page->meta_description) }}"/>
 @endif
 
-@if(isset($url['uk']) && isset($url['ru']))
+@if(isset($url['ua']) && isset($url['ru']) && isset($url['en']))
     <link rel="canonical" href="{{ $url[app()->getLocale()] }}">
     <meta property="og:url" content="{{ $url[app()->getLocale()] }}"/>
 
-    {{-- <link rel="alternate" href="{{ $url['uk'] }}" hreflang="uk-UA">
+    <link rel="alternate" href="{{ $url['ua'] }}" hreflang="uk-UA">
     <link rel="alternate" href="{{ $url['ru'] }}" hreflang="ru-UA">
-    <link rel="alternate" href="{{ $url['uk'] }}" hreflang="x-default">
-    <link rel="alternate" href="{{ $url['en'] }}" hreflang="en-UA"> --}}
+    <link rel="alternate" href="{{ $url['ua'] }}" hreflang="x-default">
+    <link rel="alternate" href="{{ $url['en'] }}" hreflang="en-UA">
 @endif

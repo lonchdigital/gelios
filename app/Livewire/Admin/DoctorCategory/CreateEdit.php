@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\DoctorCategory;
 
+use App\Enums\DoctorCategoryType;
 use App\Models\DoctorCategory;
 use App\Models\DoctorCategoryTranslation;
 use Livewire\Component;
@@ -11,6 +12,10 @@ class CreateEdit extends Component
     public DoctorCategory $category;
 
     public string $activeLocale;
+
+    public array $types = [];
+
+    public string $type;
 
     public string $uaTitle = '';
 
@@ -41,6 +46,13 @@ class CreateEdit extends Component
             ->where('doctor_category_id', $this->category->id ?? null)
             ->first()
             ->title ?? '';
+
+        $this->types = [
+            DoctorCategoryType::ADULT->value,
+            DoctorCategoryType::CHILDREN->value,
+        ];
+
+        $this->type = $this->category->type ?? DoctorCategoryType::ADULT->value;
     }
 
     public function languageSwitched($lang)
@@ -65,13 +77,21 @@ class CreateEdit extends Component
                 'required',
                 'string',
             ],
+
+            'type' => [
+                'required',
+                'string',
+                'in:adult,children'
+            ],
         ];
     }
 
     public function save()
     {
         $this->validate();
-        
+
+        $this->category->type = $this->type;
+
         $this->category->save();
 
         DoctorCategoryTranslation::updateOrCreate([

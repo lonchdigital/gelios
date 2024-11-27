@@ -29,7 +29,6 @@ class DoctorService
 
     public function saveDoctor(Doctor $doctor, $slug, $age, $experience, $specialization, $category, $images)
     {
-        $doctor->slug = $slug;
         $doctor->images = $images;
         $doctor->age = $age;
         $doctor->expirience = $experience;
@@ -41,7 +40,15 @@ class DoctorService
         return $doctor;
     }
 
-    public function saveTranslations(Doctor $doctor, array $titles, array $descriptions, array $specialties, array $educations, array $locales)
+    public function saveTranslations(
+        Doctor $doctor,
+        array $titles,
+        array $descriptions,
+        array $specialties,
+        array $educations,
+        array $locales,
+        array $slugs
+        )
     {
         foreach ($locales as $locale) {
             DoctorTranslation::updateOrCreate(
@@ -54,6 +61,7 @@ class DoctorService
                     'content' => $descriptions[$locale],
                     'specialty' => $specialties[$locale],
                     'education' => $educations[$locale],
+                    'slug' => $slugs[$locale]
                 ]
             );
         }

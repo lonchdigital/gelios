@@ -309,7 +309,7 @@
                             <div class="swiper-wrapper">
                                 @forelse($doctors as $doctor)
                                     <div class="doctors--item swiper-slide">
-                                        <a href="{{ route('doctors.show', ['doctor' => $doctor]) }}" class="inner">
+                                        <a href="{{ route('doctors.show', ['doctor' => $doctor->slug ?? $doctor->id]) }}" class="inner">
                                             <div class="wrap-img mb-3">
                                                 <img src="{{ $doctor->imageUrl }}" alt="{{ $doctor->title }}">
                                             </div>
@@ -760,7 +760,7 @@
                                 </div>
                             </div>
                         </form> --}}
-                        {{-- @include('site.components.appointment-form') --}}
+                        @include('site.components.appointment-form')
                     </div>
                     <div class="col-5 col-lg-6 d-none d-lg-flex">
                         <div class="wrap-img">
@@ -776,7 +776,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <div class="h2 font-weight-bolder text-blue mb-8">{{ $page->meta_title }}</div>
+                            <div class="h2 font-weight-bolder text-blue mb-8">{{ $page->seo_title }}</div>
                             <div class="seo-wrapper">
                                 <div class="content os-scrollbar-overflow">
                                     {!! $page->seo_text !!}

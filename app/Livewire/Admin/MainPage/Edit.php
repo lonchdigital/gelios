@@ -336,7 +336,7 @@ class Edit extends Component
     public function isShowButtonName()
     {
         return $this->block->block == 'main' && $this->block->key == 'first'
-        || $this->block->block == 'banner' && $this->block->key !== 'content';
+        || $this->block->block == 'banner' && $this->block->key == 'content';
     }
 
     public function isShowLink()

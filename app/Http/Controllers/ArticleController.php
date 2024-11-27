@@ -10,9 +10,9 @@ use App\Models\ArticleCategory;
 
 class ArticleController extends Controller
 {
-    public function index()
+    public function index(Request $request, $page = 1)
     {
-        $articles = Article::paginate(9);
+        $articles = Article::paginate(9, ['*'], 'page', $page);
 
         $categories = ArticleCategory::get();
 
@@ -46,7 +46,7 @@ class ArticleController extends Controller
 
             $page = Page::where('slug', $slug)->first();
 
-            if( $page->type !== "text" ) { abort(404); }
+            if(empty($page->type) || $page->type !== "text" ) { abort(404); }
 
             return view('site.text-pages.show', [
                 'page' => $page

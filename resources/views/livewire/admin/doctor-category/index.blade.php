@@ -30,7 +30,7 @@
                             <tr>
                                 <td>{{ $category->title }}</td>
                                 <td style="text-align: right">
-                                    <a href="{{ route('admin.article-categories.edit', $category) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                    <a href="{{ route('admin.doctor-categories.edit', $category) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
                                 </td>
                             </tr>
                         @endforeach

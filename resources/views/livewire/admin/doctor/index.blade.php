@@ -43,7 +43,7 @@
                                     </div>
                                 </td>
                                 <td style="text-align: right">
-                                    <a href="{{ route('admin.doctors.edit', ['doctor' => $doctor]) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                    <a href="{{ route('admin.doctors.edit', ['doctor' => $doctor->slug ?? $doctor->id]) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
                                 </td>
                             </tr>
                         @endforeach

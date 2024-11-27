@@ -28,7 +28,7 @@ class WebPagesController extends Controller
 
                     break;
                 case 2:
-                    
+
                     return view('site.directions.sub-category',[
                         'page' => $page,
                         'direction' => $direction,
@@ -52,7 +52,7 @@ class WebPagesController extends Controller
 
         } else {
             $page = Page::where('slug', $slug)->first();
-            if( $page->type !== "text" ) { abort(404); }
+            if(empty($page->type) || $page->type !== "text" ) { abort(404); }
 
             return view('site.text-pages.show', [
                 'page' => $page

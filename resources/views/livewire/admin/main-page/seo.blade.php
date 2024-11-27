@@ -5,7 +5,7 @@
                 <form wire:submit.prevent="save">
                     <section class="mb-50">
                         <h6 class="card-title">
-                            Редагування SEO головної сторінки
+                            Редагування SEO {{ $page->title ?? '' }}
                         </h6>
 
                         <div class="row">

@@ -3,6 +3,7 @@
 namespace App\Services\Sitemap;
 
 use App\Models\Article;
+use App\Models\Doctor;
 use App\Models\Page;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -10,7 +11,9 @@ class SitemapPageService
 {
     private Collection $pages;
     private Collection $articles;
-    private Collection $cars;
+    private Collection $doctors;
+    private int $articlesCount;
+    private int $articlePagination;
 
     public function __construct()
     {
@@ -20,6 +23,12 @@ class SitemapPageService
 
         $this->articles = Article::whereNotNull('slug')
             ->get();
+
+        $this->doctors = Doctor::with('translations')
+            ->get();
+
+        $this->articlesCount = Article::count();
+        $this->articlePagination = 9;
     }
 
     /**
@@ -30,14 +39,151 @@ class SitemapPageService
     final public function getUrls(): array
     {
         return array_unique(array_map([$this, 'formatUrl'], [
+            ...$this->getStaticPageUrls(),
+            ...$this->getRuStaticPageUrls(),
+            ...$this->getEnStaticPageUrls(),
+
             ...$this->getPageUrls(),
             ...$this->getRuPageUrls(),
+            ...$this->getEnPageUrls(),
+
+            ...$this->getArticlesPagesUrls(),
+            ...$this->getRuArticlesPagesUrls(),
+            ...$this->getEnArticlesPagesUrls(),
+
             ...$this->getArticlesUrls(),
             ...$this->getRuArticlesUrls(),
             ...$this->getEnArticlesUrls(),
-            ...$this->getCarsUrls(),
-            ...$this->getCarsUrls(),
+
+            ...$this->getDoctorsUrls(),
+            ...$this->getRuDoctorsUrls(),
+            ...$this->getEnDoctorsUrls(),
         ]));
+    }
+
+    /**
+     * Отримує URL статей.
+     *
+     * @return array
+     */
+
+    private function getStaticPageUrls()
+    {
+        return [
+            '/ua/',
+            '/ua/vakansii/',
+            '/ua//vzroslym/hirurgiya/',
+            '/ua/laboratories/',
+            '/ua/nashi-speczialisty/',
+            '/ua/check-up/',
+            '/ua/akczii-i-speczialnye-predlozheniya/',
+            '/ua/directions/',
+            '/ua/staczionar/',
+            '/ua/offices/',
+            '/ua/contacts-search-filter/',
+            '/ua/contacts/',
+            '/ua/prices/',
+            '/ua/otzyvy/',
+            '/ua/about-us/',
+        ];
+    }
+
+    private function getRuStaticPageUrls()
+    {
+        return [
+            '',
+            '/vakansii/',
+            '/vzroslym/hirurgiya/',
+            '/laboratories/',
+            '/nashi-speczialisty/',
+            '/check-up/',
+            '/akczii-i-speczialnye-predlozheniya/',
+            '/directions/',
+            '/staczionar/',
+            '/offices/',
+            '/contacts-search-filter/',
+            '/contacts/',
+            '/prices/',
+            '/otzyvy/',
+            '/about-us/',
+        ];
+    }
+
+    private function getENStaticPageUrls()
+    {
+        return [
+            '/en/',
+            '/en/vakansii/',
+            '/en//vzroslym/hirurgiya/',
+            '/en/laboratories/',
+            '/en/nashi-speczialisty/',
+            '/en/check-up/',
+            '/en/akczii-i-speczialnye-predlozheniya/',
+            '/en/directions/',
+            '/en/staczionar/',
+            '/en/offices/',
+            '/en/contacts-search-filter/',
+            '/en/contacts/',
+            '/en/prices/',
+            '/en/otzyvy/',
+            '/en/about-us/',
+        ];
+    }
+
+    /**
+     * Отримує URL статей.
+     *
+     * @return array
+     */
+    private function getArticlesPagesUrls()
+    {
+        $basePath = '/ua/dlya-paczientov/';
+
+        $totalPages = (int) ceil($this->articlesCount / $this->articlePagination);
+
+        $pages = [];
+
+        $pages[] = $basePath;
+
+        for ($page = 2; $page <= $totalPages; $page++) {
+            $pages[] = $basePath."page/$page/";
+        }
+
+        return $pages;
+    }
+
+    private function getRuArticlesPagesUrls()
+    {
+        $basePath = '/dlya-paczientov/';
+
+        $totalPages = (int) ceil($this->articlesCount / $this->articlePagination);
+
+        $pages = [];
+
+        $pages[] = $basePath;
+
+        for ($page = 2; $page <= $totalPages; $page++) {
+            $pages[] = $basePath."page/$page/";
+        }
+
+        return $pages;
+    }
+
+    private function getEnArticlesPagesUrls()
+    {
+        $basePath = '/en/dlya-paczientov/';
+
+        $totalPages = (int) ceil($this->articlesCount / $this->articlePagination);
+
+        $pages = [];
+
+        $pages[] = $basePath;
+
+        for ($page = 2; $page <= $totalPages; $page++) {
+            $pages[] = $basePath."page/$page/";
+        }
+
+        return $pages;
     }
 
     /**
@@ -48,21 +194,21 @@ class SitemapPageService
     private function getArticlesUrls(): array
     {
         return $this->articles->map(function ($article) {
-            return 'post/' . $article->slug;
+            return '/ua/dlya-paczientov/' . $article->slug;
         })->all();
     }
 
     private function getRuArticlesUrls(): array
     {
         return $this->articles->map(function ($article) {
-            return 'ru/post/' . $article->slug;
+            return '/dlya-paczientov/' . $article->slug;
         })->all();
     }
 
     private function getEnArticlesUrls(): array
     {
         return $this->articles->map(function ($article) {
-            return 'en/post/' . $article->slug;
+            return '/en/dlya-paczientov/' . $article->slug;
         })->all();
     }
 
@@ -74,29 +220,76 @@ class SitemapPageService
     private function getPageUrls()
     {
         return $this->pages->map( function ($page) {
-            return $page->slug;
+            return 'ua/'.$page->slug;
         })->all();
     }
 
     private function getRuPageUrls()
     {
         return $this->pages->map( function ($page) {
-            return 'ru/' . $page->slug;
+            return $page->slug;
         })->all();
     }
 
-    private function getCarsUrls()
+    private function getEnPageUrls()
     {
-        return $this->cars->map( function ($car) {
-            return 'product/' . $car->slug;
+        return $this->pages->map( function ($page) {
+            return 'en/' . $page->slug;
         })->all();
     }
 
-    private function getRuCarsUrls()
+    /**
+     * Отримує URL сторінок.
+     *
+     * @return array
+     */
+
+    private function getDoctorsUrls(): array
     {
-        return $this->cars->map( function ($car) {
-            return 'ru/product/' . $car->slug;
-        })->all();
+        return $this->doctors
+            ->map(function ($doctor) {
+                $translation = $doctor->translations->firstWhere('locale', 'ua');
+
+                if ($translation && $translation->slug) {
+                    return '/ua/nashi-speczialisty/' . $translation->slug;
+                }
+
+                return null;
+            })
+            ->filter()
+            ->all();
+    }
+
+    private function getRuDoctorsUrls(): array
+    {
+        return $this->doctors
+            ->map(function ($doctor) {
+                $translation = $doctor->translations->firstWhere('locale', 'ru');
+
+                if ($translation && $translation->slug) {
+                    return '/nashi-speczialisty/' . $translation->slug;
+                }
+
+                return null;
+            })
+            ->filter()
+            ->all();
+    }
+
+    private function getEnDoctorsUrls(): array
+    {
+        return $this->doctors
+            ->map(function ($doctor) {
+                $translation = $doctor->translations->firstWhere('locale', 'en');
+
+                if ($translation && $translation->slug) {
+                    return '/en/nashi-speczialisty/' . $translation->slug;
+                }
+
+                return null;
+            })
+            ->filter()
+            ->all();
     }
 
     /**

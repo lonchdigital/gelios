@@ -346,8 +346,13 @@
                                 </a>
                             </li>
 
-                            <li @if(Route::is('admin.footer.*')) class="active" @endif>
+                            <li @if(Route::is('admin.footer.edit')) class="active" @endif>
                                 <a href="{{ route('admin.footer.edit') }}">Футер
+                                </a>
+                            </li>
+
+                            <li @if(Route::is('admin.footer.links.edit')) class="active" @endif>
+                                <a href="{{ route('admin.footer.links.edit') }}">Сортування елементів футера
                                 </a>
                             </li>
                         </ul>

@@ -10,6 +10,10 @@ class DoctorCategory extends Model
 {
     use HasFactory, Translatable;
 
+    protected $fillable = [
+        'type'
+    ];
+
     public $translatedAttributes = [
         'title',
     ];

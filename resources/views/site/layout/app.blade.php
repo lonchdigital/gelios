@@ -155,7 +155,7 @@
 						</div>
 					</div>
 				</form>
-                {{-- @include('site.components.appointment-form') --}}
+                @include('site.components.appointment-form')
 			</div>
 		</div>
 	</div>
@@ -171,7 +171,7 @@
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">
 									<svg>
-										<use xlink:href="{{ asset('styles/img/icons/icons.svg#i-close') }}"></use>
+										<use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-close' }}"></use>
 									</svg>
 								</span>
 							</button>
@@ -194,24 +194,51 @@
 										<div class="col-12 col-xl-6">
 											<ul class="list-unstyled mb-0">
 												<li>
-													<div class="offices-address">вул. Вернадського, 18а</div>
+													<div class="offices-address" id="first-address"></div>
 												</li>
 												<li>
-													<a href="tel:+38 (095) 000-01-50">
-														<div class="link-phone">+38 (095) 000-01-50</div>
+													<a href="tel:+38 (095) 000-01-50" >
+														<div class="link-phone" id="first-phone1"></div>
 													</a>
 												</li>
 												<li>
 													<a href="tel:+38 (050) 325-62-93">
-														<div class="link-phone">+38 (050) 325-62-93</div>
+														<div class="link-phone" id="first-phone2"></div>
 													</a>
 												</li>
 												<li>
-													<div class="offices-time">08:00 - 20:00</div>
+													<div class="offices-time" id="first-hours"></div>
 												</li>
 												<li>
 													<a href="mailto:helioscentr@gmail.com">
-														<div class="offices-email">helioscentr@gmail.com</div>
+														<div class="offices-email" id="first-email"></div>
+													</a>
+												</li>
+											</ul>
+                                            <input hidden id="first-latitude">
+                                            <input hidden id="first-longitude">
+										</div>
+										<div class="col-12 col-xl-6">
+											<ul class="list-unstyled mb-0">
+												<li>
+													<div class="offices-address" id="second-address"></div>
+												</li>
+												<li>
+													<a href="tel:+38 (095) 000-01-50">
+														<div class="link-phone" id="second-phone1"></div>
+													</a>
+												</li>
+												<li>
+													<a href="tel:+38 (050) 325-62-93">
+														<div class="link-phone" id="second-phone2"></div>
+													</a>
+												</li>
+												<li>
+													<div class="offices-time" id="second-hours"></div>
+												</li>
+												<li>
+													<a href="mailto:helioscentr@gmail.com">
+														<div class="offices-email" id="second-email"></div>
 													</a>
 												</li>
 											</ul>
@@ -219,24 +246,24 @@
 										<div class="col-12 col-xl-6">
 											<ul class="list-unstyled mb-0">
 												<li>
-													<div class="offices-address">вул. Вернадського, 18а</div>
+													<div class="offices-address" id="third-address"></div>
 												</li>
 												<li>
 													<a href="tel:+38 (095) 000-01-50">
-														<div class="link-phone">+38 (095) 000-01-50</div>
+														<div class="link-phone" id="third-phone1"></div>
 													</a>
 												</li>
 												<li>
 													<a href="tel:+38 (050) 325-62-93">
-														<div class="link-phone">+38 (050) 325-62-93</div>
+														<div class="link-phone" id="third-phone2"></div>
 													</a>
 												</li>
 												<li>
-													<div class="offices-time">08:00 - 20:00</div>
+													<div class="offices-time" id="third-hours"></div>
 												</li>
 												<li>
 													<a href="mailto:helioscentr@gmail.com">
-														<div class="offices-email">helioscentr@gmail.com</div>
+														<div class="offices-email" id="third-email"></div>
 													</a>
 												</li>
 											</ul>
@@ -244,49 +271,24 @@
 										<div class="col-12 col-xl-6">
 											<ul class="list-unstyled mb-0">
 												<li>
-													<div class="offices-address">вул. Вернадського, 18а</div>
+													<div class="offices-address" id="fourth-address"></div>
 												</li>
 												<li>
 													<a href="tel:+38 (095) 000-01-50">
-														<div class="link-phone">+38 (095) 000-01-50</div>
+														<div class="link-phone" id="fourth-phone1"></div>
 													</a>
 												</li>
 												<li>
 													<a href="tel:+38 (050) 325-62-93">
-														<div class="link-phone">+38 (050) 325-62-93</div>
+														<div class="link-phone" id="fourth-phone2"></div>
 													</a>
 												</li>
 												<li>
-													<div class="offices-time">08:00 - 20:00</div>
+													<div class="offices-time" id="fourth-hours"></div>
 												</li>
 												<li>
 													<a href="mailto:helioscentr@gmail.com">
-														<div class="offices-email">helioscentr@gmail.com</div>
-													</a>
-												</li>
-											</ul>
-										</div>
-										<div class="col-12 col-xl-6">
-											<ul class="list-unstyled mb-0">
-												<li>
-													<div class="offices-address">вул. Вернадського, 18а</div>
-												</li>
-												<li>
-													<a href="tel:+38 (095) 000-01-50">
-														<div class="link-phone">+38 (095) 000-01-50</div>
-													</a>
-												</li>
-												<li>
-													<a href="tel:+38 (050) 325-62-93">
-														<div class="link-phone">+38 (050) 325-62-93</div>
-													</a>
-												</li>
-												<li>
-													<div class="offices-time">08:00 - 20:00</div>
-												</li>
-												<li>
-													<a href="mailto:helioscentr@gmail.com">
-														<div class="offices-email">helioscentr@gmail.com</div>
+														<div class="offices-email" id="fourth-email"></div>
 													</a>
 												</li>
 											</ul>
@@ -312,120 +314,142 @@
 	</div>
 </div>
 
-	{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgMBbn1eBSqj8V9kKOn6CqiwTZhoTQP6s&callback=initMap&libraries=marker&v=beta" defer></script> --}}
-<script>
-	// function initMap() {
-	// 	const mapConfigs = [
-	// 		{
-	// 			elementId: "map",
-	// 			center: { lat: 50.45668411158, lng: 30.50518209469263 },
-	// 			zoom: 10.1,
-	// 			tourStops: [
-	// 				{ position: { lat: 51.64334524926339, lng: 32.82858348658312 }, title: "Офіс 1" },
-	// 				{ position: { lat: 50.45853652359974, lng: 30.411489795412983 }, title: "Офіс 2" },
-	// 			],
-	// 		},
-	// 		{
-	// 			elementId: "map1",
-	// 			center: { lat: 50.4501, lng: 30.5234 },
-	// 			zoom: 10.0,
-	// 			tourStops: [
-	// 				{ position: { lat: 50.4501, lng: 30.5234 }, title: "Офіс 1-1" },
-	// 				{ position: { lat: 50.45466, lng: 30.5238 }, title: "Офіс 1-2" },
-	// 			],
-	// 		},
-	// 		{
-	// 			elementId: "map2",
-	// 			center: { lat: 49.839683, lng: 24.029717 },
-	// 			zoom: 14.0,
-	// 			tourStops: [
-	// 				{ position: { lat: 49.839683, lng: 24.029717 }, title: "Офіс 2-1" },
-	// 				{ position: { lat: 49.832213, lng: 24.029194 }, title: "Офіс 2-2" },
-	// 			],
-	// 		},
-	// 		{
-	// 			elementId: "map3",
-	// 			center: { lat: 46.482526, lng: 30.7233095 },
-	// 			zoom: 11.0,
-	// 			tourStops: [
-	// 				{ position: { lat: 46.482526, lng: 30.7233095 }, title: "Офіс 3-1" },
-	// 				{ position: { lat: 46.47747, lng: 30.73262 }, title: "Офіс 3-2" },
-	// 			],
-	// 		},
-	// 		{
-	// 			elementId: "map4",
-	// 			center: { lat: 50.4501, lng: 30.5234 },
-	// 			zoom: 10.0,
-	// 			tourStops: [
-	// 				{ position: { lat: 50.4501, lng: 30.5234 }, title: "Офіс 4-1" },
-	// 				{ position: { lat: 50.45466, lng: 30.5238 }, title: "Офіс 4-2" },
-	// 			],
-	// 		},
-	// 	];
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgMBbn1eBSqj8V9kKOn6CqiwTZhoTQP6s&callback=initMap&libraries=marker&v=beta" defer></script>
+{{-- <script>
+	function initMap() {
+		const mapConfigs = [
+			{
+				elementId: "map",
+				center: { lat: 50.45668411158, lng: 30.50518209469263 },
+				zoom: 10.1,
+				tourStops: [
+					{ position: { lat: 51.64334524926339, lng: 32.82858348658312 }, title: "Офіс 1" },
+					{ position: { lat: 50.45853652359974, lng: 30.411489795412983 }, title: "Офіс 2" },
+				],
+			},
+			{
+				elementId: "map1",
+				center: { lat: 50.4501, lng: 30.5234 },
+				zoom: 10.0,
+				tourStops: [
+					{ position: { lat: 50.4501, lng: 30.5234 }, title: "Офіс 1-1" },
+					{ position: { lat: 50.45466, lng: 30.5238 }, title: "Офіс 1-2" },
+				],
+			},
+			{
+				elementId: "map2",
+				center: { lat: 49.839683, lng: 24.029717 },
+				zoom: 14.0,
+				tourStops: [
+					{ position: { lat: 49.839683, lng: 24.029717 }, title: "Офіс 2-1" },
+					{ position: { lat: 49.832213, lng: 24.029194 }, title: "Офіс 2-2" },
+				],
+			},
+			{
+				elementId: "map3",
+				center: { lat: 46.482526, lng: 30.7233095 },
+				zoom: 11.0,
+				tourStops: [
+					{ position: { lat: 46.482526, lng: 30.7233095 }, title: "Офіс 3-1" },
+					{ position: { lat: 46.47747, lng: 30.73262 }, title: "Офіс 3-2" },
+				],
+			},
+			{
+				elementId: "map4",
+				center: { lat: 50.4501, lng: 30.5234 },
+				zoom: 10.0,
+				tourStops: [
+					{ position: { lat: 50.4501, lng: 30.5234 }, title: "Офіс 4-1" },
+					{ position: { lat: 50.45466, lng: 30.5238 }, title: "Офіс 4-2" },
+				],
+			},
+		];
 
-	// 	mapConfigs.forEach(({ elementId, center, zoom, tourStops }) => {
-	// 		const mapElement = document.getElementById(elementId);
-	// 		if (mapElement) {
-	// 			const map = new google.maps.Map(mapElement, {
-	// 				center,
-	// 				zoom,
-	// 				disableDefaultUI: true,
-	// 				scaleControl: true,
-	// 				zoomControl: true,
-	// 				scrollwheel: false,
-	// 				mapId: "cd19383a34cacd50",
-	// 				styles: [
-	// 					{
-	// 						featureType: "administrative.province",
-	// 						elementType: "geometry.stroke",
-	// 						stylers: [{ visibility: "off" }],
-	// 					},
-	// 				],
-	// 			});
+		mapConfigs.forEach(({ elementId, center, zoom, tourStops }) => {
+			const mapElement = document.getElementById(elementId);
+			if (mapElement) {
+				const map = new google.maps.Map(mapElement, {
+					center,
+					zoom,
+					disableDefaultUI: true,
+					scaleControl: true,
+					zoomControl: true,
+					scrollwheel: false,
+					mapId: "cd19383a34cacd50",
+					styles: [
+						{
+							featureType: "administrative.province",
+							elementType: "geometry.stroke",
+							stylers: [{ visibility: "off" }],
+						},
+					],
+				});
 
-	// 			const infoWindow = new google.maps.InfoWindow();
+				const infoWindow = new google.maps.InfoWindow();
 
-	// 			tourStops.forEach(({ position, title }) => {
-	// 				const mapMarkerPlace = document.createElement("div");
-	// 				mapMarkerPlace.className = "map-marker-place";
+				tourStops.forEach(({ position, title }) => {
+					const mapMarkerPlace = document.createElement("div");
+					mapMarkerPlace.className = "map-marker-place";
 
-	// 				const pinView = new google.maps.marker.PinView();
-	// 				const marker = new google.maps.marker.AdvancedMarkerView({
-	// 					position,
-	// 					map,
-	// 					title: `${title}`,
-	// 					content: mapMarkerPlace,
-	// 				});
+					const pinView = new google.maps.marker.PinView();
+					const marker = new google.maps.marker.AdvancedMarkerView({
+						position,
+						map,
+						title: `${title}`,
+						content: mapMarkerPlace,
+					});
 
-	// 				marker.addListener("click", ({ domEvent, latLng }) => {
-	// 					const { target } = domEvent;
+					marker.addListener("click", ({ domEvent, latLng }) => {
+						const { target } = domEvent;
 
-	// 					infoWindow.close();
-	// 					infoWindow.setContent(marker.title);
-	// 					infoWindow.open(marker.map, marker);
-	// 				});
-	// 			});
+						infoWindow.close();
+						infoWindow.setContent(marker.title);
+						infoWindow.open(marker.map, marker);
+					});
+				});
 
-	// 			map.data.setStyle({
-	// 				strokeColor: "#FF0000",
-	// 				strokeOpacity: 0.5,
-	// 				strokeWeight: 1.5,
-	// 				fillColor: "#dce2ff",
-	// 				fillOpacity: 0.25,
-	// 			});
-	// 		}
-	// 	});
-	// }
+				map.data.setStyle({
+					strokeColor: "#FF0000",
+					strokeOpacity: 0.5,
+					strokeWeight: 1.5,
+					fillColor: "#dce2ff",
+					fillOpacity: 0.25,
+				});
+			}
+		});
+	}
+</script> --}}
 
-</script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
+{{-- <script>
     $('.contact-details').on('click', function() {
         var city = $(this).data('city');
 
-        $('#popup--contacts #modal-city').text(city);
+        $('#popup--contacts #first-address').text($(this).data('first').address);
+        $('#popup--contacts #first-phone1').text($(this).data('first').first_phone);
+        $('#popup--contacts #first-phone2').text($(this).data('first').second_phone);
+        $('#popup--contacts #first-hours').text($(this).data('first').hours);
+        $('#popup--contacts #first-email').text($(this).data('first').email);
+
+        $('#popup--contacts #second-address').text($(this).data('second').address);
+        $('#popup--contacts #second-phone1').text($(this).data('second').first_phone);
+        $('#popup--contacts #second-phone2').text($(this).data('second').second_phone);
+        $('#popup--contacts #second-hours').text($(this).data('second').hours);
+        $('#popup--contacts #second-email').text($(this).data('second').email);
+
+        $('#popup--contacts #third-address').text($(this).data('third').address);
+        $('#popup--contacts #third-phone1').text($(this).data('third').first_phone);
+        $('#popup--contacts #third-phone2').text($(this).data('third').second_phone);
+        $('#popup--contacts #third-hours').text($(this).data('third').hours);
+        $('#popup--contacts #third-email').text($(this).data('third').email);
+
+        $('#popup--contacts #fourth-address').text($(this).data('fourth').address);
+        $('#popup--contacts #fourth-phone1').text($(this).data('fourth').first_phone);
+        $('#popup--contacts #fourth-phone2').text($(this).data('fourth').second_phone);
+        $('#popup--contacts #fourth-hours').text($(this).data('fourth').hours);
+        $('#popup--contacts #fourth-email').text($(this).data('fourth').email);
     });
-</script>
+</script> --}}
 
 	{{-- <script src="{{ asset('styles/js/jquery.min.js') }}"></script>
 <script src="{{ asset('styles/js/libs.min.js') }}"></script>

@@ -39,6 +39,10 @@ class EditHeader extends Component
 
     public $translatedAddresses = [];
 
+    public $headerSecondAffiliates = [];
+
+    public $translatedSecondAddresses = [];
+
     protected $listeners = [
         'languageSwitched' => 'languageSwitched'
     ];
@@ -51,15 +55,37 @@ class EditHeader extends Component
 
         $this->loadValues($firstCity);
 
-        // $secondCity = HeaderCity::where('id', '!=', $firstCity->id)->first() ?? null;
+        $secondCity = HeaderCity::where('id', '!=', $firstCity->id)->first() ?? null;
 
-        $this->headerAffiliates = HeaderAffiliate::where('header_city_id', $firstCity->id)->get()->toArray();
+        $this->loadValues2($secondCity);
+
+        $this->headerAffiliates = HeaderAffiliate::where('header_city_id', $firstCity->id)
+            ->get()
+            ->toArray();
 
         foreach ($this->headerAffiliates as $index => $affiliate) {
             $headerAffiliate = HeaderAffiliate::find($affiliate['id']);
 
             foreach (config('app.available_languages') as $locale) {
-                $this->translatedAddresses[$index][$locale] = $headerAffiliate->getTranslation('address', $locale);
+                $this->translatedAddresses[$index][$locale] = $headerAffiliate
+                ->translations()
+                ->where('locale', $locale)
+                ->first()->address;
+            }
+        }
+
+        $this->headerSecondAffiliates = HeaderAffiliate::where('header_city_id', $secondCity->id)
+            ->get()
+            ->toArray();
+
+        foreach ($this->headerSecondAffiliates as $index => $affiliate) {
+            $headerAffiliate = HeaderAffiliate::find($affiliate['id']);
+
+            foreach (config('app.available_languages') as $locale) {
+                $this->translatedSecondAddresses[$index][$locale] = $headerAffiliate
+                    ->translations()
+                    ->where('locale', $locale)
+                    ->first()->address;
             }
         }
     }
@@ -75,6 +101,13 @@ class EditHeader extends Component
         $this->ruFirstCity = $firstCity->translate('ru')->title ?? '';
 
         $this->headImage = $values->where('key', 'header_image')->first();
+    }
+
+    public function loadValues2(HeaderCity $secondCity)
+    {
+        $this->uaSecondCity = $secondCity->translate('ua')->title ?? '';
+        $this->enSecondCity = $secondCity->translate('en')->title ?? '';
+        $this->ruSecondCity = $secondCity->translate('ru')->title ?? '';
     }
 
     public function languageSwitched($lang)
@@ -182,9 +215,6 @@ class EditHeader extends Component
 
         $this->saveImages();
 
-        $this->saveDescription();
-
-        // $this->saveSocials();
         foreach ($this->headerAffiliates as $index => $affiliateData) {
             $headerAffiliate = HeaderAffiliate::find($affiliateData['id']);
 
@@ -192,7 +222,19 @@ class EditHeader extends Component
             $headerAffiliate->save();
 
             foreach ($this->translatedAddresses[$index] as $locale => $address) {
-                $headerAffiliate->setTranslation('address', $locale, $address);
+                $headerAffiliate->translateOrNew($locale)->address = $address;
+            }
+            $headerAffiliate->save();
+        }
+
+        foreach ($this->headerSecondAffiliates as $index => $affiliateData) {
+            $headerAffiliate = HeaderAffiliate::find($affiliateData['id']);
+
+            $headerAffiliate->fill($affiliateData);
+            $headerAffiliate->save();
+
+            foreach ($this->translatedSecondAddresses[$index] as $locale => $address) {
+                $headerAffiliate->translateOrNew($locale)->address = $address;
             }
             $headerAffiliate->save();
         }
@@ -219,16 +261,16 @@ class EditHeader extends Component
         }
     }
 
-    public function saveCity()
-    {
-        $description = Setting::where('key', 'footer_description')->first();
+    // public function saveCity()
+    // {
+    //     $description = Setting::where('key', 'footer_description')->first();
 
-        $description->translateOrNew('ua')->text = $this->uaDescription;
-        $description->translateOrNew('en')->text = $this->enDescription;
-        $description->translateOrNew('ru')->text = $this->ruDescription;
+    //     $description->translateOrNew('ua')->text = $this->uaDescription;
+    //     $description->translateOrNew('en')->text = $this->enDescription;
+    //     $description->translateOrNew('ru')->text = $this->ruDescription;
 
-        $description->save();
-    }
+    //     $description->save();
+    // }
 
     public function render()
     {

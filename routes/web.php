@@ -30,7 +30,7 @@ Route::post('/feedback-store', [FeedbackController::class, 'store'])->name('feed
 
 Route::group([
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => [ 
+        'middleware' => [
             'localeSessionRedirect',
             'localizationRedirect',
             'localeViewPath',
@@ -69,6 +69,7 @@ Route::group([
         Route::get('/check-up/', [CheckUpController::class, 'index'])->name('check-ups.index');
 
         Route::get('/dlya-paczientov/', [ArticleController::class, 'index'])->name('articles.index');
+        Route::get('/dlya-paczientov/page/{page}', [ArticleController::class, 'index'])->name('articles.page');
         Route::get('/dlya-paczientov/{slug}', [ArticleController::class, 'show'])->name('articles.show');
 
         Route::get('/nashi-speczialisty/', [DoctorController::class, 'index'])->name('doctors.index');

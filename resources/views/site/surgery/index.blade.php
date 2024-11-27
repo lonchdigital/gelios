@@ -36,11 +36,11 @@
                             </div>
                         </div>
                         <div class="wrap-img">
-                            @if ($page->pageBlocks->where('block', 'main')->first()->image)
+                            @if (!empty($page->pageBlocks->where('block', 'main')->first()->image))
                                 <img class="bg-down" src="{{ $page->pageBlocks->where('block', 'main')->first()->image }}"
                                     alt="{{ $page->pageBlocks->where('block', 'main')->first()->title ?? '' }}">
                             @else
-                                <img class="bg-down" src="img/img-background-1.jpeg" alt="img">
+                                <img class="bg-down" src="{{ asset('static_images/img-background-1.jpeg') }}" alt="img">
                             @endif
                         </div>
                     </div>
@@ -756,7 +756,7 @@
             </div>
         </div>
     </section>
-    <section class="stay-conditions mb-24">
+    {{-- <section class="stay-conditions mb-24">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -786,7 +786,7 @@
                             <div class="stay-conditions--small-wrap">
                                 <a href="img/stay-conditions/img1253.jpeg" data-fancybox="stay-conditions--gallery">
                                     <div class="wrap-img">
-                                        <img src="img/stay-conditions/img1253.jpeg" alt="img">
+                                        <img src="{{ asset('static_images/stay-conditions/img1253.jpeg') }}" alt="img">
                                     </div>
                                 </a>
                             </div>
@@ -886,6 +886,150 @@
                                 <a href="img/hospital/img1417.jpeg" data-fancybox="hospital--gallery-mob">
                                     <div class="wrap-img">
                                         <img src="img/hospital/img1417.jpeg" alt="img">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination mt-8"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> --}}
+    <section class="stay-conditions mb-24">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="h2 font-m font-weight-bolder text-blue mb-3">{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'title')->first()->title ?? '' }}</div>
+                    <div class="h5 font-m text-grey font-weight-bold mb-3">{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'title')->first()->description ?? '' }}</div>
+                    <a href="{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'title')->first()->url ?? '#' }}" class="btn btn-white font-weight-bold mb-8">{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'title')->first()->button ?? '' }}</a>
+                </div>
+            </div>
+            <div class="row d-none d-lg-flex">
+                <div class="stay-conditions--item col-6">
+                    <a href="img/stay-conditions/img1251.jpeg" data-fancybox="stay-conditions--gallery">
+                        <div class="wrap-img">
+                            <img src="{{ asset('static_images/stay-conditions/img1251.jpeg') }}" alt="img">
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="stay-conditions--item col-12 mb-5">
+                            <div class="stay-conditions--small-wrap">
+                                <a href="{{ asset('static_images/stay-conditions/img1252.jpeg') }}" data-fancybox="stay-conditions--gallery">
+                                    <div class="wrap-img">
+                                        <img src="{{ asset('static_images/stay-conditions/img1252.jpeg') }}" alt="img">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="stay-conditions--item col-12">
+                            <div class="stay-conditions--small-wrap">
+                                <a href="{{ asset('static_images//stay-conditions/img1253.jpeg') }}" data-fancybox="stay-conditions--gallery">
+                                    <div class="wrap-img">
+                                        <img src="{{ asset('static_images/stay-conditions/img1253.jpeg') }}" alt="img">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-lg-none">
+                <div class="col">
+                    <div class="stay-conditions--swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a href="{{ asset('static_images/stay-conditions/img1251.jpeg') }}" data-fancybox="stay-conditions--gallery-mob">
+                                    <div class="wrap-img">
+                                        <img src="{{ asset('static_images/stay-conditions/img1251.jpeg') }}" alt="img">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="{{ asset('static_images/stay-conditions/img1252.jpeg') }}" data-fancybox="stay-conditions--gallery-mob">
+                                    <div class="wrap-img">
+                                        <img src="{{ asset('static_images/stay-conditions/img1252.jpeg') }}" alt="img">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="{{ asset('static_images//stay-conditions/img1253.jpeg') }}" data-fancybox="stay-conditions--gallery-mob">
+                                    <div class="wrap-img">
+                                        <img src="{{ asset('static_images//stay-conditions/img1253.jpeg') }}" alt="img">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination mt-8"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="hospital mb-24">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="h2 font-m font-weight-bolder text-blue mb-3">{{ $page->pageBlocks->where('block', 'Inpatient')->where('key', 'title')->first()->title ?? '' }}</div>
+                    <div class="h5 font-m text-grey font-weight-bold mb-3">{{ $page->pageBlocks->where('block', 'Inpatient')->where('key', 'title')->first()->description ?? '' }}</div>
+                    <a href="{{ $page->pageBlocks->where('block', 'Inpatient')->where('key', 'title')->first()->url ?? '#' }}" class="btn btn-white font-weight-bold mb-8">{{ $page->pageBlocks->where('block', 'Inpatient')->where('key', 'title')->first()->button ?? '' }}</a>
+                </div>
+            </div>
+            <div class="row d-none d-lg-flex">
+                <div class="col-6">
+                    <a href="{{ asset('static_images/hospital/img1415.jpeg') }}" data-fancybox="hospital--gallery">
+                        <div class="wrap-img">
+                            <img src="{{ asset('static_images/hospital/img1415.jpeg') }}" alt="img">
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-12 mb-5">
+                            <div class="stay-conditions--small-wrap">
+                                <a href="{{ asset('static_images/hospital/img1416.jpeg') }}" data-fancybox="hospital--gallery">
+                                    <div class="wrap-img">
+                                        <img src="{{ asset('static_images/hospital/img1416.jpeg') }}" alt="img">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="stay-conditions--small-wrap">
+                                <a href="{{ asset('static_images/hospital/img1417.jpeg') }}" data-fancybox="hospital--gallery">
+                                    <div class="wrap-img">
+                                        <img src="{{ asset('static_images/hospital/img1417.jpeg') }}" alt="img">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-lg-none">
+                <div class="col">
+                    <div class="hospital--swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a href="{{ asset('static_images/hospital/img1415.jpeg') }}" data-fancybox="hospital--gallery-mob">
+                                    <div class="wrap-img">
+                                        <img src="{{ asset('static_images/hospital/img1415.jpeg') }}" alt="img">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="{{ asset('static_images/hospital/img1416.jpeg') }}" data-fancybox="hospital--gallery-mob">
+                                    <div class="wrap-img">
+                                        <img src="{{ asset('static_images/hospital/img1416.jpeg') }}" alt="img">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="{{ asset('static_images/hospital/img1417.jpeg') }}" data-fancybox="hospital--gallery-mob">
+                                    <div class="wrap-img">
+                                        <img src="{{ asset('static_images/hospital/img1417.jpeg') }}" alt="img">
                                     </div>
                                 </a>
                             </div>

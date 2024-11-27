@@ -208,19 +208,19 @@ class Seo extends Component
         $translations = [
             'ua' => [
                 'title' => $this->uaTitle,
-                'meta_title' => $this->uaSeoTitle,
+                'seo_title' => $this->uaSeoTitle,
                 'meta_description' => $this->uaSeoDescription,
                 'seo_text' => $this->uaSeoContent,
             ],
             'en' => [
                 'title' => $this->enTitle,
-                'meta_title' => $this->uaSeoTitle,
+                'seo_title' => $this->uaSeoTitle,
                 'meta_description' => $this->enSeoDescription,
                 'seo_text' => $this->enSeoContent,
             ],
             'ru' => [
                 'title' => $this->ruTitle,
-                'meta_title' => $this->ruSeoTitle,
+                'seo_title' => $this->ruSeoTitle,
                 'meta_description' => $this->ruSeoDescription,
                 'seo_text' => $this->ruSeoContent,
             ]

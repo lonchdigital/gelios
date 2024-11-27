@@ -16,6 +16,7 @@ class DoctorTranslation extends Model
         'specialty',
         'education',
         'doctor',
+        'slug',
         'content',
     ];
 }

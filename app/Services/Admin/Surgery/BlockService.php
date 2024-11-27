@@ -14,7 +14,7 @@ class BlockService
             ->keyBy('locale');
     }
 
-    public function saveBlock(PageBlock $block, array $data, array $descriptions)
+    public function saveBlock(PageBlock $block, array $data, array $descriptions, array $titles = [])
     {
         $block->page_id = $data['page_id'];
         $block->block = 'static_block';
@@ -29,6 +29,7 @@ class BlockService
                 ],
                 [
                     'description' => $description,
+                    'title' => $titles[$locale],
                 ]
             );
         }

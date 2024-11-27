@@ -15,7 +15,7 @@
                 'url' => route('main'),
             ],
             [
-                'title' => 'Лікарі',
+                'title' => $page->title ?? __('doctor.doctors'),
                 'url' => null,
             ],
         ],
@@ -24,7 +24,7 @@
         <div class="container">
             <div class="row mb-8">
                 <div class="col d-flex align-items-center justify-content-between">
-                    <div class="h2 font-m font-weight-bolder text-blue">Лікарі</div>
+                    <div class="h2 font-m font-weight-bolder text-blue">{{ $page->title ?? 'Лікарі' }}</div>
                 </div>
             </div>
             <div class="doctors--nav">
@@ -32,11 +32,11 @@
                     <div class="col">
                         <div class="category row mb-5">
                             <div class="col col-sm-auto">
-                                <button type="button" class="btn btn-outline-blue active">Усі</button>
+                                <button type="button" class="btn btn-outline-blue active">{{ __('doctor.all') }}</button>
                             </div>
-                            @forelse($categories as $category)
+                            @forelse($types as $type)
                                 <div class="col col-sm-auto">
-                                    <button type="button" class="btn btn-outline-blue">{{ $category->title }}</button>
+                                    <button type="button" class="btn btn-outline-blue">{{ __('doctor.'.$type) }}</button>
                                 </div>
                             @empty
                             @endforelse
@@ -53,9 +53,9 @@
                                 <div class="field field-select-default">
                                     <div class="select-wrap">
                                         <select class="select-doctors-category">
-                                            <option value="">Усі лікарі</option>
-                                            @forelse($specializations as $specialization)
-                                                <option value="{{ $specialization->id }}">{{ $specialization->title }}
+                                            <option value="">{{ __('doctor.all_doctors') }}</option>
+                                            @forelse($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->title }}
                                                 </option>
                                             @empty
                                             @endforelse
@@ -82,7 +82,7 @@
                         @forelse($doctors as $doctor)
                             <div class="content-item col-12 col-md-6 col-lg-4 col-xl-3">
                                 <div class="doctors--item">
-                                    <a href="{{ route('doctors.show', ['doctor' => $doctor->slug]) }}" class="inner">
+                                    <a href="{{ route('doctors.show', ['doctor' => $doctor->slug ?? $doctor->id]) }}" class="inner">
                                         <div class="wrap-img mb-3">
                                             <img src="{{ $doctor->imageUrl }}" alt="{{ $doctor->title }}">
                                         </div>

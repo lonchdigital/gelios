@@ -32,6 +32,7 @@ final class SitemapService extends SitemapPageService
         $urls = $this->validator->validate($this->getUrls());
 
         $urls = $this->filterUrl($urls);
+
         $this->fillSitemap($urls);
 
         $xmlContent = $this->sitemap->render();
@@ -41,7 +42,6 @@ final class SitemapService extends SitemapPageService
 
         return response($xmlContentWithSlashes)->header('Content-Type', 'application/xml');
     }
-
 
     private function fillSitemap(array $urls): void
     {
@@ -58,13 +58,13 @@ final class SitemapService extends SitemapPageService
 
     private function filterUrl(array $urls): array
     {
-        // foreach ($urls as $key => $url) {
-        //     $response = Http::get(config('app.url') . $url);
+        foreach ($urls as $key => $url) {
+            $response = Http::get(config('app.url') . $url);
 
-        //     if ($response->status() === 404 || $response->status() === 500) {
-        //         unset($urls[$key]);
-        //     }
-        // }
+            if ($response->status() === 404 || $response->status() === 500) {
+                unset($urls[$key]);
+            }
+        }
 
         return $urls;
     }
