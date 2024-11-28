@@ -60,14 +60,14 @@
                                     <td>
                                         {{ $block->url }}
                                     </td>
-                                    <td>
-                                        <div style="text-align: right">
-                                            <a role="button"
-                                                href="{{ route('admin.promotions.edit-slide', ['page' => $this->page2, 'block' => $block]) }}"
-                                                class="btn btn-accent btn-xs">
-                                                <i class="fa fa-edit text-info font-18"></i>
-                                            </a>
-                                        </div>
+                                    <td style="text-align: right">
+                                        <a role="button"
+                                            href="{{ route('admin.promotions.edit-slide', ['page' => $this->page2, 'block' => $block]) }}" class="mr-2">
+                                            <i class="fa fa-edit text-info font-18"></i>
+                                        </a>
+                                        @if($block->key == 'slider')
+                                            <a wire:click="deleteItem('{{ $block->id }}', 'pageBlock')" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
+                                        @endif
                                     </td>
                                 </tr>
                             @empty

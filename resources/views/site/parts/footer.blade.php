@@ -46,7 +46,9 @@
 								<div class="h4 mb-5 font-weight-bold">Напрямки</div>
 								<ul class="list-unstyled mb-0">
                                     @forelse($directions as $direction)
-                                        <li><a href="{{ '/' . $direction->page->slug }}">{{ $direction->page->name ?? '' }}</a></li>
+                                        @if(!empty($direction->page->slug))
+                                            <li><a href="{{ '/' . $direction->page->slug }}">{{ $direction->page->name ?? '' }}</a></li>
+                                        @endif
                                     @empty
                                     @endforelse
 									{{-- <li><a href="##">Сімейна медицина</a></li>
