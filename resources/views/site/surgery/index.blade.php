@@ -109,7 +109,7 @@
                 <div class="col-12 col-lg-4 mb-4 mb-lg-0">
                     <div class="section-progress--item position-relative h-100 rounded overflow-hidden">
                         <div class="wrap-img">
-                            @if($page->pageBlocks->where('block', 'second')->where('key', 'image')->first()->image)
+                            @if(!empty($page->pageBlocks->where('block', 'second')->where('key', 'image')->first()->image))
                                 <img class="bg-down" src="{{ $page->pageBlocks->where('block', 'second')->where('key', 'image')->first()->imageUrl }}" alt="img">
                             @else
                                 <img class="bg-down" src="img/img-251.jpeg" alt="img">
@@ -182,7 +182,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-lg-6">
-                                                        @if($block->image)
+                                                        @if(!empty($block->image))
                                                             <div class="wrap-img">
                                                                 <img src="{{ $block->imageUrl }}" alt="{{ $page->pageBlocks->where('block', 'directions')->first()->title ?? '' }}">
                                                             </div>
@@ -203,7 +203,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-lg-6">
-                                                        @if($block->image)
+                                                        @if(!empty($block->image))
                                                             <div class="wrap-img">
                                                                 <img src="{{ $block->imageUrl }}" alt="{{ $page->pageBlocks->where('block', 'directions')->first()->title ?? '' }}">
                                                             </div>
@@ -633,7 +633,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-lg-6">
-                            @if($block2->image)
+                            @if(!empty($block2->image))
                                 <div class="wrap-img">
                                     <img src="{{ $block2->imageUrl }}" alt="img">
                                 </div>
@@ -650,7 +650,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-lg-6">
-                            @if($block2->image)
+                            @if(!empty($block2->image))
                                 <div class="wrap-img">
                                     <img src="{{ $block2->imageUrl }}" alt="img">
                                 </div>
