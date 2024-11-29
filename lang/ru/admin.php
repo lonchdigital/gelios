@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'doctors' => 'Врачи',
+    'all_pages' => 'Все страницы',
     'page_deleted' => 'Страница удалена',
     'reviews_page' => 'Страница отзывов',
     'common_blocks' => 'Сквозные блоки',
