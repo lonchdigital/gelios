@@ -4,6 +4,7 @@ namespace App\View\Composers;
 
 use App\Models\FooterDirection;
 use App\Models\FooterInfo;
+use App\Models\HeaderAffiliate;
 use App\Models\Setting;
 use Illuminate\View\View;
 
@@ -20,6 +21,7 @@ class FooterComposer
                 'youtube'           => Setting::where('key', 'youtube_link')->first()->value ?? '',
                 'infos'             => FooterInfo::where('is_active', true)->orderBy('sort', 'ASC')->get(),
                 'directions'        => FooterDirection::where('is_active', true)->orderBy('sort', 'ASC')->get(),
+                'affiliates'        => HeaderAffiliate::where('header_city_id', null)->get(),
             ]);
         } catch (\Exception $e) {
         }

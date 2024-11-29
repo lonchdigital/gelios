@@ -11,11 +11,11 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => 'Головна',
+                'title' => __('pages.main_page'),
                 'url' => route('main'),
             ],
             [
-                'title' => 'Акції',
+                'title' => __('pages.promotions'),
                 'url' => route('promotions.index'),
             ],
             [

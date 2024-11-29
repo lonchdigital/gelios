@@ -2,8 +2,8 @@
 
 @section('head')
     @include('site.components.head', [
-        'title' => $page->meta_title ?: $page->title,
-        'description' => $page->meta_description,
+        'title' => $seo[0] ?? $page->meta_title ?: $page->title,
+        'description' => $seo[1] ?? $page->meta_description,
     ])
 @endsection
 
@@ -11,11 +11,11 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => 'Головна',
+                'title' => __('pages.main_page'),
                 'url' => route('main'),
             ],
             [
-                'title' => 'Лікарі',
+                'title' => $page->title ?? __('doctor.doctors'),
                 'url' => route('doctors.index'),
             ],
             [
@@ -41,7 +41,11 @@
                         </div>
                         <div class="position-work font-weight-bold text-grey mb-3">Лікар
                             {{ $doctor->specialization->title ?? '' }}</div>
-                        <div class="experience-quantity mb-3">Досвід роботи: {{ $doctor->expirience ?? '' }} років</div>
+
+                        @if(!empty($doctor->expirience))
+                            <div class="experience-quantity mb-3">Досвід роботи: {{ $doctor->expirience ?? '' }} років</div>
+                        @endif
+
                         <div class="os-scrollbar-overflow content mb-3">
                             <div class="mb-3">
                                 <span
@@ -57,7 +61,7 @@
                             <div class="mb-3">
                                 <span class="text-blue mr-3">Освіта:</span><span>{{ $doctor->education }}</span>
                             </div>
-                            {{ $doctor->content }}
+                            {!! $doctor->content !!}
                             {{-- <p>1993-1999 Дніпропетровська державна медична академія</p>
                             <p>2006-2011 Зав. терапевтичного відділення МКЛ №11 в м. Дніпропетровськ</p>
                             <p>2011-2012 Зав. приймального відділення КЗДМКЛ №11 в м. Дніпропетровськ</p>

@@ -35,6 +35,12 @@ class Seo extends Component
 
     public string $ruTitle = '';
 
+    public string $uaMetaTitle = '';
+
+    public string $enMetaTitle = '';
+
+    public string $ruMetaTitle = '';
+
     public string $uaSeoTitle = '';
 
     public string $enSeoTitle = '';
@@ -74,13 +80,17 @@ class Seo extends Component
         $this->enTitle = $translations['en']->title ?? '';
         $this->ruTitle = $translations['ru']->title ?? '';
 
-        $this->uaSeoTitle = $translations['ua']->meta_title ?? '';
-        $this->enSeoTitle = $translations['en']->meta_title ?? '';
-        $this->ruSeoTitle = $translations['ru']->meta_title ?? '';
+        $this->uaMetaTitle = $translations['ua']->meta_title ?? '';
+        $this->enMetaTitle = $translations['en']->meta_title ?? '';
+        $this->ruMetaTitle = $translations['ru']->meta_title ?? '';
 
         $this->uaSeoDescription = $translations['ua']->meta_description ?? '';
         $this->enSeoDescription = $translations['en']->meta_description ?? '';
         $this->ruSeoDescription = $translations['ru']->meta_description ?? '';
+
+        $this->uaSeoTitle = $translations['ua']->seo_title ?? '';
+        $this->enSeoTitle = $translations['en']->seo_title ?? '';
+        $this->ruSeoTitle = $translations['ru']->seo_title ?? '';
 
         $this->uaSeoContent = $translations['ua']->seo_text ?? '';
         $this->enSeoContent = $translations['en']->seo_text ?? '';
@@ -116,6 +126,21 @@ class Seo extends Component
             ],
 
             'ruSeoTitle' => [
+                'nullable',
+                'string',
+            ],
+
+            'uaMetaTitle' => [
+                'nullable',
+                'string',
+            ],
+
+            'enMetaTitle' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruMetaTitle' => [
                 'nullable',
                 'string',
             ],
@@ -208,20 +233,23 @@ class Seo extends Component
         $translations = [
             'ua' => [
                 'title' => $this->uaTitle,
-                'seo_title' => $this->uaSeoTitle,
+                'meta_title' => $this->uaMetaTitle,
                 'meta_description' => $this->uaSeoDescription,
+                'seo_title' => $this->uaSeoTitle,
                 'seo_text' => $this->uaSeoContent,
             ],
             'en' => [
                 'title' => $this->enTitle,
-                'seo_title' => $this->uaSeoTitle,
+                'meta_title' => $this->uaMetaTitle,
                 'meta_description' => $this->enSeoDescription,
+                'seo_title' => $this->enSeoTitle,
                 'seo_text' => $this->enSeoContent,
             ],
             'ru' => [
                 'title' => $this->ruTitle,
-                'seo_title' => $this->ruSeoTitle,
+                'meta_title' => $this->ruMetaTitle,
                 'meta_description' => $this->ruSeoDescription,
+                'seo_title' => $this->ruSeoTitle,
                 'seo_text' => $this->ruSeoContent,
             ]
         ];

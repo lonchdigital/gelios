@@ -51,4 +51,9 @@ class PromotionController extends Controller
 
         return view('admin.promotion.one-page-seo', compact('page'));
     }
+
+    public function editBlock(Page $page, PageBlock $block)
+    {
+        return view('admin.promotion.edit-block', compact('page', 'block'));
+    }
 }

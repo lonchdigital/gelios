@@ -81,7 +81,67 @@
 						</div>
 						<div class="footer-contacts col-12 col-xl-5 mt-11 mt-xl-0">
 							<div class="ml-xxl-4">
-								<div class="row mb-11 mb-xl-16">
+
+                                @forelse($affiliates as $affiliate)
+                                    @if($loop->iteration == 1)
+                                        <div class="row mb-11 mb-xl-16">
+                                    @endif
+
+                                    @if($loop->iteration == 3)
+                                        <div class="row">
+                                    @endif
+
+                                        <div class="col-12 col-md @if($loop->iteration == 1 || $loop->iteration == 3) mb-11 mb-md-0 @endif">
+                                            <div class="h4 mb-5 font-weight-bold">{{ $affiliate->address }}</div>
+                                            <ul class="list-unstyled mb-0">
+                                                <li>
+                                                    <a href="tel:+38 (095) 000-01-50">
+                                                        <div class="link-phone">{{ $affiliate->first_phone }}</div>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="tel:+38 (050) 325-62-93">
+                                                        <div class="link-phone">{{ $affiliate->second_phone }}</div>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="contact-details" data-toggle="modal" data-target="#popup--contacts"
+                                                    data-city="{{ 'Дніпро' }}"
+                                                    @forelse($affiliates as $affiliate2)
+                                                    @switch($loop->iteration)
+                                                        @case(1)
+                                                            data-first="{{ $affiliate2 }}"
+                                                            @break
+
+                                                        @case(2)
+                                                            data-second="{{ $affiliate2 }}"
+                                                            @break
+
+                                                        @case(3)
+                                                            data-third="{{ $affiliate2 }}"
+                                                            @break
+
+                                                        @case(4)
+                                                            data-fourth="{{ $affiliate2 }}"
+                                                            @break
+
+                                                        @default
+
+                                                    @endswitch
+                                                @empty
+                                                @endforelse
+                                                    >Переглянути</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    @if($loop->iteration == 2 || $loop->iteration == 4)
+                                        </div>
+                                    @endif
+                                    @empty
+                                    @endforelse
+
+								{{-- <div class="row mb-11 mb-xl-16">
 									<div class="col-12 col-md mb-11 mb-md-0">
 										<div class="h4 mb-5 font-weight-bold">Медичний центр на Вернадського</div>
 										<ul class="list-unstyled mb-0">
@@ -156,7 +216,7 @@
 											</li>
 										</ul>
 									</div>
-								</div>
+								</div> --}}
 							</div>
 						</div>
 					</div>

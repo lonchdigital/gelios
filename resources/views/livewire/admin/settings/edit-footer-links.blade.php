@@ -86,7 +86,7 @@
                                             </div>
                                         @endif
                                     </td>
-                                    <td>{{ $info->page->title }}</td>
+                                    <td>{{ $info->page->name ?? '' }}</td>
                                     <td style="text-align: right">
                                         <div class="new-checkbox art-text-block-switcher">
                                             <label class="switch">

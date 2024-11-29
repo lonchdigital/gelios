@@ -12,6 +12,7 @@ class HeaderComposer
         $firstCity = HeaderCity::first() ?? null;
 
         $secondCity = HeaderCity::where('id', '!=', $firstCity->id)->first() ?? null;
+
         try {
             $view->with([
                 'firstCity'       => $firstCity,

@@ -3,12 +3,13 @@
 @push('head')
     <link rel="stylesheet" href="{{ asset('admin_src/css/bootstrap-datepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin_src/css/default-assets/daterange-picker.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin_src/css/default-assets/modal.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('admin_src/css/default-assets/modal.css') }}"> --}}
 @endpush
 
 @section('content')
     <div class="container-fluid">
         @livewire('admin.doctor-category.index')
+        @livewire('admin.modals.delete')
     </div>
 @endsection
 

@@ -122,17 +122,18 @@
                                                                             <label>Мета заголовок сторінки
                                                                                 <strong>UA</strong>
                                                                             </label>
-                                                                            <input type="text" wire:model="uaSeoTitle"
+                                                                            <input type="text" wire:model="uaMetaTitle"
                                                                                 class="form-control">
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @if($errors->has('uaSeoTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSeoTitle') }}</div>
-                                                                @elseif($errors->has('ruSeoTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSeoTitle') }}</div>
-                                                                @elseif($errors->has('enSeoTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSeoTitle') }}</div>
+                                                                <div class="mt-1 text-danger ajaxError">{{ 'Введіть %title% для підстановки' }}</div>
+                                                                @if($errors->has('uaMetaTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaMetaTitle') }}</div>
+                                                                @elseif($errors->has('ruMetaTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruMetaTitle') }}</div>
+                                                                @elseif($errors->has('enMetaTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enMetaTitle') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -154,17 +155,18 @@
                                                                             <label>Мета заголовок сторінки
                                                                                 <strong>RU</strong>
                                                                             </label>
-                                                                            <input type="text" wire:model="ruSeoTitle"
+                                                                            <input type="text" wire:model="ruMetaTitle"
                                                                                 class="form-control">
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @if($errors->has('ruSeoTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSeoTitle') }}</div>
-                                                                @elseif($errors->has('uaSeoTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSeoTitle') }}</div>
-                                                                @elseif($errors->has('enSeoTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSeoTitle') }}</div>
+                                                                <div class="mt-1 text-danger ajaxError">{{ 'Введіть %title% для підстановки' }}</div>
+                                                                @if($errors->has('ruMetaTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruMetaTitle') }}</div>
+                                                                @elseif($errors->has('uaMetaTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaMetaTitle') }}</div>
+                                                                @elseif($errors->has('enMetaTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enMetaTitle') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -186,17 +188,18 @@
                                                                             <label>Мета заголовок сторінки
                                                                                 <strong>EN</strong>
                                                                             </label>
-                                                                            <input type="text" wire:model="enSeoTitle"
+                                                                            <input type="text" wire:model="enMetaTitle"
                                                                                 class="form-control">
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @if($errors->has('enSeoTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSeoTitle') }}</div>
-                                                                @elseif($errors->has('ruSeoTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSeoTitle') }}</div>
-                                                                @elseif($errors->has('uaSeoTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSeoTitle') }}</div>
+                                                                <div class="mt-1 text-danger ajaxError">{{ 'Введіть %title% для підстановки' }}</div>
+                                                                @if($errors->has('enMetaTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enMetaTitle') }}</div>
+                                                                @elseif($errors->has('ruMetaTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruMetaTitle') }}</div>
+                                                                @elseif($errors->has('uaMetaTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaMetaTitle') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -247,6 +250,7 @@
                                                             'en' => $this->enSeoDescription
                                                         ]"
                                                     />
+                                                    <div class="mt-1 text-danger ajaxError">{{ 'Введіть %title% для підстановки' }}</div>
                                                     @if($errors->has('uaSeoDescription'))
                                                         <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSeoDescription') }}</div>
                                                     @elseif($errors->has('ruSeoDescription'))
@@ -257,6 +261,102 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        @if($this->activeLocale == 'ua')
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>SEO заголовок сторінки
+                                                                                <strong>UA</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="uaSeoTitle"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @if($errors->has('uaSeoTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSeoTitle') }}</div>
+                                                                @elseif($errors->has('ruSeoTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSeoTitle') }}</div>
+                                                                @elseif($errors->has('enSeoTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSeoTitle') }}</div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+
+                                        @if($this->activeLocale == 'ru')
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>SEO заголовок сторінки
+                                                                                <strong>RU</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="ruSeoTitle"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @if($errors->has('ruSeoTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSeoTitle') }}</div>
+                                                                @elseif($errors->has('uaSeoTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSeoTitle') }}</div>
+                                                                @elseif($errors->has('enSeoTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSeoTitle') }}</div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+
+                                        @if($this->activeLocale == 'en')
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>SEO заголовок сторінки
+                                                                                <strong>EN</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="enSeoTitle"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @if($errors->has('enSeoTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSeoTitle') }}</div>
+                                                                @elseif($errors->has('ruSeoTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSeoTitle') }}</div>
+                                                                @elseif($errors->has('uaSeoTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSeoTitle') }}</div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
 
                                         <div class="col-md-12">
                                             <div class="row">

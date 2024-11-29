@@ -29,16 +29,16 @@
                         <div class="backdrop">
                             <div class="content">
                                 <div class="h1 font-m font-weight-bolder mb-2 mb-lg-3">
-                                    {{ $page->pageBlocks->where('block', 'main')->first()->title ?? '' }}
+                                    {{ $page->pageBlocks->where('block', 'static_block')->first()->title ?? '' }}
                                 </div>
                                 <div class="h5 font-weight-bold">
-                                    {!! $page->pageBlocks->where('block', 'main')->first()->description ?? '' !!}</div>
+                                    {!! $page->pageBlocks->where('block', 'static_block')->first()->description ?? '' !!}</div>
                             </div>
                         </div>
                         <div class="wrap-img">
-                            @if (!empty($page->pageBlocks->where('block', 'main')->first()->image))
-                                <img class="bg-down" src="{{ $page->pageBlocks->where('block', 'main')->first()->image }}"
-                                    alt="{{ $page->pageBlocks->where('block', 'main')->first()->title ?? '' }}">
+                            @if (!empty($page->pageBlocks->where('block', 'static_block')->first()->image))
+                                <img class="bg-down" src="{{ $page->pageBlocks->where('block', 'static_block')->first()->image }}"
+                                    alt="{{ $page->pageBlocks->where('block', 'static_block')->first()->title ?? '' }}">
                             @else
                                 <img class="bg-down" src="{{ asset('static_images/img-background-1.jpeg') }}" alt="img">
                             @endif
@@ -46,59 +46,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <form id="form-meeting" class="p-3 p-lg-5 bg-white">
-                        <div class="h2 font-m font-weight-bolder mb-5">Записатися на прийом</div>
-                        <div class="row field-wrap">
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <label class="control-label mb-2" for="form-meeting-name">Вкажіть ПІБ</label>
-                                    <input type="text" id="form-meeting-name" class="form-control mb-2">
-                                    <div class="field--help-info small-txt text-red mb-2">Вкажіть ПІБ</div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <label class="control-label mb-2" for="form-meeting-phone">Вкажіть номер
-                                        телефону</label>
-                                    <input type="tel" id="form-meeting-phone" class="form-control mb-2">
-                                    <div class="field--help-info small-txt text-red mb-2">Вкажіть номер телефону</div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <div class="control-label mb-2">Оберіть фахівця</div>
-                                    <div class="select-wrap">
-                                        <select class="select-choose-specialist">
-                                            <option></option>
-                                            <option value="1">Фахівeць 1</option>
-                                            <option value="2">Фахівeць 2</option>
-                                            <option value="3">Фахівeць 3</option>
-                                            <option value="4">Фахівeць 4</option>
-                                        </select>
-                                    </div>
-                                    <div class="field--help-info small-txt text-red mb-2">Оберіть фахівця</div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <div class="control-label mb-2">Оберіть клініку</div>
-                                    <div class="select-wrap">
-                                        <select class="select-choose-clinic">
-                                            <option></option>
-                                            <option value="1">Клініка 1</option>
-                                            <option value="2">Клініка 2</option>
-                                            <option value="3">Клініка 3</option>
-                                            <option value="4">Клініка 4</option>
-                                        </select>
-                                    </div>
-                                    <div class="field--help-info small-txt text-red mb-2">Оберіть клініку</div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button type="button" class="btn btn-blue font-weight-bold w-100 mt-2">Записатися</button>
-                            </div>
-                        </div>
-                    </form>
+                    @include('site.components.appointment-form')
                 </div>
             </div>
         </div>

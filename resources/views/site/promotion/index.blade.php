@@ -11,11 +11,11 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => 'Головна',
+                'title' => __('pages.main_page'),
                 'url' => route('main'),
             ],
             [
-                'title' => 'Акції',
+                'title' => $page->title ?? __('pages.promotions'),
                 'url' => null,
             ],
         ],
@@ -26,7 +26,7 @@
                 <div class="col">
                     <div class="row mb-8">
                         <div class="col d-flex align-items-center justify-content-between">
-                            <div class="h2 font-m font-weight-bolder text-blue">Акції</div>
+                            <div class="h2 font-m font-weight-bolder text-blue">{{ $page->title ?? __('pages.promotions') }}</div>
                         </div>
                     </div>
                     <div class="row">

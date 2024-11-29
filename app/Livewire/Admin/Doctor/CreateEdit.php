@@ -219,12 +219,12 @@ class CreateEdit extends Component
             ],
 
             'expirience' => [
-                'required',
+                'nullable',
                 'string',
             ],
 
             'age' => [
-                'required',
+                'nullable',
                 'string',
             ],
 

@@ -511,7 +511,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            @error('expiriencee')
+                                                            @error('expirience')
                                                                 <div class="mt-1 text-danger ajaxError">
                                                                     {{ $message }}
                                                                 </div>

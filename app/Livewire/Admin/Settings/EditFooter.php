@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Settings;
 
+use App\Models\HeaderAffiliate;
 use App\Models\Setting;
 use App\Services\Admin\FooterHeaderService;
 use App\Services\Admin\ImageService;
@@ -29,9 +30,13 @@ class EditFooter extends Component
 
     public Setting $footImage;
 
+    public $footerAffiliates = [];
+
     public $footerImage;
 
     public $footerImageTemporary;
+
+    public $translatedAddresses = [];
 
     protected $listeners = [
         'languageSwitched' => 'languageSwitched'
@@ -41,6 +46,21 @@ class EditFooter extends Component
     {
         $this->activeLocale = config('app.active_lang');
         $this->loadValues();
+
+        $this->footerAffiliates = HeaderAffiliate::where('header_city_id', null)
+            ->get()
+            ->toArray();
+
+        foreach ($this->footerAffiliates as $index => $affiliate) {
+            $footerAffiliate = HeaderAffiliate::find($affiliate['id']);
+
+            foreach (config('app.available_languages') as $locale) {
+                $this->translatedAddresses[$index][$locale] = $footerAffiliate
+                ->translations()
+                ->where('locale', $locale)
+                ->first()->address;
+            }
+        }
     }
 
     public function loadValues()
@@ -105,6 +125,46 @@ class EditFooter extends Component
                 'mimes:jpeg,jpg,png,gif',
                 'image',
             ],
+
+            'footerAffiliates.*.first_phone' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+
+            'footerAffiliates.*.second_phone' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+
+            'footerAffiliates.*.email' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+
+            'footerAffiliates.*.hours' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+
+            'footerAffiliates.*.latitude' => [
+                'nullable',
+                'numeric',
+            ],
+
+            'footerAffiliates.*.longitude' => [
+                'nullable',
+                'numeric',
+            ],
+
+            'translatedAddresses.*.*' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
         ];
     }
 
@@ -124,6 +184,19 @@ class EditFooter extends Component
     public function save()
     {
         $this->validate();
+
+        foreach ($this->footerAffiliates as $index => $affiliateData) {
+            $footerAffiliate = HeaderAffiliate::find($affiliateData['id']);
+
+            $footerAffiliate->fill($affiliateData);
+            $footerAffiliate->save();
+
+            foreach ($this->translatedAddresses[$index] as $locale => $address) {
+                $footerAffiliate->translateOrNew($locale)->address = $address;
+            }
+
+            $footerAffiliate->save();
+        }
 
         $this->saveImages();
 

@@ -227,6 +227,300 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div
+                                                                    class="multilang-content tab-pane fade active show ">
+                                                                    <div class="form-group mb-1">
+                                                                        <h7>Філії в футері</h7>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        @forelse ($this->footerAffiliates as $index => $affiliate)
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <h8>Філія {{ $loop->iteration }}</h8>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            @if ($this->activeLocale == 'ua')
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="row mb-3">
+                                                                <div class="col-md-12">
+                                                                    <div class="tab-content">
+                                                                        <div id="uaTitle"
+                                                                            class="multilang-content tab-pane fade active show">
+                                                                            <div class="form-group mb-1">
+                                                                                <label>Адреса
+                                                                                    <strong>UA</strong>
+                                                                                </label>
+                                                                                <input type="text" wire:model="translatedAddresses.{{ $index }}.ua"
+                                                                                    class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    @error("translatedAddresses.$index.ua")
+                                                                        <div class="mt-1 text-danger ajaxError">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+
+                                            @if ($this->activeLocale == 'ru')
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="row mb-3">
+                                                                <div class="col-md-12">
+                                                                    <div class="tab-content">
+                                                                        <div id="uaTitle"
+                                                                            class="multilang-content tab-pane fade active show">
+                                                                            <div class="form-group mb-1">
+                                                                                <label>Адреса
+                                                                                    <strong>RU</strong>
+                                                                                </label>
+                                                                                <input type="text" wire:model="translatedAddresses.{{ $index }}.ru"
+                                                                                    class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    @error("translatedAddresses.$index.ru")
+                                                                        <div class="mt-1 text-danger ajaxError">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+
+                                            @if ($this->activeLocale == 'en')
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="row mb-3">
+                                                                <div class="col-md-12">
+                                                                    <div class="tab-content">
+                                                                        <div id="uaTitle"
+                                                                            class="multilang-content tab-pane fade active show">
+                                                                            <div class="form-group mb-1">
+                                                                                <label>Адреса
+                                                                                    <strong>EN</strong>
+                                                                                </label>
+                                                                                <input type="text" wire:model="translatedAddresses.{{ $index }}.en"
+                                                                                    class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    @error("translatedAddresses.$index.en")
+                                                                        <div class="mt-1 text-danger ajaxError">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>Перший номер телефону
+                                                                            </label>
+                                                                            <input type="text" wire:model="footerAffiliates.{{ $index }}.first_phone"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error("footerAffiliates.$index.first_phone")
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>Другий номер телефону
+                                                                            </label>
+                                                                            <input type="text" wire:model="footerAffiliates.{{ $index }}.second_phone"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error("footerAffiliates.$index.second_phone")
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>Email
+                                                                            </label>
+                                                                            <input type="text" wire:model="footerAffiliates.{{ $index }}.email"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error("footerAffiliates.$index.email")
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>Години роботи
+                                                                            </label>
+                                                                            <input type="text" wire:model="footerAffiliates.{{ $index }}.hours"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error("footerAffiliates.$index.hours")
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>Широта
+                                                                            </label>
+                                                                            <input type="text" wire:model="footerAffiliates.{{ $index }}.latitude"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error("footerAffiliates.$index.latitude")
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>Довгота
+                                                                            </label>
+                                                                            <input type="text" wire:model="footerAffiliates.{{ $index }}.longitude"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error("footerAffiliates.$index.longitude")
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @empty
+                                        @endforelse
                                     </div>
                                 </div>
                             </div>

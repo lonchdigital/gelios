@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Livewire\Admin\Surgery\Block;
+namespace App\Livewire\Admin\Promotion;
 
-use App\Enums\PageType;
 use App\Models\Page;
 use App\Models\PageBlock;
 use App\Models\PageBlockTranslation;
 use App\Services\Admin\ImageService;
-use App\Services\Admin\Surgery\BlockService;
+use App\Services\Admin\Laboratory\BlockService;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class CreateEdit extends Component
+class EditBlock extends Component
 {
     use WithFileUploads;
 
@@ -24,17 +23,17 @@ class CreateEdit extends Component
 
     public string $description;
 
-    public string $uaDescription = '';
-
-    public string $enDescription = '';
-
-    public string $ruDescription = '';
-
     public string $uaTitle = '';
 
     public string $enTitle = '';
 
     public string $ruTitle = '';
+
+    public string $uaDescription = '';
+
+    public string $enDescription = '';
+
+    public string $ruDescription = '';
 
     public $image;
 
@@ -44,24 +43,24 @@ class CreateEdit extends Component
         'languageSwitched' => 'languageSwitched'
     ];
 
-    public function mount(PageBlock $block = null)
+    public function mount(Page $page, PageBlock $block = null)
     {
         $this->dispatch('livewire:load');
 
-        $this->page = Page::where('type', PageType::SURGERY->value)->first();
+        $this->page = $page;
         $this->block = $block ?? new PageBlock();
         $this->activeLocale = config('app.active_lang');
 
         $service = resolve(BlockService::class);
         $translations = $service->getTranslations($this->block);
 
+        $this->uaTitle = $translations['ua']->title ?? '';
+        $this->enTitle = $translations['en']->title ?? '';
+        $this->ruTitle = $translations['ru']->title ?? '';
+
         $this->uaDescription = $translations['ua']->description ?? '';
         $this->enDescription = $translations['en']->description ?? '';
         $this->ruDescription = $translations['ru']->description ?? '';
-
-        $this->uaTitle = $translations['ua']->title ?? '';
-        $this->enTitle = $translations['ua']->title ?? '';
-        $this->ruTitle = $translations['ua']->title ?? '';
     }
 
     public function languageSwitched($lang)
@@ -73,32 +72,32 @@ class CreateEdit extends Component
     {
         return [
             'uaDescription' => [
-                'nullable',
+                'required',
                 'string',
             ],
 
             'enDescription' => [
-                'nullable',
+                'required',
                 'string',
             ],
 
             'ruDescription' => [
-                'nullable',
+                'required',
                 'string',
             ],
 
             'uaTitle' => [
-                'nullable',
+                'required',
                 'string',
             ],
 
             'enTitle' => [
-                'nullable',
+                'required',
                 'string',
             ],
 
             'ruTitle' => [
-                'nullable',
+                'required',
                 'string',
             ],
 
@@ -155,32 +154,38 @@ class CreateEdit extends Component
         }
 
         $descriptions = [
-            'ua' => $this->uaDescription,
-            'en' => $this->enDescription,
-            'ru' => $this->ruDescription,
-        ];
-
-        $titles = [
-            'ua' => $this->uaTitle,
-            'en' => $this->enTitle,
-            'ru' => $this->ruTitle,
+            'ua' => [
+                'title' => $this->uaTitle,
+                'description' => $this->uaDescription,
+            ],
+            'en' => [
+                'title' => $this->enTitle,
+                'description' => $this->enDescription,
+            ],
+            'ru' => [
+                'title' => $this->ruTitle,
+                'description' => $this->ruDescription,
+            ],
         ];
 
         $data = [
             'page_id' => $this->page->id,
+            'link' => null,
+            'block' => 'second',
+            'key' => 'text',
         ];
 
         $service = resolve(BlockService::class);
 
-        $service->saveBlock($this->block, $data, $descriptions, $titles);
+        $service->saveSlider($this->block, $data, $descriptions);
 
         session()->flash('success', 'Дані успішно збережено');
 
-        $this->redirectRoute('admin.surgery.index');
+        $this->redirectRoute('admin.promotions.index');
     }
 
     public function render()
     {
-        return view('livewire.admin.surgery.direction.block.create-edit');
+        return view('livewire.admin.promotion.edit-block');
     }
 }

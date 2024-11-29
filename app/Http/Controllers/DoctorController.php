@@ -8,6 +8,7 @@ use App\Models\Doctor;
 use App\Models\DoctorCategory;
 use App\Models\Page;
 use App\Models\Specialization;
+use App\Services\Site\MetaService;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
@@ -47,6 +48,10 @@ class DoctorController extends Controller
             ->with('translations')
             ->first();
 
-        return view('site.doctors.show', compact('doctor', 'page'));
+        $service = resolve(MetaService::class);
+
+        $seo = $service->getMeta($page->title, $page->meta_title, $page->meta_description);
+
+        return view('site.doctors.show', compact('doctor', 'page', 'seo'));
     }
 }

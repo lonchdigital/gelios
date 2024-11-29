@@ -123,6 +123,7 @@ Route::group([
             Route::get('/edit-main-seo', [PromotionController::class, 'mainPageSeo'])->name('edit-main-seo');
             Route::get('/edit-one-page-seo', [PromotionController::class, 'onePageSeo'])->name('edit-one-page-seo');
 
+            Route::get('/edit-block/{page}/{block}', [PromotionController::class, 'editBlock'])->name('edit-block');
             Route::get('/create-slide/{page}', [PromotionController::class, 'createSlide'])->name('create-slide');
             Route::get('/edit-slide/{page}/{block}', [PromotionController::class, 'editSlide'])->name('edit-slide');
 

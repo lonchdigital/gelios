@@ -11,6 +11,11 @@ class Index extends Component
 {
     use WithPagination;
 
+    protected $listeners = [
+        'refreshItemsAfterDelete' => 'refreshItemsAfterDelete',
+        'refresh' => '$refresh',
+    ];
+
     public function getDoctorsProperty()
     {
         $doctors = Doctor::paginate(10);
@@ -23,6 +28,16 @@ class Index extends Component
         $service = resolve(DoctorService::class);
 
         $service->changeIsShowInMainPage($id);
+    }
+
+    public function deleteItem($id, $type)
+    {
+        $this->dispatch('openModalDeleteItem', $type, $id);
+    }
+
+    public function refreshItemsAfterDelete()
+    {
+        $this->dispatch('refresh');
     }
 
     public function render()

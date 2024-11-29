@@ -44,6 +44,7 @@
                                 </td>
                                 <td style="text-align: right">
                                     <a href="{{ route('admin.doctors.edit', ['doctor' => $doctor->slug ?? $doctor->id]) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                    <a wire:click="deleteItem('{{ $doctor->id }}', 'doctor')" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
                                 </td>
                             </tr>
                         @endforeach

@@ -4,6 +4,8 @@ namespace App\Livewire\Admin\Modals;
 
 use App\Models\CheckUp;
 use App\Models\CheckUpProgram;
+use App\Models\Doctor;
+use App\Models\DoctorCategory;
 use App\Models\Laboratory;
 use App\Models\PageBlock;
 use App\Models\Promotion;
@@ -77,6 +79,22 @@ class Delete extends Component
                 $this->type = 'pageBlock';
                 $this->modalTitle = 'Delete slide';
                 $this->modalBody  = 'You really want to delete slide: ' . $this->item->title . '?';
+                $this->modalInfo  = '';
+                break;
+
+            case 'doctor':
+                $this->item = Doctor::find($modelId);
+                $this->type = 'doctor';
+                $this->modalTitle = 'Delete doctor';
+                $this->modalBody  = 'You really want to delete doctor: ' . $this->item->title . '?';
+                $this->modalInfo  = '';
+                break;
+
+            case 'doctorCategory':
+                $this->item = DoctorCategory::find($modelId);
+                $this->type = 'doctorCategory';
+                $this->modalTitle = 'Delete category';
+                $this->modalBody  = 'You really want to delete doctor category: ' . $this->item->title . '?';
                 $this->modalInfo  = '';
                 break;
 
@@ -160,6 +178,24 @@ class Delete extends Component
             case 'pageBlock':
 
                 $this->deleteImage($this->item->image);
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
+            case 'doctor':
+
+                $this->deleteImage($this->item->image);
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
+            case 'doctorCategory':
 
                 $this->item->delete();
 
