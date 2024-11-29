@@ -6,7 +6,7 @@ use App\Enums\ArticleBlockType;
 use App\Models\Article;
 use App\Models\ArticleBlock;
 use App\Models\ArticleBlockTranslation;
-use App\Services\Admin\ArticleBlockService;
+use App\Services\Admin\Article\ArticleBlockService;
 use Livewire\Component;
 
 class CreateEdit extends Component

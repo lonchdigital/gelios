@@ -57,6 +57,7 @@
                                 </td>
                                 <td style="text-align: right">
                                     <a href="{{ route('admin.articles.edit', $article) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                    <a wire:click="deleteItem('{{ $article->id }}', 'article')" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
                                 </td>
                             </tr>
                         @endforeach

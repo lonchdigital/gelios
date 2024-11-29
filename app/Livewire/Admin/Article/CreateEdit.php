@@ -51,7 +51,9 @@ class CreateEdit extends Component
     public $newImageTemporary;
 
     protected $listeners = [
-        'languageSwitched' => 'languageSwitched'
+        'languageSwitched' => 'languageSwitched',
+        'refreshItemsAfterDelete' => 'refreshItemsAfterDelete',
+        'refresh' => '$refresh',
     ];
 
     public function mount(Article $article = null)
@@ -240,6 +242,16 @@ class CreateEdit extends Component
         $service = resolve(ArticleService::class);
 
         $service->updatePosition($block, $val);
+    }
+
+    public function deleteItem($id, $type)
+    {
+        $this->dispatch('openModalDeleteItem', $type, $id);
+    }
+
+    public function refreshItemsAfterDelete()
+    {
+        $this->dispatch('refresh');
     }
 
     public function render()

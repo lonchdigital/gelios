@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Admin\Modals;
 
+use App\Models\Article;
+use App\Models\ArticleBlock;
 use App\Models\CheckUp;
 use App\Models\CheckUpProgram;
 use App\Models\Doctor;
@@ -95,6 +97,22 @@ class Delete extends Component
                 $this->type = 'doctorCategory';
                 $this->modalTitle = 'Delete category';
                 $this->modalBody  = 'You really want to delete doctor category: ' . $this->item->title . '?';
+                $this->modalInfo  = '';
+                break;
+
+            case 'article':
+                $this->item = Article::find($modelId);
+                $this->type = 'article';
+                $this->modalTitle = 'Delete article';
+                $this->modalBody  = 'You really want to delete article: ' . $this->item->title . '?';
+                $this->modalInfo  = '';
+                break;
+
+            case 'articleBlock':
+                $this->item = ArticleBlock::find($modelId);
+                $this->type = 'articleBlock';
+                $this->modalTitle = 'Delete article block';
+                $this->modalBody  = 'You really want to delete article block: ' . $this->item->title . '?';
                 $this->modalInfo  = '';
                 break;
 
@@ -203,9 +221,42 @@ class Delete extends Component
 
                 return true;
 
+            case 'article':
+
+                $this->deleteBlocks($this->item);
+
+                $this->deleteImage($this->item->image);
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
+            case 'articleBlock':
+
+                $this->updateArticleBlockSort($this->item);
+
+                // $this->deleteImage($this->item->image);
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
             default:
 
                 return false;
+        }
+    }
+
+    public function deleteBlocks(Article $article)
+    {
+        foreach($article->articleBlocks as $block) {
+            // $this->deleteImage($block->image);
+
+            $block->delete();
         }
     }
 
@@ -213,6 +264,19 @@ class Delete extends Component
     {
         if (Storage::disk('public')->exists($image)) {
             Storage::disk('public')->delete($image);
+        }
+    }
+
+    public function updateArticleBlockSort(ArticleBlock $block)
+    {
+        $articleBlocks = ArticleBlock::where('article_id', $block->article_id)
+            ->where('sort', '>', $block->sort)
+            ->get();
+
+        foreach($articleBlocks as $block2) {
+            $block2->update([
+                'sort' => $block2->sort - 1,
+            ]);
         }
     }
 

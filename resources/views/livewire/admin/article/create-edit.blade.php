@@ -412,6 +412,7 @@
                                                                     <a href="{{ route('admin.articles.edit-block', ['article' => $this->article, 'block' => $block]) }}"
                                                                         class="mr-2"><i
                                                                             class="fa fa-edit text-info font-18"></i></a>
+                                                                    <a wire:click="deleteItem('{{ $block->id }}', 'articleBlock')" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
                                                                 </td>
                                                             </tr>
                                                         @endforeach
