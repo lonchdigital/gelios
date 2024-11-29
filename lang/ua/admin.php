@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'doctors' => 'Лікарі',
+    'all_pages' => 'Все сторінки',
     'page_deleted' => 'Сторінку видалено',
     'reviews_page' => 'Сторінка відгуків',
     'common_blocks' => 'Наскрізні блоки',

@@ -7522,6 +7522,11 @@ div.tagsinput span.tag {
     font-size: 14px;
 }
 
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: #fff;
+    border-right: 1px solid #fff;
+}
+
 .select2-container .select2-selection--single {
     height: 35px;
     padding: 3px 10px;
