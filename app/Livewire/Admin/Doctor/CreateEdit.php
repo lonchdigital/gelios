@@ -204,17 +204,17 @@ class CreateEdit extends Component
             ],
 
             'uaDescription' => [
-                'required',
+                'nullable',
                 'string',
             ],
 
             'enDescription' => [
-                'required',
+                'nullable',
                 'string',
             ],
 
             'ruDescription' => [
-                'required',
+                'nullable',
                 'string',
             ],
 
