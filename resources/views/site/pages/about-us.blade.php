@@ -80,7 +80,7 @@
                     <div class="offices--swiper">
                         <div class="swiper-wrapper">
                             @foreach ($contacts as $contact)
-                                @include('site.components.office-swiper', ['breadcrumbs' => $contact])
+                                @include('site.components.office-swiper', ['contact' => $contact])
                             @endforeach
                         </div>
                         <div class="swiper-pagination mt-8"></div>
