@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\PageType;
+use App\Models\Page;
 use App\Models\Doctor;
+use App\Enums\PageType;
+use App\Models\Contact;
+use App\Models\Promotion;
 use Illuminate\Http\Request;
 use App\Models\InsuranceCompany;
-use App\Models\Page;
-use App\Models\Promotion;
 
 class HomeController extends Controller
 {
@@ -27,6 +28,7 @@ class HomeController extends Controller
             'insuranceCompanies' => InsuranceCompany::all(),
             'promotions' => $promotions,
             'doctors' => $doctors,
+            'contacts' => Contact::all(),
             'page' => $page,
         ]);
     }
