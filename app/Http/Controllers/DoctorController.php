@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\DoctorCategoryType;
 use App\Enums\PageType;
+use App\Models\Article;
 use App\Models\Doctor;
 use App\Models\DoctorCategory;
 use App\Models\Page;
@@ -52,6 +53,10 @@ class DoctorController extends Controller
 
         $seo = $service->getMeta($page->title, $page->meta_title, $page->meta_description);
 
-        return view('site.doctors.show', compact('doctor', 'page', 'seo'));
+        $relatedArticles = Article::inrandomOrder()
+            ->take(3)
+            ->get();
+
+        return view('site.doctors.show', compact('doctor', 'page', 'seo', 'relatedArticles'));
     }
 }
