@@ -427,7 +427,7 @@
 					border: 1px solid transparent;
 					border-radius: 64px;
 					@include transition(0.3s ease-out 0s);
-					&:hover,
+					//&:hover,
 					&.active {
 						color: $blue;
 						border: 1px solid $blue;
