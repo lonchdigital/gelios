@@ -299,8 +299,8 @@
             <div class="container overflow-hidden">
                 <div class="row mb-8">
                     <div class="col d-flex align-items-center justify-content-between">
-                        <div class="h2 font-m font-weight-bolder">Лікарі</div>
-                        <a href="{{ route('doctors.index') }}" class="h5 btn btn-white font-weight-bold">Усі лікарі</a>
+                        <div class="h2 font-m font-weight-bolder">{{ __('pages.doctors') }}</div>
+                        <a href="{{ route('doctors.index') }}" class="h5 btn btn-white font-weight-bold">{{ __('pages.all_doctors') }}</a>
                     </div>
                 </div>
                 <div class="row">
@@ -418,7 +418,7 @@
             <div class="container overflow-hidden">
                 <div class="row mb-19">
                     <div class="col d-flex align-items-center justify-content-between">
-                        <div class="h2 font-m font-weight-bolder">Відгуки</div>
+                        <div class="h2 font-m font-weight-bolder">{{ __('pages.reviews') }}</div>
                     </div>
                 </div>
                 <div class="row">
@@ -512,8 +512,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="h2 font-m font-weight-bolder text-lg-center mb-8">Страхові компанії, з якими ми
-                            співпрацюємо</div>
+                        <div class="h2 font-m font-weight-bolder text-lg-center mb-8">{{ __('pages.insurance_companies_we_cooperate_with') }}</div>
                     </div>
                 </div>
             </div>
@@ -552,8 +551,8 @@
             <div class="container overflow-hidden">
                 <div class="row">
                     <div class="col d-flex align-items-center justify-content-between mb-5">
-                        <div class="h2 font-m font-weight-bolder">Новини</div>
-                        <a href="{{ route('articles.index') }}" class="btn btn-white font-weight-bold">Усі новини</a>
+                        <div class="h2 font-m font-weight-bolder">{{ __('pages.news') }}</div>
+                        <a href="{{ route('articles.index') }}" class="btn btn-white font-weight-bold">{{ __('pages.all_news') }}</a>
                     </div>
                 </div>
                 <div class="row">

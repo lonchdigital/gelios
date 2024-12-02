@@ -89,7 +89,8 @@
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <form id="form-meeting" class="p-3 p-lg-5 bg-white">
+                    @include('site.components.appointment-form')
+                    {{-- <form id="form-meeting" class="p-3 p-lg-5 bg-white">
                         <div class="h2 font-m font-weight-bolder mb-5">Записатися на прийом</div>
                         <div class="row field-wrap">
                             <div class="col-12">
@@ -142,7 +143,7 @@
                                     class="btn btn-blue font-weight-bold w-100 mt-2">Записатися</button>
                             </div>
                         </div>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </div>
@@ -209,7 +210,7 @@
         <div class="container overflow-hidden">
             <div class="row">
                 <div class="col d-flex align-items-center justify-content-between mb-5">
-                    <div class="h3 font-m font-weight-bolder text-blue">Дивіться також</div>
+                    <div class="h3 font-m font-weight-bolder text-blue">{{ __('pages.see_also') }}</div>
                 </div>
             </div>
             <div class="row">

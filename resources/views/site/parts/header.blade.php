@@ -48,7 +48,7 @@
                                             @endswitch
                                         @empty
                                         @endforelse
-                                        >Переглянути
+                                        >{{ __('pages.view') }}
                                 </button>
                             </li>
                         </ul>
@@ -88,7 +88,7 @@
                                     @endswitch
                                 @empty
                                 @endforelse
-                                        data-target="#popup--contacts">Переглянути
+                                        data-target="#popup--contacts">{{ __('pages.view') }}
                                 </button>
                             </li>
                         </ul>
@@ -136,7 +136,7 @@
                                             @endswitch
                                         @empty
                                         @endforelse
-                                        data-target="#popup--contacts">Переглянути
+                                        data-target="#popup--contacts">{{ __('pages.view') }}
                                     </button>
                                 </li>
                             </ul>
@@ -176,7 +176,7 @@
                                             @endswitch
                                         @empty
                                         @endforelse
-                                        data-target="#popup--contacts">Переглянути
+                                        data-target="#popup--contacts">{{ __('pages.view') }}
                                     </button>
                                 </li>
                             </ul>
@@ -257,7 +257,7 @@
                         <div class="item d-flex justify-content-between align-items-center mr-xxl-1">
                             <div class="d-xxl-none">
                                 <button type="button" class="btn btn-blue" data-toggle="modal"
-                                    data-target="#popup--sign-up-appointment">Записатися на прийом
+                                    data-target="#popup--sign-up-appointment">{{ __('pages.sign_up_for_for_appointment') }}
                                 </button>
                             </div>
                             <div class="languages list-inline-item">
@@ -306,14 +306,25 @@
                                         <div class="current-lang">
                                             <div class="current-lang--inner d-flex align-items-center">
                                                 <div class="language mr-1">
-                                                    <span>Ua</span>
+                                                    <span>{{ LaravelLocalization::getCurrentLocale() }}</span>
                                                 </div>
                                                 <svg class="i-arrow-down">
                                                     <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-arrow-small-down' }}"></use>
                                                 </svg>
                                             </div>
                                             <ul class="submenu list-unstyled mb-0 position-absolute py-1 px-2">
-                                                <li>
+                                                @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                                    @if ($localeCode !== LaravelLocalization::getCurrentLocale())
+                                                        <li>
+                                                            <div class="language d-flex align-items-center">
+                                                                <a class="d-flex" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                                    <span>{{ $localeCode }}</span>
+                                                                </a>
+                                                            </div>
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+                                                {{-- <li>
                                                     <div class="language d-flex align-items-center">
                                                         <a class="d-flex" href="/">
                                                             <span>Ru</span>
@@ -326,7 +337,7 @@
                                                             <span>Eng</span>
                                                         </a>
                                                     </div>
-                                                </li>
+                                                </li> --}}
                                             </ul>
                                         </div>
                                     </div>
@@ -410,10 +421,10 @@
                                             </div>
                                         </div>
                                         <div class="list-inline-item">
-                                            <a class="nav-link" href="{{ route('surgery.index') }}">Хірургія</a>
+                                            <a class="nav-link" href="{{ route('surgery.index') }}">{{ __('pages.surgery') }}</a>
                                         </div>
                                         <div class="hover-aside-menu--item list-inline-item">
-                                            <a class="nav-link" href="{{ route('about.us.page') }}">Про компанію</a>
+                                            <a class="nav-link" href="{{ route('about.us.page') }}">{{ __('pages.about_company') }}</a>
                                             @if($allCenters->count() > 0)
                                                 <div class="hover-aside-menu--list">
                                                     <div class="hover-aside-menu--inner">
@@ -427,7 +438,7 @@
                                             @endif
                                         </div>
                                         <div class="hover-aside-menu--item position-right list-inline-item">
-                                            <a class="nav-link" href="{{ route('promotions.index') }}">Акції</a>
+                                            <a class="nav-link" href="{{ route('promotions.index') }}">{{ __('pages.promotions') }}</a>
                                             <div class="hover-aside-menu--list">
                                                 <div class="hover-aside-menu--inner">
                                                     <div class="hover-aside-menu--content">
@@ -439,22 +450,22 @@
                                             </div>
                                         </div>
                                         <div class="list-inline-item">
-                                            <a class="nav-link" href="{{ route('doctors.index') }}">Лікарі</a>
+                                            <a class="nav-link" href="{{ route('doctors.index') }}">{{ __('pages.doctors') }}</a>
                                         </div>
                                         <div class="list-inline-item">
-                                            <a class="nav-link" href="{{ route('hospital.show') }}">Стаціонар</a>
+                                            <a class="nav-link" href="{{ route('hospital.show') }}">{{ __('pages.hospital') }}</a>
                                         </div>
                                         <div class="list-inline-item">
-                                            <a class="nav-link" href="{{ route('prices.page') }}">Ціни</a>
+                                            <a class="nav-link" href="{{ route('prices.page') }}">{{ __('pages.prices') }}</a>
                                         </div>
                                         <div class="hover-aside-menu--item position-left list-inline-item">
-                                            <a class="nav-link" href="{{ route('contacts.page') }}">Контакти</a>
+                                            <a class="nav-link" href="{{ route('contacts.page') }}">{{ __('pages.contacts') }}</a>
                                             <div class="hover-aside-menu--list">
                                                 <div class="hover-aside-menu--inner">
                                                     <div class="hover-aside-menu--content">
-                                                        <div class="hover-aside-menu--item"><a class="link" href="##">Страхові</a>
+                                                        <div class="hover-aside-menu--item"><a class="link" href="##">{{ __('pages.insurance') }}</a>
                                                         </div>
-                                                        <div class="hover-aside-menu--item"><a class="link" href="{{ route('vacancy.index') }}">Вакансії</a>
+                                                        <div class="hover-aside-menu--item"><a class="link" href="{{ route('vacancy.index') }}">{{ __('pages.vacancies') }}</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -575,14 +586,14 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="item"><a href="##">Хірургія</a></div>
-                                                    <div class="item"><a href="##">Про компанію</a></div>
+                                                    <div class="item"><a href="{{ route('surgery.index') }}">{{ __('pages.surgery') }}</a></div>
+                                                    <div class="item"><a href="##">{{ __('pages.about_company') }}</a></div>
                                                     <div class="item has-dropdown">
-                                                        <a href="{{ route('promotions.index') }}">Акції</a>
+                                                        <a href="{{ route('promotions.index') }}">{{ __('pages.promotions') }}</a>
                                                         <div class="push-menu--lvl scrollable-content">
                                                             <div class="scrollable-content--inner">
                                                                 <div class="item"><a
-                                                                            href="{{ route('promotions.index') }}">Акції</a>
+                                                                            href="{{ route('promotions.index') }}">{{ __('pages.promotions') }}</a>
                                                                 </div>
                                                                 <div class="item"><a
                                                                             href="{{ route('check-ups.index') }}">Check-up</a>
@@ -590,17 +601,17 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="item"><a href="{{ route('doctors.index') }}">Лікарі</a>
+                                                    <div class="item"><a href="{{ route('doctors.index') }}">{{ __('pages.doctors') }}</a>
                                                     </div>
-                                                    <div class="item"><a href="##">Стаціонар</a></div>
-                                                    <div class="item"><a href="##">Ціни</a></div>
+                                                    <div class="item"><a href="##">{{ __('pages.hospital') }}</a></div>
+                                                    <div class="item"><a href="##">{{ __('pages.prices') }}</a></div>
                                                     <div class="item has-dropdown">
-                                                        <a href="##">Контакти</a>
+                                                        <a href="##">{{ __('pages.contacts') }}</a>
                                                         <div class="push-menu--lvl scrollable-content">
                                                             <div class="scrollable-content--inner">
-                                                                <div class="item"><a href="##">Контакти</a></div>
-                                                                <div class="item"><a href="##">Страхові</a></div>
-                                                                <div class="item"><a href="{{ route('vacancy.index') }}">Вакансії</a></div>
+                                                                <div class="item"><a href="##">{{ __('pages.contacts') }}</a></div>
+                                                                <div class="item"><a href="##">{{ __('pages.insurance') }}</a></div>
+                                                                <div class="item"><a href="{{ route('vacancy.index') }}">{{ __('pages.vacancies') }}</a></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -609,10 +620,10 @@
                                         </div>
                                         <div class="navbar-nav--other mb-5">
                                             <button type="button" class="btn btn-blue w-100 mb-5" data-toggle="modal"
-                                            data-target="#popup--sign-up-appointment">Записатися на прийом
+                                            data-target="#popup--sign-up-appointment">{{ __('pages.sign_up_for_for_appointment') }}
                                             </button>
                                             <div class="contact-offices">
-                                                <div class="contact-offices--label">Переглянути філії:</div>
+                                                <div class="contact-offices--label">{{ __('pages.view_branches') }}:</div>
                                                 <div class="buttons">
                                                     <button type="button" class="contact-details btn"
                                                             data-toggle="modal" data-target="#popup--contacts" data-city="{{ $firstCity->title ?? '' }}"

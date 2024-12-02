@@ -145,7 +145,7 @@
         <div class="container">
             <div class="row mb-8">
                 <div class="col">
-                    <div class="h2 font-m font-weight-bolder text-blue">Наші лабараторії</div>
+                    <div class="h2 font-m font-weight-bolder text-blue">{{ __('pages.our_laboratories') }}</div>
                 </div>
             </div>
             <div class="row">
@@ -172,12 +172,12 @@
                                                     <div class="item">
                                                         <ul class="list-unstyled mb-0">
                                                             <li>
-                                                                <div class="head-address">Адреса:</div>
+                                                                <div class="head-address">{{ __('pages.address') }}:</div>
                                                                 <div class="offices-address">{{ $laboratory->address }}
                                                                 </div>
                                                             </li>
                                                             <li>
-                                                                <div class="head-phone">Телефон:</div>
+                                                                <div class="head-phone">{{ __('pages.phone') }}:</div>
                                                                 <a href="tel:+38 (095) 000-01-50">
                                                                     <div class="link-phone">{{ $laboratory->phone }}</div>
                                                                 </a>
@@ -190,7 +190,7 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <div class="head-time">Години роботи:</div>
+                                                                <div class="head-time">{{ __('pages.working_hours') }}:</div>
                                                                 <div class="offices-time">{{ $laboratory->hours }}</div>
                                                             </li>
                                                         </ul>
@@ -368,64 +368,11 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-12 col-7 col-lg-6">
-                    <form id="form-meeting" class="p-3 p-lg-5 bg-white">
-                        <div class="h2 font-m font-weight-bolder mb-5">Записатися на прийом</div>
-                        <div class="row field-wrap">
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <label class="control-label mb-2" for="form-meeting-name">Вкажіть ПІБ</label>
-                                    <input type="text" id="form-meeting-name" class="form-control mb-2">
-                                    <div class="field--help-info small-txt text-red mb-2">Вкажіть ПІБ</div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <label class="control-label mb-2" for="form-meeting-phone">Вкажіть номер
-                                        телефону</label>
-                                    <input type="tel" id="form-meeting-phone" class="form-control mb-2">
-                                    <div class="field--help-info small-txt text-red mb-2">Вкажіть номер телефону</div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <div class="control-label mb-2">Оберіть фахівця</div>
-                                    <div class="select-wrap">
-                                        <select class="select-choose-specialist">
-                                            <option></option>
-                                            <option value="1">Фахівeць 1</option>
-                                            <option value="2">Фахівeць 2</option>
-                                            <option value="3">Фахівeць 3</option>
-                                            <option value="4">Фахівeць 4</option>
-                                        </select>
-                                    </div>
-                                    <div class="field--help-info small-txt text-red mb-2">Оберіть фахівця</div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <div class="control-label mb-2">Оберіть клініку</div>
-                                    <div class="select-wrap">
-                                        <select class="select-choose-clinic">
-                                            <option></option>
-                                            <option value="1">Клініка 1</option>
-                                            <option value="2">Клініка 2</option>
-                                            <option value="3">Клініка 3</option>
-                                            <option value="4">Клініка 4</option>
-                                        </select>
-                                    </div>
-                                    <div class="field--help-info small-txt text-red mb-2">Оберіть клініку</div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button type="button"
-                                    class="btn btn-blue font-weight-bold w-100 mt-2">Записатися</button>
-                            </div>
-                        </div>
-                    </form>
+                    @include('site.components.appointment-form')
                 </div>
                 <div class="col-5 col-lg-6 d-none d-lg-flex">
                     <div class="wrap-img">
-                        <img src="img/img-right-b.png" alt="img">
+                        <img src="{{ asset('static_images/img-right-b.png') }}" alt="img">
                     </div>
                 </div>
             </div>

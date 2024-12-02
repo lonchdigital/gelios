@@ -43,7 +43,7 @@
 						</div>
 						<div class="col">
 							<div class="ml-xxl-2">
-								<div class="h4 mb-5 font-weight-bold">Напрямки</div>
+								<div class="h4 mb-5 font-weight-bold">{{ __('pages.directions') }}</div>
 								<ul class="list-unstyled mb-0">
                                     @forelse($directions as $direction)
                                         @if(!empty($direction->page->slug))
@@ -63,7 +63,7 @@
 						</div>
 						<div class="col">
 							<div class="ml-xxl-3">
-								<div class="h4 mb-5 font-weight-bold">Інформація</div>
+								<div class="h4 mb-5 font-weight-bold">{{ __('pages.information') }}</div>
 								<ul class="list-unstyled mb-0">
                                     @forelse($infos as $info)
                                         <li><a href="{{ '/' . $info->page->slug }}">{{ $info->page->title ?? '' }}</a></li>
@@ -130,7 +130,7 @@
                                                     @endswitch
                                                 @empty
                                                 @endforelse
-                                                    >Переглянути</button>
+                                                    >{{ __('pages.view') }}</button>
                                                 </li>
                                             </ul>
                                         </div>
@@ -245,7 +245,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12 text-center">
-					<div class="copyright">© 2024 Геліос. Усі права захищені</div>
+					<div class="copyright">© {{ now()->year }} {{ __('pages.helyos') }}. {{ __('pages.all_rights_reserved') }}</div>
 				</div>
 			</div>
 		</div>

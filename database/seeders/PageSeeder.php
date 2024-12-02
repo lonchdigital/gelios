@@ -158,6 +158,24 @@ class PageSeeder extends Seeder
 
         $pageBlock->save();
 
+        // $pageBlock = PageBlock::firstOrCreate([
+        //     'page_id' => $page2->id,
+        //     'block' => 'directions',
+        //     'key' => 'text',
+        // ]);
+
+        // $pageBlock->translateOrNew('ua')->title = 'Наші напрямки';
+        // $pageBlock->translateOrNew('ua')->description = 'Передові медичні технології діагностики, лікування та реабілітації пацієнтів усіх вікових груп.';
+        // $pageBlock->translateOrNew('ua')->button = 'Усі напрямки';
+        // $pageBlock->translateOrNew('ru')->title = 'Наші напрямки';
+        // $pageBlock->translateOrNew('ru')->description = 'Передові медичні технології діагностики, лікування та реабілітації пацієнтів усіх вікових груп.';
+        // $pageBlock->translateOrNew('ru')->button = 'Усі напрямки';
+        // $pageBlock->translateOrNew('en')->title = 'Наші напрямки';
+        // $pageBlock->translateOrNew('en')->description = 'Передові медичні технології діагностики, лікування та реабілітації пацієнтів усіх вікових груп.';
+        // $pageBlock->translateOrNew('en')->button = 'Усі напрямки';
+
+        // $pageBlock->save();
+
         Page::firstOrCreate([
             'type' => PageType::CONTACTS->value,
         ]);
@@ -431,6 +449,26 @@ class PageSeeder extends Seeder
         $pageBlock->translateOrNew('en')->button = 'Детальніше';
 
         $pageBlock->save();
+
+        $pageBlock2 = PageBlock::firstOrCreate([
+            'page_id' => $page->id,
+            'block' => 'second',
+            'key' => 'text',
+        ]);
+
+        $pageBlock2->translateOrNew('ua')->title = '“Check-up”
+програми';
+        $pageBlock2->translateOrNew('ua')->description = 'Комплексне обстеження та консультації фахівців';
+
+        $pageBlock2->translateOrNew('ru')->title = '“Check-up”
+програми';
+        $pageBlock2->translateOrNew('ru')->description = 'Комплексне обстеження та консультації фахівців';
+
+        $pageBlock2->translateOrNew('en')->title = '“Check-up”
+програми';
+        $pageBlock2->translateOrNew('en')->description = 'Комплексне обстеження та консультації фахівців';
+
+        $pageBlock2->save();
 
         Page::firstOrCreate([
             'type' => PageType::SHARESITEM->value,

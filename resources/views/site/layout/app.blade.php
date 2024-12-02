@@ -79,7 +79,7 @@
 					<div class="row">
 						<div class="col position-static">
 							<div class="d-flex align-items-start justify-content-between mb-3">
-								<div class="h2 font-m modal-title font-weight-bolder mb-0 pr-8">Записатися на прийом</div>
+								<div class="h2 font-m modal-title font-weight-bolder mb-0 pr-8">{{ __('pages.sign_up_for_for_appointment') }}</div>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">
 										<svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -108,21 +108,21 @@
 					<div class="row field-wrap">
 						<div class="col-12">
 							<div class="field mb-2">
-								<label class="control-label mb-2" for="form-sign-up-appointment--name">Вкажіть ПІБ</label>
+								<label class="control-label mb-2" for="form-sign-up-appointment--name">{{ __('pages.enter_your_full_name') }}</label>
 								<input type="text" id="form-sign-up-appointment--name" class="form-control mb-2">
-								<div class="field--help-info small-txt text-red mb-2">Вкажіть ПІБ</div>
+								<div class="field--help-info small-txt text-red mb-2">{{ __('pages.enter_your_full_name') }}</div>
 							</div>
 						</div>
 						<div class="col-12">
 							<div class="field mb-2">
-								<label class="control-label mb-2" for="form-sign-up-appointment--phone">Вкажіть номер телефону</label>
+								<label class="control-label mb-2" for="form-sign-up-appointment--phone">{{ __('pages.enter_your_phone_number') }}</label>
 								<input type="tel" id="form-sign-up-appointment--phone" class="form-control mb-2">
-								<div class="field--help-info small-txt text-red mb-2">Вкажіть номер телефону</div>
+								<div class="field--help-info small-txt text-red mb-2">{{ __('pages.enter_your_phone_number') }}</div>
 							</div>
 						</div>
 						<div class="col-12">
 							<div class="field mb-2">
-								<div class="control-label mb-2">Оберіть фахівця</div>
+								<div class="control-label mb-2">{{ __('pages.choose_a_specialist') }}</div>
 								<div class="select-wrap">
 									<select class="select-choose-specialist--popup">
 										<option></option>
@@ -132,12 +132,12 @@
 										<option value="4">Фахівeць 4</option>
 									</select>
 								</div>
-								<div class="field--help-info small-txt text-red mb-2">Оберіть фахівця</div>
+								<div class="field--help-info small-txt text-red mb-2">{{ __('pages.choose_a_specialist') }}</div>
 							</div>
 						</div>
 						<div class="col-12">
 							<div class="field mb-2">
-								<div class="control-label mb-2">Оберіть клініку</div>
+								<div class="control-label mb-2">{{ __('pages.choose_a_clinic') }}</div>
 								<div class="select-wrap">
 									<select class="select-choose-clinic--popup">
 										<option></option>
@@ -147,11 +147,11 @@
 										<option value="4">Клініка 4</option>
 									</select>
 								</div>
-								<div class="field--help-info small-txt text-red mb-2">Оберіть клініку</div>
+								<div class="field--help-info small-txt text-red mb-2">{{ __('pages.choose_a_clinic') }}</div>
 							</div>
 						</div>
 						<div class="col-12">
-							<button type="button" class="btn btn-blue font-weight-bold w-100 mt-2" data-dismiss="modal" aria-label="Close">Записатися</button>
+							<button type="button" class="btn btn-blue font-weight-bold w-100 mt-2" data-dismiss="modal" aria-label="Close">{{ __('pages.sign_up') }}</button>
 						</div>
 					</div>
 				</form>
@@ -298,13 +298,13 @@
 							</div>
 							<div class="row mt-lg-8 d-none d-lg-flex">
 								<div class="col col-xl-6 offset-xl-6">
-									<button type="button" class="btn btn-block btn-blue" data-toggle="modal" data-dismiss="modal" aria-label="Close">Записатися на прийом</button>
+									<button type="button" class="btn btn-block btn-blue" data-toggle="modal" data-dismiss="modal" aria-label="Close">{{ __('pages.sign_up_for_for_appointment') }}</button>
 								</div>
 							</div>
 						</div>
 						<div class="row d-lg-none mt-5">
 							<div class="col">
-								<button type="button" class="btn btn-block btn-blue" data-toggle="modal" data-dismiss="modal" aria-label="Close">Записатися на прийом</button>
+								<button type="button" class="btn btn-block btn-blue" data-toggle="modal" data-dismiss="modal" aria-label="Close">{{ __('pages.sign_up_for_for_appointment') }}</button>
 							</div>
 						</div>
 					</div>

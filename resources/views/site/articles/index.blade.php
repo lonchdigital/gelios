@@ -24,7 +24,7 @@
         <div class="container">
             <div class="row align-items-center justify-content-between w-100 mb-5">
                 <div class="col-auto">
-                    <div class="h2 font-m font-weight-bolder text-blue">Блог</div>
+                    <div class="h2 font-m font-weight-bolder text-blue">{{ __('pages.blog') ?? 'Блог' }}</div>
                 </div>
                 <div class="col-auto">
                     <div class="field field-select-default">

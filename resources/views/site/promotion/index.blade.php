@@ -106,11 +106,11 @@
                             <div class="position-relative rounded-sm overflow-hidden text-white p-3 p-lg-6">
                                 <div class="backdrop-small align-content-end d-flex flex-column justify-content-end">
                                     <div class="h3 font-m mb-2 font-weight-bolder">“Check-up” <br
-                                            class="d-none d-xl-block">програми</div>
-                                    <p class="mb-0">Комплексне обстеження та консультації фахівців</p>
+                                            class="d-none d-xl-block">{{ __('pages.programs') }}</div>
+                                    <p class="mb-0">{{ __('pages.comprehensive_examination_and_expert_advice') }}</p>
                                 </div>
                                 <div class="wrap-img">
-                                    <img class="bg-down" src="img/img-79.jpeg" alt="img">
+                                    <img class="bg-down" src="{{ asset('static_images/img-79.jpeg') }}" alt="img">
                                 </div>
                             </div>
                         </div>

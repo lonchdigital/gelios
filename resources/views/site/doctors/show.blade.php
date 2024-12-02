@@ -110,51 +110,6 @@
                         </div>
                     @empty
                     @endforelse
-                    {{-- <div class="certificates--item swiper-slide">
-                        <a data-fancybox="certificates--gallery" href="img/certificate.jpeg">
-                            <div class="inner">
-                                <div class="wrap-img">
-                                    <img src="img/certificate.jpeg" alt="img">
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="certificates--item swiper-slide">
-                        <a data-fancybox="certificates--gallery" href="img/certificate.jpeg">
-                            <div class="inner">
-                                <div class="wrap-img">
-                                    <img src="img/certificate.jpeg" alt="img">
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="certificates--item swiper-slide">
-                        <a data-fancybox="certificates--gallery" href="img/certificate.jpeg">
-                            <div class="inner">
-                                <div class="wrap-img">
-                                    <img src="img/certificate.jpeg" alt="img">
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="certificates--item swiper-slide">
-                        <a data-fancybox="certificates--gallery" href="img/certificate.jpeg">
-                            <div class="inner">
-                                <div class="wrap-img">
-                                    <img src="img/certificate.jpeg" alt="img">
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="certificates--item swiper-slide">
-                        <a data-fancybox="certificates--gallery" href="img/certificate.jpeg">
-                            <div class="inner">
-                                <div class="wrap-img">
-                                    <img src="img/certificate.jpeg" alt="img">
-                                </div>
-                            </div>
-                        </a>
-                    </div> --}}
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -258,64 +213,11 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-12 col-7 col-lg-6">
-                    <form id="form-meeting" class="p-3 p-lg-5 bg-white">
-                        <div class="h2 font-m font-weight-bolder mb-5">Записатися на прийом</div>
-                        <div class="row field-wrap">
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <label class="control-label mb-2" for="form-meeting-name">Вкажіть ПІБ</label>
-                                    <input type="text" id="form-meeting-name" class="form-control mb-2">
-                                    <div class="field--help-info small-txt text-red mb-2">Вкажіть ПІБ</div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <label class="control-label mb-2" for="form-meeting-phone">Вкажіть номер
-                                        телефону</label>
-                                    <input type="tel" id="form-meeting-phone" class="form-control mb-2">
-                                    <div class="field--help-info small-txt text-red mb-2">Вкажіть номер телефону</div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <div class="control-label mb-2">Оберіть фахівця</div>
-                                    <div class="select-wrap">
-                                        <select class="select-choose-specialist">
-                                            <option></option>
-                                            <option value="1">Фахівeць 1</option>
-                                            <option value="2">Фахівeць 2</option>
-                                            <option value="3">Фахівeць 3</option>
-                                            <option value="4">Фахівeць 4</option>
-                                        </select>
-                                    </div>
-                                    <div class="field--help-info small-txt text-red mb-2">Оберіть фахівця</div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <div class="control-label mb-2">Оберіть клініку</div>
-                                    <div class="select-wrap">
-                                        <select class="select-choose-clinic">
-                                            <option></option>
-                                            <option value="1">Клініка 1</option>
-                                            <option value="2">Клініка 2</option>
-                                            <option value="3">Клініка 3</option>
-                                            <option value="4">Клініка 4</option>
-                                        </select>
-                                    </div>
-                                    <div class="field--help-info small-txt text-red mb-2">Оберіть клініку</div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button type="button"
-                                    class="btn btn-blue font-weight-bold w-100 mt-2">Записатися</button>
-                            </div>
-                        </div>
-                    </form>
+                    @include('site.components.appointment-form')
                 </div>
                 <div class="col-5 col-lg-6 d-none d-lg-flex">
                     <div class="wrap-img">
-                        <img src="img/img-right-b.png" alt="img">
+                        <img src="{{ asset('static_images/img-right-b.png') }}" alt="img">
                     </div>
                 </div>
             </div>
@@ -325,50 +227,27 @@
         <div class="container overflow-hidden">
             <div class="row">
                 <div class="col d-flex align-items-center justify-content-between mb-5">
-                    <div class="h2 font-m font-weight-bolder text-blue">Новини</div>
-                    <a href="##" class="btn btn-white font-weight-bold">Усі новини</a>
+                    <div class="h2 font-m font-weight-bolder text-blue">{{ __('pages.news') }}</div>
+                    <a href="{{ route('articles.index') }}" class="btn btn-white font-weight-bold">{{ __('pages.all_news') }}</a>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <div class="news--swiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide news--item">
-                                <a href="##" class="inner">
-                                    <div class="wrap-img mb-4">
-                                        <img src="img/articles/article-1.jpeg" alt="img">
-                                        <div class="date-label">13 березня 2024</div>
-                                    </div>
-                                    <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                    <div class="descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у Дніпрі
-                                        пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у Дніпрі
-                                        пропонує..</div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide news--item">
-                                <a href="##" class="inner">
-                                    <div class="wrap-img mb-4">
-                                        <img src="img/articles/article-2.jpeg" alt="img">
-                                        <div class="date-label">13 березня 2024</div>
-                                    </div>
-                                    <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                    <div class="descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у Дніпрі
-                                        пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у Дніпрі
-                                        пропонує..</div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide news--item">
-                                <a href="##" class="inner">
-                                    <div class="wrap-img mb-4">
-                                        <img src="img/articles/article-3.jpeg" alt="img">
-                                        <div class="date-label">13 березня 2024</div>
-                                    </div>
-                                    <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                    <div class="descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у Дніпрі
-                                        пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у Дніпрі
-                                        пропонує..</div>
-                                </a>
-                            </div>
+                            @forelse($relatedArticles as $relatedArticle)
+                                <div class="swiper-slide news--item">
+                                    <a href="{{ route('articles.show', ['slug' => $relatedArticle->slug]) }}" class="inner">
+                                        <div class="wrap-img mb-4">
+                                            <img src="{{ $relatedArticle->imageUrl }}" alt="{{ $relatedArticle->title }}">
+                                            <div class="date-label">{{ Carbon\Carbon::parse($relatedArticle->created_at)->day }}  {{ Carbon\Carbon::parse($relatedArticle->created_at)->translatedFormat('F') }} {{ Carbon\Carbon::parse($relatedArticle->created_at)->year }}</div>
+                                        </div>
+                                        <div class="h3 small mb-2">{{ $relatedArticle->title }}</div>
+                                        <div class="descrp">{!! $relatedArticle->description !!}</div>
+                                    </a>
+                                </div>
+                            @empty
+                            @endforelse
                         </div>
                         <div class="swiper-pagination mt-6 d-xl-none"></div>
                     </div>

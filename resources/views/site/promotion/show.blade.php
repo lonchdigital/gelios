@@ -135,8 +135,8 @@
         <div class="container overflow-hidden">
             <div class="row mb-8">
                 <div class="col d-flex align-items-center justify-content-between">
-                    <div class="h2 font-m font-weight-bolder text-blue">Більше акцій</div>
-                    <a href="{{ route('promotions.index') }}" class="btn btn-white font-weight-bold">Усі акції</a>
+                    <div class="h2 font-m font-weight-bolder text-blue">{{ __('pages.more_shares') }}</div>
+                    <a href="{{ route('promotions.index') }}" class="btn btn-white font-weight-bold">{{ __('pages.all_promotions') }}</a>
                 </div>
             </div>
             <div class="row">
