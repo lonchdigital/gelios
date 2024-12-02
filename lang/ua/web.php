@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'insurance_companies_we_are_working_with' => 'Страхові компанії, з якими ми співпрацюємо',
     'nothing_found' => 'Нічого не знайдено',
     'photo_of_the_hospital' => 'Фото клініки',
     'make_appointment' => 'Записатися на прийом',
