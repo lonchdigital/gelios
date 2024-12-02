@@ -512,7 +512,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="h2 font-m font-weight-bolder text-lg-center mb-8">{{ __('pages.insurance_companies_we_cooperate_with') }}</div>
+                        <div class="h2 font-m font-weight-bolder text-lg-center mb-8">{{ trans('web.insurance_companies_we_are_working_with') }}</div>
                     </div>
                 </div>
             </div>
