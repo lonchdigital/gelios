@@ -35,12 +35,15 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @if($errors->has('uaTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaTitle') }}</div>
+                                                                @if ($errors->has('uaTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('uaTitle') }}</div>
                                                                 @elseif($errors->has('ruTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruTitle') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('ruTitle') }}</div>
                                                                 @elseif($errors->has('enTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enTitle') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('enTitle') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -64,12 +67,15 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @if($errors->has('uaEducation'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaEducation') }}</div>
+                                                                @if ($errors->has('uaEducation'))
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('uaEducation') }}</div>
                                                                 @elseif($errors->has('ruEducation'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruEducation') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('ruEducation') }}</div>
                                                                 @elseif($errors->has('enEducation'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enEducation') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('enEducation') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -93,12 +99,15 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @if($errors->has('uaSpecialty'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSpecialty') }}</div>
+                                                                @if ($errors->has('uaSpecialty'))
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('uaSpecialty') }}</div>
                                                                 @elseif($errors->has('ruSpecialty'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSpecialty') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('ruSpecialty') }}</div>
                                                                 @elseif($errors->has('enSpecialty'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSpecialty') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('enSpecialty') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -123,12 +132,15 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @if($errors->has('uaSlug'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSlug') }}</div>
+                                                                @if ($errors->has('uaSlug'))
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('uaSlug') }}</div>
                                                                 @elseif($errors->has('ruSlug'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSlug') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('ruSlug') }}</div>
                                                                 @elseif($errors->has('enSlug'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSlug') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('enSlug') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -155,12 +167,15 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @if($errors->has('ruTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruTitle') }}</div>
+                                                                @if ($errors->has('ruTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('ruTitle') }}</div>
                                                                 @elseif($errors->has('uaTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaTitle') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('uaTitle') }}</div>
                                                                 @elseif($errors->has('enTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enTitle') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('enTitle') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -184,12 +199,15 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @if($errors->has('ruEducation'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruEducation') }}</div>
+                                                                @if ($errors->has('ruEducation'))
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('ruEducation') }}</div>
                                                                 @elseif($errors->has('uaEducation'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaEducation') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('uaEducation') }}</div>
                                                                 @elseif($errors->has('enEducation'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enEducation') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('enEducation') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -213,12 +231,15 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @if($errors->has('ruSpecialty'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSpecialty') }}</div>
+                                                                @if ($errors->has('ruSpecialty'))
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('ruSpecialty') }}</div>
                                                                 @elseif($errors->has('uaSpecialty'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSpecialty') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('uaSpecialty') }}</div>
                                                                 @elseif($errors->has('enSpecialty'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSpecialty') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('enSpecialty') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -243,12 +264,15 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @if($errors->has('ruSlug'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSlug') }}</div>
+                                                                @if ($errors->has('ruSlug'))
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('ruSlug') }}</div>
                                                                 @elseif($errors->has('uaSlug'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSlug') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('uaSlug') }}</div>
                                                                 @elseif($errors->has('enSlug'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSlug') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('enSlug') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -275,12 +299,15 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @if($errors->has('enTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enTitle') }}</div>
+                                                                @if ($errors->has('enTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('enTitle') }}</div>
                                                                 @elseif($errors->has('ruTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruTitle') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('ruTitle') }}</div>
                                                                 @elseif($errors->has('uaTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaTitle') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('uaTitle') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -304,12 +331,15 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @if($errors->has('enEducation'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enEducation') }}</div>
+                                                                @if ($errors->has('enEducation'))
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('enEducation') }}</div>
                                                                 @elseif($errors->has('ruEducation'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruEducation') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('ruEducation') }}</div>
                                                                 @elseif($errors->has('uaEducation'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaEducation') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('uaEducation') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -333,12 +363,15 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @if($errors->has('enSpecialty'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSpecialty') }}</div>
+                                                                @if ($errors->has('enSpecialty'))
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('enSpecialty') }}</div>
                                                                 @elseif($errors->has('ruSpecialty'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSpecialty') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('ruSpecialty') }}</div>
                                                                 @elseif($errors->has('uaSpecialty'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSpecialty') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('uaSpecialty') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -363,12 +396,15 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @if($errors->has('enSlug'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSlug') }}</div>
+                                                                @if ($errors->has('enSlug'))
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('enSlug') }}</div>
                                                                 @elseif($errors->has('ruSlug'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSlug') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('ruSlug') }}</div>
                                                                 @elseif($errors->has('uaSlug'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSlug') }}</div>
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $errors->first('uaSlug') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -380,23 +416,22 @@
                                         <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <x-admin.multilanguage-text-area-rich
-                                                        :is-required="false"
-                                                        :label="'Опис'"
-                                                        field-name="description"
-                                                        live-wire-field="description"
-                                                        :values="[
+                                                    <x-admin.multilanguage-text-area-rich :is-required="false"
+                                                        :label="'Опис'" field-name="description"
+                                                        live-wire-field="description" :values="[
                                                             'ua' => $this->uaDescription,
                                                             'ru' => $this->ruDescription,
-                                                            'en' => $this->enDescription
-                                                        ]"
-                                                    />
-                                                    @if($errors->has('uaDescription'))
-                                                        <div class="text-danger">{{ $errors->first('uaDescription') }}</div>
+                                                            'en' => $this->enDescription,
+                                                        ]" />
+                                                    @if ($errors->has('uaDescription'))
+                                                        <div class="text-danger">{{ $errors->first('uaDescription') }}
+                                                        </div>
                                                     @elseif($errors->has('ruDescription'))
-                                                        <div class="text-danger">{{ $errors->first('ruDescription') }}</div>
+                                                        <div class="text-danger">{{ $errors->first('ruDescription') }}
+                                                        </div>
                                                     @elseif($errors->has('enDescription'))
-                                                        <div class="text-danger">{{ $errors->first('enDescription') }}</div>
+                                                        <div class="text-danger">{{ $errors->first('enDescription') }}
+                                                        </div>
                                                     @endif
                                                 </div>
                                             </div>
@@ -415,9 +450,13 @@
                                                                         </label>
                                                                         <select class="form-control rounded-0"
                                                                             wire:model.live="specialization">
-                                                                            <option value="">Виберіть спеціалізацію</option>
+                                                                            <option value="">Виберіть
+                                                                                спеціалізацію</option>
                                                                             @forelse($this->specializations as $specialization2)
-                                                                                <option value="{{ $specialization2->id }}">{{ $specialization2->title }}</option>
+                                                                                <option
+                                                                                    value="{{ $specialization2->id }}">
+                                                                                    {{ $specialization2->title }}
+                                                                                </option>
                                                                             @empty
                                                                             @endforelse
                                                                         </select>
@@ -448,9 +487,11 @@
                                                                         </label>
                                                                         <select class="form-control rounded-0"
                                                                             wire:model.live="category">
-                                                                            <option value="">Виберіть категорію</option>
+                                                                            <option value="">Виберіть категорію
+                                                                            </option>
                                                                             @forelse($this->categories as $category2)
-                                                                                <option value="{{ $category2->id }}">{{ $category2->title }}</option>
+                                                                                <option value="{{ $category2->id }}">
+                                                                                    {{ $category2->title }}</option>
                                                                             @empty
                                                                             @endforelse
                                                                         </select>
@@ -603,6 +644,63 @@
                                                 @endforelse
 
                                             </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group mb-1">
+                                                                <label>Doctor directions
+                                                                </label>
+                                                                @forelse($this->selectedArray ?? [] as $key => $item2)
+                                                                    <li class="flex justify-between items-center py-2 px-3 border-b border-[#1f293733]"
+                                                                        style="border-color: #1f293733">
+                                                                        <span>{{ $item2->name ?? $item2['name'] }}</span>
+                                                                        <a wire:click="deleteItem({{ $key }})" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
+                                                                    </li>
+                                                                @empty
+                                                                    <li class="py-2 px-3">Empty</li>
+                                                                @endforelse
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group mb-1">
+                                                                <label>Add direction
+                                                                </label>
+                                                                <input type="search" tabIndex="0"
+                                                                placeholder="Search"
+                                                                wire:model.live="searchDirection"
+                                                                    class="form-control">
+                                                            </div>
+                                                            @if(count($this->directions))
+                                                            <div class="dropdown open w-full">
+                                                                <ul tabindex="0"
+                                                                    class="dropdown-content dropdown-open menu p-2 shadow rounded-box w-fit min-w-52 max-w-[400px] bg-white z-50">
+                                                                    @foreach ($this->directions as $direction)
+                                                                        <li
+                                                                            wire:click="selectNetwork('{{ $direction->id }}')">
+                                                                            <span>{{ $direction->name }}</span>
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>

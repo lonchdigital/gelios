@@ -21,7 +21,7 @@ class DoctorController extends Controller
             DoctorCategoryType::CHILDREN->value,
         ];
 
-        $doctors = Doctor::paginate(10);
+        $doctors = Doctor::get();
 
         $categories = DoctorCategory::get();
 

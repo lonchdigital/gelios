@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="container-fluid">
-        @livewire('admin.specialization.create-edit', ['specalization' => $specalization])
+        @livewire('admin.specialization.create-edit', ['specialization' => $category])
     </div>
 @endsection

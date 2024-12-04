@@ -18,8 +18,8 @@ class SpecializationController extends Controller
         return view('admin.specialization.create');
     }
 
-    public function edit(Specialization $specalization)
+    public function edit(Specialization $category)
     {
-        return view('admin.specialization.edit', compact('specalization'));
+        return view('admin.specialization.edit', compact('category'));
     }
 }

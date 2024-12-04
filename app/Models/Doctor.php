@@ -67,6 +67,11 @@ class Doctor extends Model
         return $this->morphToMany(Review::class, 'reviewable');
     }
 
+    public function directions()
+    {
+        return $this->BelongsToMany(Direction::class, 'direction_doctors', 'doctor_id', 'direction_id');
+    }
+
     public function resolveRouteBinding($value, $field = null)
     {
         $field = $field ?? 'slug';

@@ -15,7 +15,7 @@
                 'url' => route('main'),
             ],
             [
-                'title' => $page->title ?? __('doctor.doctors'),
+                'title' => __('doctor.doctors'),
                 'url' => route('doctors.index'),
             ],
             [
@@ -39,27 +39,27 @@
                                 <div class="h3 font-m font-weight-bolder text-blue">{{ $doctor->title ?? '' }}</div>
                             </div>
                         </div>
-                        <div class="position-work font-weight-bold text-grey mb-3">Лікар
+                        <div class="position-work font-weight-bold text-grey mb-3">{{ __('doctor.doctor') }}
                             {{ $doctor->specialization->title ?? '' }}</div>
 
                         @if(!empty($doctor->expirience))
-                            <div class="experience-quantity mb-3">Досвід роботи: {{ $doctor->expirience ?? '' }} років</div>
+                            <div class="experience-quantity mb-3">{{ __('doctor.work_experience') }}: {{ $doctor->expirience ?? '' }} років</div>
                         @endif
 
                         <div class="os-scrollbar-overflow content mb-3">
                             <div class="mb-3">
                                 <span
-                                    class="text-blue mr-3">Спеціальність:</span><span>{{ $doctor->specialty ?? '' }}</span>
+                                    class="text-blue mr-3">{{ __('doctor.specialty') }}:</span><span>{{ $doctor->specialty ?? '' }}</span>
                             </div>
                             <div class="mb-3">
                                 <span
-                                    class="text-blue mr-3">Спеціалізація:</span><span>{{ $doctor->specialization->title ?? '' }}</span>
+                                    class="text-blue mr-3">{{ __('doctor.specialization') }}:</span><span>{{ $doctor->specialization->title ?? '' }}</span>
                             </div>
                             <div class="mb-3">
-                                <span class="text-blue mr-3">Стаж:</span><span>{{ $doctor->age ?? '' }} роки</span>
+                                <span class="text-blue mr-3">{{ __('doctor.age') }}:</span><span>{{ $doctor->age ?? '' }} роки</span>
                             </div>
                             <div class="mb-3">
-                                <span class="text-blue mr-3">Освіта:</span><span>{{ $doctor->education }}</span>
+                                <span class="text-blue mr-3">{{ __('doctor.education') }}:</span><span>{!! $doctor->education !!}</span>
                             </div>
                             {!! $doctor->content !!}
                             {{-- <p>1993-1999 Дніпропетровська державна медична академія</p>
@@ -75,15 +75,15 @@
                             <p>2011-2021 Працювала лікарем приймального відділення</p>
                             <p>1993-1999 Дніпропетровська державна медична академія</p> --}}
                         </div>
-                        <div class="text-blue font-weight-bold mb-2">Напрямки лікування:</div>
+                        <div class="text-blue font-weight-bold mb-2">{{ __('doctor.directions_of_treatment') }}:</div>
                         <div class="doctor-directions-list font-weight-bold mb-4">
-                            <div class="item">Хірургія</div>
-                            <div class="item">Загальна хірургія</div>
-                            <div class="item">Офтальмологія</div>
-                            <div class="item">Хірургія ока</div>
-                            <div class="item">Мікрохірургія</div>
+                            @forelse($doctor->directions as $direction)
+                                <div class="item">{{ $direction->name }}</div>
+                            @empty
+                            @endforelse
                         </div>
-                        <button type="button" class="btn btn-blue font-weight-bold">Записатися на прийом</button>
+                        <button type="button" class="btn btn-blue font-weight-bold" data-toggle="modal"
+                        data-target="#popup--sign-up-appointment">{{ __('pages.make_an_appointment') }}</button>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
         <div class="container overflow-hidden">
             <div class="row mb-8">
                 <div class="col d-flex align-items-center justify-content-between">
-                    <div class="h2 font-m font-weight-bolder text-blue">Дипломи та сертифікати</div>
+                    <div class="h2 font-m font-weight-bolder text-blue">{{ __('doctor.diplomas_and_certificates') }}</div>
                 </div>
             </div>
             <div class="certificates--swiper">
@@ -119,7 +119,7 @@
         <div class="container overflow-hidden">
             <div class="row mb-19">
                 <div class="col d-flex align-items-center justify-content-between">
-                    <div class="h2 font-m font-weight-bolder text-blue">Відгуки</div>
+                    <div class="h2 font-m font-weight-bolder text-blue">{{ __('pages.reviews') }}</div>
                 </div>
             </div>
             <div class="row">

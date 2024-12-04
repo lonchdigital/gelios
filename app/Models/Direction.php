@@ -54,6 +54,15 @@ class Direction extends Model implements TranslatableContract
         return $this->belongsToMany(Contact::class, 'contact_directions');
     }
 
+    public function scopeSearch($query, $val)
+    {
+        return $query->when($val, function($q) use ($val) {
+            $q->whereHas('translations', function($q2) use ($val) {
+                $q2->where('name', 'like', "%$val%");
+            });
+        });
+    }
+
     public function buildBreadcrumbs()
     {
         $breadcrumbs = [];

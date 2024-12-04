@@ -155,7 +155,7 @@
 						</div>
 					</div>
 				</form>
-                @include('site.components.appointment-form')
+                {{-- @include('site.components.appointment-form') --}}
 			</div>
 		</div>
 	</div>

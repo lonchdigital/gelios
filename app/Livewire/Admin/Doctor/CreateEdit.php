@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Admin\Doctor;
 
+use App\Models\Direction;
+use App\Models\DirectionDoctor;
 use App\Models\Doctor;
 use App\Models\DoctorCategory;
 use App\Models\DoctorTranslation;
@@ -77,6 +79,12 @@ class CreateEdit extends Component
 
     public $newImageTemporary;
 
+    public $directions;
+
+    public array $selectedArray = [];
+
+    public string $searchDirection = '';
+
     protected $listeners = [
         'languageSwitched' => 'languageSwitched'
     ];
@@ -100,6 +108,19 @@ class CreateEdit extends Component
 
         $this->categories = DoctorCategory::get();
         $this->category = $this->doctor->doctor_category_id ?? null;
+
+        foreach ($this->doctor->directions ?? [] as $direction) {
+            $this->selectedArray[] = $direction;
+        }
+
+        $ids = [];
+
+        foreach ($this->selectedArray as $item) {
+            $ids[] = $item->id ?? $item['id'];
+        }
+
+        $this->directions = Direction::whereNotIn('id', $ids)->take(5)->get();
+
     }
 
     private function loadImages()
@@ -107,6 +128,20 @@ class CreateEdit extends Component
         $service = resolve(DoctorService::class);
 
         $this->images = $service->getDoctorImages($this->doctor);
+    }
+
+    public function updatedSearchDirection($val)
+    {
+        $ids = [];
+
+        foreach ($this->selectedArray as $item) {
+            $ids[] = $item->id ?? $item['id'];
+        }
+
+        $this->directions = Direction::search(rtrim($val))
+            ->whereNotIn('id', $ids)
+            ->take(5)
+            ->get();
     }
 
     private function loadTranslations()
@@ -364,10 +399,68 @@ class CreateEdit extends Component
             ]
         );
 
+        $this->syncDirections();
+
         session()->flash('success', 'Дані успішно збережено');
 
         $this->redirectRoute('admin.doctors.index');
     }
+
+    public function syncDirections()
+    {
+        $ids = [];
+
+        foreach ($this->selectedArray as $item) {
+            $ids[] = $item->id ?? $item['id'];
+        }
+
+        foreach ($this->doctor->directions()->whereNotIn('directions.id', $ids)->get() as $deleteItem) {
+            DirectionDoctor::where('direction_id', $deleteItem->id)
+                ->where('doctor_id', $this->doctor->id)
+                ->first()
+                ->delete();
+        }
+
+        foreach ($this->selectedArray as $item) {
+            DirectionDoctor::firstOrCreate([
+                'doctor_id' => $this->doctor->id,
+                'direction_id' => $item->id ?? $item['id'],
+            ]);
+        }
+    }
+
+    public function deleteItem($key)
+    {
+        unset($this->selectedArray[$key]);
+
+        $ids = [];
+
+        foreach ($this->selectedArray as $item) {
+            $ids[] = $item->id ?? $item['id'];
+        }
+
+        $this->directions = Direction::whereNotIn('id', $ids)->take(5)->get();
+    }
+
+    public function selectNetwork($id)
+    {
+        $direction = Direction::find($id);
+
+        $this->searchDirection = $direction->name;
+
+        $this->selectedArray[] = $direction;
+
+        $ids = [];
+
+        foreach ($this->selectedArray as $item) {
+            $ids[] = $item->id ?? $item['id'];
+        }
+
+        $this->directions = Direction::whereNotIn('id', $ids)->take(5)->get();
+
+        $this->searchDirection = '';
+    }
+
 
     public function deleteNewImage($key)
     {

@@ -11,6 +11,7 @@ use App\Models\DoctorCategory;
 use App\Models\Laboratory;
 use App\Models\PageBlock;
 use App\Models\Promotion;
+use App\Models\Specialization;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
@@ -113,6 +114,14 @@ class Delete extends Component
                 $this->type = 'articleBlock';
                 $this->modalTitle = 'Delete article block';
                 $this->modalBody  = 'You really want to delete article block: ' . $this->item->title . '?';
+                $this->modalInfo  = '';
+                break;
+
+            case 'specialization':
+                $this->item = Specialization::find($modelId);
+                $this->type = 'specialization';
+                $this->modalTitle = 'Delete specialization';
+                $this->modalBody  = 'You really want to delete specialization: ' . $this->item->title . '?';
                 $this->modalInfo  = '';
                 break;
 
@@ -238,6 +247,14 @@ class Delete extends Component
                 $this->updateArticleBlockSort($this->item);
 
                 // $this->deleteImage($this->item->image);
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
+            case 'specialization':
 
                 $this->item->delete();
 
