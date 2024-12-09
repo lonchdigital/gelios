@@ -6,9 +6,9 @@
                     <section class="mb-50">
                         <h6 class="card-title">
                             @if (!empty($this->block->id))
-                                Редагування блоку
+                                {{ __('admin.edit_block') }}
                             @else
-                                Додавання блоку
+                                {{ __('admin.create_block') }}
                             @endif
                         </h6>
 
@@ -26,7 +26,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок
+                                                                            <label>{{ __('admin.title') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="uaTitle"
@@ -58,7 +58,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок
+                                                                            <label>{{ __('admin.title') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="ruTitle"
@@ -90,7 +90,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок
+                                                                            <label>{{ __('admin.title') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="enTitle"
@@ -111,13 +111,13 @@
                                                 </div>
                                             </div>
                                         @endif
-                                        
+
                                         <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <x-admin.multilanguage-text-area-rich
                                                         :is-required="false"
-                                                        :label="'Опис'"
+                                                        :label="__('admin.description')"
                                                         field-name="description"
                                                         live-wire-field="description"
                                                         :values="[
@@ -146,7 +146,7 @@
                                                                 <div
                                                                     class="multilang-content tab-pane fade active show ">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Зображення</label>
+                                                                        <label>{{ __('admin.image') }}</label>
                                                                         <input type="file" wire:model="image"
                                                                             class="form-control">
                                                                     </div>
@@ -165,7 +165,7 @@
                                                                     <a wire:click="deleteImage()"
                                                                         style="cursor: pointer;">
                                                                         <i class="ti-close font-weight-bold mr-2"></i>
-                                                                        Видалити зображення
+                                                                        {{ __('admin.delete_image') }}
                                                                     </a>
                                                                 </div>
                                                             @elseif(!empty($this->block->image))
@@ -183,7 +183,7 @@
                         </div>
                     </section>
 
-                    <button type="submit" class="btn btn-primary mr-2 mb-3">Зберегти</button>
+                    <button type="submit" class="btn btn-primary mr-2 mb-3">{{ __('admin.save') }}</button>
                 </form>
             </div>
         </div>

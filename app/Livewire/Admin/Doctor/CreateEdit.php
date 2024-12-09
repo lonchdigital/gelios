@@ -6,12 +6,14 @@ use App\Models\Direction;
 use App\Models\DirectionDoctor;
 use App\Models\Doctor;
 use App\Models\DoctorCategory;
+use App\Models\DoctorSpecialization;
 use App\Models\DoctorTranslation;
 use App\Models\Specialization;
 use App\Services\Admin\DoctorService;
 use App\Services\Admin\ImageService;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use Intervention\Image\Drivers\Specializable;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -59,9 +61,30 @@ class CreateEdit extends Component
 
     public $expirience = '';
 
+    public string $seoDescription;
+
+    public string $uaSeoTitle = '';
+
+    public string $enSeoTitle = '';
+
+    public string $ruSeoTitle = '';
+
+    public string $uaSeoDescription = '';
+
+    public string $enSeoDescription = '';
+
+    public string $ruSeoDescription = '';
+
+
+    // public $specializations;
+
+    // public $specialization;
+
     public $specializations;
 
-    public $specialization;
+    public array $selectedSpecializations = [];
+
+    public string $searchSpecialization = '';
 
     public $categories;
 
@@ -104,7 +127,7 @@ class CreateEdit extends Component
         $this->loadImages();
 
         $this->specializations = Specialization::get();
-        $this->specialization = $this->doctor->specialization_id ?? null;
+        // $this->specialization = $this->doctor->specialization_id ?? null;
 
         $this->categories = DoctorCategory::get();
         $this->category = $this->doctor->doctor_category_id ?? null;
@@ -121,6 +144,17 @@ class CreateEdit extends Component
 
         $this->directions = Direction::whereNotIn('id', $ids)->take(5)->get();
 
+        foreach ($this->doctor->specializations ?? [] as $specialization) {
+            $this->selectedSpecializations[] = $specialization;
+        }
+
+        $ids2 = [];
+
+        foreach ($this->selectedSpecializations as $item) {
+            $ids2[] = $item->id ?? $item['id'];
+        }
+
+        $this->specializations = Specialization::whereNotIn('id', $ids)->take(5)->get();
     }
 
     private function loadImages()
@@ -139,6 +173,20 @@ class CreateEdit extends Component
         }
 
         $this->directions = Direction::search(rtrim($val))
+            ->whereNotIn('id', $ids)
+            ->take(5)
+            ->get();
+    }
+
+    public function updatedSearchSpecialization($val)
+    {
+        $ids = [];
+
+        foreach ($this->selectedSpecializations as $item) {
+            $ids[] = $item->id ?? $item['id'];
+        }
+
+        $this->specializations = Specialization::search(rtrim($val))
             ->whereNotIn('id', $ids)
             ->take(5)
             ->get();
@@ -169,6 +217,14 @@ class CreateEdit extends Component
         $this->uaSlug = $translations['ua']['slug'] ?? '';
         $this->enSlug = $translations['en']['slug'] ?? '';
         $this->ruSlug = $translations['ru']['slug'] ?? '';
+
+        $this->uaSeoDescription = $translations['ua']->meta_description ?? '';
+        $this->enSeoDescription = $translations['en']->meta_description ?? '';
+        $this->ruSeoDescription = $translations['ru']->meta_description ?? '';
+
+        $this->uaSeoTitle = $translations['ua']->seo_title ?? '';
+        $this->enSeoTitle = $translations['en']->seo_title ?? '';
+        $this->ruSeoTitle = $translations['ru']->seo_title ?? '';
     }
 
     public function updatedNewImage($val)
@@ -359,10 +415,9 @@ class CreateEdit extends Component
 
         $doctorService->saveDoctor(
             $this->doctor,
-            $this->slug,
             $this->age,
             $this->expirience,
-            $this->specialization,
+            // $this->specialization,
             $this->category,
             $images
         );
@@ -396,10 +451,23 @@ class CreateEdit extends Component
                 'ua' => $this->uaSlug,
                 'en' => $this->enSlug,
                 'ru' => $this->ruSlug,
-            ]
+            ],
+
+            [
+                'ua' => $this->uaSeoTitle,
+                'en' => $this->enSeoTitle,
+                'ru' => $this->ruSeoTitle,
+            ],
+            [
+                'ua' => $this->uaSeoDescription,
+                'en' => $this->enSeoDescription,
+                'ru' => $this->ruSeoDescription,
+            ],
         );
 
         $this->syncDirections();
+
+        $this->syncSpecializations();
 
         session()->flash('success', 'Дані успішно збережено');
 
@@ -442,6 +510,21 @@ class CreateEdit extends Component
         $this->directions = Direction::whereNotIn('id', $ids)->take(5)->get();
     }
 
+    public function updatedSeoDescription($val)
+    {
+        switch ($this->activeLocale) {
+            case 'ua':
+                $this->uaSeoDescription = $val;
+                break;
+            case 'ru':
+                $this->ruSeoDescription = $val;
+                break;
+            case 'en':
+                $this->enSeoDescription = $val;
+                break;
+        }
+    }
+
     public function selectNetwork($id)
     {
         $direction = Direction::find($id);
@@ -468,6 +551,62 @@ class CreateEdit extends Component
             unset($this->images[$key]);
         }
     }
+
+    public function syncSpecializations()
+    {
+        $ids = [];
+
+        foreach ($this->selectedSpecializations as $item) {
+            $ids[] = $item->id ?? $item['id'];
+        }
+
+        foreach ($this->doctor->specializations()->whereNotIn('specializations.id', $ids)->get() as $deleteItem) {
+            DoctorSpecialization::where('specialization_id', $deleteItem->id)
+                ->where('doctor_id', $this->doctor->id)
+                ->first()
+                ->delete();
+        }
+
+        foreach ($this->selectedSpecializations as $item) {
+            DoctorSpecialization::firstOrCreate([
+                'doctor_id' => $this->doctor->id,
+                'specialization_id' => $item->id ?? $item['id'],
+            ]);
+        }
+    }
+
+    public function deleteSpecializationItem($key)
+    {
+        unset($this->selectedSpecializations[$key]);
+
+        $ids = [];
+
+        foreach ($this->selectedSpecializations as $item) {
+            $ids[] = $item->id ?? $item['id'];
+        }
+
+        $this->specializations = Specialization::whereNotIn('id', $ids)->take(5)->get();
+    }
+
+    public function selectSpecialization($id)
+    {
+        $specialization = Specialization::find($id);
+
+        $this->searchSpecialization = $specialization->title;
+
+        $this->selectedSpecializations[] = $specialization;
+
+        $ids = [];
+
+        foreach ($this->selectedSpecializations as $item) {
+            $ids[] = $item->id ?? $item['id'];
+        }
+
+        $this->specializations = Specialization::whereNotIn('id', $ids)->take(5)->get();
+
+        $this->searchSpecialization = '';
+    }
+
 
     public function render()
     {

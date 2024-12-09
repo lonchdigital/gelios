@@ -13,4 +13,13 @@ class Specialization extends Model
     public $translatedAttributes = [
         'title',
     ];
+
+    public function scopeSearch($query, $val)
+    {
+        return $query->when($val, function($q) use ($val) {
+            $q->whereHas('translations', function($q2) use ($val) {
+                $q2->where('title', 'like', "%$val%");
+            });
+        });
+    }
 }

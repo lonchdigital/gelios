@@ -28,8 +28,8 @@
                         <thead>
                             <tr style="background-color: rgba(149, 149, 149, 0.2)">
                                 <th>ID</th>
-                                <th>Заголовок</th>
-                                <th style="text-align: right">Дії</th>
+                                <th>{{ __('admin.title') }}</th>
+                                <th style="text-align: right">{{ __('admin.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -91,7 +91,7 @@
                             live-wire-field="seoData.meta_title"
                             :values="$seoData['meta_title']"
                         />
-                    
+
                         <x-admin.multilanguage-text-area-rich
                             :is-required="false"
                             :label="trans('admin.meta_description')"

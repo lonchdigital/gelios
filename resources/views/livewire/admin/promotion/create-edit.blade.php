@@ -6,9 +6,9 @@
                     <section class="mb-50">
                         <h6 class="card-title">
                             @if (!empty($this->promotion->id))
-                                Редагування акції
+                                {{ __('admin.edit_promotion') }}
                             @else
-                                Створення акції
+                                {{ __('admin.create_promotion') }}
                             @endif
                         </h6>
 
@@ -27,7 +27,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок
+                                                                            <label>{{ __('admin.title') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="uaTitle"
@@ -57,7 +57,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Cлаг
+                                                                            <label>{{ __('admin.slug') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="uaSlug"
@@ -87,7 +87,7 @@
                                                                     <div id="uaPrice"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Вартість
+                                                                            <label>{{ __('admin.cost') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="uaPrice"
@@ -107,33 +107,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            {{-- <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div
-                                                                        class="multilang-content tab-pane fade active show ">
-                                                                        <div class="form-group mb-1">
-                                                                            <label>Опис
-                                                                                <strong>UA</strong>
-                                                                            </label>
-                                                                            <textarea wire:model="uaDescription" class="form-control"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @error('uaDescription')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
                                         @endif
 
                                         @if ($this->activeLocale == 'ru')
@@ -146,7 +119,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок
+                                                                            <label>{{ __('admin.title') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="ruTitle"
@@ -176,7 +149,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Cлаг
+                                                                            <label>{{ __('admin.slug') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="ruSlug"
@@ -206,7 +179,7 @@
                                                                     <div id="ruPrice"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Вартість
+                                                                            <label>{{ __('admin.cost') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="ruPrice"
@@ -226,33 +199,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            {{-- <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div
-                                                                        class="multilang-content tab-pane fade active show ">
-                                                                        <div class="form-group mb-1">
-                                                                            <label>Опис
-                                                                                <strong>RU</strong>
-                                                                            </label>
-                                                                            <textarea wire:model="ruDescription" class="form-control"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @error('ruDescription')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
                                         @endif
 
                                         @if ($this->activeLocale == 'en')
@@ -265,7 +211,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок
+                                                                            <label>{{ __('admin.title') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="enTitle"
@@ -295,7 +241,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Cлаг
+                                                                            <label>{{ __('admin.slug') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="enSlug"
@@ -325,7 +271,7 @@
                                                                     <div id="enPrice"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Вартість
+                                                                            <label>{{ __('admin.cost') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="enPrice"
@@ -345,33 +291,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            {{-- <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div
-                                                                        class="multilang-content tab-pane fade active show ">
-                                                                        <div class="form-group mb-1">
-                                                                            <label>Опис
-                                                                                <strong>EN</strong>
-                                                                            </label>
-                                                                            <textarea wire:model="enDescription" class="form-control"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @error('endescription')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
                                         @endif
 
                                         <div class="col-md-12">
@@ -379,7 +298,7 @@
                                                 <div class="col-md-12">
                                                     <x-admin.multilanguage-text-area-rich
                                                         :is-required="false"
-                                                        :label="'Опис'"
+                                                        :label="__('admin.description')"
                                                         field-name="description"
                                                         live-wire-field="description"
                                                         :values="[
@@ -399,33 +318,6 @@
                                             </div>
                                         </div>
 
-                                        {{-- <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="row mb-3">
-                                                        <div class="col-md-12">
-                                                            <div class="tab-content">
-                                                                <div
-                                                                    class="multilang-content tab-pane fade active show ">
-                                                                    <div class="form-group mb-1">
-                                                                        <label>Слаг
-                                                                        </label>
-                                                                        <input type="text" wire:model="slug"
-                                                                                class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            @error('slug')
-                                                                <div class="mt-1 text-danger ajaxError">
-                                                                    {{ $message }}
-                                                                </div>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> --}}
-
                                         <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -435,7 +327,7 @@
                                                                 <div
                                                                     class="multilang-content tab-pane fade active show ">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Зображення</label>
+                                                                        <label>{{ __('admin.image') }}</label>
                                                                         <input type="file" wire:model="image"
                                                                             class="form-control">
                                                                     </div>
@@ -454,7 +346,7 @@
                                                                     <a wire:click="deleteImage()"
                                                                         style="cursor: pointer;">
                                                                         <i class="ti-close font-weight-bold mr-2"></i>
-                                                                        Видалити зображення
+                                                                        {{ __('admin.delete_image') }}
                                                                     </a>
                                                                 </div>
                                                             @elseif(!empty($this->promotion->image))
@@ -472,7 +364,7 @@
                         </div>
                     </section>
 
-                    <button type="submit" class="btn btn-primary mr-2 mb-3">Зберегти</button>
+                    <button type="submit" class="btn btn-primary mr-2 mb-3">{{ __('admin.save') }}</button>
                 </form>
             </div>
         </div>

@@ -6,9 +6,9 @@
                     <section class="mb-50">
                         <h6 class="card-title">
                             @if (!empty($this->program->id))
-                                Редагування програми
+                                {{ __('admin.edit_program') }}
                             @else
-                                Створення програми
+                                {{ __('admin.create_program') }}
                             @endif
                         </h6>
 
@@ -27,7 +27,7 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок UA
+                                                                            <label>{{ __('admin.title') }} UA
                                                                             </label>
                                                                             <input type="text" wire:model="uaTitle"
                                                                                 class="form-control">
@@ -57,7 +57,7 @@
                                                                         <div
                                                                             class="multilang-content tab-pane fade active show">
                                                                             <div class="form-group mb-1">
-                                                                                <label>Опція {{ $loop->iteration }} <a wire:click="deleteOption('{{ $key }}')" class="text-danger" style="cursor: pointer">X видалити</a>
+                                                                                <label>{{ __('admin.option') }} {{ $loop->iteration }} <a wire:click="deleteOption('{{ $key }}')" class="text-danger" style="cursor: pointer">X видалити</a>
                                                                                 </label>
                                                                                 <input type="text" wire:model="options.{{ $key }}.ua"
                                                                                     class="form-control">
@@ -88,7 +88,7 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок RU
+                                                                            <label>{{ __('admin.title') }} RU
                                                                             </label>
                                                                             <input type="text" wire:model="ruTitle"
                                                                                 class="form-control">
@@ -118,7 +118,7 @@
                                                                         <div
                                                                             class="multilang-content tab-pane fade active show">
                                                                             <div class="form-group mb-1">
-                                                                                <label>Опція {{ $loop->iteration }} <a wire:click="deleteOption('{{ $key }}')" class="text-danger" style="cursor: pointer">X видалити</a>
+                                                                                <label>{{ __('admin.option') }} {{ $loop->iteration }} <a wire:click="deleteOption('{{ $key }}')" class="text-danger" style="cursor: pointer">X видалити</a>
                                                                                 </label>
                                                                                 <input type="text" wire:model="options.{{ $key }}.ru"
                                                                                     class="form-control">
@@ -149,7 +149,7 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок EN
+                                                                            <label>{{ __('admin.title') }} EN
                                                                             </label>
                                                                             <input type="text" wire:model="enTitle"
                                                                                 class="form-control">
@@ -177,7 +177,7 @@
                                                                         <div
                                                                             class="multilang-content tab-pane fade active show">
                                                                             <div class="form-group mb-1">
-                                                                                <label>Опція {{ $loop->iteration }} <a wire:click="deleteOption('{{ $key }}')" class="text-danger" style="cursor: pointer">X видалити</a>
+                                                                                <label>{{ __('admin.option') }} {{ $loop->iteration }} <a wire:click="deleteOption('{{ $key }}')" class="text-danger" style="cursor: pointer">X видалити</a>
                                                                                 </label>
                                                                                 <input type="text" wire:model="options.{{ $key }}.en"
                                                                                     class="form-control">
@@ -201,14 +201,14 @@
                                     </div>
 
                                     <a wire:click="addOption" class="btn btn-primary waves-effect waves-light float-right mb-3">
-                                        + Додати опцію
+                                        + {{ __('admin.add_option') }}
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    <button type="submit" class="btn btn-primary mr-2 mb-3">Зберегти</button>
+                    <button type="submit" class="btn btn-primary mr-2 mb-3">{{ __('admin.save') }}</button>
                 </form>
             </div>
         </div>

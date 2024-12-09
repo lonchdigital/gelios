@@ -6,9 +6,9 @@
                     <section class="mb-50">
                         <h6 class="card-title">
                             @if (!empty($this->checkUp->id))
-                                Редагування Check Up
+                                {{ __('admin.edit_check_up') }}
                             @else
-                                Створення Check Up
+                                {{ __('admin.create_check_up') }}
                             @endif
                         </h6>
 
@@ -27,7 +27,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок
+                                                                            <label>{{ __('admin.title') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="uaTitle"
@@ -57,7 +57,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Cлаг
+                                                                            <label>{{ __('admin.slug') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="uaSlug"
@@ -89,7 +89,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок
+                                                                            <label>{{ __('admin.title') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="ruTitle"
@@ -119,7 +119,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Cлаг
+                                                                            <label>{{ __('admin.slug') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="ruSlug"
@@ -151,7 +151,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок
+                                                                            <label>{{ __('admin.title') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="enTitle"
@@ -181,7 +181,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Cлаг
+                                                                            <label>{{ __('admin.slug') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="enSlug"
@@ -208,7 +208,7 @@
                                                 <div class="col-md-12">
                                                     <x-admin.multilanguage-text-area-rich
                                                         :is-required="false"
-                                                        :label="'Опис'"
+                                                        :label="__('admin.description')"
                                                         field-name="description"
                                                         live-wire-field="description"
                                                         :values="[
@@ -237,7 +237,7 @@
                                                                 <div id="uaTitle"
                                                                     class="multilang-content tab-pane fade active show">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Ціна
+                                                                        <label>{{ __('admin.price') }}
                                                                         </label>
                                                                         <input type="text" wire:model="price"
                                                                             class="form-control">
@@ -264,7 +264,7 @@
                                                                 <div id="uaTitle"
                                                                     class="multilang-content tab-pane fade active show">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Нова ціна
+                                                                        <label>{{ __('admin.new_price') }}
                                                                         </label>
                                                                         <input type="text" wire:model="newPrice"
                                                                             class="form-control">
@@ -291,7 +291,7 @@
                                                                 <div
                                                                     class="multilang-content tab-pane fade active show ">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Зображення</label>
+                                                                        <label>{{ __('admin.image') }}</label>
                                                                         <input type="file" wire:model="image"
                                                                             class="form-control">
                                                                     </div>
@@ -310,7 +310,7 @@
                                                                     <a wire:click="deleteImage()"
                                                                         style="cursor: pointer;">
                                                                         <i class="ti-close font-weight-bold mr-2"></i>
-                                                                        Видалити зображення
+                                                                        {{ __('admin.delete_image') }}
                                                                     </a>
                                                                 </div>
                                                             @elseif(!empty($this->checkUp->image))
@@ -333,10 +333,10 @@
                             <div class="card mb-30">
                                 <div class="card-body pb-0">
                                     <div class="d-flex justify-content-between align-items-center mb-20">
-                                        <h6 class="card-title mb-0">Список програм</h6>
+                                        <h6 class="card-title mb-0">{{ __('admin.programs_list') }}</h6>
 
                                         <a href="{{ route('admin.check-ups.create-program', ['checkUp' => $this->checkUp]) }}" class="btn btn-primary waves-effect waves-light float-right mb-3">
-                                            + Додати програму
+                                            + {{ __('admin.add_program') }}
                                         </a>
                                     </div>
 
@@ -344,8 +344,8 @@
                                         <table class="table table-nowrap">
                                             <thead>
                                                 <tr>
-                                                    <th>Назва</th>
-                                                    <th style="text-align: right">Дії</th>
+                                                    <th>{{ __('admin.name') }}</th>
+                                                    <th style="text-align: right">{{ __('admin.actions') }}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -366,7 +366,7 @@
                         {{-- </div> --}}
                     @endif
 
-                    <button type="submit" class="btn btn-primary mr-2 mb-3">Зберегти</button>
+                    <button type="submit" class="btn btn-primary mr-2 mb-3">{{ __('admin.save') }}</button>
                 </form>
             </div>
         </div>

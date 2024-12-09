@@ -3,20 +3,20 @@
         <div class="card mb-30">
             <div class="card-body pb-0">
                 <div class="d-flex justify-content-between align-items-center mb-20">
-                    <h6 class="card-title mb-0">Список блоків напрямку {{ $surgery->title }}</h6>
+                    <h6 class="card-title mb-0">{{ __('admin.direactions_blocks_list') }} {{ $surgery->title }}</h6>
 
                     <a href="{{ route('admin.surgery.create-block', ['surgery' => $surgery]) }}"
                         class="btn btn-primary waves-effect waves-light float-right mb-3">
-                        + Додати блок
+                        + {{ __('admin.add_block') }}
                     </a>
                 </div>
 
                 <table class="table mt-1">
                     <thead>
                         <tr style="background-color: rgba(149, 149, 149, 0.2)">
-                            <th>Зображення</th>
-                            <th>Текст</th>
-                            <th style="text-align: right">Дії</th>
+                            <th>{{ __('admin.image') }}</th>
+                            <th>{{ __('admin.text') }}</th>
+                            <th style="text-align: right">{{ __('admin.actions') }}</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -3,7 +3,7 @@
         <div class="card mb-30">
             <div class="card-body pb-0">
                 <div class="d-flex justify-content-between align-items-center mb-20">
-                    <h5 class="card-title mb-0">Список блоків сторінки Акції</h5>
+                    <h5 class="card-title mb-0">{{ __('admin.promotion_page_blocks_list') }}</h5>
 
                     {{-- <a href="{{ route('admin.doctors.create') }}" class="btn btn-primary waves-effect waves-light float-right mb-3">
                         + Додати лікаря
@@ -23,21 +23,21 @@
                 @if($group == 'main')
                     <a href="{{ route('admin.promotions.create-slide', ['page' => $this->page2]) }}"
                         class="btn btn-primary waves-effect waves-light float-right mb-3">
-                        + Додати слайд
+                        + {{ __('admin.add_slide') }}
                     </a>
                 @endif
                 </div>
                     <table class="table mt-1">
                         <thead>
                             <tr style="background-color: rgba(149, 149, 149, 0.2)">
-                                <th>Ключ</th>
-                                <th>Зображення</th>
-                                <th>Заголовок</th>
-                                <th>Опис</th>
+                                <th>{{ __('admin.key') }}</th>
+                                <th>{{ __('admin.image') }}</th>
+                                <th>{{ __('admin.title') }}</th>
+                                <th>{{ __('admin.description') }}</th>
                                 <th>
-                                    Посилання
+                                    {{ __('admin.link') }}
                                 </th>
-                                <th style="text-align: right">Дії</th>
+                                <th style="text-align: right">{{ __('admin.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -83,10 +83,10 @@
                 @endforelse
 
                 <div class="d-flex justify-content-between align-items-center mb-20">
-                    <h6 class="card-title mb-0">Список акцій</h6>
+                    <h6 class="card-title mb-0">{{ __('admin.promotions_list') }}</h6>
 
                     <a href="{{ route('admin.promotions.create') }}" class="btn btn-primary waves-effect waves-light float-right mb-3">
-                        + Додати акцію
+                        + {{ __('admin.add_promotion') }}
                     </a>
                 </div>
 
@@ -94,8 +94,8 @@
                     <table class="table table-nowrap">
                         <thead>
                             <tr>
-                                <th>Назва</th>
-                                <th style="text-align: right">Дії</th>
+                                <th>{{ __('admin.name') }}</th>
+                                <th style="text-align: right">{{ __('admin.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>

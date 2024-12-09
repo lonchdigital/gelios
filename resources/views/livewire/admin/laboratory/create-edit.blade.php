@@ -6,9 +6,9 @@
                     <section class="mb-50">
                         <h6 class="card-title">
                             @if (!empty($this->laboratory->id))
-                                Редагування лабораторії
+                                {{ __('admin.edit_laboratory') }}
                             @else
-                                Додавання лабораторії
+                                {{ __('admin.create_laboratory') }}
                             @endif
                         </h6>
 
@@ -27,7 +27,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Адреса
+                                                                            <label>{{ __('admin.address') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="uaAddress"
@@ -57,7 +57,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Адреса
+                                                                            <label>{{ __('admin.address') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="ruAddress"
@@ -87,7 +87,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Адреса
+                                                                            <label>{{ __('admin.address') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="enAddress"
@@ -116,11 +116,11 @@
                                                                 <div id="uaTitle"
                                                                     class="multilang-content tab-pane fade active show">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Місто
+                                                                        <label>{{ __('admin.city') }}
                                                                         </label>
                                                                         <select class="form-control rounded-0"
                                                                             wire:model.live="city">
-                                                                            <option value="">Виберіть місто</option>
+                                                                            <option value="">{{ __('admin.choose_city') }}</option>
                                                                             @forelse($this->cities as $city2)
                                                                                 <option value="{{ $city2->id }}">{{ $city2->title }}</option>
                                                                             @empty
@@ -149,7 +149,7 @@
                                                                 <div id="uaTitle"
                                                                     class="multilang-content tab-pane fade active show">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Номер телефону
+                                                                        <label>{{ __('admin.phone_number') }}
                                                                         </label>
                                                                         <input type="text" wire:model="phone"
                                                                             class="form-control">
@@ -203,7 +203,7 @@
                                                                 <div id="uaTitle"
                                                                     class="multilang-content tab-pane fade active show">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Години роботи
+                                                                        <label>{{ __('admin.work_hours') }}
                                                                         </label>
                                                                         <input type="text" wire:model="hours"
                                                                             class="form-control">
@@ -230,7 +230,7 @@
                                                                 <div id="uaTitle"
                                                                     class="multilang-content tab-pane fade active show">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Довгота
+                                                                        <label>{{ __('admin.longitude') }}
                                                                         </label>
                                                                         <input type="text" wire:model="longitude"
                                                                             class="form-control">
@@ -257,7 +257,7 @@
                                                                 <div id="uaTitle"
                                                                     class="multilang-content tab-pane fade active show">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Широта
+                                                                        <label>{{ __('admin.latitude') }}
                                                                         </label>
                                                                         <input type="text" wire:model="latitude"
                                                                             class="form-control">
@@ -280,7 +280,7 @@
                         </div>
                     </section>
 
-                    <button type="submit" class="btn btn-primary mr-2 mb-3">Зберегти</button>
+                    <button type="submit" class="btn btn-primary mr-2 mb-3">{{ __('admin.save') }}</button>
                 </form>
             </div>
         </div>

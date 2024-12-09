@@ -6,6 +6,7 @@ use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\Storage;
 
 class Doctor extends Model
@@ -30,6 +31,8 @@ class Doctor extends Model
         'education',
         'content',
         'slug',
+        'seo_title',
+        'seo_description',
     ];
 
     protected $casts = [
@@ -67,9 +70,19 @@ class Doctor extends Model
         return $this->morphToMany(Review::class, 'reviewable');
     }
 
-    public function directions()
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(DoctorCategory::class, 'doctor_category_id', 'id');
+    }
+
+    public function directions(): BelongsToMany
     {
         return $this->BelongsToMany(Direction::class, 'direction_doctors', 'doctor_id', 'direction_id');
+    }
+
+    public function specializations(): BelongsToMany
+    {
+        return $this->BelongsToMany(Specialization::class, 'doctor_specializations', 'doctor_id', 'specialization_id');
     }
 
     public function resolveRouteBinding($value, $field = null)

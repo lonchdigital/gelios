@@ -40,7 +40,7 @@ class Delete extends Component
             case 'user':
                 $this->item = User::find($modelId);
                 $this->type = 'user';
-                $this->modalTitle = 'Delete user';
+                $this->modalTitle = __('admin.delete_user');
                 $this->modalBody  = 'You really want to delete user: ' . $this->item->name . $this->item->second_name . '?';
                 $this->modalInfo  = '';
                 break;

@@ -6,9 +6,9 @@
                     <section class="mb-50">
                         <h6 class="card-title">
                             @if (!empty($this->doctor->id))
-                                Редагування лікаря
+                                {{ __('admin.edit_doctor') }}
                             @else
-                                Додавання лікаря
+                                {{ __('admin.create_doctor') }}
                             @endif
                         </h6>
 
@@ -27,7 +27,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Ім'я
+                                                                            <label>{{ __('admin.first_name') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="uaTitle"
@@ -60,7 +60,7 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Освіта
+                                                                            <label>{{ __('admin.education') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <textarea wire:model="uaEducation" class="form-control"></textarea>
@@ -92,7 +92,7 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Спеціальність
+                                                                            <label>{{ __('admin.specialty') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <textarea wire:model="uaSpecialty" class="form-control"></textarea>
@@ -124,7 +124,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Cлаг
+                                                                            <label>{{ __('admin.slug') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="uaSlug"
@@ -159,7 +159,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок
+                                                                            <label>{{ __('admin.title') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="ruTitle"
@@ -192,7 +192,7 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Освіта
+                                                                            <label>{{ __('admin.education') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <textarea wire:model="ruEducation" class="form-control"></textarea>
@@ -224,7 +224,7 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Спеціальність
+                                                                            <label>{{ __('admin.specialty') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <textarea wire:model="ruSpecialty" class="form-control"></textarea>
@@ -256,7 +256,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Cлаг
+                                                                            <label>{{ __('admin.slug') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="ruSlug"
@@ -291,7 +291,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок
+                                                                            <label>{{ __('admin.title') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="enTitle"
@@ -324,7 +324,7 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Освіта
+                                                                            <label>{{ __('admin.education') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <textarea wire:model="enEducation" class="form-control"></textarea>
@@ -356,7 +356,7 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Спеціальність
+                                                                            <label>{{ __('admin.specialty') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <textarea wire:model="enSpecialty" class="form-control"></textarea>
@@ -388,7 +388,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Cлаг
+                                                                            <label>{{ __('admin.slug') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="enSlug"
@@ -417,7 +417,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <x-admin.multilanguage-text-area-rich :is-required="false"
-                                                        :label="'Опис'" field-name="description"
+                                                        :label="{{ __('admin.description') }}" field-name="description"
                                                         live-wire-field="description" :values="[
                                                             'ua' => $this->uaDescription,
                                                             'ru' => $this->ruDescription,
@@ -446,48 +446,11 @@
                                                                 <div id="uaTitle"
                                                                     class="multilang-content tab-pane fade active show">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Спеціалізація
-                                                                        </label>
-                                                                        <select class="form-control rounded-0"
-                                                                            wire:model.live="specialization">
-                                                                            <option value="">Виберіть
-                                                                                спеціалізацію</option>
-                                                                            @forelse($this->specializations as $specialization2)
-                                                                                <option
-                                                                                    value="{{ $specialization2->id }}">
-                                                                                    {{ $specialization2->title }}
-                                                                                </option>
-                                                                            @empty
-                                                                            @endforelse
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            @error('specialization')
-                                                                <div class="mt-1 text-danger ajaxError">
-                                                                    {{ $message }}
-                                                                </div>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="row mb-3">
-                                                        <div class="col-md-12">
-                                                            <div class="tab-content">
-                                                                <div id="uaTitle"
-                                                                    class="multilang-content tab-pane fade active show">
-                                                                    <div class="form-group mb-1">
-                                                                        <label>Категорія
+                                                                        <label>{{ __('admin.category') }}
                                                                         </label>
                                                                         <select class="form-control rounded-0"
                                                                             wire:model.live="category">
-                                                                            <option value="">Виберіть категорію
+                                                                            <option value="">{{ __('admin.choose_category') }}
                                                                             </option>
                                                                             @forelse($this->categories as $category2)
                                                                                 <option value="{{ $category2->id }}">
@@ -518,7 +481,7 @@
                                                                 <div id="uaTitle"
                                                                     class="multilang-content tab-pane fade active show">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Вік
+                                                                        <label>{{ __('admin.age') }}
                                                                         </label>
                                                                         <input type="number" wire:model="age"
                                                                             class="form-control">
@@ -545,7 +508,7 @@
                                                                 <div id="uaTitle"
                                                                     class="multilang-content tab-pane fade active show">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Досвід
+                                                                        <label>{{ __('admin.experience') }}
                                                                         </label>
                                                                         <input type="number" wire:model="expirience"
                                                                             class="form-control">
@@ -563,6 +526,131 @@
                                             </div>
                                         </div>
 
+                                        @if($this->activeLocale == 'ua')
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>{{ __('admin.seo_page_title') }}
+                                                                                <strong>UA</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="uaSeoTitle"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mt-1 text-danger ajaxError">{{ 'Введіть %title% для підстановки' }}</div>
+                                                                @if($errors->has('uaSeoTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSeoTitle') }}</div>
+                                                                @elseif($errors->has('ruSeoTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSeoTitle') }}</div>
+                                                                @elseif($errors->has('enSeoTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSeoTitle') }}</div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+
+                                        @if($this->activeLocale == 'ru')
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>{{ __('admin.seo_page_title') }}
+                                                                                <strong>RU</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="ruSeoTitle"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mt-1 text-danger ajaxError">{{ 'Введіть %title% для підстановки' }}</div>
+                                                                @if($errors->has('ruSeoTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSeoTitle') }}</div>
+                                                                @elseif($errors->has('uaSeoTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSeoTitle') }}</div>
+                                                                @elseif($errors->has('enSeoTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSeoTitle') }}</div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+
+                                        @if($this->activeLocale == 'en')
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>{{ __('admin.seo_page_title') }}
+                                                                                <strong>EN</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="enSeoTitle"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mt-1 text-danger ajaxError">{{ 'Введіть %title% для підстановки' }}</div>
+                                                                @if($errors->has('enSeoTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSeoTitle') }}</div>
+                                                                @elseif($errors->has('ruSeoTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSeoTitle') }}</div>
+                                                                @elseif($errors->has('uaSeoTitle'))
+                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSeoTitle') }}</div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <x-admin.multilanguage-text-area-rich
+                                                        :is-required="false"
+                                                        :label="__('admin.meta_description')"
+                                                        field-name="seoDescription"
+                                                        live-wire-field="seoDescription"
+                                                        :values="[
+                                                            'ua' => $this->uaSeoDescription,
+                                                            'ru' => $this->ruSeoDescription,
+                                                            'en' => $this->enSeoDescription
+                                                        ]"
+                                                    />
+                                                    <div class="mt-1 text-danger ajaxError">{{ 'Введіть %title% для підстановки' }}</div>
+                                                    @if($errors->has('uaSeoDescription'))
+                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaSeoDescription') }}</div>
+                                                    @elseif($errors->has('ruSeoDescription'))
+                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruSeoDescription') }}</div>
+                                                    @elseif($errors->has('enSeoDescription'))
+                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('enSeoDescription') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -572,7 +660,7 @@
                                                                 <div
                                                                     class="multilang-content tab-pane fade active show ">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Зображення</label>
+                                                                        <label>{{ __('admin.image') }}</label>
                                                                         <input type="file" wire:model="image"
                                                                             class="form-control">
                                                                     </div>
@@ -591,7 +679,7 @@
                                                                     <a wire:click="deleteImage()"
                                                                         style="cursor: pointer;">
                                                                         <i class="ti-close font-weight-bold mr-2"></i>
-                                                                        Видалити зображення
+                                                                        {{ __('admin.delete_image') }}
                                                                     </a>
                                                                 </div>
                                                             @elseif(!empty($this->doctor->image))
@@ -613,7 +701,7 @@
                                                                 <div
                                                                     class="multilang-content tab-pane fade active show ">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Додати диплом або сертифікат</label>
+                                                                        <label>{{ __('admin.add_diploma_or_certificate') }}</label>
                                                                         <input type="file" wire:model="newImage"
                                                                             class="form-control">
                                                                     </div>
@@ -631,7 +719,7 @@
                                         </div>
 
                                         <div class="card-body pb-0 mb-5">
-                                            <h5 class="card-title">Дипломи та сертифікати</h5>
+                                            <h5 class="card-title">{{ __('admin.diploma_or_certificate') }}</h5>
                                             <div class="row">
                                                 @forelse($this->images as $key => $image)
                                                     <div class="col-sm-6 col-xl-3 text-danger ">
@@ -652,7 +740,7 @@
                                                     <div class="row mb-3">
                                                         <div class="col-md-12">
                                                             <div class="form-group mb-1">
-                                                                <label>Doctor directions
+                                                                <label>{{ __('areas_of_treatment') }}
                                                                 </label>
                                                                 @forelse($this->selectedArray ?? [] as $key => $item2)
                                                                     <li class="flex justify-between items-center py-2 px-3 border-b border-[#1f293733]"
@@ -676,7 +764,7 @@
                                                     <div class="row mb-3">
                                                         <div class="col-md-12">
                                                             <div class="form-group mb-1">
-                                                                <label>Add direction
+                                                                <label>{{ __('admin.add_direction') }}
                                                                 </label>
                                                                 <input type="search" tabIndex="0"
                                                                 placeholder="Search"
@@ -700,15 +788,71 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group mb-1">
+                                                                <label>{{ __('admin.doctor_specializations') }}
+                                                                </label>
+                                                                @forelse($this->selectedSpecializations ?? [] as $key => $specialization2)
+                                                                    <li class="flex justify-between items-center py-2 px-3 border-b border-[#1f293733]"
+                                                                        style="border-color: #1f293733">
+                                                                        <span>{{ $specialization2->title ?? $specialization2['title'] }}</span>
+                                                                        <a wire:click="deleteSpecializationItem({{ $key }})" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
+                                                                    </li>
+                                                                @empty
+                                                                    <li class="py-2 px-3">{{ __('admin.empty') }}</li>
+                                                                @endforelse
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group mb-1">
+                                                                <label>{{ __('admin.add_specialization') }}
+                                                                </label>
+                                                                <input type="search" tabIndex="0"
+                                                                placeholder="Search"
+                                                                wire:model.live="searchSpecialization"
+                                                                    class="form-control">
+                                                            </div>
+                                                            @if(count($this->specializations))
+                                                            <div class="dropdown open w-full">
+                                                                <ul tabindex="0"
+                                                                    class="dropdown-content dropdown-open menu p-2 shadow rounded-box w-fit min-w-52 max-w-[400px] bg-white z-50">
+                                                                    @foreach ($this->specializations as $specialization)
+                                                                        <li
+                                                                            wire:click="selectSpecialization('{{ $specialization->id }}')">
+                                                                            <span>{{ $specialization->title }}</span>
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    <button type="submit" class="btn btn-primary mr-2 mb-3">Зберегти</button>
+                    <button type="submit" class="btn btn-primary mr-2 mb-3">{{ __('admin.save') }}</button>
                 </form>
             </div>
         </div>

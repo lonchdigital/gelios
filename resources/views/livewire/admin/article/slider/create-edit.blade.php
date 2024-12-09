@@ -27,7 +27,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок
+                                                                            <label>{{ __('admin.title') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="uaTitle"
@@ -57,7 +57,7 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Текст
+                                                                            <label>{{ __('admin.text') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <textarea wire:model="uaDescription" class="form-control"></textarea>
@@ -86,7 +86,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Назва кнопки
+                                                                            <label>{{ __('admin.button_text') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="uaButton"
@@ -118,7 +118,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок
+                                                                            <label>{{ __('admin.title') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="ruTitle"
@@ -148,7 +148,7 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Текст
+                                                                            <label>{{ __('admin.text') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <textarea wire:model="ruDescription" class="form-control"></textarea>
@@ -177,7 +177,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Назва кнопки
+                                                                            <label>{{ __('admin.button_text') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="ruButton"
@@ -209,7 +209,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок
+                                                                            <label>{{ __('admin.title') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="enTitle"
@@ -239,7 +239,7 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Текст
+                                                                            <label>{{ __('admin.text') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <textarea wire:model="enDescription" class="form-control"></textarea>
@@ -268,7 +268,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Назва кнопки
+                                                                            <label>{{ __('admin.button_text') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="enButton"
@@ -299,7 +299,7 @@
                                                                 <div id="uaTitle"
                                                                     class="multilang-content tab-pane fade active show">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Посилання
+                                                                        <label>{{ __('admin.link') }}
                                                                         </label>
                                                                         <input type="text" wire:model="link"
                                                                             class="form-control">
@@ -326,7 +326,7 @@
                                                                 <div
                                                                     class="multilang-content tab-pane fade active show ">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Зображення</label>
+                                                                        <label>{{ __('admin.image') }}</label>
                                                                         <input type="file" wire:model="image"
                                                                             class="form-control">
                                                                     </div>
@@ -345,7 +345,7 @@
                                                                     <a wire:click="deleteImage()"
                                                                         style="cursor: pointer;">
                                                                         <i class="ti-close font-weight-bold mr-2"></i>
-                                                                        Видалити зображення
+                                                                        {{ __('admin.delete_image') }}
                                                                     </a>
                                                                 </div>
                                                             @elseif(!empty($this->block->image))
@@ -363,7 +363,7 @@
                         </div>
                     </section>
 
-                    <button type="submit" class="btn btn-primary mr-2 mb-3">Зберегти</button>
+                    <button type="submit" class="btn btn-primary mr-2 mb-3">{{ __('admin.save') }}</button>
                 </form>
             </div>
         </div>

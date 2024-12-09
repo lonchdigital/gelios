@@ -3,10 +3,10 @@
         <div class="card mb-30">
             <div class="card-body pb-0">
                 <div class="d-flex justify-content-between align-items-center mb-20">
-                    <h6 class="card-title mb-0">Список категорій статтей</h6>
+                    <h6 class="card-title mb-0">{{ __('admin.blog_categories_list') }}</h6>
 
                     <a href="{{ route('admin.article-categories.create') }}" class="btn btn-primary waves-effect waves-light float-right mb-3">
-                        + Додати категорію
+                        + {{ __('admin.add_category') }}
                     </a>
                 </div>
 
@@ -21,8 +21,8 @@
                     <table class="table table-nowrap">
                         <thead>
                             <tr>
-                                <th>Назва</th>
-                                <th style="text-align: right">Дії</th>
+                                <th>{{ __('admin.name') }}</th>
+                                <th style="text-align: right">{{ __('admin.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>

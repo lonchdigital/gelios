@@ -27,12 +27,11 @@ class DoctorService
         return $images;
     }
 
-    public function saveDoctor(Doctor $doctor, $slug, $age, $experience, $specialization, $category, $images)
+    public function saveDoctor(Doctor $doctor, $age, $experience, $category, $images)
     {
         $doctor->images = $images;
         $doctor->age = $age;
         $doctor->expirience = $experience;
-        $doctor->specialization_id = $specialization;
         $doctor->doctor_category_id = $category;
 
         $doctor->save();
@@ -47,7 +46,9 @@ class DoctorService
         array $specialties,
         array $educations,
         array $locales,
-        array $slugs
+        array $slugs,
+        array $seoTitles,
+        array $seoDescriptions,
         )
     {
         foreach ($locales as $locale) {
@@ -61,7 +62,9 @@ class DoctorService
                     'content' => $descriptions[$locale],
                     'specialty' => $specialties[$locale],
                     'education' => $educations[$locale],
-                    'slug' => $slugs[$locale]
+                    'slug' => $slugs[$locale],
+                    'seo_title' => $seoTitles[$locale],
+                    'seo_description' => $seoDescriptions[$locale],
                 ]
             );
         }

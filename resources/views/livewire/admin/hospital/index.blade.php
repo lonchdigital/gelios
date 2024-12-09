@@ -28,7 +28,7 @@
                         />
                     </section>
 
-                
+
                     <section class="mb-50 mt-30">
                         <h6 class="card-title">{{ trans('admin.section_text') }}</h6>
 
@@ -43,17 +43,17 @@
                             </div>
 
                             <div class="checkbox d-inline">
-                                <input 
-                                    type="checkbox" 
+                                <input
+                                    type="checkbox"
                                     wire:model="sectionData.is_image"
                                     wire:click="handleDisplayFields()"
-                                    id="is_image_1" 
+                                    id="is_image_1"
                                     @if($sectionData['is_image']) checked @endif
                                 >
                                 <label for="is_image_1" class="cr">{{ trans('admin.is_image') }}</label>
                             </div>
                         </div>
-                        
+
                         <x-admin.multilanguage-text-area-rich
                             :is-required="false"
                             :label="trans('admin.text')"
@@ -106,8 +106,8 @@
                         <thead>
                             <tr style="background-color: rgba(149, 149, 149, 0.2)">
                                 <th>ID</th>
-                                <th>Заголовок</th>
-                                <th style="text-align: right">Дії</th>
+                                <th>{{ __('admin.title') }}</th>
+                                <th style="text-align: right">{{ __('admin.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -169,7 +169,7 @@
                             live-wire-field="seoData.meta_title"
                             :values="$seoData['meta_title']"
                         />
-                    
+
                         <x-admin.multilanguage-text-area-rich
                             :is-required="false"
                             :label="trans('admin.meta_description')"

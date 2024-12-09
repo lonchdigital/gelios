@@ -11,7 +11,7 @@
                 <form wire:submit.prevent="save">
                     <section class="mb-50">
                         <h6 class="card-title">
-                            Редагування Футера
+                            {{ __('admin.edit_footer') }}
                         </h6>
 
                         <div class="row">
@@ -29,7 +29,7 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Опис в футері
+                                                                            <label>{{ __('admin.footer_description') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <textarea wire:model="uaDescription" class="form-control"></textarea>
@@ -58,7 +58,7 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Опис в футері
+                                                                            <label>{{ __('admin.footer_description') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <textarea wire:model="ruDescription" class="form-control"></textarea>
@@ -87,7 +87,7 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Текст
+                                                                            <label>{{ __('admin.text') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <textarea wire:model="enDescription" class="form-control"></textarea>
@@ -115,7 +115,7 @@
                                                                 <div id="uaTitle"
                                                                     class="multilang-content tab-pane fade active show">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Посилання на Facebook
+                                                                        <label>{{ __('admin.facebook_link') }}
                                                                         </label>
                                                                         <input type="text" wire:model="facebook"
                                                                             class="form-control">
@@ -142,7 +142,7 @@
                                                                 <div id="uaTitle"
                                                                     class="multilang-content tab-pane fade active show">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Посилання на Instagram
+                                                                        <label>{{ __('admin.instagram_link') }}
                                                                         </label>
                                                                         <input type="text" wire:model="inst"
                                                                             class="form-control">
@@ -169,7 +169,7 @@
                                                                 <div id="uaTitle"
                                                                     class="multilang-content tab-pane fade active show">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Посилання на YouTube
+                                                                        <label>{{ __('admin.youtube_link') }}
                                                                         </label>
                                                                         <input type="text" wire:model="youtube"
                                                                             class="form-control">
@@ -196,7 +196,7 @@
                                                                 <div
                                                                     class="multilang-content tab-pane fade active show ">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Зображення в Футері</label>
+                                                                        <label>{{ __('admin.footer_image') }}</label>
                                                                         <input type="file" wire:model="footerImage"
                                                                             class="form-control">
                                                                     </div>
@@ -215,7 +215,7 @@
                                                                     <a wire:click="deleteFooterImage()"
                                                                         style="cursor: pointer;">
                                                                         <i class="ti-close font-weight-bold mr-2"></i>
-                                                                        Видалити зображення
+                                                                        {{ __('admin.delete_image') }}
                                                                     </a>
                                                                 </div>
                                                             @elseif(!empty($this->footImage->value))
@@ -237,7 +237,7 @@
                                                                 <div
                                                                     class="multilang-content tab-pane fade active show ">
                                                                     <div class="form-group mb-1">
-                                                                        <h7>Філії в футері</h7>
+                                                                        <h7>{{ __('admin.branches_in_footer') }}</h7>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -258,7 +258,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <h8>Філія {{ $loop->iteration }}</h8>
+                                                                            <h8>{{ __('admin.branch') }} {{ $loop->iteration }}</h8>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -278,7 +278,7 @@
                                                                         <div id="uaTitle"
                                                                             class="multilang-content tab-pane fade active show">
                                                                             <div class="form-group mb-1">
-                                                                                <label>Адреса
+                                                                                <label>{{ __('admin.address') }}
                                                                                     <strong>UA</strong>
                                                                                 </label>
                                                                                 <input type="text" wire:model="translatedAddresses.{{ $index }}.ua"
@@ -308,7 +308,7 @@
                                                                         <div id="uaTitle"
                                                                             class="multilang-content tab-pane fade active show">
                                                                             <div class="form-group mb-1">
-                                                                                <label>Адреса
+                                                                                <label>{{ __('admin.address') }}
                                                                                     <strong>RU</strong>
                                                                                 </label>
                                                                                 <input type="text" wire:model="translatedAddresses.{{ $index }}.ru"
@@ -338,7 +338,7 @@
                                                                         <div id="uaTitle"
                                                                             class="multilang-content tab-pane fade active show">
                                                                             <div class="form-group mb-1">
-                                                                                <label>Адреса
+                                                                                <label>{{ __('admin.address') }}
                                                                                     <strong>EN</strong>
                                                                                 </label>
                                                                                 <input type="text" wire:model="translatedAddresses.{{ $index }}.en"
@@ -367,7 +367,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Перший номер телефону
+                                                                            <label>{{ __('admin.first_phone_number') }}
                                                                             </label>
                                                                             <input type="text" wire:model="footerAffiliates.{{ $index }}.first_phone"
                                                                                 class="form-control">
@@ -394,7 +394,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Другий номер телефону
+                                                                            <label>{{ __('admin.second_phone_number') }}
                                                                             </label>
                                                                             <input type="text" wire:model="footerAffiliates.{{ $index }}.second_phone"
                                                                                 class="form-control">
@@ -448,7 +448,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Години роботи
+                                                                            <label>{{ __('admin.work_hours') }}
                                                                             </label>
                                                                             <input type="text" wire:model="footerAffiliates.{{ $index }}.hours"
                                                                                 class="form-control">
@@ -475,7 +475,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Широта
+                                                                            <label>{{ __('admin.latitude') }}
                                                                             </label>
                                                                             <input type="text" wire:model="footerAffiliates.{{ $index }}.latitude"
                                                                                 class="form-control">
@@ -502,7 +502,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Довгота
+                                                                            <label>{{ __('admin.longitude') }}
                                                                             </label>
                                                                             <input type="text" wire:model="footerAffiliates.{{ $index }}.longitude"
                                                                                 class="form-control">
@@ -527,7 +527,7 @@
                         </div>
                     </section>
 
-                    <button type="submit" class="btn btn-primary mr-2 mb-3">Зберегти</button>
+                    <button type="submit" class="btn btn-primary mr-2 mb-3">{{ __('admin.save') }}</button>
                 </form>
             </div>
         </div>

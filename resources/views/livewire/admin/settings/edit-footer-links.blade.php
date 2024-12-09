@@ -9,16 +9,16 @@
                 @endif
 
                 <div class="d-flex justify-content-between align-items-center mb-20">
-                    <h6 class="card-title mb-0">Список сторінок блоку інфо</h6>
+                    <h6 class="card-title mb-0">{{ __('admin.list_of_pages_in_the_info_block') }}</h6>
                 </div>
 
                 <div class="table-responsive art-cars-list">
                     <table class="table table-nowrap">
                         <thead>
                             <tr>
-                                <th>Сортування</th>
-                                <th>Назва</th>
-                                <th>Чи відображати в футері</th>
+                                <th>{{ __('admin.sort') }}</th>
+                                <th>{{ __('admin.name') }}</th>
+                                <th>{{ __('admin.is_show_in_footer') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -56,16 +56,16 @@
 
 
                 <div class="d-flex justify-content-between align-items-center mb-20">
-                    <h6 class="card-title mb-0">Список сторінок блоку напрямки</h6>
+                    <h6 class="card-title mb-0">{{ __('admin.list_of_pages_in_the_directions_block') }}</h6>
                 </div>
 
                 <div class="table-responsive art-cars-list">
                     <table class="table table-nowrap">
                         <thead>
                             <tr>
-                                <th>Сортування</th>
-                                <th>Назва</th>
-                                <th>Чи відображати в футері</th>
+                                <th>{{ __('admin.sort') }}</th>
+                                <th>{{ __('admin.name') }}</th>
+                                <th>{{ __('admin.is_show_in_footer') }}</th>
                             </tr>
                         </thead>
                         <tbody>

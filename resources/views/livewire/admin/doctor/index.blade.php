@@ -3,10 +3,10 @@
         <div class="card mb-30">
             <div class="card-body pb-0">
                 <div class="d-flex justify-content-between align-items-center mb-20">
-                    <h6 class="card-title mb-0">Список лікарів</h6>
+                    <h6 class="card-title mb-0">{{ __('admin.doctors_list') }}</h6>
 
                     <a href="{{ route('admin.doctors.create') }}" class="btn btn-primary waves-effect waves-light float-right mb-3">
-                        + Додати лікаря
+                        + {{ __('admin.add_doctor') }}
                     </a>
                 </div>
 
@@ -21,10 +21,10 @@
                     <table class="table table-nowrap">
                         <thead>
                             <tr>
-                                <th>Ім'я</th>
-                                <th>Зображення</th>
-                                <th>Чи відображати на головній сторінці</th>
-                                <th style="text-align: right">Дії</th>
+                                <th>{{ __('admin.first_name') }}</th>
+                                <th>{{ __('admin.image') }}</th>
+                                <th>{{ __('admin.is_show_in_main_page') }}</th>
+                                <th style="text-align: right">{{ __('admin.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>

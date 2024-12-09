@@ -5,7 +5,7 @@
                 <form wire:submit.prevent="save">
                     <section class="mb-50">
                         <h6 class="card-title">
-                            Редагування SEO {{ $page->title ?? '' }}
+                            {{ __('admin.edit') }} SEO {{ $page->title ?? '' }}
                         </h6>
 
                         <div class="row">
@@ -23,7 +23,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок сторінки
+                                                                            <label>{{ __('admin.page_title') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="uaTitle"
@@ -55,7 +55,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок сторінки
+                                                                            <label>{{ __('admin.page_title') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="ruTitle"
@@ -87,7 +87,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок сторінки
+                                                                            <label>{{ __('admin.page_title') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="enTitle"
@@ -119,7 +119,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Мета заголовок сторінки
+                                                                            <label>{{ __('admin.meta_page_title') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="uaMetaTitle"
@@ -152,7 +152,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Мета заголовок сторінки
+                                                                            <label>{{ __('admin.meta_page_title') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="ruMetaTitle"
@@ -185,7 +185,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Мета заголовок сторінки
+                                                                            <label>{{ __('admin.meta_page_title') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="enMetaTitle"
@@ -208,40 +208,12 @@
                                             </div>
                                         @endif
 
-
-                                        {{-- <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="row mb-3">
-                                                        <div class="col-md-12">
-                                                            <div class="tab-content">
-                                                                <div
-                                                                    class="multilang-content tab-pane fade active show ">
-                                                                    <div class="form-group mb-1">
-                                                                        <label>Опис
-                                                                            <strong>{{ strtoupper($this->activeLocale) }}</strong>
-                                                                        </label>
-                                                                        <textarea wire:model="{{ $this->activeLocale }}Description" class="form-control"></textarea>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            @error($this->activeLocale . 'Description')
-                                                                <div class="mt-1 text-danger ajaxError">
-                                                                    {{ $message }}
-                                                                </div>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> --}}
-
                                         <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <x-admin.multilanguage-text-area-rich
                                                         :is-required="false"
-                                                        :label="'Мета опис'"
+                                                        :label="__('admin.meta_description')"
                                                         field-name="seoDescription"
                                                         live-wire-field="seoDescription"
                                                         :values="[
@@ -272,7 +244,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>SEO заголовок сторінки
+                                                                            <label>{{ __('admin.seo_page_title') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="uaSeoTitle"
@@ -304,7 +276,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>SEO заголовок сторінки
+                                                                            <label>{{ __('admin.seo_page_title') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="ruSeoTitle"
@@ -336,7 +308,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>SEO заголовок сторінки
+                                                                            <label>{{ __('admin.seo_page_title') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="enSeoTitle"
@@ -363,7 +335,7 @@
                                                 <div class="col-md-12">
                                                     <x-admin.multilanguage-text-area-rich
                                                         :is-required="false"
-                                                        :label="'SEO блок'"
+                                                        :label="__('admin.seo_block')"
                                                         field-name="seoContent"
                                                         live-wire-field="seoContent"
                                                         :values="[
@@ -388,7 +360,7 @@
                         </div>
                     </section>
 
-                    <button type="submit" class="btn btn-primary mr-2 mb-3">Зберегти</button>
+                    <button type="submit" class="btn btn-primary mr-2 mb-3">{{ __('admin.save') }}</button>
                 </form>
             </div>
         </div>

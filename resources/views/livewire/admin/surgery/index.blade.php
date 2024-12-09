@@ -3,7 +3,7 @@
         <div class="card mb-30">
             <div class="card-body pb-0">
                 <div class="d-flex justify-content-between align-items-center mb-20">
-                    <h5 class="card-title mb-0">Список блоків сторінки Хірургія</h5>
+                    <h5 class="card-title mb-0">{{ __('admin.surgery_page_blocks_list') }}</h5>
 
                     {{-- <a href="{{ route('admin.doctors.create') }}" class="btn btn-primary waves-effect waves-light float-right mb-3">
                         + Додати лікаря
@@ -23,21 +23,21 @@
                 @if($group == 'static_block')
                     <a href="{{ route('admin.surgery.create-static-block', ['page' => $this->page2]) }}"
                         class="btn btn-primary waves-effect waves-light float-right mb-3">
-                        + Додати статичний блок
+                        + {{ __('admin.add_static_block') }}
                     </a>
                 @endif
                 </div>
                     <table class="table mt-1">
                         <thead>
                             <tr style="background-color: rgba(149, 149, 149, 0.2)">
-                                <th>Ключ</th>
-                                <th>Зображення</th>
-                                <th>Заголовок</th>
-                                <th>Опис</th>
+                                <th>{{ __('admin.key') }}</th>
+                                <th>{{ __('admin.image') }}</th>
+                                <th>{{ __('admin.title') }}</th>
+                                <th>{{ __('admin.description') }}</th>
                                 <th>
-                                    Посилання
+                                    {{ __('admin.link') }}
                                 </th>
-                                <th style="text-align: right">Дії</th>
+                                <th style="text-align: right">{{ __('admin.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -79,29 +79,29 @@
 
                 @if(empty($this->page2->pageBlocks->where('block', 'static_block')->count()))
                     <div class="d-flex justify-content-between align-items-center mb-20">
-                        <h6 class="card-title mb-0">Список статичних блоків</h6>
+                        <h6 class="card-title mb-0">{{ __('admin.static_blocks_list') }}</h6>
 
                         <a href="{{ route('admin.surgery.create-static-block', ['page' => $this->page2]) }}"
                             class="btn btn-primary waves-effect waves-light float-right mb-3">
-                            + Додати статичний блок
+                            + {{ __('admin.add_static_block') }}
                         </a>
                     </div>
                 @endif
 
                 <div class="d-flex justify-content-between align-items-center mb-20">
-                    <h6 class="card-title mb-0">Список напрямків сторінки Хірургія</h6>
+                    <h6 class="card-title mb-0">{{ __('admin.surgery_page_directions_list') }}</h6>
 
                     <a href="{{ route('admin.surgery.create') }}"
                         class="btn btn-primary waves-effect waves-light float-right mb-3">
-                        + Додати напрямок
+                        + {{ __('admin.add_direction') }}
                     </a>
                 </div>
 
                 <table class="table mt-1">
                     <thead>
                         <tr style="background-color: rgba(149, 149, 149, 0.2)">
-                            <th>Назва напрямку</th>
-                            <th style="text-align: right">Дії</th>
+                            <th>{{ __('admin.direction_name') }}</th>
+                            <th style="text-align: right">{{ __('admin.actions') }}</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -18,5 +18,7 @@ class DoctorTranslation extends Model
         'doctor',
         'slug',
         'content',
+        'seo_title',
+        'seo_description',
     ];
 }

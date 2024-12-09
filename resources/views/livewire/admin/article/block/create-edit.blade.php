@@ -26,7 +26,7 @@
                                                                 <div id="uaTitle"
                                                                     class="multilang-content tab-pane fade active show">
                                                                     <div class="form-group mb-1">
-                                                                        <label>Тип блоку
+                                                                        <label>{{ __('admin.block_type') }}
                                                                         </label>
                                                                         <select class="form-control rounded-0"
                                                                             wire:model.live="type">
@@ -59,7 +59,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок
+                                                                            <label>{{ __('admin.title') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <input type="text"
@@ -90,7 +90,7 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Опис
+                                                                            <label>{{ __('admin.description') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
                                                                             <textarea wire:model="uaFirstDescription" class="form-control"></textarea>
@@ -120,7 +120,7 @@
                                                                         <div id="uaTitle"
                                                                             class="multilang-content tab-pane fade active show">
                                                                             <div class="form-group mb-1">
-                                                                                <label>Заголовок другого блоку
+                                                                                <label>{{ __('admin.second_block_title') }}
                                                                                     <strong>UA</strong>
                                                                                 </label>
                                                                                 <input type="text"
@@ -151,7 +151,7 @@
                                                                         <div
                                                                             class="multilang-content tab-pane fade active show ">
                                                                             <div class="form-group mb-1">
-                                                                                <label>Опис другого блоку
+                                                                                <label>{{ __('admin.second_block_description') }}
                                                                                     <strong>UA</strong>
                                                                                 </label>
                                                                                 <textarea wire:model="uaSecondDescription" class="form-control"></textarea>
@@ -183,7 +183,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок
+                                                                            <label>{{ __('admin.title') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <input type="text"
@@ -214,7 +214,7 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Опис
+                                                                            <label>{{ __('admin.description') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
                                                                             <textarea wire:model="ruFirstDescription" class="form-control"></textarea>
@@ -244,7 +244,7 @@
                                                                         <div
                                                                             class="multilang-content tab-pane fade active show">
                                                                             <div class="form-group mb-1">
-                                                                                <label>Заголовок другого блоку
+                                                                                <label>{{ __('admin.second_block_title') }}
                                                                                     <strong>RU</strong>
                                                                                 </label>
                                                                                 <input type="text"
@@ -275,7 +275,7 @@
                                                                         <div
                                                                             class="multilang-content tab-pane fade active show ">
                                                                             <div class="form-group mb-1">
-                                                                                <label>Опис другого блоку
+                                                                                <label>{{ __('admin.second_block_description') }}
                                                                                     <strong>RU</strong>
                                                                                 </label>
                                                                                 <textarea wire:model="ruSecondDescription" class="form-control"></textarea>
@@ -307,7 +307,7 @@
                                                                     <div id="uaTitle"
                                                                         class="multilang-content tab-pane fade active show">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Заголовок
+                                                                            <label>{{ __('admin.title') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <input type="text"
@@ -338,7 +338,7 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>Опис
+                                                                            <label>{{ __('admin.description') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
                                                                             <textarea wire:model="enFirstDescription" class="form-control"></textarea>
@@ -368,7 +368,7 @@
                                                                         <div
                                                                             class="multilang-content tab-pane fade active show">
                                                                             <div class="form-group mb-1">
-                                                                                <label>Заголовок другого блоку
+                                                                                <label>{{ __('admin.second_block_title') }}
                                                                                     <strong>EN</strong>
                                                                                 </label>
                                                                                 <input type="text"
@@ -399,7 +399,7 @@
                                                                         <div
                                                                             class="multilang-content tab-pane fade active show ">
                                                                             <div class="form-group mb-1">
-                                                                                <label>Опис другого блоку
+                                                                                <label>{{ __('admin.second_block_description') }}
                                                                                     <strong>EN</strong>
                                                                                 </label>
                                                                                 <textarea wire:model="enSecondDescription" class="form-control"></textarea>
@@ -426,7 +426,7 @@
                         </div>
                     </section>
 
-                    <button type="submit" class="btn btn-primary mr-2 mb-3">Зберегти</button>
+                    <button type="submit" class="btn btn-primary mr-2 mb-3">{{ __('admin.save') }}</button>
                 </form>
             </div>
         </div>

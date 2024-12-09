@@ -3,7 +3,7 @@
         <div class="card mb-30">
             <div class="card-body pb-0">
                 <div class="d-flex justify-content-between align-items-center mb-20">
-                    <h5 class="card-title mb-0">Список блоків головної сторінки</h5>
+                    <h5 class="card-title mb-0">{{ __('admin.main_page_blocks_list') }}</h5>
 
                     {{-- <a href="{{ route('admin.doctors.create') }}" class="btn btn-primary waves-effect waves-light float-right mb-3">
                         + Додати лікаря
@@ -24,14 +24,14 @@
                     <table class="table mt-1">
                         <thead>
                             <tr style="background-color: rgba(149, 149, 149, 0.2)">
-                                <th>Ключ</th>
-                                <th>Зображення</th>
-                                <th>Заголовок</th>
-                                <th>Опис</th>
+                                <th>{{ __('admin.key') }}</th>
+                                <th>{{ __('admin.image') }}</th>
+                                <th>{{ __('admin.title') }}</th>
+                                <th>{{ __('admin.description') }}</th>
                                 <th>
-                                    Посилання
+                                    {{ __('admin.link') }}
                                 </th>
-                                <th style="text-align: right">Дії</th>
+                                <th style="text-align: right">{{ __('admin.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>

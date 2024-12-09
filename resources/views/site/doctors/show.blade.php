@@ -53,7 +53,12 @@
                             </div>
                             <div class="mb-3">
                                 <span
-                                    class="text-blue mr-3">{{ __('doctor.specialization') }}:</span><span>{{ $doctor->specialization->title ?? '' }}</span>
+                                    class="text-blue mr-3">{{ __('doctor.specialization') }}:</span>
+                                    {{-- <span>{{ $doctor->specialization->title ?? '' }}</span> --}}
+                                    @forelse ($doctor->specializations as $specialization)
+                                        <span>{{ $specialization->title ?? '' }}</span>@if(!$loop->last),@endif
+                                    @empty
+                                    @endforelse
                             </div>
                             <div class="mb-3">
                                 <span class="text-blue mr-3">{{ __('doctor.age') }}:</span><span>{{ $doctor->age ?? '' }} роки</span>
