@@ -18,7 +18,7 @@
 
                 <form wire:submit.prevent="save">
 
-                    <section class="mb-50 mt-30">
+                    <section class="mt-30">
                         <x-admin.multilanguage-input
                             :is-required="false"
                             :label="trans('admin.title')"
@@ -28,6 +28,15 @@
                         />
                     </section>
 
+                    <section class="mb-50">
+                        <x-admin.multilanguage-input
+                            :is-required="false"
+                            :label="trans('admin.sub_title')"
+                            field-name="sub_title"
+                            live-wire-field="pageData.sub_title"
+                            :values="$pageData['sub_title']"
+                        />
+                    </section>
 
                     <section class="mb-50 mt-30">
                         <h6 class="card-title">{{ trans('admin.section_text') }}</h6>

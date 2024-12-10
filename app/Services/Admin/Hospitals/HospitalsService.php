@@ -149,6 +149,14 @@ class HospitalsService
             $data['title'] = [];
         }
 
+        if( !empty($page->getTranslationsArray()) ) {
+            foreach ($page->getTranslationsArray() as $lang => $value) {
+                $data['sub_title'][$lang] = $value['sub_title'];
+            }
+        } else {
+            $data['sub_title'] = [];
+        }
+
         return $data;
     }
 
@@ -159,6 +167,11 @@ class HospitalsService
         if($data['title']) {
             foreach ($data['title'] as $lang => $value) {
                 $dataToUpdate[$lang]['title'] = $value;
+            }
+        }
+        if($data['sub_title']) {
+            foreach ($data['sub_title'] as $lang => $value) {
+                $dataToUpdate[$lang]['sub_title'] = $value;
             }
         }
 
