@@ -19,5 +19,6 @@ class HospitalController extends Controller
             'pageTextBlock' => $pageTextBlock,
             'hospitals' => Hospital::all()
         ]);
+        
     }
 }
