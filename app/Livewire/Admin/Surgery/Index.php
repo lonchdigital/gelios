@@ -37,6 +37,16 @@ class Index extends Component
         return $surgeries;
     }
 
+    public function deleteItem($id, $type)
+    {
+        $this->dispatch('openModalDeleteItem', $type, $id);
+    }
+
+    public function refreshItemsAfterDelete()
+    {
+        $this->dispatch('refresh');
+    }
+
     public function render()
     {
         return view('livewire.admin.surgery.index');

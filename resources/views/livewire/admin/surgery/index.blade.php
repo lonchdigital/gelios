@@ -26,6 +26,20 @@
                         + {{ __('admin.add_static_block') }}
                     </a>
                 @endif
+
+                @if($group == 'conditions')
+                    <a href="{{ route('admin.surgery.create-conditions-block', ['page' => $this->page2]) }}"
+                        class="btn btn-primary waves-effect waves-light float-right mb-3">
+                        + {{ __('admin.add_image') }}
+                    </a>
+                @endif
+
+                @if($group == 'Inpatient')
+                    <a href="{{ route('admin.surgery.create-inpatient-block', ['page' => $this->page2]) }}"
+                        class="btn btn-primary waves-effect waves-light float-right mb-3">
+                        + {{ __('admin.add_image') }}
+                    </a>
+                @endif
                 </div>
                     <table class="table mt-1">
                         <thead>
@@ -58,16 +72,33 @@
                                         {{ $block->description }}
                                     </td>
                                     <td>
-                                        {{ $block->link }}
+                                        {{ $block->url }}
                                     </td>
-                                    <td>
-                                        <div style="text-align: right">
-                                            <a role="button"
-                                                href="{{ route('admin.surgery.edit-block', ['block' => $block]) }}"
-                                                class="btn btn-accent btn-xs">
-                                                <i class="fa fa-edit text-info font-18"></i>
-                                            </a>
-                                        </div>
+                                    <td class="flex" style="text-align: right;">
+                                        {{-- <div style="text-align: right"> --}}
+                                            @if($group == 'conditions' && $block->key == 'image')
+                                                <a role="button"
+                                                    href="{{ route('admin.surgery.edit-conditions-block', ['page' => $this->page2, 'block' => $block]) }}"
+                                                    class="btn btn-accent btn-xs">
+                                                    <i class="fa fa-edit text-info font-16"></i>
+                                                </a>
+                                            @elseif ($group == 'Inpatient' && $block->key == 'image')
+                                                <a role="button"
+                                                    href="{{ route('admin.surgery.edit-inpatient-block', ['page' => $this->page2, 'block' => $block]) }}"
+                                                    class="btn btn-accent btn-xs">
+                                                    <i class="fa fa-edit text-info font-16"></i>
+                                                </a>
+                                            @else
+                                                <a role="button"
+                                                    href="{{ route('admin.surgery.edit-block', ['block' => $block]) }}"
+                                                    class="btn btn-accent btn-xs">
+                                                    <i class="fa fa-edit text-info font-16"></i>
+                                                </a>
+                                            @endif
+                                            @if($group == 'static_block' || $block->key == 'image')
+                                                <a wire:click="deleteItem('{{ $block->id }}', 'pageBlock2')" style="cursor: pointer"><i class="fa fa-trash text-danger font-16"></i></a>
+                                            @endif
+                                        {{-- </div> --}}
                                     </td>
                                 </tr>
                             @empty

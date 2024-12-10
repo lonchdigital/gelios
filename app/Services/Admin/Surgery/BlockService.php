@@ -14,11 +14,20 @@ class BlockService
             ->keyBy('locale');
     }
 
-    public function saveBlock(PageBlock $block, array $data, array $descriptions, array $titles = [])
+    public function saveBlock(
+        PageBlock $block,
+        array $data,
+        array $descriptions,
+        array $titles = [],
+        string $block2 = null,
+        $key,
+        string $link = null
+        )
     {
         $block->page_id = $data['page_id'];
-        $block->block = 'static_block';
-        $block->key = 'content';
+        $block->block = $block2;
+        $block->key = $key;
+        $block->url = $link ?? '';
         $block->save();
 
         foreach ($descriptions as $locale => $description) {

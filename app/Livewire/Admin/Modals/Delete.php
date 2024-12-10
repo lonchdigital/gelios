@@ -125,6 +125,14 @@ class Delete extends Component
                 $this->modalInfo  = '';
                 break;
 
+            case 'pageBlock2':
+                $this->item = PageBlock::find($modelId);
+                $this->type = 'pageBlock2';
+                $this->modalTitle = 'Delete block';
+                $this->modalBody  = 'You really want to delete block: ' . $this->item->title . '?';
+                $this->modalInfo  = '';
+                break;
+
             default:
 
                 break;
@@ -203,6 +211,16 @@ class Delete extends Component
                 return true;
 
             case 'pageBlock':
+
+                $this->deleteImage($this->item->image);
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
+            case 'pageBlock2':
 
                 $this->deleteImage($this->item->image);
 

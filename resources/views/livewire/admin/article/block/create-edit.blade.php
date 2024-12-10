@@ -81,7 +81,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -108,7 +108,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             @if ($this->type == 'two_blocks')
                                                 <div class="col-md-12">
@@ -142,7 +142,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-12">
+                                                {{-- <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="row mb-3">
@@ -169,7 +169,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                             @endif
                                         @endif
 
@@ -205,7 +205,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -232,7 +232,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             @if ($this->type == 'two_blocks')
                                                 <div class="col-md-12">
@@ -266,7 +266,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-12">
+                                                {{-- <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="row mb-3">
@@ -293,7 +293,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                             @endif
                                         @endif
 
@@ -329,7 +329,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -356,7 +356,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             @if ($this->type == 'two_blocks')
                                                 <div class="col-md-12">
@@ -390,7 +390,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-12">
+                                                {{-- <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="row mb-3">
@@ -417,9 +417,61 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                             @endif
                                         @endif
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <x-admin.multilanguage-text-area-rich
+                                                        :is-required="false"
+                                                        :label="__('admin.description')"
+                                                        field-name="description"
+                                                        live-wire-field="description"
+                                                        :values="[
+                                                            'ua' => $this->uaFirstDescription,
+                                                            'ru' => $this->ruFirstDescription,
+                                                            'en' => $this->enFirstDescription
+                                                        ]"
+                                                    />
+                                                    @if($errors->has('uaDescription'))
+                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaDescription') }}</div>
+                                                    @elseif($errors->has('ruDescription'))
+                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruDescription') }}</div>
+                                                    @elseif($errors->has('enDescription'))
+                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('enDescription') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {{-- @if ($this->type == 'two_blocks') --}}
+                                            <div class="col-md-12" @if ($this->type == 'two_blocks') style="display: block;" @else style="display: none;" @endif>
+                                                <div class="row" wire:ignore>
+                                                    <div class="col-md-12">
+                                                        <x-admin.multilanguage-text-area-rich
+                                                            :is-required="false"
+                                                            :label="__('admin.second_block_description')"
+                                                            field-name="description2"
+                                                            live-wire-field="description2"
+                                                            :values="[
+                                                                'ua' => $this->uaSecondDescription,
+                                                                'ru' => $this->ruSecondDescription,
+                                                                'en' => $this->enSecondDescription
+                                                            ]"
+                                                        />
+                                                        @if($errors->has('uaDescription'))
+                                                            <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaDescription') }}</div>
+                                                        @elseif($errors->has('ruDescription'))
+                                                            <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruDescription') }}</div>
+                                                        @elseif($errors->has('enDescription'))
+                                                            <div class="mt-1 text-danger ajaxError">{{ $errors->first('enDescription') }}</div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {{-- @endif --}}
                                     </div>
                                 </div>
                             </div>
@@ -432,3 +484,17 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
+    <script type="text/javascript">
+        document.addEventListener('livewire:load', () => {
+            initQuillEditors((quill, fieldName, language) => {
+                quill.on('text-change', function() {
+                    let value = quill.root.innerHTML;
+                    @this.set(`${fieldName}`, value);
+                });
+            });
+        });
+    </script>
+@endpush

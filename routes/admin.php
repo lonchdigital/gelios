@@ -220,6 +220,12 @@ Route::group([
             // Route::get('/{page}/{block}/edit-block', [SurgeryController::class, 'editStaticBlock'])->name('edit-static-block');
             Route::get('/{page}/edit-block/{block}', [SurgeryController::class, 'editStaticBlock'])->name('edit-static-block');
 
+            Route::get('/{page}/create-conditions-block', [SurgeryController::class, 'createConditionsBlock'])->name('create-conditions-block');
+            Route::get('/{page}/edit-conditions-block/{block}', [SurgeryController::class, 'editConditionsBlock'])->name('edit-conditions-block');
+
+            Route::get('/{page}/create-inpatient-block', [SurgeryController::class, 'createInpatientBlock'])->name('create-inpatient-block');
+            Route::get('/{page}/edit-inpatient-block/{block}', [SurgeryController::class, 'editInpatientBlock'])->name('edit-inpatient-block');
+
             Route::get('/{surgery}/create', [SurgeryController::class, 'createSurgeryBlock'])->name('create-block');
             Route::get('/{surgery}/{block}/edit', [SurgeryController::class, 'editSurgeryBlock'])->name('edit-direction-block');
         });

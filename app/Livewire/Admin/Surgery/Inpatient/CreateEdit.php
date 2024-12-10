@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin\Surgery\Block;
+namespace App\Livewire\Admin\Surgery\Inpatient;
 
 use App\Enums\PageType;
 use App\Models\Page;
@@ -22,22 +22,6 @@ class CreateEdit extends Component
 
     public string $activeLocale;
 
-    public string $description;
-
-    public string $uaDescription = '';
-
-    public string $enDescription = '';
-
-    public string $ruDescription = '';
-
-    public string $uaTitle = '';
-
-    public string $enTitle = '';
-
-    public string $ruTitle = '';
-
-    public string $link = '';
-
     public $image;
 
     public $imageTemporary;
@@ -48,23 +32,9 @@ class CreateEdit extends Component
 
     public function mount(PageBlock $block = null)
     {
-        $this->dispatch('livewire:load');
-
         $this->page = Page::where('type', PageType::SURGERY->value)->first();
         $this->block = $block ?? new PageBlock();
         $this->activeLocale = config('app.active_lang');
-        $this->link = $this->block->url ?? '';
-
-        $service = resolve(BlockService::class);
-        $translations = $service->getTranslations($this->block);
-
-        $this->uaDescription = $translations['ua']->description ?? '';
-        $this->enDescription = $translations['en']->description ?? '';
-        $this->ruDescription = $translations['ru']->description ?? '';
-
-        $this->uaTitle = $translations['ua']->title ?? '';
-        $this->enTitle = $translations['ua']->title ?? '';
-        $this->ruTitle = $translations['ua']->title ?? '';
     }
 
     public function languageSwitched($lang)
@@ -75,57 +45,12 @@ class CreateEdit extends Component
     public function rules()
     {
         return [
-            'uaDescription' => [
-                'nullable',
-                'string',
-            ],
-
-            'enDescription' => [
-                'nullable',
-                'string',
-            ],
-
-            'ruDescription' => [
-                'nullable',
-                'string',
-            ],
-
-            'uaTitle' => [
-                'nullable',
-                'string',
-            ],
-
-            'enTitle' => [
-                'nullable',
-                'string',
-            ],
-
-            'ruTitle' => [
-                'nullable',
-                'string',
-            ],
-
             'image' => [
                 empty($this->block->id) ? 'required' : 'nullable',
                 'mimes:jpeg,jpg,png,gif',
                 'image',
             ],
         ];
-    }
-
-    public function updatedDescription($val)
-    {
-        switch ($this->activeLocale) {
-            case 'ua':
-                $this->uaDescription = $val;
-                break;
-            case 'ru':
-                $this->ruDescription = $val;
-                break;
-            case 'en':
-                $this->enDescription = $val;
-                break;
-        }
     }
 
     public function updatedImage($val)
@@ -158,15 +83,15 @@ class CreateEdit extends Component
         }
 
         $descriptions = [
-            'ua' => $this->uaDescription,
-            'en' => $this->enDescription,
-            'ru' => $this->ruDescription,
+            'ua' => null,
+            'en' => null,
+            'ru' => null,
         ];
 
         $titles = [
-            'ua' => $this->uaTitle,
-            'en' => $this->enTitle,
-            'ru' => $this->ruTitle,
+            'ua' => null,
+            'en' => null,
+            'ru' => null,
         ];
 
         $data = [
@@ -180,9 +105,9 @@ class CreateEdit extends Component
             $data,
             $descriptions,
             $titles,
-            $this->block->block ?? 'static_block',
-            $this->block->key ?? 'content',
-            $this->link,
+            $this->block->block ?? 'Inpatient',
+            $this->block->key ?? 'image',
+            null,
         );
 
         session()->flash('success', 'Дані успішно збережено');
@@ -192,6 +117,6 @@ class CreateEdit extends Component
 
     public function render()
     {
-        return view('livewire.admin.surgery.block.create-edit');
+        return view('livewire.admin.surgery.inpatient.create-edit');
     }
 }

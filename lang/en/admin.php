@@ -154,4 +154,5 @@ return [
     'vacancy_list' => 'Vacancy List',
     'add_vacancy' => 'Add Vacancy',
     'delete_user' => 'Delete User',
+    'add_image' => 'Add image'
 ];

@@ -17,6 +17,10 @@ class CreateEdit extends Component
 
     public string $activeLocale;
 
+    public string $description;
+
+    public string $description2;
+
     public string $uaFirstTitle = '';
 
     public string $enFirstTitle = '';
@@ -51,6 +55,8 @@ class CreateEdit extends Component
 
     public function mount(Article $article, ArticleBlock $block = null)
     {
+        $this->dispatch('livewire:load');
+
         $this->article = $article;
         $this->block = $block ?? new ArticleBlock();
         $this->activeLocale = config('app.active_lang');
@@ -160,9 +166,54 @@ class CreateEdit extends Component
         ];
     }
 
+    public function updatedType()
+    {
+        // $this->dispatch('livewire:load');
+    }
+
+    public function updatedDescription($val)
+    {
+        switch ($this->activeLocale) {
+            case 'ua':
+                $this->uaFirstDescription = $val;
+                break;
+            case 'ru':
+                $this->ruFirstDescription = $val;
+                break;
+            case 'en':
+                $this->enFirstDescription = $val;
+                break;
+        }
+    }
+
+    public function updatedDescription2($val)
+    {
+        switch ($this->activeLocale) {
+            case 'ua':
+                $this->uaSecondDescription = $val;
+                break;
+            case 'ru':
+                $this->ruSecondDescription = $val;
+                break;
+            case 'en':
+                $this->enSecondDescription = $val;
+                break;
+        }
+    }
+
     public function save()
     {
         $this->validate();
+
+        if($this->type == 'one_block') {
+            $this->uaSecondTitle = '';
+            $this->enSecondTitle = '';
+            $this->ruSecondTitle = '';
+
+            $this->uaSecondDescription = '';
+            $this->enSecondDescription = '';
+            $this->ruSecondDescription = '';
+        }
 
         $this->block->article_id = $this->article->id;
         $this->block->type = $this->type;

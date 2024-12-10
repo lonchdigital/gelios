@@ -417,7 +417,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <x-admin.multilanguage-text-area-rich :is-required="false"
-                                                        :label="{{ __('admin.description') }}" field-name="description"
+                                                        :label="__('admin.description')" field-name="description"
                                                         live-wire-field="description" :values="[
                                                             'ua' => $this->uaDescription,
                                                             'ru' => $this->ruDescription,

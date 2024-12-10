@@ -64,4 +64,24 @@ class SurgeryController extends Controller
 
         return view('admin.surgery.main-page-seo', compact('page'));
     }
+
+    public function createConditionsBlock(Page $page)
+    {
+        return view('admin.surgery.conditions.create', compact('page'));
+    }
+
+    public function editConditionsBlock(Page $page, PageBlock $block)
+    {
+        return view('admin.surgery.conditions.edit', compact('page', 'block'));
+    }
+
+    public function createInpatientBlock(Page $page)
+    {
+        return view('admin.surgery.inpatient.create', compact('page'));
+    }
+
+    public function editInpatientBlock(Page $page, PageBlock $block)
+    {
+        return view('admin.surgery.inpatient.edit', compact('page', 'block'));
+    }
 }

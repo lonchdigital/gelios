@@ -21,6 +21,8 @@ class CreateEdit extends Component
 
     public string $activeLocale;
 
+    public string $description;
+
     public string $uaDescription = '';
 
     public string $enDescription = '';
@@ -37,6 +39,8 @@ class CreateEdit extends Component
 
     public function mount(Surgery $surgery, SurgeryBlock $block = null)
     {
+        $this->dispatch('livewire:load');
+
         $this->surgery = $surgery;
 
         $this->block = $block ?? new SurgeryBlock();
@@ -95,6 +99,21 @@ class CreateEdit extends Component
         $this->imageTemporary = null;
     }
 
+    public function updatedDescription($val)
+    {
+        switch ($this->activeLocale) {
+            case 'ua':
+                $this->uaDescription = $val;
+                break;
+            case 'ru':
+                $this->ruDescription = $val;
+                break;
+            case 'en':
+                $this->enDescription = $val;
+                break;
+        }
+    }
+
     public function save()
     {
         $this->validate();
@@ -118,7 +137,8 @@ class CreateEdit extends Component
         ];
 
         $service = resolve(DirectionBlockService::class);
-        $service->saveSurgeryBlock($this->block, $this->surgery->id, $descriptions);
+        $service->saveSurgeryBlock(
+            $this->block, $this->surgery->id, $descriptions);
 
         session()->flash('success', 'Дані успішно збережено');
 
