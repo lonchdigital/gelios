@@ -23,6 +23,7 @@ class Page extends Model implements TranslatableContract
 
     public $translatedAttributes = [
         'title',
+        'sub_title',
         'name',
         'description',
         'text',

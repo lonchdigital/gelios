@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'sub_title' => 'Подзаголовок',
     'doctors' => 'Врачи',
     'all_pages' => 'Все страницы',
     'page_deleted' => 'Страница удалена',
