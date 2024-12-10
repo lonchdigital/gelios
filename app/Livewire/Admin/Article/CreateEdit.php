@@ -24,6 +24,8 @@ class CreateEdit extends Component
 
     public string $description;
 
+    public string $authorDescription;
+
     public string $activeLocale;
 
     public string $uaTitle = '';
@@ -49,6 +51,28 @@ class CreateEdit extends Component
     public $newImage;
 
     public $newImageTemporary;
+
+    public string $uaAuthorTitle = '';
+
+    public string $enAuthorTitle = '';
+
+    public string $ruAuthorTitle = '';
+
+    public string $uaAuthorSpecialization = '';
+
+    public string $enAuthorSpecialization = '';
+
+    public string $ruAuthorSpecialization = '';
+
+    public string $uaAuthorDescription = '';
+
+    public string $enAuthorDescription = '';
+
+    public string $ruAuthorDescription = '';
+
+    public $authorImage;
+
+    public $authorImageTemporary;
 
     protected $listeners = [
         'languageSwitched' => 'languageSwitched',
@@ -91,6 +115,18 @@ class CreateEdit extends Component
         $this->uaDescription = $translations['ua']->description ?? '';
         $this->enDescription = $translations['en']->description ?? '';
         $this->ruDescription = $translations['ru']->description ?? '';
+
+        $this->uaAuthorTitle = $translations['ua']->author_name ?? '';
+        $this->enAuthorTitle = $translations['en']->author_name ?? '';
+        $this->ruAuthorTitle = $translations['ru']->author_name ?? '';
+
+        $this->uaAuthorSpecialization = $translations['ua']->author_specialization ?? '';
+        $this->enAuthorSpecialization = $translations['en']->author_specialization ?? '';
+        $this->ruAuthorSpecialization = $translations['ru']->author_specialization ?? '';
+
+        $this->uaAuthorDescription = $translations['ua']->author_description ?? '';
+        $this->enAuthorDescription = $translations['en']->author_description ?? '';
+        $this->ruAuthorDescription = $translations['ru']->author_description ?? '';
     }
 
     public function updatedNewImage($val)
@@ -147,10 +183,67 @@ class CreateEdit extends Component
                 'string',
             ],
 
+            'uaAuthorTitle' => [
+                'required',
+                'string',
+            ],
+
+            'enAuthorTitle' => [
+                'required',
+                'string',
+            ],
+
+            'ruAuthorTitle' => [
+                'required',
+                'string',
+            ],
+
+            'uaAuthorSpecialization' => [
+                'required',
+                'string',
+            ],
+
+            'enAuthorSpecialization' => [
+                'required',
+                'string',
+            ],
+
+            'ruAuthorSpecialization' => [
+                'required',
+                'string',
+            ],
+
+            'uaAuthorDescription' => [
+                'required',
+                'string',
+            ],
+
+            'enAuthorDescription' => [
+                'required',
+                'string',
+            ],
+
+            'ruAuthorDescription' => [
+                'required',
+                'string',
+            ],
+
             'slug' => [
                 'required',
                 'string',
                 'unique:articles,slug,' . $this->article->id ?? ''
+            ],
+
+            'image' => [
+                empty($this->article->id) ? 'required' : 'nullable',
+                'mimes:jpeg,jpg,png,gif',
+                'image',
+            ],
+
+            'authorImage' => [
+                empty($this->article->id) ? 'required' : 'nullable',
+                'mimes:jpeg,jpg,png,gif',
+                'image',
             ],
         ];
     }
@@ -170,6 +263,21 @@ class CreateEdit extends Component
         }
     }
 
+    public function updatedAuthorDescription($val)
+    {
+        switch ($this->activeLocale) {
+            case 'ua':
+                $this->uaAuthorDescription = $val;
+                break;
+            case 'ru':
+                $this->ruAuthorDescription = $val;
+                break;
+            case 'en':
+                $this->enAuthorDescription = $val;
+                break;
+        }
+    }
+
     public function updatedImage($val)
     {
         $this->validateOnly('image');
@@ -181,6 +289,19 @@ class CreateEdit extends Component
     {
         $this->image = null;
         $this->imageTemporary = null;
+    }
+
+    public function updatedAuthorImage($val)
+    {
+        $this->validateOnly('author_image');
+        $this->authorImage = $val;
+        $this->authorImageTemporary = $val->temporaryUrl();
+    }
+
+    public function deleteAuthorImage()
+    {
+        $this->authorImage = null;
+        $this->authorImageTemporary = null;
     }
 
     public function save()
@@ -197,6 +318,16 @@ class CreateEdit extends Component
             }
 
             $this->article->image = $image;
+        }
+
+        if($this->authorImage) {
+            $image = $imageService->downloadImage($this->authorImage, '/article');
+
+            if(!empty($this->article->id) && !empty($this->article->author_image)) {
+                $imageService->deleteStorageImage($this->authorImage, $this->article->authorImage);
+            }
+
+            $this->article->author_image = $image;
         }
 
         $this->article->images = $imageService->processImages($this->article->images, $this->images);
@@ -226,7 +357,22 @@ class CreateEdit extends Component
                 'ua' => $this->uaDescription,
                 'en' => $this->enDescription,
                 'ru' => $this->ruDescription,
-            ]
+            ],
+            [
+                'ua' => $this->uaAuthorTitle,
+                'en' => $this->enAuthorTitle,
+                'ru' => $this->ruAuthorTitle,
+            ],
+            [
+                'ua' => $this->uaAuthorDescription,
+                'en' => $this->enAuthorDescription,
+                'ru' => $this->ruAuthorDescription,
+            ],
+            [
+                'ua' => $this->uaAuthorSpecialization,
+                'en' => $this->enAuthorSpecialization,
+                'ru' => $this->ruAuthorSpecialization,
+            ],
         );
     }
 

@@ -96,6 +96,7 @@
                                 <th>{{ __('admin.image') }}</th>
                                 <th>{{ __('admin.title') }}</th>
                                 <th>{{ __('admin.description') }}</th>
+                                <th>{{ __('admin.link') }}</th>
                                 <th style="text-align: right">{{ __('admin.actions') }}</th>
                             </tr>
                         </thead>

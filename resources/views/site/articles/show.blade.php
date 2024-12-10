@@ -193,13 +193,16 @@
                 <div class="col col-sm-9 col-md-7 col-lg-5">
                     <div class="articles-author">
                         <div class="wrap-img">
-                            <img src="img/users/user-1.jpeg" alt="img">
+                            @if(!empty($article->author_image))
+                                <img src="{{ $article->authorImageUrl }}" alt="{{ $article->author_name ?? 'img' }}">
+                            @else
+                                <img src="img/users/user-1.jpeg" alt="img">
+                            @endif
                         </div>
                         <div class="articles-author--descrp mt-xxl-1">
-                            <div class="name h4 font-weight-bolder text-blue mb-1">Анна Григораш</div>
-                            <div class="position-work h5 font-weight-bold text-blue mb-1 mb-xxl-0">Педіатор</div>
-                            <div class="place-work font-weight-bold text-grey">Медичний центр сімецного здоров’я та
-                                реабілітації “Геліос” у Дніпрі</div>
+                            <div class="name h4 font-weight-bolder text-blue mb-1">{{ $article->author_name }}</div>
+                            <div class="position-work h5 font-weight-bold text-blue mb-1 mb-xxl-0">{{ $article->author_specialization ?? '' }}</div>
+                            <div class="place-work font-weight-bold text-grey">{!! $article->author_description !!}</div>
                         </div>
                     </div>
                 </div>

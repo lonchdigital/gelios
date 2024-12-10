@@ -17,12 +17,16 @@ class Article extends Model
         'image',
         'images',
         'article_category_id',
-        'is_show_in_surgery_page'
+        'is_show_in_surgery_page',
+        'author_image',
     ];
 
     public $translatedAttributes = [
         'title',
         'description',
+        'author_name',
+        'author_specialization',
+        'author_description',
     ];
 
     protected $casts = [
@@ -32,6 +36,11 @@ class Article extends Model
     public function getImageUrlAttribute()
     {
         return Storage::disk('public')->url($this->image);
+    }
+
+    public function getAuthorImageUrlAttribute()
+    {
+        return Storage::disk('public')->url($this->author_image);
     }
 
     public function getImagesUrlAttribute()
