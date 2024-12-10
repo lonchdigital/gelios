@@ -348,6 +348,10 @@ return [
     'add_vacancy' => 'Додати вакансію',
     'delete_user' => 'Видалити користувача',
     'add_image' => 'Додати зображення',
+    'author_name' => 'Ім\'я автора',
+    'author_specialization' => 'Спеціальність автора',
+    'author_description' => 'Опис автора',
+    'author_image' => 'Зображення автора',
     '' => '',
     '' => '',
 ];
