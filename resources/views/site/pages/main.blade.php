@@ -425,82 +425,22 @@
                     <div class="col">
                         <div class="reviews--swiper">
                             <div class="swiper-wrapper">
-                                <div class="reviews--item swiper-slide">
-                                    <div class="inner">
-                                        <div class="wrap-img">
-                                            <img src="{{ asset('static_images/users/user-1.jpeg') }}" alt="img">
+
+                                @foreach ($reviews as $review)
+                                    <div class="reviews--item swiper-slide">
+                                        <div class="inner">
+                                            <div class="wrap-img">
+                                                <img src="{{ '/storage/' . $review->image }}" alt="img">
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                                <div class="user-name h4 font-weight-bolder">{{ $review->name }}</div>
+                                                <div class="reviews-date h6 font-weight-bold text-grey">{{ $review->created_at->format('d.m.Y') }}</div>
+                                            </div>
+                                            <div class="reviews--content os-scrollbar-overflow">{!! $review->text !!}</div>
                                         </div>
-                                        <div class="d-flex align-items-center justify-content-between mb-2">
-                                            <div class="user-name h4 font-weight-bolder">Вікторія</div>
-                                            <div class="reviews-date h6 font-weight-bold text-grey">10.07.2024</div>
-                                        </div>
-                                        <div class="reviews--content os-scrollbar-overflow">Все дуже професійно в цьому
-                                            медичному центрі для реабілітації після травми. Обладнання новітнє, відмінні
-                                            фахівці. Сервіс на високому рівні. Зручне місце розташування, є своя парковка з
-                                            відеоспостереженням. Смачна кава і привітний персонал. Рекомендую!Все дуже
-                                            професійно в цьому медичному центрі для реабілітації після травми. Обладнання
-                                            новітнє, відмінні фахівці. Сервіс на високому рівні. Зручне місце розташування,
-                                            є своя парковка з відеоспостереженням. Смачна кава і привітний персонал.
-                                            Рекомендую!</div>
                                     </div>
-                                </div>
-                                <div class="reviews--item swiper-slide">
-                                    <div class="inner">
-                                        <div class="wrap-img">
-                                            <img src="{{ asset('static_images/users/user-2.jpeg') }}" alt="img">
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-between mb-2">
-                                            <div class="user-name h4 font-weight-bolder">Вікторія</div>
-                                            <div class="reviews-date h6 font-weight-bold text-grey">10.07.2024</div>
-                                        </div>
-                                        <div class="reviews--content os-scrollbar-overflow">Все дуже професійно в цьому
-                                            медичному центрі для реабілітації після травми. Обладнання новітнє, відмінні
-                                            фахівці. Сервіс на високому рівні. Зручне місце розташування, є своя парковка з
-                                            відеоспостереженням. Смачна кава і привітний персонал. Рекомендую!Все дуже
-                                            професійно в цьому медичному центрі для реабілітації після травми. Обладнання
-                                            новітнє, відмінні фахівці. Сервіс на високому рівні. Зручне місце розташування,
-                                            є своя парковка з відеоспостереженням. Смачна кава і привітний персонал.
-                                            Рекомендую!</div>
-                                    </div>
-                                </div>
-                                <div class="reviews--item swiper-slide">
-                                    <div class="inner">
-                                        <div class="wrap-img">
-                                            <img src="{{ asset('static_images/users/user-1.jpeg') }}" alt="img">
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-between mb-2">
-                                            <div class="user-name h4 font-weight-bolder">Вікторія</div>
-                                            <div class="reviews-date h6 font-weight-bold text-grey">10.07.2024</div>
-                                        </div>
-                                        <div class="reviews--content os-scrollbar-overflow">Все дуже професійно в цьому
-                                            медичному центрі для реабілітації після травми. Обладнання новітнє, відмінні
-                                            фахівці. Сервіс на високому рівні. Зручне місце розташування, є своя парковка з
-                                            відеоспостереженням. Смачна кава і привітний персонал. Рекомендую!Все дуже
-                                            професійно в цьому медичному центрі для реабілітації після травми. Обладнання
-                                            новітнє, відмінні фахівці. Сервіс на високому рівні. Зручне місце розташування,
-                                            є своя парковка з відеоспостереженням. Смачна кава і привітний персонал.
-                                            Рекомендую!</div>
-                                    </div>
-                                </div>
-                                <div class="reviews--item swiper-slide">
-                                    <div class="inner">
-                                        <div class="wrap-img">
-                                            <img src="{{ asset('static_images/users/user-2.jpeg') }}" alt="img">
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-between mb-2">
-                                            <div class="user-name h4 font-weight-bolder">Вікторія</div>
-                                            <div class="reviews-date h6 font-weight-bold text-grey">10.07.2024</div>
-                                        </div>
-                                        <div class="reviews--content os-scrollbar-overflow">Все дуже професійно в цьому
-                                            медичному центрі для реабілітації після травми. Обладнання новітнє, відмінні
-                                            фахівці. Сервіс на високому рівні. Зручне місце розташування, є своя парковка з
-                                            відеоспостереженням. Смачна кава і привітний персонал. Рекомендую!Все дуже
-                                            професійно в цьому медичному центрі для реабілітації після травми. Обладнання
-                                            новітнє, відмінні фахівці. Сервіс на високому рівні. Зручне місце розташування,
-                                            є своя парковка з відеоспостереженням. Смачна кава і привітний персонал.
-                                            Рекомендую!</div>
-                                    </div>
-                                </div>
+                                @endforeach
+
                             </div>
                             <div class="swiper-pagination mt-8"></div>
                         </div>
