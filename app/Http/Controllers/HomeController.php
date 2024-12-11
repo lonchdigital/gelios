@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Page;
 use App\Models\Doctor;
+use App\Models\Review;
 use App\Enums\PageType;
 use App\Models\Contact;
 use App\Models\Promotion;
@@ -30,6 +31,7 @@ class HomeController extends Controller
             'doctors' => $doctors,
             'contacts' => Contact::all(),
             'page' => $page,
+            'reviews' => Review::where('published', true)->latest()->limit(10)->get()
         ]);
     }
 }
