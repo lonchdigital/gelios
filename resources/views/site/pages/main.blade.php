@@ -499,7 +499,22 @@
                     <div class="col">
                         <div class="news--swiper">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide news--item">
+                                @forelse($articles as $article)
+                                    <div class="swiper-slide news--item">
+                                        <a href="##" class="inner">
+                                            <div class="wrap-img mb-4">
+                                                <img src="{{ asset('static_images/articles/article-1.jpeg') }}" alt="img">
+                                                <div class="date-label">{{ Carbon\Carbon::parse($article->created_at)->day }}
+                                                    {{ Carbon\Carbon::parse($article->created_at)->translatedFormat('F') }}
+                                                    {{ Carbon\Carbon::parse($article->created_at)->year }}</div>
+                                            </div>
+                                            <div class="h3 small mb-2">{{ $article->title }}</div>
+                                            <div class="descrp">{!! $article->description !!}</div>
+                                        </a>
+                                    </div>
+                                @empty
+                                @endforelse
+                                {{-- <div class="swiper-slide news--item">
                                     <a href="##" class="inner">
                                         <div class="wrap-img mb-4">
                                             <img src="{{ asset('static_images/articles/article-1.jpeg') }}" alt="img">
@@ -534,7 +549,7 @@
                                             Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у
                                             Дніпрі пропонує..</div>
                                     </a>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="swiper-pagination mt-6 d-xl-none"></div>
                         </div>

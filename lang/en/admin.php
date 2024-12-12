@@ -154,5 +154,9 @@ return [
     'vacancy_list' => 'Vacancy List',
     'add_vacancy' => 'Add Vacancy',
     'delete_user' => 'Delete User',
-    'add_image' => 'Add image'
+    'add_image' => 'Add image',
+    'author_name' => 'Author\'s Name',
+    'author_specialization' => 'Author\'s Specialization',
+    'author_description' => 'Author\'s Description',
+    'author_image' => 'Author\'s Image',
 ];

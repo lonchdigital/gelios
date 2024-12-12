@@ -333,4 +333,8 @@ return [
     'add_vacancy' => 'Добавить вакансию',
     'delete_user' => 'Удалить пользователя',
     'add_image' => 'Добавить изображение',
+    'author_name' => 'Имя автора',
+    'author_specialization' => 'Специальность автора',
+    'author_description' => 'Описание автора',
+    'author_image' => 'Изображение автора',
 ];
