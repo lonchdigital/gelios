@@ -280,17 +280,17 @@ class CreateEdit extends Component
             ],
 
             'uaSpecialty' => [
-                'required',
+                'nullable',
                 'string',
             ],
 
             'enSpecialty' => [
-                'required',
+                'nullable',
                 'string',
             ],
 
             'ruSpecialty' => [
-                'required',
+                'nullable',
                 'string',
             ],
 
@@ -418,7 +418,7 @@ class CreateEdit extends Component
             $this->age,
             $this->expirience,
             // $this->specialization,
-            $this->category,
+            $this->category ?? null,
             $images
         );
 

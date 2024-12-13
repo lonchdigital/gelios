@@ -29,6 +29,10 @@ class DoctorService
 
     public function saveDoctor(Doctor $doctor, $age, $experience, $category, $images)
     {
+        if(empty($category)) {
+            $category = null;
+        }
+
         $doctor->images = $images;
         $doctor->age = $age;
         $doctor->expirience = $experience;
