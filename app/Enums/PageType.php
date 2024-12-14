@@ -30,4 +30,5 @@ enum PageType: string
     case CHECKUP = 'check_up';
     case CHECKUPITEM = 'check_up_item';
     case TYPICAL = 'typical';
+    case INSURANCECOMPANIES = 'insurance_companies';
 }

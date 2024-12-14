@@ -50,6 +50,8 @@ Route::group([
             Route::get('/{directionId}/edit', [DirectionsController::class, 'edit'])->name('directions.edit');
         });
         Route::prefix('/insurance-companies')->group(function() {
+            Route::get('/page', [InsuranceCompaniesController::class, 'page'])->name('insurance.companies.page.edit');
+
             Route::get('/', [InsuranceCompaniesController::class, 'index'])->name('insurance.companies.index');
         });
         Route::prefix('/one-center')->group(function() {

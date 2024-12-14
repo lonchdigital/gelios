@@ -108,11 +108,20 @@
                         </ul>
                     </li>
 
-                    <li @if( Route::is('insurance.companies.index') ) class="active"@endif>
-                        <a href="{{ route('insurance.companies.index') }}">
+                    <li class="treeview @if(Route::is('insurance.companies.*')) menu-open @endif">
+                        <a href="javascript:void(0)">
                             <i class='fa fa-briefcase'></i>
                             <span>{{ trans('admin.insurance_companies') }}</span>
+                            <i class="fa fa-angle-right"></i>
                         </a>
+                        <ul class="treeview-menu" @if( Route::is('insurance.companies.*') ) style="display: block;" @else style="display: none;" @endif>
+                            <li @if(Route::is('insurance.companies.page.edit')) class="active" @endif>
+                                <a href="{{ route('insurance.companies.page.edit') }}">{{ trans('admin.insurance_companies_page') }}</a>
+                            </li>
+                            <li @if(Route::is('insurance.companies.index')) class="active" @endif>
+                                <a href="{{ route('insurance.companies.index') }}">{{ trans('admin.insurance_companies') }}</a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li @if( Route::is('one.center.index') ) class="active"@endif>
