@@ -64,7 +64,7 @@ class ReviewsService
         return $data;
     }
 
-    public function updateReview(array $sectionData, null|Review $review)
+    public function updateReview(array $sectionData, null|Review $review) : Review
     {
         $formData = [
             'image' => $sectionData['media'] ?? null,

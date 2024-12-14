@@ -74,12 +74,11 @@ class Edit extends Component
 
     public function save()
     {
-        // $this->validate();
+        // $this->validate();        
+        $this->review = $this->reviewsService->updateReview($this->sectionData, $this->review);
 
         $this->review->doctors()->sync($this->reviewDoctors);
         $this->review->pages()->sync($this->reviewPages);
-        
-        $this->reviewsService->updateReview($this->sectionData, $this->review);
 
         if($this->sectionData['published']) {
             redirect()->route('reviews.index')->with('success', trans('admin.updated_review'));
