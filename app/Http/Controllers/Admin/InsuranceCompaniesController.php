@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class InsuranceCompaniesController extends Controller
 {
+    public function page()
+    {
+        return view('admin.insurance-companies.page');
+    }
+
     public function index()
     {
         return view('admin.insurance-companies.index');
