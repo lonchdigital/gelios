@@ -29,14 +29,15 @@
             <div class="row">
                 <div class="col">
                     <div class="reviews-list row">
-
                         @foreach ($reviews as $review)
                             <div class="content-item col-12 col-lg-6 mt-11">
                                 <div class="reviews--item">
                                     <div class="inner">
-                                        <div class="wrap-img">
-                                            <img src="{{ '/storage/' . $review->image }}" alt="img">
-                                        </div>
+										@if(!is_null($review->image))
+											<div class="wrap-img">
+												<img src="{{ '/storage/' . $review->image }}" alt="img">
+											</div>
+										@endif
                                         <div class="d-flex align-items-center justify-content-between mb-4">
                                             <div class="user-name h4 font-weight-bolder">{{ $review->name }}</div>
                                             <div class="reviews-date h6 font-weight-bold text-grey">{{ $review->created_at->format('d.m.Y') }}</div>
@@ -46,7 +47,6 @@
                                 </div>
                             </div>
                         @endforeach
-                        
                     </div>
                 </div>
             </div>
