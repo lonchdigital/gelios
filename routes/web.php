@@ -15,11 +15,12 @@ use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\WebPagesController;
 use App\Http\Controllers\DirectionController;
 use App\Http\Controllers\OneCenterController;
 use App\Http\Controllers\PromotionController;
-use App\Http\Controllers\WebPagesController;
 use App\Http\Controllers\LaboratoryController;
+use App\Http\Controllers\InsuranceCompaniesController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::name('auth.')->prefix('/admin')->group(function () {
@@ -43,6 +44,8 @@ Route::group([
         Route::get('/one-center/{slug}', [OneCenterController::class, 'page'])->name('one.center.page');
 
         Route::get('/about-us/', [AboutUsController::class, 'page'])->name('about.us.page');
+
+        Route::get('/strahovym-kompaniyam/', [InsuranceCompaniesController::class, 'page'])->name('strahovym.kompaniyam.page');
 
         Route::get('/otzyvy/', [ReviewsController::class, 'page'])->name('reviews.page');
         Route::post('/user-write-review/', [ReviewsController::class, 'userWriteReview']);

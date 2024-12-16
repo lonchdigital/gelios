@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'companies_we_are_working_with' => 'Страховые компании, с которыми мы сотрудничаем',
+    'will_be_happy_to_work' => 'Будем рады сотрудничеству!',
+    'view' => 'Просмотреть',
     'insurance_companies_we_are_working_with' => 'Страховые компании, с которыми мы сотрудничаем',
     'nothing_found' => 'Ничего не найдено',
     'photo_of_the_hospital' => 'Фото клиники',

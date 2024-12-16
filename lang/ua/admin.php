@@ -103,6 +103,7 @@ return [
     'blog' => 'Блог',
     'main' => 'Головна',
     'insurance_companies' => 'Страхові компанії',
+    'insurance_companies_page' => 'Сторінка страхових компаній',
     'add_new_article' => 'Додати нову статтю',
     'edit_article' => 'Редагувати статтю',
     'title' => 'Заголовок',
