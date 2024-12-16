@@ -15,7 +15,7 @@
                 'url' => route('main'),
             ],
             [
-                'title' => __('doctor.doctors'),
+                'title' => $page->title,
                 'url' => route('doctors.index'),
             ],
             [
@@ -47,22 +47,28 @@
                         @endif
 
                         <div class="os-scrollbar-overflow content mb-3">
-                            <div class="mb-3">
-                                <span
-                                    class="text-blue mr-3">{{ __('doctor.specialty') }}:</span><span>{{ $doctor->specialty ?? '' }}</span>
-                            </div>
-                            <div class="mb-3">
-                                <span
-                                    class="text-blue mr-3">{{ __('doctor.specialization') }}:</span>
-                                    {{-- <span>{{ $doctor->specialization->title ?? '' }}</span> --}}
-                                    @forelse ($doctor->specializations as $specialization)
-                                        <span>{{ $specialization->title ?? '' }}</span>@if(!$loop->last),@endif
-                                    @empty
-                                    @endforelse
-                            </div>
-                            <div class="mb-3">
-                                <span class="text-blue mr-3">{{ __('doctor.age') }}:</span><span>{{ $doctor->age ?? '' }} роки</span>
-                            </div>
+                            @if($doctor->specialty)
+                                <div class="mb-3">
+                                    <span
+                                        class="text-blue mr-3">{{ __('doctor.specialty') }}:</span><span>{{ $doctor->specialty ?? '' }}</span>
+                                </div>
+                            @endif
+                            @if($doctor->specializations->count())
+                                <div class="mb-3">
+                                    <span
+                                        class="text-blue mr-3">{{ __('doctor.specialization') }}:</span>
+                                        {{-- <span>{{ $doctor->specialization->title ?? '' }}</span> --}}
+                                        @forelse ($doctor->specializations as $specialization)
+                                            <span>{{ $specialization->title ?? '' }}</span>@if(!$loop->last),@endif
+                                        @empty
+                                        @endforelse
+                                </div>
+                            @endif
+                            @if(!empty($doctor->age))
+                                <div class="mb-3">
+                                    <span class="text-blue mr-3">{{ __('doctor.doctor_experience') }}:</span><span>{{ $doctor->age ?? '' }} роки</span>
+                                </div>
+                            @endif
                             <div class="mb-3">
                                 <span class="text-blue mr-3">{{ __('doctor.education') }}:</span><span>{!! $doctor->education !!}</span>
                             </div>
@@ -80,13 +86,15 @@
                             <p>2011-2021 Працювала лікарем приймального відділення</p>
                             <p>1993-1999 Дніпропетровська державна медична академія</p> --}}
                         </div>
+                        @if(count($doctor->directions))
                         <div class="text-blue font-weight-bold mb-2">{{ __('doctor.directions_of_treatment') }}:</div>
-                        <div class="doctor-directions-list font-weight-bold mb-4">
-                            @forelse($doctor->directions as $direction)
-                                <div class="item">{{ $direction->name }}</div>
-                            @empty
-                            @endforelse
-                        </div>
+                            <div class="doctor-directions-list font-weight-bold mb-4">
+                                @forelse($doctor->directions as $direction)
+                                    <div class="item">{{ $direction->name }}</div>
+                                @empty
+                                @endforelse
+                            </div>
+                        @endif
                         <button type="button" class="btn btn-blue font-weight-bold" data-toggle="modal"
                         data-target="#popup--sign-up-appointment">{{ __('pages.make_an_appointment') }}</button>
                     </div>

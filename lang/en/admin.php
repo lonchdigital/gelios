@@ -159,4 +159,6 @@ return [
     'author_specialization' => 'Author\'s Specialization',
     'author_description' => 'Author\'s Description',
     'author_image' => 'Author\'s Image',
+    'slider' => 'Slider',
+    'is_active' => 'Is active',
 ];

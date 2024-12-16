@@ -313,7 +313,9 @@
                                             <div class="wrap-img mb-3">
                                                 <img src="{{ $doctor->imageUrl }}" alt="{{ $doctor->title }}">
                                             </div>
-                                            <div class="experience-quantity mb-3">Досвід роботи: {{ $doctor->expirience }} років</div>
+                                            @if($doctor->expirience)
+                                                <div class="experience-quantity mb-3">Досвід роботи: {{ $doctor->expirience }} років</div>
+                                            @endif
                                             <div class="h4 mb-1 font-weight-bolder">{{ $doctor->title }}</div>
                                             <div class="position-work">{{ $doctor->specialty }}</div>
                                         </a>
@@ -501,9 +503,13 @@
                             <div class="swiper-wrapper">
                                 @forelse($articles as $article)
                                     <div class="swiper-slide news--item">
-                                        <a href="##" class="inner">
+                                        <a href="{{ route('articles.show', ['slug' => $article->slug]) }}" class="inner">
                                             <div class="wrap-img mb-4">
+                                                @if($article->image)
+                                                <img src="{{ $article->imageUrl }}" alt="{{ $article->title ?? '' }}">
+                                                @else
                                                 <img src="{{ asset('static_images/articles/article-1.jpeg') }}" alt="img">
+                                                @endif
                                                 <div class="date-label">{{ Carbon\Carbon::parse($article->created_at)->day }}
                                                     {{ Carbon\Carbon::parse($article->created_at)->translatedFormat('F') }}
                                                     {{ Carbon\Carbon::parse($article->created_at)->year }}</div>

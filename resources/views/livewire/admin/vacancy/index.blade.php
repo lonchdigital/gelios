@@ -79,6 +79,7 @@
                         <thead>
                             <tr>
                                 <th>{{ __('admin.name') }}</th>
+                                <th>{{ __('admin.is_active') }}</th>
                                 <th style="text-align: right">{{ __('admin.actions') }}</th>
                             </tr>
                         </thead>
@@ -86,9 +87,20 @@
                             @foreach ($this->vacancies as $vacancy)
                                 <tr>
                                     <td>{{ $vacancy->title }}</td>
+                                    <td>
+                                        <div class="new-checkbox art-text-block-switcher">
+                                            <label class="switch mr-3">
+                                                <input type="checkbox" wire:click="changeActive('{{ $vacancy->id }}')"
+                                                    @if ($vacancy->is_active) checked @endif>
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                    </td>
                                     <td style="text-align: right">
                                         <a href="{{ route('admin.vacancies.edit', ['vacancy' => $vacancy]) }}"
                                             class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                        <a wire:click="deleteItem('{{ $vacancy->id }}', 'vacancy')"
+                                            style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

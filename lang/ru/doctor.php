@@ -3,6 +3,7 @@
 return [
     'adult' => 'Взрослым',
     'children' => 'Детям',
+    'both' => 'Обе',
     'all_doctors' => 'Все врачи',
     'all' => 'Все',
     'doctors' => 'врачи',
@@ -14,4 +15,5 @@ return [
     'education' => 'Образование',
     'directions_of_treatment' => 'Направления лечения',
     'diplomas_and_certificates' => 'Дипломы и сертификаты',
+    'doctor_experience' => 'Стаж',
 ];

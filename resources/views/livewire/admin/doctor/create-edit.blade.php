@@ -51,7 +51,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -81,7 +81,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="col-md-12">
                                                 <div class="row">
@@ -183,7 +183,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -213,7 +213,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="col-md-12">
                                                 <div class="row">
@@ -315,7 +315,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -345,7 +345,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="col-md-12">
                                                 <div class="row">
@@ -412,6 +412,30 @@
                                                 </div>
                                             </div>
                                         @endif
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <x-admin.multilanguage-text-area-rich :is-required="false"
+                                                        :label="__('admin.education')" field-name="education"
+                                                        live-wire-field="education" :values="[
+                                                            'ua' => $this->uaEducation,
+                                                            'ru' => $this->ruEducation,
+                                                            'en' => $this->enEducation,
+                                                        ]" />
+                                                    @if ($errors->has('uaEducation'))
+                                                        <div class="text-danger">{{ $errors->first('uaEducation') }}
+                                                        </div>
+                                                    @elseif($errors->has('ruEducation'))
+                                                        <div class="text-danger">{{ $errors->first('ruEducation') }}
+                                                        </div>
+                                                    @elseif($errors->has('enEducation'))
+                                                        <div class="text-danger">{{ $errors->first('enEducation') }}
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="col-md-12">
                                             <div class="row">

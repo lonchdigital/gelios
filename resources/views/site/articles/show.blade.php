@@ -23,7 +23,7 @@
                 <div class="col-12 col-xl-6 mb-8 mb-xl-0">
                     <div class="section-top--backdrop-swiper overflow-hidden h-100 position-relative">
                         <div class="swiper-wrapper">
-                            <div
+                            {{-- <div
                                 class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
                                 <div class="backdrop p-3 p-lg-6">
                                     <div class="content mt-16">
@@ -36,19 +36,19 @@
                                     <img class="bg-down" src="{{ $article->imageUrl }}" alt="{{ $article->title }}">
                                     <div class="date-label">{{ Carbon\Carbon::parse($article->created_at)->day }}  {{ Carbon\Carbon::parse($article->created_at)->translatedFormat('F') }} {{ Carbon\Carbon::parse($article->created_at)->year }}</div>
                                 </div>
-                            </div>
-                            @forelse($article->imagesUrl ?? [] as $image)
+                            </div> --}}
+                            @forelse($article->articleSliders()->orderBy('sort', 'ASC')->get() ?? [] as $image)
                                 <div
                                     class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
                                     <div class="backdrop p-3 p-lg-6">
                                         <div class="content mt-16">
-                                            <div class="h1 font-m font-weight-bolder mb-3">{{ $article->title }}
+                                            <div class="h1 font-m font-weight-bolder mb-3">{{ $image->title }}
                                             </div>
-                                            <div class="h5 font-m font-weight-bold mb-3">{!! $article->description !!}</div>
+                                            <div class="h5 font-m font-weight-bold mb-3">{!! $image->description !!}</div>
                                         </div>
                                     </div>
                                     <div class="wrap-img">
-                                        <img class="bg-down" src="{{ $image }}" alt="{{ $article->title }}">
+                                        <img class="bg-down" src="{{ $image->imageUrl }}" alt="{{ $image->title }}">
                                         <div class="date-label">{{ Carbon\Carbon::parse($article->created_at)->day }}  {{ Carbon\Carbon::parse($article->created_at)->translatedFormat('F') }} {{ Carbon\Carbon::parse($article->created_at)->year }}</div>
                                     </div>
                                 </div>
@@ -155,35 +155,38 @@
                     <div class="articles--list">
                         @forelse($article->articleBlocks()->orderBy('sort', 'ASC')->get() as $block)
 
-                        @if($block->type == 'one_block')
-                            <div class="articles--item">
-                                {{-- <p>Медичний центр сімейного здоров'я та реабілітації “Геліос” у Дніпрі пропонує прийом
-                                    лікаря-анестезіолога пацієнтам, які готуються до планового хірургічного втручання.</p>
-                                <p>Оперативне лікування неможливе без анестезіолога-реаніматолога. Його завдання —
-                                    забезпечувати проведення хірургічної операції у тісній взаємодії з хірургом. Але якщо в
-                                    компетенції хірурга – показання до оперативного втручання, то завдання анестезіолога –
-                                    виявити протипоказання, тобто. здійснити доступ пацієнта до операції. Медичний центр
-                                    сімейного здоров'я та реабілітації “Геліос” у Дніпрі пропонує прийом
-                                    лікаря-анестезіолога пацієнтам, які готуються до планового хірургічного втручання.</p>
-                                <p>Оперативне лікування неможливе без анестезіолога-реаніматолога.</p> --}}
-                                <div class="title">{{ $block->first_title }}</div>
-                                <p>
-                                    {{ $block->first_content }}
-                                </p>
-                            </div>
-                        @else
-                            <div class="columns">
-                                <div class="articles--item">
-                                    <div class="title">{{ $block->first_title }}</div>
-                                    <p>{{ $block->first_content }}</p>
-                                </div>
-                                <div class="articles--item">
-                                    <div class="title">{{ $block->second_title }}</div>
-                                    <p>{{ $block->second_content }}</p>
-                                </div>
-                            </div>
-                        @endif
-
+                            @if($block->type == 'one_block')
+                                @if(!empty($block->first_title) && !empty($block->first_content))
+                                    <div class="articles--item">
+                                        {{-- <p>Медичний центр сімейного здоров'я та реабілітації “Геліос” у Дніпрі пропонує прийом
+                                            лікаря-анестезіолога пацієнтам, які готуються до планового хірургічного втручання.</p>
+                                        <p>Оперативне лікування неможливе без анестезіолога-реаніматолога. Його завдання —
+                                            забезпечувати проведення хірургічної операції у тісній взаємодії з хірургом. Але якщо в
+                                            компетенції хірурга – показання до оперативного втручання, то завдання анестезіолога –
+                                            виявити протипоказання, тобто. здійснити доступ пацієнта до операції. Медичний центр
+                                            сімейного здоров'я та реабілітації “Геліос” у Дніпрі пропонує прийом
+                                            лікаря-анестезіолога пацієнтам, які готуються до планового хірургічного втручання.</p>
+                                        <p>Оперативне лікування неможливе без анестезіолога-реаніматолога.</p> --}}
+                                        <div class="title">{{ $block->first_title }}</div>
+                                        <p>
+                                            {!! $block->first_content !!}
+                                        </p>
+                                    </div>
+                                @endif
+                            @else
+                                @if(!empty($block->first_title) && !empty($block->first_content) && !empty($block->second_title) && !empty($block->second_content))
+                                    <div class="columns">
+                                        <div class="articles--item">
+                                            <div class="title">{{ $block->first_title }}</div>
+                                            <p>{!! $block->first_content !!}</p>
+                                        </div>
+                                        <div class="articles--item">
+                                            <div class="title">{{ $block->second_title }}</div>
+                                            <p>{!! $block->second_content !!}</p>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endif
                         @empty
                         @endforelse
                     </div>

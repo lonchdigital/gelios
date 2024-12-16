@@ -47,65 +47,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div
-                                                                        class="multilang-content tab-pane fade active show ">
-                                                                        <div class="form-group mb-1">
-                                                                            <label>{{ __('admin.text') }}
-                                                                                <strong>UA</strong>
-                                                                            </label>
-                                                                            <textarea wire:model="uaDescription" class="form-control"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @if($errors->has('uaDescription'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaDescription') }}</div>
-                                                                @elseif($errors->has('ruDescription'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruDescription') }}</div>
-                                                                @elseif($errors->has('enDescription'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enDescription') }}</div>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div id="uaTitle"
-                                                                        class="multilang-content tab-pane fade active show">
-                                                                        <div class="form-group mb-1">
-                                                                            <label>{{ __('admin.button_text') }}
-                                                                                <strong>UA</strong>
-                                                                            </label>
-                                                                            <input type="text" wire:model="uaButton"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @if($errors->has('uaButton'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaButton') }}</div>
-                                                                @elseif($errors->has('enButton'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enButton') }}</div>
-                                                                @elseif($errors->has('ruButton'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruButton') }}</div>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         @endif
 
                                         @if ($this->activeLocale == 'ru')
@@ -132,65 +73,6 @@
                                                                     <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaTitle') }}</div>
                                                                 @elseif($errors->has('enTitle'))
                                                                     <div class="mt-1 text-danger ajaxError">{{ $errors->first('enTitle') }}</div>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div
-                                                                        class="multilang-content tab-pane fade active show ">
-                                                                        <div class="form-group mb-1">
-                                                                            <label>{{ __('admin.text') }}
-                                                                                <strong>RU</strong>
-                                                                            </label>
-                                                                            <textarea wire:model="ruDescription" class="form-control"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @if($errors->has('ruDescription'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruDescription') }}</div>
-                                                                @elseif($errors->has('uaDescription'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaDescription') }}</div>
-                                                                @elseif($errors->has('enDescription'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enDescription') }}</div>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div id="uaTitle"
-                                                                        class="multilang-content tab-pane fade active show">
-                                                                        <div class="form-group mb-1">
-                                                                            <label>{{ __('admin.button_text') }}
-                                                                                <strong>RU</strong>
-                                                                            </label>
-                                                                            <input type="text" wire:model="ruButton"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @if($errors->has('ruButton'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruButton') }}</div>
-                                                                @elseif($errors->has('uaButton'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaButton') }}</div>
-                                                                @elseif($errors->has('enButton'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enButton') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -229,90 +111,29 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div
-                                                                        class="multilang-content tab-pane fade active show ">
-                                                                        <div class="form-group mb-1">
-                                                                            <label>{{ __('admin.text') }}
-                                                                                <strong>EN</strong>
-                                                                            </label>
-                                                                            <textarea wire:model="enDescription" class="form-control"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @if($errors->has('enDescription'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enDescription') }}</div>
-                                                                @elseif($errors->has('ruDescription'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruDescription') }}</div>
-                                                                @elseif($errors->has('uaDescription'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaDescription') }}</div>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div id="uaTitle"
-                                                                        class="multilang-content tab-pane fade active show">
-                                                                        <div class="form-group mb-1">
-                                                                            <label>{{ __('admin.button_text') }}
-                                                                                <strong>EN</strong>
-                                                                            </label>
-                                                                            <input type="text" wire:model="enButton"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @if($errors->has('enButton'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enButton') }}</div>
-                                                                @elseif($errors->has('ruButton'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruButton') }}</div>
-                                                                @elseif($errors->has('uaButton'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaButton') }}</div>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         @endif
 
                                         <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <div class="row mb-3">
-                                                        <div class="col-md-12">
-                                                            <div class="tab-content">
-                                                                <div id="uaTitle"
-                                                                    class="multilang-content tab-pane fade active show">
-                                                                    <div class="form-group mb-1">
-                                                                        <label>{{ __('admin.link') }}
-                                                                        </label>
-                                                                        <input type="text" wire:model="link"
-                                                                            class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            @error('link')
-                                                                <div class="mt-1 text-danger ajaxError">
-                                                                    {{ $message }}
-                                                                </div>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
+                                                    <x-admin.multilanguage-text-area-rich
+                                                        :is-required="false"
+                                                        :label="__('admin.description')"
+                                                        field-name="description"
+                                                        live-wire-field="description"
+                                                        :values="[
+                                                            'ua' => $this->uaDescription,
+                                                            'ru' => $this->ruDescription,
+                                                            'en' => $this->enDescription
+                                                        ]"
+                                                    />
+                                                    @if($errors->has('uaDescription'))
+                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaDescription') }}</div>
+                                                    @elseif($errors->has('ruDescription'))
+                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruDescription') }}</div>
+                                                    @elseif($errors->has('enDescription'))
+                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('enDescription') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -348,8 +169,8 @@
                                                                         {{ __('admin.delete_image') }}
                                                                     </a>
                                                                 </div>
-                                                            @elseif(!empty($this->block->image))
-                                                                <img src="{{ $this->block->imageUrl }}"
+                                                            @elseif(!empty($this->slide->image))
+                                                                <img src="{{ $this->slide->imageUrl }}"
                                                                     width="60">
                                                             @endif
                                                         </div>
@@ -369,3 +190,17 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
+    <script type="text/javascript">
+        document.addEventListener('livewire:load', () => {
+            initQuillEditors((quill, fieldName, language) => {
+                quill.on('text-change', function() {
+                    let value = quill.root.innerHTML;
+                    @this.set(`${fieldName}`, value);
+                });
+            });
+        });
+    </script>
+@endpush

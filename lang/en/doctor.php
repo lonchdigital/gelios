@@ -3,6 +3,7 @@
 return [
     'adult' => 'For Adults',
     'children' => 'For Children',
+    'both' => 'Both',
     'all_doctors' => 'All Doctors',
     'all' => 'All',
     'doctors' => 'Doctors',
@@ -14,4 +15,5 @@ return [
     'education' => 'Education',
     'directions_of_treatment' => 'Directions of Treatment',
     'diplomas_and_certificates' => 'Diplomas and Certificates',
+    'doctor_experience' => 'Experience',
 ];

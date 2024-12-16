@@ -501,6 +501,57 @@
                                         </div>
                                     </div>
 
+                                    <div class="card-body pb-0">
+                                        <div class="d-flex justify-content-between align-items-center mb-20">
+                                            <h6 class="card-title mb-0">{{ __('admin.slider') }}</h6>
+
+                                            <a href="{{ route('admin.articles.create-article-slide', ['article' => $this->article]) }}"
+                                                class="btn btn-primary waves-effect waves-light float-right mb-3">
+                                                + {{ __('admin.add_slide') }}
+                                            </a>
+                                        </div>
+
+                                        <div class="table-responsive art-cars-list">
+                                            <table class="table table-nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th>{{ __('admin.sort') }}</th>
+                                                        <th>{{ __('admin.title') }}</th>
+                                                        <th style="text-align: right">{{ __('admin.actions') }}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($this->article->articleSliders()->with('translations')->orderBy('sort', 'ASC')->get() as $block)
+                                                        <tr>
+                                                            <td>
+                                                                @if ($loop->iteration !== 1)
+                                                                    <div style="cursor: pointer;"
+                                                                        wire:click="newSliderPosition(-1, {{ $block }})">
+                                                                        <i class="fa fa-sort-up"></i>
+                                                                    </div>
+                                                                @endif
+                                                                {{ $block->sort }}
+                                                                @if (!$loop->last)
+                                                                    <div style="cursor: pointer;"
+                                                                        wire:click="newSlidePosition(+1, {{ $block }})">
+                                                                        <i class="fa fa-sort-desc"></i>
+                                                                    </div>
+                                                                @endif
+                                                            </td>
+                                                            <td>{{ $block->title }}</td>
+                                                            <td style="text-align: right">
+                                                                <a href="{{ route('admin.articles.edit-article-slide', ['article' => $this->article, 'slide' => $block]) }}"
+                                                                    class="mr-2"><i
+                                                                        class="fa fa-edit text-info font-18"></i></a>
+                                                                <a wire:click="deleteItem('{{ $block->id }}', 'articleSlide')" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
                                     @if (!empty($this->article->id))
                                         <div class="card-body pb-0">
                                             <div class="d-flex justify-content-between align-items-center mb-20">

@@ -338,4 +338,6 @@ return [
     'author_specialization' => 'Специальность автора',
     'author_description' => 'Описание автора',
     'author_image' => 'Изображение автора',
+    'slider' => 'Слайдер',
+    'is_active' => 'Активен ли',
 ];

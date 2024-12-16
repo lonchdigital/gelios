@@ -36,7 +36,7 @@
                             </div>
                             @forelse($types as $type)
                                 <div class="col col-sm-auto">
-                                    <button type="button" class="btn btn-outline-blue">{{ __('doctor.'.$type) }}</button>
+                                    <button type="button" class="btn btn-outline-blue">{{ __('doctor.' . $type) }}</button>
                                 </div>
                             @empty
                             @endforelse
@@ -52,10 +52,10 @@
                             <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
                                 <div class="field field-select-default">
                                     <div class="select-wrap">
-                                        <select class="select-doctors-category">
+                                        <select class="select-doctors-category" id="doctor-category-select">
                                             <option value="">{{ __('doctor.all_doctors') }}</option>
                                             @forelse($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->title }}
+                                                <option value="{{ $category->title }}">{{ $category->title }}
                                                 </option>
                                             @empty
                                             @endforelse
@@ -82,12 +82,15 @@
                         @forelse($doctors as $doctor)
                             <div class="content-item col-12 col-md-6 col-lg-4 col-xl-3">
                                 <div class="doctors--item">
-                                    <a href="{{ route('doctors.show', ['doctor' => $doctor->slug ?? $doctor->id]) }}" class="inner">
+                                    <a href="{{ route('doctors.show', ['doctor' => $doctor->slug ?? $doctor->id]) }}"
+                                        class="inner">
                                         <div class="wrap-img mb-3">
                                             <img src="{{ $doctor->imageUrl }}" alt="{{ $doctor->title }}">
                                         </div>
-                                        <div class="experience-quantity mb-3">Досвід роботи: {{ $doctor->expirience }} років
-                                        </div>
+                                        @if(!empty($doctor->expirience))
+                                            <div class="experience-quantity mb-3">Досвід роботи: {{ $doctor->expirience }} років
+                                            </div>
+                                        @endif
                                         <div class="h4 mb-1 font-weight-bolder">{{ $doctor->title }}</div>
                                         <div class="position-work">{{ $doctor->specialization->title ?? '' }}</div>
                                     </a>

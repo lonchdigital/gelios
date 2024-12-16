@@ -164,6 +164,9 @@ Route::group([
 
             Route::get('/{article}/create-block', [ArticleController::class, 'createBlock'])->name('create-block');
             Route::get('/{article}/edit-block/{block}', [ArticleController::class, 'editBlock'])->name('edit-block');
+
+            Route::get('/{article}/create-slide', [ArticleController::class, 'createArticleSlide'])->name('create-article-slide');
+            Route::get('/{article}/edit-slide/{slide}', [ArticleController::class, 'editArticleSlide'])->name('edit-article-slide');
         });
 
         Route::prefix('/doctors')->name('admin.doctors.')->group(function() {
