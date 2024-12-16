@@ -2,12 +2,10 @@
 
 namespace App\Livewire\Admin\Article\Slider;
 
-use App\Models\Page;
-use App\Models\PageBlock;
-use App\Models\PageBlockTranslation;
+use App\Models\Article;
+use App\Models\ArticleSlider;
+use App\Services\Admin\Article\SliderService;
 use App\Services\Admin\ImageService;
-use App\Services\Admin\Laboratory\BlockService;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -15,11 +13,13 @@ class CreateEdit extends Component
 {
     use WithFileUploads;
 
-    public Page $page;
+    public Article $article;
 
-    public PageBlock $block;
+    public ArticleSlider $slide;
 
     public string $activeLocale;
+
+    public $description;
 
     public string $uaTitle = '';
 
@@ -33,14 +33,6 @@ class CreateEdit extends Component
 
     public string $ruDescription = '';
 
-    public string $uaButton = '';
-
-    public string $enButton = '';
-
-    public string $ruButton = '';
-
-    public string $link = '';
-
     public $image;
 
     public $imageTemporary;
@@ -49,15 +41,16 @@ class CreateEdit extends Component
         'languageSwitched' => 'languageSwitched'
     ];
 
-    public function mount(Page $page, PageBlock $block = null)
+    public function mount(Article $article, ArticleSlider $slide = null)
     {
-        $this->page = $page;
-        $this->block = $block ?? new PageBlock();
-        $this->activeLocale = config('app.active_lang');
-        $this->link = $this->block->url ?? '';
+        $this->dispatch('livewire:load');
 
-        $service = resolve(BlockService::class);
-        $translations = $service->getTranslations($this->block);
+        $this->article = $article;
+        $this->slide = $slide ?? new ArticleSlider();
+        $this->activeLocale = config('app.active_lang');
+
+        $service = resolve(SliderService::class);
+        $translations = $service->getTranslations($this->slide);
 
         $this->uaTitle = $translations['ua']->title ?? '';
         $this->enTitle = $translations['en']->title ?? '';
@@ -66,10 +59,6 @@ class CreateEdit extends Component
         $this->uaDescription = $translations['ua']->description ?? '';
         $this->enDescription = $translations['en']->description ?? '';
         $this->ruDescription = $translations['ru']->description ?? '';
-
-        $this->uaButton = $translations['ua']->button ?? '';
-        $this->enButton = $translations['en']->button ?? '';
-        $this->ruButton = $translations['ru']->button ?? '';
     }
 
     public function languageSwitched($lang)
@@ -110,32 +99,27 @@ class CreateEdit extends Component
                 'string',
             ],
 
-            'uaButton' => [
-                'required',
-                'string',
-            ],
-
-            'enButton' => [
-                'required',
-                'string',
-            ],
-
-            'ruButton' => [
-                'required',
-                'string',
-            ],
-
-            'link' => [
-                'required',
-                'string',
-            ],
-
             'image' => [
-                empty($this->block->id) ? 'required' : 'nullable',
+                empty($this->slide->id) ? 'required' : 'nullable',
                 'mimes:jpeg,jpg,png,gif',
                 'image',
             ],
         ];
+    }
+
+    public function updatedDescription($val)
+    {
+        switch ($this->activeLocale) {
+            case 'ua':
+                $this->uaDescription = $val;
+                break;
+            case 'ru':
+                $this->ruDescription = $val;
+                break;
+            case 'en':
+                $this->enDescription = $val;
+                break;
+        }
     }
 
     public function updatedImage($val)
@@ -160,47 +144,44 @@ class CreateEdit extends Component
         if ($this->image) {
             $image = $imageService->downloadImage($this->image, '/static-blocks');
 
-            if (!empty($this->block->id) && !empty($this->block->image)) {
-                $imageService->deleteStorageImage($this->image, $this->block->image);
+            if (!empty($this->slide->id) && !empty($this->slide->image)) {
+                $imageService->deleteStorageImage($this->image, $this->slide->image);
             }
 
-            $this->block->image = $image;
+            $this->slide->image = $image;
         }
 
         $descriptions = [
             'ua' => [
                 'title' => $this->uaTitle,
                 'description' => $this->uaDescription,
-                'button' => $this->uaButton,
             ],
             'en' => [
                 'title' => $this->enTitle,
                 'description' => $this->enDescription,
-                'button' => $this->enButton,
             ],
             'ru' => [
                 'title' => $this->ruTitle,
                 'description' => $this->ruDescription,
-                'button' => $this->ruButton,
             ],
         ];
 
         $data = [
-            'page_id' => $this->page->id,
-            'link' => $this->link,
+            'sort' => $this->slide->sort ?? $this->article->articleSliders()->count() + 1,
+            'article_id' => $this->article->id,
         ];
 
-        $service = resolve(BlockService::class);
+        $service = resolve(SliderService::class);
 
-        $service->saveSlider($this->block, $data, $descriptions);
+        $service->saveSlider($this->slide, $data, $descriptions);
 
         session()->flash('success', 'Дані успішно збережено');
 
-        $this->redirectRoute('admin.promotions.index');
+        $this->redirectRoute('admin.articles.edit', ['article' => $this->article]);
     }
 
     public function render()
     {
-        return view('livewire.admin.promotion.slider.create-edit');
+        return view('livewire.admin.article.slider.create-edit');
     }
 }

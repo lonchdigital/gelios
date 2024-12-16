@@ -6,4 +6,5 @@ enum DoctorCategoryType: string
 {
     case ADULT = 'adult';
     case CHILDREN = 'children';
+    case BOTH = 'both';
 }

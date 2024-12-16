@@ -4,6 +4,8 @@ namespace App\Livewire\Admin\Modals;
 
 use App\Models\Article;
 use App\Models\ArticleBlock;
+use App\Models\ArticleCategory;
+use App\Models\ArticleSlider;
 use App\Models\CheckUp;
 use App\Models\CheckUpProgram;
 use App\Models\Doctor;
@@ -13,6 +15,7 @@ use App\Models\PageBlock;
 use App\Models\Promotion;
 use App\Models\Specialization;
 use App\Models\User;
+use App\Models\Vacancy;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
@@ -133,6 +136,30 @@ class Delete extends Component
                 $this->modalInfo  = '';
                 break;
 
+            case 'article_category':
+                $this->item = ArticleCategory::find($modelId);
+                $this->type = 'article_category';
+                $this->modalTitle = 'Delete category';
+                $this->modalBody  = 'You really want to delete category: ' . $this->item->title . '?';
+                $this->modalInfo  = '';
+                break;
+
+            case 'articleSlide':
+                $this->item = ArticleSlider::find($modelId);
+                $this->type = 'articleSlide';
+                $this->modalTitle = 'Delete slide';
+                $this->modalBody  = 'You really want to delete slide: ' . $this->item->title . '?';
+                $this->modalInfo  = '';
+                break;
+
+            case 'vacancy':
+                $this->item = Vacancy::find($modelId);
+                $this->type = 'vacancy';
+                $this->modalTitle = 'Delete vacancy';
+                $this->modalBody  = 'You really want to delete vacancy: ' . $this->item->title . '?';
+                $this->modalInfo  = '';
+                break;
+
             default:
 
                 break;
@@ -192,7 +219,9 @@ class Delete extends Component
 
             case 'checkUp':
 
-                $this->deleteImage($this->item->image);
+                if (!empty($this->item->image)) {
+                    $this->deleteImage($this->item->image);
+                }
 
                 $this->item->delete();
 
@@ -202,7 +231,9 @@ class Delete extends Component
 
             case 'promotion':
 
-                $this->deleteImage($this->item->image);
+                if (!empty($this->item->image)) {
+                    $this->deleteImage($this->item->image);
+                }
 
                 $this->item->delete();
 
@@ -212,7 +243,9 @@ class Delete extends Component
 
             case 'pageBlock':
 
-                $this->deleteImage($this->item->image);
+                if (!empty($this->item->image)) {
+                    $this->deleteImage($this->item->image);
+                }
 
                 $this->item->delete();
 
@@ -222,7 +255,9 @@ class Delete extends Component
 
             case 'pageBlock2':
 
-                $this->deleteImage($this->item->image);
+                if (!empty($this->item->image)) {
+                    $this->deleteImage($this->item->image);
+                }
 
                 $this->item->delete();
 
@@ -232,7 +267,9 @@ class Delete extends Component
 
             case 'doctor':
 
-                $this->deleteImage($this->item->image);
+                if (!empty($this->item->image)) {
+                    $this->deleteImage($this->item->image);
+                }
 
                 $this->item->delete();
 
@@ -252,7 +289,9 @@ class Delete extends Component
 
                 $this->deleteBlocks($this->item);
 
-                $this->deleteImage($this->item->image);
+                if (!empty($this->item->image)) {
+                    $this->deleteImage($this->item->image);
+                }
 
                 $this->item->delete();
 
@@ -280,6 +319,35 @@ class Delete extends Component
 
                 return true;
 
+            case 'article_category':
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
+            case 'articleSlide':
+
+                $this->updateArticleSliderSort($this->item);
+
+                $this->deleteImage($this->item->image);
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
+            case 'vacancy':
+                $this->deleteImage($this->item->image);
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
             default:
 
                 return false;
@@ -297,7 +365,7 @@ class Delete extends Component
 
     public function deleteImage($image)
     {
-        if (Storage::disk('public')->exists($image)) {
+        if (!empty($image) && Storage::disk('public')->exists($image)) {
             Storage::disk('public')->delete($image);
         }
     }
@@ -311,6 +379,19 @@ class Delete extends Component
         foreach($articleBlocks as $block2) {
             $block2->update([
                 'sort' => $block2->sort - 1,
+            ]);
+        }
+    }
+
+    public function updateArticleSliderSort(ArticleSlider $slide)
+    {
+        $articleSliders = ArticleSlider::where('article_id', $slide->article_id)
+            ->where('sort', '>', $slide->sort)
+            ->get();
+
+        foreach($articleSliders as $block) {
+            $block->update([
+                'sort' => $block->sort - 1,
             ]);
         }
     }

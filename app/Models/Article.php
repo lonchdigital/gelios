@@ -15,7 +15,6 @@ class Article extends Model
     protected $fillable = [
         'slug',
         'image',
-        'images',
         'article_category_id',
         'is_show_in_surgery_page',
         'author_image',
@@ -43,19 +42,24 @@ class Article extends Model
         return Storage::disk('public')->url($this->author_image);
     }
 
-    public function getImagesUrlAttribute()
-    {
-        $array = [];
+    // public function getImagesUrlAttribute()
+    // {
+    //     $array = [];
 
-        foreach($this->images as $image) {
-            $array[] = Storage::disk('public')->url($image);
-        }
+    //     foreach($this->images as $image) {
+    //         $array[] = Storage::disk('public')->url($image);
+    //     }
 
-        return $array;
-    }
+    //     return $array;
+    // }
 
     public function articleBlocks(): HasMany
     {
         return $this->hasMany(ArticleBlock::class);
+    }
+
+    public function articleSliders(): HasMany
+    {
+        return $this->hasMany(ArticleSlider::class);
     }
 }

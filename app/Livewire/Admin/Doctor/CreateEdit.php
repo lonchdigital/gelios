@@ -27,6 +27,8 @@ class CreateEdit extends Component
 
     public string $description;
 
+    public string $education;
+
     public string $uaTitle = '';
 
     public string $enTitle = '';
@@ -364,6 +366,21 @@ class CreateEdit extends Component
                 break;
             case 'en':
                 $this->enDescription = $val;
+                break;
+        }
+    }
+
+    public function updatedEducation($val)
+    {
+        switch ($this->activeLocale) {
+            case 'ua':
+                $this->uaEducation = $val;
+                break;
+            case 'ru':
+                $this->ruEducation = $val;
+                break;
+            case 'en':
+                $this->enEducation = $val;
                 break;
         }
     }

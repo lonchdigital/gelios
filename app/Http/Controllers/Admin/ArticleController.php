@@ -6,6 +6,7 @@ use App\Enums\PageType;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\ArticleBlock;
+use App\Models\ArticleSlider;
 use App\Models\Page;
 use App\Models\PageBlock;
 use Illuminate\Http\Request;
@@ -61,5 +62,15 @@ class ArticleController extends Controller
             ->first();
 
         return view('admin.article.one-page-seo', compact('page'));
+    }
+
+    public function createArticleSlide(Article $article)
+    {
+        return view('admin.article.slider.create', compact('article'));
+    }
+
+    public function editArticleSlide(Article $article, ArticleSlider $slide)
+    {
+        return view('admin.article.slider.edit', compact('article', 'slide'));
     }
 }

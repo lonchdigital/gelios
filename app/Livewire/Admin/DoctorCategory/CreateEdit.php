@@ -50,6 +50,7 @@ class CreateEdit extends Component
         $this->types = [
             DoctorCategoryType::ADULT->value,
             DoctorCategoryType::CHILDREN->value,
+            DoctorCategoryType::BOTH->value,
         ];
 
         $this->type = $this->category->type ?? DoctorCategoryType::ADULT->value;

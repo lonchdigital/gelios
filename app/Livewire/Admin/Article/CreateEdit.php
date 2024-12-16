@@ -6,11 +6,13 @@ use App\Models\Article;
 use App\Models\ArticleBlock;
 use App\Models\ArticleCategory;
 use App\Models\ArticleCategoryTranslation;
+use App\Models\ArticleSlider;
 use App\Models\ArticleTranslation;
 use App\Models\CheckUp;
 use App\Models\CheckUpTranslation;
 use App\Models\PromotionTranslation;
 use App\Services\Admin\Article\ArticleService;
+use App\Services\Admin\Article\SliderService;
 use App\Services\Admin\ImageService;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
@@ -388,6 +390,13 @@ class CreateEdit extends Component
         $service = resolve(ArticleService::class);
 
         $service->updatePosition($block, $val);
+    }
+
+    public function newSliderPosition($val, ArticleSlider $slide)
+    {
+        $service = resolve(SliderService::class);
+
+        $service->updatePosition($slide, $val);
     }
 
     public function deleteItem($id, $type)

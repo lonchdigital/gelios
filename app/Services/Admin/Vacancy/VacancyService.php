@@ -15,4 +15,13 @@ class VacancyService
             ->get()
             ->keyBy('locale');
     }
+
+    public function changeIsActive($id)
+    {
+        $vacancy = Vacancy::find($id);
+
+        $vacancy->update([
+            'is_active' => !$vacancy->is_active
+        ]);
+    }
 }
