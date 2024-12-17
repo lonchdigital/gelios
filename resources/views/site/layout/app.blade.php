@@ -8,6 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="app-url" content="{{ env('APP_URL') }}">
     <meta name="app-locale" content="{{ app()->getLocale() }}">
+	<link rel="icon" href="{{ asset('/static_images/cropped-favicon-32x32.png') }}" type="image/png" sizes="32x32">
+	<link rel="icon" href="{{ asset('/static_images/cropped-favicon-192x192.png') }}" type="image/png" sizes="192x192">
 
 	<script>
 		const translations = @json([
