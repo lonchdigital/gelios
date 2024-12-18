@@ -73,10 +73,24 @@ class Direction extends Model implements TranslatableContract
                 'id' => $current->id,
                 'name' => $current->name ?? null,
                 'slug' => $current->page->slug ?? null,
+                'full_path' => url($current->buildFullPath())
             ];
             $current = $current->parent; // parent
         }
 
         return array_reverse($breadcrumbs);
+    }
+
+    public function buildFullPath(): string
+    {
+        $segments = [];
+        $current = $this;
+
+        while ($current) {
+            $segments[] = $current->page->slug ?? null;
+            $current = $current->parent; // parent
+        }
+
+        return implode('/', array_reverse($segments)); // full path
     }
 }

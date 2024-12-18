@@ -1,7 +1,7 @@
 
 <div class="push-menu--aside">
     @foreach ($data->where('template', 3) as $childDirection)
-        <div class="item"><a href="{{ route('web.page.show', ['slug' => $childDirection['slug']]) }}">{{ $childDirection['name'] }}</a></div>
+        <div class="item"><a href="{{ $childDirection['full_path'] }}">{{ $childDirection['name'] }}</a></div>
     @endforeach
 </div>
 
@@ -11,14 +11,14 @@
 
             @if( $childCatDir['children'] )
                 <div class="item has-dropdown main-title">
-                    <a href="##" class="heading" data-slug="{{ route('web.page.show', ['slug' => $childCatDir['slug']]) }}">{{ $childCatDir['name'] }}</a>
+                    <a href="##" class="heading" data-slug="{{ $childCatDir['full_path'] }}">{{ $childCatDir['name'] }}</a>
                     <div class="push-menu--lvl">
                         @include('site.directions.partials.header-menu', ['data' => collect($childCatDir['children'])])
                     </div>
                 </div>
             @else
                 <div class="item main-title">
-                    <a href="{{ route('web.page.show', ['slug' => $childCatDir['slug']]) }}" class="heading">{{ $childCatDir['name'] }}</a>
+                    <a href="{{ $childCatDir['full_path'] }}" class="heading">{{ $childCatDir['name'] }}</a>
                 </div>
             @endif
 
@@ -26,16 +26,14 @@
 
                 @if( $childSubCatDir['children'] )
                     <div class="item has-dropdown">
-                        <a href="##" data-slug="{{ route('web.page.show', ['slug' => $childSubCatDir['slug']]) }}">{{ $childSubCatDir['name'] }}</a>
+                        <a href="##" data-slug="{{ $childSubCatDir['full_path'] }}">{{ $childSubCatDir['name'] }}</a>
                         <div class="push-menu--lvl">
                             @include('site.directions.partials.header-menu', ['data' => collect($childSubCatDir['children'])])
                         </div>
                     </div>
                 @else
                     <div class="item">
-                        <a href="{{ route('web.page.show', ['slug' => $childSubCatDir['slug']]) }}">
-                            {{ $childSubCatDir['name'] }}
-                        </a>
+                        <a href="{{ $childSubCatDir['full_path'] }}">{{ $childSubCatDir['name'] }}</a>
                     </div>
                 @endif
                 

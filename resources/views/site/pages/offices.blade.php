@@ -210,7 +210,7 @@
                                                                             @else
                                                                                 <div class="directions-item">
                                                                                     <div class="content">
-                                                                                        <a class="link" href="{{ route('web.page.show', ['slug' => $item['slug']]) }}">
+                                                                                        <a class="link" href="{{ $item['full_path'] }}">
                                                                                             {{ $item['name'] }}
                                                                                         </a>
                                                                                     </div>

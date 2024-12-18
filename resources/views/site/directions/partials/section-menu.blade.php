@@ -17,7 +17,7 @@
                         @else
                             <div class="directions-item">
                                 <div class="content">
-                                    <a class="link" href="{{ route('web.page.show', ['slug' => $oneChildDirection['slug']]) }}">
+                                    <a class="link" href="{{ $oneChildDirection['full_path'] }}">
                                         {{ $oneChildDirection['name'] }}
                                     </a>
                                 </div>

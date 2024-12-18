@@ -373,7 +373,7 @@
 
                                                                     <div class="push-menu--aside">
                                                                         @foreach ($allDirections->where('template', 3) as $direction)
-                                                                            <div class="item"><a href="{{ route('web.page.show', ['slug' => $direction['slug']]) }}">{{ $direction['name'] }}</a></div>
+                                                                            <div class="item"><a href="{{ $direction['full_path'] }}">{{ $direction['name'] }}</a></div>
                                                                         @endforeach
                                                                     </div>
 
@@ -383,30 +383,28 @@
 
                                                                                 @if( $category['children'] )
                                                                                     <div class="item has-dropdown main-title">
-                                                                                        <a href="##" class="heading" data-slug="{{ route('web.page.show', ['slug' => $category['slug']]) }}">{{ $category['name'] }}</a>
+                                                                                        <a href="##" class="heading" data-slug="{{ $category['full_path'] }}">{{ $category['name'] }}</a>
                                                                                         <div class="push-menu--lvl">
                                                                                             @include('site.directions.partials.header-menu', ['data' => collect($category['children'])])
                                                                                         </div>
                                                                                     </div>
                                                                                 @else
                                                                                     <div class="item main-title">
-                                                                                        <a href="{{ route('web.page.show', ['slug' => $category['slug']]) }}" class="heading">{{ $category['name'] }}</a>
+                                                                                        <a href="{{ $category['full_path'] }}" class="heading">{{ $category['name'] }}</a>
                                                                                     </div>
                                                                                 @endif
 
                                                                                 @foreach (collect($category['children']) as $subCategory)
                                                                                     @if( $subCategory['children'] )
                                                                                         <div class="item has-dropdown">
-                                                                                            <a href="##" data-slug="{{ route('web.page.show', ['slug' => $subCategory['slug']]) }}">{{ $subCategory['name'] }}</a>
+                                                                                            <a href="##" data-slug="{{ $subCategory['full_path'] }}">{{ $subCategory['name'] }}</a>
                                                                                             <div class="push-menu--lvl">
                                                                                                 @include('site.directions.partials.header-menu', ['data' => collect($subCategory['children'])])
                                                                                             </div>
                                                                                         </div>
                                                                                     @else
                                                                                         <div class="item">
-                                                                                            <a href="{{ route('web.page.show', ['slug' => $subCategory['slug']]) }}">
-                                                                                                {{ $subCategory['name'] }}
-                                                                                            </a>
+                                                                                            <a href="{{ $subCategory['full_path'] }}">{{ $subCategory['name'] }}</a>
                                                                                         </div>
                                                                                     @endif
                                                                                 @endforeach

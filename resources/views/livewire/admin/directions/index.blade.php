@@ -126,7 +126,7 @@
                                                         style="cursor:move"></i>
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('web.page.show', ['slug' => $direction['slug']]) }}" target="_blank"><i class="fa fa-eye text-info font-18"></i></a>
+                                                        <a href="{{ $direction['full_path'] }}" target="_blank"><i class="fa fa-eye text-info font-18"></i></a>
                                                     </td>
                                                     <td>
                                                         <a href="{{ route('directions.edit', ['directionId' => $direction['id']]) }}">{{ $direction['name'] }}</a>
