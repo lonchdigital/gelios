@@ -206,7 +206,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
+                                        {{-- <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="row mb-3">
@@ -230,9 +230,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
-                                        <div class="card-body pb-0 mb-5">
+                                        {{-- <div class="card-body pb-0 mb-5">
                                             <h5 class="card-title">{{ __('admin.image') }}</h5>
                                             <div class="row">
                                                 @forelse($this->images as $key => $image)
@@ -246,7 +246,7 @@
                                                 @endforelse
 
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
 
                                     @if ($this->activeLocale == 'ua')

@@ -95,7 +95,7 @@
                                                     <i class="fa fa-edit text-info font-16"></i>
                                                 </a>
                                             @endif
-                                            @if($group == 'static_block' || $block->key == 'image')
+                                            @if($group == 'static_block' || ($block->key == 'image' && $group !== 'second'))
                                                 <a wire:click="deleteItem('{{ $block->id }}', 'pageBlock2')" style="cursor: pointer"><i class="fa fa-trash text-danger font-16"></i></a>
                                             @endif
                                         {{-- </div> --}}
@@ -153,6 +153,7 @@
                                             class="btn btn-accent btn-xs">
                                             <i class="fa fa-edit text-info font-18"></i>
                                         </a>
+                                        <a wire:click="deleteItem('{{ $surgery->id }}', 'surgery')" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
                                     </div>
                                 </td>
                             </tr>

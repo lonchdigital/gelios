@@ -64,11 +64,18 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    @error("options." . $key .".ua")
+                                                                    {{-- @error("options." . $key .".ua")
                                                                         <div class="mt-1 text-danger ajaxError">
                                                                             {{ $message }}
                                                                         </div>
-                                                                    @enderror
+                                                                    @enderror --}}
+                                                                    @if($errors->has("options." . $key .".ua"))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaTitle') }}</div>
+                                                                    @elseif($errors->has("options." . $key .".ru"))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruTitle') }}</div>
+                                                                    @elseif($errors->has("options." . $key .".en"))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('enTitle') }}</div>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -125,11 +132,18 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    @error("options." . $key .".ru")
+                                                                    {{-- @error("options." . $key .".ru")
                                                                         <div class="mt-1 text-danger ajaxError">
                                                                             {{ $message }}
                                                                         </div>
-                                                                    @enderror
+                                                                    @enderror --}}
+                                                                    @if($errors->has("options." . $key .".ru"))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruTitle') }}</div>
+                                                                    @elseif($errors->has("options." . $key .".ua"))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaTitle') }}</div>
+                                                                    @elseif($errors->has("options." . $key .".en"))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('enTitle') }}</div>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -184,11 +198,18 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    @error("options." . $key .".en")
+                                                                    {{-- @error("options." . $key .".en")
                                                                         <div class="mt-1 text-danger ajaxError">
                                                                             {{ $message }}
                                                                         </div>
-                                                                    @enderror
+                                                                    @enderror --}}
+                                                                    @if($errors->has("options." . $key .".en"))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('enTitle') }}</div>
+                                                                    @elseif($errors->has("options." . $key .".ru"))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruTitle') }}</div>
+                                                                    @elseif($errors->has("options." . $key .".ua"))
+                                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaTitle') }}</div>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>

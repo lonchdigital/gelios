@@ -123,10 +123,17 @@
                                     <td>
                                         <div style="text-align: right">
                                             <a role="button"
-                                                href="{{ route('admin.articles.edit-slide', ['page' => $this->page2, 'block' => $block]) }}"
+                                                @if($block->key == 'slider')
+                                                    href="{{ route('admin.articles.edit-slide', ['page' => $this->page2, 'block' => $block]) }}"
+                                                @else
+                                                    href="{{ route('admin.articles.edit-blog-block', ['block' => $block]) }}"
+                                                @endif
                                                 class="btn btn-accent btn-xs">
                                                 <i class="fa fa-edit text-info font-18"></i>
                                             </a>
+                                            @if($block->key == 'slider')
+                                                <a wire:click="deleteItem('{{ $block->id }}', 'pageBlock')" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>

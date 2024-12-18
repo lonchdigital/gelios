@@ -704,342 +704,126 @@
             </div>
         </div>
     </section>
-    {{-- <section class="stay-conditions mb-24">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="h2 font-m font-weight-bolder text-blue mb-8">Умови перебування</div>
+    
+    @if($page->pageBlocks->where('block', 'conditions')->where('key', 'image')->count())
+        <section class="stay-conditions mb-24">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="h2 font-m font-weight-bolder text-blue mb-3">{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'title')->first()->title ?? '' }}</div>
+                    </div>
                 </div>
-            </div>
-            <div class="row d-none d-lg-flex">
-                <div class="stay-conditions--item col-6">
-                    <a href="img/stay-conditions/img1251.jpeg" data-fancybox="stay-conditions--gallery">
-                        <div class="wrap-img">
-                            <img src="img/stay-conditions/img1251.jpeg" alt="img">
-                        </div>
-                    </a>
-                </div>
-                <div class="col-6">
-                    <div class="row">
-                        <div class="stay-conditions--item col-12 mb-5">
-                            <div class="stay-conditions--small-wrap">
-                                <a href="img/stay-conditions/img1252.jpeg" data-fancybox="stay-conditions--gallery">
-                                    <div class="wrap-img">
-                                        <img src="img/stay-conditions/img1252.jpeg" alt="img">
+                <div class="row d-none d-lg-flex">
+                    <div class="stay-conditions--item col-6">
+                        @if(!empty($page->pageBlocks->where('block', 'conditions')->where('key', 'image')->first()->image))
+                            <a href="{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'image')->first()->imageUrl }}" data-fancybox="stay-conditions--gallery">
+                                <div class="wrap-img">
+                                    <img src="{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'image')->first()->imageUrl }}" alt="img">
+                                </div>
+                            </a>
+                        @endif
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            @forelse($page->pageBlocks->where('block', 'conditions')->where('key', 'image')->take(3) as $block)
+                                @if($loop->iteration !== 1)
+                                    <div class="col-12 mb-5">
+                                        <div class="stay-conditions--small-wrap">
+                                            <a href="{{ $block->imageUrl }}" data-fancybox="stay-conditions--gallery">
+                                                <div class="wrap-img">
+                                                    <img src="{{ $block->imageUrl }}" alt="img">
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="stay-conditions--item col-12">
-                            <div class="stay-conditions--small-wrap">
-                                <a href="img/stay-conditions/img1253.jpeg" data-fancybox="stay-conditions--gallery">
-                                    <div class="wrap-img">
-                                        <img src="{{ asset('static_images/stay-conditions/img1253.jpeg') }}" alt="img">
-                                    </div>
-                                </a>
-                            </div>
+                                @endif
+                            @empty
+                            @endforelse
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row d-lg-none">
-                <div class="col">
-                    <div class="stay-conditions--swiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <a href="img/stay-conditions/img1251.jpeg" data-fancybox="stay-conditions--gallery-mob">
-                                    <div class="wrap-img">
-                                        <img src="img/stay-conditions/img1251.jpeg" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="img/stay-conditions/img1252.jpeg" data-fancybox="stay-conditions--gallery-mob">
-                                    <div class="wrap-img">
-                                        <img src="img/stay-conditions/img1252.jpeg" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="img/stay-conditions/img1253.jpeg" data-fancybox="stay-conditions--gallery-mob">
-                                    <div class="wrap-img">
-                                        <img src="img/stay-conditions/img1253.jpeg" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="swiper-pagination mt-8"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="hospital mb-24">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="h2 font-m font-weight-bolder text-blue mb-8">Стаціонар</div>
-                </div>
-            </div>
-            <div class="row d-none d-lg-flex">
-                <div class="col-6">
-                    <a href="img/hospital/img1415.jpeg" data-fancybox="hospital--gallery">
-                        <div class="wrap-img">
-                            <img src="img/hospital/img1415.jpeg" alt="img">
-                        </div>
-                    </a>
-                </div>
-                <div class="col-6">
-                    <div class="row">
-                        <div class="col-12 mb-5">
-                            <div class="stay-conditions--small-wrap">
-                                <a href="img/hospital/img1416.jpeg" data-fancybox="hospital--gallery">
-                                    <div class="wrap-img">
-                                        <img src="img/hospital/img1416.jpeg" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="stay-conditions--small-wrap">
-                                <a href="img/hospital/img1417.jpeg" data-fancybox="hospital--gallery">
-                                    <div class="wrap-img">
-                                        <img src="img/hospital/img1417.jpeg" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row d-lg-none">
-                <div class="col">
-                    <div class="hospital--swiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <a href="img/hospital/img1415.jpeg" data-fancybox="hospital--gallery-mob">
-                                    <div class="wrap-img">
-                                        <img src="img/hospital/img1415.jpeg" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="img/hospital/img1416.jpeg" data-fancybox="hospital--gallery-mob">
-                                    <div class="wrap-img">
-                                        <img src="img/hospital/img1416.jpeg" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="img/hospital/img1417.jpeg" data-fancybox="hospital--gallery-mob">
-                                    <div class="wrap-img">
-                                        <img src="img/hospital/img1417.jpeg" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="swiper-pagination mt-8"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <section class="stay-conditions mb-24">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="h2 font-m font-weight-bolder text-blue mb-3">{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'title')->first()->title ?? '' }}</div>
-                    {{-- <div class="h5 font-m text-grey font-weight-bold mb-3">{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'title')->first()->description ?? '' }}</div>
-                    <a href="{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'title')->first()->url ?? '#' }}" class="btn btn-white font-weight-bold mb-8">{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'title')->first()->button ?? '' }}</a> --}}
-                </div>
-            </div>
-            <div class="row d-none d-lg-flex">
-                <div class="stay-conditions--item col-6">
-                    @if(!empty($page->pageBlocks->where('block', 'conditions')->where('key', 'image')->first()->image))
-                        <a href="{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'image')->first()->imageUrl }}" data-fancybox="stay-conditions--gallery">
-                            <div class="wrap-img">
-                                <img src="{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'image')->first()->imageUrl }}" alt="img">
-                            </div>
-                        </a>
-                    @endif
-                </div>
-                <div class="col-6">
-                    <div class="row">
-                        @forelse($page->pageBlocks->where('block', 'conditions')->where('key', 'image')->take(3) as $block)
-                            @if($loop->iteration !== 1)
-                                <div class="col-12 mb-5">
-                                    <div class="stay-conditions--small-wrap">
-                                        <a href="{{ $block->imageUrl }}" data-fancybox="stay-conditions--gallery">
+                <div class="row d-lg-none">
+                    <div class="col">
+                        <div class="stay-conditions--swiper">
+                            <div class="swiper-wrapper">
+                                @forelse($page->pageBlocks->where('block', 'conditions')->where('key', 'image') as $block)
+                                    <div class="swiper-slide">
+                                        <a href="{{ $block->imageUrl }}" data-fancybox="stay-conditions--gallery-mob">
                                             <div class="wrap-img">
                                                 <img src="{{ $block->imageUrl }}" alt="img">
                                             </div>
                                         </a>
                                     </div>
-                                </div>
-                            @endif
-                        @empty
-                        @endforelse
-                        {{-- <div class="stay-conditions--item col-12 mb-5">
-                            <div class="stay-conditions--small-wrap">
-                                <a href="{{ asset('static_images/stay-conditions/img1252.jpeg') }}" data-fancybox="stay-conditions--gallery">
-                                    <div class="wrap-img">
-                                        <img src="{{ asset('static_images/stay-conditions/img1252.jpeg') }}" alt="img">
-                                    </div>
-                                </a>
+                                @empty
+                                @endforelse
                             </div>
+                            <div class="swiper-pagination mt-8"></div>
                         </div>
-                        <div class="stay-conditions--item col-12">
-                            <div class="stay-conditions--small-wrap">
-                                <a href="{{ asset('static_images//stay-conditions/img1253.jpeg') }}" data-fancybox="stay-conditions--gallery">
-                                    <div class="wrap-img">
-                                        <img src="{{ asset('static_images/stay-conditions/img1253.jpeg') }}" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
             </div>
-            <div class="row d-lg-none">
-                <div class="col">
-                    <div class="stay-conditions--swiper">
-                        <div class="swiper-wrapper">
-                            @forelse($page->pageBlocks->where('block', 'conditions')->where('key', 'image') as $block)
-                                <div class="swiper-slide">
-                                    <a href="{{ $block->imageUrl }}" data-fancybox="stay-conditions--gallery-mob">
-                                        <div class="wrap-img">
-                                            <img src="{{ $block->imageUrl }}" alt="img">
-                                        </div>
-                                    </a>
+        </section>
+    @endif
+
+    @if($page->pageBlocks->where('block', 'Inpatient')->where('key', 'image')->count())
+        <section class="hospital mb-24">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="h2 font-m font-weight-bolder text-blue mb-3">{{ $page->pageBlocks->where('block', 'Inpatient')->where('key', 'title')->first()->title ?? '' }}</div>
+                    </div>
+                </div>
+                <div class="row d-none d-lg-flex">
+                    <div class="col-6">
+                        @if(!empty($page->pageBlocks->where('block', 'Inpatient')->where('key', 'image')->first()->image))
+                            <a href="{{ $page->pageBlocks->where('block', 'Inpatient')->where('key', 'image')->first()->imageUrl }}" data-fancybox="hospital--gallery">
+                                <div class="wrap-img">
+                                    <img src="{{ $page->pageBlocks->where('block', 'Inpatient')->where('key', 'image')->first()->imageUrl }}" alt="img">
                                 </div>
+                            </a>
+                        @endif
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            @forelse($page->pageBlocks->where('block', 'Inpatient')->where('key', 'image')->take(3) as $block)
+                                @if($loop->iteration !== 1)
+                                    <div class="col-12 mb-5">
+                                        <div class="stay-conditions--small-wrap">
+                                            <a href="{{ $block->imageUrl }}" data-fancybox="hospital--gallery">
+                                                <div class="wrap-img">
+                                                    <img src="{{ $block->imageUrl }}" alt="img">
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endif
                             @empty
                             @endforelse
-                            {{-- <div class="swiper-slide">
-                                <a href="{{ asset('static_images/stay-conditions/img1251.jpeg') }}" data-fancybox="stay-conditions--gallery-mob">
-                                    <div class="wrap-img">
-                                        <img src="{{ asset('static_images/stay-conditions/img1251.jpeg') }}" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="{{ asset('static_images/stay-conditions/img1252.jpeg') }}" data-fancybox="stay-conditions--gallery-mob">
-                                    <div class="wrap-img">
-                                        <img src="{{ asset('static_images/stay-conditions/img1252.jpeg') }}" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="{{ asset('static_images//stay-conditions/img1253.jpeg') }}" data-fancybox="stay-conditions--gallery-mob">
-                                    <div class="wrap-img">
-                                        <img src="{{ asset('static_images//stay-conditions/img1253.jpeg') }}" alt="img">
-                                    </div>
-                                </a>
-                            </div> --}}
                         </div>
-                        <div class="swiper-pagination mt-8"></div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <section class="hospital mb-24">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="h2 font-m font-weight-bolder text-blue mb-3">{{ $page->pageBlocks->where('block', 'Inpatient')->where('key', 'title')->first()->title ?? '' }}</div>
-                    {{-- <div class="h5 font-m text-grey font-weight-bold mb-3">{{ $page->pageBlocks->where('block', 'Inpatient')->where('key', 'title')->first()->description ?? '' }}</div>
-                    <a href="{{ $page->pageBlocks->where('block', 'Inpatient')->where('key', 'title')->first()->url ?? '#' }}" class="btn btn-white font-weight-bold mb-8">{{ $page->pageBlocks->where('block', 'Inpatient')->where('key', 'title')->first()->button ?? '' }}</a> --}}
-                </div>
-            </div>
-            <div class="row d-none d-lg-flex">
-                <div class="col-6">
-                    @if(!empty($page->pageBlocks->where('block', 'Inpatient')->where('key', 'image')->first()->image))
-                        <a href="{{ $page->pageBlocks->where('block', 'Inpatient')->where('key', 'image')->first()->imageUrl }}" data-fancybox="hospital--gallery">
-                            <div class="wrap-img">
-                                <img src="{{ $page->pageBlocks->where('block', 'Inpatient')->where('key', 'image')->first()->imageUrl }}" alt="img">
-                            </div>
-                        </a>
-                    @endif
-                </div>
-                <div class="col-6">
-                    <div class="row">
-                        @forelse($page->pageBlocks->where('block', 'Inpatient')->where('key', 'image')->take(3) as $block)
-                            @if($loop->iteration !== 1)
-                                <div class="col-12 mb-5">
-                                    <div class="stay-conditions--small-wrap">
-                                        <a href="{{ $block->imageUrl }}" data-fancybox="hospital--gallery">
+                <div class="row d-lg-none">
+                    <div class="col">
+                        <div class="hospital--swiper">
+                            <div class="swiper-wrapper">
+                                @forelse($page->pageBlocks->where('block', 'Inpatient')->where('key', 'image') as $block)
+                                    <div class="swiper-slide">
+                                        <a href="{{ $block->imageUrl }}" data-fancybox="hospital--gallery-mob">
                                             <div class="wrap-img">
                                                 <img src="{{ $block->imageUrl }}" alt="img">
                                             </div>
                                         </a>
                                     </div>
-                                </div>
-                            @endif
-                        @empty
-                        @endforelse
-                        {{-- <div class="col-12 mb-5">
-                            <div class="stay-conditions--small-wrap">
-                                <a href="{{ asset('static_images/hospital/img1416.jpeg') }}" data-fancybox="hospital--gallery">
-                                    <div class="wrap-img">
-                                        <img src="{{ asset('static_images/hospital/img1416.jpeg') }}" alt="img">
-                                    </div>
-                                </a>
+                                @empty
+                                @endforelse
                             </div>
+                            <div class="swiper-pagination mt-8"></div>
                         </div>
-                        <div class="col-12">
-                            <div class="stay-conditions--small-wrap">
-                                <a href="{{ asset('static_images/hospital/img1417.jpeg') }}" data-fancybox="hospital--gallery">
-                                    <div class="wrap-img">
-                                        <img src="{{ asset('static_images/hospital/img1417.jpeg') }}" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
             </div>
-            <div class="row d-lg-none">
-                <div class="col">
-                    <div class="hospital--swiper">
-                        <div class="swiper-wrapper">
-                            @forelse($page->pageBlocks->where('block', 'Inpatient')->where('key', 'image') as $block)
-                                <div class="swiper-slide">
-                                    <a href="{{ $block->imageUrl }}" data-fancybox="hospital--gallery-mob">
-                                        <div class="wrap-img">
-                                            <img src="{{ $block->imageUrl }}" alt="img">
-                                        </div>
-                                    </a>
-                                </div>
-                            @empty
-                            @endforelse
-                            {{-- <div class="swiper-slide">
-                                <a href="{{ asset('static_images/hospital/img1415.jpeg') }}" data-fancybox="hospital--gallery-mob">
-                                    <div class="wrap-img">
-                                        <img src="{{ asset('static_images/hospital/img1415.jpeg') }}" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="{{ asset('static_images/hospital/img1416.jpeg') }}" data-fancybox="hospital--gallery-mob">
-                                    <div class="wrap-img">
-                                        <img src="{{ asset('static_images/hospital/img1416.jpeg') }}" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="{{ asset('static_images/hospital/img1417.jpeg') }}" data-fancybox="hospital--gallery-mob">
-                                    <div class="wrap-img">
-                                        <img src="{{ asset('static_images/hospital/img1417.jpeg') }}" alt="img">
-                                    </div>
-                                </a>
-                            </div> --}}
-                        </div>
-                        <div class="swiper-pagination mt-8"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <section class="tour mb-24">
         <div class="container">

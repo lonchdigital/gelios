@@ -35,12 +35,6 @@ class CreateEdit extends Component
 
     public string $ruDescription = '';
 
-    public string $uaSlug = '';
-
-    public string $enSlug = '';
-
-    public string $ruSlug = '';
-
     public string $price = '';
 
     public string $newPrice = '';
@@ -74,10 +68,6 @@ class CreateEdit extends Component
         $this->uaDescription = $translations['ua']['description'];
         $this->enDescription = $translations['en']['description'];
         $this->ruDescription = $translations['ru']['description'];
-
-        $this->uaSlug = $translations['ua']['slug'];
-        $this->enSlug = $translations['en']['slug'];
-        $this->ruSlug = $translations['ru']['slug'];
     }
 
     public function refreshItemsAfterDelete()
@@ -93,30 +83,6 @@ class CreateEdit extends Component
     public function rules()
     {
         return [
-            'uaSlug' => [
-                'required',
-                'string',
-                Rule::unique('check_up_translations', 'slug')->where(function ($query) {
-                    return $query->where('check_up_id', '!=', $this->checkUp->id);
-                }),
-            ],
-
-            'ruSlug' => [
-                'required',
-                'string',
-                Rule::unique('check_up_translations', 'slug')->where(function ($query) {
-                    return $query->where('check_up_id', '!=', $this->checkUp->id);
-                }),
-            ],
-
-            'enSlug' => [
-                'required',
-                'string',
-                Rule::unique('check_up_translations', 'slug')->where(function ($query) {
-                    return $query->where('check_up_id', '!=', $this->checkUp->id);
-                }),
-            ],
-
             'uaTitle' => [
                 'required',
                 'string',
@@ -158,7 +124,7 @@ class CreateEdit extends Component
             ],
 
             'image' => [
-                empty($this->promotion->id) ? 'required' : 'nullable',
+                empty($this->checkUp->id) ? 'required' : 'nullable',
                 'mimes:jpeg,jpg,png,gif',
                 'image',
             ],
@@ -222,17 +188,14 @@ class CreateEdit extends Component
             'ua' => [
                 'title' => $this->uaTitle,
                 'description' => $this->uaDescription,
-                'slug' => $this->uaSlug,
             ],
             'ru' => [
                 'title' => $this->ruTitle,
                 'description' => $this->ruDescription,
-                'slug' => $this->ruSlug,
             ],
             'en' => [
                 'title' => $this->enTitle,
                 'description' => $this->enDescription,
-                'slug' => $this->enSlug,
             ],
         ];
 

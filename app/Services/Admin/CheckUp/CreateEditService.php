@@ -18,7 +18,6 @@ class CreateEditService
             $translations[$locale] = [
                 'title' => $translation->title ?? '',
                 'description' => $translation->description ?? '',
-                'slug' => $translation->slug ?? '',
             ];
         }
 
@@ -36,7 +35,6 @@ class CreateEditService
                 [
                     'title' => $data['title'],
                     'description' => $data['description'],
-                    'slug' => $data['slug'],
                 ]
             );
         }

@@ -6,9 +6,9 @@
                     <section class="mb-50">
                         <h6 class="card-title">
                             @if (!empty($this->block->id))
-                                {{ __('admin.edit_block') }}
+                                {{ __('admin.edit_slide') }}
                             @else
-                                {{ __('admin.create_block') }}
+                                {{ __('admin.create_slide') }}
                             @endif
                         </h6>
 

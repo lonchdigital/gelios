@@ -40,12 +40,17 @@ class ArticleController extends Controller
 
     public function createSlide(Page $page)
     {
-        return view('admin.article.slider.create', compact('page'));
+        return view('admin.article.create-slider', compact('page'));
     }
 
     public function editSlide(Page $page, PageBlock $block)
     {
-        return view('admin.article.slider.edit', compact('page', 'block'));
+        return view('admin.article.edit-slider', compact('page', 'block'));
+    }
+
+    public function editBlogBlock(PageBlock $block)
+    {
+        return view('admin.article.edit-block', compact('block'));
     }
 
     public function mainPageSeo()

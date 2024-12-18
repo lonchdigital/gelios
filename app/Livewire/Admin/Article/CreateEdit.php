@@ -332,7 +332,7 @@ class CreateEdit extends Component
             $this->article->author_image = $image;
         }
 
-        $this->article->images = $imageService->processImages($this->article->images, $this->images);
+        // $this->article->images = $imageService->processImages($this->article->images, $this->images);
 
         $this->article->slug = $this->slug;
         $this->article->save();

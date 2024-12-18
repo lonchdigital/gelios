@@ -159,6 +159,8 @@ Route::group([
             Route::get('/create-slide/{page}', [ArticleController::class, 'createSlide'])->name('create-slide');
             Route::get('/edit-slide/{page}/{block}', [ArticleController::class, 'editSlide'])->name('edit-slide');
 
+            Route::get('/edit-block/{block}', [ArticleController::class, 'editBlogBlock'])->name('edit-blog-block');
+
             Route::get('/create', [ArticleController::class, 'create'])->name('create');
             Route::get('/{article}/edit', [ArticleController::class, 'edit'])->name('edit');
 

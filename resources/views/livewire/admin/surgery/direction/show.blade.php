@@ -35,6 +35,7 @@
                                             class="btn btn-accent btn-xs">
                                             <i class="fa fa-edit text-info font-18"></i>
                                         </a>
+                                        <a wire:click="deleteItem('{{ $block->id }}', 'surgeryBlock')" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
                                     </div>
                                 </td>
                             </tr>

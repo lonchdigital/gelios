@@ -24,10 +24,14 @@ class StoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        Log::info($this->name);
-        Log::info($this->phone);
-        Log::info($this->doctor);
-        Log::info($this->clinic);
+        $locale = session('locale', config('app.locale'));
+        app()->setLocale($locale);
+
+        // app()->setLocale(request()->getLocale());
+
+        // Log::info('Request locale: ' . request()->getLocale());
+        // Log::info('App locale after update: ' . app()->getLocale());
+
         return [
             'name' => [
                 'required',
@@ -37,8 +41,9 @@ class StoreRequest extends FormRequest
 
             'phone' => [
                 'required',
-                'string',
-                'max:255',
+                'min:10',
+                'max:20',
+                'regex:/^(\+?380)[\d\s-]{9,}$/i',
             ],
 
             'doctor' => [
@@ -63,5 +68,24 @@ class StoreRequest extends FormRequest
         ], 422);
 
         throw new HttpResponseException($response);
+    }
+
+    public function attributes()
+    {
+        return [
+            'phone' => __('validation.phone'),
+            'name' => __('validation.name'),
+            'doctor' => __('validation.doctor'),
+            'clinic' => __('validation.clinic'),
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'phone.regex' => __('validation.feedback.phone'),
+            'phone.min' => __('validation.feedback.phone.min'),
+            'phone.max' => __('validation.feedback.phone,max'),
+        ];
     }
 }

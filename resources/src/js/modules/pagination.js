@@ -57,7 +57,7 @@ $(function () {
 	} else if (w < 1024) {
 		var limitPerPage = 8;
 	} else {
-		var limitPerPage = 12;
+		var limitPerPage = 16;
 	}
 	var totalPages = Math.ceil(numberOfItems / limitPerPage);
 	var paginationSize = 7;

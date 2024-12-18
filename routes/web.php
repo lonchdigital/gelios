@@ -28,6 +28,8 @@ Route::name('auth.')->prefix('/admin')->group(function () {
 });
 
 Route::post('/feedback-store', [FeedbackController::class, 'store'])->name('feedback.store');
+Route::get('/categories-by-type', [DoctorController::class, 'getCategoriesByType'])->name('categories.by.type');
+Route::get('/get-doctors-by-category/{categoryId}', [DoctorController::class, 'getDoctorsByCategory']);
 
 Route::group([
         'prefix' => LaravelLocalization::setLocale(),

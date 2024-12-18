@@ -14,6 +14,8 @@ use App\Models\Laboratory;
 use App\Models\PageBlock;
 use App\Models\Promotion;
 use App\Models\Specialization;
+use App\Models\Surgery;
+use App\Models\SurgeryBlock;
 use App\Models\User;
 use App\Models\Vacancy;
 use Illuminate\Support\Facades\Storage;
@@ -157,6 +159,22 @@ class Delete extends Component
                 $this->type = 'vacancy';
                 $this->modalTitle = 'Delete vacancy';
                 $this->modalBody  = 'You really want to delete vacancy: ' . $this->item->title . '?';
+                $this->modalInfo  = '';
+                break;
+
+            case 'surgery':
+                $this->item = Surgery::find($modelId);
+                $this->type = 'surgery';
+                $this->modalTitle = 'Delete surgery direction';
+                $this->modalBody  = 'You really want to delete direction: ' . $this->item->title . '?';
+                $this->modalInfo  = '';
+                break;
+
+            case 'surgeryBlock':
+                $this->item = SurgeryBlock::find($modelId);
+                $this->type = 'surgeryBlock';
+                $this->modalTitle = 'Delete surgery direction block';
+                $this->modalBody  = 'You really want to delete direction block: ' . $this->item->title . '?';
                 $this->modalInfo  = '';
                 break;
 
@@ -348,6 +366,25 @@ class Delete extends Component
 
                 return true;
 
+            case 'surgeryBlock':
+                $this->deleteImage($this->item->image);
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
+            case 'surgery':
+
+                $this->deleteSurgeryBlocks($this->item);
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
             default:
 
                 return false;
@@ -358,6 +395,15 @@ class Delete extends Component
     {
         foreach($article->articleBlocks as $block) {
             // $this->deleteImage($block->image);
+
+            $block->delete();
+        }
+    }
+
+    public function deleteSurgeryBlocks(Surgery $surgery)
+    {
+        foreach($surgery->surgeryBlocks as $block) {
+            $this->deleteImage($block->image);
 
             $block->delete();
         }
