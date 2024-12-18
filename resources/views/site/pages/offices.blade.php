@@ -79,6 +79,9 @@
 
     <section class="offices-direction mb-24 mb-lg-0">
         @foreach ($contacts as $contact)
+            @php 
+                $contactTteration = $loop->iteration; 
+            @endphp
             <div class="offices-direction--item py-12 bg-white mb-8" id="office-{{ $contact->id }}">
                 <div class="container">
                     <div class="offices-direction--content">
@@ -87,12 +90,12 @@
                                 <div class="push-menu">
                                     <div class="push-menu--nav">
                                         <div class="nav-toggle">
-                                            <a href="##"
-                                                class="btn-nav-back btn-nav-direction btn font-weight-bold ml-auto mb-6"><span>Назад</span><span
-                                                    class="icon"></span></a>
-                                            <a href="##"
-                                                class="btn-nav-forward btn-nav-direction btn font-weight-bold ml-auto mb-6"><span>Усі
-                                                    напрямки</span><span class="icon"></span></a>
+                                            <a href="##" class="btn-nav-back btn-nav-direction btn font-weight-bold ml-auto mb-6"><span>{{ trans('web.back') }}</span>
+                                                <span class="icon"></span>
+                                            </a>
+                                            <a href="##" class="btn-nav-forward btn-nav-direction btn font-weight-bold ml-auto mb-6">
+                                                <span>{{ trans('web.all_directions') }}</span><span class="icon"></span>
+                                            </a>
                                         </div>
                                         <div class="push-menu--lvl position-relative">
                                             <div class="item has-dropdown">
@@ -102,56 +105,48 @@
                                                             <!-- main slider -->
                                                             <div class="offices-direction--swiper">
                                                                 <div class="swiper-wrapper">
-                                                                    <div class="swiper-slide">
-                                                                        <a href="img/offices/img-office-1.jpeg"
-                                                                            data-fancybox="offices-direction--gallery-1">
-                                                                            <div class="wrap-img">
-                                                                                <img src="img/offices/img-office-1.jpeg"
-                                                                                    alt="img">
-                                                                            </div>
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="swiper-slide">
-                                                                        <a href="img/offices/img-office-2.jpeg"
-                                                                            data-fancybox="offices-direction--gallery-1">
-                                                                            <div class="wrap-img">
-                                                                                <img src="img/offices/img-office-2.jpeg"
-                                                                                    alt="img">
-                                                                            </div>
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="swiper-slide">
-                                                                        <a href="img/offices/img-office-3.jpeg"
-                                                                            data-fancybox="offices-direction--gallery-1">
-                                                                            <div class="wrap-img">
-                                                                                <img src="img/offices/img-office-3.jpeg"
-                                                                                    alt="img">
-                                                                            </div>
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="swiper-slide">
-                                                                        <a href="img/offices/img-office-4.jpeg"
-                                                                            data-fancybox="offices-direction--gallery-1">
-                                                                            <div class="wrap-img">
-                                                                                <img src="img/offices/img-office-4.jpeg"
-                                                                                    alt="img">
-                                                                            </div>
-                                                                        </a>
-                                                                    </div>
+                                                                    @foreach ($contact->gallery as $galleryItem)
+                                                                        <div class="swiper-slide">
+                                                                            <a href="{{ '/storage/' . $galleryItem->image }}"
+                                                                                data-fancybox="offices-direction--gallery-{{ $contactTteration }}">
+                                                                                <div class="wrap-img">
+                                                                                    <img src="{{ '/storage/' . $galleryItem->image }}" alt="img">
+                                                                                </div>
+                                                                            </a>
+                                                                        </div>
+                                                                    @endforeach
                                                                 </div>
                                                                 <div class="swiper-buttons d-flex">
                                                                     <div class="button-slider-prev">
-                                                                        <svg>
-                                                                            <use
-                                                                                xlink:href="img/icons/icons.svg#i-arrow-small-down">
-                                                                            </use>
+                                                                        <svg width="16.000000" height="16.000000" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                                            <desc>
+                                                                                    Created with Pixso.
+                                                                            </desc>
+                                                                            <defs>
+                                                                                <clipPath id="clip12_24291">
+                                                                                    <rect id="arrow-small-down" width="16.000000" height="16.000000" fill="white" fill-opacity="0"/>
+                                                                                </clipPath>
+                                                                            </defs>
+                                                                            <rect id="arrow-small-down" width="16.000000" height="16.000000" fill="#FFFFFF" fill-opacity="0"/>
+                                                                            <g clip-path="url(#clip12_24291)">
+                                                                                <path id="Vector" d="M4 6L8 10L12 6" stroke="#111010" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+                                                                            </g>
                                                                         </svg>
                                                                     </div>
                                                                     <div class="button-slider-next">
-                                                                        <svg>
-                                                                            <use
-                                                                                xlink:href="img/icons/icons.svg#i-arrow-small-down">
-                                                                            </use>
+                                                                        <svg width="16.000000" height="16.000000" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                                            <desc>
+                                                                                    Created with Pixso.
+                                                                            </desc>
+                                                                            <defs>
+                                                                                <clipPath id="clip12_24291">
+                                                                                    <rect id="arrow-small-down" width="16.000000" height="16.000000" fill="white" fill-opacity="0"/>
+                                                                                </clipPath>
+                                                                            </defs>
+                                                                            <rect id="arrow-small-down" width="16.000000" height="16.000000" fill="#FFFFFF" fill-opacity="0"/>
+                                                                            <g clip-path="url(#clip12_24291)">
+                                                                                <path id="Vector" d="M4 6L8 10L12 6" stroke="#111010" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+                                                                            </g>
                                                                         </svg>
                                                                     </div>
                                                                 </div>
@@ -159,30 +154,13 @@
                                                             <!-- thumbs slider -->
                                                             <div class="offices-direction-thumbs--swiper">
                                                                 <div class="swiper-wrapper">
-                                                                    <div class="swiper-slide">
-                                                                        <div class="wrap-img">
-                                                                            <img src="img/offices/img-office-1.jpeg"
-                                                                                alt="img">
+                                                                    @foreach ($contact->gallery as $galleryItem)
+                                                                        <div class="swiper-slide">
+                                                                            <div class="wrap-img">
+                                                                                <img src="{{ '/storage/' . $galleryItem->image }}" alt="img">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="swiper-slide">
-                                                                        <div class="wrap-img">
-                                                                            <img src="img/offices/img-office-2.jpeg"
-                                                                                alt="img">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="swiper-slide">
-                                                                        <div class="wrap-img">
-                                                                            <img src="img/offices/img-office-3.jpeg"
-                                                                                alt="img">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="swiper-slide">
-                                                                        <div class="wrap-img">
-                                                                            <img src="img/offices/img-office-4.jpeg"
-                                                                                alt="img">
-                                                                        </div>
-                                                                    </div>
+                                                                    @endforeach
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -190,29 +168,24 @@
                                                     <div class="col-12 col-lg-4  mb-5 mb-lg-0">
                                                         <div
                                                             class="offices-direction--descrp d-flex flex-column justify-content-between h-100">
-                                                            <div class="h3 font-weight-bolder mb-5">Геліос Ламана</div>
-                                                            <p class="mb-5 mb-lg-8">Медичний центр сімейного здоров'я та
-                                                                реабілітації “Геліос” у Дніпрі пропонує прийом
-                                                                лікаря-анестезіолога пацієнтам, які готуються до планового
-                                                                хірургічного втручання.<br>
-                                                                Оперативне лікування неможливе без анестезіолога-реаніматолога.
-                                                                Медичний центр сімейного здоров'я та реабілітації “Геліос”.</p>
+                                                            <div class="h3 font-weight-bolder mb-5">{{ $contact->title }}</div>
+                                                            <p class="mb-5 mb-lg-8">{!! $contact->text !!}</p>
                                                             <a href="##" class="btn btn-blue font-weight-bold px-xl-14"
                                                                 data-toggle="modal"
-                                                                data-target="#popup--sign-up-appointment">Записатись на
-                                                                прийом</a>
+                                                                data-target="#popup--sign-up-appointment">{{ trans('web.make_appointment') }}</a>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-lg-4">
                                                         <div class="offices-direction--contact">
-                                                            <div class="city-pin mb-2">{{ $contact->city }}, вул. Вернадського, 18а</div>
-                                                            <div class="email mb-2"><a
-                                                                    href="mailto:helioscentr@gmail.com">helioscentr@gmail.com</a>
-                                                            </div>
-                                                            <div class="phone mb-2"><a href="tel:+38 (095) 000-01-50">+38
-                                                                    (095) 000-01-50</a></div>
-                                                            <div class="phone mb-2"><a href="tel:+38 (095) 000-01-50">+38
-                                                                    (095) 000-01-50</a></div>
+                                                            <div class="city-pin mb-2">{{ $contact->city }}, {{ $contact->street }}</div>
+                                                            @foreach ($contact->items->where('type', 'email') as $email)
+                                                                <div class="email mb-2">
+                                                                    <a href="mailto:{{ $email->item }}">{{ $email->item }}</a>
+                                                                </div>
+                                                            @endforeach
+                                                            @foreach ($contact->items->where('type', 'phone') as $phone)
+                                                                <div class="phone mb-2"><a href="tel:{{ $phone->item }}">{{ $phone->item }}</a></div>
+                                                            @endforeach
                                                         </div>
                                                     </div>
                                                 </div>
