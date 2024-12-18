@@ -7,7 +7,7 @@
                         <li class="breadcrumb-item"><a href="{{ route('main') }}">{{ trans('web.main') }}</a></li>
                         @foreach ($breadcrumbs as $breadcrumb)
                             @if ( !$loop->last )
-                                <li class="breadcrumb-item"><a href="{{ route('web.page.show', ['slug' => $breadcrumb['slug']]) }}">{{ $breadcrumb['name'] }}</a></li>
+                                <li class="breadcrumb-item"><a href="{{ $breadcrumb['full_path'] }}">{{ $breadcrumb['name'] }}</a></li>
                             @else
                                 <li class="breadcrumb-item active" aria-current="page">{{ $breadcrumb['name'] }}</li>
                             @endif

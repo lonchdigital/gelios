@@ -5,7 +5,7 @@
 
         </td>
         <td>
-            <a href="{{ route('web.page.show', ['slug' => $child['slug']]) }}" target="_blank"><i class="fa fa-eye text-info font-18"></i></a>
+            <a href="{{ $child['full_path'] }}" target="_blank"><i class="fa fa-eye text-info font-18"></i></a>
         </td>
         <td>
             <a href="{{ route('directions.edit', ['directionId' => $child['id']]) }}">

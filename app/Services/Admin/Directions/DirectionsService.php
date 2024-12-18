@@ -187,7 +187,8 @@ class DirectionsService
                 'name' => $direction->name,
                 'template' => $direction->template,
                 'children' => $children,
-                'slug' => $direction->page->slug
+                'slug' => $direction->page->slug,
+                'full_path' => url($direction->buildFullPath())
             ];
         }
 

@@ -31,7 +31,7 @@
                                                     <div class="col-12 col-lg-4 col-xl-3 position-static">
                                                         <div class="directions-item">
                                                             <div class="content item">
-                                                                <a href="{{ route('web.page.show', ['slug' => $child->page->slug]) }}" class="link">
+                                                                <a href="{{ url($child->buildFullPath()) }}" class="link">
                                                                     <span>{{ $child->name }}</span>
                                                                     <div class="i-link"></div>
                                                                 </a>

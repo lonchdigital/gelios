@@ -88,8 +88,14 @@ Route::group([
 
         Route::get('/vakansii/', [VacancyController::class, 'index'])->name('vacancy.index');
 
+        // TODO:: old route of displaying pages. Can be removed
         // Route::get('/dlya-paczientov/{page:slug}', [TextPagesController::class, 'show'])->name('text.page.show');
-        Route::get('/{slug}', [WebPagesController::class, 'webPageShow'])->name('web.page.show');
+
+
+        // Route::get('/{slug}', [WebPagesController::class, 'webPageShow'])->name('web.page.show');
+        Route::get('/{slug}', [WebPagesController::class, 'webPageByFullPath'])
+            ->where('slug', '.*') // any route
+            ->name('web.page.show');
 });
 
 Route::get('lang/{lang}', [LanguageController::class, 'changeLanguage'])->name('changeLanguage');
