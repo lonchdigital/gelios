@@ -208,6 +208,8 @@ class SubCategory extends Component
     {
         $this->validate();
 
+        // dd('hello???', $this->sectionTwoData);
+
         $this->direction->update([
             'parent_id' => $this->directionParent,
         ]);
