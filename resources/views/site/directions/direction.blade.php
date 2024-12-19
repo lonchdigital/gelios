@@ -47,20 +47,24 @@
                 </div>
 
                 <div class="col-12 col-lg-5 col-xl-4">
-                    <div class="bg-white rounded-sm p-3 p-md-6 mb-5">
-                        <div class="h4 font-weight-bolder text-blue mb-3 ml-lg-3">{{ $direction->name ?? '' }}</div>
-                        <div class="doctor-features-nav">
-                            <ul class="nav">
-                                @foreach ($direction->children as $child)
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ url($child->buildFullPath()) }}">
-                                            {{ $child->name }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
+                    
+                    @if( count($direction->children) > 0 )
+                        <div class="bg-white rounded-sm p-3 p-md-6 mb-5">
+                            <div class="h4 font-weight-bolder text-blue mb-3 ml-lg-3">{{ $direction->name ?? '' }}</div>
+                            <div class="doctor-features-nav">
+                                <ul class="nav">
+                                    @foreach ($direction->children as $child)
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ url($child->buildFullPath()) }}">
+                                                {{ $child->name }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
-                    </div>
+                    @endif
+
                     <div class="template-shares--swiper">
                         <div class="swiper-wrapper">
                             @foreach ($promotions as $promotion)
