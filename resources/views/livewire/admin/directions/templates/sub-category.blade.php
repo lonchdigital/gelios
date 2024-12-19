@@ -246,7 +246,7 @@
                                                                     
                                                                 </div>
 
-                                                                <div class="col-md-9">
+                                                                <div class="col-md-7">
                                                                     <x-admin.multilanguage-input
                                                                         :is-required="false"
                                                                         :label="trans('admin.service')"
@@ -259,6 +259,18 @@
                                                                     <div class="form-group mb-1">
                                                                         <label for="meta_title_ua">{{ trans('admin.price') }}</label>
                                                                         <input type="number" wire:model="directionPrices.{{ $index }}.price" name="directionPrices.{{ $index }}.price" value="{{ $directionPrice['price'] }}" class="form-control">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-2">
+                                                                    <div class="form-group mb-1">
+                                                                        <label for="">{{ trans('admin.free') }}</label>
+                                                                        <input 
+                                                                            class="form-control art-price-checkbox"
+                                                                            type="checkbox" 
+                                                                            wire:model="directionPrices.{{ $index }}.is_free"
+                                                                            @if($directionPrice['is_free']) checked @endif
+                                                                        >
                                                                     </div>
                                                                 </div>
 

@@ -85,7 +85,8 @@ class Edit extends Component
             'id' => null,
             'sort' => count($this->prices) + 1,
             'price' => 0,
-            'service' => []
+            'service' => [],
+            'is_free' => 0,
         ];
     }
 

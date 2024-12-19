@@ -67,7 +67,7 @@
                                                     
                                                 </div>
 
-                                                <div class="col-md-9">
+                                                <div class="col-md-7">
                                                     <x-admin.multilanguage-input
                                                         :is-required="false"
                                                         :label="trans('admin.service')"
@@ -80,6 +80,18 @@
                                                     <div class="form-group mb-1">
                                                         <label for="meta_title_ua">{{ trans('admin.price') }}</label>
                                                         <input type="number" wire:model="prices.{{ $index }}.price" name="prices.{{ $index }}.price" value="{{ $price['price'] }}" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="form-group mb-1">
+                                                        <label for="">{{ trans('admin.free') }}</label>
+                                                        <input 
+                                                            class="form-control art-price-checkbox"
+                                                            type="checkbox" 
+                                                            wire:model="prices.{{ $index }}.is_free"
+                                                            @if($price['is_free']) checked @endif
+                                                        >
                                                     </div>
                                                 </div>
 

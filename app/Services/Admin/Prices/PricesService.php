@@ -29,6 +29,7 @@ class PricesService
                 'sort' => $price->sort,
                 'price' => $price->price,
                 'service' => $service,
+                'is_free' => $price->is_free,
             ];
         }
 
@@ -43,7 +44,8 @@ class PricesService
             if( !is_null($existingPrice) ) {
                 $dataToUpdate = [
                     'sort' => $price['sort'],
-                    'price' => $price['price']
+                    'price' => $price['price'],
+                    'is_free' => $price['is_free']
                 ];
 
                 if($price['service']) {
@@ -57,7 +59,8 @@ class PricesService
                 $dataToUpdate = [
                     'test_id' => $testId,
                     'sort' => $price['sort'],
-                    'price' => $price['price']
+                    'price' => $price['price'],
+                    'is_free' => $price['is_free']
                 ];
 
                 if($price['service']) {
