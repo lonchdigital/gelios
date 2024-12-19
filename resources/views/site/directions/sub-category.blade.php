@@ -17,20 +17,24 @@
             <div class="row">
                 @include('site.directions.partials.text-section-narrow', ['data' => $direction->textBlocks->where('number', 2)->first()])
                 <div class="col-12 col-md-6 col-xl-4">
-                    <div id="doctor-features--inner-2" class="bg-white rounded-sm p-3 p-md-6">
-                        <div class="h3 font-weight-bolder text-blue mb-8 mb-md-2 ml-md-3">{{ $direction->name ?? '' }}</div>
-                        <div class="doctor-features-nav">
-                            <ul class="nav">
-                                @foreach ($direction->children as $child)
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ url($child->buildFullPath()) }}">
-                                            {{ $child->name }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
+                    @if( count($direction->children) > 0 )
+                        <div id="doctor-features--inner-2" class="bg-white rounded-sm p-3 p-md-6">
+                            <div class="h3 font-weight-bolder text-blue mb-8 mb-md-2 ml-md-3">{{ $direction->name ?? '' }}</div>
+                            <div class="doctor-features-nav">
+                                <ul class="nav">
+                                    @foreach ($direction->children as $child)
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ url($child->buildFullPath()) }}">
+                                                {{ $child->name }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
-                    </div>
+                    @else
+                        <div id="doctor-features--inner-2" class="bg-white rounded-sm p-3 p-md-6 d-none"></div>
+                    @endif  
                 </div>
             </div>
         </div>
