@@ -12,9 +12,10 @@
 	<link rel="icon" href="{{ asset('/static_images/cropped-favicon-192x192.png') }}" type="image/png" sizes="192x192">
 
 	<script>
-		const translations = @json([
-			'nothing_found' => trans('web.nothing_found'),
-		]);
+		const translations = {
+			nothing_found: "{{ trans('web.nothing_found') }}",
+			free: "{{ trans('web.free') }}"
+		};
 	</script>
 
 	@yield('head')

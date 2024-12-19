@@ -11,5 +11,5 @@ class Price extends Model implements TranslatableContract
     use Translatable;
 
     public $translatedAttributes = ['service'];
-    protected $fillable = ['test_id', 'sort', 'price'];
+    protected $fillable = ['test_id', 'sort', 'price', 'is_free'];
 }

@@ -86,11 +86,18 @@ function buildItemHTML(item, iteration)
         let priceItemTranslation = priceItem.translations.find(translation => translation.locale === appLocale);
         let priceItemService = priceItemTranslation ? priceItemTranslation.service : '';
         let price = Math.floor(priceItem.price);
+        let priceHtml = '';
+
+        if(priceItem.is_free) {
+            priceHtml = `<div class="price">${translations['free']}</div>`;
+        } else {
+            priceHtml = `<div class="price">${price} грн</div>`;
+        }
 
         allPrices += `
             <div class="item">
                 <div class="name">${priceItemService}</div>
-                <div class="price">${price} грн</div>
+                ${priceHtml}
             </div>
         `;
     });

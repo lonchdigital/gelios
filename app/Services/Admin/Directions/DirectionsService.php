@@ -345,6 +345,7 @@ class DirectionsService
                 'sort' => $directionPrice->sort,
                 'price' => $directionPrice->price,
                 'service' => $service,
+                'is_free' => $directionPrice->is_free,
             ];
         }
 
@@ -435,7 +436,8 @@ class DirectionsService
             if( !is_null($existingPrice) ) {
                 $dataToUpdate = [
                     'sort' => $price['sort'],
-                    'price' => $price['price']
+                    'price' => $price['price'],
+                    'is_free' => $price['is_free']
                 ];
 
                 if($price['service']) {
@@ -449,7 +451,8 @@ class DirectionsService
                 $dataToUpdate = [
                     'direction_id' => $directionId,
                     'sort' => $price['sort'],
-                    'price' => $price['price']
+                    'price' => $price['price'],
+                    'is_free' => $price['is_free']
                 ];
 
                 if($price['service']) {

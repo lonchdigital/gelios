@@ -134,7 +134,8 @@ class SubCategory extends Component
             'id' => null,
             'sort' => count($this->directionPrices) + 1,
             'price' => 0,
-            'service' => []
+            'service' => [],
+            'is_free' => 0,
         ];
     }
 

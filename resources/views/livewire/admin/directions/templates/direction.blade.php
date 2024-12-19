@@ -456,6 +456,18 @@
                                                                     </div>
                                                                 </div>
 
+                                                                <div class="col-md-2">
+                                                                    <div class="form-group mb-1">
+                                                                        <label for="">{{ trans('admin.free') }}</label>
+                                                                        <input 
+                                                                            class="form-control art-price-checkbox"
+                                                                            type="checkbox" 
+                                                                            wire:model="directionPrices.{{ $index }}.is_free"
+                                                                            @if($directionPrice['is_free']) checked @endif
+                                                                        >
+                                                                    </div>
+                                                                </div>
+
                                                                 <input type="hidden" name="direction_price_id" value="{{ $this->directionPrices[$index]['id'] }}">
                                                             </div>
                                                         </div>
