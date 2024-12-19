@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 
 class Direction extends Model implements TranslatableContract
 {
@@ -52,6 +54,22 @@ class Direction extends Model implements TranslatableContract
     public function contacts()
     {
         return $this->belongsToMany(Contact::class, 'contact_directions');
+    }
+
+    public function doctors(): BelongsToMany
+    {
+        return $this->belongsToMany(Doctor::class, 'direction_doctors', 'direction_id', 'doctor_id');
+    }
+
+    public function getDoctors() : Collection
+    {
+        if( count($this->doctors) > 0 ) {
+            $doctors = $this->doctors;
+        } else {
+            $doctors = Doctor::limit(10)->get();
+        }
+
+        return $doctors;
     }
 
     public function scopeSearch($query, $val)

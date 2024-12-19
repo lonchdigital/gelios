@@ -35,7 +35,7 @@ class WebPagesController extends Controller
                     return view('site.directions.sub-category',[
                         'page' => $page,
                         'direction' => $direction,
-                        'doctors' => Doctor::limit(10)->get()
+                        'doctors' => $direction->getDoctors()
                     ]);
 
                     break;
@@ -44,7 +44,7 @@ class WebPagesController extends Controller
                     return view('site.directions.direction',[
                         'page' => $page,
                         'direction' => $direction,
-                        'doctors' => Doctor::limit(10)->get(),
+                        'doctors' => $direction->getDoctors(),
                         'promotions' => Promotion::limit(5)->get()
                     ]);
 
