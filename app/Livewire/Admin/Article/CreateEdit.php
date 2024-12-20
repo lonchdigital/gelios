@@ -10,6 +10,7 @@ use App\Models\ArticleSlider;
 use App\Models\ArticleTranslation;
 use App\Models\CheckUp;
 use App\Models\CheckUpTranslation;
+use App\Models\Doctor;
 use App\Models\PromotionTranslation;
 use App\Services\Admin\Article\ArticleService;
 use App\Services\Admin\Article\SliderService;
@@ -54,27 +55,9 @@ class CreateEdit extends Component
 
     public $newImageTemporary;
 
-    public string $uaAuthorTitle = '';
+    public $categoryId;
 
-    public string $enAuthorTitle = '';
-
-    public string $ruAuthorTitle = '';
-
-    public string $uaAuthorSpecialization = '';
-
-    public string $enAuthorSpecialization = '';
-
-    public string $ruAuthorSpecialization = '';
-
-    public string $uaAuthorDescription = '';
-
-    public string $enAuthorDescription = '';
-
-    public string $ruAuthorDescription = '';
-
-    public $authorImage;
-
-    public $authorImageTemporary;
+    public $doctorId;
 
     protected $listeners = [
         'languageSwitched' => 'languageSwitched',
@@ -89,6 +72,8 @@ class CreateEdit extends Component
         $this->article = $article ?? new Article();
         $this->activeLocale = config('app.active_lang');
         $this->slug = $this->article->slug ?? '';
+        $this->categoryId = $this->article->article_category_id ?? null;
+        $this->doctorId = $this->article->doctor_id ?? null;
 
         $this->loadTranslations();
         $this->loadImages();
@@ -117,18 +102,6 @@ class CreateEdit extends Component
         $this->uaDescription = $translations['ua']->description ?? '';
         $this->enDescription = $translations['en']->description ?? '';
         $this->ruDescription = $translations['ru']->description ?? '';
-
-        $this->uaAuthorTitle = $translations['ua']->author_name ?? '';
-        $this->enAuthorTitle = $translations['en']->author_name ?? '';
-        $this->ruAuthorTitle = $translations['ru']->author_name ?? '';
-
-        $this->uaAuthorSpecialization = $translations['ua']->author_specialization ?? '';
-        $this->enAuthorSpecialization = $translations['en']->author_specialization ?? '';
-        $this->ruAuthorSpecialization = $translations['ru']->author_specialization ?? '';
-
-        $this->uaAuthorDescription = $translations['ua']->author_description ?? '';
-        $this->enAuthorDescription = $translations['en']->author_description ?? '';
-        $this->ruAuthorDescription = $translations['ru']->author_description ?? '';
     }
 
     public function updatedNewImage($val)
@@ -185,51 +158,6 @@ class CreateEdit extends Component
                 'string',
             ],
 
-            'uaAuthorTitle' => [
-                'required',
-                'string',
-            ],
-
-            'enAuthorTitle' => [
-                'required',
-                'string',
-            ],
-
-            'ruAuthorTitle' => [
-                'required',
-                'string',
-            ],
-
-            'uaAuthorSpecialization' => [
-                'required',
-                'string',
-            ],
-
-            'enAuthorSpecialization' => [
-                'required',
-                'string',
-            ],
-
-            'ruAuthorSpecialization' => [
-                'required',
-                'string',
-            ],
-
-            'uaAuthorDescription' => [
-                'required',
-                'string',
-            ],
-
-            'enAuthorDescription' => [
-                'required',
-                'string',
-            ],
-
-            'ruAuthorDescription' => [
-                'required',
-                'string',
-            ],
-
             'slug' => [
                 'required',
                 'string',
@@ -242,11 +170,15 @@ class CreateEdit extends Component
                 'image',
             ],
 
-            'authorImage' => [
-                empty($this->article->id) ? 'required' : 'nullable',
-                'mimes:jpeg,jpg,png,gif',
-                'image',
+            'doctorId' => [
+                'nullable',
+                'exists:doctors,id'
             ],
+
+            'categoryId' => [
+                'nullable',
+                'exists:article_categories,id'
+            ]
         ];
     }
 
@@ -265,21 +197,6 @@ class CreateEdit extends Component
         }
     }
 
-    public function updatedAuthorDescription($val)
-    {
-        switch ($this->activeLocale) {
-            case 'ua':
-                $this->uaAuthorDescription = $val;
-                break;
-            case 'ru':
-                $this->ruAuthorDescription = $val;
-                break;
-            case 'en':
-                $this->enAuthorDescription = $val;
-                break;
-        }
-    }
-
     public function updatedImage($val)
     {
         $this->validateOnly('image');
@@ -293,17 +210,18 @@ class CreateEdit extends Component
         $this->imageTemporary = null;
     }
 
-    public function updatedAuthorImage($val)
+    public function getDoctorsProperty()
     {
-        $this->validateOnly('author_image');
-        $this->authorImage = $val;
-        $this->authorImageTemporary = $val->temporaryUrl();
+        $doctors = Doctor::get();
+
+        return $doctors;
     }
 
-    public function deleteAuthorImage()
+    public function getCategoriesProperty()
     {
-        $this->authorImage = null;
-        $this->authorImageTemporary = null;
+        $categories = ArticleCategory::get();
+
+        return $categories;
     }
 
     public function save()
@@ -322,19 +240,11 @@ class CreateEdit extends Component
             $this->article->image = $image;
         }
 
-        if($this->authorImage) {
-            $image = $imageService->downloadImage($this->authorImage, '/article');
-
-            if(!empty($this->article->id) && !empty($this->article->author_image)) {
-                $imageService->deleteStorageImage($this->authorImage, $this->article->authorImage);
-            }
-
-            $this->article->author_image = $image;
-        }
-
         // $this->article->images = $imageService->processImages($this->article->images, $this->images);
 
         $this->article->slug = $this->slug;
+        $this->article->doctor_id = $this->doctorId ?? null;
+        $this->article->article_category_id = $this->categoryId ?? null;
         $this->article->save();
 
         $this->saveTranslations();
@@ -359,21 +269,6 @@ class CreateEdit extends Component
                 'ua' => $this->uaDescription,
                 'en' => $this->enDescription,
                 'ru' => $this->ruDescription,
-            ],
-            [
-                'ua' => $this->uaAuthorTitle,
-                'en' => $this->enAuthorTitle,
-                'ru' => $this->ruAuthorTitle,
-            ],
-            [
-                'ua' => $this->uaAuthorDescription,
-                'en' => $this->enAuthorDescription,
-                'ru' => $this->ruAuthorDescription,
-            ],
-            [
-                'ua' => $this->uaAuthorSpecialization,
-                'en' => $this->enAuthorSpecialization,
-                'ru' => $this->ruAuthorSpecialization,
             ],
         );
     }

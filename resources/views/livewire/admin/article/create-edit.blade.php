@@ -171,6 +171,76 @@
                                                     <div class="row mb-3">
                                                         <div class="col-md-12">
                                                             <div class="tab-content">
+                                                                <div id="uaTitle"
+                                                                    class="multilang-content tab-pane fade active show">
+                                                                    <div class="form-group mb-1">
+                                                                        <label>{{ __('admin.category') }}
+                                                                        </label>
+                                                                        <select class="form-control rounded-0"
+                                                                            wire:model.live="categoryId">
+                                                                            <option value="">{{ __('admin.choose_category') }}
+                                                                            </option>
+                                                                            @forelse($this->categories as $category2)
+                                                                                <option value="{{ $category2->id }}">
+                                                                                    {{ $category2->title }}</option>
+                                                                            @empty
+                                                                            @endforelse
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('categoryId')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div id="uaTitle"
+                                                                    class="multilang-content tab-pane fade active show">
+                                                                    <div class="form-group mb-1">
+                                                                        <label>{{ __('admin.doctor') }}
+                                                                        </label>
+                                                                        <select class="form-control rounded-0"
+                                                                            wire:model.live="doctorId">
+                                                                            <option value="">{{ __('admin.choose_doctor') }}
+                                                                            </option>
+                                                                            @forelse($this->doctors as $doctor)
+                                                                                <option value="{{ $doctor->id }}">
+                                                                                    {{ $doctor->title }}</option>
+                                                                            @empty
+                                                                            @endforelse
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('doctorId')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
                                                                 <div
                                                                     class="multilang-content tab-pane fade active show ">
                                                                     <div class="form-group mb-1">
@@ -249,308 +319,58 @@
                                         </div> --}}
                                     </div>
 
-                                    @if ($this->activeLocale == 'ua')
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div id="uaTitle"
-                                                                        class="multilang-content tab-pane fade active show">
-                                                                        <div class="form-group mb-1">
-                                                                            <label>{{ __('admin.author_name') }}
-                                                                                <strong>UA</strong>
-                                                                            </label>
-                                                                            <input type="text" wire:model="uaAuthorTitle"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @if($errors->has('uaAuthorTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaAuthorTitle') }}</div>
-                                                                @elseif($errors->has('ruAuthorTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruAuthorTitle') }}</div>
-                                                                @elseif($errors->has('enAuthorTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enAuthorTitle') }}</div>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                    @if(!empty($this->article->id))
+                                        <div class="card-body pb-0">
+                                            <div class="d-flex justify-content-between align-items-center mb-20">
+                                                <h6 class="card-title mb-0">{{ __('admin.slider') }}</h6>
+
+                                                <a href="{{ route('admin.articles.create-article-slide', ['article' => $this->article]) }}"
+                                                    class="btn btn-primary waves-effect waves-light float-right mb-3">
+                                                    + {{ __('admin.add_slide') }}
+                                                </a>
                                             </div>
 
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div id="uaTitle"
-                                                                        class="multilang-content tab-pane fade active show">
-                                                                        <div class="form-group mb-1">
-                                                                            <label>{{ __('admin.author_specialization') }}
-                                                                                <strong>UA</strong>
-                                                                            </label>
-                                                                            <input type="text" wire:model="uaAuthorSpecialization"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @if($errors->has('uaAuthorSpecialization'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaAuthorSpecialization') }}</div>
-                                                                @elseif($errors->has('ruAuthorSpecialization'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruAuthorSpecialization') }}</div>
-                                                                @elseif($errors->has('enAuthorSpecialization'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enAuthorSpecialization') }}</div>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endif
-
-                                        @if ($this->activeLocale == 'ru')
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div id="uaTitle"
-                                                                        class="multilang-content tab-pane fade active show">
-                                                                        <div class="form-group mb-1">
-                                                                            <label>{{ __('admin.author_name') }}
-                                                                                <strong>RU</strong>
-                                                                            </label>
-                                                                            <input type="text" wire:model="ruAuthorTitle"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @if($errors->has('ruAuthorTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruAuthorTitle') }}</div>
-                                                                @elseif($errors->has('uaAuthorTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaAuthorTitle') }}</div>
-                                                                @elseif($errors->has('enAuthorTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enAuthorTitle') }}</div>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div id="ruTitle"
-                                                                        class="multilang-content tab-pane fade active show">
-                                                                        <div class="form-group mb-1">
-                                                                            <label>{{ __('admin.author_specialization') }}
-                                                                                <strong>RU</strong>
-                                                                            </label>
-                                                                            <input type="text" wire:model="ruAuthorSpecialization"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @if($errors->has('ruAuthorSpecialization'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruAuthorSpecialization') }}</div>
-                                                                @elseif($errors->has('uaAuthorSpecialization'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaAuthorSpecialization') }}</div>
-                                                                @elseif($errors->has('enAuthorSpecialization'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enAuthorSpecialization') }}</div>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endif
-
-                                        @if ($this->activeLocale == 'en')
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div id="uaTitle"
-                                                                        class="multilang-content tab-pane fade active show">
-                                                                        <div class="form-group mb-1">
-                                                                            <label>{{ __('admin.author_name') }}
-                                                                                <strong>EN</strong>
-                                                                            </label>
-                                                                            <input type="text" wire:model="enAuthorTitle"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @if($errors->has('enAuthorTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enAuthorTitle') }}</div>
-                                                                @elseif($errors->has('ruAuthorTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruAuthorTitle') }}</div>
-                                                                @elseif($errors->has('uaAuthorTitle'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaAuthorTitle') }}</div>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div id="uaTitle"
-                                                                        class="multilang-content tab-pane fade active show">
-                                                                        <div class="form-group mb-1">
-                                                                            <label>{{ __('admin.author_specialization') }}
-                                                                                <strong>EN</strong>
-                                                                            </label>
-                                                                            <input type="text" wire:model="enAuthorSpecialization"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @if($errors->has('enAuthorSpecialization'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enAuthorSpecialization') }}</div>
-                                                                @elseif($errors->has('ruAuthorSpecialization'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruAuthorSpecialization') }}</div>
-                                                                @elseif($errors->has('uaAuthorSpecialization'))
-                                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaAuthorSpecialization') }}</div>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endif
-
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <x-admin.multilanguage-text-area-rich
-                                                    :is-required="false"
-                                                    :label="__('admin.author_description')"
-                                                    field-name="authorDescription"
-                                                    live-wire-field="authorDescription"
-                                                    :values="[
-                                                        'ua' => $this->uaAuthorDescription,
-                                                        'ru' => $this->ruAuthorDescription,
-                                                        'en' => $this->enAuthorDescription
-                                                    ]"
-                                                />
-                                                @if($errors->has('uaAuthorDescription'))
-                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaAuthorDescription') }}</div>
-                                                @elseif($errors->has('ruAuthorDescription'))
-                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruAuthorDescription') }}</div>
-                                                @elseif($errors->has('enAuthorDescription'))
-                                                    <div class="mt-1 text-danger ajaxError">{{ $errors->first('enAuthorDescription') }}</div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="row mb-3">
-                                                    <div class="col-md-12">
-                                                        <div class="tab-content">
-                                                            <div
-                                                                class="multilang-content tab-pane fade active show ">
-                                                                <div class="form-group mb-1">
-                                                                    <label>{{ __('admin.author_image') }}</label>
-                                                                    <input type="file" wire:model="authorImage"
-                                                                        class="form-control">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        @error('authorImage')
-                                                            <div class="mt-1 text-danger ajaxError">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
-
-                                                        @if ($this->authorImageTemporary)
-                                                            <div class="flex">
-                                                                <img src="{{ $this->authorImageTemporary }}"
-                                                                    width="60">
-                                                                <a wire:click="deleteAuthorImage()"
-                                                                    style="cursor: pointer;">
-                                                                    <i class="ti-close font-weight-bold mr-2"></i>
-                                                                    {{ __('admin.delete_image') }}
-                                                                </a>
-                                                            </div>
-                                                        @elseif(!empty($this->article->author_image))
-                                                            <img src="{{ $this->article->authorImageUrl }}"
-                                                                width="60">
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="card-body pb-0">
-                                        <div class="d-flex justify-content-between align-items-center mb-20">
-                                            <h6 class="card-title mb-0">{{ __('admin.slider') }}</h6>
-
-                                            <a href="{{ route('admin.articles.create-article-slide', ['article' => $this->article]) }}"
-                                                class="btn btn-primary waves-effect waves-light float-right mb-3">
-                                                + {{ __('admin.add_slide') }}
-                                            </a>
-                                        </div>
-
-                                        <div class="table-responsive art-cars-list">
-                                            <table class="table table-nowrap">
-                                                <thead>
-                                                    <tr>
-                                                        <th>{{ __('admin.sort') }}</th>
-                                                        <th>{{ __('admin.title') }}</th>
-                                                        <th style="text-align: right">{{ __('admin.actions') }}</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($this->article->articleSliders()->with('translations')->orderBy('sort', 'ASC')->get() as $block)
+                                            <div class="table-responsive art-cars-list">
+                                                <table class="table table-nowrap">
+                                                    <thead>
                                                         <tr>
-                                                            <td>
-                                                                @if ($loop->iteration !== 1)
-                                                                    <div style="cursor: pointer;"
-                                                                        wire:click="newSliderPosition(-1, {{ $block }})">
-                                                                        <i class="fa fa-sort-up"></i>
-                                                                    </div>
-                                                                @endif
-                                                                {{ $block->sort }}
-                                                                @if (!$loop->last)
-                                                                    <div style="cursor: pointer;"
-                                                                        wire:click="newSlidePosition(+1, {{ $block }})">
-                                                                        <i class="fa fa-sort-desc"></i>
-                                                                    </div>
-                                                                @endif
-                                                            </td>
-                                                            <td>{{ $block->title }}</td>
-                                                            <td style="text-align: right">
-                                                                <a href="{{ route('admin.articles.edit-article-slide', ['article' => $this->article, 'slide' => $block]) }}"
-                                                                    class="mr-2"><i
-                                                                        class="fa fa-edit text-info font-18"></i></a>
-                                                                <a wire:click="deleteItem('{{ $block->id }}', 'articleSlide')" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
-                                                            </td>
+                                                            <th>{{ __('admin.sort') }}</th>
+                                                            <th>{{ __('admin.title') }}</th>
+                                                            <th style="text-align: right">{{ __('admin.actions') }}</th>
                                                         </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($this->article->articleSliders()->with('translations')->orderBy('sort', 'ASC')->get() as $block)
+                                                            <tr>
+                                                                <td>
+                                                                    @if ($loop->iteration !== 1)
+                                                                        <div style="cursor: pointer;"
+                                                                            wire:click="newSliderPosition(-1, {{ $block }})">
+                                                                            <i class="fa fa-sort-up"></i>
+                                                                        </div>
+                                                                    @endif
+                                                                    {{ $block->sort }}
+                                                                    @if (!$loop->last)
+                                                                        <div style="cursor: pointer;"
+                                                                            wire:click="newSlidePosition(+1, {{ $block }})">
+                                                                            <i class="fa fa-sort-desc"></i>
+                                                                        </div>
+                                                                    @endif
+                                                                </td>
+                                                                <td>{{ $block->title }}</td>
+                                                                <td style="text-align: right">
+                                                                    <a href="{{ route('admin.articles.edit-article-slide', ['article' => $this->article, 'slide' => $block]) }}"
+                                                                        class="mr-2"><i
+                                                                            class="fa fa-edit text-info font-18"></i></a>
+                                                                    <a wire:click="deleteItem('{{ $block->id }}', 'articleSlide')" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
 
                                     @if (!empty($this->article->id))
                                         <div class="card-body pb-0">

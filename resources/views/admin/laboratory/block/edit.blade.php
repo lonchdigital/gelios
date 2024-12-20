@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="container-fluid">
-        @livewire('admin.article.create-edit-slider', ['page' => $page, 'block' => $block])
+        @livewire('admin.laboratory.block.create-edit', ['page' => $page, 'block' => $block])
     </div>
 @endsection

@@ -52,6 +52,11 @@ class LaboratoryController extends Controller
         return view('admin.laboratory.slider.edit', compact('page', 'block'));
     }
 
+    public function editBlock(Page $page, PageBlock $block)
+    {
+        return view('admin.laboratory.block.edit', compact('page', 'block'));
+    }
+
     public function mainPageSeo()
     {
         $page = Page::where('type', PageType::LABORATORY->value)

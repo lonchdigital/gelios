@@ -192,22 +192,24 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col col-sm-9 col-md-7 col-lg-5">
-                    <div class="articles-author">
-                        @if(!empty($article->author_image))
-                            <div class="wrap-img">
-                                <img src="{{ $article->authorImageUrl }}" alt="{{ $article->author_name ?? 'img' }}">
+            @if(!empty($article->doctor_id))
+                <div class="row">
+                    <div class="col col-sm-9 col-md-7 col-lg-5">
+                        <div class="articles-author">
+                            @if(!empty($article->doctor->image))
+                                <div class="wrap-img">
+                                    <img src="{{ $article->doctor->imageUrl }}" alt="{{ $article->doctor->title ?? 'img' }}">
+                                </div>
+                            @endif
+                            <div class="articles-author--descrp mt-xxl-1">
+                                <div class="name h4 font-weight-bolder text-blue mb-1">{{ $article->doctor->title ?? '' }}</div>
+                                <div class="position-work h5 font-weight-bold text-blue mb-1 mb-xxl-0">{{ $article->doctor->specialty ?? '' }}</div>
+                                <div class="place-work font-weight-bold text-grey">{!! $article->doctor->content !!}</div>
                             </div>
-                        @endif
-                        <div class="articles-author--descrp mt-xxl-1">
-                            <div class="name h4 font-weight-bolder text-blue mb-1">{{ $article->author_name }}</div>
-                            <div class="position-work h5 font-weight-bold text-blue mb-1 mb-xxl-0">{{ $article->author_specialization ?? '' }}</div>
-                            <div class="place-work font-weight-bold text-grey">{!! $article->author_description !!}</div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
         </div>
     </section>
     <section class="news mb-24">

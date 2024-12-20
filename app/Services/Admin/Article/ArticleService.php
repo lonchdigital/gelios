@@ -16,9 +16,6 @@ class ArticleService
         $articleId,
         $titles,
         $descriptions,
-        $authorTitles,
-        $authorDescriptions,
-        $authorSpecializations
         )
     {
         $locales = ['ua', 'en', 'ru'];
@@ -32,9 +29,6 @@ class ArticleService
                 [
                     'title' => $titles[$locale],
                     'description' => $descriptions[$locale],
-                    'author_name' => $authorTitles[$locale],
-                    'author_description' => $authorDescriptions[$locale],
-                    'author_specialization' => $authorSpecializations[$locale],
                 ]
             );
         }

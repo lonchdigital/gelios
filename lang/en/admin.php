@@ -161,4 +161,5 @@ return [
     'author_image' => 'Author\'s Image',
     'slider' => 'Slider',
     'is_active' => 'Is active',
+    'choose_doctor' => 'Choose doctor',
 ];

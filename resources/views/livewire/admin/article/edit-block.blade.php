@@ -180,7 +180,7 @@
                                             </div>
                                         @endif
 
-                                        @if(!empty($this->block->block) && $this->block->block == '3d')
+                                        @if(!empty($this->block->block) && in_array($this->block->block, ['3d', 'second_block']))
                                             <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">

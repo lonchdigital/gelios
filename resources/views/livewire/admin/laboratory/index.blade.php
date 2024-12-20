@@ -62,7 +62,11 @@
                                     </td>
                                     <td style="text-align: right">
                                             <a role="button"
+                                                @if($block->key == 'slider')
                                                 href="{{ route('admin.laboratories.edit-slide', ['page' => $this->page2, 'block' => $block]) }}"
+                                                @else
+                                                    href="{{ route('admin.laboratories.edit-block', ['page' => $this->page2, 'block' => $block]) }}"
+                                                @endif
                                                 class="mr-2">
                                                 <i class="fa fa-edit text-info font-18"></i>
                                             </a>

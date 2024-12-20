@@ -203,6 +203,8 @@ Route::group([
             Route::get('/create-slide/{page}', [LaboratoryController::class, 'createSlide'])->name('create-slide');
             Route::get('/edit-slide/{page}/{block}', [LaboratoryController::class, 'editSlide'])->name('edit-slide');
 
+            Route::get('/edit-block/{page}/{block}', [LaboratoryController::class, 'editBlock'])->name('edit-block');
+
             Route::get('/{laboratory}/edit', [LaboratoryController::class, 'edit'])->name('edit');
         });
 

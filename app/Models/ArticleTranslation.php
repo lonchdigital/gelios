@@ -14,8 +14,5 @@ class ArticleTranslation extends Model
         'locale',
         'title',
         'description',
-        'author_name',
-        'author_specialization',
-        'author_description',
     ];
 }

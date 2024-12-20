@@ -341,4 +341,5 @@ return [
     'author_image' => 'Изображение автора',
     'slider' => 'Слайдер',
     'is_active' => 'Активен ли',
+    'choose_doctor' => 'Виберите доктора',
 ];

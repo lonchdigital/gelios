@@ -5,6 +5,7 @@ namespace App\Models;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,21 +17,28 @@ class Article extends Model
         'slug',
         'image',
         'article_category_id',
+        'doctor_id',
         'is_show_in_surgery_page',
-        'author_image',
     ];
 
     public $translatedAttributes = [
         'title',
         'description',
-        'author_name',
-        'author_specialization',
-        'author_description',
     ];
 
     protected $casts = [
         'images' => 'array',
     ];
+
+    public function articleCategory(): BelongsTo
+    {
+        return $this->belongsTo(ArticleCategory::class);
+    }
+
+    public function doctor(): BelongsTo
+    {
+        return $this->belongsTo(Doctor::class);
+    }
 
     public function getImageUrlAttribute()
     {

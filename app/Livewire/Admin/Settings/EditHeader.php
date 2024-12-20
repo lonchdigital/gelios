@@ -6,6 +6,7 @@ use App\Models\HeaderAffiliate;
 use App\Models\HeaderCity;
 use App\Models\Setting;
 use App\Services\Admin\FooterHeaderService;
+use App\Services\Admin\HeaderService;
 use App\Services\Admin\ImageService;
 use App\Services\Admin\Laboratory\BlockService;
 use Livewire\Component;
@@ -16,6 +17,10 @@ class EditHeader extends Component
     use WithFileUploads;
 
     public string $activeLocale;
+
+    public $firstCity;
+
+    public $secondCity;
 
     public string $uaFirstCity = '';
 
@@ -51,15 +56,15 @@ class EditHeader extends Component
     {
         $this->activeLocale = config('app.active_lang');
 
-        $firstCity = HeaderCity::first() ?? null;
+        $this->firstCity = HeaderCity::first() ?? null;
 
-        $this->loadValues($firstCity);
+        $this->loadValues($this->firstCity);
 
-        $secondCity = HeaderCity::where('id', '!=', $firstCity->id)->first() ?? null;
+        $this->secondCity = HeaderCity::where('id', '!=', $this->firstCity->id)->first() ?? null;
 
-        $this->loadValues2($secondCity);
+        $this->loadValues2($this->secondCity);
 
-        $this->headerAffiliates = HeaderAffiliate::where('header_city_id', $firstCity->id)
+        $this->headerAffiliates = HeaderAffiliate::where('header_city_id', $this->firstCity->id)
             ->get()
             ->toArray();
 
@@ -74,7 +79,7 @@ class EditHeader extends Component
             }
         }
 
-        $this->headerSecondAffiliates = HeaderAffiliate::where('header_city_id', $secondCity->id)
+        $this->headerSecondAffiliates = HeaderAffiliate::where('header_city_id', $this->secondCity->id)
             ->get()
             ->toArray();
 
@@ -239,6 +244,8 @@ class EditHeader extends Component
             $headerAffiliate->save();
         }
 
+        $this->saveCities();
+
         session()->flash('success', 'Дані успішно збережено');
 
         $this->redirectRoute('admin.header.edit');
@@ -259,6 +266,23 @@ class EditHeader extends Component
                 'value' => $image,
             ]);
         }
+    }
+
+    public function saveCities()
+    {
+        $service = resolve(HeaderService::class);
+
+        $service->saveCity($this->firstCity, [
+            'ua' => $this->uaFirstCity,
+            'ru' => $this->ruFirstCity,
+            'en' => $this->enFirstCity,
+        ]);
+
+        $service->saveCity($this->secondCity, [
+            'ua' => $this->uaSecondCity,
+            'ru' => $this->ruSecondCity,
+            'en' => $this->enSecondCity,
+        ]);
     }
 
     // public function saveCity()
