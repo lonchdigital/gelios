@@ -37,6 +37,11 @@ class LaboratoryController extends Controller
         return view('admin.laboratory.city.create');
     }
 
+    public function cityEdit(LaboratoryCity $city)
+    {
+        return view('admin.laboratory.city.edit', compact('city'));
+    }
+
     public function categoryEdit(LaboratoryCity $city)
     {
         return view('admin.laboratory.city.edit', compact('city'));

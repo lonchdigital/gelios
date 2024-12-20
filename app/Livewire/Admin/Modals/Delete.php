@@ -11,6 +11,7 @@ use App\Models\CheckUpProgram;
 use App\Models\Doctor;
 use App\Models\DoctorCategory;
 use App\Models\Laboratory;
+use App\Models\LaboratoryCity;
 use App\Models\PageBlock;
 use App\Models\Promotion;
 use App\Models\Specialization;
@@ -55,6 +56,14 @@ class Delete extends Component
                 $this->type = 'laboratory';
                 $this->modalTitle = 'Delete laboratory';
                 $this->modalBody  = 'You really want to delete laboratory: ' . $this->item->address . '?';
+                $this->modalInfo  = '';
+                break;
+
+            case 'laboratoryCity':
+                $this->item = LaboratoryCity::find($modelId);
+                $this->type = 'laboratoryCity';
+                $this->modalTitle = 'Delete city';
+                $this->modalBody  = 'You really want to delete city: ' . $this->item->title . '?';
                 $this->modalInfo  = '';
                 break;
 
@@ -220,6 +229,14 @@ class Delete extends Component
                 return true;
 
             case 'laboratory':
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
+            case 'laboratoryCity':
 
                 $this->item->delete();
 
