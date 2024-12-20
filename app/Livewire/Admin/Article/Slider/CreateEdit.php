@@ -70,17 +70,17 @@ class CreateEdit extends Component
     {
         return [
             'uaDescription' => [
-                'required',
+                'nullable',
                 'string',
             ],
 
             'enDescription' => [
-                'required',
+                'nullable',
                 'string',
             ],
 
             'ruDescription' => [
-                'required',
+                'nullable',
                 'string',
             ],
 

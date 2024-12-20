@@ -228,7 +228,7 @@
                         <div class="content">
                             <div class="h2 font-m font-weight-bolder mb-3 mb-lg-5">{{ $page->pageBlocks->where('block', 'prices')->first()->title ?? '' }}</div>
                             <div class="h5 font-weight-bold mb-8 mb-lg-10">{!! $page->pageBlocks->where('block', 'prices')->first()->description ?? '' !!}</div>
-                            @if($page->pageBlocks->where('block', 'prices')->first()->url)
+                            @if(!empty($page->pageBlocks->where('block', 'prices')->first()->url))
                                 <a href="{{ $page->pageBlocks->where('block', 'prices')->first()->url }}" class="btn btn-white font-weight-bold">{{ $page->pageBlocks->where('block', 'prices')->first()->button ?? '' }}</a>
                             @endif
                         </div>
