@@ -87,7 +87,9 @@ class DoctorController extends Controller
             ->take(3)
             ->get();
 
-        return view('site.doctors.show', compact('doctor', 'page', 'seo', 'relatedArticles'));
+        $reviews = $doctor->reviews;
+
+        return view('site.doctors.show', compact('doctor', 'page', 'seo', 'relatedArticles', 'reviews'));
     }
 
     public function getCategoriesByType(Request $request)
