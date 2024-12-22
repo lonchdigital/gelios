@@ -461,9 +461,11 @@
                                             <div class="hover-aside-menu--list">
                                                 <div class="hover-aside-menu--inner">
                                                     <div class="hover-aside-menu--content">
-                                                        <div class="hover-aside-menu--item"><a class="link" href="##">{{ __('pages.insurance') }}</a>
+                                                        <div class="hover-aside-menu--item">
+                                                            <a class="link" href="{{ route('strahovym.kompaniyam.page') }}">{{ __('pages.insurance') }}</a>
                                                         </div>
-                                                        <div class="hover-aside-menu--item"><a class="link" href="{{ route('vacancy.index') }}">{{ __('pages.vacancies') }}</a>
+                                                        <div class="hover-aside-menu--item">
+                                                            <a class="link" href="{{ route('vacancy.index') }}">{{ __('pages.vacancies') }}</a>
                                                         </div>
                                                     </div>
                                                 </div>
