@@ -29,7 +29,7 @@
                                             <div class="h5 font-m font-weight-bold mb-3">{{ $slide->description }}</div>
                                             <a href="##" data-toggle="modal"
                                                 data-target="#popup--sign-up-appointment" 
-                                                class="btn btn-white font-weight-bold">{{ trans('web.get_consultation') }}</a>
+                                                class="btn btn-white font-weight-bold">{{ trans('pages.sign_up_for_for_appointment') }}</a>
                                         </div>
                                     </div>
                                     <div class="wrap-img">
