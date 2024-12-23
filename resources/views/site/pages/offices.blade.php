@@ -27,36 +27,13 @@
                     <div class="offices--swiper--wrapper position-relative">
                         <div class="offices-anchor--swiper">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <a href="##" class="anchor">
-                                        <div class="city-pin">м. Дніпро</div>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="##" class="anchor">
-                                        <div class="city-pin">м. Дніпро</div>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="##" class="anchor">
-                                        <div class="city-pin">м. Дніпро</div>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="##" class="anchor">
-                                        <div class="city-pin">м. Дніпро</div>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="##" class="anchor">
-                                        <div class="city-pin">м. Дніпро</div>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="##" class="anchor">
-                                        <div class="city-pin">м. Дніпро</div>
-                                    </a>
-                                </div>
+                                @foreach ($contacts as $contact)
+                                    <div class="swiper-slide">
+                                        <a href="#office-{{ $contact->id }}" class="anchor">
+                                            <div class="city-pin">{{ $contact->city }}, {!! '<br>' . $contact->street !!}</div>
+                                        </a>
+                                    </div>
+                                @endforeach
                             </div>
                             <div class="swiper-buttons d-flex">
                                 <div class="button-slider-prev">

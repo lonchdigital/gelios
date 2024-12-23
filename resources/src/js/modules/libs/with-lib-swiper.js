@@ -91,6 +91,7 @@ new Swiper(".offices--swiper", {
 	slidesPerView: 4,
 	loop: true,
 	spaceBetween: 25,
+	autoHeight: true,
 	pagination: {
 		el: ".offices .swiper-pagination",
 		clickable: true,
