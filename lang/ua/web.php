@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'prices' => 'Ціни',
+    'how_is_consultation_going' => 'Як проходить консультація?',
     'free' => 'Безкоштовно',
     'companies_we_are_working_with' => 'Страхові компанії, з якими ми співпрацюємо',
     'will_be_happy_to_work' => 'Будемо раді співпраці!',

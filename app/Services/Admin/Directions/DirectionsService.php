@@ -298,6 +298,7 @@ class DirectionsService
         $dataToUpdate['number'] = $data['number'];
         $dataToUpdate['is_reverse'] = $data['is_reverse'];
         $dataToUpdate['is_image'] = $data['is_image'];
+        $dataToUpdate['button_one_url'] = isset($data['button_one_url']) ? $data['button_one_url'] : null;
 
         if(!is_null($data['text_one'])) {
             foreach ($data['text_one'] as $lang => $value) {
@@ -485,6 +486,7 @@ class DirectionsService
         $data['text_two'] = [];
         $data['is_reverse'] = false;
         $data['is_image'] = true;
+        $data['button_one_url'] = null;
 
         if(!is_null($directionTextBlock)) {
             foreach ($directionTextBlock->getTranslationsArray() as $lang => $value) {
@@ -496,6 +498,7 @@ class DirectionsService
             $data['media']['image'] = $directionTextBlock->image;
             $data['is_reverse'] = $directionTextBlock->is_reverse;
             $data['is_image'] = $directionTextBlock->is_image;
+            $data['button_one_url'] = $directionTextBlock->button_one_url;
         }
 
         return $data;
