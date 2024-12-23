@@ -34,6 +34,7 @@ trait HandlesPageBlocks
 
     public function updatePageTextBlock(array $data, int $pageID, int $number)
     {
+        // dd($data, $pageID, $number);
         $dataToUpdate = [];
         $dataToUpdate['is_reverse'] = $data['is_reverse'];
         $dataToUpdate['is_image'] = $data['is_image'];
@@ -60,6 +61,7 @@ trait HandlesPageBlocks
         $pageTextBlock = PageTextBlock::where('page_id', $pageID)->where('number', $number)->first();
 
         if(!is_null($pageTextBlock)) {
+            $dataToUpdate['number'] = $number;
             $pageTextBlock->update($dataToUpdate);
         } else {
             $dataToUpdate['number'] = $number;

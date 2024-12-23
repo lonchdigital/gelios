@@ -16,6 +16,7 @@ class PageTextBlock extends Model implements TranslatableContract
     ];
     protected $fillable = [
         'page_id',
+        'number',
         'is_reverse',
         'is_image',
         'image'

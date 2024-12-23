@@ -223,6 +223,8 @@ class Edit extends Component
     {
         $this->validate();
 
+        // dd($this->sectionOneData, $this->sectionTwoData, $this->page->id);
+
         if( !is_null($this->page) ) {
             $this->oneCenterService->updatePageData($this->page, $this->pageData);
         } else {
@@ -252,6 +254,8 @@ class Edit extends Component
             'is_image' => $this->sectionTwoData['is_image'],
         ];
         $this->updatePageTextBlock($formDataTwo, $this->page->id, 2);
+
+        // dd($formData, $formDataTwo);
 
         $this->updateSeoDataPage($this->page, $this->seoData);
 
