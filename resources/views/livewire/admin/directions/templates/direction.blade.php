@@ -254,6 +254,22 @@
                                             </div>
                                         @endif
 
+                                        
+                                        <div class="form-group mt-2 mb-0">
+                                            <label for="">{{ trans('admin.link') }}</label>
+                                            <input 
+                                                    type="text"
+                                                    class="form-control"
+                                                    wire:model="sectionThreeData.button_one_url"
+                                                >
+                
+                                            @error('sectionThreeData.button_one_url')
+                                                <div class="mt-1 text-danger ajaxError">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
                                     </section>
 
                                     <hr>

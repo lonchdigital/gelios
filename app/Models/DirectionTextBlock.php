@@ -19,6 +19,7 @@ class DirectionTextBlock extends Model implements TranslatableContract
         'number',
         'is_reverse',
         'is_image',
-        'image'
+        'image',
+        'button_one_url'
     ];
 }

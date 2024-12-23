@@ -31,17 +31,22 @@
                             </div>
                         </div>
 
+                        @php
+                            $textBlockThree = $direction->textBlocks->where('number', 3)->first();
+                        @endphp
                         <div class="media-content row mb-lg-8">
                             <div class="col">
-                                @include('site.components.text-section', ['data' => $direction->textBlocks->where('number', 3)->first(), 'mb' => null])
+                                @include('site.components.text-section', ['data' => $textBlockThree, 'mb' => 5])
                             </div>
                         </div>
                         
-                        <div class="row">
-                            <div class="col-auto">
-                                <a href="##" class="btn btn-fz-20 btn-outline-blue font-weight-bold d-none d-lg-block">{{ trans('web.more_details') }}</a>
+                        @if($textBlockThree->button_one_url)
+                            <div class="row">
+                                <div class="col-auto">
+                                    <a href="{{ $textBlockThree->button_one_url }}" class="btn btn-fz-20 btn-outline-blue font-weight-bold d-none d-lg-block">{{ trans('web.more_details') }}</a>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                     <a href="##" class="btn btn-outline-blue font-weight-bold d-lg-none">{{ trans('web.more_details') }}</a>
                 </div>
@@ -136,7 +141,7 @@
             <div class="container">
                 <div class="row mb-8">
                     <div class="col d-flex align-items-center justify-content-between">
-                        <div class="h2 font-m font-weight-bolder text-blue">Ціни</div>
+                        <div class="h2 font-m font-weight-bolder text-blue">{{ trans('web.prices') }}</div>
                     </div>
                 </div>
                 @forelse($direction->prices as $price)
@@ -152,8 +157,8 @@
             <div class="container overflow-hidden">
                 <div class="row mb-8">
                     <div class="col d-flex align-items-center justify-content-between">
-                        <div class="h2 font-m font-weight-bolder text-blue">Лікарі</div>
-                        <a href="##" class="btn btn-white font-weight-bold">Усі лікарі</a>
+                        <div class="h2 font-m font-weight-bolder text-blue">{{ trans('pages.doctors') }}</div>
+                        <a href="{{ route('doctors.index') }}" class="btn btn-white font-weight-bold">{{ trans('doctor.all_doctors') }}</a>
                     </div>
                 </div>
                 <div class="row">
@@ -178,7 +183,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="h2 font-m font-weight-bolder text-blue mb-8">Як проходить консультація?</div>
+                        <div class="h2 font-m font-weight-bolder text-blue mb-8">{{ trans('web.how_is_consultation_going') }}</div>
                     </div>
                 </div>
                 <div class="row row-gap">

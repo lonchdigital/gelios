@@ -295,6 +295,7 @@ class Direction extends Component
             'text_two' => $this->sectionThreeData['text_two'],
             'is_reverse' => $this->sectionThreeData['is_reverse'],
             'is_image' => $this->sectionThreeData['is_image'],
+            'button_one_url' => $this->sectionThreeData['button_one_url'],
         ];
         $this->directionsService->updateTextBlock($formDataThree);
 

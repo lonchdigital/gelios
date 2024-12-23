@@ -87,7 +87,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="h2 font-m font-weight-bolder text-blue mb-8">Як проходить консультація?</div>
+                        <div class="h2 font-m font-weight-bolder text-blue mb-8">{{ trans('web.how_is_consultation_going') }}</div>
                     </div>
                 </div>
                 <div class="row row-gap">
