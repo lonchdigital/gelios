@@ -414,7 +414,18 @@
 	}
 }
 
+// .offices--swiper {
+// 	.offices--item {
+// 		height: 100%;
+
+// 		.inner {
+// 			height: 100%;
+// 		}
+// 	}
+// }
 .offices--item {
+	height: 100%;
+
 	&:hover {
 		.inner {
 			.wrap-img {
@@ -425,10 +436,20 @@
 		}
 	}
 	.inner {
-		display: block;
+		display: flex;
+		flex-direction: column;
 		padding: 15px;
 		border-radius: 40px;
 		background: $white;
+		height: 100%;
+
+		.inner-top {
+			flex-grow: 2;
+		}
+		.inner-bottom {
+
+		}
+
 		.contacts & {
 			border-radius: 0px 0px 40px 40px;
 		}
