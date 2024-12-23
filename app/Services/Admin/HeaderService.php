@@ -10,8 +10,10 @@ use Illuminate\Support\Facades\Storage;
 
 class HeaderService
 {
-    public function saveCity(HeaderCity $city, $data)
+    public function saveCity(HeaderCity $city, $data, $phones)
     {
+        $city->update($phones);
+
         HeaderCityTranslation::updateOrCreate([
             'header_city_id' => $city->id,
             'locale' => 'ua',

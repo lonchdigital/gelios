@@ -22,6 +22,12 @@ class EditHeader extends Component
 
     public $secondCity;
 
+    public string $firstCityFirstPhone;
+
+    public string $firstCitySecondPhone;
+
+    public string $secondCityFirstPhone;
+
     public string $uaFirstCity = '';
 
     public string $enFirstCity = '';
@@ -105,6 +111,10 @@ class EditHeader extends Component
         $this->enFirstCity = $firstCity->translate('en')->title ?? '';
         $this->ruFirstCity = $firstCity->translate('ru')->title ?? '';
 
+        $this->firstCityFirstPhone = $firstCity->first_phone ?? '';
+
+        $this->firstCitySecondPhone = $firstCity->second_phone ?? '';
+
         $this->headImage = $values->where('key', 'header_image')->first();
     }
 
@@ -113,6 +123,8 @@ class EditHeader extends Component
         $this->uaSecondCity = $secondCity->translate('ua')->title ?? '';
         $this->enSecondCity = $secondCity->translate('en')->title ?? '';
         $this->ruSecondCity = $secondCity->translate('ru')->title ?? '';
+
+        $this->secondCityFirstPhone = $secondCity->first_phone ?? '';
     }
 
     public function languageSwitched($lang)
@@ -198,6 +210,21 @@ class EditHeader extends Component
                 'string',
                 'max:255',
             ],
+
+            'firstCityFirstPhone' => [
+                'nullable',
+                'string',
+            ],
+
+            'firstCitySecondPhone' => [
+                'nullable',
+                'string',
+            ],
+
+            'secondCityFirstPhone' => [
+                'nullable',
+                'string',
+            ],
         ];
     }
 
@@ -276,12 +303,17 @@ class EditHeader extends Component
             'ua' => $this->uaFirstCity,
             'ru' => $this->ruFirstCity,
             'en' => $this->enFirstCity,
+        ], [
+            'first_phone' => $this->firstCityFirstPhone,
+            'second_phone' => $this->firstCitySecondPhone,
         ]);
 
         $service->saveCity($this->secondCity, [
             'ua' => $this->uaSecondCity,
             'ru' => $this->ruSecondCity,
             'en' => $this->enSecondCity,
+        ], [
+            'first_phone' => $this->secondCityFirstPhone,
         ]);
     }
 

@@ -178,7 +178,7 @@
                                                             </li>
                                                             <li>
                                                                 <div class="head-phone">{{ __('pages.phone') }}:</div>
-                                                                <a href="tel:+38 (095) 000-01-50">
+                                                                <a href="tel:{{ $laboratory->phone }}">
                                                                     <div class="link-phone">{{ $laboratory->phone }}</div>
                                                                 </a>
                                                             </li>

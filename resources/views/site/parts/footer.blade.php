@@ -92,44 +92,50 @@
                                     @endif
 
                                         <div class="col-12 col-md @if($loop->iteration == 1 || $loop->iteration == 3) mb-11 mb-md-0 @endif">
-                                            <div class="h4 mb-5 font-weight-bold">{{ $affiliate->address }}</div>
+                                            @if(!empty($affiliate->address))
+                                                <div class="h4 mb-5 font-weight-bold">{{ $affiliate->address }}</div>
+                                            @endif
                                             <ul class="list-unstyled mb-0">
-                                                <li>
-                                                    <a href="tel:+38 (095) 000-01-50">
-                                                        <div class="link-phone">{{ $affiliate->first_phone }}</div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="tel:+38 (050) 325-62-93">
-                                                        <div class="link-phone">{{ $affiliate->second_phone }}</div>
-                                                    </a>
-                                                </li>
+                                                @if(!empty($affiliate->first_phone))
+                                                    <li>
+                                                        <a href="tel:{{ $affiliate->first_phone }}">
+                                                            <div class="link-phone">{{ $affiliate->first_phone }}</div>
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                                @if(!empty($affiliate->second_phone))
+                                                    <li>
+                                                        <a href="tel:{{ $affiliate->second_phone }}">
+                                                            <div class="link-phone">{{ $affiliate->second_phone }}</div>
+                                                        </a>
+                                                    </li>
+                                                @endif
                                                 <li>
                                                     <button type="button" class="contact-details" data-toggle="modal" data-target="#popup--contacts"
                                                     data-city="{{ 'Дніпро' }}"
                                                     @forelse($affiliates as $affiliate2)
-                                                    @switch($loop->iteration)
-                                                        @case(1)
-                                                            data-first="{{ $affiliate2 }}"
-                                                            @break
+                                                        @switch($loop->iteration)
+                                                            @case(1)
+                                                                data-first="{{ $affiliate2 }}"
+                                                                @break
 
-                                                        @case(2)
-                                                            data-second="{{ $affiliate2 }}"
-                                                            @break
+                                                            @case(2)
+                                                                data-second="{{ $affiliate2 }}"
+                                                                @break
 
-                                                        @case(3)
-                                                            data-third="{{ $affiliate2 }}"
-                                                            @break
+                                                            @case(3)
+                                                                data-third="{{ $affiliate2 }}"
+                                                                @break
 
-                                                        @case(4)
-                                                            data-fourth="{{ $affiliate2 }}"
-                                                            @break
+                                                            @case(4)
+                                                                data-fourth="{{ $affiliate2 }}"
+                                                                @break
 
-                                                        @default
+                                                            @default
 
-                                                    @endswitch
-                                                @empty
-                                                @endforelse
+                                                        @endswitch
+                                                    @empty
+                                                    @endforelse
                                                     >{{ __('pages.view') }}</button>
                                                 </li>
                                             </ul>

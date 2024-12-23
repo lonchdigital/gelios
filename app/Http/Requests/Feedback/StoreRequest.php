@@ -54,8 +54,8 @@ class StoreRequest extends FormRequest
 
             'clinic' => [
                 'required',
-                'string',
-                'max:255',
+                'integer',
+                'exists:hospitals,id',
             ],
         ];
     }
@@ -84,8 +84,8 @@ class StoreRequest extends FormRequest
     {
         return [
             'phone.regex' => __('validation.feedback.phone'),
-            'phone.min' => __('validation.feedback.phone.min'),
-            'phone.max' => __('validation.feedback.phone,max'),
+            'phone.min' => __('validation.min'),
+            'phone.max' => __('validation.max'),
         ];
     }
 }

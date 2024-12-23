@@ -10,22 +10,45 @@
                             </li>
                             @if(!empty($firstCity->first_phone))
                                 <li class="list-inline-item">
-                                    <a href="tel:+38 (095) 000-01-50">
+                                    <a href="tel:{{ $firstCity->first_phone ?? '' }}">
                                         <div class="link-phone">{{ $firstCity->first_phone ?? '' }}</div>
                                     </a>
                                 </li>
                             @endif
                             @if(!empty($firstCity->second_phone))
                                 <li class="list-inline-item">
-                                    <a href="tel:+38 (050) 325-62-93">
+                                    <a href="tel:{{ $firstCity->second_phone ?? '' }}">
                                         <div class="link-phone">{{ $firstCity->second_phone ?? '' }}</div>
                                     </a>
                                 </li>
                             @endif
                             <li class="list-inline-item">
                                 <button type="button" class="contact-details" data-toggle="modal"
-                                        data-target="#popup--contacts" data-city="{{ $firstCity->title ?? '' }}"
+                                        data-target="#popup--contacts"
+                                        data-city="{{ $firstCity->title ?? '' }}"
                                         @forelse($firstCity->headerAffiliates as $affiliate)
+                                            @switch($loop->iteration)
+                                                @case(1)
+                                                    data-first="{{ json_encode($affiliate) }}"
+                                                    @break
+
+                                                @case(2)
+                                                    data-second="{{ json_encode($affiliate) }}"
+                                                    @break
+
+                                                @case(3)
+                                                    data-third="{{ json_encode($affiliate) }}"
+                                                    @break
+
+                                                @case(4)
+                                                    data-fourth="{{ json_encode($affiliate) }}"
+                                                    @break
+
+                                                @default
+                                            @endswitch
+                                        @empty
+                                        @endforelse
+                                        {{-- @forelse($firstCity->headerAffiliates as $affiliate)
                                             @switch($loop->iteration)
                                                 @case(1)
                                                     data-first="{{ $affiliate }}"
@@ -47,7 +70,7 @@
 
                                             @endswitch
                                         @empty
-                                        @endforelse
+                                        @endforelse --}}
                                         >{{ __('pages.view') }}
                                 </button>
                             </li>

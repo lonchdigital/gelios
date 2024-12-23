@@ -115,6 +115,62 @@
                                                     <div class="row mb-3">
                                                         <div class="col-md-12">
                                                             <div class="tab-content">
+                                                                <div id="uaTitle"
+                                                                    class="multilang-content tab-pane fade active show">
+                                                                    <div class="form-group mb-1">
+                                                                        <label>{{ __('admin.first_city_first_phone') }}
+                                                                            <strong>UA</strong>
+                                                                        </label>
+                                                                        <input type="text" wire:model="firstCityFirstPhone"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('firstCityFirstPhone')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div id="uaTitle"
+                                                                    class="multilang-content tab-pane fade active show">
+                                                                    <div class="form-group mb-1">
+                                                                        <label>{{ __('admin.first_city_second_phone') }}
+                                                                            <strong>UA</strong>
+                                                                        </label>
+                                                                        <input type="text" wire:model="firstCitySecondPhone"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('firstCitySecondPhone')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
                                                                 <div
                                                                     class="multilang-content tab-pane fade active show ">
                                                                     <div class="form-group mb-1">
@@ -492,6 +548,34 @@
                                                 </div>
                                             </div>
                                         @endif
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div id="uaTitle"
+                                                                    class="multilang-content tab-pane fade active show">
+                                                                    <div class="form-group mb-1">
+                                                                        <label>{{ __('admin.second_city_first_phone') }}
+                                                                            <strong>UA</strong>
+                                                                        </label>
+                                                                        <input type="text" wire:model="secondCityFirstPhone"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('secondCityFirstPhone')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="col-md-12">
                                             <div class="row">

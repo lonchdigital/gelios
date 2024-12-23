@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\View\Composers\ClinicComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use App\Http\View\Composers\DoctorComposer;
@@ -26,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('site.components.appointment-form', DoctorComposer::class);
+        View::composer('site.components.appointment-form', ClinicComposer::class);
         View::composer('site.*', DirectionsComposer::class);
         View::composer('site.parts.footer', FooterComposer::class);
         View::composer('site.parts.footer', ComposersFooterComposer::class);

@@ -78,7 +78,7 @@
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content py-5 px-3 py-md-13 px-md-11">
 			<div class="modal-body p-0">
-				<form class="form-popup--sign-up-appointment" autocomplete="off">
+				{{-- <form class="form-popup--sign-up-appointment" autocomplete="off">
 					<div class="row">
 						<div class="col position-static">
 							<div class="d-flex align-items-start justify-content-between mb-3">
@@ -100,9 +100,9 @@
 												<path id="Vector" d="M7.05 7.05L16.94 16.95" stroke="#3DA6D3" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
 											</g>
 										</svg>
-										{{-- <svg>
+										<svg>
 											<use xlink:href="img/icons/icons.svg#i-close"></use>
-										</svg> --}}
+										</svg>
 									</span>
 								</button>
 							</div>
@@ -157,8 +157,8 @@
 							<button type="button" class="btn btn-blue font-weight-bold w-100 mt-2" data-dismiss="modal" aria-label="Close">{{ __('pages.sign_up') }}</button>
 						</div>
 					</div>
-				</form>
-                {{-- @include('site.components.appointment-form') --}}
+				</form> --}}
+                @include('site.components.appointment-form')
 			</div>
 		</div>
 	</div>
@@ -200,7 +200,7 @@
 													<div class="offices-address" id="first-address"></div>
 												</li>
 												<li>
-													<a href="tel:+38 (095) 000-01-50" >
+													<a href="tel:+38 (095) 000-01-50">
 														<div class="link-phone" id="first-phone1"></div>
 													</a>
 												</li>
@@ -301,13 +301,13 @@
 							</div>
 							<div class="row mt-lg-8 d-none d-lg-flex">
 								<div class="col col-xl-6 offset-xl-6">
-									<button type="button" class="btn btn-block btn-blue" data-toggle="modal" data-dismiss="modal" aria-label="Close">{{ __('pages.sign_up_for_for_appointment') }}</button>
+									<button type="button" class="btn btn-block btn-blue" data-toggle="modal" data-dismiss="modal" aria-label="Close" data-target="#popup--sign-up-appointment">{{ __('pages.sign_up_for_for_appointment') }}</button>
 								</div>
 							</div>
 						</div>
 						<div class="row d-lg-none mt-5">
 							<div class="col">
-								<button type="button" class="btn btn-block btn-blue" data-toggle="modal" data-dismiss="modal" aria-label="Close">{{ __('pages.sign_up_for_for_appointment') }}</button>
+								<button type="button" class="btn btn-block btn-blue" data-toggle="modal" data-dismiss="modal" aria-label="Close" data-target="#popup--sign-up-appointment">{{ __('pages.sign_up_for_for_appointment') }}</button>
 							</div>
 						</div>
 					</div>

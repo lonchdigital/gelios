@@ -99,6 +99,48 @@
             </div>
         </div>
     </section>
+    <section class="media-content">
+        <div class="container">
+            @forelse($page->pageBlocks->where('block', 'static_block') as $block2)
+                @if($loop->iteration % 2 == 1)
+                    <div class="media-content--inner row flex-column-reverse flex-lg-row mb-24">
+                        <div class="col-12 col-lg-6">
+                            <div class="content-wrap">
+                                <div class="content os-scrollbar-overflow">
+                                    <p>{!! $block2->description !!}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            @if(!empty($block2->image))
+                                <div class="wrap-img">
+                                    <img src="{{ $block2->imageUrl }}" alt="img">
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                @else
+                    <div class="media-content--inner row flex-column-reverse flex-lg-row-reverse mb-24">
+                        <div class="col-12 col-lg-6">
+                            <div class="content-wrap">
+                                <div class="content os-scrollbar-overflow">
+                                    <p>{!! $block2->description !!}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            @if(!empty($block2->image))
+                                <div class="wrap-img">
+                                    <img src="{{ $block2->imageUrl }}" alt="img">
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                @endif
+            @empty
+            @endif
+        </div>
+    </section>
     <section class="directions-list mb-24">
         <div class="container">
             <div class="row">
@@ -568,48 +610,7 @@
             </div>
         </div>
     </section>
-    <section class="media-content">
-        <div class="container">
-            @forelse($page->pageBlocks->where('block', 'static_block') as $block2)
-                @if($loop->iteration % 2 == 1)
-                    <div class="media-content--inner row flex-column-reverse flex-lg-row mb-24">
-                        <div class="col-12 col-lg-6">
-                            <div class="content-wrap">
-                                <div class="content os-scrollbar-overflow">
-                                    <p>{!! $block2->description !!}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6">
-                            @if(!empty($block2->image))
-                                <div class="wrap-img">
-                                    <img src="{{ $block2->imageUrl }}" alt="img">
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                @else
-                    <div class="media-content--inner row flex-column-reverse flex-lg-row-reverse mb-24">
-                        <div class="col-12 col-lg-6">
-                            <div class="content-wrap">
-                                <div class="content os-scrollbar-overflow">
-                                    <p>{!! $block2->description !!}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6">
-                            @if(!empty($block2->image))
-                                <div class="wrap-img">
-                                    <img src="{{ $block2->imageUrl }}" alt="img">
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                @endif
-            @empty
-            @endif
-        </div>
-    </section>
+
     <section class="reviews mb-24">
         <div class="container overflow-hidden">
             <div class="row mb-19">
@@ -704,7 +705,7 @@
             </div>
         </div>
     </section>
-    
+
     @if($page->pageBlocks->where('block', 'conditions')->where('key', 'image')->count())
         <section class="stay-conditions mb-24">
             <div class="container">

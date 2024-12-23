@@ -14,7 +14,7 @@
         <div class="col-12">
             <div class="field mb-2">
                 <label class="control-label mb-2" for="form-meeting-phone">{{ __('pages.enter_your_phone_number') }}</label>
-                <input type="tel" id="form-meeting-phone" name="phone" class="form-control mb-2">
+                <input type="number" id="form-meeting-phone" name="phone" class="form-control mb-2">
                 <div class="field--help-info small-txt text-red mb-2">{{ __('pages.enter_your_phone_number') }}</div>
             </div>
             <div id="phone_error" class="field--help-info small-txt text-red mb-2"></div>
@@ -41,10 +41,14 @@
                 <div class="select-wrap">
                     <select class="select-choose-clinic" name="clinic">
                         <option></option>
-                        <option value="1">Клініка 1</option>
+                        @forelse($clinics as $clinic)
+                            <option value="{{ $clinic->id }}">{{ $clinic->name }}</option>
+                        @empty
+                        @endforelse
+                        {{-- <option value="1">Клініка 1</option>
                         <option value="2">Клініка 2</option>
                         <option value="3">Клініка 3</option>
-                        <option value="4">Клініка 4</option>
+                        <option value="4">Клініка 4</option> --}}
                     </select>
                 </div>
                 <div class="field--help-info small-txt text-red mb-2">{{ __('pages.choose_a_clinic') }}</div>
