@@ -39,6 +39,113 @@
                     </section>
 
                     <section class="mb-50 mt-30">
+                        <h6 class="card-title">{{ trans('admin.section_progress') }}</h6>
+
+                        <div class="form-group mt-2 mb-3">
+                            <label for="">{{ trans('admin.image') }}</label></br>
+                            @if (isset($sectionProgress['media']['temporaryImage']))
+                                <img src="{{ $sectionProgress['media']['temporaryImage'] }}"
+                                    width="60"><a
+                                    wire:click="deleteImageSectionProgress()"
+                                    style="cursor: pointer;">
+                                    <i
+                                        class="ti-close font-weight-bold mr-2"></i>
+                                        {{ trans('admin.remove_image') }}
+                                </a>
+                            @else
+                                @if (isset($sectionProgress['media']['image']))
+                                    <img src="{{ '/storage/' . $sectionProgress['media']['image'] }}"
+                                        class="mb-2"
+                                        width="60"></br>
+                                @endif
+
+                                <input type="file"
+                                    wire:model="sectionProgress.media.newImage">
+                            @endif
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <x-admin.multilanguage-input
+                                    :is-required="false"
+                                    :label="trans('admin.pages.first')"
+                                    field-name=""
+                                    live-wire-field="sectionProgress.first.title"
+                                    :values="$sectionProgress['first']['title']"
+                                />
+                            </div>
+                            <div class="col-md-6">
+                                <x-admin.multilanguage-input
+                                    :is-required="false"
+                                    :label="trans('admin.pages.first')"
+                                    field-name=""
+                                    live-wire-field="sectionProgress.first.description"
+                                    :values="$sectionProgress['first']['description']"
+                                />
+                            </div>
+
+                            <div class="col-md-6">
+                                <x-admin.multilanguage-input
+                                    :is-required="false"
+                                    :label="trans('admin.pages.second')"
+                                    field-name=""
+                                    live-wire-field="sectionProgress.second.title"
+                                    :values="$sectionProgress['second']['title']"
+                                />
+                            </div>
+                            <div class="col-md-6">
+                                <x-admin.multilanguage-input
+                                    :is-required="false"
+                                    :label="trans('admin.pages.second')"
+                                    field-name=""
+                                    live-wire-field="sectionProgress.second.description"
+                                    :values="$sectionProgress['second']['description']"
+                                />
+                            </div>
+
+                            <div class="col-md-6">
+                                <x-admin.multilanguage-input
+                                    :is-required="false"
+                                    :label="trans('admin.pages.third')"
+                                    field-name=""
+                                    live-wire-field="sectionProgress.third.title"
+                                    :values="$sectionProgress['third']['title']"
+                                />
+                            </div>
+                            <div class="col-md-6">
+                                <x-admin.multilanguage-input
+                                    :is-required="false"
+                                    :label="trans('admin.pages.third')"
+                                    field-name=""
+                                    live-wire-field="sectionProgress.third.description"
+                                    :values="$sectionProgress['third']['description']"
+                                />
+                            </div>
+
+                            <div class="col-md-6">
+                                <x-admin.multilanguage-input
+                                    :is-required="false"
+                                    :label="trans('admin.pages.fourth')"
+                                    field-name=""
+                                    live-wire-field="sectionProgress.fourth.title"
+                                    :values="$sectionProgress['fourth']['title']"
+                                />
+                            </div>
+                            <div class="col-md-6">
+                                <x-admin.multilanguage-input
+                                    :is-required="false"
+                                    :label="trans('admin.pages.fourth')"
+                                    field-name=""
+                                    live-wire-field="sectionProgress.fourth.description"
+                                    :values="$sectionProgress['fourth']['description']"
+                                />
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <section class="mb-50 mt-30">
                         <h6 class="card-title">{{ trans('admin.section_text') }}</h6>
 
                         <div class="form-group mt-2 mb-0">
