@@ -96,7 +96,7 @@ class OneCenterService
                 }
 
                 $dataToUpdate['sort'] = $oneItem['sort'];
-                $dataToUpdate['url'] = $oneItem['url'];
+                $dataToUpdate['url'] = isset($oneItem['url']) ? $oneItem['url'] : null;
 
                 if(!is_null($oneItem['title'])) {
                     foreach ($oneItem['title'] as $lang => $value) {
@@ -115,7 +115,7 @@ class OneCenterService
                 $dataToUpdate['page_id'] = $pageID;
                 $dataToUpdate['type'] = 'briefBlocks';
                 $dataToUpdate['sort'] = $oneItem['sort'];
-                $dataToUpdate['url'] = $oneItem['url'];
+                $dataToUpdate['url'] = isset($oneItem['url']) ? $oneItem['url'] : null;
                 $dataToUpdate['image'] = $image;
 
                 if(!is_null($oneItem['title'])) {
