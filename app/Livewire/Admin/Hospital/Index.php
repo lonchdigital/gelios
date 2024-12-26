@@ -12,15 +12,21 @@ use Livewire\WithFileUploads;
 use App\Traits\Livewire\SeoPages;
 use App\Traits\Livewire\HandlesPageBlocks;
 use Illuminate\Database\Eloquent\Collection;
+use App\Traits\Livewire\HandlesSectionProgress;
 use App\Services\Admin\Hospitals\HospitalsService;
 
 class Index extends Component
 {
-    use WithPagination, WithFileUploads, HandlesPageBlocks, SeoPages;
+    use WithPagination, 
+        WithFileUploads, 
+        HandlesPageBlocks,
+        HandlesSectionProgress,
+        SeoPages;
 
     public Page $page;
     public array $sectionData = [];
     public array $pageData = [];
+    public array $sectionProgress = [];
     public Collection $hospitals;
 
     public array $seoData = [];
@@ -43,6 +49,9 @@ class Index extends Component
 
         // set page data
         $this->pageData = $this->hospitalsService->setPageData($this->page);
+        
+        // set section Progress
+        $this->sectionProgress = $this->setSectionProgress($this->page, 'main');
 
         // Set SEO data
         $this->seoData = $this->setSeoDataPage($this->page);
@@ -56,14 +65,13 @@ class Index extends Component
     public function updated($propertyName)
     {
         if (preg_match('/sectionData.media.newImage/', $propertyName)) {
-            $this->handleSectionImage();
+            $this->sectionData['media']['temporaryImage'] = $this->sectionData['media']['newImage']->temporaryUrl();
+        }
+        if (preg_match('/sectionProgress.media.newImage/', $propertyName)) {
+            $this->sectionProgress['media']['temporaryImage'] = $this->sectionProgress['media']['newImage']->temporaryUrl();
         }
     }
 
-    protected function handleSectionImage()
-    {
-        $this->sectionData['media']['temporaryImage'] = $this->sectionData['media']['newImage']->temporaryUrl();
-    }
     public function handleDisplayFields()
     {
         $this->sectionData['is_image'] = $this->sectionData['is_image'];
@@ -92,7 +100,9 @@ class Index extends Component
     {
         // $this->validate();
 
-        $this->hospitalsService->updatePageData($this->page, $this->pageData);
+        // dd('stop', $this->sectionProgress);
+
+        $this->updateSectionProgress($this->sectionProgress, $this->page->id, 'main');
 
 
         $formData = [
