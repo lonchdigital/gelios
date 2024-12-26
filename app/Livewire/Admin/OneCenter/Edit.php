@@ -88,6 +88,7 @@ class Edit extends Component
                     'oldImage' => $briefBlock->image ?? '',
                     'newImage' => null,
                     'image' => $briefBlock->image,
+                    'url' => $briefBlock->url ?? '',
                     'title' => $title
                 ];
             }

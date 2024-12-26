@@ -18,6 +18,7 @@ class BriefBlock extends Model implements TranslatableContract
         'page_id',
         'sort',
         'type',
-        'image'
+        'image',
+        'url'
     ];
 }

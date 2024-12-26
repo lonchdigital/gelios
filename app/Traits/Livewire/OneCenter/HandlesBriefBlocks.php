@@ -42,6 +42,7 @@ trait HandlesBriefBlocks
         $this->briefBlocks[] = [
             'id' => null,
             'image' => null,
+            'url' => null,
             'newImage' => null,
             'title' => [],
             'sort' => count($this->briefBlocks) + 1,
