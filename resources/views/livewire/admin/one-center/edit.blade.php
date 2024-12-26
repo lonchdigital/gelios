@@ -215,6 +215,21 @@
                                                                 :values="$briefBlockItem['title']"
                                                             />
 
+                                                            <div class="form-group mb-3">
+                                                                <label for="">url</label>
+                                                                <input 
+                                                                        type="text"
+                                                                        class="form-control"
+                                                                        wire:model="briefBlocks.{{ $index }}.url"
+                                                                    >
+                                    
+                                                                @error('briefBlocks.{{ $index }}.url')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+
                                                             <input type="hidden" name="brief_block_id" value="{{ $this->briefBlocks[$index]['id'] }}">
                                                         </div>
                                                     </div>
