@@ -60,6 +60,7 @@ new Swiper(".doctors--swiper", {
 	pagination: {
 		el: ".doctors .swiper-pagination",
 		clickable: true,
+		dynamicBullets: true,
 	},
 	autoplay: {
 		delay: 5000,
