@@ -107,19 +107,21 @@
         </div>
     </section>
 
-    <section class="seo mb-24">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="h2 font-weight-bolder text-blue mb-8">{{ $page->seo_title }}</div>
-                    <div class="seo-wrapper">
-                        <div class="content os-scrollbar-overflow">
-                            {!! $page->seo_text !!}
+    @if (!isEmptyHtml($page->seo_text))
+        <section class="seo mb-24">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="h2 font-weight-bolder text-blue mb-8">{{ $page->seo_title }}</div>
+                        <div class="seo-wrapper">
+                            <div class="content os-scrollbar-overflow">
+                                {!! $page->seo_text !!}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
 @endsection
