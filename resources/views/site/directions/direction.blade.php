@@ -82,7 +82,6 @@
                                             </div>
                                         @endif
                                         <div class="h3 font-m text-white font-weight-bolder mb-4">{{ $promotion->title }}</div>
-                                        <div class="h5 text-white">{!! $promotion->description !!}</div>
                                     </a>
                                 </div>
                             @endforeach
