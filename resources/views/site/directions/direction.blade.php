@@ -34,18 +34,19 @@
                         @php
                             $textBlockThree = $direction->textBlocks->where('number', 3)->first();
                         @endphp
-                        <div class="media-content row mb-lg-8">
-                            <div class="col">
-                                @include('site.components.text-section', ['data' => $textBlockThree, 'mb' => 5])
-                            </div>
-                        </div>
-                        
-                        @if($textBlockThree->button_one_url)
-                            <div class="row">
-                                <div class="col-auto">
-                                    <a href="{{ $textBlockThree->button_one_url }}" class="btn btn-fz-20 btn-outline-blue font-weight-bold d-none d-lg-block">{{ trans('web.more_details') }}</a>
+                        @if( !is_null($textBlockThree) )
+                            <div class="media-content row mb-lg-8">
+                                <div class="col">
+                                    @include('site.components.text-section', ['data' => $textBlockThree, 'mb' => 5])
                                 </div>
                             </div>
+                            @if($textBlockThree->button_one_url)
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <a href="{{ $textBlockThree->button_one_url }}" class="btn btn-fz-20 btn-outline-blue font-weight-bold d-none d-lg-block">{{ trans('web.more_details') }}</a>
+                                    </div>
+                                </div>
+                            @endif
                         @endif
                     </div>
                     <a href="##" class="btn btn-outline-blue font-weight-bold d-lg-none">{{ trans('web.more_details') }}</a>
