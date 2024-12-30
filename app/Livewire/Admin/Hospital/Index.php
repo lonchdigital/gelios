@@ -114,6 +114,8 @@ class Index extends Component
         ];
         $this->updatePageTextBlock($formData, $this->page->id, 1);
 
+        // Update Page
+        $this->hospitalsService->updatePageData($this->page, $this->pageData);
 
         // Update SEO Page
         $this->updateSeoDataPage($this->page, $this->seoData);
