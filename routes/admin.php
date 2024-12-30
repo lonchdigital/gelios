@@ -243,6 +243,9 @@ Route::group([
             Route::get('/', [PageController::class, 'mainPage'])->name('show');
             Route::get('/edit-seo', [PageController::class, 'mainPageSeo'])->name('edit-seo');
             Route::get('/edit-block/{block}', [PageController::class, 'mainPageEdit'])->name('edit-block');
+
+            Route::get('/create-slide/{page}', [PageController::class, 'createSlide'])->name('create-slide');
+            Route::get('/edit-slide/{page}/{block}', [PageController::class, 'editSlide'])->name('edit-slide');
         });
 
         Route::get('/header', [PageController::class, 'editHeader'])->name('admin.header.edit');

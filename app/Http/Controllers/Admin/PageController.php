@@ -42,4 +42,20 @@ class PageController extends Controller
     {
         return view('admin.settings.edit-footer-links');
     }
+
+    public function createSlide()
+    {
+        $page = Page::where('type', PageType::MAINPAGE->value)
+            ->first();
+
+        return view('admin.main-page.slider.create', compact('page'));
+    }
+
+    public function editSlide(PageBlock $block)
+    {
+        $page = Page::where('type', PageType::MAINPAGE->value)
+            ->first();
+
+        return view('admin.main-page.slider.edit', compact('page', 'block'));
+    }
 }

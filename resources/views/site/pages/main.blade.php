@@ -28,6 +28,7 @@
                                         </div>
                                         <div class="wrap-img">
                                             @if(!empty($slide->image))
+                                                <img class="bg-down" src="{{ $slide->imageUrl }}" alt="{!! $slide->title !!}">
                                             @else
                                                 <img class="bg-down" src="{{ asset('static_images/img-background-1.jpeg') }}" alt="{!! $slide->title !!}">
                                             @endif
@@ -323,7 +324,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-12 col-7 col-lg-6">
-                        @include('site.components.appointment-form')
+                        @include('site.components.appointment-form', ['id' => 1])
                     </div>
                     <div class="col-5 col-lg-6 d-none d-lg-flex">
                         <div class="wrap-img">
@@ -547,7 +548,7 @@
                                 </div>
                             </div>
                         </form> --}}
-                        @include('site.components.appointment-form')
+                        @include('site.components.appointment-form', ['id' => 2])
                     </div>
                     <div class="col-5 col-lg-6 d-none d-lg-flex">
                         <div class="wrap-img">

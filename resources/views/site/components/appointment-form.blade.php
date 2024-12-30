@@ -1,4 +1,4 @@
-<form id="form-meeting" class="p-3 p-lg-5 bg-white" action="{{ route('feedback.store') }}">
+<form id="form-meeting-{{ $id ?? 1 }}" class="p-3 p-lg-5 bg-white" action="{{ route('feedback.store') }}">
     @csrf
     @method('POST')
     <div class="h2 font-m font-weight-bolder mb-5">{{ __('pages.make_an_appointment') ?? 'Записатися на прийом' }}</div>
@@ -14,7 +14,7 @@
         <div class="col-12">
             <div class="field mb-2">
                 <label class="control-label mb-2" for="form-meeting-phone">{{ __('pages.enter_your_phone_number') }}</label>
-                <input type="number" id="form-meeting-phone" name="phone" class="form-control mb-2">
+                <input type="phone" id="form-meeting-phone" value="{{ old('phone') ?? '+380' }}" name="phone" class="form-control mb-2">
                 <div class="field--help-info small-txt text-red mb-2">{{ __('pages.enter_your_phone_number') }}</div>
             </div>
             <div id="phone_error" class="field--help-info small-txt text-red mb-2"></div>
@@ -60,21 +60,22 @@
         </div>
     </div>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
 
-            document.getElementById("form-meeting").addEventListener("submit", function(event) {
-                event.preventDefault();
+            const forms = document.querySelectorAll('[id^="form-meeting"]');
 
-                const form = document.getElementById('form-meeting');
+            forms.forEach((form) => {
+                form.addEventListener("submit", function (event) {
+                    event.preventDefault();
 
-                const formData = {
-                    name: document.querySelector('[name="name"]').value,
-                    phone: document.querySelector('[name="phone"]').value,
-                    doctor: document.querySelector('[name="doctor"]').value,
-                    clinic: document.querySelector('[name="clinic"]').value,
-                };
+                    const formData = {
+                        name: form.querySelector('[name="name"]').value,
+                        phone: form.querySelector('[name="phone"]').value,
+                        doctor: form.querySelector('[name="doctor"]').value,
+                        clinic: form.querySelector('[name="clinic"]').value,
+                    };
 
-                fetch('/feedback-store', {
+                    fetch('/feedback-store', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -83,31 +84,37 @@
                         },
                         body: JSON.stringify(formData),
                     })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                console.log("Form submitted successfully!");
+                            } else {
+                                console.log(data);
 
-                        } else {
-                            console.log(data);
+                                const errors = data.errors;
+                                console.log(errors);
 
-                            var errors = data.errors;
-                            console.log(errors);
-                            for (var field in errors) {
-                                var fieldElement = $('#' + field + '_error');
-                                console.log(fieldElement);
-                                var existingError = fieldElement.next('.field--help-info');
+                                for (const field in errors) {
+                                    const fieldElement = form.querySelector(`#${field}_error`);
+                                    console.log(fieldElement);
+                                    const existingError = fieldElement?.nextElementSibling;
 
-                                if (existingError.length) {
-                                    existingError.text(errors[field][0]);
-                                } else {
-                                    fieldElement.after(
-                                        '<div class="field--help-info small-txt text-red mb-2">' +
-                                        errors[field][0] + '</div>');
+                                    if (existingError && existingError.classList.contains('field--help-info')) {
+                                        existingError.textContent = errors[field][0];
+                                    } else if (fieldElement) {
+                                        fieldElement.insertAdjacentHTML(
+                                            'afterend',
+                                            '<div class="field--help-info small-txt text-red mb-2">' +
+                                            errors[field][0] + '</div>'
+                                        );
+                                    }
                                 }
                             }
-                        }
-                    })
-                    .catch();
+                        })
+                        .catch(error => {
+                            console.error("Error submitting form:", error);
+                        });
+                });
             });
         });
     </script>

@@ -18,8 +18,14 @@
                 @forelse($this->page2->pageBlocks->groupBy('block') as $group => $blocks)
 
                 <div class="d-flex justify-content-between align-items-center mb-20">
-                <h6 class="mt-3">{{ __('admin.pages.' . $group) }}</h6>
+                    <h6 class="mt-3">{{ __('admin.pages.' . $group) }}</h6>
 
+                    @if($group == 'main')
+                        <a href="{{ route('admin.main-page.create-slide', ['page' => $this->page2]) }}"
+                            class="btn btn-primary waves-effect waves-light float-right mb-3">
+                            + {{ __('admin.add_slide') }}
+                        </a>
+                    @endif
                 </div>
                     <table class="table mt-1">
                         <thead>
@@ -57,10 +63,17 @@
                                     <td>
                                         <div style="text-align: right">
                                             <a role="button"
-                                                href="{{ route('admin.main-page.edit-block', ['block' => $block]) }}"
+                                                @if($block->key == 'slider')
+                                                    href="{{ route('admin.main-page.edit-slide', ['page' => $this->page2, 'block' => $block]) }}"
+                                                @else
+                                                    href="{{ route('admin.main-page.edit-block', ['block' => $block]) }}"
+                                                @endif
                                                 class="btn btn-accent btn-xs">
                                                 <i class="fa fa-edit text-info font-18"></i>
                                             </a>
+                                            @if($block->key == 'slider')
+                                                <a wire:click="deleteItem('{{ $block->id }}', 'pageBlock')" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>

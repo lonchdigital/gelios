@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Feedback\StoreRequest;
 use App\Jobs\SendFeedbackEmailJob;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class FeedbackController extends Controller
 {

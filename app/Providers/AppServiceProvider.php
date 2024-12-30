@@ -2,12 +2,11 @@
 
 namespace App\Providers;
 
-use App\Http\View\Composers\ClinicComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use App\Http\View\Composers\DoctorComposer;
 use App\Http\View\Composers\FooterComposer;
 use App\Http\View\Composers\DirectionsComposer;
+use App\View\Composers\DoctorComposer;
 use App\View\Composers\FooterComposer as ComposersFooterComposer;
 use App\View\Composers\HeaderComposer;
 
@@ -26,11 +25,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('site.components.appointment-form', DoctorComposer::class);
-        View::composer('site.components.appointment-form', ClinicComposer::class);
+        // View::composer('site.components.appointment-form', DoctorComposer::class);
+        // View::composer('site.components.appointment-form', ClinicComposer::class);
         View::composer('site.*', DirectionsComposer::class);
         View::composer('site.parts.footer', FooterComposer::class);
         View::composer('site.parts.footer', ComposersFooterComposer::class);
         View::composer('site.parts.header', HeaderComposer::class);
+        View::composer([
+            'site.components.appointment-form',
+            'site.layout.app'
+        ], DoctorComposer::class);
     }
 }
