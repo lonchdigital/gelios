@@ -995,11 +995,28 @@
 }
 
 .direction-template--inner,
-.media-content--inner {
+.media-content--inner,
+.content {
 
 	ul {
 		list-style-type: none;
 		padding-left: 0;
+		color: #65738A;
+	}
+
+	ol {
+		color: #65738A;
+		padding-left: 27px;
+
+		li {
+			margin-bottom: 8px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	p {
 		color: #65738A;
 	}
 }
