@@ -28,9 +28,9 @@ class SettingsSeeder extends Seeder
             'key' => 'footer_description',
         ]);
 
-        $setting->translateOrNew('ua')->text = "Медичний центр сімейного здоров'я та реабілітації Геліос - це сучасне обладнання, кваліфіковані лікарі, індивідуальний підхід до кожного пацієнта.";
-        $setting->translateOrNew('en')->text = "Medical Center for Family Health and Rehabilitation Helios - modern equipment, qualified doctors, and an individual approach to each patient.";
-        $setting->translateOrNew('ru')->text = "Медицинский центр семейного здоровья и реабилитации Гелиос - это современное оборудование, квалифицированные врачи и индивидуальный подход к каждому пациенту.";
+        // $setting->translateOrNew('ua')->text = "Медичний центр сімейного здоров'я та реабілітації Геліос - це сучасне обладнання, кваліфіковані лікарі, індивідуальний підхід до кожного пацієнта.";
+        // $setting->translateOrNew('en')->text = "Medical Center for Family Health and Rehabilitation Helios - modern equipment, qualified doctors, and an individual approach to each patient.";
+        // $setting->translateOrNew('ru')->text = "Медицинский центр семейного здоровья и реабилитации Гелиос - это современное оборудование, квалифицированные врачи и индивидуальный подход к каждому пациенту.";
 
         $setting->save();
 

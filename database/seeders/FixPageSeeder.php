@@ -22,9 +22,9 @@ class FixPageSeeder extends Seeder
             'slug' => 'about-us'
         ]);
 
-        $page1->translateOrNew('ua')->title = 'Про компанію';
-        $page1->translateOrNew('ru')->title = 'Про компанію';
-        $page1->translateOrNew('en')->title = 'About us';
+        // $page1->translateOrNew('ua')->title = 'Про компанію';
+        // $page1->translateOrNew('ru')->title = 'Про компанію';
+        // $page1->translateOrNew('en')->title = 'About us';
 
         $page1->save();
 
@@ -36,9 +36,9 @@ class FixPageSeeder extends Seeder
             'slug' => 'nashi-speczialisty'
         ]);
 
-        $page2->translateOrNew('ua')->title = 'Лікарі';
-        $page2->translateOrNew('ru')->title = 'Лікарі';
-        $page2->translateOrNew('en')->title = 'Doctors';
+        // $page2->translateOrNew('ua')->title = 'Лікарі';
+        // $page2->translateOrNew('ru')->title = 'Лікарі';
+        // $page2->translateOrNew('en')->title = 'Doctors';
 
         $page2->save();
 
@@ -50,9 +50,9 @@ class FixPageSeeder extends Seeder
             'slug' => 'akczii-i-speczialnye-predlozheniya'
         ]);
 
-        $page3->translateOrNew('ua')->title = 'Акції';
-        $page3->translateOrNew('ru')->title = 'Акції';
-        $page3->translateOrNew('en')->title = 'Promotions';
+        // $page3->translateOrNew('ua')->title = 'Акції';
+        // $page3->translateOrNew('ru')->title = 'Акції';
+        // $page3->translateOrNew('en')->title = 'Promotions';
 
         $page3->save();
 
@@ -64,9 +64,9 @@ class FixPageSeeder extends Seeder
             'slug' => 'dlya-paczientov'
         ]);
 
-        $page4->translateOrNew('ua')->title = 'Новини';
-        $page4->translateOrNew('ru')->title = 'Новини';
-        $page4->translateOrNew('en')->title = 'News';
+        // $page4->translateOrNew('ua')->title = 'Новини';
+        // $page4->translateOrNew('ru')->title = 'Новини';
+        // $page4->translateOrNew('en')->title = 'News';
 
         $page4->save();
 
@@ -78,9 +78,9 @@ class FixPageSeeder extends Seeder
             'slug' => 'contacts'
         ]);
 
-        $page5->translateOrNew('ua')->title = 'Контакти';
-        $page5->translateOrNew('ru')->title = 'Контакти';
-        $page5->translateOrNew('en')->title = 'Contacts';
+        // $page5->translateOrNew('ua')->title = 'Контакти';
+        // $page5->translateOrNew('ru')->title = 'Контакти';
+        // $page5->translateOrNew('en')->title = 'Contacts';
 
         $page5->save();
 
@@ -92,9 +92,9 @@ class FixPageSeeder extends Seeder
             'slug' => 'prices'
         ]);
 
-        $page6->translateOrNew('ua')->title = 'Ціни';
-        $page6->translateOrNew('ru')->title = 'Ціни';
-        $page6->translateOrNew('en')->title = 'Prices';
+        // $page6->translateOrNew('ua')->title = 'Ціни';
+        // $page6->translateOrNew('ru')->title = 'Ціни';
+        // $page6->translateOrNew('en')->title = 'Prices';
 
         $page6->save();
 
@@ -106,9 +106,9 @@ class FixPageSeeder extends Seeder
             'slug' => 'staczionar'
         ]);
 
-        $page7->translateOrNew('ua')->title = 'Стаціонар';
-        $page7->translateOrNew('ru')->title = 'Стаціонар';
-        $page7->translateOrNew('en')->title = 'Hospital';
+        // $page7->translateOrNew('ua')->title = 'Стаціонар';
+        // $page7->translateOrNew('ru')->title = 'Стаціонар';
+        // $page7->translateOrNew('en')->title = 'Hospital';
 
         $page7->save();
     }

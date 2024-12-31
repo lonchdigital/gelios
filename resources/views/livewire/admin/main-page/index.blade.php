@@ -64,7 +64,7 @@
                                         <div style="text-align: right">
                                             <a role="button"
                                                 @if($block->key == 'slider')
-                                                    href="{{ route('admin.main-page.edit-slide', ['page' => $this->page2, 'block' => $block]) }}"
+                                                    href="{{ route('admin.main-page.edit-slide', ['block' => $block]) }}"
                                                 @else
                                                     href="{{ route('admin.main-page.edit-block', ['block' => $block]) }}"
                                                 @endif

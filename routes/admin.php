@@ -245,7 +245,7 @@ Route::group([
             Route::get('/edit-block/{block}', [PageController::class, 'mainPageEdit'])->name('edit-block');
 
             Route::get('/create-slide/{page}', [PageController::class, 'createSlide'])->name('create-slide');
-            Route::get('/edit-slide/{page}/{block}', [PageController::class, 'editSlide'])->name('edit-slide');
+            Route::get('/edit-slide/{block}', [PageController::class, 'editSlide'])->name('edit-slide');
         });
 
         Route::get('/header', [PageController::class, 'editHeader'])->name('admin.header.edit');

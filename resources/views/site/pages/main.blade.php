@@ -28,14 +28,14 @@
                                         </div>
                                         <div class="wrap-img">
                                             @if(!empty($slide->image))
-                                                <img class="bg-down" src="{{ $slide->imageUrl }}" alt="{!! $slide->title !!}">
+                                                <img class="bg-down" src="{{ $slide->imageUrl }}" alt="{{ $slide->title }}">
                                             @else
-                                                <img class="bg-down" src="{{ asset('static_images/img-background-1.jpeg') }}" alt="{!! $slide->title !!}">
+                                                <img class="bg-down" src="{{ asset('static_images/img-background-1.jpeg') }}" alt="{{ $slide->title }}">
                                             @endif
                                         </div>
                                     </div>
                                 @empty
-                                    <div
+                                    {{-- <div
                                             class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
                                         <div class="backdrop p-3 p-lg-6">
                                             <div class="content">
@@ -54,50 +54,8 @@
                                                 <img class="bg-down" src="{{ asset('static_images/img-background-2.jpeg') }}" alt="img">
                                             @endif
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 @endforelse
-                                {{-- <div
-                                    class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
-                                    <div class="backdrop p-3 p-lg-6">
-                                        <div class="content">
-                                            <div class="h1 font-m font-weight-bolder mb-3">Піклуєшся <br> про здоров’я?
-                                            </div>
-                                            <div class="h5 font-m font-weight-bold mb-3">Обери свій CHECK-UP!</div>
-                                            <a href="##" class="btn btn-white font-weight-bold">Детальніше</a>
-                                        </div>
-                                    </div>
-                                    <div class="wrap-img">
-                                        <img class="bg-down" src="{{ asset('static_images/img-background-2.jpeg') }}" alt="img">
-                                    </div>
-                                </div>
-                                <div
-                                    class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
-                                    <div class="backdrop p-3 p-lg-6">
-                                        <div class="content">
-                                            <div class="h1 font-m font-weight-bolder mb-3">Піклуєшся <br> про здоров’я?
-                                            </div>
-                                            <div class="h5 font-m font-weight-bold mb-3">Обери свій CHECK-UP!</div>
-                                            <a href="##" class="btn btn-white font-weight-bold">Детальніше</a>
-                                        </div>
-                                    </div>
-                                    <div class="wrap-img">
-                                        <img class="bg-down" src="{{ asset('static_images/img-background-1.jpeg') }}" alt="img">
-                                    </div>
-                                </div>
-                                <div
-                                    class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
-                                    <div class="backdrop p-3 p-lg-6">
-                                        <div class="content">
-                                            <div class="h1 font-m font-weight-bolder mb-3">Піклуєшся <br> про здоров’я?
-                                            </div>
-                                            <div class="h5 font-m font-weight-bold mb-3">Обери свій CHECK-UP!</div>
-                                            <a href="##" class="btn btn-white font-weight-bold">Детальніше</a>
-                                        </div>
-                                    </div>
-                                    <div class="wrap-img">
-                                        <img class="bg-down" src="{{ asset('static_images/img-background-2.jpeg') }}" alt="img">
-                                    </div>
-                                </div> --}}
                             </div>
                             <div class="swiper-pagination"></div>
                         </div>
