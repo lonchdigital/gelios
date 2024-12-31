@@ -45,8 +45,8 @@
             <div class="container overflow-hidden">
                 <div class="row mb-8">
                     <div class="col d-flex align-items-center justify-content-between">
-                        <div class="h2 font-m font-weight-bolder text-blue">Лікарі</div>
-                        <a href="##" class="btn btn-white font-weight-bold">Усі лікарі</a>
+                        <div class="h2 font-m font-weight-bolder text-blue">{{ trans('pages.doctors') }}</div>
+                        <a href="{{ route('doctors.index') }}" class="btn btn-white font-weight-bold">{{ trans('doctor.all_doctors') }}</a>
                     </div>
                 </div>
                 <div class="row">
@@ -71,7 +71,7 @@
             <div class="container">
                 <div class="row mb-8">
                     <div class="col d-flex align-items-center justify-content-between">
-                        <div class="h2 font-m font-weight-bolder text-blue">Ціни</div>
+                        <div class="h2 font-m font-weight-bolder text-blue">{{ trans('pages.prices') }}</div>
                     </div>
                 </div>
                 @forelse($direction->prices as $price)
