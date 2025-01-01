@@ -43,12 +43,47 @@ class DirectionsPage extends Component
 
     protected function rules()
     {
-        return [];
+        $rules = [];
+
+        foreach (config('translatable.locales') as $locale):
+            $rules['sectionData.title.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['seoData.meta_title.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['seoData.meta_description.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['seoData.meta_keywords.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['seoData.seo_title.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['seoData.seo_text.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+        endforeach;
+
+        return $rules;
     }
 
     public function save()
     {
-        // $this->validate();
+        $this->validate();
 
         $this->directionsService->updateMainDirectionPage($this->page, $this->sectionData);
 
