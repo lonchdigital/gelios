@@ -188,6 +188,87 @@ class SubCategory extends Component
             'unique:pages,slug'
         ];
 
+        $rules['directionContacts'] = [
+            'array'
+        ];
+        $rules['directionPrices'] = [
+            'array'
+        ];
+        $rules['infoData'] = [
+            'array'
+        ];
+
+        $rules['sectionOneData.is_reverse'] = [
+            'boolean'
+        ];
+        $rules['sectionOneData.is_image'] = [
+            'boolean'
+        ];
+
+        $rules['sectionTwoData.is_reverse'] = [
+            'boolean'
+        ];
+        $rules['sectionTwoData.is_image'] = [
+            'boolean'
+        ];
+
+        foreach (config('translatable.locales') as $locale):
+            $rules['сurrentDirectionData.name.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+
+            $rules['sectionOneData.text_one.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['sectionOneData.text_two.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['sectionTwoData.text_one.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['sectionTwoData.text_two.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            
+
+            // seo
+            $rules['seoData.meta_title.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['seoData.meta_description.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['seoData.meta_keywords.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['seoData.seo_title.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['seoData.seo_text.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+        endforeach;
+
         return $rules;
     }
 
@@ -208,8 +289,6 @@ class SubCategory extends Component
     public function save()
     {
         $this->validate();
-
-        // dd('hello???', $this->sectionTwoData);
 
         $this->direction->update([
             'parent_id' => $this->directionParent,
