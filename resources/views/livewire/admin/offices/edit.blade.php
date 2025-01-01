@@ -12,9 +12,9 @@
                 <div class="card-head mb-20">
                     <h4 class="card-head-title">
                         @if(is_null($contact))
-                            {{ trans('admin.new_contact') }}
+                            {{ trans('admin.add_office') }}
                         @else
-                            {{ trans('admin.edit_contact') }}
+                            {{ trans('admin.edit_office') }}
                         @endif
                     </h4>
                 </div>

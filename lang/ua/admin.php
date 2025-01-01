@@ -10,6 +10,7 @@ return [
     'common_blocks' => 'Наскрізні блоки',
     'deleted_contact' => 'Філію було видалено',
     'add_office' => 'Додати філію',
+    'edit_office' => 'Редагувати філію',
     'offices' => 'Філії',
     'text_block' => 'Текстовий блок',
     'new_page_block' => 'Новий блок',
