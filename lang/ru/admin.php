@@ -10,6 +10,7 @@ return [
     'common_blocks' => 'Сквозные блоки',
     'deleted_contact' => 'Филиал был удален',
     'add_office' => 'Добавить филиал',
+    'edit_office' => 'Редактировать филиал',
     'offices' => 'Филиалы',
     'text_block' => 'Текстовый блок',
     'new_page_block' => 'Новый блок',
