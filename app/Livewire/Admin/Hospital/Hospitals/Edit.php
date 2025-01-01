@@ -126,14 +126,44 @@ class Edit extends Component
 
     protected function rules()
     {
-        return [
+        $rules = [];
 
+        $rules['sectionData.is_reverse'] = [
+            'boolean'
         ];
+        $rules['sectionData.is_image'] = [
+            'boolean'
+        ];
+
+        $rules['gallery'] = [
+            'array'
+        ];
+
+        foreach (config('translatable.locales') as $locale):
+            $rules['sectionData.name.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+
+            $rules['sectionData.text_one.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['sectionData.text_two.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+        endforeach;
+
+        return $rules;
     }
 
     public function save()
     {
-        // $this->validate();
+        $this->validate();
 
         $formData = [
             'image' => $this->sectionData['media'] ?? null,
