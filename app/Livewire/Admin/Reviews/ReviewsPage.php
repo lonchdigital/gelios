@@ -73,22 +73,67 @@ class ReviewsPage extends Component
 
     protected function rules()
     {
-        return [
-            'directionName.ua' => [
-                'required',
-                'string'
-                // 'nullable'
-            ],
-            'directionTemplate' => [
-                'required',
-                'integer'
-            ],
+        $rules = [];
+
+        $rules['textBlockOneData.is_reverse'] = [
+            'boolean'
         ];
+        $rules['textBlockOneData.is_image'] = [
+            'boolean'
+        ];
+
+        foreach (config('translatable.locales') as $locale):
+            $rules['sectionData.title.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+
+            $rules['textBlockOneData.text_one.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['textBlockOneData.text_two.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+
+            // seo
+            $rules['seoData.meta_title.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['seoData.meta_description.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['seoData.meta_keywords.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['seoData.seo_title.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['seoData.seo_text.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+        endforeach;
+
+        return $rules;
     }
 
     public function save()
     {
-        // $this->validate();
+        $this->validate();
 
         $this->reviewsService->updatePageData($this->page, $this->sectionData);
 

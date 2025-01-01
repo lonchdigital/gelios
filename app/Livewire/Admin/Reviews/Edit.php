@@ -67,14 +67,40 @@ class Edit extends Component
 
     protected function rules()
     {
-        return [
+        $rules = [];
 
+        $rules['sectionData.published'] = [
+            'boolean'
         ];
+
+        $rules['reviewDoctors'] = [
+            'array'
+        ];
+        $rules['reviewPages'] = [
+            'array'
+        ];
+
+        foreach (config('translatable.locales') as $locale):
+            $rules['sectionData.name.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+
+            $rules['sectionData.text.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+        endforeach;
+
+        return $rules;
     }
 
     public function save()
     {
-        // $this->validate();        
+        $this->validate();
+
         $this->review = $this->reviewsService->updateReview($this->sectionData, $this->review);
 
         $this->review->doctors()->sync($this->reviewDoctors);
