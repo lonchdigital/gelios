@@ -91,14 +91,113 @@ class Index extends Component
 
     protected function rules()
     {
-        return [
+        $rules = [];
 
+        $rules['sectionData.is_reverse'] = [
+            'boolean'
         ];
+        $rules['sectionData.is_image'] = [
+            'boolean'
+        ];
+
+        foreach (config('translatable.locales') as $locale):
+            $rules['pageData.title.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['pageData.sub_title.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+
+            $rules['sectionProgress.first.title.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['sectionProgress.first.description.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['sectionProgress.second.title.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['sectionProgress.second.description.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['sectionProgress.third.title.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['sectionProgress.third.description.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['sectionProgress.fourth.title.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['sectionProgress.fourth.description.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+
+            $rules['sectionData.text_one.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['sectionData.text_two.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+
+            // seo
+            $rules['seoData.meta_title.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['seoData.meta_description.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['seoData.meta_keywords.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['seoData.seo_title.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['seoData.seo_text.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+        endforeach;
+
+        return $rules;
     }
 
     public function save()
     {
-        // $this->validate();
+        $this->validate();
 
         // dd('stop', $this->sectionProgress);
 
