@@ -191,7 +191,8 @@ class Direction extends Component
             'id' => null,
             'sort' => count($this->directionPrices) + 1,
             'price' => 0,
-            'service' => []
+            'service' => [],
+            'is_free' => 0,
         ];
     }
 
@@ -243,6 +244,128 @@ class Direction extends Component
             'unique:page_directions,slug,' . ($this->direction->page->id ?? ''),
             'unique:pages,slug'
         ];
+
+        $rules['directionContacts'] = [
+            'array'
+        ];
+        $rules['directionPrices'] = [
+            'array'
+        ];
+        $rules['infoData'] = [
+            'array'
+        ];
+
+        $rules['sectionOneData.is_reverse'] = [
+            'boolean'
+        ];
+        $rules['sectionOneData.is_image'] = [
+            'boolean'
+        ];
+        $rules['sectionThreeData.is_reverse'] = [
+            'boolean'
+        ];
+        $rules['sectionThreeData.is_image'] = [
+            'boolean'
+        ];
+        $rules['sectionFourData.is_reverse'] = [
+            'boolean'
+        ];
+        $rules['sectionFourData.is_image'] = [
+            'boolean'
+        ];
+        $rules['sectionFiveData.is_reverse'] = [
+            'boolean'
+        ];
+        $rules['sectionFiveData.is_image'] = [
+            'boolean'
+        ];
+
+        foreach (config('translatable.locales') as $locale):
+            $rules['сurrentDirectionData.name.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+
+            $rules['sectionOneData.text_one.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['sectionOneData.text_two.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['sectionTwoData.text_one.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['sectionTwoData.text_two.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['sectionThreeData.text_one.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['sectionThreeData.text_two.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['sectionFourData.text_one.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['sectionFourData.text_two.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['sectionFiveData.text_one.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['sectionFiveData.text_two.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            
+
+            // seo
+            $rules['seoData.meta_title.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['seoData.meta_description.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['seoData.meta_keywords.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+            $rules['seoData.seo_title.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
+            $rules['seoData.seo_text.' . $locale] = [
+                'nullable',
+                'string',
+                'max:55000'
+            ];
+        endforeach;
 
         return $rules;
     }

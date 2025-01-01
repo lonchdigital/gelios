@@ -456,7 +456,7 @@
                                                                     
                                                                 </div>
 
-                                                                <div class="col-md-9">
+                                                                <div class="col-md-7">
                                                                     <x-admin.multilanguage-input
                                                                         :is-required="false"
                                                                         :label="trans('admin.service')"
