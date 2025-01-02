@@ -3,7 +3,7 @@
         <div class="col-12 col-lg-6">
             <div class="content-wrap">
                 <div class="h4 font-weight-bolder text-blue mb-5"></div>
-                <div class="content os-scrollbar-overflow">
+                <div class="content rich-text-block os-scrollbar-overflow">
                     {!! $data->text_one !!}
                 </div>
             </div>
@@ -23,7 +23,7 @@
             <div class="col-12 col-lg-6">
                 <div class="content-wrap">
                     <div class="h4 font-weight-bolder text-blue mb-5"></div>
-                    <div class="content os-scrollbar-overflow">
+                    <div class="content rich-text-block os-scrollbar-overflow">
                         {!! $data->text_two !!}
                     </div>
                 </div>
