@@ -321,7 +321,7 @@
                                                                                 :values="$infoDataItem['title']"
                                                                             />
 
-                                                                            <x-admin.multilanguage-text-area
+                                                                            <x-admin.multilanguage-text-area-rich
                                                                                 :is-required="false"
                                                                                 :label="trans('admin.description')"
                                                                                 field-name="infoData.{{ $index }}.description"
