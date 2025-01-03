@@ -41,6 +41,7 @@ class SubCategory extends Component
     {
         $this->directionsService = app(DirectionsService::class);
         $this->dispatch('livewire:load');
+        // $this->dispatch('livewire:dom');
 
         $this->сurrentDirectionData = $this->directionsService->setCurrentDirectionData($this->direction);
 
@@ -166,6 +167,8 @@ class SubCategory extends Component
             'title' => [],
             'description' => [],
         ];
+
+        $this->dispatch('infoDataFieldAdded');
     }
 
     public function newPositionDirectionPrices($val, $index)

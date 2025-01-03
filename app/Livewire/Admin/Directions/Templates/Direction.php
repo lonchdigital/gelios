@@ -223,6 +223,8 @@ class Direction extends Component
             'title' => [],
             'description' => [],
         ];
+
+        $this->dispatch('infoDataFieldAdded');
     }
 
     public function newPositionDirectionPrices($val, $index)

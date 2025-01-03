@@ -661,5 +661,15 @@
             });
 
         });
+
+        window.addEventListener('infoDataFieldAdded', () => {
+            initQuillEditors((quill, fieldName, language) => {
+                quill.on('text-change', function () {
+                    let value = quill.root.innerHTML;
+                    @this.set(`${fieldName}.${language}`, value);
+                });
+            });
+        });
+
     </script>
 @endpush
