@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="tab-content">
             @foreach(config('app.available_languages') as $availableLanguage)
-                <div language="{{ $availableLanguage }}" class="multilang-content tab-pane fade @if($availableLanguage == config('app.active_lang'))active show @endif" id="{{ $fieldName }}-{{ $availableLanguage }}">
+                <div wire:ignore language="{{ $availableLanguage }}" class="multilang-content tab-pane fade @if($availableLanguage == config('app.active_lang'))active show @endif" id="{{ $fieldName }}-{{ $availableLanguage }}">
                     <div class="form-group mb-1">
                         <label for="{{ $fieldName }}_{{ $availableLanguage }}">{{ $label }}
                             <strong>{{ mb_strtoupper($availableLanguage) }}</strong>
