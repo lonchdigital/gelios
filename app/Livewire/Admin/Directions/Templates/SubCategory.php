@@ -36,6 +36,11 @@ class SubCategory extends Component
     public Collection $allDirectionContacts;
     public array $allDirections = [];
     protected DirectionsService $directionsService;
+
+    // public string $activeLocale;
+    // protected $listeners = [
+    //     'languageSwitched' => 'languageSwitched'
+    // ];
     
     public function mount() 
     {
@@ -178,6 +183,11 @@ class SubCategory extends Component
         $this->directionPrices[$index]['sort'] = $this->directionPrices[$index]['sort'] + $val;
 
         $this->directionPrices = makeUsort($this->directionPrices);
+    }
+
+    public function languageSwitched($lang)
+    {
+        $this->activeLocale = $lang;
     }
 
     protected function rules()

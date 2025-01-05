@@ -22,7 +22,7 @@
                     }
                 });
 
-                Livewire.dispatch('languageSwitched', { lang: languageCode });
+                // Livewire.dispatch('languageSwitched', { lang: languageCode });
             });
         });
     </script>
