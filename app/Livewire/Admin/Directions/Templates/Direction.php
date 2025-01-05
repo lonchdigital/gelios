@@ -81,7 +81,7 @@ class Direction extends Component
 
         // Set Prices
         $directionPrices = DirectionPrice::where('direction_id', $this->direction->id)->orderBy('sort', 'asc')->get();
-        updateSort($directionPrices);
+        // updateSort($directionPrices);
         $this->directionPrices = $this->directionsService->setPrices($directionPrices);
         $this->directionPrices = makeUsort($this->directionPrices);
 
