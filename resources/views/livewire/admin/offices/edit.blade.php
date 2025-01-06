@@ -81,6 +81,20 @@
                                 </div>
                             @enderror
                         </div>
+                        <div class="form-group mt-2 mb-0">
+                            <label for="">Google Map Url</label>
+                            <input 
+                                    type="text"
+                                    class="form-control"
+                                    wire:model="sectionData.map_url"
+                                >
+
+                            @error('sectionData.map_url')
+                                <div class="mt-1 text-danger ajaxError">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
 
                     </section>
 

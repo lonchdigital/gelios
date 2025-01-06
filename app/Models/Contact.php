@@ -20,6 +20,7 @@ class Contact extends Model implements TranslatableContract
     ];
     protected $fillable = [
         'iframe',
+        'map_url',
         'image'
     ];
 
