@@ -39,8 +39,6 @@ class Edit extends Component
 
         // Set Brief blocks
         $briefBlocks = BriefBlock::where('page_id', $this->page->id)->orderBy('sort', 'asc')->get();
-
-        updateSort($briefBlocks);
         foreach($briefBlocks as $briefBlock) {
             $title = [];
             $description = [];

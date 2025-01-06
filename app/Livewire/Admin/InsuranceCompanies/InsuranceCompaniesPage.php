@@ -43,7 +43,6 @@ class InsuranceCompaniesPage extends Component
 
         // Set phones
         $phones = PageContactItem::where('page_id', $this->page->id)->where('type', 'phone')->orderBy('sort', 'asc')->get();
-        updateSort($phones);
         foreach($phones as $phone) {
             $this->phones[] = [
                 'id' => $phone->id,

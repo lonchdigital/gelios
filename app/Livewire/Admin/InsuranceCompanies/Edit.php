@@ -21,9 +21,6 @@ class Edit extends Component
     {
         $companiesRowOne = InsuranceCompany::where('row', 1)->orderBy('sort', 'asc')->get();
         $companiesRowTwo = InsuranceCompany::where('row', 2)->orderBy('sort', 'asc')->get();
-
-        updateSort($companiesRowOne);
-        updateSort($companiesRowTwo);
         
         foreach($companiesRowOne as $companyRowOneItem) {
             $this->companiesRowOne[] = [
