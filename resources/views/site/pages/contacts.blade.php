@@ -2,6 +2,10 @@
 
 @section('head')
     @vite(['resources/js/filters/contacts/contactsFilter.js'])
+    @include('site.components.head', [
+        'title' => $page->meta_title ?: $page->title,
+        'description' => $page->meta_description,
+    ])
 @endsection
 
 @section('content')

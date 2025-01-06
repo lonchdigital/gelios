@@ -110,10 +110,9 @@ function buildItemHTML(item)
                             <div class="city-pin mb-3 mt-xl-1">${city}, <br>${street}</div>
                             ${allEmails}
                             ${allPhones}
-                            
                             <div class="buttons d-flex flex-wrap">
-                                <a href="##" class="btn btn-fz-20 btn-blue font-weight-bold w-100">Записатись на прийом</a>
-                                <a href="##" class="btn btn-fz-20 btn-outline-blue font-weight-bold w-100">Прокласти маршрут</a>
+                                <button type="button" data-toggle="modal" data-target="#popup--sign-up-appointment" class="btn btn-fz-20 btn-blue font-weight-bold w-100">${translations.sign_up_for_for_appointment}</button>
+                                <a href="${item.iframe_src}" class="btn btn-fz-20 btn-outline-blue font-weight-bold w-100" target="_blank">${translations.plot_the_route}</a>
                             </div>
                         </div>
                     </div>
