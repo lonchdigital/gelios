@@ -4,6 +4,7 @@ function initQuillEditors(callback) {
         ['bold', 'italic', 'underline', 'strike', 'link', 'image'],
         ['blockquote'],
         [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+        [{ 'indent': '-1' }, { 'indent': '+1' }],
         [{ 'script': 'sub' }, { 'script': 'super' }],
         [{ 'color': [] }],
         [{ 'align': [] }],
