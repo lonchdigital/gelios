@@ -151,6 +151,10 @@ class Edit extends Component
                 'required',
                 'string',
             ],
+            'sectionData.map_url' => [
+                'nullable',
+                'string',
+            ],
             'sectionData.media.newImage' => [
                 'nullable',
                 'mimes:jpeg,jpg,png',

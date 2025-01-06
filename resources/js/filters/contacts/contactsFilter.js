@@ -76,6 +76,11 @@ function buildItemHTML(item)
     let street = itemTranslation ? itemTranslation.street : '';
     let allEmails = '';
     let allPhones = '';
+    let mapButton = '';
+    
+    if( item.map_url !== null && item.map_url != '') {
+        mapButton = `<a href="${item.map_url}" class="btn btn-fz-20 btn-outline-blue font-weight-bold w-100" target="_blank">${translations.plot_the_route}</a>`;
+    }
 
     item.emails.forEach(function (emailItem) {
         allEmails += `
@@ -112,7 +117,7 @@ function buildItemHTML(item)
                             ${allPhones}
                             <div class="buttons d-flex flex-wrap">
                                 <button type="button" data-toggle="modal" data-target="#popup--sign-up-appointment" class="btn btn-fz-20 btn-blue font-weight-bold w-100">${translations.sign_up_for_for_appointment}</button>
-                                <a href="${item.iframe_src}" class="btn btn-fz-20 btn-outline-blue font-weight-bold w-100" target="_blank">${translations.plot_the_route}</a>
+                                ${mapButton}
                             </div>
                         </div>
                     </div>

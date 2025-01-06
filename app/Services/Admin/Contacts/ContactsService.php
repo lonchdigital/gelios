@@ -24,6 +24,7 @@ class ContactsService
         $data['title'] = [];
         $data['text'] = [];
         $data['iframe'] = '';
+        $data['map_url'] = '';
         // $data['image'] = '';
 
         if(!is_null($contact)) {
@@ -41,6 +42,7 @@ class ContactsService
             }
             $data['media']['image'] = $contact->image;
             $data['iframe'] = $contact->iframe;
+            $data['map_url'] = $contact->map_url;
         }
 
         return $data;
@@ -94,10 +96,12 @@ class ContactsService
             'title' => $sectionData['title'],
             'text' => $sectionData['text'],
             'iframe' => $sectionData['iframe'],
+            'map_url' => $sectionData['map_url'],
         ];
 
         $dataToUpdate = [];
         $dataToUpdate['iframe'] = $formData['iframe'];
+        $dataToUpdate['map_url'] = $formData['map_url'];
 
         if(!is_null($formData['city'])) {
             foreach ($formData['city'] as $lang => $value) {
