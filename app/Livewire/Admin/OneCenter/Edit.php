@@ -44,7 +44,6 @@ class Edit extends Component
             
             // Set Slides
             $slides = BriefBlock::where('page_id', $this->page->id)->where('type', 'slider')->orderBy('sort', 'asc')->get();
-            updateSort($slides);
             foreach($slides as $slide) {
                 $title = [];
                 $description = [];
@@ -72,7 +71,6 @@ class Edit extends Component
 
             // Set Brief blocks
             $briefBlocks = BriefBlock::where('page_id', $this->page->id)->where('type', 'briefBlocks')->orderBy('sort', 'asc')->get();
-            updateSort($briefBlocks);
             foreach($briefBlocks as $briefBlock) {
                 $title = [];
 

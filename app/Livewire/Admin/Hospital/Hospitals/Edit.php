@@ -34,7 +34,6 @@ class Edit extends Component
         if(!is_null($this->hospital)) {
             $gallery = HospitalGallery::where('hospital_id', $this->hospital->id)->orderBy('sort', 'asc')->get();
         
-            updateSort($gallery);
             foreach($gallery as $galleryItem) {
                 $this->gallery[] = [
                     'id' => $galleryItem->id,

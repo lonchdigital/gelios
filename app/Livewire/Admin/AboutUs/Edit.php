@@ -55,7 +55,6 @@ class Edit extends Component
         // Set Brief blocks
         $briefBlocks = BriefBlock::where('page_id', $this->page->id)->orderBy('sort', 'asc')->get();
         
-        updateSort($briefBlocks);
         foreach($briefBlocks as $briefBlock) {
             $title = [];
             $description = [];
@@ -87,7 +86,6 @@ class Edit extends Component
 
         // Set Certificates
         $сertificates = SectionImage::where('page_id', $this->page->id)->where('type', 'сertificates')->orderBy('sort', 'asc')->get();
-        updateSort($сertificates);
         foreach($сertificates as $сertificate) {
             $this->сertificates[] = [
                 'id' => $сertificate->id,
@@ -102,7 +100,6 @@ class Edit extends Component
 
         // Set Photos
         $photos = SectionImage::where('page_id', $this->page->id)->where('type', 'photos')->orderBy('sort', 'asc')->get();
-        updateSort($photos);
         foreach($photos as $photo) {
             $this->photos[] = [
                 'id' => $photo->id,

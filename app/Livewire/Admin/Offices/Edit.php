@@ -36,7 +36,6 @@ class Edit extends Component
         if(!is_null($this->contact)) {
             // Set phones
             $phones = ContactItem::where('contact_id', $this->contact->id)->where('type', 'phone')->orderBy('sort', 'asc')->get();
-            updateSort($phones);
             foreach($phones as $phone) {
                 $this->phones[] = [
                     'id' => $phone->id,
@@ -49,7 +48,6 @@ class Edit extends Component
 
             // Set emails
             $emails = ContactItem::where('contact_id', $this->contact->id)->where('type', 'email')->orderBy('sort', 'asc')->get();
-            updateSort($emails);
             foreach($emails as $email) {
                 $this->emails[] = [
                     'id' => $email->id,
@@ -62,8 +60,6 @@ class Edit extends Component
 
             // set gallery
             $gallery = ContactGallery::where('contact_id', $this->contact->id)->orderBy('sort', 'asc')->get();
-        
-            updateSort($gallery);
             foreach($gallery as $galleryItem) {
                 $this->gallery[] = [
                     'id' => $galleryItem->id,
