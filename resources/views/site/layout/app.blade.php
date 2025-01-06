@@ -16,7 +16,9 @@
     <script>
         const translations = {
             nothing_found: "{{ trans('web.nothing_found') }}",
-            free: "{{ trans('web.free') }}"
+            free: "{{ trans('web.free') }}",
+            sign_up_for_for_appointment: "{{ trans('pages.sign_up_for_for_appointment') }}",
+            plot_the_route: "{{ trans('web.plot_the_route') }}"
         };
     </script>
 

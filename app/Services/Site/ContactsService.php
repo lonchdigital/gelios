@@ -29,6 +29,8 @@ class ContactsService
 
         $contactsToDisplay = $this->getItemsAdditional($query->get());
 
+        // dd($contactsToDisplay);
+
         return [
             'items' => $contactsToDisplay
         ];
@@ -39,6 +41,15 @@ class ContactsService
         foreach($contacts as $contact) {
             $emails = [];
             $phones = [];
+
+            preg_match('/src="([^"]+)"/', $contact->iframe, $matches);
+            if (!empty($matches[1])) {
+                $iframeSrc = $matches[1];
+                $directLink = str_replace('/embed?', '/?', $iframeSrc);
+                $contact->setAttribute('iframe_src', $directLink);
+            } else {
+                $contact->setAttribute('iframe_src', '##');
+            }
 
             foreach($contact->items->where('type', 'email') as $email) {
                 $emails[] = $email;

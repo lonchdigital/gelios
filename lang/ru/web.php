@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'plot_the_route' => 'Проложить маршрут',
     'prices' => 'Цены',
     'how_is_consultation_going' => 'Как проходит консультация?',
     'free' => 'Бесплатно',
