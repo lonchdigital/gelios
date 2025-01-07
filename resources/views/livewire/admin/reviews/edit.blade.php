@@ -44,7 +44,7 @@
                             <label>{{ trans('admin.all_pages') }}</label>
                             <select id="pages" class="js-pages-multiple form-control" name="pages[]" wire:model="reviewPages" multiple>
                                 @foreach ($allPages as $page)
-                                    <option value="{{ $page->id }}">{{ $page->title }}</option>
+                                    <option value="{{ $page->id }}">{{ $page->title ?? $page->name }}</option>
                                 @endforeach
                             </select>
                         </div>
