@@ -151,7 +151,7 @@
                         <div class="h2 font-m font-weight-bolder text-blue">{{ trans('web.prices') }}</div>
                     </div>
                 </div>
-                @forelse($direction->prices as $price)
+                @forelse($direction->prices->sortBy('sort') as $price)
                     @include('site.components.price', ['price' => $price])
                 @empty
                 @endforelse
