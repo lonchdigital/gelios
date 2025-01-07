@@ -84,8 +84,6 @@ Route::group([
 
         Route::get('/vzroslym/hirurgiya/', [SurgeryController::class, 'index'])->name('surgery.index');
 
-        Route::get('/vzroslym/hirurgiya/', [SurgeryController::class, 'index'])->name('surgery.index');
-
         Route::get('/vakansii/', [VacancyController::class, 'index'])->name('vacancy.index');
 
         // TODO:: old route of displaying pages. Can be removed

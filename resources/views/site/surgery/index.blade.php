@@ -611,100 +611,29 @@
         </div>
     </section>
 
-    <section class="reviews mb-24">
-        <div class="container overflow-hidden">
-            <div class="row mb-19">
-                <div class="col d-flex align-items-center justify-content-between">
-                    <div class="h2 font-m font-weight-bolder text-blue">Відгуки</div>
+    @if(count($reviews) > 0)
+        <section class="reviews mb-24">
+            <div class="container overflow-hidden">
+                <div class="row mb-19">
+                    <div class="col d-flex align-items-center justify-content-between">
+                        <div class="h2 font-m font-weight-bolder">{{ __('pages.reviews') }}</div>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="reviews--swiper">
-                        <div class="swiper-wrapper">
-                            <div class="reviews--item swiper-slide">
-                                <div class="inner">
-                                    <div class="wrap-img">
-                                        <img src="img/users/user-1.jpeg" alt="img">
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-2">
-                                        <div class="user-name h4 font-weight-bolder">Вікторія</div>
-                                        <div class="reviews-date h6 font-weight-bold text-grey">10.07.2024</div>
-                                    </div>
-                                    <div class="reviews--content os-scrollbar-overflow">Все дуже професійно в цьому
-                                        медичному центрі для реабілітації після травми. Обладнання новітнє, відмінні
-                                        фахівці. Сервіс на високому рівні. Зручне місце розташування, є своя парковка з
-                                        відеоспостереженням. Смачна кава і привітний персонал. Рекомендую!Все дуже
-                                        професійно в цьому медичному центрі для реабілітації після травми. Обладнання
-                                        новітнє, відмінні фахівці. Сервіс на високому рівні. Зручне місце розташування, є
-                                        своя парковка з відеоспостереженням. Смачна кава і привітний персонал. Рекомендую!
-                                    </div>
-                                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="reviews--swiper">
+                            <div class="swiper-wrapper">
+                                @foreach ($reviews as $review)
+                                    @include('site.components.doctor-swiper', ['review' => $review])
+                                @endforeach
                             </div>
-                            <div class="reviews--item swiper-slide">
-                                <div class="inner">
-                                    <div class="wrap-img">
-                                        <img src="img/users/user-2.jpeg" alt="img">
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-2">
-                                        <div class="user-name h4 font-weight-bolder">Вікторія</div>
-                                        <div class="reviews-date h6 font-weight-bold text-grey">10.07.2024</div>
-                                    </div>
-                                    <div class="reviews--content os-scrollbar-overflow">Все дуже професійно в цьому
-                                        медичному центрі для реабілітації після травми. Обладнання новітнє, відмінні
-                                        фахівці. Сервіс на високому рівні. Зручне місце розташування, є своя парковка з
-                                        відеоспостереженням. Смачна кава і привітний персонал. Рекомендую!Все дуже
-                                        професійно в цьому медичному центрі для реабілітації після травми. Обладнання
-                                        новітнє, відмінні фахівці. Сервіс на високому рівні. Зручне місце розташування, є
-                                        своя парковка з відеоспостереженням. Смачна кава і привітний персонал. Рекомендую!
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="reviews--item swiper-slide">
-                                <div class="inner">
-                                    <div class="wrap-img">
-                                        <img src="img/users/user-1.jpeg" alt="img">
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-2">
-                                        <div class="user-name h4 font-weight-bolder">Вікторія</div>
-                                        <div class="reviews-date h6 font-weight-bold text-grey">10.07.2024</div>
-                                    </div>
-                                    <div class="reviews--content os-scrollbar-overflow">Все дуже професійно в цьому
-                                        медичному центрі для реабілітації після травми. Обладнання новітнє, відмінні
-                                        фахівці. Сервіс на високому рівні. Зручне місце розташування, є своя парковка з
-                                        відеоспостереженням. Смачна кава і привітний персонал. Рекомендую!Все дуже
-                                        професійно в цьому медичному центрі для реабілітації після травми. Обладнання
-                                        новітнє, відмінні фахівці. Сервіс на високому рівні. Зручне місце розташування, є
-                                        своя парковка з відеоспостереженням. Смачна кава і привітний персонал. Рекомендую!
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="reviews--item swiper-slide">
-                                <div class="inner">
-                                    <div class="wrap-img">
-                                        <img src="img/users/user-2.jpeg" alt="img">
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-2">
-                                        <div class="user-name h4 font-weight-bolder">Вікторія</div>
-                                        <div class="reviews-date h6 font-weight-bold text-grey">10.07.2024</div>
-                                    </div>
-                                    <div class="reviews--content os-scrollbar-overflow">Все дуже професійно в цьому
-                                        медичному центрі для реабілітації після травми. Обладнання новітнє, відмінні
-                                        фахівці. Сервіс на високому рівні. Зручне місце розташування, є своя парковка з
-                                        відеоспостереженням. Смачна кава і привітний персонал. Рекомендую!Все дуже
-                                        професійно в цьому медичному центрі для реабілітації після травми. Обладнання
-                                        новітнє, відмінні фахівці. Сервіс на високому рівні. Зручне місце розташування, є
-                                        своя парковка з відеоспостереженням. Смачна кава і привітний персонал. Рекомендую!
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="swiper-pagination mt-8"></div>
                         </div>
-                        <div class="swiper-pagination mt-8"></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     @if($page->pageBlocks->where('block', 'conditions')->where('key', 'image')->count())
         <section class="stay-conditions mb-24">
