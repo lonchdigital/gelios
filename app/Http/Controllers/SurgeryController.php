@@ -18,6 +18,8 @@ class SurgeryController extends Controller
         $directions = Surgery::with('surgeryBlocks', 'surgeryBlocks')
             ->get();
 
-        return view('site.surgery.index', compact('page', 'directions'));
+        $reviews = $page->reviews;
+
+        return view('site.surgery.index', compact('page', 'directions', 'reviews'));
     }
 }
