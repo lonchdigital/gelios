@@ -288,6 +288,11 @@ class Direction extends Component
                 'string',
                 'max:255'
             ];
+            $rules['сurrentDirectionData.short_name.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
 
             $rules['sectionOneData.text_one.' . $locale] = [
                 'nullable',
@@ -460,6 +465,7 @@ class Direction extends Component
         // Update Direction
         $directionData = [
             'name' => $this->сurrentDirectionData['name'],
+            'short_name' => $this->сurrentDirectionData['short_name'],
             'slug' => $this->сurrentDirectionData['slug'],
             'parent_id' => $this->directionParent
         ];
