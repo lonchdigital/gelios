@@ -207,6 +207,28 @@ class DirectionsService
         }
     }
 
+    public function buildTreeForDashboard($directions)
+    {
+        $tree = [];
+
+        foreach ($directions as $direction) {
+            $children = $direction->children->isNotEmpty() 
+                ? $this->buildTreeForDashboard($direction->children) 
+                : [];
+
+            $tree[] = [
+                'id' => $direction->id,
+                'name' => $direction->name,
+                'template' => $direction->template,
+                'children' => $children,
+                'slug' => $direction->page->slug,
+                'full_path' => url($direction->buildFullPath())
+            ];
+        }
+
+        return $tree;
+    }
+
     public function getAllDirectionsWithParents(Collection $directions): Collection
     {
         $parentIds = $directions->pluck('parent_id')->filter()->unique();

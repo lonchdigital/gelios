@@ -39,10 +39,10 @@ class Index extends Component
 
         if(is_null($this->direction)) {
             $allDirections = $this->directionsService->getAllDirections();
-            $this->allDirections = $this->directionsService->buildTree($allDirections);
+            $this->allDirections = $this->directionsService->buildTreeForDashboard($allDirections);
         } else {
             $allDirections = $this->directionsService->getDirectionsByCategory($this->direction->id);
-            $this->allDirections = $this->directionsService->buildTree($allDirections);
+            $this->allDirections = $this->directionsService->buildTreeForDashboard($allDirections);
         }
     }
 
@@ -62,10 +62,10 @@ class Index extends Component
 
         if(is_null($this->direction)) {
             $allDirections = $this->directionsService->getAllDirections();
-            $this->allDirections = $this->directionsService->buildTree($allDirections);
+            $this->allDirections = $this->directionsService->buildTreeForDashboard($allDirections);
         } else {
             $allDirections = $this->directionsService->getDirectionsByCategory($this->direction->id);
-            $this->allDirections = $this->directionsService->buildTree($allDirections);
+            $this->allDirections = $this->directionsService->buildTreeForDashboard($allDirections);
         }
     }
 
