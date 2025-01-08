@@ -12,7 +12,7 @@ class Direction extends Model implements TranslatableContract
 {
     use Translatable;
 
-    public $translatedAttributes = ['name'];
+    public $translatedAttributes = ['name', 'short_name'];
     protected $fillable = [
         'page_direction_id',
         'parent_id',
@@ -89,7 +89,7 @@ class Direction extends Model implements TranslatableContract
         while ($current) {
             $breadcrumbs[] = [
                 'id' => $current->id,
-                'name' => $current->name ?? null,
+                'name' => $current->short_name ?? null,
                 'slug' => $current->page->slug ?? null,
                 'full_path' => url($current->buildFullPath())
             ];

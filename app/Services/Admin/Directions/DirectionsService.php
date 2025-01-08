@@ -25,6 +25,9 @@ class DirectionsService
         foreach ($direction->getTranslationsArray() as $lang => $value) {
             $data['name'][$lang] = $value['name'];
         }
+        foreach ($direction->getTranslationsArray() as $lang => $value) {
+            $data['short_name'][$lang] = $value['short_name'];
+        }
         
         return $data;
     }
@@ -169,6 +172,11 @@ class DirectionsService
                 $dataToUpdate[$lang]['name'] = $value;
             }
         }
+        if($data['short_name']) {
+            foreach ($data['short_name'] as $lang => $value) {
+                $dataToUpdate[$lang]['short_name'] = $value;
+            }
+        }
 
         $direction->update($dataToUpdate);
     }
@@ -184,7 +192,7 @@ class DirectionsService
 
             $tree[] = [
                 'id' => $direction->id,
-                'name' => $direction->name,
+                'name' => $direction->short_name,
                 'template' => $direction->template,
                 'children' => $children,
                 'slug' => $direction->page->slug,

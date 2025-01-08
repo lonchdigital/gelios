@@ -50,6 +50,7 @@ return [
     'type' => 'Type',
     'actions' => 'Actions',
     'name' => 'Name',
+    'short_name' => 'short name',
     'direction_name' => 'Direction Name',
     'is_show_in_surgery_page' => 'Show in Surgery Page',
     'articles_list' => 'Articles List',

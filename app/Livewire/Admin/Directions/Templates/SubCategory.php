@@ -231,6 +231,11 @@ class SubCategory extends Component
                 'string',
                 'max:255'
             ];
+            $rules['сurrentDirectionData.short_name.' . $locale] = [
+                'nullable',
+                'string',
+                'max:255'
+            ];
 
             $rules['sectionOneData.text_one.' . $locale] = [
                 'nullable',
@@ -343,6 +348,7 @@ class SubCategory extends Component
         // Update Direction Page
         $directionData = [
             'name' => $this->сurrentDirectionData['name'],
+            'short_name' => $this->сurrentDirectionData['short_name'],
             'slug' => $this->сurrentDirectionData['slug'],
             'parent_id' => $this->directionParent
         ];

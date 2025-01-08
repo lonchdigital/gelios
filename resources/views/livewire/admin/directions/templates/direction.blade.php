@@ -23,13 +23,26 @@
 
                                     <section class="mb-50 mt-30">
 
-                                        <x-admin.multilanguage-input
-                                        :is-required="false"
-                                        :label="trans('admin.name')"
-                                        field-name="name"
-                                        live-wire-field="сurrentDirectionData.name"
-                                        :values="$сurrentDirectionData['name']"
-                                        />
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <x-admin.multilanguage-input
+                                                    :is-required="false"
+                                                    :label="trans('admin.name')"
+                                                    field-name="name"
+                                                    live-wire-field="сurrentDirectionData.name"
+                                                    :values="$сurrentDirectionData['name']"
+                                                    />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <x-admin.multilanguage-input
+                                                    :is-required="false"
+                                                    :label="trans('admin.short_name')"
+                                                    field-name="name"
+                                                    live-wire-field="сurrentDirectionData.short_name"
+                                                    :values="$сurrentDirectionData['short_name']"
+                                                    />
+                                            </div>
+                                        </div>
 
                                         <div class="form-group mt-2 mb-0">
                                             <label for="">slug</label>
