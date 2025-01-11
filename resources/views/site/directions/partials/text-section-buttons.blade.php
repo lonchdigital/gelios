@@ -14,7 +14,7 @@
                             <div class="row mt-5">
                                 <div class="col">
                                     <div class="buttons d-flex flex-wrap">
-                                        <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#popup--sign-up-appointment">Записатися на прийом</button>
+                                        <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#popup--sign-up-appointment">{{ trans('pages.sign_up_for_for_appointment') }}</button>
                                     </div>
                                 </div>
                             </div>
