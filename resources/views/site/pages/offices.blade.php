@@ -56,6 +56,7 @@
 
     <section class="offices-direction mb-24 mb-lg-0">
         @foreach ($contacts as $contact)
+            {{-- @dd($contact->getDirectionsTree()) --}}
             @php 
                 $contactTteration = $loop->iteration; 
             @endphp

@@ -50,13 +50,22 @@ class Contact extends Model implements TranslatableContract
         return $this->belongsToMany(Direction::class, 'contact_directions');
     }
 
+
     public function getDirectionsTree()
     {
-        $contactDirections = $this->directions()->with('children.children')->get();
-
+        $contactDirections = $this->directions()->with('parent')->get();
         $allDirections = $this->directionsService()->getAllDirectionsWithParents($contactDirections);
 
-        return $this->directionsService()->buildTree($allDirections, true);
+        return $this->directionsService()->buildTreeForOneContact($allDirections, $contactDirections->keyBy('id'));
     }
+    // TODO:: old version of getDirectionsTree()
+    // public function getDirectionsTree()
+    // {
+    //     $contactDirections = $this->directions()->with('children.children')->get();
+
+    //     $allDirections = $this->directionsService()->getAllDirectionsWithParents($contactDirections);
+
+    //     return $this->directionsService()->buildTree($allDirections, true);
+    // }
     
 }
