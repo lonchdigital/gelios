@@ -76,6 +76,8 @@
 
 .section-top--backdrop-swiper {
 	.swiper-slide {
+		background: $light-blue;
+
 		.backdrop {
 			display: flex;
 			flex-direction: column;
@@ -1001,6 +1003,7 @@
 
 		li {
 			margin-bottom: 8px;
+
 			&:last-child {
 				margin-bottom: 0;
 			}
@@ -1898,6 +1901,7 @@
 		border: 2px solid $blue;
 		background: $white;
 		font-weight: 500;
+		height: 100%;
 
 		li {
 			display: flex;
@@ -3405,9 +3409,11 @@
 .min-h-500 {
 	min-height: 500px;
 }
+
 .h-0 {
 	height: 0;
 }
+
 .min-h-narrow-block {
 	min-height: 915px;
 }
