@@ -12,7 +12,6 @@
                 <div class="item has-dropdown main-title">
                     <a href="##" class="heading" data-slug="{{ $childCatDir['full_path'] }}">{{ $childCatDir['name'] }}</a>
                     <div class="push-menu--lvl">
-                        {{-- @include('site.directions.partials.header-menu', ['data' => collect($childCatDir['children'])]) --}}
                         <x-site.directions.header-menu :data="collect($childCatDir['children'])" />
                     </div>
                 </div>
@@ -28,7 +27,6 @@
                     <div class="item has-dropdown">
                         <a href="##" data-slug="{{ $childSubCatDir['full_path'] }}">{{ $childSubCatDir['name'] }}</a>
                         <div class="push-menu--lvl">
-                            {{-- @include('site.directions.partials.header-menu', ['data' => collect($childSubCatDir['children'])]) --}}
                             <x-site.directions.header-menu :data="collect($childSubCatDir['children'])" />
                         </div>
                     </div>
