@@ -12,6 +12,7 @@ use App\Models\DirectionInfoBlock;
 use App\Models\DirectionTextBlock;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Cache;
 
 
 class DirectionsService 
@@ -184,7 +185,12 @@ class DirectionsService
     }
 
 
-    // TODO:: old tree
+    public function getCachedDirections()
+    {
+        return Cache::remember('all_directions', now()->addDay(), function () {
+            return $this->buildTree($this->getAllDirections(), true);
+        });
+    }
     public function buildTree($directions, $collection = false)
     {
         $tree = [];
@@ -200,8 +206,8 @@ class DirectionsService
                 'template' => $direction->template,
                 'children' => $children,
                 'slug' => $direction->page->slug,
-                'full_path' => '#test'
-                // 'full_path' => url($direction->buildFullPath())
+                // 'full_path' => '#test'
+                'full_path' => url($direction->buildFullPath())
             ];
         }
 

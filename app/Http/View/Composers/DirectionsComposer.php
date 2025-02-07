@@ -14,14 +14,10 @@ class DirectionsComposer
     {
         $directionsService = app(DirectionsService::class);
 
-        // $start = microtime(true);
+        
         // $directions = $directionsService->buildTree($directionsService->getAllDirections(), true);
-        // $end = microtime(true);
-        // dd('Execution time: ' . ($end - $start) . ' seconds');
+        $directions = $directionsService->getCachedDirections();
 
-        $directions = $directionsService->buildTree($directionsService->getAllDirections(), true);
-        // $directions = $directionsService->buildTree($directionsService->getAllDirections());
-        // dd($directions, '222');
         $view->with([
             // 'allDirections' => collect([]),
             'allDirections' => $directions,
