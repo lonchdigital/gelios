@@ -35,7 +35,7 @@
                                                                             <span>{{ $oneDirection['name'] }}</span>
                                                                             <div class="i-link"></div>
                                                                         </a>
-                                                                        @include('site.directions.partials.section-menu', ['data' => $oneDirection['children']])
+                                                                        <x-site.directions.section-menu :data="$oneDirection['children']" />
                                                                     </div>
                                                                 </div>
                                                             @else

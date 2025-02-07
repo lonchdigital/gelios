@@ -182,7 +182,7 @@
                                                                                             <span>{{ $item['name'] }}</span>
                                                                                             <div class="i-link"></div>
                                                                                         </a>
-                                                                                        @include('site.directions.partials.section-menu', ['data' => $item['children']])
+                                                                                        <x-site.directions.section-menu :data="$item['children']" />
                                                                                     </div>
                                                                                 </div>
                                                                             @else

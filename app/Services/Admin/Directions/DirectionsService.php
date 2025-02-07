@@ -49,6 +49,8 @@ class DirectionsService
     public function getAllDirections(): Collection
     {
         return Direction::with('children.children')->whereNull('parent_id')->orderBy('sort')->get();
+
+        // return Direction::with('page')->orderBy('sort')->get();
     }
     public function getAllDirectionsExceptOne(Direction $direction)
     {
@@ -181,6 +183,8 @@ class DirectionsService
         $direction->update($dataToUpdate);
     }
 
+
+    // TODO:: old tree
     public function buildTree($directions, $collection = false)
     {
         $tree = [];
@@ -196,7 +200,8 @@ class DirectionsService
                 'template' => $direction->template,
                 'children' => $children,
                 'slug' => $direction->page->slug,
-                'full_path' => url($direction->buildFullPath())
+                'full_path' => '#test'
+                // 'full_path' => url($direction->buildFullPath())
             ];
         }
 
@@ -206,6 +211,7 @@ class DirectionsService
             return $tree;
         }
     }
+
 
     // public function buildTreeForOneContact(Collection $directions, Collection $validDirections, $parentId = null)
     // {

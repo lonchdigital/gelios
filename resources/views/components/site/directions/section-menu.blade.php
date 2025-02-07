@@ -11,7 +11,7 @@
                                         <span>{{ $oneChildDirection['name'] }}</span>
                                         <div class="i-link"></div>
                                     </a>
-                                    <x-site.directions.section-menu :data="$oneChildDirection['children']" />
+                                    <x-site.directions.section-menu :data="collect($oneChildDirection['children'])" />
                                 </div>
                             </div>
                         @else
