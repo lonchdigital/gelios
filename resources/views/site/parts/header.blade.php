@@ -408,7 +408,8 @@
                                                                                     <div class="item has-dropdown main-title">
                                                                                         <a href="##" class="heading" data-slug="{{ $category['full_path'] }}">{{ $category['name'] }}</a>
                                                                                         <div class="push-menu--lvl">
-                                                                                            @include('site.directions.partials.header-menu', ['data' => collect($category['children'])])
+                                                                                            {{-- @include('site.directions.partials.header-menu', ['data' => collect($category['children'])]) --}}
+                                                                                            <x-site.directions.header-menu :data="collect($category['children'])" />
                                                                                         </div>
                                                                                     </div>
                                                                                 @else
@@ -422,7 +423,8 @@
                                                                                         <div class="item has-dropdown">
                                                                                             <a href="##" data-slug="{{ $subCategory['full_path'] }}">{{ $subCategory['name'] }}</a>
                                                                                             <div class="push-menu--lvl">
-                                                                                                @include('site.directions.partials.header-menu', ['data' => collect($subCategory['children'])])
+                                                                                                {{-- @include('site.directions.partials.header-menu', ['data' => collect($subCategory['children'])]) --}}
+                                                                                                <x-site.directions.header-menu :data="collect($subCategory['children'])" />
                                                                                             </div>
                                                                                         </div>
                                                                                     @else
@@ -434,6 +436,8 @@
 																			</div>
 																		@endforeach
                                                                     </div>
+
+
                                                                 </div>
                                                             </div>
                                                         </div>
