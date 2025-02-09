@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\Cache;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 
 class Direction extends Model implements TranslatableContract
@@ -13,6 +14,7 @@ class Direction extends Model implements TranslatableContract
     use Translatable;
 
     public $translatedAttributes = ['name', 'short_name'];
+
     protected $fillable = [
         'page_direction_id',
         'parent_id',
@@ -20,6 +22,18 @@ class Direction extends Model implements TranslatableContract
         'template'
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saved(function () {
+            Cache::forget('all_directions');
+        });
+
+        static::deleted(function () {
+            Cache::forget('all_directions');
+        });
+    }
 
     public function children()
     {

@@ -187,7 +187,7 @@ class DirectionsService
 
     public function getCachedDirections()
     {
-        return Cache::remember('all_directions', now()->addDay(), function () {
+        return Cache::remember('all_directions', now()->addWeek(), function () {
             return $this->buildTree($this->getAllDirections(), true);
         });
     }
