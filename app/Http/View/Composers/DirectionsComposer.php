@@ -14,13 +14,8 @@ class DirectionsComposer
     {
         $directionsService = app(DirectionsService::class);
 
-        
-        // $directions = $directionsService->buildTree($directionsService->getAllDirections(), true);
-        $directions = $directionsService->getCachedDirections();
-
         $view->with([
-            // 'allDirections' => collect([]),
-            'allDirections' => $directions,
+            'allDirections' => $directionsService->getCachedDirections(),
             'commonDirectionsBlock' => BriefBlock::where('type', 'directions')->first(),
             'allCenters' => Page::where('type', PageType::ONECENTER->value)->get()
         ]);
