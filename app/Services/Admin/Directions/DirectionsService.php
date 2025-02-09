@@ -206,7 +206,6 @@ class DirectionsService
                 'template' => $direction->template,
                 'children' => $children,
                 'slug' => $direction->page->slug,
-                // 'full_path' => '#test'
                 'full_path' => url($direction->buildFullPath())
             ];
         }
@@ -219,6 +218,7 @@ class DirectionsService
     }
 
 
+    // TODO:: remove when finish
     // public function buildTreeForOneContact(Collection $directions, Collection $validDirections, $parentId = null)
     // {
     //     $tree = [];
