@@ -346,10 +346,16 @@
                             @if(!is_null($page))
                                 <div class="mt-2">
                                     <span class="video-string">{{ $page->video_file }}</span>
-                                    {{-- @if($page->video_file)
-                                        <button type="button" class="btn btn-danger ml-5" id="delete-video-button">{{ trans('admin.delete_video') }}</button>
+                                    @if($page->video_file)
+                                        <div class="checkbox d-block">
+                                            <input 
+                                                type="checkbox" 
+                                                wire:model="pageData.media.delete_video"
+                                                id="delete_video" 
+                                            >
+                                            <label for="delete_video" class="cr text-danger">{{ trans('admin.delete_video') }}</label>
+                                        </div>
                                     @endif
-                                    <input type="hidden" name="delete_video" id="delete-video-input" value="0"> --}}
                                 </div>
                             @endif
 
