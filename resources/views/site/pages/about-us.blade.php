@@ -90,7 +90,7 @@
         </div>
     </section>
 
-    @if($сertificates > 1)
+    @if(count($сertificates) > 1)
         <section class="certificates mb-24">
             <div class="container overflow-hidden">
                 <div class="row mb-8">
