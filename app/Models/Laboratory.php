@@ -14,16 +14,21 @@ class Laboratory extends Model
     protected $fillable = [
         'laboratody_city_id',
         'phone',
-        'hours',
         'email',
     ];
 
     public $translatedAttributes = [
         'address',
+        'hours',
     ];
 
     public function laboratoryCity(): BelongsTo
     {
         return $this->belongsTo(LaboratoryCity::class);
+    }
+
+    public function getPhonesAttribute()
+    {
+        return array_map('trim', explode(',', $this->phone));
     }
 }

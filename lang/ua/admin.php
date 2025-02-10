@@ -358,5 +358,7 @@ return [
     'slider' => 'Слайдер',
     'is_active' => 'Чи активний',
     'choose_doctor' => 'Виберіть лікаря',
-    '' => '',
+    'laboratories_prices_list' => 'Список категорій цін для лабораторій',
+    'add_price_category' => 'Додати категорію',
+    'prices_list' => 'Список цін',
 ];

@@ -51,7 +51,7 @@
                                                 </div>
                                             </div>
 
-                                            {{-- <div class="col-md-12">
+                                            <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -60,28 +60,28 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>{{ __('admin.education') }}
+                                                                            <label>{{ __('admin.expirience') }}
                                                                                 <strong>UA</strong>
                                                                             </label>
-                                                                            <textarea wire:model="uaEducation" class="form-control"></textarea>
+                                                                            <textarea wire:model="uaExpirience" class="form-control"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @if ($errors->has('uaEducation'))
+                                                                @if ($errors->has('uaExpirience'))
                                                                     <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $errors->first('uaEducation') }}</div>
-                                                                @elseif($errors->has('ruEducation'))
+                                                                        {{ $errors->first('uaExpirience') }}</div>
+                                                                @elseif($errors->has('ruExpirience'))
                                                                     <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $errors->first('ruEducation') }}</div>
-                                                                @elseif($errors->has('enEducation'))
+                                                                        {{ $errors->first('ruExpirience') }}</div>
+                                                                @elseif($errors->has('enExpirience'))
                                                                     <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $errors->first('enEducation') }}</div>
+                                                                        {{ $errors->first('enExpirience') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div> --}}
+                                            </div>
 
                                             <div class="col-md-12">
                                                 <div class="row">
@@ -183,7 +183,7 @@
                                                 </div>
                                             </div>
 
-                                            {{-- <div class="col-md-12">
+                                            <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -192,28 +192,28 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>{{ __('admin.education') }}
+                                                                            <label>{{ __('admin.expirience') }}
                                                                                 <strong>RU</strong>
                                                                             </label>
-                                                                            <textarea wire:model="ruEducation" class="form-control"></textarea>
+                                                                            <textarea wire:model="ruExpirience" class="form-control"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @if ($errors->has('ruEducation'))
+                                                                @if ($errors->has('ruExpirience'))
                                                                     <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $errors->first('ruEducation') }}</div>
-                                                                @elseif($errors->has('uaEducation'))
+                                                                        {{ $errors->first('ruExpirience') }}</div>
+                                                                @elseif($errors->has('uaExpirience'))
                                                                     <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $errors->first('uaEducation') }}</div>
-                                                                @elseif($errors->has('enEducation'))
+                                                                        {{ $errors->first('uaExpirience') }}</div>
+                                                                @elseif($errors->has('enExpirience'))
                                                                     <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $errors->first('enEducation') }}</div>
+                                                                        {{ $errors->first('enExpirience') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div> --}}
+                                            </div>
 
                                             <div class="col-md-12">
                                                 <div class="row">
@@ -315,7 +315,7 @@
                                                 </div>
                                             </div>
 
-                                            {{-- <div class="col-md-12">
+                                            <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -324,28 +324,28 @@
                                                                     <div
                                                                         class="multilang-content tab-pane fade active show ">
                                                                         <div class="form-group mb-1">
-                                                                            <label>{{ __('admin.education') }}
+                                                                            <label>{{ __('admin.expirience') }}
                                                                                 <strong>EN</strong>
                                                                             </label>
-                                                                            <textarea wire:model="enEducation" class="form-control"></textarea>
+                                                                            <textarea wire:model="enExpirience" class="form-control"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @if ($errors->has('enEducation'))
+                                                                @if ($errors->has('enExpirience'))
                                                                     <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $errors->first('enEducation') }}</div>
-                                                                @elseif($errors->has('ruEducation'))
+                                                                        {{ $errors->first('enExpirience') }}</div>
+                                                                @elseif($errors->has('ruExpirience'))
                                                                     <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $errors->first('ruEducation') }}</div>
-                                                                @elseif($errors->has('uaEducation'))
+                                                                        {{ $errors->first('ruExpirience') }}</div>
+                                                                @elseif($errors->has('uaExpirience'))
                                                                     <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $errors->first('uaEducation') }}</div>
+                                                                        {{ $errors->first('uaExpirience') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div> --}}
+                                            </div>
 
                                             <div class="col-md-12">
                                                 <div class="row">
@@ -523,7 +523,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
+                                        {{-- <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="row mb-3">
@@ -548,7 +548,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         @if($this->activeLocale == 'ua')
                                             <div class="col-md-12">

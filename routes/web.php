@@ -81,6 +81,8 @@ Route::group([
         Route::get('/nashi-speczialisty/{doctor:slug}', [DoctorController::class, 'show'])->name('doctors.show');
 
         Route::get('/laboratories/', [LaboratoryController::class, 'index'])->name('laboratories.index');
+        Route::get('/laboratories/prices', [LaboratoryController::class, 'prices'])->name('laboratories.prices');
+        Route::post('/laboratories-prices-search-filter/', [LaboratoryController::class, 'searchFilter']);
 
         Route::get('/vzroslym/hirurgiya/', [SurgeryController::class, 'index'])->name('surgery.index');
 

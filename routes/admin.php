@@ -197,6 +197,17 @@ Route::group([
             Route::get('/', [LaboratoryController::class, 'index'])->name('index');
             Route::get('/create', [LaboratoryController::class, 'create'])->name('create');
 
+            Route::prefix('/prices')->name('prices.')->group(function() {
+                Route::get('/', [LaboratoryController::class, 'priceIndex'])->name('index');
+                Route::get('/create', [LaboratoryController::class, 'priceCreate'])->name('create');
+                Route::get('/{category}/edit', [LaboratoryController::class, 'priceEdit'])->name('edit');
+
+                Route::prefix('/{category}/item')->group(function() {
+                    Route::get('/create', [LaboratoryController::class, 'itemCreate'])->name('create-item');
+                    Route::get('/{item}/edit', [LaboratoryController::class, 'itemEdit'])->name('edit-item');
+                });
+            });
+
             Route::get('/edit-main-seo', [LaboratoryController::class, 'mainPageSeo'])->name('edit-main-seo');
             Route::get('/edit-one-page-seo', [LaboratoryController::class, 'onePageSeo'])->name('edit-one-page-seo');
 

@@ -61,7 +61,11 @@ class CreateEdit extends Component
 
     public string $age = '';
 
-    public $expirience = '';
+    public string $uaExpirience = '';
+
+    public string $enExpirience = '';
+
+    public string $ruExpirience = '';
 
     public string $seoDescription;
 
@@ -123,7 +127,6 @@ class CreateEdit extends Component
         $this->activeLocale = config('app.active_lang');
         $this->slug = $this->doctor->slug ?? '';
         $this->age = $this->doctor->age ?? '';
-        $this->expirience = $this->doctor->expirience ?? '';
 
         $this->loadTranslations();
         $this->loadImages();
@@ -227,6 +230,10 @@ class CreateEdit extends Component
         $this->uaSeoTitle = $translations['ua']->seo_title ?? '';
         $this->enSeoTitle = $translations['en']->seo_title ?? '';
         $this->ruSeoTitle = $translations['ru']->seo_title ?? '';
+
+        $this->uaExpirience = $translations['ua']->expirience ?? '';
+        $this->enExpirience = $translations['en']->expirience ?? '';
+        $this->ruExpirience = $translations['ru']->expirience ?? '';
     }
 
     public function updatedNewImage($val)
@@ -281,6 +288,24 @@ class CreateEdit extends Component
                 'string',
             ],
 
+            'uaExpirience' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+
+            'enExpirience' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+
+            'ruExpirience' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+
             'uaSpecialty' => [
                 'nullable',
                 'string',
@@ -307,11 +332,6 @@ class CreateEdit extends Component
             ],
 
             'ruDescription' => [
-                'nullable',
-                'string',
-            ],
-
-            'expirience' => [
                 'nullable',
                 'string',
             ],
@@ -433,7 +453,6 @@ class CreateEdit extends Component
         $doctorService->saveDoctor(
             $this->doctor,
             $this->age,
-            $this->expirience,
             // $this->specialization,
             $this->category ?? null,
             $images
@@ -479,6 +498,11 @@ class CreateEdit extends Component
                 'ua' => $this->uaSeoDescription,
                 'en' => $this->enSeoDescription,
                 'ru' => $this->ruSeoDescription,
+            ],
+            [
+                'ua' => $this->uaExpirience,
+                'en' => $this->enExpirience,
+                'ru' => $this->ruExpirience,
             ],
         );
 

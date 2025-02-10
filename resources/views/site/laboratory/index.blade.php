@@ -176,12 +176,21 @@
                                                                 <div class="offices-address">{{ $laboratory->address }}
                                                                 </div>
                                                             </li>
-                                                            <li>
+                                                            @forelse($laboratory->phones as $phone)
+                                                                <li>
+                                                                    <div class="head-phone">{{ __('pages.phone') }}:</div>
+                                                                    <a href="tel:{{ $phone }}">
+                                                                        <div class="link-phone">{{ $phone }}</div>
+                                                                    </a>
+                                                                </li>
+                                                            @empty
+                                                            @endforelse
+                                                            {{-- <li>
                                                                 <div class="head-phone">{{ __('pages.phone') }}:</div>
                                                                 <a href="tel:{{ $laboratory->phone }}">
                                                                     <div class="link-phone">{{ $laboratory->phone }}</div>
                                                                 </a>
-                                                            </li>
+                                                            </li> --}}
                                                             <li>
                                                                 <div class="head-email">Email:</div>
                                                                 <a href="mailto:helioscentr@gmail.com">
@@ -209,17 +218,19 @@
             </div>
         </div>
     </section>
-    <section class="laboratory-map mb-24">
-        <div class="container">
-            <div class="position-relative overflow-hidden mx-auto rounded">
-                <div class="map-body h-100 overflow-hidden">
-                    <div class="wrap-img h-100">
-                        <div id="map2" class="map"></div>
+    @if(!empty($page->pageBlocks->where('block', 'map')->where('key', 'longitude')->first()->title) && !empty($page->pageBlocks->where('block', 'map')->where('key', 'latitude')->first()->title))
+        <section class="laboratory-map mb-24">
+            <div class="container">
+                <div class="position-relative overflow-hidden mx-auto rounded">
+                    <div class="map-body h-100 overflow-hidden">
+                        <div class="wrap-img h-100">
+                            <div id="map2" class="map"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
     <section class="about-us--laboratory about-us mb-24">
         <div class="container-max position-relative overflow-hidden mx-auto">
             <div class="container">
@@ -229,7 +240,10 @@
                             <div class="h2 font-m font-weight-bolder mb-3 mb-lg-5">{{ $page->pageBlocks->where('block', 'prices')->first()->title ?? '' }}</div>
                             <div class="h5 font-weight-bold mb-8 mb-lg-10">{!! $page->pageBlocks->where('block', 'prices')->first()->description ?? '' !!}</div>
                             @if(!empty($page->pageBlocks->where('block', 'prices')->first()->url))
-                                <a href="{{ $page->pageBlocks->where('block', 'prices')->first()->url }}" class="btn btn-white font-weight-bold">{{ $page->pageBlocks->where('block', 'prices')->first()->button ?? '' }}</a>
+                                <a
+                                href="/laboratories/prices"
+                                {{-- href="{{ $page->pageBlocks->where('block', 'prices')->first()->url }}" --}}
+                                 class="btn btn-white font-weight-bold">{{ $page->pageBlocks->where('block', 'prices')->first()->button ?? '' }}</a>
                             @endif
                         </div>
                     </div>

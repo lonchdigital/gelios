@@ -27,9 +27,13 @@ class CreateEdit extends Component
 
     public string $ruAddress = '';
 
-    public string $email = '';
+    public string $uaHour = '';
 
-    public string $hours = '';
+    public string $enHour = '';
+
+    public string $ruHour = '';
+
+    public string $email = '';
 
     public string $latitude = '';
 
@@ -55,8 +59,6 @@ class CreateEdit extends Component
 
         $this->phone = $this->laboratory->phone ?? '';
 
-        $this->hours = $this->laboratory->hours ?? '';
-
         $this->latitude = $this->laboratory->latitude ?? '';
 
         $this->longitude = $this->laboratory->longitude ?? '';
@@ -69,6 +71,10 @@ class CreateEdit extends Component
         $this->uaAddress = $translations['ua']->address ?? '';
         $this->enAddress = $translations['en']->address ?? '';
         $this->ruAddress = $translations['ru']->address ?? '';
+
+        $this->uaHour = $translations['ua']->hours ?? '';
+        $this->enHour = $translations['en']->hours ?? '';
+        $this->ruHour = $translations['ru']->hours ?? '';
 
         $this->cities = LaboratoryCity::get();
 
@@ -98,17 +104,27 @@ class CreateEdit extends Component
                 'string',
             ],
 
+            'uaHour' => [
+                'nullable',
+                'string',
+            ],
+
+            'enHour' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruHour' => [
+                'nullable',
+                'string',
+            ],
+
             'phone' => [
                 'required',
                 'string',
             ],
 
             'email' => [
-                'required',
-                'string',
-            ],
-
-            'hours' => [
                 'required',
                 'string',
             ],
@@ -139,8 +155,6 @@ class CreateEdit extends Component
 
         $this->laboratory->phone = $this->phone;
 
-        $this->laboratory->hours = $this->hours;
-
         $this->laboratory->laboratory_city_id = $this->city;
 
         $this->laboratory->latitude = $this->latitude;
@@ -157,6 +171,12 @@ class CreateEdit extends Component
             'ru' => $this->ruAddress,
         ];
 
+        $hours = [
+            'ua' => $this->uaHour,
+            'en' => $this->enHour,
+            'ru' => $this->ruHour,
+        ];
+
         foreach ($locales as $locale) {
             LaboratoryTranslation::updateOrCreate(
                 [
@@ -165,6 +185,7 @@ class CreateEdit extends Component
                 ],
                 [
                     'address' => $addresses[$locale],
+                    'hours' => $hours[$locale],
                 ]
             );
         }

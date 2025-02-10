@@ -56,12 +56,12 @@
     "src": "resources/fonts/Montserrat-Thin.ttf"
   },
   "resources/js/app.js": {
-    "file": "assets/app-BGvcmXkH.js",
+    "file": "assets/app-CEZ45zUy.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-3B_Tafxe.css"
+      "assets/app-m0ovTr5-.css"
     ],
     "assets": [
       "assets/Inter-Bold-D0m5Xa5u.ttf",
@@ -93,7 +93,7 @@
     ]
   },
   "resources/js/filters/prices/pricesFilter.js": {
-    "file": "assets/pricesFilter-B6qIUpS0.js",
+    "file": "assets/pricesFilter-DKIzbXjR.js",
     "name": "pricesFilter",
     "src": "resources/js/filters/prices/pricesFilter.js",
     "isEntry": true,
@@ -111,7 +111,7 @@
     ]
   },
   "resources/js/main.js": {
-    "file": "assets/main-Dcjbz9-u.js",
+    "file": "assets/main-BJ5lO73F.js",
     "name": "main",
     "src": "resources/js/main.js",
     "isEntry": true,

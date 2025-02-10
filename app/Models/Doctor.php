@@ -19,7 +19,6 @@ class Doctor extends Model
         'image',
         'images',
         'age',
-        'expirience',
         'is_show_in_main_page'
     ];
 
@@ -27,6 +26,7 @@ class Doctor extends Model
         'doctor_id',
         'locale',
         'title',
+        'expirience',
         'specialty',
         'education',
         'content',

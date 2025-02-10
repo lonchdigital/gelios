@@ -6,6 +6,8 @@ use App\Enums\PageType;
 use App\Http\Controllers\Controller;
 use App\Models\Laboratory;
 use App\Models\LaboratoryCity;
+use App\Models\LabPriceCategory;
+use App\Models\LabPriceItem;
 use App\Models\Page;
 use App\Models\PageBlock;
 use Illuminate\Http\Request;
@@ -76,5 +78,30 @@ class LaboratoryController extends Controller
             ->first();
 
         return view('admin.laboratory.one-page-seo', compact('page'));
+    }
+
+    public function priceIndex()
+    {
+        return view('admin.laboratory.price.index');
+    }
+
+    public function priceCreate()
+    {
+        return view('admin.laboratory.price.create');
+    }
+
+    public function priceEdit(LabPriceCategory $category)
+    {
+        return view('admin.laboratory.price.edit', compact('category'));
+    }
+
+    public function itemCreate(LabPriceCategory $category)
+    {
+        return view('admin.laboratory.price.item.create', compact('category'));
+    }
+
+    public function itemEdit(LabPriceCategory $category, LabPriceItem $item)
+    {
+        return view('admin.laboratory.price.item.edit', compact('category', 'item'));
     }
 }

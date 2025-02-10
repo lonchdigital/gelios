@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LaboratoryTranslation extends Model
+class LabPriceItemTranslation extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'address',
+        'lab_price_item_id',
         'locale',
-        'laboratory_id',
-        'hours',
+        'title',
+        'price'
     ];
 }

@@ -13,6 +13,7 @@ class DoctorTranslation extends Model
         'doctor_id',
         'locale',
         'title',
+        'expirience',
         'specialty',
         'education',
         'doctor',

@@ -11,7 +11,7 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => __('pages.main_page'),
+                'title' => __('web.main'),
                 'url' => route('main'),
             ],
             [
@@ -102,32 +102,34 @@
             </div>
         </div>
     </section>
-    <section class="certificates mb-24">
-        <div class="container overflow-hidden">
-            <div class="row mb-8">
-                <div class="col d-flex align-items-center justify-content-between">
-                    <div class="h2 font-m font-weight-bolder text-blue">{{ __('doctor.diplomas_and_certificates') }}</div>
+    @if(count($doctor->imagesUrl))
+        <section class="certificates mb-24">
+            <div class="container overflow-hidden">
+                <div class="row mb-8">
+                    <div class="col d-flex align-items-center justify-content-between">
+                        <div class="h2 font-m font-weight-bolder text-blue">{{ __('doctor.diplomas_and_certificates') }}</div>
+                    </div>
                 </div>
-            </div>
-            <div class="certificates--swiper">
-                <div class="swiper-wrapper mb-8">
-                    @forelse($doctor->imagesUrl as $image)
-                        <div class="certificates--item swiper-slide">
-                            <a data-fancybox="certificates--gallery" href="{{ $image }}">
-                                <div class="inner">
-                                    <div class="wrap-img">
-                                        <img src="{{ $image }}" alt="{{ $doctor->title ?? '' }}">
+                <div class="certificates--swiper">
+                    <div class="swiper-wrapper mb-8">
+                        @forelse($doctor->imagesUrl as $image)
+                            <div class="certificates--item swiper-slide">
+                                <a data-fancybox="certificates--gallery" href="{{ $image }}">
+                                    <div class="inner">
+                                        <div class="wrap-img">
+                                            <img src="{{ $image }}" alt="{{ $doctor->title ?? '' }}">
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                    @empty
-                    @endforelse
+                                </a>
+                            </div>
+                        @empty
+                        @endforelse
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
-                <div class="swiper-pagination"></div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     @if( count($reviews) > 0 )
         <section class="reviews mb-24">

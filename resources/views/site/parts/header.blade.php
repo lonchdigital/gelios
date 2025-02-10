@@ -295,7 +295,7 @@
                                     </div>
                                     <ul class="submenu list-unstyled mb-0 position-absolute py-1 px-2">
                                         @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                            @if ($localeCode !== LaravelLocalization::getCurrentLocale())
+                                            @if ($localeCode !== LaravelLocalization::getCurrentLocale() && $localeCode !== 'en')
                                                 <li>
                                                     <div class="language d-flex align-items-center">
                                                         <a class="d-flex" rel="alternate" hreflang="{{ $localeCode }}"

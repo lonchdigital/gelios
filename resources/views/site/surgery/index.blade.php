@@ -11,11 +11,11 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => 'Головна',
+                'title' => __('web.main'),
                 'url' => route('main'),
             ],
             [
-                'title' => 'Хірургія',
+                'title' => $page->title ?? __('pages.surgery'),
                 'url' => null,
             ],
         ],
@@ -37,10 +37,12 @@
                         </div>
                         <div class="wrap-img">
                             @if (!empty($page->pageBlocks->where('block', 'main')->first()->image))
-                                <img class="bg-down" src="{{ $page->pageBlocks->where('block', 'main')->first()->image }}"
+                                <img class="bg-down"
+                                    src="{{ $page->pageBlocks->where('block', 'main')->first()->imageUrl }}"
                                     alt="{{ $page->pageBlocks->where('block', 'main')->first()->title ?? '' }}">
                             @else
-                                <img class="bg-down" src="{{ asset('static_images/img-background-1.jpeg') }}" alt="img">
+                                <img class="bg-down" src="{{ asset('static_images/img-background-1.jpeg') }}"
+                                    alt="img">
                             @endif
                         </div>
                     </div>
@@ -57,8 +59,10 @@
                 <div class="col-12 col-lg-4 mb-4 mb-lg-0">
                     <div class="section-progress--item position-relative h-100 rounded overflow-hidden">
                         <div class="wrap-img">
-                            @if(!empty($page->pageBlocks->where('block', 'second')->where('key', 'image')->first()->image))
-                                <img class="bg-down" src="{{ $page->pageBlocks->where('block', 'second')->where('key', 'image')->first()->imageUrl }}" alt="img">
+                            @if (!empty($page->pageBlocks->where('block', 'second')->where('key', 'first')->first()->image))
+                                <img class="bg-down"
+                                    src="{{ $page->pageBlocks->where('block', 'second')->where('key', 'first')->first()->imageUrl }}"
+                                    alt="img">
                             @else
                                 <img class="bg-down" src="img/img-251.jpeg" alt="img">
                             @endif
@@ -70,13 +74,17 @@
                     <div class="row">
                         <div class="col-6 mb-3 mb-sm-4 mb-lg-5">
                             <div class="section-progress--item item-small bg-blue p-2 p-lg-3 p-xl-6 rounded">
-                                <div class="quantity h2 font-m font-weight-bolder mb-2">{{ $page->pageBlocks->where('block', 'second')->where('key', 'first')->first()->title ?? '' }}</div>
+                                <div class="quantity h2 font-m font-weight-bolder mb-2">
+                                    {{ $page->pageBlocks->where('block', 'second')->where('key', 'first')->first()->title ?? '' }}
+                                </div>
                                 <div class="h5 text-uppercase">{!! $page->pageBlocks->where('block', 'second')->where('key', 'first')->first()->description ?? '' !!}</div>
                             </div>
                         </div>
                         <div class="col-6 mb-3 mb-sm-4 mb-lg-5">
                             <div class="section-progress--item item-small bg-blue p-2 p-lg-3 p-xl-6 rounded">
-                                <div class="quantity h2 font-m font-weight-bolder mb-2">{{ $page->pageBlocks->where('block', 'second')->where('key', 'second')->first()->title ?? '' }}</div>
+                                <div class="quantity h2 font-m font-weight-bolder mb-2">
+                                    {{ $page->pageBlocks->where('block', 'second')->where('key', 'second')->first()->title ?? '' }}
+                                </div>
                                 <div class="h5 text-uppercase">{!! $page->pageBlocks->where('block', 'second')->where('key', 'second')->first()->description ?? '' !!}</div>
                             </div>
                         </div>
@@ -84,13 +92,17 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="section-progress--item item-small bg-blue p-2 p-lg-3 p-xl-6 rounded">
-                                <div class="quantity h2 font-m font-weight-bolder mb-2">{{ $page->pageBlocks->where('block', 'second')->where('key', 'third')->first()->title ?? '' }}</div>
+                                <div class="quantity h2 font-m font-weight-bolder mb-2">
+                                    {{ $page->pageBlocks->where('block', 'second')->where('key', 'third')->first()->title ?? '' }}
+                                </div>
                                 <div class="h5 text-uppercase">{!! $page->pageBlocks->where('block', 'second')->where('key', 'third')->first()->description ?? '' !!}</div>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="section-progress--item item-small bg-blue p-2 p-lg-3 p-xl-6 rounded">
-                                <div class="quantity h2 font-m font-weight-bolder mb-2">{{ $page->pageBlocks->where('block', 'second')->where('key', 'fourth')->first()->title ?? '' }}</div>
+                                <div class="quantity h2 font-m font-weight-bolder mb-2">
+                                    {{ $page->pageBlocks->where('block', 'second')->where('key', 'fourth')->first()->title ?? '' }}
+                                </div>
                                 <div class="h5 text-uppercase">{!! $page->pageBlocks->where('block', 'second')->where('key', 'fourth')->first()->description ?? '' !!}</div>
                             </div>
                         </div>
@@ -102,7 +114,7 @@
     <section class="media-content">
         <div class="container">
             @forelse($page->pageBlocks->where('block', 'static_block') as $block2)
-                @if($loop->iteration % 2 == 1)
+                @if ($loop->iteration % 2 == 1)
                     <div class="media-content--inner row flex-column-reverse flex-lg-row mb-24">
                         <div class="col-12 col-lg-6">
                             <div class="content-wrap">
@@ -112,7 +124,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-lg-6">
-                            @if(!empty($block2->image))
+                            @if (!empty($block2->image))
                                 <div class="wrap-img">
                                     <img src="{{ $block2->imageUrl }}" alt="img">
                                 </div>
@@ -129,7 +141,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-lg-6">
-                            @if(!empty($block2->image))
+                            @if (!empty($block2->image))
                                 <div class="wrap-img">
                                     <img src="{{ $block2->imageUrl }}" alt="img">
                                 </div>
@@ -145,23 +157,27 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="h2 font-m font-weight-bolder text-blue mb-8">{{ $page->pageBlocks->where('block', 'directions')->first()->title ?? '' }}</div>
+                    <div class="h2 font-m font-weight-bolder text-blue mb-8">
+                        {{ $page->pageBlocks->where('block', 'directions')->first()->title ?? '' }}</div>
                     <div class="accordion" id="accordion-directions-list">
                         @forelse($directions as $direction)
                             <div class="card">
                                 <div class="card-header p-0" id="heading-accordion-directions-list-{{ $loop->iteration }}">
                                     <div class="h4 mb-0">
                                         <div class="btn btn-link collapsed" data-toggle="collapse"
-                                            data-target="#collapse-accordion-directions-list-{{ $loop->iteration }}" aria-expanded="false"
-                                            aria-controls="collapse-accordion-directions-list-{{ $loop->iteration }}">{{ $direction->title }}</div>
+                                            data-target="#collapse-accordion-directions-list-{{ $loop->iteration }}"
+                                            aria-expanded="false"
+                                            aria-controls="collapse-accordion-directions-list-{{ $loop->iteration }}">
+                                            {{ $direction->title }}</div>
                                     </div>
                                 </div>
-                                <div id="collapse-accordion-directions-list-{{ $loop->iteration }}" class="collapse"
+                                Володимир, [10 лют. 2025 р., 12:27:46]:
+...<div id="collapse-accordion-directions-list-{{ $loop->iteration }}" class="collapse"
                                     aria-labelledby="heading-accordion-directions-list-{{ $loop->iteration }}"
                                     data-parent="#accordion-directions-list">
                                     <div class="card-body media-content">
                                         @forelse($direction->surgeryBlocks as $block)
-                                            @if($loop->iteration % 2 == 0)
+                                            @if ($loop->iteration % 2 == 0)
                                                 <div
                                                     class="media-content--inner row flex-column-reverse flex-lg-row mb-3 mb-md-4 mb-lg-5">
                                                     <div class="col-12 col-lg-6">
@@ -172,19 +188,22 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-lg-6">
-                                                        @if(!empty($block->image))
+                                                        @if (!empty($block->image))
                                                             <div class="wrap-img">
-                                                                <img src="{{ $block->imageUrl }}" alt="{{ $page->pageBlocks->where('block', 'directions')->first()->title ?? '' }}">
+                                                                <img src="{{ $block->imageUrl }}"
+                                                                    alt="{{ $page->pageBlocks->where('block', 'directions')->first()->title ?? '' }}">
                                                             </div>
                                                         @else
                                                             <div class="wrap-img">
-                                                                <img src="img/media/image-226.jpeg" alt="{{ $page->pageBlocks->where('block', 'directions')->first()->title ?? '' }}">
+                                                                <img src="img/media/image-226.jpeg"
+                                                                    alt="{{ $page->pageBlocks->where('block', 'directions')->first()->title ?? '' }}">
                                                             </div>
                                                         @endif
                                                     </div>
                                                 </div>
                                             @else
-                                                <div class="media-content--inner row flex-column-reverse flex-lg-row-reverse">
+                                                <div
+                                                    class="media-content--inner row flex-column-reverse flex-lg-row-reverse">
                                                     <div class="col-12 col-lg-6">
                                                         <div class="content-wrap">
                                                             <div class="content os-scrollbar-overflow">
@@ -193,13 +212,15 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-lg-6">
-                                                        @if(!empty($block->image))
+                                                        @if (!empty($block->image))
                                                             <div class="wrap-img">
-                                                                <img src="{{ $block->imageUrl }}" alt="{{ $page->pageBlocks->where('block', 'directions')->first()->title ?? '' }}">
+                                                                <img src="{{ $block->imageUrl }}"
+                                                                    alt="{{ $page->pageBlocks->where('block', 'directions')->first()->title ?? '' }}">
                                                             </div>
                                                         @else
                                                             <div class="wrap-img">
-                                                                <img src="img/media/image-226.jpeg" alt="{{ $page->pageBlocks->where('block', 'directions')->first()->title ?? '' }}">
+                                                                <img src="img/media/image-226.jpeg"
+                                                                    alt="{{ $page->pageBlocks->where('block', 'directions')->first()->title ?? '' }}">
                                                             </div>
                                                         @endif
                                                     </div>
@@ -213,6 +234,51 @@
                         @empty
 
                         @endforelse
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                const accordionContainer = document.querySelector("#accordion-directions-list");
+
+                                if (accordionContainer) {
+                                    accordionContainer.querySelectorAll(".collapse").forEach(function (accordion) {
+                                        const accordionButton = document.querySelector(`[data-target="#${accordion.id}"]`) ||
+                                                                document.querySelector(`[data-toggle="collapse"][href="#${accordion.id}"]`);
+
+                                        if (accordionButton) {
+                                            accordionButton.addEventListener("click", function () {
+                                                setTimeout(() => {
+                                                    if (accordion.classList.contains("open")) {
+                                                        if (!isElementInViewport(accordion)) {
+                                                            accordion.scrollIntoView({
+                                                                behavior: "smooth",
+                                                                block: "start"
+                                                            });
+                                                        }
+                                                    }
+                                                }, 300);
+                                            });
+                                        }
+
+                                        accordion.addEventListener("transitionend", function () {
+                                            if (accordion.scrollHeight > 0) {
+                                                accordion.classList.add("open");
+                                            } else {
+                                                accordion.classList.remove("open");
+                                            }
+                                        });
+                                    });
+                                }
+
+                                function isElementInViewport(el) {
+                                    const rect = el.getBoundingClientRect();
+                                    return (
+                                        rect.top >= 0 &&
+                                        rect.left >= 0 &&
+                                        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                                        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                                    );
+                                }
+                            });
+                        </script>
                         {{-- <div class="card">
                             <div class="card-header p-0" id="heading-accordion-directions-list-2">
                                 <div class="h4 mb-0">
@@ -656,7 +722,7 @@
                     <div class="col-6">
                         <div class="row">
                             @forelse($page->pageBlocks->where('block', 'conditions')->where('key', 'image')->take(3) as $block)
-                                @if($loop->iteration !== 1)
+                                @if ($loop->iteration !== 1)
                                     <div class="col-12 mb-5">
                                         <div class="stay-conditions--small-wrap">
                                             <a href="{{ $block->imageUrl }}" data-fancybox="stay-conditions--gallery">
@@ -802,20 +868,20 @@
             </div>
         </div>
     </section>
-    @if(!empty($page->seo_text))
-            <section class="seo mb-24">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="h2 font-weight-bolder text-blue mb-8">{{ $page->meta_title }}</div>
-                            <div class="seo-wrapper">
-                                <div class="content os-scrollbar-overflow">
-                                    {!! $page->seo_text !!}
-                                </div>
+    @if (!empty($page->seo_text))
+        <section class="seo mb-24">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="h2 font-weight-bolder text-blue mb-8">{{ $page->meta_title }}</div>
+                        <div class="seo-wrapper">
+                            <div class="content os-scrollbar-overflow">
+                                {!! $page->seo_text !!}
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-        @endif
+            </div>
+        </section>
+    @endif
 @endsection

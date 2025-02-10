@@ -42,7 +42,7 @@
                     <select class="select-choose-clinic" name="clinic">
                         <option></option>
                         @forelse($clinics as $clinic)
-                            <option value="{{ $clinic->id }}">{{ $clinic->name }}</option>
+                            <option value="{{ $clinic->id }}">{{ $clinic->title }}</option>
                         @empty
                         @endforelse
                         {{-- <option value="1">Клініка 1</option>
