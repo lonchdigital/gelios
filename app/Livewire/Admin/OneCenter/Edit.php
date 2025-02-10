@@ -298,8 +298,6 @@ class Edit extends Component
     {
         $this->validate();
 
-        // dd($this->sectionOneData, $this->sectionTwoData, $this->page->id);
-
         if( !is_null($this->page) ) {
             $this->oneCenterService->updatePageData($this->page, $this->pageData);
         } else {

@@ -208,6 +208,9 @@ class OneCenterService
             $dataToUpdate['video_file'] = $image;
 
             removeVideoFileFromStorage($page->video_file);
+        } elseif(isset($data['media']['delete_video'])) {
+            removeVideoFileFromStorage($page->video_file);
+            $dataToUpdate['video_file'] = null;
         }
 
         $page->update($dataToUpdate);
