@@ -187,7 +187,9 @@ class DirectionsService
 
     public function getCachedDirections()
     {
-        return Cache::remember('all_directions', now()->addWeek(), function () {
+        $locale = app()->getLocale();
+
+        return Cache::remember("all_directions_{$locale}", now()->addWeek(), function () {
             return $this->buildTree($this->getAllDirections(), true);
         });
     }
