@@ -171,8 +171,7 @@
                                             {{ $direction->title }}</div>
                                     </div>
                                 </div>
-                                Володимир, [10 лют. 2025 р., 12:27:46]:
-...<div id="collapse-accordion-directions-list-{{ $loop->iteration }}" class="collapse"
+                                <div id="collapse-accordion-directions-list-{{ $loop->iteration }}" class="collapse"
                                     aria-labelledby="heading-accordion-directions-list-{{ $loop->iteration }}"
                                     data-parent="#accordion-directions-list">
                                     <div class="card-body media-content">
