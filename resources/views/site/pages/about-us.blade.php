@@ -90,31 +90,33 @@
         </div>
     </section>
 
-    <section class="certificates mb-24">
-        <div class="container overflow-hidden">
-            <div class="row mb-8">
-                <div class="col d-flex align-items-center justify-content-between">
-                    <div class="h2 font-m font-weight-bolder text-blue">{{ trans('web.diplomas_certificates') }}</div>
+    @if($сertificates > 1)
+        <section class="certificates mb-24">
+            <div class="container overflow-hidden">
+                <div class="row mb-8">
+                    <div class="col d-flex align-items-center justify-content-between">
+                        <div class="h2 font-m font-weight-bolder text-blue">{{ trans('web.diplomas_certificates') }}</div>
+                    </div>
                 </div>
-            </div>
-            <div class="certificates--swiper">
-                <div class="swiper-wrapper mb-8">
-                    @foreach ($сertificates as $сertificate)
-                        <div class="certificates--item swiper-slide">
-                            <a data-fancybox="certificates--gallery" href="{{ '/storage/' . $сertificate->image }}">
-                                <div class="inner">
-                                    <div class="wrap-img">
-                                        <img src="{{ '/storage/' . $сertificate->image }}" alt="img">
+                <div class="certificates--swiper">
+                    <div class="swiper-wrapper mb-8">
+                        @foreach ($сertificates as $сertificate)
+                            <div class="certificates--item swiper-slide">
+                                <a data-fancybox="certificates--gallery" href="{{ '/storage/' . $сertificate->image }}">
+                                    <div class="inner">
+                                        <div class="wrap-img">
+                                            <img src="{{ '/storage/' . $сertificate->image }}" alt="img">
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
-                <div class="swiper-pagination"></div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <section class="clinic-gallery mb-24">
         <div class="container">
