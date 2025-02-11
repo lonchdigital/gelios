@@ -50,8 +50,6 @@ class DirectionsService
     public function getAllDirections(): Collection
     {
         return Direction::with('children.children')->whereNull('parent_id')->orderBy('sort')->get();
-
-        // return Direction::with('page')->orderBy('sort')->get();
     }
     public function getAllDirectionsExceptOne(Direction $direction)
     {
