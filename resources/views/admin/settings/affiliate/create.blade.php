@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="container-fluid">
-        @livewire('admin.settings.edit-header')
-        @livewire('admin.modals.delete')
+        @livewire('admin.settings.affiliate.create-edit', ['city' => $city])
     </div>
 @endsection

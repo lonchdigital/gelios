@@ -307,7 +307,7 @@
                             <div
                                 class="popup--contacts-offices bg-light-blue p-5 rounded d-flex flex-column justify-content-between">
                                 <div>
-                                    <div class="spoiler--contacts">
+                                    {{-- <div class="spoiler--contacts">
                                         <div class="row row-gap">
                                             <div class="col-12 col-xl-6">
                                                 <ul class="list-unstyled mb-0">
@@ -411,6 +411,11 @@
                                                     </li>
                                                 </ul>
                                             </div>
+                                        </div>
+                                    </div> --}}
+                                    <div class="spoiler--contacts">
+                                        <div class="row row-gap" id="affiliates-container">
+
                                         </div>
                                     </div>
                                 </div>

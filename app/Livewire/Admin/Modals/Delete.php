@@ -10,6 +10,7 @@ use App\Models\CheckUp;
 use App\Models\CheckUpProgram;
 use App\Models\Doctor;
 use App\Models\DoctorCategory;
+use App\Models\HeaderAffiliate;
 use App\Models\Laboratory;
 use App\Models\LaboratoryCity;
 use App\Models\PageBlock;
@@ -187,6 +188,14 @@ class Delete extends Component
                 $this->modalInfo  = '';
                 break;
 
+            case 'affiliate':
+                $this->item = HeaderAffiliate::find($modelId);
+                $this->type = 'affiliate';
+                $this->modalTitle = 'Delete affiliate';
+                $this->modalBody  = 'You really want to delete affiliate: ' . $this->item->title . '?';
+                $this->modalInfo  = '';
+                break;
+
             default:
 
                 break;
@@ -229,6 +238,14 @@ class Delete extends Component
                 return true;
 
             case 'laboratory':
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
+            case 'affiliate':
 
                 $this->item->delete();
 

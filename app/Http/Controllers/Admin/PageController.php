@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\PageType;
 use App\Http\Controllers\Controller;
+use App\Models\HeaderAffiliate;
+use App\Models\HeaderCity;
 use App\Models\Page;
 use App\Models\PageBlock;
 use Illuminate\Http\Request;
@@ -57,5 +59,15 @@ class PageController extends Controller
             ->first();
 
         return view('admin.main-page.slider.edit', compact('page', 'block'));
+    }
+
+    public function createAffiliate(HeaderCity $city)
+    {
+        return view('admin.settings.affiliate.create', compact('city'));
+    }
+
+    public function editAffiliate(HeaderCity $city, HeaderAffiliate $affiliate)
+    {
+        return view('admin.settings.affiliate.edit', compact('city', 'affiliate'));
     }
 }

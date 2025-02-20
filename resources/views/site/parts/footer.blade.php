@@ -113,7 +113,8 @@
                                                 <li>
                                                     <button type="button" class="contact-details" data-toggle="modal" data-target="#popup--contacts"
                                                     data-city="{{ 'Дніпро' }}"
-                                                    @forelse($affiliates as $affiliate2)
+                                                    data-affiliates="{{ $affiliates }}"
+                                                    {{-- @forelse($affiliates as $affiliate2)
                                                         @switch($loop->iteration)
                                                             @case(1)
                                                                 data-first="{{ $affiliate2 }}"
@@ -135,7 +136,7 @@
 
                                                         @endswitch
                                                     @empty
-                                                    @endforelse
+                                                    @endforelse --}}
                                                     >{{ __('pages.view') }}</button>
                                                 </li>
                                             </ul>

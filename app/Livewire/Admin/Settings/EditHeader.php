@@ -46,16 +46,18 @@ class EditHeader extends Component
 
     public $headerImageTemporary;
 
-    public $headerAffiliates = [];
+    // public $headerAffiliates = [];
 
-    public $translatedAddresses = [];
+    // public $translatedAddresses = [];
 
-    public $headerSecondAffiliates = [];
+    // public $headerSecondAffiliates = [];
 
-    public $translatedSecondAddresses = [];
+    // public $translatedSecondAddresses = [];
 
     protected $listeners = [
-        'languageSwitched' => 'languageSwitched'
+        'languageSwitched' => 'languageSwitched',
+        'refreshItemsAfterDelete' => 'refreshItemsAfterDelete',
+        'refresh' => '$refresh',
     ];
 
     public function mount()
@@ -70,35 +72,35 @@ class EditHeader extends Component
 
         $this->loadValues2($this->secondCity);
 
-        $this->headerAffiliates = HeaderAffiliate::where('header_city_id', $this->firstCity->id)
-            ->get()
-            ->toArray();
+        // $this->headerAffiliates = HeaderAffiliate::where('header_city_id', $this->firstCity->id)
+        //     ->get()
+        //     ->toArray();
 
-        foreach ($this->headerAffiliates as $index => $affiliate) {
-            $headerAffiliate = HeaderAffiliate::find($affiliate['id']);
+        // foreach ($this->headerAffiliates as $index => $affiliate) {
+        //     $headerAffiliate = HeaderAffiliate::find($affiliate['id']);
 
-            foreach (config('app.available_languages') as $locale) {
-                $this->translatedAddresses[$index][$locale] = $headerAffiliate
-                ->translations()
-                ->where('locale', $locale)
-                ->first()->address;
-            }
-        }
+        //     foreach (config('app.available_languages') as $locale) {
+        //         $this->translatedAddresses[$index][$locale] = $headerAffiliate
+        //         ->translations()
+        //         ->where('locale', $locale)
+        //         ->first()->address;
+        //     }
+        // }
 
-        $this->headerSecondAffiliates = HeaderAffiliate::where('header_city_id', $this->secondCity->id)
-            ->get()
-            ->toArray();
+        // $this->headerSecondAffiliates = HeaderAffiliate::where('header_city_id', $this->secondCity->id)
+        //     ->get()
+        //     ->toArray();
 
-        foreach ($this->headerSecondAffiliates as $index => $affiliate) {
-            $headerAffiliate = HeaderAffiliate::find($affiliate['id']);
+        // foreach ($this->headerSecondAffiliates as $index => $affiliate) {
+        //     $headerAffiliate = HeaderAffiliate::find($affiliate['id']);
 
-            foreach (config('app.available_languages') as $locale) {
-                $this->translatedSecondAddresses[$index][$locale] = $headerAffiliate
-                    ->translations()
-                    ->where('locale', $locale)
-                    ->first()->address;
-            }
-        }
+        //     foreach (config('app.available_languages') as $locale) {
+        //         $this->translatedSecondAddresses[$index][$locale] = $headerAffiliate
+        //             ->translations()
+        //             ->where('locale', $locale)
+        //             ->first()->address;
+        //     }
+        // }
     }
 
     public function loadValues(HeaderCity $firstCity)
@@ -171,45 +173,45 @@ class EditHeader extends Component
                 'image',
             ],
 
-            'headerAffiliates.*.first_phone' => [
-                'required',
-                'string',
-                'max:255',
-            ],
+            // 'headerAffiliates.*.first_phone' => [
+            //     'required',
+            //     'string',
+            //     'max:255',
+            // ],
 
-            'headerAffiliates.*.second_phone' => [
-                'nullable',
-                'string',
-                'max:255',
-            ],
+            // 'headerAffiliates.*.second_phone' => [
+            //     'nullable',
+            //     'string',
+            //     'max:255',
+            // ],
 
-            'headerAffiliates.*.email' => [
-                'nullable',
-                'string',
-                'max:255',
-            ],
+            // 'headerAffiliates.*.email' => [
+            //     'nullable',
+            //     'string',
+            //     'max:255',
+            // ],
 
-            'headerAffiliates.*.hours' => [
-                'nullable',
-                'string',
-                'max:255',
-            ],
+            // 'headerAffiliates.*.hours' => [
+            //     'nullable',
+            //     'string',
+            //     'max:255',
+            // ],
 
-            'headerAffiliates.*.latitude' => [
-                'nullable',
-                'numeric',
-            ],
+            // 'headerAffiliates.*.latitude' => [
+            //     'nullable',
+            //     'numeric',
+            // ],
 
-            'headerAffiliates.*.longitude' => [
-                'nullable',
-                'numeric',
-            ],
+            // 'headerAffiliates.*.longitude' => [
+            //     'nullable',
+            //     'numeric',
+            // ],
 
-            'translatedAddresses.*.*' => [
-                'nullable',
-                'string',
-                'max:255',
-            ],
+            // 'translatedAddresses.*.*' => [
+            //     'nullable',
+            //     'string',
+            //     'max:255',
+            // ],
 
             'firstCityFirstPhone' => [
                 'nullable',
@@ -247,29 +249,29 @@ class EditHeader extends Component
 
         $this->saveImages();
 
-        foreach ($this->headerAffiliates as $index => $affiliateData) {
-            $headerAffiliate = HeaderAffiliate::find($affiliateData['id']);
+        // foreach ($this->headerAffiliates as $index => $affiliateData) {
+        //     $headerAffiliate = HeaderAffiliate::find($affiliateData['id']);
 
-            $headerAffiliate->fill($affiliateData);
-            $headerAffiliate->save();
+        //     $headerAffiliate->fill($affiliateData);
+        //     $headerAffiliate->save();
 
-            foreach ($this->translatedAddresses[$index] as $locale => $address) {
-                $headerAffiliate->translateOrNew($locale)->address = $address;
-            }
-            $headerAffiliate->save();
-        }
+        //     foreach ($this->translatedAddresses[$index] as $locale => $address) {
+        //         $headerAffiliate->translateOrNew($locale)->address = $address;
+        //     }
+        //     $headerAffiliate->save();
+        // }
 
-        foreach ($this->headerSecondAffiliates as $index => $affiliateData) {
-            $headerAffiliate = HeaderAffiliate::find($affiliateData['id']);
+        // foreach ($this->headerSecondAffiliates as $index => $affiliateData) {
+        //     $headerAffiliate = HeaderAffiliate::find($affiliateData['id']);
 
-            $headerAffiliate->fill($affiliateData);
-            $headerAffiliate->save();
+        //     $headerAffiliate->fill($affiliateData);
+        //     $headerAffiliate->save();
 
-            foreach ($this->translatedSecondAddresses[$index] as $locale => $address) {
-                $headerAffiliate->translateOrNew($locale)->address = $address;
-            }
-            $headerAffiliate->save();
-        }
+        //     foreach ($this->translatedSecondAddresses[$index] as $locale => $address) {
+        //         $headerAffiliate->translateOrNew($locale)->address = $address;
+        //     }
+        //     $headerAffiliate->save();
+        // }
 
         $this->saveCities();
 
@@ -327,6 +329,23 @@ class EditHeader extends Component
 
     //     $description->save();
     // }
+
+    public function getAffiliatesProperty()
+    {
+        $affiliates = HeaderAffiliate::get();
+
+        return $affiliates;
+    }
+
+    public function deleteItem($id, $type)
+    {
+        $this->dispatch('openModalDeleteItem', $type, $id);
+    }
+
+    public function refreshItemsAfterDelete()
+    {
+        $this->dispatch('refresh');
+    }
 
     public function render()
     {

@@ -10,7 +10,7 @@ class HeaderAffiliateTranslation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'header_city_id',
+        'header_affiliate_id',
         'locale',
         'address',
     ];

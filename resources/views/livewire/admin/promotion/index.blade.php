@@ -26,6 +26,13 @@
                         + {{ __('admin.add_slide') }}
                     </a>
                 @endif
+
+                @if($group == 'second' && !$this->page2->pageBlocks->where('block', 'main')->count())
+                    <a href="{{ route('admin.promotions.create-slide', ['page' => $this->page2]) }}"
+                        class="btn btn-primary waves-effect waves-light float-right mb-3">
+                        + {{ __('admin.add_slide') }}
+                    </a>
+                @endif
                 </div>
                     <table class="table mt-1">
                         <thead>

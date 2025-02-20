@@ -341,7 +341,8 @@ class Edit extends Component
 
     public function isShowLink()
     {
-        return $this->block->block == 'main' && $this->block->key == 'text' && $this->block->page->slug == 'podcasts';
+        return $this->block->block == 'main' && $this->block->key == 'text' && $this->block->page->slug == 'podcasts'
+            || $this->block->block == 'banner' && $this->block->key == 'content';
     }
 
     public function isShowImage()

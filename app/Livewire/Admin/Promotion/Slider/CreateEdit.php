@@ -207,6 +207,8 @@ class CreateEdit extends Component
         $data = [
             'page_id' => $this->page->id,
             'link' => $this->link,
+            'block' => 'main',
+            'key' => 'slider',
         ];
 
         $service = resolve(BlockService::class);

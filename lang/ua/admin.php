@@ -361,4 +361,7 @@ return [
     'laboratories_prices_list' => 'Список категорій цін для лабораторій',
     'add_price_category' => 'Додати категорію',
     'prices_list' => 'Список цін',
+    'first_city_header_affiliates' => 'Філії першого міста',
+    'second_city_header_affiliates' => 'Філії другого міста',
+    'add_affiliate' => 'Додати філію',
 ];

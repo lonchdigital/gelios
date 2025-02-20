@@ -30,15 +30,14 @@ class FixSurgeryBlockCommand extends Command
      */
     public function handle()
     {
-        $page = Page::where('type', PageType::SURGERY->value)->first();
+        $blocks = PageBlock::whereIn('id', [28, 31, 38])
+            ->get();
 
-        $block = $page->pageBlocks()
-            ->where('block', 'second')
-            ->where('key', 'image')
-            ->first();
-
-        if(!empty($block->id)) {
-            $block->delete();
+        foreach($blocks as $block) {
+            $block->update([
+                'group' => 'main',
+                'key' => 'slider'
+            ]);
         }
 
         return Command::SUCCESS;
