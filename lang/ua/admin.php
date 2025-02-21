@@ -194,7 +194,9 @@ return [
         'title'         => 'Заголовок',
         '3d'            => '3D',
         'link'          => 'Посилання',
-        'static_block'  => 'Статичні блоки'
+        'static_block'  => 'Статичні блоки',
+        'Inpatient'     => 'Стаціонар',
+        'conditions'    => 'Умови перебування',
     ],
     'promotion_seo_page' => 'SEO сторінки акцій',
     'one_promotion_seo' => 'SEO однієї акції',
@@ -364,4 +366,6 @@ return [
     'first_city_header_affiliates' => 'Філії першого міста',
     'second_city_header_affiliates' => 'Філії другого міста',
     'add_affiliate' => 'Додати філію',
+    'footer_affiliates' => 'Філії в футері',
+    'create_affiliate' => 'Створення філії',
 ];

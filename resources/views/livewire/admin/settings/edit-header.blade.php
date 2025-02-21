@@ -682,7 +682,7 @@
                                                 <tr>
                                                     <td>{{ $affiliate2->address }}</td>
                                                     <td style="text-align: right">
-                                                        <a href="{{ route('admin.affiliate.edit', ['city' => 2, 'affiliate' => $affiliate]) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                                        <a href="{{ route('admin.affiliate.edit', ['city' => 2, 'affiliate' => $affiliate2]) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
                                                         <a wire:click="deleteItem('{{ $affiliate2->id }}', 'affiliate')" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
                                                     </td>
                                                 </tr>

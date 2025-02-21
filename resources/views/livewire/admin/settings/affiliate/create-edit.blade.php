@@ -45,6 +45,35 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>{{ __('admin.work_hours') }}
+                                                                                <strong>UA</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="uaHour"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('uaHour')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         @endif
 
                                         @if ($this->activeLocale == 'ru')
@@ -75,6 +104,35 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>{{ __('admin.work_hours') }}
+                                                                                <strong>RU</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="ruHour"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('ruHour')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         @endif
 
                                         @if ($this->activeLocale == 'en')
@@ -105,6 +163,35 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>{{ __('admin.work_hours') }}
+                                                                                <strong>EN</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="enHour"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('enHour')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         @endif
 
                                         <div class="col-md-12">
@@ -188,7 +275,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
+                                        {{-- <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="row mb-3">
@@ -213,7 +300,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="col-md-12">
                                             <div class="row">

@@ -83,67 +83,69 @@
 							<div class="ml-xxl-4">
 
                                 @forelse($affiliates as $affiliate)
-                                    @if($loop->iteration == 1)
-                                        <div class="row mb-11 mb-xl-16">
-                                    @endif
+                                    @if($loop->iteration < 5)
+                                        @if($loop->iteration == 1)
+                                            <div class="row mb-11 mb-xl-16">
+                                        @endif
 
-                                    @if($loop->iteration == 3)
-                                        <div class="row">
-                                    @endif
+                                        @if($loop->iteration == 3)
+                                            <div class="row">
+                                        @endif
 
-                                        <div class="col-12 col-md @if($loop->iteration == 1 || $loop->iteration == 3) mb-11 mb-md-0 @endif">
-                                            @if(!empty($affiliate->address))
-                                                <div class="h4 mb-5 font-weight-bold">{{ $affiliate->address }}</div>
-                                            @endif
-                                            <ul class="list-unstyled mb-0">
-                                                @if(!empty($affiliate->first_phone))
-                                                    <li>
-                                                        <a href="tel:{{ $affiliate->first_phone }}">
-                                                            <div class="link-phone">{{ $affiliate->first_phone }}</div>
-                                                        </a>
-                                                    </li>
+                                            <div class="col-12 col-md @if($loop->iteration == 1 || $loop->iteration == 3) mb-11 mb-md-0 @endif">
+                                                @if(!empty($affiliate->address))
+                                                    <div class="h4 mb-5 font-weight-bold">{{ $affiliate->address }}</div>
                                                 @endif
-                                                @if(!empty($affiliate->second_phone))
+                                                <ul class="list-unstyled mb-0">
+                                                    @if(!empty($affiliate->first_phone))
+                                                        <li>
+                                                            <a href="tel:{{ $affiliate->first_phone }}">
+                                                                <div class="link-phone">{{ $affiliate->first_phone }}</div>
+                                                            </a>
+                                                        </li>
+                                                    @endif
+                                                    @if(!empty($affiliate->second_phone))
+                                                        <li>
+                                                            <a href="tel:{{ $affiliate->second_phone }}">
+                                                                <div class="link-phone">{{ $affiliate->second_phone }}</div>
+                                                            </a>
+                                                        </li>
+                                                    @endif
                                                     <li>
-                                                        <a href="tel:{{ $affiliate->second_phone }}">
-                                                            <div class="link-phone">{{ $affiliate->second_phone }}</div>
-                                                        </a>
+                                                        <button type="button" class="contact-details" data-toggle="modal" data-target="#popup--contacts"
+                                                        data-city="{{ 'Дніпро' }}"
+                                                        data-affiliates="{{ $affiliates }}"
+                                                        {{-- @forelse($affiliates as $affiliate2)
+                                                            @switch($loop->iteration)
+                                                                @case(1)
+                                                                    data-first="{{ $affiliate2 }}"
+                                                                    @break
+
+                                                                @case(2)
+                                                                    data-second="{{ $affiliate2 }}"
+                                                                    @break
+
+                                                                @case(3)
+                                                                    data-third="{{ $affiliate2 }}"
+                                                                    @break
+
+                                                                @case(4)
+                                                                    data-fourth="{{ $affiliate2 }}"
+                                                                    @break
+
+                                                                @default
+
+                                                            @endswitch
+                                                        @empty
+                                                        @endforelse --}}
+                                                        >{{ __('pages.view') }}</button>
                                                     </li>
-                                                @endif
-                                                <li>
-                                                    <button type="button" class="contact-details" data-toggle="modal" data-target="#popup--contacts"
-                                                    data-city="{{ 'Дніпро' }}"
-                                                    data-affiliates="{{ $affiliates }}"
-                                                    {{-- @forelse($affiliates as $affiliate2)
-                                                        @switch($loop->iteration)
-                                                            @case(1)
-                                                                data-first="{{ $affiliate2 }}"
-                                                                @break
+                                                </ul>
+                                            </div>
 
-                                                            @case(2)
-                                                                data-second="{{ $affiliate2 }}"
-                                                                @break
-
-                                                            @case(3)
-                                                                data-third="{{ $affiliate2 }}"
-                                                                @break
-
-                                                            @case(4)
-                                                                data-fourth="{{ $affiliate2 }}"
-                                                                @break
-
-                                                            @default
-
-                                                        @endswitch
-                                                    @empty
-                                                    @endforelse --}}
-                                                    >{{ __('pages.view') }}</button>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                    @if($loop->iteration == 2 || $loop->iteration == 4)
-                                        </div>
+                                        @if($loop->iteration == 2 || $loop->iteration == 4)
+                                            </div>
+                                        @endif
                                     @endif
                                     @empty
                                     @endforelse

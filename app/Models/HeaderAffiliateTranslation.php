@@ -13,5 +13,6 @@ class HeaderAffiliateTranslation extends Model
         'header_affiliate_id',
         'locale',
         'address',
+        'hours',
     ];
 }

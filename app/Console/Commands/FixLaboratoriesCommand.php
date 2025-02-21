@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Enums\PageType;
+use App\Models\Page;
 use App\Models\PageBlock;
 use App\Models\User;
 use Illuminate\Console\Command;
@@ -28,43 +30,33 @@ class FixLaboratoriesCommand extends Command
      */
     public function handle()
     {
-        $block1 = PageBlock::find(20);
+        $block = PageBlock::find(66);
 
-        $block1->update([
-            'block' => 'second_block',
-            'key' => 'first',
+        $block->update([
+            'group' => 'main',
+            'key' => 'slider'
         ]);
 
-        $block2 = PageBlock::find(21);
-
-        $block2->update([
-            'block' => 'second_block',
-            'key' => 'second',
-        ]);
-
-        $block3 = PageBlock::find(22);
-
-        $block3->update([
-            'block' => 'second_block',
-            'key' => 'third',
-        ]);
-
-        $block4 = PageBlock::find(23);
-
-        $block4->update([
-            'block' => 'prices',
-            'key' => 'text',
-        ]);
+        $page = Page::where('type', PageType::SURGERY->value)
+            ->first();
 
         $pageBlock = PageBlock::firstOrCreate([
-            'page_id' => 5,
-            'block' => 'second_block',
-            'key' => 'fourth',
+            'page_id' => $page->id,
+            'block' => 'conditions',
+            'key' => 'title',
         ]);
 
-        $pageBlock->translateOrNew('ua')->title = 'Комфортні умови здачі';
-        $pageBlock->translateOrNew('ru')->title = 'Комфортні умови здачі';
-        $pageBlock->translateOrNew('en')->title = 'Комфортні умови здачі';
+        $pageBlock->translateOrNew('ua')->title = 'Умови перебування';
+        $pageBlock->translateOrNew('ru')->title = 'Умови перебування';
+        $pageBlock->translateOrNew('en')->title = 'Умови перебування';
+
+        $pageBlock->save();
+
+        $pageBlock = PageBlock::firstOrCreate([
+            'page_id' => $page->id,
+            'block' => '3d',
+            'key' => 'link',
+        ]);
 
         $pageBlock->save();
 

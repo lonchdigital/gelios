@@ -15,12 +15,12 @@ class HeaderAffiliate extends Model
         'first_phone',
         'second_phone',
         'email',
-        'hours',
         'latitude',
         'longitude',
     ];
 
     public $translatedAttributes = [
         'address',
+        'hours',
     ];
 }

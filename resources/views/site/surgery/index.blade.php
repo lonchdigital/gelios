@@ -820,16 +820,18 @@
         </section>
     @endif
 
-    <section class="tour mb-24">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="h2 font-m font-weight-bolder text-blue mb-8">3D тур</div>
+    @if(!empty($page->pageBlocks->where('block', '3d')->where('key', 'link')->first()->url ?? null))
+        <section class="tour mb-24">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="h2 font-m font-weight-bolder text-blue mb-8">3D тур</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="tour tour-viewer"></div>
-    </section>
+            <div class="tour tour-viewer"></div>
+        </section>
+    @endif
     <section class="any-questions mb-24 py-xl-16">
         <div class="container">
             <div class="row align-items-center">

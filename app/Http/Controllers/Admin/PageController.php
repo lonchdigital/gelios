@@ -70,4 +70,14 @@ class PageController extends Controller
     {
         return view('admin.settings.affiliate.edit', compact('city', 'affiliate'));
     }
+
+    public function createFooterAffiliate(HeaderCity $city)
+    {
+        return view('admin.settings.affiliate.create', compact('city'));
+    }
+
+    public function editFooterAffiliate(HeaderCity $city, HeaderAffiliate $affiliate)
+    {
+        return view('admin.settings.affiliate.edit', compact('city', 'affiliate'));
+    }
 }

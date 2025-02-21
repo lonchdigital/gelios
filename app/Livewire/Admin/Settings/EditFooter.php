@@ -253,6 +253,14 @@ class EditFooter extends Component
         ]);
     }
 
+    public function getAffiliatesProperty()
+    {
+        $affiliates = HeaderAffiliate::where('header_city_id', null)
+            ->get();
+
+        return $affiliates;
+    }
+
     public function render()
     {
         return view('livewire.admin.settings.edit-footer');

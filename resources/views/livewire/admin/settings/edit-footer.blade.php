@@ -228,7 +228,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
+                                        {{-- <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="row mb-3">
@@ -245,9 +245,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
-                                        @forelse ($this->footerAffiliates as $index => $affiliate)
+                                        {{-- @forelse ($this->footerAffiliates as $index => $affiliate)
 
                                             <div class="col-md-12">
                                                 <div class="row">
@@ -520,8 +520,42 @@
                                                 </div>
                                             </div>
                                         @empty
-                                        @endforelse
+                                        @endforelse --}}
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-30">
+                            <div class="card-body pb-0">
+                                <div class="d-flex justify-content-between align-items-center mb-20">
+                                    <h6 class="card-title mb-0">{{ __('admin.footer_affiliates') }}</h6>
+
+                                    <a href="{{ route('admin.footer.affiliate.create') }}" class="btn btn-primary waves-effect waves-light float-right mb-3">
+                                        + {{ __('admin.add_affiliate') }}
+                                    </a>
+                                </div>
+
+                                <div class="table-responsive art-cars-list">
+                                    <table class="table table-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ __('admin.name') }}</th>
+                                                <th style="text-align: right">{{ __('admin.actions') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($this->affiliates as $affiliate)
+                                            <tr>
+                                                <td>{{ $affiliate->address }}</td>
+                                                <td style="text-align: right">
+                                                    <a href="{{ route('admin.footer.affiliate.edit', ['affiliate' => $affiliate]) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                                    <a wire:click="deleteItem('{{ $affiliate->id }}', 'affiliate')" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

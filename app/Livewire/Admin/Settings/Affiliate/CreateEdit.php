@@ -30,13 +30,11 @@ class CreateEdit extends Component
 
     public string $ruAddress = '';
 
-    public string $hours = '';
+    public string $uaHour = '';
 
-    // public string $uaHour = '';
+    public string $enHour = '';
 
-    // public string $enHour = '';
-
-    // public string $ruHour = '';
+    public string $ruHour = '';
 
     public string $email = '';
 
@@ -72,8 +70,6 @@ class CreateEdit extends Component
 
         $this->longitude = $this->affiliate->longitude ?? '';
 
-        $this->hours = $this->affiliate->hours ?? '';
-
         $translations = HeaderAffiliateTranslation::where('header_affiliate_id',
             $this->affiliate->id ?? null)
             ->get()
@@ -83,9 +79,9 @@ class CreateEdit extends Component
         $this->enAddress = $translations['en']->address ?? '';
         $this->ruAddress = $translations['ru']->address ?? '';
 
-        // $this->uaHour = $translations['ua']->hours ?? '';
-        // $this->enHour = $translations['en']->hours ?? '';
-        // $this->ruHour = $translations['ru']->hours ?? '';
+        $this->uaHour = $translations['ua']->hours ?? '';
+        $this->enHour = $translations['en']->hours ?? '';
+        $this->ruHour = $translations['ru']->hours ?? '';
     }
 
     public function languageSwitched($lang)
@@ -111,25 +107,20 @@ class CreateEdit extends Component
                 'string',
             ],
 
-            'hours' => [
+            'uaHour' => [
                 'nullable',
                 'string',
             ],
 
-            // 'uaHour' => [
-            //     'nullable',
-            //     'string',
-            // ],
+            'enHour' => [
+                'nullable',
+                'string',
+            ],
 
-            // 'enHour' => [
-            //     'nullable',
-            //     'string',
-            // ],
-
-            // 'ruHour' => [
-            //     'nullable',
-            //     'string',
-            // ],
+            'ruHour' => [
+                'nullable',
+                'string',
+            ],
 
             'firstPhone' => [
                 'nullable',
@@ -175,8 +166,6 @@ class CreateEdit extends Component
 
         $this->affiliate->longitude = $this->longitude;
 
-        $this->affiliate->hours = $this->hours;
-
         $this->affiliate->save();
 
         $locales = ['ua', 'en', 'ru'];
@@ -187,11 +176,11 @@ class CreateEdit extends Component
             'ru' => $this->ruAddress,
         ];
 
-        // $hours = [
-        //     'ua' => $this->uaHour,
-        //     'en' => $this->enHour,
-        //     'ru' => $this->ruHour,
-        // ];
+        $hours = [
+            'ua' => $this->uaHour,
+            'en' => $this->enHour,
+            'ru' => $this->ruHour,
+        ];
 
         foreach ($locales as $locale) {
             HeaderAffiliateTranslation::updateOrCreate(
@@ -201,13 +190,19 @@ class CreateEdit extends Component
                 ],
                 [
                     'address' => $addresses[$locale],
+                    'hours' => $hours[$locale],
                 ]
             );
         }
 
         session()->flash('success', 'Дані успішно збережено');
 
-        $this->redirectRoute('admin.header.edit');
+        if(!empty($this->city)) {
+            $this->redirectRoute('admin.header.edit');
+        } else {
+            $this->redirectRoute('admin.footer.edit');
+        }
+
     }
 
     public function render()

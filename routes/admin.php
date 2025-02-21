@@ -262,6 +262,9 @@ Route::group([
         Route::get('/header', [PageController::class, 'editHeader'])->name('admin.header.edit');
         Route::get('/footer', [PageController::class, 'editFooter'])->name('admin.footer.edit');
 
+        Route::get('/affiliate/create', [PageController::class, 'createFooterAffiliate'])->name('admin.footer.affiliate.create');
+        Route::get('/affiliate/{affiliate}/edit', [PageController::class, 'editFooterAffiliate'])->name('admin.footer.affiliate.edit');
+
         Route::get('/affiliate/{city}/create', [PageController::class, 'createAffiliate'])->name('admin.affiliate.create');
         Route::get('/affiliate/{city}/{affiliate}/edit', [PageController::class, 'editAffiliate'])->name('admin.affiliate.edit');
 
