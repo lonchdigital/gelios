@@ -38,7 +38,7 @@ class Index extends Component
         // $this->directionTemplate = 1;
 
         if(is_null($this->direction)) {
-            $allDirections = $this->directionsService->getAllDirections();
+            $allDirections = $this->directionsService->getCachedDirectionsWithoutTree();
             $this->allDirections = $this->directionsService->buildTreeForDashboard($allDirections);
         } else {
             $allDirections = $this->directionsService->getDirectionsByCategory($this->direction->id);
