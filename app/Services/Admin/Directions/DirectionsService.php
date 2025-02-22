@@ -183,12 +183,12 @@ class DirectionsService
         $direction->update($dataToUpdate);
     }
 
-    public function getCachedDirectionsWithoutTree()
+    public function getCachedDirectionsForDashboard()
     {
         $locale = app()->getLocale();
 
-        return Cache::remember("all_directions_no_tree_{$locale}", now()->addWeek(), function () {
-            return $this->getAllDirections();
+        return Cache::remember("all_directions_dashboard_{$locale}", now()->addWeek(), function () {
+            return $this->buildTreeForDashboard($this->getAllDirections());
         });
     }
     public function getCachedDirections()
