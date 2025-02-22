@@ -53,17 +53,17 @@
 
                                         <section class="mb-3">
 
-                                            @if( $directionTemplate !== 1 )
+                                            <div class="art-status-select {{ ($directionTemplate !== 1) ? 'd-block' : 'd-none' }}">
                                                 <div wire:ignore>
-                                                    <label>{{ trans('admin.belonging') }}</label>
+                                                    <label class="d-block">{{ trans('admin.belonging') }}</label>
                                                     <select class="js-parent-cat form-control" id="status-select" wire:model="directionParent" name="parent_id">
                                                         <option value="{{ null }}">- {{ trans('admin.not_chosen') }} -</option>
                                                         @foreach($allDirections as $cat)
-                                                            @include('admin.directions.partials.direction-option', ['direction' => $cat, 'depth' => 0])
+                                                            <x-admin.directions.direction-option :direction="$cat" :depth="0" />
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                            @endif
+                                            </div>
     
                                             <div wire:ignore class="mt-3">
                                                 <label>{{ trans('admin.offices') }}</label>
@@ -93,7 +93,7 @@
                                             <select class="form-control" id="directionSelect">
                                                 <option value="{{ null }}">- {{ trans('admin.all_directions') }} -</option>
                                                 @foreach($allDirections as $cat)
-                                                    @include('admin.directions.partials.direction-option', ['direction' => $cat, 'depth' => 0])
+                                                    <x-admin.directions.direction-option :direction="$cat" :depth="0" />
                                                 @endforeach
                                             </select>
                                         </div>
@@ -148,10 +148,7 @@
                                                     </td>
                                                 </tr>
                                                 @if (!empty($direction['children']))
-                                                    @include('admin.directions.partials.direction-children', [
-                                                        'children' => $direction['children'], 
-                                                        'level' => 1
-                                                    ])
+                                                    <x-admin.directions.direction-children :children="$direction['children']" :level="1" />
                                                 @endif
                                             @endforeach
                                         </tbody>
@@ -202,6 +199,10 @@
 
     <script type="text/javascript">
         document.addEventListener('livewire:load', () => {
+
+            // add select two for lists of directions
+            $('#status-select').select2();
+            $('#directionSelect').select2();
             
             // Handle direction template
             let directionTemplate = $('.js-direction-template');
