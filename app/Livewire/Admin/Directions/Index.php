@@ -61,12 +61,21 @@ class Index extends Component
         }
 
         if(is_null($this->direction)) {
-            $allDirections = $this->directionsService->getAllDirections();
+            $allDirections = $this->directionsService->getCachedDirectionsWithoutTree();
             $this->allDirections = $this->directionsService->buildTreeForDashboard($allDirections);
         } else {
             $allDirections = $this->directionsService->getDirectionsByCategory($this->direction->id);
             $this->allDirections = $this->directionsService->buildTreeForDashboard($allDirections);
         }
+
+        // TODO: old version of display directions
+        // if(is_null($this->direction)) {
+        //     $allDirections = $this->directionsService->getAllDirections();
+        //     $this->allDirections = $this->directionsService->buildTreeForDashboard($allDirections);
+        // } else {
+        //     $allDirections = $this->directionsService->getDirectionsByCategory($this->direction->id);
+        //     $this->allDirections = $this->directionsService->buildTreeForDashboard($allDirections);
+        // }
     }
 
     public function removeDirectionFromDB(int $id)
