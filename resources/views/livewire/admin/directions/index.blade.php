@@ -97,7 +97,7 @@
 
                                 <form id="directionForm" action="#" method="GET" class="mb-5">
                                     <div class="row aligh-items-center">
-                                        <div class="col-md-9">
+                                        <div wire:ignore class="col-md-9">
                                             <select class="form-control" id="directionSelect">
                                                 <option value="{{ null }}">- {{ trans('admin.all_directions') }} -</option>
                                                 @foreach($allDirections as $cat)
@@ -224,8 +224,7 @@
     <script type="text/javascript">
         document.addEventListener('livewire:load', () => {
 
-            // add select two for lists of directions
-            // $('#status-select').select2();
+            // add select two for list of directions
             $('#directionSelect').select2();
             
             // Handle direction template
