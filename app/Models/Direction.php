@@ -29,12 +29,14 @@ class Direction extends Model implements TranslatableContract
         static::saved(function () {
             foreach (config('translatable.locales') as $locale):
                 Cache::forget("all_directions_{$locale}");
+                Cache::forget("all_directions_dashboard_{$locale}");
             endforeach;
         });
 
         static::deleted(function () {
             foreach (config('translatable.locales') as $locale):
                 Cache::forget("all_directions_{$locale}");
+                Cache::forget("all_directions_dashboard_{$locale}");
             endforeach;
         });
     }
