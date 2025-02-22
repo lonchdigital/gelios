@@ -47,6 +47,7 @@ class DirectionsService
         return $data;
     }
 
+
     public function getAllDirections(): Collection
     {
         return Direction::with('children.children')->whereNull('parent_id')->orderBy('sort')->get();
@@ -182,7 +183,14 @@ class DirectionsService
         $direction->update($dataToUpdate);
     }
 
+    public function getCachedDirectionsWithoutTree()
+    {
+        $locale = app()->getLocale();
 
+        return Cache::remember("all_directions_no_tree_{$locale}", now()->addWeek(), function () {
+            return $this->getAllDirections();
+        });
+    }
     public function getCachedDirections()
     {
         $locale = app()->getLocale();

@@ -86,6 +86,14 @@
                             <div class="card-body">
                                 <h4 class="card-title">{{ (is_null($direction)) ? trans('admin.all_directions') : $direction->name }}</h4>
                                 {{-- @dd($allDirections) --}}
+                                <div class="row aligh-items-center">
+                                    <div class="col-md-9">
+                                        <select wire:ignore class="form-control mb-2" id="childrenDisplaySelect" onchange="updateURL()">
+                                            <option value="">Отображать дочерние элементы</option>
+                                            <option value="1" {{ (request()->has('hide_children') == 1) ? 'selected' : '' }}>Не отображать дочерние элементы</option>
+                                        </select>
+                                    </div>
+                                </div>
 
                                 <form id="directionForm" action="#" method="GET" class="mb-5">
                                     <div class="row aligh-items-center">
@@ -113,7 +121,7 @@
                                                 <th class="text-right">{{ trans('admin.remove') }}</th>
                                             </tr>
                                         </thead>
-                                        <tbody wire:sortable="updateOrder" id="art-directions-container" class="art-directions-container">
+                                        <tbody wire:ignore wire:sortable="updateOrder" id="art-directions-container" class="art-directions-container">
                                             @foreach ($allDirections as $direction)
                                                 <tr wire:sortable.item="{{ $direction['id'] }}" 
                                                     wire:key="direction-{{ $direction['id'] }}" 
@@ -147,7 +155,7 @@
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                @if (!empty($direction['children']))
+                                                @if (!empty($direction['children']) && !request()->has('hide_children'))
                                                     <x-admin.directions.direction-children :children="$direction['children']" :level="1" />
                                                 @endif
                                             @endforeach
@@ -180,28 +188,44 @@
             }
         }
     </script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const tableRowBars = document.querySelectorAll('.art-bars-move');
+        function updateURL() {
+            let hideChildren = document.getElementById('childrenDisplaySelect').value;
+            let url = new URL(window.location.href);
+            
+            if (hideChildren) {
+                url.searchParams.set('hide_children', '1');
+            } else {
+                url.searchParams.delete('hide_children');
+            }
+            
+            window.location.href = url.toString();
+        }
+    </script>
 
-            tableRowBars.forEach(row => {
-                row.addEventListener('mousedown', function () {
-                    const directionsTable = document.getElementById('art-directions-container');
-                    const rowsToHide = directionsTable.querySelectorAll(`tr.child-direction`);
+    <script>
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     const tableRowBars = document.querySelectorAll('.art-bars-move');
 
-                    rowsToHide.forEach(row => {
-                        row.style.display = 'none';
-                    });
-                });
-            });
-        });
+        //     tableRowBars.forEach(row => {
+        //         row.addEventListener('mousedown', function () {
+        //             const directionsTable = document.getElementById('art-directions-container');
+        //             const rowsToHide = directionsTable.querySelectorAll(`tr.child-direction`);
+
+        //             rowsToHide.forEach(row => {
+        //                 row.style.display = 'none';
+        //             });
+        //         });
+        //     });
+        // });
     </script>
 
     <script type="text/javascript">
         document.addEventListener('livewire:load', () => {
 
             // add select two for lists of directions
-            $('#status-select').select2();
+            // $('#status-select').select2();
             $('#directionSelect').select2();
             
             // Handle direction template
