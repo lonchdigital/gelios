@@ -5,8 +5,7 @@ namespace App\Livewire\Admin\Directions;
 use App\Models\Direction;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use App\Models\InsuranceCompany;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Collection;
 use App\Services\Admin\Directions\DirectionsService;
 
@@ -38,8 +37,7 @@ class Index extends Component
         // $this->directionTemplate = 1;
 
         if(is_null($this->direction)) {
-            $allDirections = $this->directionsService->getCachedDirectionsWithoutTree();
-            $this->allDirections = $this->directionsService->buildTreeForDashboard($allDirections);
+            $this->allDirections = $this->directionsService->getCachedDirectionsForDashboard();
         } else {
             $allDirections = $this->directionsService->getDirectionsByCategory($this->direction->id);
             $this->allDirections = $this->directionsService->buildTreeForDashboard($allDirections);
@@ -60,9 +58,12 @@ class Index extends Component
             Direction::find($item['value'])->update(['sort' => $item['order']]);
         }
 
+        foreach (config('translatable.locales') as $locale):
+            Cache::forget("all_directions_dashboard_{$locale}");
+        endforeach;
+
         if(is_null($this->direction)) {
-            $allDirections = $this->directionsService->getCachedDirectionsWithoutTree();
-            $this->allDirections = $this->directionsService->buildTreeForDashboard($allDirections);
+            $this->allDirections = $this->directionsService->getCachedDirectionsForDashboard();
         } else {
             $allDirections = $this->directionsService->getDirectionsByCategory($this->direction->id);
             $this->allDirections = $this->directionsService->buildTreeForDashboard($allDirections);
