@@ -89,8 +89,8 @@
                                 <div class="row aligh-items-center">
                                     <div class="col-md-9">
                                         <select wire:ignore class="form-control mb-2" id="childrenDisplaySelect" onchange="updateURL()">
-                                            <option value="">Отображать дочерние элементы</option>
-                                            <option value="1" {{ (request()->has('hide_children') == 1) ? 'selected' : '' }}>Не отображать дочерние элементы</option>
+                                            <option value="">{{ trans('admin.show_child_elements') }}</option>
+                                            <option value="1" {{ (request()->has('hide_children') == 1) ? 'selected' : '' }}>{{ trans('admin.do_not_show_child_elements') }}</option>
                                         </select>
                                     </div>
                                 </div>
