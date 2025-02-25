@@ -33,7 +33,7 @@
                                                     :values="$сurrentDirectionData['name']"
                                                     />
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <x-admin.multilanguage-input
                                                     :is-required="false"
                                                     :label="trans('admin.short_name')"
@@ -41,6 +41,17 @@
                                                     live-wire-field="сurrentDirectionData.short_name"
                                                     :values="$сurrentDirectionData['short_name']"
                                                     />
+                                            </div>
+                                            <div class="col-md-2 checkbox-in-footer">
+                                                <div class="checkbox">
+                                                    <input 
+                                                        type="checkbox" 
+                                                        wire:model="сurrentDirectionData.in_footer"
+                                                        id="in_footer" 
+                                                        @if($сurrentDirectionData['in_footer']) checked @endif
+                                                    >
+                                                    <label for="in_footer" class="cr">{{ trans('admin.in_footer') }}</label>
+                                                </div>
                                             </div>
                                         </div>
 

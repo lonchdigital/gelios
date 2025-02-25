@@ -138,6 +138,9 @@ class Category extends Component
             'unique:page_directions,slug,' . ($this->direction->page->id ?? ''),
             'unique:pages,slug'
         ];
+        $rules['сurrentDirectionData.in_footer'] = [
+            'boolean'
+        ];
         $rules['directionContacts'] = [
             'array'
         ];
@@ -293,6 +296,7 @@ class Category extends Component
         $directionData = [
             'name' => $this->сurrentDirectionData['name'],
             'short_name' => $this->сurrentDirectionData['short_name'],
+            'in_footer' => $this->сurrentDirectionData['in_footer'],
             'slug' => $this->сurrentDirectionData['slug'],
             'parent_id' => null
         ];

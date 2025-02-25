@@ -19,7 +19,8 @@ class Direction extends Model implements TranslatableContract
         'page_direction_id',
         'parent_id',
         'sort',
-        'template'
+        'template',
+        'in_footer'
     ];
 
     protected static function boot()

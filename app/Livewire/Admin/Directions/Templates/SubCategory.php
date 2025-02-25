@@ -36,11 +36,6 @@ class SubCategory extends Component
     public Collection $allDirectionContacts;
     public array $allDirections = [];
     protected DirectionsService $directionsService;
-
-    // public string $activeLocale;
-    // protected $listeners = [
-    //     'languageSwitched' => 'languageSwitched'
-    // ];
     
     public function mount() 
     {
@@ -185,11 +180,6 @@ class SubCategory extends Component
         $this->directionPrices = makeUsort($this->directionPrices);
     }
 
-    public function languageSwitched($lang)
-    {
-        $this->activeLocale = $lang;
-    }
-
     protected function rules()
     {
         $rules = [];
@@ -199,6 +189,9 @@ class SubCategory extends Component
             'string',
             'unique:page_directions,slug,' . ($this->direction->page->id ?? ''),
             'unique:pages,slug'
+        ];
+        $rules['сurrentDirectionData.in_footer'] = [
+            'boolean'
         ];
 
         $rules['directionContacts'] = [
@@ -349,6 +342,7 @@ class SubCategory extends Component
         $directionData = [
             'name' => $this->сurrentDirectionData['name'],
             'short_name' => $this->сurrentDirectionData['short_name'],
+            'in_footer' => $this->сurrentDirectionData['in_footer'],
             'slug' => $this->сurrentDirectionData['slug'],
             'parent_id' => $this->directionParent
         ];
