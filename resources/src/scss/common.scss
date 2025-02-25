@@ -1979,6 +1979,24 @@ form {
 //seo
 .seo {
 
+	h1, h2, h3, h4, h5, h6 {
+		&.ql-align-justify {
+			text-align: justify;
+		}
+	
+		&.ql-align-left {
+			text-align: left;
+		}
+	
+		&.ql-align-center {
+			text-align: center;
+		}
+	
+		&.ql-align-right {
+			text-align: right;
+		}
+	}
+
 	.h1,
 	.h2,
 	.h3,
@@ -1992,7 +2010,6 @@ form {
 
 	h3 {
 		font-weight: 700;
-		text-align: center;
 
 		@include md-max {
 			font-size: 16px;
