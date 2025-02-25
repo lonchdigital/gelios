@@ -14828,3 +14828,11 @@ td.image-preview-td {
 .art-status-select .select2.select2-container {
     width: 100% !important;
 }
+
+.checkbox-in-footer {
+    display: flex;
+    align-items: center;
+}
+.checkbox-in-footer .checkbox {
+    margin-top: 32px;
+}

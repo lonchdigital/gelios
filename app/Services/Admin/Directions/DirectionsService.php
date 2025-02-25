@@ -22,6 +22,7 @@ class DirectionsService
         $data = [];
 
         $data['slug'] = $direction->page->slug;
+        $data['in_footer'] = $direction->in_footer;
 
         foreach ($direction->getTranslationsArray() as $lang => $value) {
             $data['name'][$lang] = $value['name'];
@@ -168,6 +169,7 @@ class DirectionsService
     {
         $dataToUpdate = [];
         $dataToUpdate['parent_id'] = $data['parent_id'];
+        $dataToUpdate['in_footer'] = $data['in_footer'];
 
         if($data['name']) {
             foreach ($data['name'] as $lang => $value) {
