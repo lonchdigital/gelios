@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'show_child_elements' => 'Отображать дочерние элементы',
+    'do_not_show_child_elements' => 'Не отображать дочерние элементы',
     'free' => 'Бесплатно',
     'sub_title' => 'Подзаголовок',
     'doctors' => 'Врачи',
