@@ -20,6 +20,11 @@ class WebPagesController extends Controller
 
         if(!is_null($page)) {
             $direction = $page->direction;
+            $directionSlugs = explode('/', $direction->buildFullPath());
+
+            if ($directionSlugs !== $slugs) {
+                abort(404);
+            }
 
             switch ( $direction->template ) {
                 case 1:
