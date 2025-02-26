@@ -371,4 +371,5 @@ return [
     'add_affiliate' => 'Додати філію',
     'footer_affiliates' => 'Філії в футері',
     'create_affiliate' => 'Створення філії',
+    'laboratory' => 'Лабораторії',
 ];

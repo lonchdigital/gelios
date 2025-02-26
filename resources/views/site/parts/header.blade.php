@@ -29,60 +29,6 @@
                                         data-affiliates="{{ $firstCity->headerAffiliates }}">
                                     {{ __('pages.view') }}
                                 </button>
-                                {{-- <button type="button" class="contact-details" data-toggle="modal"
-                                        data-target="#popup--contacts"
-                                        data-city="{{ $firstCity->title ?? '' }}"
-                                        @forelse($firstCity->headerAffiliates as $affiliate)
-                                            @switch($loop->iteration)
-                                                @case(1)
-                                                    data-first="{{ json_encode($affiliate) }}"
-                                                    @break
-
-                                                @case(2)
-                                                    data-second="{{ json_encode($affiliate) }}"
-                                                    @break
-
-                                                @case(3)
-                                                    data-third="{{ json_encode($affiliate) }}"
-                                                    @break
-
-                                                @case(4)
-                                                    data-fourth="{{ json_encode($affiliate) }}"
-                                                    @break
-
-                                                @case(4)
-                                                    data-fifth="{{ json_encode($affiliate) }}"
-                                                    @break
-
-                                                @default
-                                            @endswitch
-                                        @empty
-                                        @endforelse
-                                        {{-- @forelse($firstCity->headerAffiliates as $affiliate)
-                                            @switch($loop->iteration)
-                                                @case(1)
-                                                    data-first="{{ $affiliate }}"
-                                                    @break
-
-                                                @case(2)
-                                                    data-second="{{ $affiliate }}"
-                                                    @break
-
-                                                @case(3)
-                                                    data-third="{{ $affiliate }}"
-                                                    @break
-
-                                                @case(4)
-                                                    data-fourth="{{ $affiliate }}"
-                                                    @break
-
-                                                @default
-
-                                            @endswitch
-                                        @empty
-                                        @endforelse --}}
-                                        {{-- >{{ __('pages.view') }}
-                                </button> --}}
                             </li>
                         </ul>
                         <ul class="list-inline mb-0 d-none d-xxl-flex align-items-center mr-xxl-2">
@@ -98,36 +44,8 @@
                             @endif
                             <li class="list-inline-item">
                                 <button type="button" class="contact-details" data-toggle="modal" data-city="{{ $secondCity->title ?? '' }}"
-
                                     data-affiliates="{{ $secondCity->headerAffiliates }}"
-                                    {{-- @forelse($secondCity->headerAffiliates as $affiliate)
-                                        @switch($loop->iteration)
-                                            @case(1)
-                                                data-first="{{ $affiliate }}"
-                                                @break
-
-                                            @case(2)
-                                                data-second="{{ $affiliate }}"
-                                                @break
-
-                                            @case(3)
-                                                data-third="{{ $affiliate }}"
-                                                @break
-
-                                            @case(4)
-                                                data-fourth="{{ $affiliate }}"
-                                                @break
-
-                                            @case(5)
-                                                data-fifth="{{ $affiliate }}"
-                                                @break
-
-                                            @default
-
-                                        @endswitch
-                                    @empty
-                                    @endforelse --}}
-                                        data-target="#popup--contacts">{{ __('pages.view') }}
+                                    data-target="#popup--contacts">{{ __('pages.view') }}
                                 </button>
                             </li>
                         </ul>
@@ -152,31 +70,7 @@
                                 @endif
                                 <li class="list-inline-item">
                                     <button type="button" class="contact-details" data-toggle="modal" data-city="{{ $firstCity->title ?? '' }}"
-
                                         data-affiliates="{{ $firstCity->headerAffiliates }}"
-                                        {{-- @forelse($firstCity->headerAffiliates as $affiliate)
-                                            @switch($loop->iteration)
-                                                @case(1)
-                                                    data-first="{{ $affiliate }}"
-                                                    @break
-
-                                                @case(2)
-                                                    data-second="{{ $affiliate }}"
-                                                    @break
-
-                                                @case(3)
-                                                    data-third="{{ $affiliate }}"
-                                                    @break
-
-                                                @case(4)
-                                                    data-fourth="{{ $affiliate }}"
-                                                    @break
-
-                                                @default
-
-                                            @endswitch
-                                        @empty
-                                        @endforelse --}}
                                         data-target="#popup--contacts">{{ __('pages.view') }}
                                     </button>
                                 </li>
@@ -197,29 +91,6 @@
                                         data-toggle="modal"
                                         data-city="{{ $secondCity->title ?? '' }}"
                                         data-affiliates="{{ $secondCity->headerAffiliates }}"
-                                        {{-- @forelse($secondCity->headerAffiliates as $affiliate)
-                                            @switch($loop->iteration)
-                                                @case(1)
-                                                    data-first="{{ $affiliate }}"
-                                                    @break
-
-                                                @case(2)
-                                                    data-second="{{ $affiliate }}"
-                                                    @break
-
-                                                @case(3)
-                                                    data-third="{{ $affiliate }}"
-                                                    @break
-
-                                                @case(4)
-                                                    data-fourth="{{ $affiliate }}"
-                                                    @break
-
-                                                @default
-
-                                            @endswitch
-                                        @empty
-                                        @endforelse --}}
                                         data-target="#popup--contacts">{{ __('pages.view') }}
                                     </button>
                                 </li>
@@ -343,7 +214,7 @@
                     <nav class="navbar navbar-expand-lg flex-column p-0">
                         <div class="inner w-100">
                             <div class="content d-flex justify-content-between">
-                                <a class="navbar-brand p-0" href="/"><img src="{{ asset('static_images/logo.png') }}"
+                                <a class="navbar-brand p-0" href="/"><img src="{{ $headerImage ?? asset('static_images/logo.png') }}"
                                                                           alt="logo"></a>
                                 <div class="navbar-nav--mob d-flex d-lg-none justify-content-between">
                                     <div class="languages">

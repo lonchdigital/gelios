@@ -39,7 +39,7 @@
                                             </div>
                                         @endif
                                     </td>
-                                    <td>{{ $info->page->title }}</td>
+                                    <td>{{ $info->page->title ?? __('admin.' . $info->page->type) }}</td>
                                     <td style="text-align: right">
                                         <div class="new-checkbox art-text-block-switcher">
                                             <label class="switch">
@@ -65,7 +65,7 @@
                             <tr>
                                 <th>{{ __('admin.sort') }}</th>
                                 <th>{{ __('admin.name') }}</th>
-                                <th>{{ __('admin.is_show_in_footer') }}</th>
+                                {{-- <th>{{ __('admin.is_show_in_footer') }}</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -87,14 +87,14 @@
                                         @endif
                                     </td>
                                     <td>{{ $info->page->name ?? '' }}</td>
-                                    <td style="text-align: right">
+                                    {{-- <td style="text-align: right">
                                         <div class="new-checkbox art-text-block-switcher">
                                             <label class="switch">
                                                 <input type="checkbox" wire:click="changeDirectionIsActive({{ $info }})" @if($info->is_active) checked @endif>
                                                 <span class="slider"></span>
                                             </label>
                                         </div>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>

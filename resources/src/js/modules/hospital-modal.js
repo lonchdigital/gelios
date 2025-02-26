@@ -189,41 +189,45 @@ $('.contact-details').on('click', function () {
     var affiliates = $(this).data('affiliates') || [];
 
     $('#popup--contacts #modal-city').text(city);
-    var container = $('#popup--contacts #affiliates-container');
-    container.empty();
+    let container = $('#popup--contacts #affiliates-container');
+container.empty();
 
-    affiliates.forEach((affiliate, index) => {
-        var affiliateBlock = `
-            <div class="col-12 col-xl-6">
-                <ul class="list-unstyled mb-0">
-                    <li>
-                        <div class="offices-address">${affiliate.address || ''}</div>
-                    </li>
-                    <li>
-                        <a href="tel:${affiliate.first_phone || ''}">
-                            <div class="link-phone">${affiliate.first_phone || ''}</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="tel:${affiliate.second_phone || ''}">
-                            <div class="link-phone">${affiliate.second_phone || ''}</div>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="offices-time">${affiliate.hours || ''}</div>
-                    </li>
-                    <li>
-                        <a href="mailto:${affiliate.email || ''}">
-                            <div class="offices-email">${affiliate.email || ''}</div>
-                        </a>
-                    </li>
-                </ul>
-                <input hidden id="first-latitude" value="${affiliate.latitude || ''}">
-                <input hidden id="first-longitude" value="${affiliate.longitude || ''}">
-            </div>
-        `;
-        container.append(affiliateBlock);
-    });
+affiliates.forEach((affiliate) => {
+    let affiliateBlock = $('<div>').addClass("col-12 col-xl-6");
+    let ul = $('<ul>').addClass("list-unstyled mb-0");
+
+    if (affiliate.address) {
+        ul.append(`<li><div class="offices-address">${affiliate.address}</div></li>`);
+    }
+
+    if (affiliate.first_phone) {
+        ul.append(`<li><a href="tel:${affiliate.first_phone}"><div class="link-phone">${affiliate.first_phone}</div></a></li>`);
+    }
+
+    if (affiliate.second_phone) {
+        ul.append(`<li><a href="tel:${affiliate.second_phone}"><div class="link-phone">${affiliate.second_phone}</div></a></li>`);
+    }
+
+    if (affiliate.hours) {
+        ul.append(`<li><div class="offices-time">${affiliate.hours}</div></li>`);
+    }
+
+    if (affiliate.email) {
+        ul.append(`<li><a href="mailto:${affiliate.email}"><div class="offices-email">${affiliate.email}</div></a></li>`);
+    }
+
+    affiliateBlock.append(ul);
+
+    if (affiliate.latitude) {
+        affiliateBlock.append(`<input type="hidden" id="first-latitude" value="${affiliate.latitude}">`);
+    }
+
+    if (affiliate.longitude) {
+        affiliateBlock.append(`<input type="hidden" id="first-longitude" value="${affiliate.longitude}">`);
+    }
+
+    container.append(affiliateBlock);
+});
 
     initMap(affiliates);
 });

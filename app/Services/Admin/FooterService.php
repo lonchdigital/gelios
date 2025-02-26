@@ -5,6 +5,7 @@ namespace App\Services\Admin;
 use App\Enums\PageType;
 use App\Models\ArticleBlock;
 use App\Models\ArticleTranslation;
+use App\Models\Direction;
 use App\Models\FooterDirection;
 use App\Models\FooterInfo;
 use App\Models\Page;
@@ -43,6 +44,7 @@ class FooterService
             PageType::SHARES->value,
             PageType::DOCTOR->value,
             PageType::ABOUT->value,
+            PageType::LABORATORY->value,
         ])
             ->get();
 
@@ -91,9 +93,9 @@ class FooterService
 
     public function loadDirections()
     {
-        $pages = PageDirection::get();
+        $directions = Direction::get();
 
-        foreach ($pages as $page) {
+        foreach ($directions as $page) {
             FooterDirection::firstOrCreate([
                 'page_direction_id' => $page->id
             ], [

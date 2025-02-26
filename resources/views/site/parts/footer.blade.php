@@ -7,7 +7,7 @@
 						<div class="col-12 col-md d-flex flex-md-column flex-wrap align-items-center align-items-md-start mb-11 mb-md-0">
 							<div class="footer-logo--wrap">
 								<div class="footer-logo mb-0 mb-md-3">
-									<img src="{{ asset('static_images/logo-footer.png') }}" alt="logo">
+									<img src="{{ $footerImage ?? asset('static_images/logo-footer.png') }}" alt="logo">
 								</div>
 							</div>
 							<div class="footer-descrp mb-0 mb-md-4 mt-11 mt-md-0">
@@ -46,9 +46,18 @@
 								<div class="h4 mb-5 font-weight-bold">{{ __('pages.directions') }}</div>
 								<ul class="list-unstyled mb-0">
                                     @forelse($directions as $direction)
-                                        @if(!empty($direction->page->slug))
-                                            <li><a href="{{ '/' . $direction->page->slug }}">{{ $direction->page->name ?? '' }}</a></li>
-                                        @endif
+                                        {{-- @if(!empty($direction->page->slug)) --}}
+                                            <li><a
+                                            @switch(LaravelLocalization::getCurrentLocale())
+                                                        @case('ua')
+                                                            href="{{ '/ua/' . $direction->page->buildFullPath() ?? '##' }}"
+                                                        @break
+
+                                                        @default
+                                                            href="{{ '/' . $direction->page->buildFullPath() ?? '##' }}"
+                                                    @endswitch()
+                                            >{{ $direction->page->name ?? '' }}</a></li>
+                                        {{-- @endif --}}
                                     @empty
                                     @endforelse
 									{{-- <li><a href="##">Сімейна медицина</a></li>
@@ -66,7 +75,16 @@
 								<div class="h4 mb-5 font-weight-bold">{{ __('pages.information') }}</div>
 								<ul class="list-unstyled mb-0">
                                     @forelse($infos as $info)
-                                        <li><a href="{{ '/' . $info->page->slug }}">{{ $info->page->title ?? '' }}</a></li>
+                                        <li><a
+                                            @switch(LaravelLocalization::getCurrentLocale())
+                                                        @case('ua')
+                                                            href="{{ '/ua/' . $info->page->slug ?? '##' }}"
+                                                        @break
+
+                                                        @default
+                                                            href="{{ '/' . $info->page->slug ?? '##' }}"
+                                                    @endswitch()
+                                            >{{ $info->page->title ?? __('admin.' . $info->page->type) }}</a></li>
                                     @empty
                                     @endforelse
 									{{-- <li><a href="##">Про компанію</a></li>

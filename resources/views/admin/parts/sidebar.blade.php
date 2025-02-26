@@ -323,7 +323,7 @@
                                 </a>
                             </li>
                             <li @if(Route::is('admin.surgery.edit-main-seo')) class="active" @endif >
-                                <a href="{{ route('admin.check-ups.edit-main-seo') }}">
+                                <a href="{{ route('admin.surgery.edit-main-seo') }}">
                                     СЕО сторінки хірургія
                                     {{-- {{ __('admin.surgery_page_seo') }} --}}
                                 </a>

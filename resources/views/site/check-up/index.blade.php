@@ -11,7 +11,7 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => 'Головна',
+                'title' => __('web.main')
                 'url' => route('main'),
             ],
             [
@@ -33,7 +33,8 @@
                                             <div class="heading h3 mb-3 font-weight-bolder">{{ $checkUp->title }}</div>
                                             <div class="descrp font-weight-bolder">
                                                 @if ($checkUp->new_price)
-                                                    <span>Акційна ціна
+                                                    <span>
+                                                        {{ __('web.promotional_price') }}
                                                         <span class="new-price">
                                                             <span class="price">{{ $checkUp->new_price }}</span> грн!
                                                         </span>
@@ -44,7 +45,8 @@
                                                         </s>
                                                     </span>
                                                 @else
-                                                    <span>Ціна
+                                                    <span>
+                                                        {{ __('web.price') }}
                                                         <span class="new-price">
                                                             <span class="price">{{ $checkUp->price }}</span> грн!
                                                         </span>

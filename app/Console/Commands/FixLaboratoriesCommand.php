@@ -30,35 +30,32 @@ class FixLaboratoriesCommand extends Command
      */
     public function handle()
     {
-        $block = PageBlock::find(66);
+        Page::where('type', PageType::LABORATORY->value)
+            ->first()
+            ->update([
+                'slug' => 'laboratories',
+            ]);
+
+        $block = PageBlock::find(28);
 
         $block->update([
-            'group' => 'main',
+            'block' => 'main',
             'key' => 'slider'
         ]);
 
-        $page = Page::where('type', PageType::SURGERY->value)
-            ->first();
+        $block = PageBlock::find(31);
 
-        $pageBlock = PageBlock::firstOrCreate([
-            'page_id' => $page->id,
-            'block' => 'conditions',
-            'key' => 'title',
+        $block->update([
+            'block' => 'main',
+            'key' => 'slider'
         ]);
 
-        $pageBlock->translateOrNew('ua')->title = 'Умови перебування';
-        $pageBlock->translateOrNew('ru')->title = 'Умови перебування';
-        $pageBlock->translateOrNew('en')->title = 'Умови перебування';
+        $block = PageBlock::find(38);
 
-        $pageBlock->save();
-
-        $pageBlock = PageBlock::firstOrCreate([
-            'page_id' => $page->id,
-            'block' => '3d',
-            'key' => 'link',
+        $block->update([
+            'block' => 'main',
+            'key' => 'slider'
         ]);
-
-        $pageBlock->save();
 
         return Command::SUCCESS;
     }

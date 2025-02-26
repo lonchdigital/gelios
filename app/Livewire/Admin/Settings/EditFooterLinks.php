@@ -30,7 +30,10 @@ class EditFooterLinks extends Component
 
     public function getDirectionsProperty()
     {
-        $directions = FooterDirection::orderBy('sort', 'ASC')
+        $directions = FooterDirection::whereHas('page', function($q) {
+            $q->where('in_footer', true);
+        })
+            ->orderBy('sort', 'ASC')
             ->get();
 
         return $directions;

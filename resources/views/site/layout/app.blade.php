@@ -122,38 +122,6 @@
                                 </div>
                                 <div id="phone_error" class="field--help-info small-txt text-red mb-2"></div>
                             </div>
-                            {{-- <div class="col-12">
-                                <div class="field mb-2">
-                                    <div class="control-label mb-2">{{ __('pages.choose_a_specialist') }}</div>
-                                    <div class="select-wrap">
-                                        <select class="select-choose-specialist" name="doctor">
-                                            <option></option>
-                                            @forelse($doctors as $doctor)
-                                                <option value="{{ $doctor->title }}">{{ $doctor->title }}</option>
-                                            @empty
-                                            @endforelse
-                                        </select>
-                                    </div>
-                                    <div class="field--help-info small-txt text-red mb-2">{{ __('pages.choose_a_specialist') }}</div>
-                                </div>
-                                <div id="doctor_error" class="field--help-info small-txt text-red mb-2"></div>
-                            </div>
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <div class="control-label mb-2">{{ __('pages.choose_a_clinic') }}</div>
-                                    <div class="select-wrap">
-                                        <select class="select-choose-clinic" name="clinic">
-                                            <option></option>
-                                            @forelse($clinics as $clinic)
-                                                <option value="{{ $clinic->id }}">{{ $clinic->name }}</option>
-                                            @empty
-                                            @endforelse
-                                        </select>
-                                    </div>
-                                    <div class="field--help-info small-txt text-red mb-2">{{ __('pages.choose_a_clinic') }}</div>
-                                </div>
-                                <div id="clinic_error" class="field--help-info small-txt text-red mb-2"></div>
-                            </div> --}}
                             <div class="col-12">
                                 <div class="field mb-2">
                                     <div class="control-label mb-2">{{ __('pages.choose_a_specialist') }}</div>
@@ -550,41 +518,72 @@
 </script> --}}
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    {{-- <script>
-    $('.contact-details').on('click', function() {
-        var city = $(this).data('city');
-
-        $('#popup--contacts #first-address').text($(this).data('first').address);
-        $('#popup--contacts #first-phone1').text($(this).data('first').first_phone);
-        $('#popup--contacts #first-phone2').text($(this).data('first').second_phone);
-        $('#popup--contacts #first-hours').text($(this).data('first').hours);
-        $('#popup--contacts #first-email').text($(this).data('first').email);
-
-        $('#popup--contacts #second-address').text($(this).data('second').address);
-        $('#popup--contacts #second-phone1').text($(this).data('second').first_phone);
-        $('#popup--contacts #second-phone2').text($(this).data('second').second_phone);
-        $('#popup--contacts #second-hours').text($(this).data('second').hours);
-        $('#popup--contacts #second-email').text($(this).data('second').email);
-
-        $('#popup--contacts #third-address').text($(this).data('third').address);
-        $('#popup--contacts #third-phone1').text($(this).data('third').first_phone);
-        $('#popup--contacts #third-phone2').text($(this).data('third').second_phone);
-        $('#popup--contacts #third-hours').text($(this).data('third').hours);
-        $('#popup--contacts #third-email').text($(this).data('third').email);
-
-        $('#popup--contacts #fourth-address').text($(this).data('fourth').address);
-        $('#popup--contacts #fourth-phone1').text($(this).data('fourth').first_phone);
-        $('#popup--contacts #fourth-phone2').text($(this).data('fourth').second_phone);
-        $('#popup--contacts #fourth-hours').text($(this).data('fourth').hours);
-        $('#popup--contacts #fourth-email').text($(this).data('fourth').email);
-    });
-</script> --}}
 
     {{-- <script src="{{ asset('styles/js/jquery.min.js') }}"></script>
 <script src="{{ asset('styles/js/libs.min.js') }}"></script>
 <script src="{{ asset('styles/js/main.min.js') }}"></script> --}}
 
     @vite(['resources/js/main.js'])
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const forms = document.querySelectorAll('[id^="form-meeting"]');
+
+            forms.forEach((form) => {
+                form.addEventListener("submit", function (event) {
+                    event.preventDefault();
+
+                    const formData = {
+                        name: form.querySelector('[name="name"]').value,
+                        phone: form.querySelector('[name="phone"]').value,
+                        doctor: form.querySelector('[name="doctor"]').value,
+                        clinic: form.querySelector('[name="clinic"]').value,
+                    };
+
+                    fetch('/feedback-store', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                .getAttribute('content')
+                        },
+                        body: JSON.stringify(formData),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                console.log("Form submitted successfully!");
+                            } else {
+                                // console.log(data);
+
+                                const errors = data.errors;
+                                // console.log(errors);
+
+                                for (const field in errors) {
+                                    const fieldElement = form.querySelector(`#${field}_error`);
+                                    // console.log(fieldElement);
+                                    const existingError = fieldElement?.nextElementSibling;
+
+                                    if (existingError && existingError.classList.contains('field--help-info')) {
+                                        existingError.textContent = errors[field][0];
+                                    } else if (fieldElement) {
+                                        fieldElement.insertAdjacentHTML(
+                                            'afterend',
+                                            '<div class="field--help-info small-txt text-red mb-2">' +
+                                            errors[field][0] + '</div>'
+                                        );
+                                    }
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error submitting form:", error);
+                        });
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

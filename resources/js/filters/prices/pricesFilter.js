@@ -5,9 +5,15 @@ const $searchInput = $('#search-input');
 const $itemsWrapper = $('#accordion-prices-list');
 
 const $laboratoriesSearchInput = $('#laboratories-search-input');
-const $laboratoiesItemsWrapper = $('#accordion-laboratories-prices-list');
+const $laboratoriesItemsWrapper = $('#accordion-prices-list');
 
-runAjaxfilter();
+if (document.querySelector('#search-input')) {
+    runAjaxfilter();
+}
+
+if (document.querySelector('#laboratories-search-input')) {
+    runLaboratoriesAjaxfilter();
+}
 
 $searchInput.on('input', function(){
     runAjaxfilter();
@@ -146,7 +152,7 @@ function runLaboratoriesAjaxfilter()
 
 function ajaxLaboratoriesSearchFilterItems(queryData = null, success, fail)
 {
-console.log(queryData);
+// console.log(queryData);
     const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
     const appUrl = document.head.querySelector('meta[name="app-url"]').content;
 
@@ -226,5 +232,5 @@ function handleLaboratoryItemsResult(data)
         iteration++;
     });
 
-    $labolatoriesItemsWrapper.html(itemsToAppend);
+    $laboratoriesItemsWrapper.html(itemsToAppend);
 }
