@@ -11,7 +11,7 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => __('web.main')
+                'title' => __('web.main'),
                 'url' => route('main'),
             ],
             [
