@@ -74,7 +74,7 @@
 							<div class="ml-xxl-3">
 								<div class="h4 mb-5 font-weight-bold">{{ __('pages.information') }}</div>
 								<ul class="list-unstyled mb-0">
-                                    @forelse($infos as $info)
+                                    @forelse($infos ?? [] as $info)
                                         <li><a
                                             @switch(LaravelLocalization::getCurrentLocale())
                                                         @case('ua')
