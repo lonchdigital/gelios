@@ -100,7 +100,7 @@
 						<div class="footer-contacts col-12 col-xl-5 mt-11 mt-xl-0">
 							<div class="ml-xxl-4">
 
-                                @forelse($affiliates as $affiliate)
+                                @forelse($affiliates ?? [] as $affiliate)
                                     @if($loop->iteration < 5)
                                         @if($loop->iteration == 1)
                                             <div class="row mb-11 mb-xl-16">
@@ -132,7 +132,7 @@
                                                     <li>
                                                         <button type="button" class="contact-details" data-toggle="modal" data-target="#popup--contacts"
                                                         data-city="{{ 'Дніпро' }}"
-                                                        data-affiliates="{{ $affiliates }}"
+                                                        data-affiliates="{{ $affiliates ?? [] }}"
                                                         {{-- @forelse($affiliates as $affiliate2)
                                                             @switch($loop->iteration)
                                                                 @case(1)
