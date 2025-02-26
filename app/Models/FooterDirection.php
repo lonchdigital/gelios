@@ -18,6 +18,6 @@ class FooterDirection extends Model
 
     public function page(): BelongsTo
     {
-        return $this->belongsTo(Direction::class, 'id', 'page_direction_id');
+        return $this->belongsTo(Direction::class, 'page_direction_id', 'id');
     }
 }
