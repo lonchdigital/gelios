@@ -45,7 +45,7 @@
 							<div class="ml-xxl-2">
 								<div class="h4 mb-5 font-weight-bold">{{ __('pages.directions') }}</div>
 								<ul class="list-unstyled mb-0">
-                                    @forelse($directions as $direction)
+                                    @forelse($directions ?? [] as $direction)
                                         {{-- @if(!empty($direction->page->slug)) --}}
                                             <li><a
                                             @switch(LaravelLocalization::getCurrentLocale())
