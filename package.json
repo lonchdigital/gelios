@@ -15,6 +15,7 @@
         "axios": "^1.7.7",
         "bootstrap": "^4.6.2",
         "gulp-cli": "latest",
+        "inputmask": "^5.0.9",
         "stream": "latest"
     },
     "devDependencies": {

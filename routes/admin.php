@@ -274,7 +274,7 @@ Route::group([
             Route::get('/', [VacancyController::class, 'index'])->name('index');
 
             Route::get('/edit-main-seo', [VacancyController::class, 'mainPageSeo'])->name('edit-main-seo');
-            Route::get('/edit-one-page-seo', [VacancyController::class, 'onePageSeo'])->name('edit-one-page-seo');
+            // Route::get('/edit-one-page-seo', [VacancyController::class, 'onePageSeo'])->name('edit-one-page-seo');
 
             Route::get('/edit-block/{page}/{block}', [VacancyController::class, 'editBlock'])->name('edit-block');
 

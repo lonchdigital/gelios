@@ -13,6 +13,8 @@ use App\Models\DoctorCategory;
 use App\Models\HeaderAffiliate;
 use App\Models\Laboratory;
 use App\Models\LaboratoryCity;
+use App\Models\LabPriceCategory;
+use App\Models\LabPriceItem;
 use App\Models\PageBlock;
 use App\Models\Promotion;
 use App\Models\Specialization;
@@ -193,6 +195,22 @@ class Delete extends Component
                 $this->type = 'affiliate';
                 $this->modalTitle = 'Delete affiliate';
                 $this->modalBody  = 'You really want to delete affiliate: ' . $this->item->title . '?';
+                $this->modalInfo  = '';
+                break;
+
+            case 'laboratoryPriceCategory':
+                $this->item = LabPriceCategory::find($modelId);
+                $this->type = 'laboratoryPriceCategory';
+                $this->modalTitle = 'Delete price category';
+                $this->modalBody  = 'You really want to delete category: ' . $this->item->title . '?';
+                $this->modalInfo  = '';
+                break;
+
+            case 'categoryPriceItem':
+                $this->item = LabPriceItem::find($modelId);
+                $this->type = 'categoryPriceItem';
+                $this->modalTitle = 'Delete price item';
+                $this->modalBody  = 'You really want to delete item: ' . $this->item->title . '?';
                 $this->modalInfo  = '';
                 break;
 
@@ -412,6 +430,22 @@ class Delete extends Component
             case 'surgery':
 
                 $this->deleteSurgeryBlocks($this->item);
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
+            case 'categoryPriceItem':
+
+                $this->item->delete();
+
+                $this->item->refresh();
+
+                return true;
+
+            case 'laboratoryPriceCategory':
 
                 $this->item->delete();
 

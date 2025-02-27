@@ -87,4 +87,6 @@ return [
     'main' => 'Home',
     'page_not_found' => 'Page not found',
     'to_main' => 'To the main page',
+    'promotional_price' => 'Promotional price',
+    'price' => 'Price',
 ];

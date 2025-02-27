@@ -14,3 +14,6 @@ import './modules/multi-level-push-menu-direction.js';
 import './modules/anchor.js';
 import "./modules/js.js";
 import "./modules/hospital-modal.js";
+import Inputmask from "inputmask";
+
+Inputmask("+380 (99) 999-99-99").mask("#form-meeting-phone");

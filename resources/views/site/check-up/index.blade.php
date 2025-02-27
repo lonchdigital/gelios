@@ -36,19 +36,19 @@
                                                     <span>
                                                         {{ __('web.promotional_price') }}
                                                         <span class="new-price">
-                                                            <span class="price">{{ $checkUp->new_price }}</span> грн!
+                                                            <span class="price">{{ $checkUp->new_price }}</span>
                                                         </span>
                                                     </span>
                                                     <span class="old-price font-weight-bold">
                                                         <s>
-                                                            {{ $checkUp->price }} грн
+                                                            {{ $checkUp->price }}
                                                         </s>
                                                     </span>
                                                 @else
                                                     <span>
                                                         {{ __('web.price') }}
                                                         <span class="new-price">
-                                                            <span class="price">{{ $checkUp->price }}</span> грн!
+                                                            <span class="price">{{ $checkUp->price }}</span>
                                                         </span>
                                                     </span>
                                                 @endif

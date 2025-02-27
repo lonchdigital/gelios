@@ -263,7 +263,63 @@ class Seo extends Component
 
         session()->flash('message', 'Main page seo successfully edited');
 
-        return $this->redirectRoute('admin.main-page.edit-seo');
+        switch ($this->page->type) {
+            case 'main_page':
+                    return $this->redirectRoute('admin.main-page.edit-seo');
+                break;
+
+            case 'laboratory':
+                    return $this->redirectRoute('admin.laboratories.edit-main-seo');
+                break;
+
+            case 'one_laboratory':
+                    return $this->redirectRoute('admin.laboratories.edit-one-page-seo');
+                break;
+
+            case 'shares':
+                    return $this->redirectRoute('admin.promotions.edit-main-seo');
+                break;
+
+            case 'shares_item':
+                    return $this->redirectRoute('admin.promotions.edit-one-page-seo');
+                break;
+
+            case 'check_up':
+                    return $this->redirectRoute('admin.check-ups.edit-main-seo');
+                break;
+
+            case 'check_up_item':
+                    return $this->redirectRoute('admin.check-ups.edit-one-page-seo');
+                break;
+
+            case 'blog':
+                    return $this->redirectRoute('admin.articles.edit-main-seo');
+                break;
+
+            case 'article':
+                    return $this->redirectRoute('admin.articles.edit-one-page-seo');
+                break;
+
+            case 'doctor':
+                    return $this->redirectRoute('admin.doctors.edit-main-seo');
+                break;
+
+            case 'one_doctor':
+                    return $this->redirectRoute('admin.doctors.edit-one-page-seo');
+                break;
+
+            case 'surgery':
+                    return $this->redirectRoute('admin.surgery.edit-main-seo');
+                break;
+
+            case 'opening':
+                    return $this->redirectRoute('admin.vacancies.edit-main-seo');
+                break;
+
+            default:
+                return $this->redirectRoute('admin.main-page.edit-seo');
+        }
+
     }
 
     public function render()

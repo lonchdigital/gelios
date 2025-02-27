@@ -88,4 +88,6 @@ return [
     'main' => 'Главная',
     'page_not_found' => 'Страница не найдена',
     'to_main' => 'На главную',
+    'promotional_price' => 'Акционная цена',
+    'price' => 'Цена',
 ];

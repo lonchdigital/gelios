@@ -23,14 +23,14 @@ $(function() {
 	$('.select-choose-specialist--popup').select2({
 		minimumResultsForSearch: -1,
 		dropdownCssClass: 'select-up-index',
-		dropdownParent: $('.main')
+		dropdownParent: $('main')
 		// placeholder: 'Оберіть фахівця',
 	});
 
 	$('.select-choose-clinic--popup').select2({
 		minimumResultsForSearch: -1,
 		dropdownCssClass: 'select-up-index',
-		dropdownParent: $('.main')
+		dropdownParent: $('main')
 	});
 
 	$('.select-doctors-category').select2({

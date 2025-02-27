@@ -79,7 +79,8 @@
             </svg>
         </div>
     </div>
-    <div class="modal modal--custom popup--sign-up-appointment fade" id="popup--sign-up-appointment"
+
+    <div class="modal modal--custom popup--sign-up-appointment fade main" id="popup--sign-up-appointment"
         data-keyboard="false" tabindex="-1" aria-labelledby="popup--sign-up-appointmentLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content py-5 px-3 py-md-13 px-md-11">
@@ -157,91 +158,11 @@
                             </div>
                         </div>
                     </form>
-                    {{-- <form class="form-popup--sign-up-appointment" autocomplete="off">
-					<div class="row">
-						<div class="col position-static">
-							<div class="d-flex align-items-start justify-content-between mb-3">
-								<div class="h2 font-m modal-title font-weight-bolder mb-0 pr-8">{{ __('pages.sign_up_for_for_appointment') }}</div>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">
-										<svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-											<desc>
-													Created with Pixso.
-											</desc>
-											<defs>
-												<clipPath id="clip2452_21769">
-													<rect id="close-icon" width="24.000000" height="24.000000" fill="white" fill-opacity="0"/>
-												</clipPath>
-											</defs>
-											<rect id="close-icon" width="24.000000" height="24.000000" fill="#FFFFFF" fill-opacity="0"/>
-											<g clip-path="url(#clip2452_21769)">
-												<path id="Vector" d="M7.05 16.94L16.94 7.04" stroke="#3DA6D3" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
-												<path id="Vector" d="M7.05 7.05L16.94 16.95" stroke="#3DA6D3" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
-											</g>
-										</svg>
-										<svg>
-											<use xlink:href="img/icons/icons.svg#i-close"></use>
-										</svg>
-									</span>
-								</button>
-							</div>
-						</div>
-					</div>
-					<div class="row field-wrap">
-						<div class="col-12">
-							<div class="field mb-2">
-								<label class="control-label mb-2" for="form-sign-up-appointment--name">{{ __('pages.enter_your_full_name') }}</label>
-								<input type="text" id="form-sign-up-appointment--name" class="form-control mb-2">
-								<div class="field--help-info small-txt text-red mb-2">{{ __('pages.enter_your_full_name') }}</div>
-							</div>
-						</div>
-						<div class="col-12">
-							<div class="field mb-2">
-								<label class="control-label mb-2" for="form-sign-up-appointment--phone">{{ __('pages.enter_your_phone_number') }}</label>
-								<input type="tel" id="form-sign-up-appointment--phone" class="form-control mb-2">
-								<div class="field--help-info small-txt text-red mb-2">{{ __('pages.enter_your_phone_number') }}</div>
-							</div>
-						</div>
-						<div class="col-12">
-							<div class="field mb-2">
-								<div class="control-label mb-2">{{ __('pages.choose_a_specialist') }}</div>
-								<div class="select-wrap">
-									<select class="select-choose-specialist--popup">
-										<option></option>
-										<option value="1">Фахівeць 1</option>
-										<option value="2">Фахівeць 2</option>
-										<option value="3">Фахівeць 3</option>
-										<option value="4">Фахівeць 4</option>
-									</select>
-								</div>
-								<div class="field--help-info small-txt text-red mb-2">{{ __('pages.choose_a_specialist') }}</div>
-							</div>
-						</div>
-						<div class="col-12">
-							<div class="field mb-2">
-								<div class="control-label mb-2">{{ __('pages.choose_a_clinic') }}</div>
-								<div class="select-wrap">
-									<select class="select-choose-clinic--popup">
-										<option></option>
-										<option value="1">Клініка 1</option>
-										<option value="2">Клініка 2</option>
-										<option value="3">Клініка 3</option>
-										<option value="4">Клініка 4</option>
-									</select>
-								</div>
-								<div class="field--help-info small-txt text-red mb-2">{{ __('pages.choose_a_clinic') }}</div>
-							</div>
-						</div>
-						<div class="col-12">
-							<button type="button" class="btn btn-blue font-weight-bold w-100 mt-2" data-dismiss="modal" aria-label="Close">{{ __('pages.sign_up') }}</button>
-						</div>
-					</div>
-				</form> --}}
-                    {{-- @include('site.components.appointment-form', ['id' => 3]) --}}
                 </div>
             </div>
         </div>
     </div>
+
     <div class="modal modal--custom popup--contacts fade" id="popup--contacts" data-keyboard="false" tabindex="-1"
         aria-labelledby="popup--contactsLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">

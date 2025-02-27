@@ -18,7 +18,7 @@
                 @forelse($this->page2->pageBlocks->groupBy('block') as $group => $blocks)
 
                 <div class="d-flex justify-content-between align-items-center mb-20">
-                <h6 class="mt-3">{{ __('admin.pages.' . $group) }}</h6>
+                <h6 class="mt-3">{{ __('admin.' . $group) }}</h6>
 
                 @if($group == 'main')
                     <a href="{{ route('admin.laboratories.create-slide', ['page' => $this->page2]) }}"
@@ -44,7 +44,7 @@
                             @forelse($blocks as $block)
                                 <tr class="hover">
                                     <td>
-                                        {{ __('admin.pages.' . $block->key) }}
+                                        {{ __('admin.' . $block->key) }}
                                     </td>
                                     <td>
                                         @if ($block->image)

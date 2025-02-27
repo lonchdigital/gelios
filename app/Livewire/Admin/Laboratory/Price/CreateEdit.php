@@ -20,7 +20,9 @@ class CreateEdit extends Component
     public string $ruTitle = '';
 
     protected $listeners = [
-        'languageSwitched' => 'languageSwitched'
+        'languageSwitched' => 'languageSwitched',
+        'refreshItemsAfterDelete' => 'refreshItemsAfterDelete',
+        'refresh' => '$refresh',
     ];
 
     public function mount(LabPriceCategory $category = null)
@@ -100,6 +102,16 @@ class CreateEdit extends Component
         session()->flash('success', 'Дані успішно збережено');
 
         $this->redirectRoute('admin.laboratories.prices.edit', ['category' => $this->category]);
+    }
+
+    public function deleteItem($id, $type)
+    {
+        $this->dispatch('openModalDeleteItem', $type, $id);
+    }
+
+    public function refreshItemsAfterDelete()
+    {
+        $this->dispatch('refresh');
     }
 
     public function render()
