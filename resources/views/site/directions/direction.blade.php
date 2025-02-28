@@ -7,6 +7,8 @@
     ])
 @endsection
 
+@section('main_class', 'art-direction-template')
+
 @section('content')
 
     @include('site.directions.partials.breadcrumbs', [
