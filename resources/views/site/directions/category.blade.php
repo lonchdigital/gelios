@@ -7,45 +7,49 @@
     ])
 @endsection
 
+@section('main_class', 'art-direction-template')
+
 @section('content')
 
     @include('site.directions.partials.breadcrumbs', [
         'breadcrumbs' => $direction->buildBreadcrumbs(),
     ])
     
-    <section class="category-direction-column-item offices-direction mb-24">
-        <div class="container">
-            <div class="row mb-8">
-                <div class="col d-flex align-items-center justify-content-between">
-                    <div class="h2 font-m font-weight-bolder text-blue">{{ $direction->name ?? '' }}</div>
+    @if(count($direction->children) > 0)
+        <section class="category-direction-column-item offices-direction mb-24">
+            <div class="container">
+                <div class="row mb-8">
+                    <div class="col d-flex align-items-center justify-content-between">
+                        <div class="h2 font-m font-weight-bolder text-blue">{{ $direction->name ?? '' }}</div>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="push-menu">
-                        <div class="push-menu--nav">
-                            <div class="nav-toggle">
-                                <a href="##"
-                                    class="btn-nav-back btn-nav-direction btn font-weight-bold ml-auto mb-6"><span>Назад</span><span
-                                        class="icon"></span></a>
-                            </div>
-                            <div class="push-menu--lvl position-relative">
-                                <div class="item has-dropdown">
-                                    <div class="category-directions">
-                                        <div class="category-directions--list">
-                                            <div class="row">
-                                                @foreach ($direction->children as $child)
-                                                    <div class="col-12 col-lg-4 col-xl-3 position-static">
-                                                        <div class="directions-item">
-                                                            <div class="content item">
-                                                                <a href="{{ url($child->buildFullPath()) }}" class="link">
-                                                                    <span>{{ $child->name }}</span>
-                                                                    <div class="i-link"></div>
-                                                                </a>
+                <div class="row">
+                    <div class="col">
+                        <div class="push-menu">
+                            <div class="push-menu--nav">
+                                <div class="nav-toggle">
+                                    <a href="##"
+                                        class="btn-nav-back btn-nav-direction btn font-weight-bold ml-auto mb-6"><span>Назад</span><span
+                                            class="icon"></span></a>
+                                </div>
+                                <div class="push-menu--lvl position-relative">
+                                    <div class="item has-dropdown">
+                                        <div class="category-directions">
+                                            <div class="category-directions--list">
+                                                <div class="row">
+                                                    @foreach ($direction->children as $child)
+                                                        <div class="col-12 col-lg-4 col-xl-3 position-static">
+                                                            <div class="directions-item">
+                                                                <div class="content item">
+                                                                    <a href="{{ url($child->buildFullPath()) }}" class="link">
+                                                                        <span>{{ $child->name }}</span>
+                                                                        <div class="i-link"></div>
+                                                                    </a>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                @endforeach
+                                                    @endforeach
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -55,8 +59,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <section class="media-content">
         <div class="container">

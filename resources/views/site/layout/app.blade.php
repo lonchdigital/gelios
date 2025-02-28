@@ -68,7 +68,7 @@
         <div class="popup-bg-body" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation"></div>
         @include('site.parts.header')
-        <main>
+        <main class="@yield('main_class')">
             @yield('content')
         </main>
         @include('site.parts.footer')
