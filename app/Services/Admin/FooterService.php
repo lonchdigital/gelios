@@ -45,6 +45,14 @@ class FooterService
             PageType::DOCTOR->value,
             PageType::ABOUT->value,
             PageType::LABORATORY->value,
+            PageType::INSURANCECOMPANIES->value,
+            PageType::REVIEWS->value,
+            PageType::PRICES->value,
+            PageType::OFFICES->value,
+            PageType::CHECKUP->value,
+            PageType::SURGERY->value,
+            PageType::OPENING->value,
+
         ])
             ->get();
 

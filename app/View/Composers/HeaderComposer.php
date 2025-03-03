@@ -18,7 +18,7 @@ class HeaderComposer
             $view->with([
                 'firstCity'       => $firstCity,
                 'secondCity'       => $secondCity,
-                'headerImage'       => Setting::where('key', 'footer_image')->first()->imageUrl ?? '',
+                'headerImage'       => Setting::where('key', 'header_image')->first()->imageUrl ?? '',
             ]);
         } catch (\Exception $e) {
         }

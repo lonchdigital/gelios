@@ -444,26 +444,31 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-12 col-7 col-lg-6">
-                    <form id="form-any-questions" class="p-5 bg-white">
+                    <form id="form-any-questions" class="p-5 bg-white" autocomplete="off"
+                    action="{{ route('feedback-question.store') }}">
+                        @csrf
+                        @method('POST')
                         <div class="h2 font-m font-weight-bolder mb-5">Залишилися запитання?</div>
                         <div class="row field-wrap">
                             <div class="col-12">
                                 <div class="field mb-2">
                                     <label class="control-label mb-2" for="form-any-questions-name-2">Вкажіть ПІБ</label>
-                                    <input type="text" id="form-any-questions-name-2" class="form-control mb-2">
+                                    <input type="text" id="form-any-questions-name-2" name="name" class="form-control mb-2">
                                     <div class="field--help-info small-txt text-red mb-2">Вкажіть ПІБ</div>
                                 </div>
+                                <div id="name_error" class="field--help-info small-txt text-red mb-2"></div>
                             </div>
                             <div class="col-12">
                                 <div class="field mb-2">
                                     <label class="control-label mb-2" for="form-any-questions-phone-2">Вкажіть номер
                                         телефону</label>
-                                    <input type="tel" id="form-any-questions-phone-2" class="form-control mb-2">
+                                    <input type="tel" id="form-any-questions-phone-2" name="phone" class="form-control mb-2">
                                     <div class="field--help-info small-txt text-red mb-2">Вкажіть номер телефону</div>
                                 </div>
+                                <div id="phone_error" class="field--help-info small-txt text-red mb-2"></div>
                             </div>
                             <div class="col-12">
-                                <button type="button"
+                                <button type="submit"
                                     class="btn btn-blue font-weight-bold w-100 mt-2">Записатися</button>
                             </div>
                         </div>
@@ -482,7 +487,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="h2 font-weight-bolder text-blue mb-8">{{ $page->meta_title }}</div>
+                        <div class="h2 font-weight-bolder text-blue mb-8">{{ $page->seo_title }}</div>
                         <div class="seo-wrapper">
                             <div class="content os-scrollbar-overflow">
                                 {!! $page->seo_text !!}

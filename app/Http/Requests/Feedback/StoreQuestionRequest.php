@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Log;
 
-class StoreRequest extends FormRequest
+class StoreQuestionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,11 +27,6 @@ class StoreRequest extends FormRequest
         $locale = session('locale', config('app.locale'));
         app()->setLocale($locale);
 
-        // app()->setLocale(request()->getLocale());
-
-        // Log::info('Request locale: ' . request()->getLocale());
-        // Log::info('App locale after update: ' . app()->getLocale());
-
         return [
             'name' => [
                 'required',
@@ -43,19 +38,7 @@ class StoreRequest extends FormRequest
                 'required',
                 'min:10',
                 'max:20',
-                'regex:/^(\+?380)[\d\s-]{8,}$/i',
-            ],
-
-            'doctor' => [
-                'required',
-                'string',
-                'max:255',
-            ],
-
-            'clinic' => [
-                'required',
-                // 'integer',
-                // 'exists:hospitals,id',
+                'regex:/^(\+?380)[\d\s-]{9,}$/i',
             ],
         ];
     }
@@ -84,8 +67,6 @@ class StoreRequest extends FormRequest
         return [
             'phone' => __('validation.phone'),
             'name' => __('validation.name'),
-            'doctor' => __('validation.doctor'),
-            'clinic' => __('validation.clinic'),
         ];
     }
 

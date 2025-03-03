@@ -196,112 +196,6 @@
                             <div
                                 class="popup--contacts-offices bg-light-blue p-5 rounded d-flex flex-column justify-content-between">
                                 <div>
-                                    {{-- <div class="spoiler--contacts">
-                                        <div class="row row-gap">
-                                            <div class="col-12 col-xl-6">
-                                                <ul class="list-unstyled mb-0">
-                                                    <li>
-                                                        <div class="offices-address" id="first-address"></div>
-                                                    </li>
-                                                    <li>
-                                                        <a href="tel:+38 (095) 000-01-50">
-                                                            <div class="link-phone" id="first-phone1"></div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="tel:+38 (050) 325-62-93">
-                                                            <div class="link-phone" id="first-phone2"></div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <div class="offices-time" id="first-hours"></div>
-                                                    </li>
-                                                    <li>
-                                                        <a href="mailto:helioscentr@gmail.com">
-                                                            <div class="offices-email" id="first-email"></div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                                <input hidden id="first-latitude">
-                                                <input hidden id="first-longitude">
-                                            </div>
-                                            <div class="col-12 col-xl-6">
-                                                <ul class="list-unstyled mb-0">
-                                                    <li>
-                                                        <div class="offices-address" id="second-address"></div>
-                                                    </li>
-                                                    <li>
-                                                        <a href="tel:+38 (095) 000-01-50">
-                                                            <div class="link-phone" id="second-phone1"></div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="tel:+38 (050) 325-62-93">
-                                                            <div class="link-phone" id="second-phone2"></div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <div class="offices-time" id="second-hours"></div>
-                                                    </li>
-                                                    <li>
-                                                        <a href="mailto:helioscentr@gmail.com">
-                                                            <div class="offices-email" id="second-email"></div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-12 col-xl-6">
-                                                <ul class="list-unstyled mb-0">
-                                                    <li>
-                                                        <div class="offices-address" id="third-address"></div>
-                                                    </li>
-                                                    <li>
-                                                        <a href="tel:+38 (095) 000-01-50">
-                                                            <div class="link-phone" id="third-phone1"></div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="tel:+38 (050) 325-62-93">
-                                                            <div class="link-phone" id="third-phone2"></div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <div class="offices-time" id="third-hours"></div>
-                                                    </li>
-                                                    <li>
-                                                        <a href="mailto:helioscentr@gmail.com">
-                                                            <div class="offices-email" id="third-email"></div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-12 col-xl-6">
-                                                <ul class="list-unstyled mb-0">
-                                                    <li>
-                                                        <div class="offices-address" id="fourth-address"></div>
-                                                    </li>
-                                                    <li>
-                                                        <a href="tel:+38 (095) 000-01-50">
-                                                            <div class="link-phone" id="fourth-phone1"></div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="tel:+38 (050) 325-62-93">
-                                                            <div class="link-phone" id="fourth-phone2"></div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <div class="offices-time" id="fourth-hours"></div>
-                                                    </li>
-                                                    <li>
-                                                        <a href="mailto:helioscentr@gmail.com">
-                                                            <div class="offices-email" id="fourth-email"></div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div> --}}
                                     <div class="spoiler--contacts">
                                         <div class="row row-gap" id="affiliates-container">
 
@@ -325,6 +219,29 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal--custom popup--review-thank fade" id="popup--review-thank" data-keyboard="false" tabindex="-1" aria-labelledby="popup--review-thankLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content py-5 px-3 py-md-13 px-md-11">
+                <div class="modal-body p-0">
+                    <form class="form-popup--review-thank" autocomplete="off">
+                        <div class="row">
+                            <div class="col">
+                                <div class="text-center py-4 py-md-0 my-lg-7">
+                                    <div class="i-check mb-5">
+                                        <svg>
+                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-double-check' }}"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="h4 font-m font-weight-bolder">Дякуємо за відгук!</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -439,6 +356,7 @@
 </script> --}}
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     {{-- <script src="{{ asset('styles/js/jquery.min.js') }}"></script>
 <script src="{{ asset('styles/js/libs.min.js') }}"></script>
@@ -475,6 +393,17 @@
                         .then(data => {
                             if (data.success) {
                                 console.log("Form submitted successfully!");
+
+                                form.reset();
+
+                                const modalElement = $('#popup--review-thank');
+
+                                const modal = new bootstrap.Modal(modalElement);
+                                modal.show();
+
+                                setTimeout(() => {
+                                    modal.hide();
+                                }, 2000);
                             } else {
                                 // console.log(data);
 
@@ -502,6 +431,71 @@
                             console.error("Error submitting form:", error);
                         });
                 });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const form = document.querySelector('[id="form-any-questions"]');
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const formData = {
+                    name: form.querySelector('[name="name"]').value,
+                    phone: form.querySelector('[name="phone"]').value,
+                };
+
+                fetch('/feedback-question-store', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                            .getAttribute('content')
+                    },
+                    body: JSON.stringify(formData),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log("Form submitted successfully!");
+                            form.reset();
+
+                            const modalElement = $('#popup--review-thank');
+
+                            const modal = new bootstrap.Modal(modalElement);
+                            modal.show();
+
+                            setTimeout(() => {
+                                modal.hide();
+                            }, 2000);
+                        } else {
+                            // console.log(data);
+
+                            const errors = data.errors;
+                            // console.log(errors);
+
+                            for (const field in errors) {
+                                const fieldElement = form.querySelector(`#${field}_error`);
+                                // console.log(fieldElement);
+                                const existingError = fieldElement?.nextElementSibling;
+
+                                if (existingError && existingError.classList.contains('field--help-info')) {
+                                    existingError.textContent = errors[field][0];
+                                } else if (fieldElement) {
+                                    fieldElement.insertAdjacentHTML(
+                                        'afterend',
+                                        '<div class="field--help-info small-txt text-red mb-2">' +
+                                        errors[field][0] + '</div>'
+                                    );
+                                }
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error submitting form:", error);
+                    });
             });
         });
     </script>
