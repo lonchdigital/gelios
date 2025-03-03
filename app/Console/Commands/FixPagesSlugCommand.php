@@ -33,8 +33,9 @@ class FixPagesSlugCommand extends Command
     {
         // INSURANCECOMPANIES
         $page1 = Page::where('type', PageType::INSURANCECOMPANIES->value)
-            ->first()
-            ->update([
+            ->first();
+
+        $page1->update([
                 'slug' => 'strahovym-kompaniyam'
             ]);
 
