@@ -38,23 +38,28 @@ class FixPagesSlugCommand extends Command
                 'slug' => 'strahovym-kompaniyam'
             ]);
 
-        $uaTrans1 = PageTranslation::firstOrCreate([
+        PageTranslation::firstOrCreate([
             'page_id' => $page1->id,
             'locale' => 'ua',
         ]);
 
-        $uaTrans1->update([
-            'title' => 'Страхові компанії',
-        ]);
+        PageTranslation::where('page_id', $page1->id)
+            ->where('locale', 'ua')
+            ->first()
+            ->update([
+                'title' => 'Страхові компанії',
+            ]);
 
-        $ruTrans1 = PageTranslation::firstOrCreate([
+        PageTranslation::firstOrCreate([
             'page_id' => $page1->id,
             'locale' => 'ru',
         ]);
 
-        $ruTrans1->update([
-            'title' => 'Страховые',
-        ]);
+        PageTranslation::where('page_id', $page1->id)
+            ->where('locale', 'ru')
+            ->first()->update([
+                'title' => 'Страховые',
+            ]);
 
         // REVIEWS
         $page2 = Page::where('type', PageType::REVIEWS->value)
