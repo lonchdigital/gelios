@@ -486,7 +486,7 @@
             </div>
         </div>
     </section>
-    @if (!empty($page->seo_text))
+    @if (!empty($page->seo_title))
         <section class="seo mb-24">
             <div class="container">
                 <div class="row">

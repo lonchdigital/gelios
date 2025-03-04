@@ -5,9 +5,17 @@
                 <div class="d-flex justify-content-between align-items-center mb-20">
                     <h6 class="card-title mb-0">{{ __('admin.doctors_list') }}</h6>
 
-                    <a href="{{ route('admin.doctors.create') }}" class="btn btn-primary waves-effect waves-light float-right mb-3">
-                        + {{ __('admin.add_doctor') }}
-                    </a>
+                    <div class="d-flex justify-content-between align-items-center mb-20">
+                        <div>
+                        <input type="text" wire:model.live="search" class="form-control mb-3" placeholder="пошук">
+                        </div>
+                        &nbsp;
+                        <div>
+                            <a href="{{ route('admin.doctors.create') }}" class="btn btn-primary waves-effect waves-light float-right mb-3">
+                                + {{ __('admin.add_doctor') }}
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 @if(session('success'))

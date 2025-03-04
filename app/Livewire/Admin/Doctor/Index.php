@@ -11,6 +11,8 @@ class Index extends Component
 {
     use WithPagination;
 
+    public string $search = '';
+
     protected $listeners = [
         'refreshItemsAfterDelete' => 'refreshItemsAfterDelete',
         'refresh' => '$refresh',
@@ -18,7 +20,8 @@ class Index extends Component
 
     public function getDoctorsProperty()
     {
-        $doctors = Doctor::paginate(10);
+        $doctors = Doctor::search(rtrim($this->search))
+        ->paginate(10);
 
         return $doctors;
     }

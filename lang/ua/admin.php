@@ -399,4 +399,5 @@ return [
     'fifth'         => 'П\'ятий',
     'second_block'  => 'Другий блок',
     'opening'       => 'Вакансії',
+    'expirience'    => 'Досвід',
 ];
