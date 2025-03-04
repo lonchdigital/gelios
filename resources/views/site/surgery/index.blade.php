@@ -7,6 +7,10 @@
     ])
 @endsection
 
+@section('NOINDEX')
+    <meta name="robots" content="noindex, nofollow">
+@endsection
+
 @section('content')
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [

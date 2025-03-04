@@ -16,4 +16,5 @@ import "./modules/js.js";
 import "./modules/hospital-modal.js";
 import Inputmask from "inputmask";
 
-Inputmask("+380 (99) 999-99-99").mask("#form-meeting-phone");
+Inputmask("+38 (099) 999-99-99").mask("#form-meeting-phone");
+Inputmask("+38 (099) 999-99-99").mask("#form-any-questions-phone-2");

@@ -61,6 +61,9 @@
         <meta property="og:description" content="{{ config('app.name') }}" />
         <meta property="og:image" content="{{ asset('/images/logos/logo-gold.svg') }}" />
     @show
+
+    @section('NOINDEX')
+    @show
 </head>
 
 <body>
