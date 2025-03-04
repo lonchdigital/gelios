@@ -289,19 +289,19 @@ class CreateEdit extends Component
             ],
 
             'uaExpirience' => [
-                'required',
+                'nullable',
                 'string',
                 'max:255',
             ],
 
             'enExpirience' => [
-                'required',
+                'nullable',
                 'string',
                 'max:255',
             ],
 
             'ruExpirience' => [
-                'required',
+                'nullable',
                 'string',
                 'max:255',
             ],
