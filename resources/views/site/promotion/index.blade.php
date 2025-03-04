@@ -20,7 +20,7 @@
             ],
         ],
     ])
-    <section class="shares-top section-top mb-11 mb-lg-24">
+    <section class="practice-activity section-top mb-11 mb-lg-24">
         <div class="container">
             <div class="row">
                 <div class="col">

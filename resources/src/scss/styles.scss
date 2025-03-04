@@ -291,7 +291,7 @@
 	}
 }
 
-.shares-top {
+.practice-activity {
 	.backdrop {
 		position: relative;
 
@@ -1340,6 +1340,11 @@
 
 			.section-top & {
 				max-height: 260px;
+
+				.h1,
+				.h2 {
+					color: rgb(102, 163, 224);
+				}
 			}
 
 			.opening-top & {
@@ -2834,6 +2839,12 @@
 
 		@include sm-max {
 			max-height: 420px;
+		}
+
+		p {
+			strong {
+				color: rgb(102, 163, 224);
+			}
 		}
 
 		// &::-webkit-scrollbar {
