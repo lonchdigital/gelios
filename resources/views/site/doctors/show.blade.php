@@ -2,7 +2,7 @@
 
 @section('head')
     @include('site.components.head', [
-        'title' => ($doctor->specialization->title) . ($seo[0] ?? $page->meta_title ?: $page->title),
+        'title' => ($doctor->title) . ($seo[0] ?? $page->meta_title ?: $page->title),
         'description' => $seo[1] ?? $page->meta_description,
     ])
 @endsection
