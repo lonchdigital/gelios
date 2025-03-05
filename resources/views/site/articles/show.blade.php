@@ -1,6 +1,14 @@
 @extends('site.layout.app')
 
+@section('head')
+    @include('site.components.head', [
+        'title' => $seo[0] ?? $articlePage->meta_title ?: $articlePage->title,
+        'description' => $seo[1] ?? $articlePage->meta_description,
+    ])
+@endsection
+
 @section('content')
+
 @include('site.components.breadcrumbs', [
     'breadcrumbs' => [
         [

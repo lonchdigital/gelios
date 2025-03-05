@@ -7,6 +7,7 @@ use App\Models\Page;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Models\ArticleCategory;
+use App\Services\Site\MetaService;
 
 class ArticleController extends Controller
 {
@@ -31,13 +32,22 @@ class ArticleController extends Controller
             ->with('translations')
             ->first();
 
+        $service = resolve(MetaService::class);
+
+        $articlePage = Page::where('type', PageType::ARTICLE->value)
+            ->with('translations')
+            ->first();
+
+        $seo = $service->getMeta($page->title, $articlePage->meta_title, $articlePage->meta_description);
+        $seo[1] = strip_tags($seo[1]);
+
         if ($article) {
             $relatedArticles = Article::where('id', '!=', $article->id)
-            ->inrandomOrder()
-            ->take(3)
-            ->get();
+                ->inrandomOrder()
+                ->take(3)
+                ->get();
 
-            return view('site.articles.show', compact('article', 'relatedArticles'));
+            return view('site.articles.show', compact('article', 'articlePage', 'relatedArticles', 'seo'));
         } else {
 
             if( $slug === 'dogovor-oferty' ) {

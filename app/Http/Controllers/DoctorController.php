@@ -81,7 +81,13 @@ class DoctorController extends Controller
 
         $service = resolve(MetaService::class);
 
-        $seo = $service->getMeta($page->title, $doctor->seo_title, $doctor->seo_description);
+        // $seo = $service->getMeta($page->title, $doctor->seo_title, $doctor->seo_description);
+        $doctorPage = Page::where('type', PageType::ONEDOCTOR->value)
+            ->with('translations')
+            ->first();
+
+        $seo = $service->getMeta($page->title, $doctorPage->meta_title, $doctorPage->meta_description);
+        $seo[1] = strip_tags($seo[1]);
 
         $relatedArticles = Article::inrandomOrder()
             ->take(3)
