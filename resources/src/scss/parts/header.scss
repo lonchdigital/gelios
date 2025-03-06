@@ -689,10 +689,15 @@
 							}
 						}
 
+						.push-menu--category .push-menu--sub-category {
+							max-height: 227px;
+						}
+
 						.push-menu--category {
 							display: grid;
 							grid-template-columns: repeat(4, 1fr);
-							grid-auto-rows: minmax(calc(50% - 20px), calc(50% - 20px));
+							// grid-auto-rows: minmax(calc(50% - 20px), calc(50% - 20px));
+							grid-auto-rows: minmax(min-content, 227px);
 							gap: 20px;
 							padding-right: 20px;
 
