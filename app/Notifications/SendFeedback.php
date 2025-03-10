@@ -19,8 +19,6 @@ class SendFeedback extends Notification
      */
     public function __construct($email, $text)
     {
-        Log::info($email);
-        Log::info($text);
         $this->message = $text;
     }
 
@@ -39,14 +37,18 @@ class SendFeedback extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        $lines = explode("\n", $this->message);
-        $mailMessage = new MailMessage;
+        Log::info($this->message);
+        return (new MailMessage)
+                ->subject('Нове повідомлення')
+                ->view('emails.feedback', ['message2' => (string) $this->message]);
+        // $lines = explode("\n", $this->message);
+        // $mailMessage = new MailMessage;
 
-        foreach ($lines as $line) {
-            $mailMessage->line($line);
-        }
+        // foreach ($lines as $line) {
+        //     $mailMessage->line($line);
+        // }
 
-        return $mailMessage;
+        // return $mailMessage;
 
         // return (new MailMessage)
         //             ->line($this->message);

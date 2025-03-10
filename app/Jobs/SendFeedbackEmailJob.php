@@ -38,8 +38,16 @@ class SendFeedbackEmailJob implements ShouldQueue
     {
         $message = 'Ім\'я клієнта: ' . $this->data['name'] . "\n" .
                     'Телефон клієнта: ' . $this->data['phone'] . "\n".
-                   'Лікар: ' . $this->data['doctor'] . "\n" .
-                   'Клініка: ' . $this->data['clinic']
+                   'Спеціальність: ' . $this->data['doctor'] . "\n" .
+                   'Клініка: ' . $this->data['clinic'] . "\n" .
+                   'Сторінка: ' . $this->data['url'] . "\n" .
+                   'Форма: ' . $this->data['form'] . "\n" .
+                   'utm_source: ' . $this->data['utm_source'] . "\n" .
+                   'utm_medium: ' . $this->data['utm_medium'] . "\n" .
+                   'utm_campaign: ' . $this->data['utm_campaign'] . "\n" .
+                   'utm_term: ' . $this->data['utm_term'] . "\n" .
+                   'utm_content: ' . $this->data['utm_content']
+
         ;
 
         Notification::route('mail', $this->email)->notify(new SendFeedback($this->email, $message));

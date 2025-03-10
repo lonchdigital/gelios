@@ -4,8 +4,10 @@ namespace App\View\Composers;
 
 use App\Models\Contact;
 use App\Models\Doctor;
+use App\Models\DoctorSpecialization;
 use App\Models\Hospital;
 use App\Models\Setting;
+use App\Models\Specialization;
 use Illuminate\View\View;
 
 class DoctorComposer
@@ -14,7 +16,7 @@ class DoctorComposer
     {
         try {
             $view->with([
-                'doctors'       => Doctor::get(),
+                'doctors'       => Specialization::get(),
                 'clinics'       => Contact::get(),
             ]);
         } catch (\Exception $e) {
