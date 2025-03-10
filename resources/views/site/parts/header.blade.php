@@ -384,6 +384,9 @@
                                                         <div class="hover-aside-menu--item">
                                                             <a class="link" href="{{ route('vacancy.index') }}">{{ __('pages.vacancies') }}</a>
                                                         </div>
+                                                        <div class="hover-aside-menu--item">
+                                                            <a class="link" href="{{ route('offices.page') }}">{{ __('pages.branches') }}</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

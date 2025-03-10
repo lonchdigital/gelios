@@ -41,4 +41,5 @@ return [
     'comprehensive_examination_and_expert_advice' => 'Комплексне обстеження та консультації фахівців',
     'more_shares' => 'Більше акцій',
     'all_promotions' => 'Усі акції',
+    'branches' => 'Філії',
 ];

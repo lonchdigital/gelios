@@ -41,4 +41,5 @@ return [
     'comprehensive_examination_and_expert_advice' => 'Comprehensive examination and expert advice',
     'more_shares' => 'More promotions',
     'all_promotions' => 'All promotions',
+    'branches' => 'Branches',
 ];
