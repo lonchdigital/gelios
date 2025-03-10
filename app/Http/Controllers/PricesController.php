@@ -31,7 +31,7 @@ class PricesController extends Controller
         $request->validate([
             'query' => 'required|array'
         ]);
-        
+
         return $this->service->getFilteredItems($request, $this->page);
     }
 }

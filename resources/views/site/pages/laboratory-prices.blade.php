@@ -1,6 +1,11 @@
 @extends('site.layout.app')
 
 @section('head')
+    @include('site.components.head', [
+        'title' => $page->meta_title ?: $page->title,
+        'description' => $page->meta_description,
+    ])
+
     @vite(['resources/js/filters/prices/pricesFilter.js'])
 @endsection
 

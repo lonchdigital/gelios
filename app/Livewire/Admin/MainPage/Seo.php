@@ -316,6 +316,10 @@ class Seo extends Component
                     return $this->redirectRoute('admin.vacancies.edit-main-seo');
                 break;
 
+            case 'laboratory_price':
+                    return $this->redirectRoute('admin.laboratories.prices.edit-seo');
+                break;
+
             default:
                 return $this->redirectRoute('admin.main-page.edit-seo');
         }

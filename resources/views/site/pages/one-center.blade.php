@@ -1,5 +1,17 @@
 @extends('site.layout.app')
 
+@section('head')
+    @include('site.components.head', [
+            'title' => $page->meta_title ?: $page->title,
+            'description' => $page->meta_description,
+        ])
+        
+    @include('site.components.head', [
+        'title' => $page->meta_title ?: $page->title,
+        'description' => $page->meta_description,
+    ])
+@endsection
+
 @section('content')
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
@@ -20,7 +32,7 @@
                 <div class="col">
                     <div class="section-top--backdrop-swiper overflow-hidden h-100 position-relative">
                         <div class="swiper-wrapper">
-                            
+
                             @foreach ($slides as $slide)
                                 <div class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
                                     <div class="backdrop px-3 pt-3 pb-10 p-sm-3 p-lg-6">
@@ -28,7 +40,7 @@
                                             <div class="h1 font-m font-weight-bolder mb-3">{{ $slide->title }}</div>
                                             <div class="h5 font-m font-weight-bold mb-3">{{ $slide->description }}</div>
                                             <a href="##" data-toggle="modal"
-                                                data-target="#popup--sign-up-appointment" 
+                                                data-target="#popup--sign-up-appointment"
                                                 class="btn btn-white font-weight-bold">{{ trans('pages.sign_up_for_for_appointment') }}</a>
                                         </div>
                                     </div>
@@ -37,7 +49,7 @@
                                     </div>
                                 </div>
                             @endforeach
-                            
+
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>
@@ -87,7 +99,7 @@
             </div>
         </section>
     @endif
-    
+
     <section class="media-content">
         <div class="container">
             @include('site.components.text-section', ['data' => $pageTextBlockTwo])

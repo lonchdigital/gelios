@@ -1,5 +1,12 @@
 @extends('site.layout.app')
 
+@section('head')
+    @include('site.components.head', [
+        'title' => $page->meta_title ?: $page->title,
+        'description' => $page->meta_description,
+    ])
+@endsection
+
 @section('content')
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
@@ -57,8 +64,8 @@
     <section class="offices-direction mb-24 mb-lg-0">
         @foreach ($contacts as $contact)
             {{-- @dd($contact->getDirectionsTree()) --}}
-            @php 
-                $contactTteration = $loop->iteration; 
+            @php
+                $contactTteration = $loop->iteration;
             @endphp
             <div class="offices-direction--item py-12 bg-white mb-8" id="office-{{ $contact->id }}">
                 <div class="container">

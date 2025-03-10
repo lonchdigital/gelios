@@ -195,10 +195,10 @@
                                 <a href="{{ route('admin.check-ups.edit-main-seo') }}">{{ __('admin.check_up_page_seo') }}
                                 </a>
                             </li>
-                            <li @if(Route::is('admin.check-ups.edit-one-page-seo')) class="active" @endif >
+                            {{-- <li @if(Route::is('admin.check-ups.edit-one-page-seo')) class="active" @endif >
                                 <a href="{{ route('admin.check-ups.edit-one-page-seo') }}">{{ __('admin.one_check_up_seo') }}
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
 
@@ -281,6 +281,12 @@
 
                             <li @if(Route::is('admin.laboratories.prices.*')) class="active" @endif >
                                 <a href="{{ route('admin.laboratories.prices.index') }}">{{ __('admin.prices') }}
+                                </a>
+                            </li>
+                            <li @if(Route::is('admin.laboratories.prices.edit-seo')) class="active" @endif >
+                                <a href="{{ route('admin.laboratories.prices.edit-seo') }}">
+                                    СЕО сторінки ціни лабораторії
+                                    {{-- {{ __('admin.one_laboratory_page_seo') }} --}}
                                 </a>
                             </li>
 

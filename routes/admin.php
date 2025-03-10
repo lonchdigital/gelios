@@ -198,6 +198,7 @@ Route::group([
             Route::get('/create', [LaboratoryController::class, 'create'])->name('create');
 
             Route::prefix('/prices')->name('prices.')->group(function() {
+                Route::get('/edit-seo', [LaboratoryController::class, 'pricesSeo'])->name('edit-seo');
                 Route::get('/', [LaboratoryController::class, 'priceIndex'])->name('index');
                 Route::get('/create', [LaboratoryController::class, 'priceCreate'])->name('create');
                 Route::get('/{category}/edit', [LaboratoryController::class, 'priceEdit'])->name('edit');

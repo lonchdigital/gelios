@@ -8,6 +8,7 @@ use App\Models\Contact;
 use App\Models\BriefBlock;
 use App\Models\SectionImage;
 use App\Models\PageMediaBlock;
+use App\Services\Site\MetaService;
 
 class AboutUsController extends Controller
 {
@@ -21,13 +22,18 @@ class AboutUsController extends Controller
             $photos = $photos->take(5);
         }
 
+        $service = resolve(MetaService::class);
+        $seo = $service->getMeta($page->title, $page->meta_title, $page->meta_description);
+        $seo[1] = strip_tags($seo[1]);
+
         return view('site.pages.about-us',[
             'page' => $page,
             'briefBlocks' => BriefBlock::where('page_id', $page->id)->orderBy('sort', 'asc')->get(),
             'pageMediaBlock' => PageMediaBlock::where('number', 1)->where('page_id', $page->id)->first(),
             'contacts' => Contact::all(),
             'сertificates' => $allSectionImages->where('type', 'сertificates')->sortBy('sort'),
-            'photos' => $photos
+            'photos' => $photos,
+            'seo' => $seo,
         ]);
     }
 }

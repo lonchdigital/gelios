@@ -20,6 +20,18 @@ $(function() {
 		// placeholder: 'Оберіть клініку',
 	});
 
+    $('.select-choose-specialists').select2({
+		minimumResultsForSearch: -1,
+		dropdownParent: $('#popup--sign-up-appointment')
+		// placeholder: 'Оберіть фахівця',
+	});
+
+	$('.select-choose-clinics').select2({
+		minimumResultsForSearch: -1,
+		dropdownParent: $('#popup--sign-up-appointment')
+		// placeholder: 'Оберіть клініку',
+	});
+
 	$('.select-choose-specialist--popup').select2({
 		minimumResultsForSearch: -1,
 		dropdownCssClass: 'select-up-index',

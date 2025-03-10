@@ -104,4 +104,12 @@ class LaboratoryController extends Controller
     {
         return view('admin.laboratory.price.item.edit', compact('category', 'item'));
     }
+
+    public function pricesSeo()
+    {
+        $page = Page::where('type', PageType::LABORATORYPRICE->value)
+            ->first();
+
+        return view('admin.laboratory.main-page-seo', compact('page'));
+    }
 }

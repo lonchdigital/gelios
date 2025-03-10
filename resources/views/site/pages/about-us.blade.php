@@ -1,5 +1,12 @@
 @extends('site.layout.app')
 
+@section('head')
+    @include('site.components.head', [
+        'title' => $page->meta_title ?: $page->title,
+        'description' => $page->meta_description,
+    ])
+@endsection
+
 @section('content')
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
@@ -50,14 +57,14 @@
             <div class="row">
                 <div class="col-12 col-lg-6 mb-5 mb-lg-0">
                     <ul class="os-scrollbar-overflow list-unstyled mb-6">
-                        {!! $pageMediaBlock->text !!}
+                        {!! $pageMediaBlock->text ?? '' !!}
                     </ul>
                     <button type="button" class="btn btn-blue" data-toggle="modal"
                         data-target="#popup--sign-up-appointment">{{ trans('web.make_appointment') }}</button>
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="plyr__video-embed js-player">
-                        @if($pageMediaBlock->video)
+                        @if(!empty($pageMediaBlock->video))
                             <iframe
                                 src="{{ $pageMediaBlock->video }}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
                                 allowfullscreen allowtransparency allow="autoplay"></iframe>
@@ -136,7 +143,7 @@
                             </a>
                         </div>
                     </div>
-                    
+
                     <div class="col-12 col-lg-6">
                         <div class="row">
                             @foreach($photos->slice(1)->chunk(2) as $chunk)

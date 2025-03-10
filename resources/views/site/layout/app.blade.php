@@ -73,6 +73,89 @@
         @include('site.parts.header')
         <main class="@yield('main_class')">
             @yield('content')
+
+            <div class="modal modal--custom popup--sign-up-appointment fade" id="popup--sign-up-appointment"
+                data-keyboard="false" tabindex="-1" aria-labelledby="popup--sign-up-appointmentLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content py-5 px-3 py-md-13 px-md-11">
+                        <div class="modal-body p-0">
+                            <form class="form-popup--sign-up-appointment" id="form-meeting-3" autocomplete="off"
+                                action="{{ route('feedback.store') }}">
+                                @csrf
+                                @method('POST')
+                                <div class="row">
+                                    <div class="col position-static">
+                                        <div class="d-flex align-items-start justify-content-between mb-3">
+                                            <div class="h2 font-m modal-title font-weight-bolder mb-0 pr-8">
+                                                {{ __('pages.make_an_appointment') ?? 'Записатися на прийом' }}</div>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">
+                                                    <svg>
+                                                        <use
+                                                            xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-close' }}">
+                                                        </use>
+                                                    </svg>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row field-wrap">
+                                    <div class="col-12">
+                                        <div class="field mb-2">
+                                            <label class="control-label mb-2" for="form-meeting-name">{{ __('pages.enter_your_full_name') }}</label>
+                                            <input type="text" id="form-meeting-name" name="name" class="form-control mb-2">
+                                            <div class="field--help-info small-txt text-red mb-2">{{ __('pages.enter_your_full_name') }}</div>
+                                        </div>
+                                        <div id="name_error" class="field--help-info small-txt text-red mb-2"></div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="field mb-2">
+                                            <label class="control-label mb-2" for="form-meeting-phone">{{ __('pages.enter_your_phone_number') }}</label>
+                                            <input type="phone" id="form-meeting-phone" value="{{ old('phone') ?? '+380' }}" name="phone" class="form-control mb-2">
+                                            <div class="field--help-info small-txt text-red mb-2">{{ __('pages.enter_your_phone_number') }}</div>
+                                        </div>
+                                        <div id="phone_error" class="field--help-info small-txt text-red mb-2"></div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="field mb-2">
+                                            <div class="control-label mb-2">{{ __('pages.choose_a_specialist') }}</div>
+                                            <div class="select-wrap">
+                                                <select class="select-choose-specialists" name="doctor">
+                                                    <option></option>
+                                                    @forelse($doctors as $doctor)
+                                                        <option value="{{ $doctor->title }}">{{ $doctor->title }}</option>
+                                                    @empty
+                                                    @endforelse
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div id="doctor_error" class="field--help-info small-txt text-red mb-2"></div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="field mb-2">
+                                            <div class="control-label mb-2">{{ __('pages.choose_a_clinic') }}</div>
+                                            <div class="select-wrap">
+                                                <select class="select-choose-clinics" name="clinic">
+                                                    <option></option>
+                                                    @forelse($clinics as $clinic)
+                                                        <option value="{{ $clinic->id }}">{{ $clinic->title }}</option>
+                                                    @empty
+                                                    @endforelse
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div id="clinic_error" class="field--help-info small-txt text-red mb-2"></div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-blue font-weight-bold w-100 mt-2">{{ __('pages.sign_up') }}</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
         @include('site.parts.footer')
 
@@ -80,89 +163,6 @@
             <svg>
                 <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-arrow-small-down' }}"></use>
             </svg>
-        </div>
-    </div>
-
-    <div class="modal modal--custom popup--sign-up-appointment fade main" id="popup--sign-up-appointment"
-        data-keyboard="false" tabindex="-1" aria-labelledby="popup--sign-up-appointmentLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content py-5 px-3 py-md-13 px-md-11">
-                <div class="modal-body p-0">
-                    <form class="form-popup--sign-up-appointment" id="form-meeting-3" autocomplete="off"
-                        action="{{ route('feedback.store') }}">
-                        @csrf
-                        @method('POST')
-                        <div class="row">
-                            <div class="col position-static">
-                                <div class="d-flex align-items-start justify-content-between mb-3">
-                                    <div class="h2 font-m modal-title font-weight-bolder mb-0 pr-8">
-                                        {{ __('pages.make_an_appointment') ?? 'Записатися на прийом' }}</div>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">
-                                            <svg>
-                                                <use
-                                                    xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-close' }}">
-                                                </use>
-                                            </svg>
-                                        </span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row field-wrap">
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <label class="control-label mb-2" for="form-meeting-name">{{ __('pages.enter_your_full_name') }}</label>
-                                    <input type="text" id="form-meeting-name" name="name" class="form-control mb-2">
-                                    <div class="field--help-info small-txt text-red mb-2">{{ __('pages.enter_your_full_name') }}</div>
-                                </div>
-                                <div id="name_error" class="field--help-info small-txt text-red mb-2"></div>
-                            </div>
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <label class="control-label mb-2" for="form-meeting-phone">{{ __('pages.enter_your_phone_number') }}</label>
-                                    <input type="phone" id="form-meeting-phone" value="{{ old('phone') ?? '+380' }}" name="phone" class="form-control mb-2">
-                                    <div class="field--help-info small-txt text-red mb-2">{{ __('pages.enter_your_phone_number') }}</div>
-                                </div>
-                                <div id="phone_error" class="field--help-info small-txt text-red mb-2"></div>
-                            </div>
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <div class="control-label mb-2">{{ __('pages.choose_a_specialist') }}</div>
-                                    <div class="select-wrap">
-                                        <select class="select-choose-specialist--popup" name="doctor">
-                                            <option></option>
-                                            @forelse($doctors as $doctor)
-                                                <option value="{{ $doctor->title }}">{{ $doctor->title }}</option>
-                                            @empty
-                                            @endforelse
-                                        </select>
-                                    </div>
-                                </div>
-                                <div id="doctor_error" class="field--help-info small-txt text-red mb-2"></div>
-                            </div>
-                            <div class="col-12">
-                                <div class="field mb-2">
-                                    <div class="control-label mb-2">{{ __('pages.choose_a_clinic') }}</div>
-                                    <div class="select-wrap">
-                                        <select class="select-choose-clinic--popup" name="clinic">
-                                            <option></option>
-                                            @forelse($clinics as $clinic)
-                                                <option value="{{ $clinic->id }}">{{ $clinic->title }}</option>
-                                            @empty
-                                            @endforelse
-                                        </select>
-                                    </div>
-                                </div>
-                                <div id="clinic_error" class="field--help-info small-txt text-red mb-2"></div>
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-blue font-weight-bold w-100 mt-2">{{ __('pages.sign_up') }}</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
 
