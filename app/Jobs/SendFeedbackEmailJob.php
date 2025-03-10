@@ -36,18 +36,17 @@ class SendFeedbackEmailJob implements ShouldQueue
      */
     public function handle(): void
     {
-        $message = 'Ім\'я клієнта: ' . $this->data['name'] . '<br>' .
-                    'Телефон клієнта: ' . $this->data['phone'] . '<br>'.
-                   'Лікар: ' . $this->data['doctor'] . '<br>' .
+        $message = 'Ім\'я клієнта: ' . $this->data['name'] . "\n" .
+                    'Телефон клієнта: ' . $this->data['phone'] . "\n".
+                   'Лікар: ' . $this->data['doctor'] . "\n" .
                    'Клініка: ' . $this->data['clinic']
         ;
 
         Notification::route('mail', $this->email)->notify(new SendFeedback($this->email, $message));
 
-
-        $dataForRetailLead = [
-            'name' => $this->data['name'],
-            'phone' => $this->data['phone'],
-        ];
+        // $dataForRetailLead = [
+        //     'name' => $this->data['name'],
+        //     'phone' => $this->data['phone'],
+        // ];
     }
 }

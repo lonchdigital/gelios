@@ -6,17 +6,22 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Log;
 
 class SendFeedback extends Notification
 {
     use Queueable;
 
+    protected string $message = '';
+
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct($email, $text)
     {
-        //
+        Log::info($email);
+        Log::info($text);
+        $this->message = $text;
     }
 
     /**
@@ -34,10 +39,20 @@ class SendFeedback extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+        $lines = explode("\n", $this->message);
+        $mailMessage = new MailMessage;
+
+        foreach ($lines as $line) {
+            $mailMessage->line($line);
+        }
+
+        return $mailMessage;
+
+        // return (new MailMessage)
+        //             ->line($this->message);
+                    // ->line('The introduction to the notification.')
+                    // ->action('Notification Action', url('/'))
+                    // ->line('Thank you for using our application!');
     }
 
     /**
