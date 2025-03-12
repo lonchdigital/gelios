@@ -428,6 +428,13 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li @if(Route::is('admin.vacancy-apps.index')) class="active" @endif>
+                        <a href="{{ route('admin.vacancy-apps.index') }}">
+                            <i class="fa fa-address-book-o"></i>
+                            <span>Заявки вакансій</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>

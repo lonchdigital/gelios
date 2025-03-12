@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-    <main class="main">
+    {{-- <main class="main"> --}}
         <section class="section-top mb-24 mt-8">
             <div class="container">
                 <div class="row">
@@ -226,7 +226,7 @@
                                                 <img src="{{ $doctor->imageUrl }}" alt="{{ $doctor->title }}">
                                             </div>
                                             @if($doctor->expirience)
-                                                <div class="experience-quantity mb-3">Досвід роботи: {{ $doctor->expirience }} років</div>
+                                                <div class="experience-quantity mb-3"> {{ trans('doctor.work_experience') . ' ' . $doctor->expirience }}</div>
                                             @endif
                                             <div class="h4 mb-1 font-weight-bolder">{{ $doctor->title }}</div>
                                             <div class="position-work">{{ $doctor->specialty }}</div>
@@ -548,5 +548,5 @@
             </section>
         @endif
 
-    </main>
+    {{-- </main> --}}
 @endsection

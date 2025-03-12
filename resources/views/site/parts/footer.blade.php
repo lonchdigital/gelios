@@ -18,21 +18,21 @@
 							<div class="socials">
 								<ul class="list-inline mb-0">
 									<li class="list-inline-item">
-										<a href="{{ $facebook ?? '##' }}">
+										<a href="{{ $facebook ?? '##' }}" target="_BLANK">
 											<svg class="i-facebook">
 												<use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-facebook' }}"></use>
 											</svg>
 										</a>
 									</li>
 									<li class="list-inline-item">
-										<a href="{{ $instagram ?? '##' }}">
+										<a href="{{ $instagram ?? '##' }}" target="_BLANK">
 											<svg class="i-instagram">
 												<use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-instagram' }}"></use>
 											</svg>
 										</a>
 									</li>
 									<li class="list-inline-item">
-										<a href="{{ $youtube ?? '##' }}">
+										<a href="{{ $youtube ?? '##' }}" target="_BLANK">
 											<svg class="i-youtube">
 												<use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-youtube' }}"></use>
 											</svg>

@@ -38,4 +38,9 @@ class VacancyController extends Controller
 
         return view('admin.vacancy.main-page-seo', compact('page'));
     }
+
+    public function appsIndex()
+    {
+        return view('admin.vacancy.apps.index');
+    }
 }

@@ -93,7 +93,7 @@ $(function () {
 	// Include the prev/next buttons:
 	$("#doctors .pagination").append(
 		$("<li>").addClass("page-item button-slider-prev").attr({ id: "previous-page" }).append(
-			$(`<a><svg><use xlink:href="img/icons/icons.svg#i-arrow-small-down">`)
+			$(`<a><svg><use xlink:href="` + iconsPath + `#i-arrow-small-down">`)
 				.addClass("page-link")
 				.attr({
 					href: "javascript:void(0)"
@@ -101,7 +101,7 @@ $(function () {
 			// .text("Prev")
 		),
 		$("<li>").addClass("page-item button-slider-next").attr({ id: "next-page" }).append(
-			$(`<a><svg><use xlink:href="img/icons/icons.svg#i-arrow-small-down">`)
+			$(`<a><svg><use xlink:href="` + iconsPath + `#i-arrow-small-down">`)
 				.addClass("page-link")
 				.attr({
 					href: "javascript:void(0)"
@@ -187,7 +187,7 @@ $(function () {
 	// Include the prev/next buttons:
 	$("#shares .pagination").append(
 		$("<li>").addClass("page-item button-slider-prev").attr({ id: "previous-page" }).append(
-			$(`<a><svg><use xlink:href="img/icons/icons.svg#i-arrow-small-down">`)
+			$(`<a><svg><use xlink:href="` + iconsPath + `#i-arrow-small-down">`)
 				.addClass("page-link")
 				.attr({
 					href: "javascript:void(0)"
@@ -195,7 +195,7 @@ $(function () {
 			// .text("Prev")
 		),
 		$("<li>").addClass("page-item button-slider-next").attr({ id: "next-page" }).append(
-			$(`<a><svg><use xlink:href="img/icons/icons.svg#i-arrow-small-down">`)
+			$(`<a><svg><use xlink:href="` + iconsPath + `#i-arrow-small-down">`)
 				.addClass("page-link")
 				.attr({
 					href: "javascript:void(0)"

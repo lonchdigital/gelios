@@ -7,6 +7,7 @@ use App\Enums\PageType;
 use App\Models\Article;
 use App\Models\Doctor;
 use App\Models\DoctorCategory;
+use App\Models\DoctorSpecialization;
 use App\Models\Page;
 use App\Models\Specialization;
 use App\Services\Site\MetaService;
@@ -24,7 +25,7 @@ class DoctorController extends Controller
         ];
 
         $query = Doctor::query()
-            ->with(['category', 'translations' => function ($q) use ($locale) {
+            ->with(['specializations', 'category', 'translations' => function ($q) use ($locale) {
                 $q->where('locale', $locale);
             }]);
 
@@ -40,11 +41,14 @@ class DoctorController extends Controller
         }
 
         if ($request->has('category')) {
-            $category2 = DoctorCategory::whereHas('translations', function($q) use ($request) {
+            $category2 = Specialization::whereHas('translations', function($q) use ($request) {
                 $q->where('title', $request->category);
             })->first();
 
-            $query->where('doctor_category_id', $category2->id);
+            $category3 = DoctorSpecialization::where('specialization_id', $category2->id)
+                ->pluck('doctor_id')->toArray();
+
+            $query->whereIn('id', $category3);
         }
 
         $doctors = $query->latest()->get();
@@ -53,13 +57,13 @@ class DoctorController extends Controller
             return view('site.doctors.partials.doctors_list', compact('doctors'))->render();
         }
 
-        $categories = DoctorCategory::get();
+        $categories = Specialization::get();
 
-        if ($request->has('type') && in_array($request->type, $types)) {
-            $categories = DoctorCategory::where('type', $request->type)
-                ->orWhere('type', DoctorCategoryType::BOTH->value)
-                ->get();
-        }
+        // if ($request->has('type') && in_array($request->type, $types)) {
+        //     $categories = Doctor::where('type', $request->type)
+        //         ->orWhere('type', DoctorCategoryType::BOTH->value)
+        //         ->get();
+        // }
 
         $page = Page::where('type', PageType::DOCTOR->value)
             ->with('translations')
@@ -102,14 +106,15 @@ class DoctorController extends Controller
     {
         $type = $request->type;
 
-        $categories = DoctorCategory::where('type', $type)->get();
+        $categories = DoctorSpecialization::where('type', $type)->get();
 
         return response()->json($categories);
     }
 
     public function getDoctorsByCategory($categoryId)
     {
-        $doctors = Doctor::where('category_id', $categoryId)->get(['id', 'name']);
+        $doctors = Doctor::where('specialization_id', $categoryId)->get(['id', 'name']);
+
         return response()->json($doctors);
     }
 }

@@ -88,7 +88,7 @@
                                         <div class="d-flex align-items-start justify-content-between mb-3">
                                             <div class="h2 font-m modal-title font-weight-bolder mb-0 pr-8">
                                                 {{ __('pages.make_an_appointment') ?? 'Записатися на прийом' }}</div>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <button type="button" class="close" id="close-appointment-modal" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">
                                                     <svg>
                                                         <use
@@ -249,6 +249,126 @@
             </div>
         </div>
     </div>
+    <div class="modal modal--custom popup--review-thank fade" id="popup--vacancy-thank" data-keyboard="false" tabindex="-1" aria-labelledby="popup--vacancy-thankLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content py-5 px-3 py-md-13 px-md-11">
+                <div class="modal-body p-0">
+                    <form class="form-popup--vacancy-thank" autocomplete="off">
+                        <div class="row">
+                            <div class="col">
+                                <div class="text-center py-4 py-md-0 my-lg-7">
+                                    <div class="i-check mb-5">
+                                        <svg>
+                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-double-check' }}"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="h4 font-m font-weight-bolder">{{ __('pages.thank_you_your_job_application_has_been_successfully_sent') }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal--custom popup--review-thank fade" id="popup--appointment-thank" data-keyboard="false" tabindex="-1" aria-labelledby="popup--appointment-thankLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content py-5 px-3 py-md-13 px-md-11">
+                <div class="modal-body p-0">
+                    <form class="form-popup--appointment-thank" autocomplete="off">
+                        <div class="row">
+                            <div class="col">
+                                <div class="text-center py-4 py-md-0 my-lg-7">
+                                    <div class="i-check mb-5">
+                                        <svg>
+                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-double-check' }}"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="h4 font-m font-weight-bolder">{{ __('pages.thank_you_our_operator_will_contact_you_shortly') }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal--custom popup--review-thank fade" id="popup--appointment-thank" data-keyboard="false" tabindex="-1" aria-labelledby="popup--appointment-thankLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content py-5 px-3 py-md-13 px-md-11">
+                <div class="modal-body p-0">
+                    <form class="form-popup--appointment-thank" autocomplete="off">
+                        <div class="row">
+                            <div class="col">
+                                <div class="text-center py-4 py-md-0 my-lg-7">
+                                    <div class="i-check mb-5">
+                                        <svg>
+                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-double-check' }}"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="h4 font-m font-weight-bolder">{{ __('pages.thank_you_our_operator_will_contact_you_shortly') }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal--custom popup--interview fade" id="popup--interview" data-keyboard="false" tabindex="-1" aria-labelledby="popup--interview" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content py-5 px-3 py-md-13 px-md-11">
+                <div class="modal-body p-0">
+                    <form class="form-popup--interview" autocomplete="off"
+                        action="{{ route('feedback-vacancy.store') }}">
+                                @csrf
+                                @method('POST')
+                        <div class="row">
+                            <div class="col position-static">
+                                <div class="d-flex align-items-start justify-content-between mb-3">
+                                    <div class="h2 font-m modal-title font-weight-bolder mb-0 pr-8">Записатися на співбесіду</div>
+                                    <button type="button" class="close" id="close-vacancy-modal" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">
+                                            <svg>
+                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-close' }}"></use>
+                                            </svg>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row field-wrap">
+                            <div class="col-12">
+                                <div class="field mb-2">
+                                    <label class="control-label mb-2" for="form-interview--name">Вкажіть ПІБ</label>
+                                    <input type="text" id="form-interview--name" name="name" class="form-control mb-2">
+                                    <div class="field--help-info small-txt text-red mb-2">Вкажіть ПІБ</div>
+                                </div>
+                                <div id="name_error" class="field--help-info small-txt text-red mb-2"></div>
+                            </div>
+                            <div class="col-12">
+                                <div class="field mb-2">
+                                    <label class="control-label mb-2" for="form-interview--phone">Вкажіть номер телефону</label>
+                                    <input type="tel" id="form-interview--phone" name="phone" class="form-control mb-2">
+                                    <div class="field--help-info small-txt text-red mb-2">Вкажіть номер телефону</div>
+                                </div>
+                                <div id="phone_error" class="field--help-info small-txt text-red mb-2"></div>
+                            </div>
+                            <input type="hidden" id="form-interview--vacancy" name="vacancy">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-blue font-weight-bold w-100 mt-2"
+                                {{-- data-dismiss="modal" aria-label="Close" --}}
+                                >Записатися</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgMBbn1eBSqj8V9kKOn6CqiwTZhoTQP6s&callback=initMap&libraries=marker&v=beta"
@@ -395,11 +515,15 @@
                         .then(response => response.json())
                         .then(data => {
                             if (data.success) {
-                                console.log("Form submitted successfully!");
+                                const closeButton = document.getElementById('close-appointment-modal');
+
+                                if (closeButton) {
+                                    closeButton.click();
+                                }
 
                                 form.reset();
 
-                                const modalElement = $('#popup--review-thank');
+                                const modalElement = $('#popup--appointment-thank');
 
                                 const modal = new bootstrap.Modal(modalElement);
                                 modal.show();
@@ -442,6 +566,8 @@
 
             const form = document.querySelector('[id="form-any-questions"]');
 
+            if (!form) return;
+
             form.addEventListener("submit", function (event) {
                 event.preventDefault();
 
@@ -462,10 +588,9 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            console.log("Form submitted successfully!");
                             form.reset();
 
-                            const modalElement = $('#popup--review-thank');
+                            const modalElement = $('#popup--appointment-thank');
 
                             const modal = new bootstrap.Modal(modalElement);
                             modal.show();
@@ -502,6 +627,89 @@
             });
         });
     </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+
+                const form = document.querySelector('[id="popup--interview"]');
+                if (!form) return;
+                const vacancyInput = form.querySelector("#form-interview--vacancy");
+
+                document.querySelectorAll('[data-toggle="modal"]').forEach(button => {
+                    button.addEventListener("click", function () {
+                        const vacancyTitle = this.getAttribute("data-vacancy");
+                        vacancyInput.value = vacancyTitle;
+                    });
+                });
+
+                form.addEventListener("submit", function (event) {
+                    event.preventDefault();
+
+                    const formData = {
+                        name: form.querySelector('[name="name"]').value,
+                        phone: form.querySelector('[name="phone"]').value,
+                        vacancy: vacancyInput.value,
+                    };
+
+                    fetch('/feedback-vacancy-store', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                .getAttribute('content')
+                        },
+                        body: JSON.stringify(formData),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+
+                                const closeButton = document.getElementById('close-vacancy-modal');
+
+                                if (closeButton) {
+                                    closeButton.click();
+                                }
+
+                                const modalElement = $('#popup--vacancy-thank');
+
+                                const modal = new bootstrap.Modal(modalElement);
+                                modal.show();
+
+                                setTimeout(() => {
+                                    modal.hide();
+                                }, 2000);
+                            } else {
+                                // console.log(data);
+
+                                const errors = data.errors;
+                                // console.log(errors);
+
+                                for (const field in errors) {
+                                    const fieldElement = form.querySelector(`#${field}_error`);
+                                    // console.log(fieldElement);
+                                    const existingError = fieldElement?.nextElementSibling;
+
+                                    if (existingError && existingError.classList.contains('field--help-info')) {
+                                        existingError.textContent = errors[field][0];
+                                    } else if (fieldElement) {
+                                        fieldElement.insertAdjacentHTML(
+                                            'afterend',
+                                            '<div class="field--help-info small-txt text-red mb-2">' +
+                                            errors[field][0] + '</div>'
+                                        );
+                                    }
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error submitting form:", error);
+                        });
+                });
+            });
+        </script>
+        <script>
+            window.iconsPath = @json(Vite::asset(config('app.icons_path')));
+        </script>
 </body>
 
 </html>

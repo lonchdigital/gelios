@@ -35,6 +35,8 @@ class EditBlock extends Component
 
     public string $ruDescription = '';
 
+    public string $link = '';
+
     public $image;
 
     public $imageTemporary;
@@ -50,6 +52,7 @@ class EditBlock extends Component
         $this->page = $page;
         $this->block = $block ?? new PageBlock();
         $this->activeLocale = config('app.active_lang');
+        $this->link = $this->block->url ?? '';
 
         $service = resolve(BlockService::class);
         $translations = $service->getTranslations($this->block);
@@ -97,6 +100,11 @@ class EditBlock extends Component
             ],
 
             'ruTitle' => [
+                'required',
+                'string',
+            ],
+
+            'link' => [
                 'required',
                 'string',
             ],
@@ -170,7 +178,7 @@ class EditBlock extends Component
 
         $data = [
             'page_id' => $this->page->id,
-            'link' => null,
+            'link' => $this->link,
             'block' => 'second',
             'key' => 'text',
         ];

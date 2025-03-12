@@ -42,4 +42,6 @@ return [
     'more_shares' => 'More promotions',
     'all_promotions' => 'All promotions',
     'branches' => 'Branches',
+    'thank_you_our_operator_will_contact_you_shortly' => 'Thank you! Our operator will contact you shortly',
+    'thank_you_your_job_application_has_been_successfully_sent' => 'Thank you! Your job application has been successfully sent',
 ];

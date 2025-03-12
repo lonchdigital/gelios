@@ -103,16 +103,46 @@
                             </div>
                         </div>
                         <div class="col-12 col-xl-4">
+                            @if(!empty($page->pageblocks->where('block', 'second')->first()->url))
+                                <a
+                                    @switch(LaravelLocalization::getCurrentLocale())
+                                        @case('ua')
+                                                href="{{ '/ua' . $page->pageblocks->where('block', 'second')->first()->url ?? '##' }}"
+                                            @break
+
+                                        @case('en')
+                                                href="{{ '/en' . $page->pageblocks->where('block', 'second')->first()->url ?? '##' }}"
+                                            @break
+
+                                        @default
+                                            href="{{ $page->pageblocks->where('block', 'second')->first()->url }}"
+                                    @endswitch()
+                                >
+                            @endif
                             <div class="position-relative rounded-sm overflow-hidden text-white p-3 p-lg-6">
                                 <div class="backdrop-small align-content-end d-flex flex-column justify-content-end">
-                                    <div class="h3 font-m mb-2 font-weight-bolder">“Check-up” <br
-                                            class="d-none d-xl-block">{{ __('pages.programs') }}</div>
-                                    <p class="mb-0">{{ __('pages.comprehensive_examination_and_expert_advice') }}</p>
+                                    <div class="h3 font-m mb-2 font-weight-bolder">
+                                        {!! $page->pageblocks->where('block', 'second')->first()->title ??
+                                        '“Check-up” <br
+                                            class="d-none d-xl-block">' . __('pages.programs') . '</div>' !!}</div>
+                                    <div>
+                                    {{-- @if(!empty($page->pageblocks->where('block', 'second')->first()->url))
+                                        <a href="{{ $page->pageblocks->where('block', 'second')->first()->url }}" class="btn btn-white btn-sm font-weight-bold mb-3">{{ $page->pageblocks->where('block', 'second')->first()->button }}</a>
+                                    @endif --}}
+                                    </div>
+                                    <p class="mb-0">{!! $page->pageblocks->where('block', 'second')->first()->description ?? __('pages.comprehensive_examination_and_expert_advice') !!}</p>
                                 </div>
                                 <div class="wrap-img">
-                                    <img class="bg-down" src="{{ asset('static_images/img-79.jpeg') }}" alt="img">
+                                    @if(!empty($page->pageblocks->where('block', 'second')->first()->image))
+                                        <img class="bg-down" src="{{ $page->pageblocks->where('block', 'second')->first()->imageUrl }}" alt="{{ $page->pageblocks->where('block', 'second')->first()->title ?? 'Check-up' }}">
+                                    @else
+                                        <img class="bg-down" src="{{ asset('static_images/img-79.jpeg') }}" alt="img">
+                                    @endif
                                 </div>
                             </div>
+                            @if(!empty($page->pageblocks->where('block', 'second')->first()->url))
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>

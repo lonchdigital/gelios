@@ -23,12 +23,15 @@ use App\Http\Controllers\LaboratoryController;
 use App\Http\Controllers\InsuranceCompaniesController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
+require __DIR__ . '/301.php';
+
 Route::name('auth.')->prefix('/admin')->group(function () {
     Auth::routes(['register' => false, 'reset' => false]);
 });
 
 Route::post('/feedback-store', [FeedbackController::class, 'store'])->name('feedback.store');
 Route::post('/feedback-question-store', [FeedbackController::class, 'storeQuestion'])->name('feedback-question.store');
+Route::post('/feedback-vacancy-store', [FeedbackController::class, 'storeVacancy'])->name('feedback-vacancy.store');
 Route::get('/categories-by-type', [DoctorController::class, 'getCategoriesByType'])->name('categories.by.type');
 Route::get('/get-doctors-by-category/{categoryId}', [DoctorController::class, 'getDoctorsByCategory']);
 
@@ -79,7 +82,7 @@ Route::group([
         Route::get('/dlya-paczientov/{slug}', [ArticleController::class, 'show'])->name('articles.show');
 
         Route::get('/nashi-speczialisty/', [DoctorController::class, 'index'])->name('doctors.index');
-        Route::get('/nashi-speczialisty/{doctor:slug}', [DoctorController::class, 'show'])->name('doctors.show');
+        Route::get('/team-member/{doctor:slug}', [DoctorController::class, 'show'])->name('doctors.show');
 
         Route::get('/laboratories/', [LaboratoryController::class, 'index'])->name('laboratories.index');
         Route::get('/laboratories/prices', [LaboratoryController::class, 'prices'])->name('laboratories.prices');

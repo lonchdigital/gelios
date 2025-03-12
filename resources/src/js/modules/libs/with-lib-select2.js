@@ -59,7 +59,7 @@ $(function() {
 
     $('.select-doctors-category').on('select2:select', function (e) {
         const categoryId = $(this).val();
-        console.log(categoryId);
+        // console.log(categoryId);
         updateQueryAndFetch('category', categoryId);
     });
 

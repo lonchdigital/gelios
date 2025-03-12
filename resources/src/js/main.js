@@ -18,3 +18,4 @@ import Inputmask from "inputmask";
 
 Inputmask("+38 (099) 999-99-99").mask("#form-meeting-phone");
 Inputmask("+38 (099) 999-99-99").mask("#form-any-questions-phone-2");
+Inputmask("+38 (099) 999-99-99").mask("#form-interview--phone");

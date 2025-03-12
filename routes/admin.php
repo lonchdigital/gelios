@@ -284,6 +284,8 @@ Route::group([
         });
 
         Route::get('/edit-robots', [RobotsController::class, 'edit'])->name('admin.edit-robots');
+
+        Route::get('/vacancy-apps', [VacancyController::class, 'appsIndex'])->name('admin.vacancy-apps.index');
     });
 
 });

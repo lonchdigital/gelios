@@ -42,4 +42,6 @@ return [
     'more_shares' => 'Больше акций',
     'all_promotions' => 'Все акции',
     'branches' => 'Филиалы',
+    'thank_you_our_operator_will_contact_you_shortly' => 'Спасибо! Наш оператор перезвонит Вам в ближайшее время',
+    'thank_you_your_job_application_has_been_successfully_sent' => 'Спасибо! Ваша заявка на вакансию успешно отправлена'
 ];
