@@ -30,7 +30,7 @@
                 @include('site.directions.partials.text-section-narrow', ['data' => $direction->textBlocks->where('number', 2)->first(), 'hasChildren' => $hasChildren])
                 @if( $hasChildren )
                     <div class="col-12 col-md-6 col-xl-4">
-                        <div id="doctor-features--inner-2" class="bg-white rounded-sm p-3 p-md-6 h-100">
+                        <div id="doctor-features--inner-2" class="bg-white rounded-sm p-3 p-md-6 min-h-narrow-block">
                             <div class="h3 font-weight-bolder text-blue mb-8 mb-md-2 ml-md-3">{{ $direction->name ?? '' }}</div>
                             <div class="content rich-text-block os-scrollbar-overflow">
 

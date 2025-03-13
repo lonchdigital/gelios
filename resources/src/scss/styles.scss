@@ -2914,6 +2914,12 @@
 			}
 		}
 	}
+
+	#doctor-features--inner-2 {
+		.content {
+			height: calc(100% - 40px);
+		}
+	}
 }
 
 .doctor-features-nav {
