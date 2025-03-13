@@ -1673,14 +1673,14 @@ form {
 			border: 2px solid $grey;
 			width: 14px;
 			height: 14px;
-			margin: 2px !important;
+			margin: 2px 6px !important;
 
 			&.swiper-pagination-bullet-active {
 				width: 16px;
 				height: 16px;
 				border: 2px solid $blue;
 				position: relative;
-				margin: 1px !important;
+				top: 1px;
 
 				&::before {
 					content: "";
