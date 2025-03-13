@@ -22,11 +22,14 @@
     </section>
 
     <section class="doctor-features mb-24">
+        @php
+            $hasChildren = count($direction->children) > 0;
+        @endphp
         <div class="container">
             <div class="row">
-                @include('site.directions.partials.text-section-narrow', ['data' => $direction->textBlocks->where('number', 2)->first()])
-                <div class="col-12 col-md-6 col-xl-4">
-                    @if( count($direction->children) > 0 )
+                @include('site.directions.partials.text-section-narrow', ['data' => $direction->textBlocks->where('number', 2)->first(), 'hasChildren' => $hasChildren])
+                @if( $hasChildren )
+                    <div class="col-12 col-md-6 col-xl-4">
                         <div id="doctor-features--inner-2" class="bg-white rounded-sm p-3 p-md-6">
                             <div class="h3 font-weight-bolder text-blue mb-8 mb-md-2 ml-md-3">{{ $direction->name ?? '' }}</div>
                             <div class="doctor-features-nav">
@@ -41,10 +44,10 @@
                                 </ul>
                             </div>
                         </div>
-                    @else
-                        <div id="doctor-features--inner-2" class="bg-white rounded-sm p-3 p-md-6 d-none"></div>
-                    @endif  
-                </div>
+                    </div>
+                @else
+                    <div id="doctor-features--inner-2" class="bg-white rounded-sm p-3 p-md-6 d-none"></div>
+                @endif  
             </div>
         </div>
     </section>
