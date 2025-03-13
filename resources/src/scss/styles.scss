@@ -2904,6 +2904,16 @@
 			}
 		}
 	}
+
+	.content.rich-text-block ul {
+		li {
+			padding-left: 0;
+
+			&::before {
+				content: unset;
+			}
+		}
+	}
 }
 
 .doctor-features-nav {
@@ -3432,5 +3442,5 @@
 }
 
 .min-h-narrow-block {
-	min-height: 915px;
+	height: 915px;
 }
