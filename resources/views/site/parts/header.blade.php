@@ -273,7 +273,7 @@
                                         <div class="list-inline-item">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span>{{ trans('web.directions') }}</span>111111
+                                                    <span>{{ trans('web.directions') }}</span>
                                                 </div>
                                                 <div class="submenu position-absolute">
                                                     <div class="container">
@@ -452,8 +452,8 @@
                                                         <a href="##">{{ __('pages.contacts') }}</a>
                                                         <div class="push-menu--lvl scrollable-content">
                                                             <div class="scrollable-content--inner">
-                                                                <div class="item"><a href="##">{{ __('pages.contacts') }}</a></div>
-                                                                <div class="item"><a href="##">{{ __('pages.insurance') }}</a></div>
+                                                                <div class="item"><a href="{{ route('contacts.page') }}">{{ __('pages.contacts') }}</a></div>
+                                                                <div class="item"><a href="{{ route('strahovym.kompaniyam.page') }}">{{ __('pages.insurance') }}</a></div>
                                                                 <div class="item"><a href="{{ route('vacancy.index') }}">{{ __('pages.vacancies') }}</a></div>
                                                             </div>
                                                         </div>
