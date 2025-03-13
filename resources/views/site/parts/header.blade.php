@@ -273,7 +273,7 @@
                                         <div class="list-inline-item">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span>{{ trans('web.directions') }}</span>
+                                                    <span>{{ trans('web.directions') }}</span>111111
                                                 </div>
                                                 <div class="submenu position-absolute">
                                                     <div class="container">
@@ -409,100 +409,23 @@
                                             <div class="push-menu--lvl scrollable-content">
                                                 <div class="scrollable-content--inner">
                                                     <div class="item has-dropdown">
-                                                        <a href="##">Напрямки</a>
+                                                        <a href="##">{{ trans('web.directions') }}</a>
                                                         <div class="push-menu--lvl scrollable-content">
                                                             <div class="scrollable-content--inner">
-                                                                <div class="item"><a href="##">Напрямки</a></div>
-                                                                <div class="item has-dropdown">
-                                                                    <a href="##">Дієтологія</a>
-                                                                    <div class="push-menu--lvl scrollable-content">
-                                                                        <div class="scrollable-content--inner">
-                                                                            <div class="item"><a href="##">Гастроентеролог</a>
-                                                                            </div>
-                                                                            <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                            </div>
-                                                                            <div class="item"><a
-                                                                                        href="##">Алергологія</a></div>
-                                                                            <div class="item"><a
-                                                                                        href="##">Гематологія</a></div>
-                                                                            <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                            </div>
-                                                                            <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                            </div>
-                                                                            <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                            </div>
-                                                                            <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                            </div>
-                                                                            <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                            </div>
-                                                                            <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                            </div>
-                                                                            <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                            </div>
-                                                                            <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                            </div>
-                                                                            <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                            </div>
-                                                                            <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                            </div>
-                                                                            <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                            </div>
-                                                                            <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                            </div>
-                                                                            <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                            </div>
-                                                                            <div class="item"><a href="##">Дерматовенерологія</a>
+                                                                <div class="item"><a href="##">{{ trans('web.directions') }}</a></div>
+                                                                @foreach ($allDirections as $category)
+                                                                    @if( $category['children'] )
+                                                                        <div class="item has-dropdown">
+                                                                            <a href="##" data-slug="{{ $category['full_path'] }}">{{ $category['name'] }}</a>
+
+                                                                            <div class="push-menu--lvl scrollable-content">
+                                                                                <x-site.directions.header-mob-menu :data="collect($category['children'])" />
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="item has-dropdown">
-                                                                    <a href="##">Кардіологія</a>
-                                                                    <div class="push-menu--lvl scrollable-content">
-                                                                        <div class="scrollable-content--inner">
-                                                                            <div class="item"><a href="##">Гастроентеролог</a>
-                                                                            </div>
-                                                                            <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                            </div>
-                                                                            <div class="item"><a
-                                                                                        href="##">Гематологія</a></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="item has-dropdown">
-                                                                    <a href="##">Неврологія</a>
-                                                                    <div class="push-menu--lvl scrollable-content">
-                                                                        <div class="scrollable-content--inner">
-                                                                            <div class="item"><a href="##">Гастроентеролог</a>
-                                                                            </div>
-                                                                            <div class="item"><a
-                                                                                        href="##">Гематологія</a></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="item has-dropdown">
-                                                                    <a href="##">Ендокринологія</a>
-                                                                    <div class="push-menu--lvl scrollable-content">
-                                                                        <div class="scrollable-content--inner">
-                                                                            <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                </div>
-                                                                <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                </div>
-                                                                <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                </div>
-                                                                <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                </div>
-                                                                <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                </div>
-                                                                <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                </div>
-                                                                <div class="item"><a href="##">Дерматовенерологія</a>
-                                                                </div>
+                                                                    @else
+                                                                        <div class="item"><a href="{{ $category['full_path'] }}">{{ $category['name'] }}</a></div>
+                                                                    @endif
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                     </div>
