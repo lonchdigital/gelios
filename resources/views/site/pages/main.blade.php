@@ -234,56 +234,6 @@
                                     </div>
                                 @empty
                                 @endforelse
-                                {{-- <div class="doctors--item swiper-slide">
-                                    <a href="##" class="inner">
-                                        <div class="wrap-img mb-3">
-                                            <img src="{{ asset('static_images/doctors/doctor-2.jpeg') }}" alt="img">
-                                        </div>
-                                        <div class="experience-quantity mb-3">Досвід роботи: 8 років</div>
-                                        <div class="h4 mb-1 font-weight-bolder">Максаков Дмитро Миколайович</div>
-                                        <div class="position-work">Алерголог</div>
-                                    </a>
-                                </div>
-                                <div class="doctors--item swiper-slide">
-                                    <a href="##" class="inner">
-                                        <div class="wrap-img mb-3">
-                                            <img src="{{ asset('static_images/doctors/doctor-3.jpeg') }}" alt="img">
-                                        </div>
-                                        <div class="experience-quantity mb-3">Досвід роботи: 8 років</div>
-                                        <div class="h4 mb-1 font-weight-bolder">Максаков Дмитро Миколайович</div>
-                                        <div class="position-work">Алерголог</div>
-                                    </a>
-                                </div>
-                                <div class="doctors--item swiper-slide">
-                                    <a href="##" class="inner">
-                                        <div class="wrap-img mb-4">
-                                            <img src="{{ asset('static_images/doctors/doctor-1.jpeg') }}" alt="img">
-                                        </div>
-                                        <div class="experience-quantity mb-3">Досвід роботи: 8 років</div>
-                                        <div class="h4 mb-1 font-weight-bolder">Максаков Дмитро Миколайович</div>
-                                        <div class="position-work">Алерголог</div>
-                                    </a>
-                                </div>
-                                <div class="doctors--item swiper-slide">
-                                    <a href="##" class="inner">
-                                        <div class="wrap-img mb-3">
-                                            <img src="{{ asset('static_images/doctors/doctor-2.jpeg') }}" alt="img">
-                                        </div>
-                                        <div class="experience-quantity mb-3">Досвід роботи: 8 років</div>
-                                        <div class="h4 mb-1 font-weight-bolder">Максаков Дмитро Миколайович</div>
-                                        <div class="position-work">Алерголог</div>
-                                    </a>
-                                </div>
-                                <div class="doctors--item swiper-slide">
-                                    <a href="##" class="inner">
-                                        <div class="wrap-img mb-3">
-                                            <img src="{{ asset('static_images/doctors/doctor-3.jpeg') }}" alt="img">
-                                        </div>
-                                        <div class="experience-quantity mb-3">Досвід роботи: 8 років</div>
-                                        <div class="h4 mb-1 font-weight-bolder">Максаков Дмитро Миколайович</div>
-                                        <div class="position-work">Алерголог</div>
-                                    </a>
-                                </div> --}}
                             </div>
                             <div class="swiper-pagination mt-8"></div>
                         </div>

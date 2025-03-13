@@ -26,6 +26,8 @@ new Swiper(".shares--swiper", {
 	pagination: {
 		el: ".shares .swiper-pagination",
 		clickable: true,
+		dynamicBullets: true,
+		dynamicMainBullets: 3
 	},
 	autoplay: {
 		delay: 5000,
@@ -49,6 +51,14 @@ new Swiper(".shares--swiper", {
 			slidesPerView: 1,
 			spaceBetween: 15,
 		}
+	},
+	on: {
+		init: function () {
+			this.update();
+		},
+		resize: function () {
+			this.update();
+		}
 	}
 })
 
@@ -61,6 +71,7 @@ new Swiper(".doctors--swiper", {
 		el: ".doctors .swiper-pagination",
 		clickable: true,
 		dynamicBullets: true,
+		dynamicMainBullets: 3
 	},
 	autoplay: {
 		delay: 5000,
@@ -83,6 +94,14 @@ new Swiper(".doctors--swiper", {
 		0: {
 			slidesPerView: 1,
 			spaceBetween: 15,
+		}
+	},
+	on: {
+		init: function () {
+			this.update();
+		},
+		resize: function () {
+			this.update();
 		}
 	}
 })
@@ -96,6 +115,8 @@ new Swiper(".offices--swiper", {
 	pagination: {
 		el: ".offices .swiper-pagination",
 		clickable: true,
+		dynamicBullets: true,
+		dynamicMainBullets: 3
 	},
 	autoplay: {
 		delay: 5000,
@@ -119,6 +140,14 @@ new Swiper(".offices--swiper", {
 			slidesPerView: 1,
 			spaceBetween: 15,
 		}
+	},
+	on: {
+		init: function () {
+			this.update();
+		},
+		resize: function () {
+			this.update();
+		}
 	}
 })
 
@@ -130,6 +159,8 @@ new Swiper(".reviews--swiper", {
 	pagination: {
 		el: ".reviews .swiper-pagination",
 		clickable: true,
+		dynamicBullets: true,
+		dynamicMainBullets: 3
 	},
 	autoplay: {
 		delay: 5000,
@@ -152,6 +183,14 @@ new Swiper(".reviews--swiper", {
 		0: {
 			slidesPerView: 1,
 			spaceBetween: 15,
+		}
+	},
+	on: {
+		init: function () {
+			this.update();
+		},
+		resize: function () {
+			this.update();
 		}
 	}
 })
@@ -186,6 +225,14 @@ new Swiper('.partners--swiper', {
 			slidesPerView: 1.8,
 			spaceBetween: 15,
 		}
+	},
+	on: {
+		init: function () {
+			this.update();
+		},
+		resize: function () {
+			this.update();
+		}
 	}
 });
 
@@ -197,6 +244,8 @@ new Swiper(".news--swiper", {
 	pagination: {
 		el: ".news .swiper-pagination",
 		clickable: true,
+		dynamicBullets: true,
+		dynamicMainBullets: 3
 	},
 	autoplay: {
 		delay: 5000,
@@ -220,6 +269,14 @@ new Swiper(".news--swiper", {
 			slidesPerView: 1,
 			spaceBetween: 15,
 		}
+	},
+	on: {
+		init: function () {
+			this.update();
+		},
+		resize: function () {
+			this.update();
+		}
 	}
 })
 
@@ -231,6 +288,8 @@ new Swiper('.certificates--swiper', {
 	pagination: {
 		el: ".certificates .swiper-pagination",
 		clickable: true,
+		dynamicBullets: true,
+		dynamicMainBullets: 3
 	},
 	autoplay: {
 		delay: 5000,
@@ -254,6 +313,14 @@ new Swiper('.certificates--swiper', {
 			slidesPerView: 1,
 			spaceBetween: 15,
 		}
+	},
+	on: {
+		init: function () {
+			this.update();
+		},
+		resize: function () {
+			this.update();
+		}
 	}
 });
 
@@ -263,6 +330,8 @@ new Swiper('.stay-conditions--swiper', {
 	pagination: {
 		el: ".stay-conditions .swiper-pagination",
 		clickable: true,
+		dynamicBullets: true,
+		dynamicMainBullets: 3
 	},
 	autoplay: {
 		delay: 5000,
@@ -284,6 +353,14 @@ new Swiper('.stay-conditions--swiper', {
 			slidesPerView: 1,
 			spaceBetween: 15,
 		}
+	},
+	on: {
+		init: function () {
+			this.update();
+		},
+		resize: function () {
+			this.update();
+		}
 	}
 });
 
@@ -293,6 +370,8 @@ new Swiper('.hospital--swiper', {
 	pagination: {
 		el: ".hospital .swiper-pagination",
 		clickable: true,
+		dynamicBullets: true,
+		dynamicMainBullets: 3
 	},
 	autoplay: {
 		delay: 5000,
@@ -313,6 +392,14 @@ new Swiper('.hospital--swiper', {
 		0: {
 			slidesPerView: 1,
 			spaceBetween: 15,
+		}
+	},
+	on: {
+		init: function () {
+			this.update();
+		},
+		resize: function () {
+			this.update();
 		}
 	}
 });
@@ -325,6 +412,8 @@ new Swiper('.media--swiper', {
 	pagination: {
 		el: ".media-content .swiper-pagination",
 		clickable: true,
+		dynamicBullets: true,
+		dynamicMainBullets: 3
 	},
 	autoplay: {
 		delay: 5000,
@@ -349,6 +438,14 @@ new Swiper('.media--swiper', {
 			spaceBetween: 15,
 		}
 	},
+	on: {
+		init: function () {
+			this.update();
+		},
+		resize: function () {
+			this.update();
+		}
+	},
 	//для обновлення при табатах
 	observer: true,
 	observeParents: true,
@@ -364,6 +461,8 @@ new Swiper(".template-shares--swiper", {
 	pagination: {
 		el: ".template-shares--swiper .swiper-pagination",
 		clickable: true,
+		dynamicBullets: true,
+		dynamicMainBullets: 3
 	},
 	navigation: {
 		nextEl: ".template-shares--swiper .swiper-buttons .button-slider-next",
@@ -382,6 +481,14 @@ new Swiper(".template-shares--swiper", {
 		},
 		0: {
 			spaceBetween: 15,
+		}
+	},
+	on: {
+		init: function () {
+			this.update();
+		},
+		resize: function () {
+			this.update();
 		}
 	}
 })
