@@ -25,6 +25,9 @@ class AboutUsController extends Controller
         $service = resolve(MetaService::class);
         $seo = $service->getMeta($page->title, $page->meta_title, $page->meta_description);
         $seo[1] = strip_tags($seo[1]);
+        $url['ua'] = url('/') . '/ua/about-us';
+        $url['ru'] = url('/') . '/about-us';
+        $url['en'] = url('/') . '/en/about-us';
 
         return view('site.pages.about-us',[
             'page' => $page,
@@ -34,6 +37,7 @@ class AboutUsController extends Controller
             'сertificates' => $allSectionImages->where('type', 'сertificates')->sortBy('sort'),
             'photos' => $photos,
             'seo' => $seo,
+            'url' => $url,
         ]);
     }
 }

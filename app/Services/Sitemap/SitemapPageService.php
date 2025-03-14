@@ -3,6 +3,7 @@
 namespace App\Services\Sitemap;
 
 use App\Models\Article;
+use App\Models\Direction;
 use App\Models\Doctor;
 use App\Models\Page;
 use Illuminate\Database\Eloquent\Collection;
@@ -12,6 +13,7 @@ class SitemapPageService
     private Collection $pages;
     private Collection $articles;
     private Collection $doctors;
+    private Collection $directions;
     private int $articlesCount;
     private int $articlePagination;
 
@@ -25,6 +27,9 @@ class SitemapPageService
             ->get();
 
         $this->doctors = Doctor::with('translations')
+            ->get();
+
+        $this->directions = Direction::with('translations')
             ->get();
 
         $this->articlesCount = Article::count();
@@ -58,6 +63,10 @@ class SitemapPageService
             ...$this->getDoctorsUrls(),
             ...$this->getRuDoctorsUrls(),
             ...$this->getEnDoctorsUrls(),
+
+            ...$this->getDirectionsUrls(),
+            ...$this->getRuDirectionsUrls(),
+            ...$this->getEnDirectionsUrls(),
         ]));
     }
 
@@ -74,13 +83,14 @@ class SitemapPageService
             '/ua/vakansii/',
             '/ua//vzroslym/hirurgiya/',
             '/ua/laboratories/',
+            '/ua/laboratories/prices',
             '/ua/nashi-speczialisty/',
             '/ua/check-up/',
             '/ua/akczii-i-speczialnye-predlozheniya/',
             '/ua/directions/',
             '/ua/staczionar/',
             '/ua/offices/',
-            '/ua/contacts-search-filter/',
+            // '/ua/contacts-search-filter/',
             '/ua/contacts/',
             '/ua/prices/',
             '/ua/otzyvy/',
@@ -95,13 +105,14 @@ class SitemapPageService
             '/vakansii/',
             '/vzroslym/hirurgiya/',
             '/laboratories/',
+            '/laboratories/prices',
             '/nashi-speczialisty/',
             '/check-up/',
             '/akczii-i-speczialnye-predlozheniya/',
             '/directions/',
             '/staczionar/',
             '/offices/',
-            '/contacts-search-filter/',
+            // '/contacts-search-filter/',
             '/contacts/',
             '/prices/',
             '/otzyvy/',
@@ -116,13 +127,14 @@ class SitemapPageService
             '/en/vakansii/',
             '/en//vzroslym/hirurgiya/',
             '/en/laboratories/',
+            '/en/laboratories/prices',
             '/en/nashi-speczialisty/',
             '/en/check-up/',
             '/en/akczii-i-speczialnye-predlozheniya/',
             '/en/directions/',
             '/en/staczionar/',
             '/en/offices/',
-            '/en/contacts-search-filter/',
+            // '/en/contacts-search-filter/',
             '/en/contacts/',
             '/en/prices/',
             '/en/otzyvy/',
@@ -251,7 +263,7 @@ class SitemapPageService
                 $translation = $doctor->translations->firstWhere('locale', 'ua');
 
                 if ($translation && $translation->slug) {
-                    return '/ua/nashi-speczialisty/' . $translation->slug;
+                    return '/ua/team-member/' . $translation->slug;
                 }
 
                 return null;
@@ -267,7 +279,7 @@ class SitemapPageService
                 $translation = $doctor->translations->firstWhere('locale', 'ru');
 
                 if ($translation && $translation->slug) {
-                    return '/nashi-speczialisty/' . $translation->slug;
+                    return '/team-member/' . $translation->slug;
                 }
 
                 return null;
@@ -283,13 +295,34 @@ class SitemapPageService
                 $translation = $doctor->translations->firstWhere('locale', 'en');
 
                 if ($translation && $translation->slug) {
-                    return '/en/nashi-speczialisty/' . $translation->slug;
+                    return '/en/team-member/' . $translation->slug;
                 }
 
                 return null;
             })
             ->filter()
             ->all();
+    }
+
+    private function getDirectionsUrls(): array
+    {
+        return $this->directions->map(function ($direction) {
+            return '/ua/' . $direction->page->buildFullPath();
+        })->all();
+    }
+
+    private function getRuDirectionsUrls(): array
+    {
+        return $this->directions->map(function ($direction) {
+            return '/' . $direction->page->buildFullPath();
+        })->all();
+    }
+
+    private function getEnDirectionsUrls(): array
+    {
+        return $this->directions->map(function ($direction) {
+            return '/en/' . $direction->page->buildFullPath();
+        })->all();
     }
 
     /**

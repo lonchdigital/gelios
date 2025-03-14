@@ -17,11 +17,19 @@ class PromotionController extends Controller
             ->with('pageBlocks', 'pageBlocks.translations')
             ->firstOrFail();
 
-        return view('site.promotion.index', compact('promotions', 'page'));
+        $url['ua'] = url('/') . '/ua/akczii-i-speczialnye-predlozheniya';
+        $url['ru'] = url('/') . '/akczii-i-speczialnye-predlozheniya';
+        $url['en'] = url('/') . '/en/akczii-i-speczialnye-predlozheniya';
+
+        return view('site.promotion.index', compact('promotions', 'page', 'url'));
     }
 
     public function show(Promotion $promotion)
     {
+        $url['ua'] = url('/') . '/ua/akczii-i-speczialnye-predlozheniya/' . $promotion->slug;
+        $url['ru'] = url('/') . '/akczii-i-speczialnye-predlozheniya/' . $promotion->slug;
+        $url['en'] = url('/') . '/en/akczii-i-speczialnye-predlozheniya/' . $promotion->slug;
+
         $promotions = Promotion::where('id', '!=', $promotion->id)
             ->inRandomOrder()
             ->take(3)
@@ -31,6 +39,6 @@ class PromotionController extends Controller
             ->with('translations')
             ->first();
 
-        return view('site.promotion.show', compact('promotion', 'promotions', 'page'));
+        return view('site.promotion.show', compact('promotion', 'promotions', 'page', 'url'));
     }
 }

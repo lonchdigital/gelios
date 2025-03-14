@@ -4,6 +4,7 @@
     @include('site.components.head', [
         'title' => $page->meta_title ?: $page->title,
         'description' => $page->meta_description,
+        'url' => $url
     ])
 @endsection
 

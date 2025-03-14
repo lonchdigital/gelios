@@ -14,10 +14,14 @@ class OneCenterController extends Controller
     {
         $page = Page::where('type', PageType::ONECENTER->value)->where('slug', $slug)->first();
         if( is_null($page) ) { abort(404); }
-        
+
         $allBriefBlocks = BriefBlock::where('page_id', $page->id)->get();
         $allPageTextBlocks = PageTextBlock::where('page_id', $page->id)->get();
         $doctors = Doctor::limit(10)->get();
+
+        $url['ua'] = url('/') . '/one-center/ua/' . $slug;
+        $url['ru'] = url('/') . '/one-center/' . $slug;
+        $url['en'] = url('/') . '/one-center/en/' . $slug;
 
         return view('site.pages.one-center',[
             'page' => $page,
@@ -26,6 +30,7 @@ class OneCenterController extends Controller
             'pageTextBlockOne' => $allPageTextBlocks->where('number', 1)->first(),
             'pageTextBlockTwo' => $allPageTextBlocks->where('number', 2)->first(),
             'doctors' => $doctors,
+            'url' => $url,
         ]);
     }
 }

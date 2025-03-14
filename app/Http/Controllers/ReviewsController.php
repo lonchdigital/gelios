@@ -23,9 +23,14 @@ class ReviewsController extends Controller
 
     public function page()
     {
+        $url['ua'] = url('/') . '/ua/otzyvy';
+        $url['ru'] = url('/') . '/otzyvy';
+        $url['en'] = url('/') . '/en/otzyvy';
+
         return view('site.pages.reviews',[
             'page' => $this->page,
-            'reviews' => Review::where('published', true)->latest()->paginate(8)
+            'reviews' => Review::where('published', true)->latest()->paginate(8),
+            'url' => $url,
         ]);
     }
 

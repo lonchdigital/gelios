@@ -4,6 +4,7 @@
     @include('site.components.head', [
         'title' => $page->meta_title ?: $page->title,
         'description' => $page->meta_description,
+        'url' => $url
     ])
 @endsection
 
@@ -62,8 +63,21 @@
                                             <div class="h1 font-m font-weight-bolder mb-3">{!! $slide->title !!}
                                             </div>
                                             <div class="h5 font-m font-weight-bold mb-3">{!! $slide->description !!}</div>
-                                            <a href="{{ $slide->url ?? '##' }}"
-                                                class="btn btn-white font-weight-bold">{{ $slide->button }}</a>
+                                            <a
+                                                    @switch(LaravelLocalization::getCurrentLocale())
+                                                        @case('ua')
+                                                                href="{{ '/ua/' . $slide->url ?? '##' }}"
+                                                            @break
+
+                                                        @case('en')
+                                                                href="{{ '/en/' . $slide->url ?? '##' }}"
+                                                            @break
+
+                                                        @default
+                                                            href="{{ $slide->url ?? '##' }}"
+                                                    @endswitch()
+                                                    class="btn btn-white font-weight-bold"
+                                                >{{ $slide->button }}</a>
                                         </div>
                                     </div>
                                     <div class="wrap-img">

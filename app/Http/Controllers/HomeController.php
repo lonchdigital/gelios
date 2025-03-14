@@ -16,8 +16,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $url['ua'] = url('/');
-        $url['ru'] = url('/') . '/ru/';
+        $url['ua'] = url('/') . '/ua/';
+        $url['ru'] = url('/');
         $url['en'] = url('/') . '/en/';
 
         $promotions = Promotion::inRandomOrder()->take(3)->get();
@@ -38,6 +38,7 @@ class HomeController extends Controller
             'page' => $page,
             'reviews' => Review::where('published', true)->latest()->limit(10)->get(),
             'articles' => $articles,
+            'url' => $url,
         ]);
     }
 }

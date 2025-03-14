@@ -17,6 +17,10 @@ class VacancyController extends Controller
             ->with('pageBlocks', 'pageBlocks.translations')
             ->firstOrFail();
 
+        $url['ua'] = url('/') . '/ua/vakansii';
+        $url['ru'] = url('/') . '/vakansii';
+        $url['en'] = url('/') . '/en/vakansii';
+
         return view('site.vacancy.index', compact('vacancies', 'page'));
     }
 }

@@ -4,6 +4,7 @@
     @include('site.components.head', [
         'title' => $page->meta_title ?: $page->title,
         'description' => $page->meta_description,
+        'url' => $url,
     ])
 @endsection
 
@@ -20,7 +21,7 @@
             @include('site.directions.partials.text-section-buttons', ['data' => $direction->textBlocks->where('number', 1)->first()])
         </div>
     </section>
-    
+
     <section class="direction-template mb-24">
         <div class="container">
             <div class="row">
@@ -62,7 +63,7 @@
                 </div>
 
                 <div class="col-12 col-lg-5 col-xl-4">
-                    
+
                     @if( count($direction->children) > 0 )
                         <div class="bg-white rounded-sm p-3 p-md-6 mb-5">
                             <div class="h4 font-weight-bolder text-blue mb-3 ml-lg-3">{{ $direction->name ?? '' }}</div>
@@ -144,7 +145,7 @@
             @include('site.components.text-section', ['data' => $direction->textBlocks->where('number', 5)->first()])
         </div>
     </section>
-    
+
     @if( count($direction->prices) > 0 )
         <section class="prices-list mb-24">
             <div class="container">

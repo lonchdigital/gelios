@@ -21,7 +21,11 @@ class ArticleController extends Controller
             ->with('translations')
             ->first();
 
-        return view('site.articles.index', compact('articles', 'categories', 'page'));
+        $url['ua'] = url('/') . '/ua/dlya-paczientov';
+        $url['ru'] = url('/') . '/dlya-paczientov';
+        $url['en'] = url('/') . '/en/dlya-paczientov';
+
+        return view('site.articles.index', compact('articles', 'categories', 'page', 'url'));
     }
 
     public function show($slug)
@@ -47,7 +51,11 @@ class ArticleController extends Controller
                 ->take(3)
                 ->get();
 
-            return view('site.articles.show', compact('article', 'articlePage', 'relatedArticles', 'seo'));
+            $url['ua'] = url('/') . '/ua/dlya-paczientov/' . $article->slug;
+            $url['ru'] = url('/') . '/dlya-paczientov/' . $article->slug;
+            $url['en'] = url('/') . '/en/dlya-paczientov/' . $article->slug;
+
+            return view('site.articles.show', compact('article', 'articlePage', 'relatedArticles', 'seo', 'url'));
         } else {
 
             if( $slug === 'dogovor-oferty' ) {

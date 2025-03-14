@@ -7,8 +7,7 @@ use App\Models\Page;
 use App\Models\PageBlock;
 use App\Models\PageBlockTranslation;
 use App\Services\Admin\ImageService;
-use App\Services\Admin\Surgery\BlockService;
-use Illuminate\Support\Facades\Storage;
+use App\Services\Admin\Laboratory\BlockService;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -38,6 +37,12 @@ class CreateEditSlider extends Component
 
     public string $link = '';
 
+    public string $uaButton = '';
+
+    public string $enButton = '';
+
+    public string $ruButton = '';
+
     public $image;
 
     public $imageTemporary;
@@ -65,6 +70,10 @@ class CreateEditSlider extends Component
         $this->uaTitle = $translations['ua']->title ?? '';
         $this->enTitle = $translations['ua']->title ?? '';
         $this->ruTitle = $translations['ua']->title ?? '';
+
+        $this->uaButton = $translations['ua']->button ?? '';
+        $this->enButton = $translations['en']->button ?? '';
+        $this->ruButton = $translations['ru']->button ?? '';
     }
 
     public function languageSwitched($lang)
@@ -102,6 +111,26 @@ class CreateEditSlider extends Component
 
             'ruTitle' => [
                 'nullable',
+                'string',
+            ],
+
+            'uaButton' => [
+                'required',
+                'string',
+            ],
+
+            'enButton' => [
+                'required',
+                'string',
+            ],
+
+            'ruButton' => [
+                'required',
+                'string',
+            ],
+
+            'link' => [
+                'required',
                 'string',
             ],
 
@@ -158,32 +187,33 @@ class CreateEditSlider extends Component
         }
 
         $descriptions = [
-            'ua' => $this->uaDescription,
-            'en' => $this->enDescription,
-            'ru' => $this->ruDescription,
-        ];
-
-        $titles = [
-            'ua' => $this->uaTitle,
-            'en' => $this->enTitle,
-            'ru' => $this->ruTitle,
+            'ua' => [
+                'title' => $this->uaTitle,
+                'description' => $this->uaDescription,
+                'button' => $this->uaButton,
+            ],
+            'en' => [
+                'title' => $this->enTitle,
+                'description' => $this->enDescription,
+                'button' => $this->enButton,
+            ],
+            'ru' => [
+                'title' => $this->ruTitle,
+                'description' => $this->ruDescription,
+                'button' => $this->ruButton,
+            ],
         ];
 
         $data = [
             'page_id' => $this->page->id,
+            'link' => $this->link,
+            'block' => 'main',
+            'key' => 'slider',
         ];
 
         $service = resolve(BlockService::class);
 
-        $service->saveBlock(
-            $this->block,
-            $data,
-            $descriptions,
-            $titles,
-            $this->block->block ?? 'main',
-            $this->block->key ?? 'slider',
-            $this->link,
-        );
+        $service->saveSlider($this->block, $data, $descriptions);
 
         session()->flash('success', 'Дані успішно збережено');
 

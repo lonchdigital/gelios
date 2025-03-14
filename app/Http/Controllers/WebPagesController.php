@@ -13,6 +13,10 @@ class WebPagesController extends Controller
 
     public function webPageByFullPath($slug) // full path slug
     {
+        $url['ua'] = url('/') . '/ua/' . $slug;
+        $url['ru'] = url('/') . '/' . $slug;
+        $url['en'] = url('/') . '/en/' . $slug;
+
         $slugs = explode('/', $slug);
         $lastSlug = end($slugs);
 
@@ -28,10 +32,11 @@ class WebPagesController extends Controller
 
             switch ( $direction->template ) {
                 case 1:
-                    
+
                     return view('site.directions.category',[
                         'page' => $page,
-                        'direction' => $direction
+                        'direction' => $direction,
+                        'url' => $url,
                     ]);
 
                     break;
@@ -40,7 +45,8 @@ class WebPagesController extends Controller
                     return view('site.directions.sub-category',[
                         'page' => $page,
                         'direction' => $direction,
-                        'doctors' => $direction->getDoctors()
+                        'doctors' => $direction->getDoctors(),
+                        'url' => $url,
                     ]);
 
                     break;
@@ -50,7 +56,8 @@ class WebPagesController extends Controller
                         'page' => $page,
                         'direction' => $direction,
                         'doctors' => $direction->getDoctors(),
-                        'promotions' => Promotion::limit(5)->get()
+                        'promotions' => Promotion::limit(5)->get(),
+                        'url' => $url,
                     ]);
 
                     break;
@@ -63,7 +70,8 @@ class WebPagesController extends Controller
             if(empty($page->type) || $page->type !== "text" ) { abort(404); }
 
             return view('site.text-pages.show', [
-                'page' => $page
+                'page' => $page,
+                'url' => $url,
             ]);
         }
 
@@ -79,7 +87,7 @@ class WebPagesController extends Controller
 
             switch ( $direction->template ) {
                 case 1:
-                    
+
                     return view('site.directions.category',[
                         'page' => $page,
                         'direction' => $direction

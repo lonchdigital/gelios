@@ -14,13 +14,17 @@ class InsuranceCompaniesController extends Controller
     {
         $page = Page::where('type', PageType::INSURANCECOMPANIES->value)->first();
         $pageTextBlock = PageTextBlock::where('number', 1)->where('page_id', $page->id)->first();
+        $url['ua'] = url('/') . '/ua/strahovym-kompaniyam';
+        $url['ru'] = url('/') . '/strahovym-kompaniyam';
+        $url['en'] = url('/') . '/en/strahovym-kompaniyam';
 
         return view('site.pages.insurance-companies', [
             'page' => $page,
             'pageTextBlock' => $pageTextBlock,
             'companiesRowOne' => InsuranceCompany::where('row', 1)->orderBy('sort', 'asc')->get(),
             'companiesRowTwo' => InsuranceCompany::where('row', 2)->orderBy('sort', 'asc')->get(),
-            'phones' => PageContactItem::where('page_id', $page->id)->where('type', 'phone')->orderBy('sort', 'asc')->get()
+            'phones' => PageContactItem::where('page_id', $page->id)->where('type', 'phone')->orderBy('sort', 'asc')->get(),
+            'url' => $url,
         ]);
     }
 }

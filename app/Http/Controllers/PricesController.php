@@ -21,8 +21,13 @@ class PricesController extends Controller
 
     public function page()
     {
+        $url['ua'] = url('/') . '/ua/prices';
+        $url['ru'] = url('/') . '/prices';
+        $url['en'] = url('/') . '/en/prices';
+
         return view('site.pages.prices',[
-            'page' => $this->page
+            'page' => $this->page,
+            'url' => $url,
         ]);
     }
 

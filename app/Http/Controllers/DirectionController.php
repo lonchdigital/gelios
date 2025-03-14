@@ -16,10 +16,15 @@ class DirectionController extends Controller
 
     public function page()
     {
+        $url['ua'] = url('/') . '/ua/directions';
+        $url['ru'] = url('/') . '/directions';
+        $url['en'] = url('/') . '/en/directions';
+
         $page = Page::where('type', PageType::DIRECTIONS->value)->first();
 
         return view('site.directions.page',[
             'page' => $page,
+            'url' => $url,
         ]);
     }
 

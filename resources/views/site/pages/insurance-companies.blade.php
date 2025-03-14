@@ -4,6 +4,7 @@
     @include('site.components.head', [
         'title' => $page->meta_title ?: $page->title,
         'description' => $page->meta_description,
+        'url' => $url,
     ])
 @endsection
 
@@ -92,7 +93,7 @@
                                     <div class="content">
                                         <div class="h3 font-weight-bolder mb-5">{{ $page->description }}</div>
                                         <ul class="list-inline mb-5 d-flex flex-column">
-                                            
+
                                             @foreach($phones as $phone)
                                                 <li class="list-inline-item">
                                                     <a href="tel:{{ $phone->item }}">

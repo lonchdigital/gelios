@@ -4,6 +4,7 @@
     @include('site.components.head', [
         'title' => $page->meta_title ?: $page->title,
         'description' => $page->meta_description,
+        'url' => $url,
     ])
 @endsection
 
@@ -14,7 +15,7 @@
     @include('site.directions.partials.breadcrumbs', [
         'breadcrumbs' => $direction->buildBreadcrumbs(),
     ])
-    
+
     @if(count($direction->children) > 0)
         <section class="category-direction-column-item offices-direction mb-24">
             <div class="container">

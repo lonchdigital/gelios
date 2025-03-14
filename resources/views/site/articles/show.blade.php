@@ -4,6 +4,7 @@
     @include('site.components.head', [
         'title' => ($article->title) . ($seo[0] ?? $articlePage->meta_title ?: $articlePage->title),
         'description' => $seo[1] ?? $articlePage->meta_description,
+        'url' => $url
     ])
 @endsection
 

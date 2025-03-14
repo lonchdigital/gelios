@@ -4,6 +4,7 @@
     @include('site.components.head', [
         'title' => $page->meta_title ?: $page->title,
         'description' => $page->meta_description,
+        'url' => $url,
     ])
 @endsection
 
@@ -20,7 +21,7 @@
             ],
         ],
     ])
-    
+
     @include('site.directions.partials.our-directions-section')
 
     <section class="meeting mb-24 py-lg-16">

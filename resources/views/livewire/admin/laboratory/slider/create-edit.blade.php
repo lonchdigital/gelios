@@ -46,33 +46,33 @@
                                                 </div>
                                             </div>
 
-                                                <div class="col-md-12">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="row mb-3">
-                                                                <div class="col-md-12">
-                                                                    <div class="tab-content">
-                                                                        <div id="uaTitle"
-                                                                            class="multilang-content tab-pane fade active show">
-                                                                            <div class="form-group mb-1">
-                                                                                <label>{{ __('admin.button_text') }}
-                                                                                    <strong>UA</strong>
-                                                                                </label>
-                                                                                <input type="text" wire:model="uaButton"
-                                                                                    class="form-control">
-                                                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>{{ __('admin.button_text') }}
+                                                                                <strong>UA</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="uaButton"
+                                                                                class="form-control">
                                                                         </div>
                                                                     </div>
-                                                                    @error('uaButton')
-                                                                        <div class="mt-1 text-danger ajaxError">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
                                                                 </div>
+                                                                @error('uaButton')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
                                             {{-- @endif --}}
                                         @endif
 
@@ -105,33 +105,33 @@
                                                 </div>
                                             </div>
 
-                                                <div class="col-md-12">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="row mb-3">
-                                                                <div class="col-md-12">
-                                                                    <div class="tab-content">
-                                                                        <div id="uaTitle"
-                                                                            class="multilang-content tab-pane fade active show">
-                                                                            <div class="form-group mb-1">
-                                                                                <label>{{ __('admin.button_text') }}
-                                                                                    <strong>RU</strong>
-                                                                                </label>
-                                                                                <input type="text" wire:model="ruButton"
-                                                                                    class="form-control">
-                                                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>{{ __('admin.button_text') }}
+                                                                                <strong>RU</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="ruButton"
+                                                                                class="form-control">
                                                                         </div>
                                                                     </div>
-                                                                    @error('ruButton')
-                                                                        <div class="mt-1 text-danger ajaxError">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
                                                                 </div>
+                                                                @error('ruButton')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
                                             {{-- @endif --}}
                                         @endif
 
@@ -163,33 +163,33 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                                <div class="col-md-12">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="row mb-3">
-                                                                <div class="col-md-12">
-                                                                    <div class="tab-content">
-                                                                        <div id="uaTitle"
-                                                                            class="multilang-content tab-pane fade active show">
-                                                                            <div class="form-group mb-1">
-                                                                                <label>{{ __('admin.button_text') }}
-                                                                                    <strong>EN</strong>
-                                                                                </label>
-                                                                                <input type="text" wire:model="enButton"
-                                                                                    class="form-control">
-                                                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div id="uaTitle"
+                                                                        class="multilang-content tab-pane fade active show">
+                                                                        <div class="form-group mb-1">
+                                                                            <label>{{ __('admin.button_text') }}
+                                                                                <strong>EN</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="enButton"
+                                                                                class="form-control">
                                                                         </div>
                                                                     </div>
-                                                                    @error('enButton')
-                                                                        <div class="mt-1 text-danger ajaxError">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
                                                                 </div>
+                                                                @error('enButton')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
                                             {{-- @endif --}}
                                         @endif
 

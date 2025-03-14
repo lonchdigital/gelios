@@ -22,8 +22,13 @@ class ContactsController extends Controller
 
     public function page()
     {
+        $url['ua'] = url('/') . '/ua/contacts';
+        $url['ru'] = url('/') . '/contacts';
+        $url['en'] = url('/') . '/en/contacts';
+
         return view('site.pages.contacts',[
-            'page' => $this->page
+            'page' => $this->page,
+            'url' => $url,
         ]);
     }
 
@@ -32,7 +37,7 @@ class ContactsController extends Controller
         $request->validate([
             'query' => 'required|array'
         ]);
-        
+
         return $this->service->getFilteredItems($request);
     }
 }

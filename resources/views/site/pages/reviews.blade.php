@@ -1,6 +1,12 @@
 @extends('site.layout.app')
 
 @section('head')
+    @include('site.components.head', [
+            'title' => $page->meta_title ?: $page->title,
+            'description' => $page->meta_description,
+            'url' => $url,
+        ])
+        
     @vite(['resources/js/forms/reviewForm.js'])
 @endsection
 
@@ -142,7 +148,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="modal modal--custom popup--review-thank fade" id="popup--review-thank" data-keyboard="false" tabindex="-1" aria-labelledby="popup--review-thankLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content py-5 px-3 py-md-13 px-md-11">

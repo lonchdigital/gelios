@@ -4,6 +4,7 @@
     @include('site.components.head', [
         'title' => $page->meta_title ?: $page->title,
         'description' => $page->meta_description,
+        'url' => $url,
     ])
 @endsection
 
@@ -51,7 +52,7 @@
                     </div>
                 @else
                     <div id="doctor-features--inner-2" class="bg-white rounded-sm p-3 p-md-6 d-none"></div>
-                @endif  
+                @endif
             </div>
         </div>
     </section>

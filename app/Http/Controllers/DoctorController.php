@@ -69,11 +69,16 @@ class DoctorController extends Controller
             ->with('translations')
             ->first();
 
+        $url['ua'] = url('/') . '/ua/nashi-speczialisty';
+        $url['ru'] = url('/') . '/nashi-speczialisty';
+        $url['en'] = url('/') . '/en/nashi-speczialisty';
+
         return view('site.doctors.index', compact(
             'doctors',
             'categories',
             'page',
-            'types'
+            'types',
+            'url',
         ));
     }
 
@@ -99,7 +104,11 @@ class DoctorController extends Controller
 
         $reviews = $doctor->reviews;
 
-        return view('site.doctors.show', compact('doctor', 'page', 'seo', 'relatedArticles', 'reviews'));
+        $url['ua'] = url('/') . '/ua/team-member/' . $doctor->slug;
+        $url['ru'] = url('/') . '/team-member/' . $doctor->slug;
+        $url['en'] = url('/') . '/en/team-member/' . $doctor->slug;
+
+        return view('site.doctors.show', compact('doctor', 'page', 'seo', 'relatedArticles', 'reviews', 'url'));
     }
 
     public function getCategoriesByType(Request $request)

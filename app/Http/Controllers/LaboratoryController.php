@@ -20,7 +20,11 @@ class LaboratoryController extends Controller
             ->with('translations', 'pageBlocks', 'pageBlocks.translations')
             ->firstOrFail();
 
-        return view('site.laboratory.index', compact('cities', 'page'));
+        $url['ua'] = url('/') . '/ua/laboratories';
+        $url['ru'] = url('/') . '/laboratories';
+        $url['en'] = url('/') . '/en/laboratories';
+
+        return view('site.laboratory.index', compact('cities', 'page', 'url'));
     }
 
     public function prices()
@@ -31,7 +35,11 @@ class LaboratoryController extends Controller
 
         $prices = '';
 
-        return view('site.pages.laboratory-prices', compact('page'));
+        $url['ua'] = url('/') . '/ua/laboratories/prices';
+        $url['ru'] = url('/') . '/laboratories/prices';
+        $url['en'] = url('/') . '/en/laboratories/prices';
+
+        return view('site.pages.laboratory-prices', compact('page', 'url'));
     }
 
     public function searchFilter(Request $request): array

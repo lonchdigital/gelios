@@ -17,6 +17,10 @@ class CheckUpController extends Controller
             ->with('translations')
             ->first();
 
-        return view('site.check-up.index', compact('checkUps', 'page'));
+        $url['ua'] = url('/') . '/ua/check-up';
+        $url['ru'] = url('/') . '/check-up';
+        $url['en'] = url('/') . '/en/check-up';
+
+        return view('site.check-up.index', compact('checkUps', 'page', 'url'));
     }
 }

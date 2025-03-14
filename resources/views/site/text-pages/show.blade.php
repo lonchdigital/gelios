@@ -1,5 +1,13 @@
 @extends('site.layout.app')
 
+@section('head')
+    @include('site.components.head', [
+        'title' => $page->meta_title ?: $page->title,
+        'description' => $page->meta_description,
+        'url' => $url
+    ])
+@endsection
+
 @section('content')
 
     @include('site.components.breadcrumbs', [

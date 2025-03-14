@@ -20,6 +20,10 @@ class SurgeryController extends Controller
 
         $reviews = $page->reviews;
 
-        return view('site.surgery.index', compact('page', 'directions', 'reviews'));
+        $url['ua'] = url('/') . '/ua/vzroslym/hirurgiya';
+        $url['ru'] = url('/') . '/vzroslym/hirurgiya';
+        $url['en'] = url('/') . '/en/vzroslym/hirurgiya';
+
+        return view('site.surgery.index', compact('page', 'directions', 'reviews', 'url'));
     }
 }
