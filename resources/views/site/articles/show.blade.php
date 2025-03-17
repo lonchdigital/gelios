@@ -10,6 +10,21 @@
 
 @section('content')
 
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "{{ $article->title }}",
+            "image": [
+                "{{ asset($article->image) }}"
+            ],
+            "url": "{{ url()->current() }}",
+            "datePublished": "{{ $article->created_at->toIso8601String() }}",
+            "description": "{{ $article->description }}",
+            "articleBody": "{{ Str::limit(strip_tags($article->body), 300) ?? '' }}"
+        }
+    </script>
+
 @include('site.components.breadcrumbs', [
     'breadcrumbs' => [
         [

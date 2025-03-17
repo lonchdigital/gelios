@@ -172,7 +172,7 @@
 
             buttons.forEach(button => {
                 button.addEventListener('click', () => {
-                    // buttons.forEach(btn => btn.classList.remove('active'));
+                    buttons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
 
                     const type = button.textContent.trim().toLowerCase();

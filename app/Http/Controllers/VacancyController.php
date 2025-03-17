@@ -21,6 +21,6 @@ class VacancyController extends Controller
         $url['ru'] = url('/') . '/vakansii';
         $url['en'] = url('/') . '/en/vakansii';
 
-        return view('site.vacancy.index', compact('vacancies', 'page'));
+        return view('site.vacancy.index', compact('vacancies', 'page', 'url'));
     }
 }

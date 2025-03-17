@@ -9,6 +9,22 @@
 @endsection
 
 @section('content')
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Physician",
+            "name": "{{ $doctor->name }}",
+            "specialization": "{{ $doctor->specialty }}",
+            "qualification": "{{ $doctor->education }}",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "{{ $doctor->city ?? '' }}",
+                "streetAddress": "{{ $doctor->address ?? '' }}"
+            },
+            "image": "{{ $doctor->imageUrl }}"
+        }
+    </script>
+
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [

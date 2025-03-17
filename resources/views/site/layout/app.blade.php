@@ -64,6 +64,14 @@
 
     @section('NOINDEX')
     @show
+
+    <script type="application/ld+json">
+        { "@context" : "https://schema.org",
+          "@type" : "Organization",
+           "url": "{{ config('app.url') }}",
+           "logo": "{{ $headerImage ?? asset('static_images/logo.png') }}"
+        }
+    </script>
 </head>
 
 <body>

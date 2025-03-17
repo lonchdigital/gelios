@@ -502,7 +502,7 @@
                                                             data-toggle="modal"
                                                             data-target="#popup--contacts"
                                                             data-city="{{ $secondCity->title ?? '' }}"
-                                                            data-affiliates="{{ $firstCity->headerAffiliates }}"
+                                                            data-affiliates="{{ $secondCity->headerAffiliates }}"
                                                             {{-- @forelse($secondCity->headerAffiliates as $affiliate)
                                                                 @switch($loop->iteration)
                                                                     @case(1)

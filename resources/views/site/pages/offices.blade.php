@@ -64,6 +64,46 @@
 
     <section class="offices-direction mb-24 mb-lg-0">
         @foreach ($contacts as $contact)
+            <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org/",
+                    "@type": "Product",
+                    "name": "{{ $contact->title }}",
+                    "description": "{{ $contact->description }}",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "{{ $contact->street }}",
+                        "addressLocality": "{{ $contact->city }}",
+                        "postalCode": "індекс",
+                        "addressRegion": "область",
+                        "addressCountry": "Україна"
+                    },
+                    @if(!empty($contact->items->where('type', 'phone')->first()->title))
+                        "telephone": "{{ $contact->items->where('type', 'phone')->first()->title }}",
+                    @endif
+                    @if(!empty($contact->items->where('type', 'email')->first()->title))
+                        "email": "{{ $contact->items->where('type', 'email')->first()->title }}",
+                    @endif
+                    "openingHours": "Графік роботи",
+                    "medicalSpecialty": "спеціалізація клініки, наприклад Багатопрофільний медичний центр",
+                    @if(!empty($contact->image))
+                        "image": "{{ '/storage/' . $contact->image }}",
+                    @endif
+                    "geo": {
+                        "@type": "GeoCoordinates",
+                        "latitude": широта,
+                        "longitude": довгота
+                    },
+                    "hasMap": "{{ $contact->map_url }}",
+                    "priceRange": "",
+                    "sameAs": [
+                        "http://facebook.com/medicalcenter",
+                        "http://twitter.com/medicalcenter",
+                        "http://instagram.com/medicalcenter"
+                    ]
+                }
+            </script>
+
             {{-- @dd($contact->getDirectionsTree()) --}}
             @php
                 $contactTteration = $loop->iteration;
