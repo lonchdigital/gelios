@@ -5,7 +5,7 @@
             <div class="position-relative rounded-sm overflow-hidden h-100">
                 @if(!is_null($data->image))
                     <div class="wrap-img">
-                        <img class="bg-down" src="{{ '/storage/' . $data->image }}" alt="img">
+                        <img class="bg-down" src="{{ '/storage/' . $data->image }}" alt="{{ (isset($alt)) ? $alt : 'img' }}">
                     </div>
                 @endif
             </div>

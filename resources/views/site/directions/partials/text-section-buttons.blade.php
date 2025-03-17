@@ -29,7 +29,7 @@
                     <div class="backdrop position-static">
                         @if(!is_null($data->image))
                             <div class="wrap-img">
-                                <img class="bg-down" src="{{ '/storage/' . $data->image }}" alt="img">
+                                <img class="bg-down" src="{{ '/storage/' . $data->image }}" alt="{{ (isset($alt)) ? $alt : 'img' }}">
                             </div>
                         @endif
                     </div>
