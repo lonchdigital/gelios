@@ -18,7 +18,11 @@
 
     <section class="section-top section-top-3 section-top-6 mb-24">
         <div class="container">
-            @include('site.directions.partials.text-section-buttons', ['data' => $direction->textBlocks->where('number', 1)->first()])
+            @include('site.directions.partials.text-section-buttons', [
+                'data' => $direction->textBlocks->where('number', 1)->first(),
+                'alt' => $direction->name . ' ' . 1
+                ]
+            )
         </div>
     </section>
 
@@ -47,7 +51,12 @@
                         @if( !is_null($textBlockThree) )
                             <div class="media-content row mb-lg-8">
                                 <div class="col">
-                                    @include('site.components.text-section', ['data' => $textBlockThree, 'mb' => 5])
+                                    @include('site.components.text-section', [
+                                        'data' => $textBlockThree, 
+                                        'mb' => 5,
+                                        'alt' => $direction->name . ' ' . 3,
+                                        ]
+                                    )
                                 </div>
                             </div>
                             @if($textBlockThree->button_one_url)
@@ -141,8 +150,16 @@
 
     <section class="media-content">
         <div class="container">
-            @include('site.components.text-section', ['data' => $direction->textBlocks->where('number', 4)->first()])
-            @include('site.components.text-section', ['data' => $direction->textBlocks->where('number', 5)->first()])
+            @include('site.components.text-section', [
+                'data' => $direction->textBlocks->where('number', 4)->first(),
+                'alt' => $direction->name . ' ' . 4,
+                ]
+            )
+            @include('site.components.text-section', [
+                'data' => $direction->textBlocks->where('number', 5)->first(),
+                'alt' => $direction->name . ' ' . 5,
+                ]
+            )
         </div>
     </section>
 

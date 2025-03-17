@@ -12,7 +12,7 @@
             @if($data->is_image)
                 @if(!is_null($data->image))
                     <div class="wrap-img">
-                        <img src="{{ '/storage/' . $data->image }}" alt="img">
+                        <img src="{{ '/storage/' . $data->image }}" alt="{{ (isset($alt)) ? $alt : 'img' }}">
                     </div>
                 @endif
             @else

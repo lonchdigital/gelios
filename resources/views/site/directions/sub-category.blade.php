@@ -18,7 +18,11 @@
 
     <section class="section-top section-top-3 section-top-6 mb-24">
         <div class="container">
-            @include('site.directions.partials.text-section-buttons', ['data' => $direction->textBlocks->where('number', 1)->first()])
+            @include('site.directions.partials.text-section-buttons', [
+                'data' => $direction->textBlocks->where('number', 1)->first(),
+                'alt' => $direction->name . ' ' . 1,
+                ]
+            )
         </div>
     </section>
 
@@ -28,7 +32,12 @@
         @endphp
         <div class="container">
             <div class="row align-items-stretch">
-                @include('site.directions.partials.text-section-narrow', ['data' => $direction->textBlocks->where('number', 2)->first(), 'hasChildren' => $hasChildren])
+                @include('site.directions.partials.text-section-narrow', [
+                    'data' => $direction->textBlocks->where('number', 2)->first(), 
+                    'hasChildren' => $hasChildren,
+                    'alt' => $direction->name . ' ' . 2,
+                    ]
+                )
                 @if( $hasChildren )
                     <div class="col-12 col-md-6 col-xl-4">
                         <div id="doctor-features--inner-2" class="bg-white rounded-sm p-3 p-md-6 min-h-narrow-block">
