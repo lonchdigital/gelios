@@ -11,18 +11,18 @@ buttons.forEach(button => {
 		if (parentItem.classList.contains('active')) {
 			// Якщо має, то прибираємо клас і змінюємо текст кнопки
 			parentItem.classList.remove('active');
-			this.textContent = 'Детальніше';
+			this.textContent = transMoreDetails;
 		} else {
 			// Якщо не має, то додаємо клас і змінюємо текст кнопки
 
 			// Видаляємо клас 'active' з усіх інших елементів
 			document.querySelectorAll('.check-up--item').forEach(item => {
 				item.classList.remove('active');
-				item.querySelector('.btn-read-more--check-up').textContent = 'Детальніше';
+				item.querySelector('.btn-read-more--check-up').textContent = transMoreDetails;
 			});
 
 			parentItem.classList.add('active');
-			this.textContent = 'Згорнути';
+			this.textContent = transCollapse;
 		}
 	});
 });

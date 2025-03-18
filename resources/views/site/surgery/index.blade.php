@@ -131,7 +131,7 @@
                         <div class="col-12 col-lg-6">
                             @if (!empty($block2->image))
                                 <div class="wrap-img">
-                                    <img src="{{ $block2->imageUrl }}" alt="img">
+                                    <img src="{{ $block2->imageUrl }}" alt="{{ $block2->description ?? '' }}">
                                 </div>
                             @endif
                         </div>
@@ -148,7 +148,7 @@
                         <div class="col-12 col-lg-6">
                             @if (!empty($block2->image))
                                 <div class="wrap-img">
-                                    <img src="{{ $block2->imageUrl }}" alt="img">
+                                    <img src="{{ $block2->imageUrl }}" alt="{{ $block2->description }}">
                                 </div>
                             @endif
                         </div>
@@ -326,7 +326,8 @@
                         @if(!empty($page->pageBlocks->where('block', 'conditions')->where('key', 'image')->first()->image))
                             <a href="{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'image')->first()->imageUrl }}" data-fancybox="stay-conditions--gallery">
                                 <div class="wrap-img">
-                                    <img src="{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'image')->first()->imageUrl }}" alt="img">
+                                    <img src="{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'image')->first()->imageUrl }}"
+                                        alt="{{ ($page->title . $loop->iteration) ?? __('pages.surgery') }}">
                                 </div>
                             </a>
                         @endif
@@ -339,7 +340,7 @@
                                         <div class="stay-conditions--small-wrap">
                                             <a href="{{ $block->imageUrl }}" data-fancybox="stay-conditions--gallery">
                                                 <div class="wrap-img">
-                                                    <img src="{{ $block->imageUrl }}" alt="img">
+                                                    <img src="{{ $block->imageUrl }}" alt="{{ ($page->title . $loop->iteration) ?? __('pages.surgery') }}">
                                                 </div>
                                             </a>
                                         </div>
@@ -358,7 +359,7 @@
                                     <div class="swiper-slide">
                                         <a href="{{ $block->imageUrl }}" data-fancybox="stay-conditions--gallery-mob">
                                             <div class="wrap-img">
-                                                <img src="{{ $block->imageUrl }}" alt="img">
+                                                <img src="{{ $block->imageUrl }}" alt="{{ $page->title ?? __('pages.surgery') }}">
                                             </div>
                                         </a>
                                     </div>
@@ -386,7 +387,7 @@
                         @if(!empty($page->pageBlocks->where('block', 'Inpatient')->where('key', 'image')->first()->image))
                             <a href="{{ $page->pageBlocks->where('block', 'Inpatient')->where('key', 'image')->first()->imageUrl }}" data-fancybox="hospital--gallery">
                                 <div class="wrap-img">
-                                    <img src="{{ $page->pageBlocks->where('block', 'Inpatient')->where('key', 'image')->first()->imageUrl }}" alt="img">
+                                    <img src="{{ $page->pageBlocks->where('block', 'Inpatient')->where('key', 'image')->first()->imageUrl }}" alt="{{ $page->title ?? __('pages.surgery') }}">
                                 </div>
                             </a>
                         @endif
@@ -399,7 +400,7 @@
                                         <div class="stay-conditions--small-wrap">
                                             <a href="{{ $block->imageUrl }}" data-fancybox="hospital--gallery">
                                                 <div class="wrap-img">
-                                                    <img src="{{ $block->imageUrl }}" alt="img">
+                                                    <img src="{{ $block->imageUrl }}" alt="{{ $page->title ?? __('pages.surgery') }}">
                                                 </div>
                                             </a>
                                         </div>
@@ -418,7 +419,7 @@
                                     <div class="swiper-slide">
                                         <a href="{{ $block->imageUrl }}" data-fancybox="hospital--gallery-mob">
                                             <div class="wrap-img">
-                                                <img src="{{ $block->imageUrl }}" alt="img">
+                                                <img src="{{ $block->imageUrl }}" alt="{{ $page->title ?? __('pages.surgery') }}">
                                             </div>
                                         </a>
                                     </div>
@@ -481,7 +482,7 @@
                 </div>
                 <div class="col-5 col-lg-6 d-none d-lg-flex">
                     <div class="wrap-img">
-                        <img src="{{ asset('static_images/img-right-b.png') }}" alt="img">
+                        <img src="{{ asset('static_images/img-right-b.png') }}" alt="{{ $page->title ?? __('pages.surgery') }}">
                     </div>
                 </div>
             </div>

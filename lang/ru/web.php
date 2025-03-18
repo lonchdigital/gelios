@@ -29,6 +29,7 @@ return [
     'all_directions' => 'Все направления',
     'back' => 'Назад',
     'show_more' => 'Показать больше',
+    'show_less' => 'Показать меньше',
     'show_more_histories' => 'Больше историй',
     'our_car_park' => 'Наш автопарк',
     'your_car_park' => 'Твой автопарк',
@@ -90,4 +91,5 @@ return [
     'to_main' => 'На главную',
     'promotional_price' => 'Акционная цена',
     'price' => 'Цена',
+    'collapse' => 'Свернуть',
 ];

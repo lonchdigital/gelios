@@ -267,7 +267,7 @@
                 </div>
                 <div class="col-5 col-lg-6 d-none d-lg-flex">
                     <div class="wrap-img">
-                        <img src="{{ asset('static_images/img-right-b.png') }}" alt="img">
+                        <img src="{{ asset('static_images/img-right-b.png') }}" alt="{{ $page->title ?? 'Laboratory' }}">
                     </div>
                 </div>
             </div>

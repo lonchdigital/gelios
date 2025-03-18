@@ -28,6 +28,7 @@ return [
     'all_directions' => 'All directions',
     'back' => 'Back',
     'show_more' => 'Show more',
+    'show_less' => 'Show less',
     'show_more_histories' => 'More stories',
     'our_car_park' => 'Our car park',
     'your_car_park' => 'Your car park',
@@ -89,4 +90,5 @@ return [
     'to_main' => 'To the main page',
     'promotional_price' => 'Promotional price',
     'price' => 'Price',
+    'collapse' => 'Collapse',
 ];

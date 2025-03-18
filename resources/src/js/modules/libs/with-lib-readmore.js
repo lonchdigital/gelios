@@ -33,8 +33,8 @@ $(document).ready(function () {
 		$('.spoiler-list').readmore({
 			speed: 75,
 			collapsedHeight: false,
-			moreLink: '<button class="btn-read-more btn rounded-0 mt-3 p-0 text-blue">Показати більше</button>',
-			lessLink: '<button class="btn-read-more btn rounded-0 mt-3 p-0 text-blue">Показати менше</button>'
+			moreLink: '<button class="btn-read-more btn rounded-0 mt-3 p-0 text-blue">'+transShowMore+'</button>',
+			lessLink: '<button class="btn-read-more btn rounded-0 mt-3 p-0 text-blue">'+transShowLess+'</button>'
 		});
 	}
 

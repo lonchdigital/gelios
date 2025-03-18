@@ -718,6 +718,12 @@
         <script>
             window.iconsPath = @json(Vite::asset(config('app.icons_path')));
         </script>
+    <script>
+        transShowMore = @json(__('web.show_more'));
+        transShowLess = @json(__('web.show_less'));
+        transMoreDetails = @json(__('web.more_details'));
+        transCollapse = @json(__('web.collapse'))
+    </script>
 </body>
 
 </html>
