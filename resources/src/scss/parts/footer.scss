@@ -21,13 +21,19 @@
 	}
 
 	.socials {
-		@include sm-max {
-			margin-right: 10px;
-		}
+		// @include sm-max {
+		// 	margin-right: 10px;
+		// }
 
-		ul li {
-			margin-bottom: 0;
-			margin-right: 0;
+		ul {
+			display: flex;
+			justify-content: end;
+			gap: 10px;
+
+			li {
+				margin-bottom: 0;
+				margin-right: 0;
+			}
 		}
 
 		a {
