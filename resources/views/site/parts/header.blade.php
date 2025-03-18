@@ -430,7 +430,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="item"><a href="{{ route('surgery.index') }}">{{ __('pages.surgery') }}</a></div>
-                                                    <div class="item"><a href="##">{{ __('pages.about_company') }}</a></div>
+                                                    <div class="item"><a href="{{ route('about.us.page') }}">{{ __('pages.about_company') }}</a></div>
                                                     <div class="item has-dropdown">
                                                         <a href="{{ route('promotions.index') }}">{{ __('pages.promotions') }}</a>
                                                         <div class="push-menu--lvl scrollable-content">
@@ -446,8 +446,8 @@
                                                     </div>
                                                     <div class="item"><a href="{{ route('doctors.index') }}">{{ __('pages.doctors') }}</a>
                                                     </div>
-                                                    <div class="item"><a href="##">{{ __('pages.hospital') }}</a></div>
-                                                    <div class="item"><a href="##">{{ __('pages.prices') }}</a></div>
+                                                    <div class="item"><a href="{{ route('hospital.show') }}">{{ __('pages.hospital') }}</a></div>
+                                                    <div class="item"><a href="{{ route('prices.page') }}">{{ __('pages.prices') }}</a></div>
                                                     <div class="item has-dropdown">
                                                         <a href="##">{{ __('pages.contacts') }}</a>
                                                         <div class="push-menu--lvl scrollable-content">
