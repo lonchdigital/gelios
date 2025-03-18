@@ -473,9 +473,14 @@
 		margin-right: 20px;
 		margin-left: 10px;
 
+		@include md-max {
+			display: flex;
+			align-items: center;
+		}
+
 		img {
 			height: auto;
-		}
+		}		
 	}
 
 	.navbar-collapse {
