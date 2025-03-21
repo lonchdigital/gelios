@@ -22,13 +22,13 @@
                         </a>
                     </li>
 
-                    <li class="treeview @if(Route::is('directions.*')) menu-open @endif">
+                    <li class="treeview @if(Route::is('directions.*') || Route::is('common-blocks.directions')) menu-open @endif">
                         <a href="javascript:void(0)">
                             <i class="fa fa-sitemap"></i>
                             <span>{{ trans('admin.directions') }}</span>
                             <i class="fa fa-angle-right"></i>
                         </a>
-                        <ul class="treeview-menu" @if(Route::is('directions.*')) style="display: block;" @else style="display: none;" @endif>
+                        <ul class="treeview-menu" @if(Route::is('directions.*') || Route::is('common-blocks.directions')) style="display: block;" @else style="display: none;" @endif>
                             <li @if(Route::is('directions.page.edit')) class="active" @endif>
                                 <a href="{{ route('directions.page.edit') }}">{{ trans('admin.directions_page') }}</a>
                             </li>
