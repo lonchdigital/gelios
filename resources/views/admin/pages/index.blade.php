@@ -13,7 +13,7 @@
                 <div class="card mb-30">
                     <div class="card-body pb-0">
                         <div class="d-flex justify-content-between align-items-center mb-20">
-                            <h6 class="card-title mb-0">{{ __('admin.pages') }}</h6>
+                            <h6 class="card-title mb-0">{{ __('admin.pages2') }}</h6>
 
                             {{-- <div class="d-flex justify-content-between align-items-center mb-20">
                                 <div>

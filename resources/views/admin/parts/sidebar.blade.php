@@ -17,7 +17,7 @@
                     <li class=" @if(Route::is('admin.pages.*')) active @endif">
                         <a href="{{ route('admin.pages.index') }}"><i class='fa fa-file-text-o'></i>
                             <span>
-                                {{ __('admin.pages') }}
+                                {{ __('admin.pages2') }}
                             </span>
                         </a>
                     </li>
@@ -192,7 +192,7 @@
                         </a>
                     </li> --}}
 
-                    
+
 
                     {{-- <li class="treeview @if(Route::is('insurance.companies.*')) menu-open @endif">
                         <a href="javascript:void(0)">

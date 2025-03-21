@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'pages2' => 'Сторінки',
     'in_footer' => 'У футер',
     'show_child_elements' => 'Відображати дочірні елементи',
     'do_not_show_child_elements' => 'Не відображати дочірні елементи',
@@ -226,7 +227,6 @@ return [
     'surgery' => 'Хірургія',
     'vacancy' => 'Вакансії',
     'vacancy_page_seo' => 'SEO сторінки Вакансії',
-    'pages' => 'Сторінки',
     'main_page' => 'Головна сторінка',
     'main_page_seo' => 'Головна сторінка SEO',
     'header' => 'Хедер',

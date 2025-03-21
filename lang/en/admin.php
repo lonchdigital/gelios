@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'pages2' => 'Pages',
     'promotion_seo_page' => 'Promotion SEO Pages',
     'one_promotion_seo' => 'SEO of One Promotion',
     'check_up_page_seo' => 'Check Up SEO Pages',
@@ -21,7 +22,6 @@ return [
     'surgery' => 'Surgery',
     'vacancy' => 'Vacancies',
     'vacancy_page_seo' => 'Vacancy Page SEO',
-    'pages' => 'Pages',
     'main_page' => 'Main Page',
     'main_page_seo' => 'Main Page SEO',
     'header' => 'Header',
