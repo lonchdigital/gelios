@@ -403,4 +403,5 @@ return [
     'info_block'    => 'Блок інфо',
     'banner'        => 'Баннер',
     'section_progress' => 'блок прогрес',
+    'directions_common_blocks' => 'Наскрізні блоки напрямків',
 ];

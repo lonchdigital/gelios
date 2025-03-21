@@ -371,4 +371,5 @@ return [
     'info_block'    => 'Блок инфо',
     'banner'        => 'Баннер',
     'section_progress' => 'Блок прогресс',
+    'directions_common_blocks' => 'Сквозные блоки направлений',
 ];
