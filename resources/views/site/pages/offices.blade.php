@@ -46,12 +46,12 @@
                             <div class="swiper-buttons d-flex">
                                 <div class="button-slider-prev">
                                     <svg>
-                                        <use xlink:href="img/icons/icons.svg#i-arrow-right"></use>
+                                        <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-arrow-right' }}"></use>
                                     </svg>
                                 </div>
                                 <div class="button-slider-next">
                                     <svg>
-                                        <use xlink:href="img/icons/icons.svg#i-arrow-right"></use>
+                                        <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-arrow-right' }}"></use>
                                     </svg>
                                 </div>
                             </div>
