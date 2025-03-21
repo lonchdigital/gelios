@@ -480,7 +480,7 @@
 
 		img {
 			height: auto;
-		}		
+		}
 	}
 
 	.navbar-collapse {
@@ -679,7 +679,7 @@
 						.push-menu--category,
 						.push-menu--category .push-menu--sub-category {
 							overflow-y: auto;
-							-webkit-overflow-scrolling: touch;
+							// -webkit-overflow-scrolling: touch;
 							padding-right: 6px;
 
 							&::-webkit-scrollbar {
@@ -906,7 +906,7 @@
 						height: 100%;
 						position: static;
 						overflow-y: auto;
-						-webkit-overflow-scrolling: touch;
+						// -webkit-overflow-scrolling: touch;
 						padding-right: 15px;
 
 						// .simplebar-wrapper {

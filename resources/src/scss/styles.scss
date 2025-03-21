@@ -73,7 +73,7 @@
 			// filter: blur(55px);
 		}
 
-		div,
+		div:not(.wrap-img),
 		p {
 			position: relative;
 			z-index: 1;
@@ -750,7 +750,7 @@
 				color: $grey;
 				padding-right: 25px;
 				overflow-y: auto;
-				-webkit-overflow-scrolling: touch;
+				// -webkit-overflow-scrolling: touch;
 				height: 135px;
 				font-weight: 500;
 
@@ -925,7 +925,7 @@
 
 .news-category-results {
 	.select2-results__options {
-		-webkit-overflow-scrolling: touch;
+		// -webkit-overflow-scrolling: touch;
 
 		&.has-scrollbar {
 			margin-right: 10px;
@@ -1048,7 +1048,7 @@
 	ul {
 		height: 335px;
 		overflow-y: scroll;
-		-webkit-overflow-scrolling: touch;
+		// -webkit-overflow-scrolling: touch;
 		padding-right: 15px;
 
 		list-style-type: none;
@@ -1354,7 +1354,7 @@
 			max-height: 335px;
 			overflow-y: auto;
 			overflow-x: hidden;
-			-webkit-overflow-scrolling: touch;
+			// -webkit-overflow-scrolling: touch;
 			padding-right: 16px;
 			font-weight: 500;
 			color: $grey;
@@ -2120,7 +2120,7 @@
 	height: inherit;
 
 	.category-directions--list {
-		-webkit-overflow-scrolling: touch;
+		// -webkit-overflow-scrolling: touch;
 
 		@include sm-max {
 			height: 420px;
@@ -2370,7 +2370,7 @@
 		max-height: 335px;
 		overflow-y: auto;
 		overflow-x: hidden;
-		-webkit-overflow-scrolling: touch;
+		// -webkit-overflow-scrolling: touch;
 		padding-right: 16px;
 		font-weight: 500;
 		color: $grey;
@@ -2591,7 +2591,7 @@
 							max-height: 200px;
 							overflow-y: auto;
 							overflow-x: hidden;
-							-webkit-overflow-scrolling: touch;
+							// -webkit-overflow-scrolling: touch;
 							padding-right: 16px;
 							font-weight: 500;
 							color: $grey;
@@ -2859,7 +2859,7 @@
 	.content {
 		overflow-x: hidden;
 		overflow-y: auto;
-		-webkit-overflow-scrolling: touch;
+		// -webkit-overflow-scrolling: touch;
 		// padding-right: 5px;
 		margin-right: 0px;
 
