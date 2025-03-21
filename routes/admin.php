@@ -40,6 +40,35 @@ Route::group([
         'setDefaultLanguage',
         ]
     ], function () {
+
+        Route::prefix('/pages')->name('admin.pages.')->group(function () {
+            Route::get('/', [PageController::class, 'index'])->name('index');
+        });
+
+        Route::prefix('/laboratories')->name('admin.laboratories-page.')->group(function () {
+            Route::get('/page', [LaboratoryController::class, 'index2'])->name('index');
+        });
+
+        Route::prefix('/doctors')->name('admin.doctors-page.')->group(function () {
+            Route::get('/page', [DoctorController::class, 'index2'])->name('index');
+        });
+
+        Route::prefix('/surgery')->name('admin.surgery-page.')->group(function () {
+            Route::get('/page', [SurgeryController::class, 'index2'])->name('index');
+        });
+
+        Route::prefix('/articles')->name('admin.articles-page.')->group(function () {
+            Route::get('/page', [ArticleController::class, 'index2'])->name('index');
+        });
+
+        Route::prefix('/promotions')->name('admin.promotions-page.')->group(function () {
+            Route::get('/page', [PromotionController::class, 'index2'])->name('index');
+        });
+
+        Route::get('/reviews-page', [ReviewController::class, 'index2'])->name('admin.reviews-page.index');
+
+        Route::get('/vacancies-page', [VacancyController::class, 'index2'])->name('admin.vacancies-page.index');
+
         Route::get('/', [DashboardController::class, 'index'])->name('adminDashboard');
 
         Route::prefix('/directions')->group(function() {

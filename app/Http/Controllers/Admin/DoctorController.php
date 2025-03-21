@@ -16,6 +16,11 @@ class DoctorController extends Controller
         return view('admin.doctor.index');
     }
 
+    public function index2()
+    {
+        return view('admin.doctor.index2');
+    }
+
     public function create()
     {
         return view('admin.doctor.create');

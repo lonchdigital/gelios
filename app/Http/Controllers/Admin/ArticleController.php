@@ -18,6 +18,11 @@ class ArticleController extends Controller
         return view('admin.article.index');
     }
 
+    public function index2()
+    {
+        return view('admin.article.index2');
+    }
+
     public function create()
     {
         return view('admin.article.create');

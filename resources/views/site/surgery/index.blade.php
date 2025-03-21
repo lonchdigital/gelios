@@ -327,7 +327,7 @@
                             <a href="{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'image')->first()->imageUrl }}" data-fancybox="stay-conditions--gallery">
                                 <div class="wrap-img">
                                     <img src="{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'image')->first()->imageUrl }}"
-                                        alt="{{ ($page->title . $loop->iteration) ?? __('pages.surgery') }}">
+                                        alt="{{ $page->title ?? __('pages.surgery') }}">
                                 </div>
                             </a>
                         @endif

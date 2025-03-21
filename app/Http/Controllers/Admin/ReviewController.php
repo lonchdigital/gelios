@@ -16,7 +16,12 @@ class ReviewController extends Controller
     {
         return view('admin.reviews.index');
     }
-    
+
+    public function index2()
+    {
+        return view('admin.reviews.index2');
+    }
+
     public function unpublishedIndex()
     {
         return view('admin.reviews.unpublished-index');

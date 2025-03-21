@@ -14,10 +14,11 @@
             <!-- Sidebar Menu -->
             <nav>
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li @if( Route::is('adminDashboard') ) class="active"@endif>
-                        <a href="{{ route('adminDashboard') }}">
-                            <i class='fa fa-home'></i>
-                            <span>{{ trans('admin.main') }}</span>
+                    <li class=" @if(Route::is('admin.pages.*')) active @endif">
+                        <a href="{{ route('admin.pages.index') }}"><i class='fa fa-file-text-o'></i>
+                            <span>
+                                {{ __('admin.pages') }}
+                            </span>
                         </a>
                     </li>
 
@@ -37,12 +38,105 @@
                         </ul>
                     </li>
 
-                    <li @if( Route::is('hospitals.index') ) class="active"@endif>
+                    <li @if( Route::is('one.center.index') ) class="active"@endif>
+                        <a href="{{ route('one.center.index') }}">
+                            <i class='fa fa-building-o'></i>
+                            <span>{{ trans('admin.all_centers') }}</span>
+                        </a>
+                    </li>
+
+                    <li class=" @if(Route::is('admin.laboratories.*')) active @endif">
+                        <a href="{{ route('admin.laboratories-page.index') }}"><i class="fa fa-hospital-o"></i>
+                            <span>
+                                {{ __('admin.laboratories') }}
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class=" @if(Route::is('admin.doctors.*')) active @endif">
+                        <a href="{{ route('admin.doctors-page.index') }}"><i class="fa fa-user-md"></i>
+                            <span>
+                                {{ __('admin.doctors') }}
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class=" @if(Route::is('admin.surgery.*')) active @endif">
+                        <a href="{{ route('admin.surgery-page.index') }}"><i class="fa fa-medkit"></i>
+                            <span>
+                                {{ __('admin.surgery') }}
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class=" @if(Route::is('admin.articles.*')) active @endif">
+                        <a href="{{ route('admin.articles-page.index') }}"><i class="bx bx-home-heart"></i>
+                            <span>
+                                {{ __('admin.articles') }}
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class=" @if(Route::is('admin.promotions.*')) active @endif">
+                        <a href="{{ route('admin.promotions-page.index') }}"><i class="fa fa-star-o"></i>
+                            <span>
+                                {{ __('admin.promotions') }}
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class=" @if(Route::is('admin.check-ups.*')) active @endif">
+                        <a href="{{ route('admin.check-ups.index') }}"><i class="fa fa-check-circle-o"></i>
+                            <span>
+                                {{ trans('admin.check_ups') }}
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class=" @if(Route::is('admin.reviews.*')) active @endif">
+                        <a href="{{ route('admin.reviews-page.index') }}"><i class="fa fa-commenting-o"></i>
+                            <span>
+                                {{ trans('admin.reviews') }}
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class=" @if(Route::is('admin.vacancies.*')) active @endif">
+                        <a href="{{ route('admin.vacancies-page.index') }}"><i class="fa fa-address-book-o"></i>
+                            <span>
+                                {{ __('admin.vacancy') }}
+                            </span>
+                        </a>
+                    </li>
+
+
+                    <!-- OLD MENU
+
+
+                    -->
+
+                    {{-- <li class="treeview @if(Route::is('directions.*')) menu-open @endif">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-sitemap"></i>
+                            <span>{{ trans('admin.directions') }}</span>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                        <ul class="treeview-menu" @if(Route::is('directions.*')) style="display: block;" @else style="display: none;" @endif>
+                            <li @if(Route::is('directions.page.edit')) class="active" @endif>
+                                <a href="{{ route('directions.page.edit') }}">{{ trans('admin.directions_page') }}</a>
+                            </li>
+                            <li @if(Route::is('directions.index')) class="active" @endif >
+                                <a href="{{ route('directions.index') }}">{{ trans('admin.directions') }}</a>
+                            </li>
+                        </ul>
+                    </li> --}}
+
+                    {{-- <li @if( Route::is('hospitals.index') ) class="active"@endif>
                         <a href="{{ route('hospitals.index') }}">
                             <i class='fa fa-h-square'></i>
                             <span>{{ trans('admin.hospitals_stationary') }}</span>
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li class="treeview @if(Route::is('prices.*')) menu-open @endif">
                         <a href="javascript:void(0)">
@@ -60,26 +154,26 @@
                         </ul>
                     </li>
 
-                    <li @if( Route::is('contacts.index') ) class="active"@endif>
+                    {{-- <li @if( Route::is('contacts.index') ) class="active"@endif>
                         <a href="{{ route('contacts.index') }}">
                             <i class='fa fa-address-card'></i>
                             <span>{{ trans('admin.contacts') }}</span>
                         </a>
-                    </li>
+                    </li> --}}
 
-                    <li @if( Route::is('offices.index') ) class="active"@endif>
+                    {{-- <li @if( Route::is('offices.index') ) class="active"@endif>
                         <a href="{{ route('offices.index') }}">
                             <i class='fa fa-building-o'></i>
                             <span>{{ trans('admin.offices') }}</span>
                         </a>
-                    </li>
+                    </li> --}}
 
-                    <li @if( Route::is('text.pages.index') ) class="active"@endif>
+                    {{-- <li @if( Route::is('text.pages.index') ) class="active"@endif>
                         <a href="{{ route('text.pages.index') }}">
                             <i class='fa fa-file-text-o'></i>
                             <span>{{ trans('admin.text_pages') }}</span>
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li @if( Route::is('typical.pages.index') ) class="active"@endif>
                         <a href="{{ route('typical.pages.index') }}">
@@ -88,12 +182,12 @@
                         </a>
                     </li>
 
-                    <li @if( Route::is('about.us.edit') ) class="active"@endif>
+                    {{-- <li @if( Route::is('about.us.edit') ) class="active"@endif>
                         <a href="{{ route('about.us.edit') }}">
                             <i class='fa fa-cog'></i>
                             <span>{{ trans('admin.about_us') }}</span>
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li class="treeview @if(Route::is('common-blocks.*')) menu-open @endif">
                         <a href="javascript:void(0)">
@@ -108,7 +202,7 @@
                         </ul>
                     </li>
 
-                    <li class="treeview @if(Route::is('insurance.companies.*')) menu-open @endif">
+                    {{-- <li class="treeview @if(Route::is('insurance.companies.*')) menu-open @endif">
                         <a href="javascript:void(0)">
                             <i class='fa fa-briefcase'></i>
                             <span>{{ trans('admin.insurance_companies') }}</span>
@@ -122,16 +216,16 @@
                                 <a href="{{ route('insurance.companies.index') }}">{{ trans('admin.insurance_companies') }}</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
 
-                    <li @if( Route::is('one.center.index') ) class="active"@endif>
+                    {{-- <li @if( Route::is('one.center.index') ) class="active"@endif>
                         <a href="{{ route('one.center.index') }}">
                             <i class='fa fa-building-o'></i>
                             <span>{{ trans('admin.all_centers') }}</span>
                         </a>
-                    </li>
+                    </li> --}}
 
-                    <li class="treeview @if(Route::is('reviews.*')) menu-open @endif">
+                    {{-- <li class="treeview @if(Route::is('reviews.*')) menu-open @endif">
                         <a href="javascript:void(0)">
                             <i class="fa fa-commenting-o"></i>
                             <span>{{ trans('admin.reviews') }}</span>
@@ -148,7 +242,7 @@
                                 <a href="{{ route('unpublished.reviews.index') }}">{{ trans('admin.unpublished_reviews') }}</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
 
                     {{-- <li @if(Route::is('admin.promotions.*')) class="active" @endif>
                         <a href="{{ route('admin.promotions.index') }}">
@@ -157,7 +251,7 @@
                         </a>
                     </li> --}}
 
-                    <li class="treeview @if(Route::is('admin.promotions.*')) menu-open @endif">
+                    {{-- <li class="treeview @if(Route::is('admin.promotions.*')) menu-open @endif">
                         <a href="javascript:void(0)"><i class="fa fa-star-o"></i> <span>{{ trans('admin.promotions') }}</span> <i class="fa fa-angle-right"></i></a>
                         <ul class="treeview-menu" @if(Route::is('admin.promotions.*')) style="display: block;" @else style="display: none;" @endif>
                             <li @if(Route::is('admin.promotions.index')) class="active" @endif>
@@ -174,7 +268,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
 
                     {{-- <li @if(Route::is('admin.check-ups.*')) class="active" @endif>
                         <a href="{{ route('admin.check-ups.index') }}">
@@ -183,7 +277,7 @@
                         </a>
                     </li> --}}
 
-                    <li class="treeview @if(Route::is('admin.check-ups.*')) menu-open @endif">
+                    {{-- <li class="treeview @if(Route::is('admin.check-ups.*')) menu-open @endif">
                         <a href="javascript:void(0)"><i class="fa fa-check-circle-o"></i> <span>{{ trans('admin.check_ups') }}</span> <i class="fa fa-angle-right"></i></a>
                         <ul class="treeview-menu" @if(Route::is('admin.check-ups.*')) style="display: block;" @else style="display: none;" @endif>
                             <li @if(Route::is('admin.check-ups.index')) class="active" @endif>
@@ -194,15 +288,15 @@
                             <li @if(Route::is('admin.check-ups.edit-main-seo')) class="active" @endif >
                                 <a href="{{ route('admin.check-ups.edit-main-seo') }}">{{ __('admin.check_up_page_seo') }}
                                 </a>
-                            </li>
+                            </li> --}}
                             {{-- <li @if(Route::is('admin.check-ups.edit-one-page-seo')) class="active" @endif >
                                 <a href="{{ route('admin.check-ups.edit-one-page-seo') }}">{{ __('admin.one_check_up_seo') }}
                                 </a>
                             </li> --}}
-                        </ul>
-                    </li>
+                        {{-- </ul>
+                    </li> --}}
 
-                    <li class="treeview @if(Route::is('admin.article-categories.*') || Route::is('admin.articles.*')) menu-open @endif">
+                    {{-- <li class="treeview @if(Route::is('admin.article-categories.*') || Route::is('admin.articles.*')) menu-open @endif">
                         <a href="javascript:void(0)"><i class="bx bx-home-heart"></i> <span>{{ trans('admin.articles') }}</span> <i class="fa fa-angle-right"></i></a>
                         <ul class="treeview-menu" @if(Route::is('admin.article-categories.*') || Route::is('admin.articles.*')) style="display: block;" @else style="display: none;" @endif>
                             <li @if(Route::is('admin.article-categories.*')) class="active" @endif>
@@ -223,9 +317,9 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
 
-                    <li class="treeview @if(Route::is('admin.doctor-categories.*') || Route::is('admin.doctors.*')) menu-open @endif">
+                    {{-- <li class="treeview @if(Route::is('admin.doctor-categories.*') || Route::is('admin.doctors.*')) menu-open @endif">
                         <a href="javascript:void(0)"><i class="fa fa-user-md"></i> <span>{{ __('admin.doctors') }}</span> <i class="fa fa-angle-right"></i></a>
                         <ul class="treeview-menu" @if(Route::is('admin.doctor-categories.*') || Route::is('admin.doctors.*')) style="display: block;" @else style="display: none;" @endif>
                             <li @if(Route::is('admin.doctor-categories.*')) class="active" @endif>
@@ -253,28 +347,28 @@
                             <i class="fa fa-stethoscope"></i>
                             <span>
                                 Спеціалізації лікарів
-                                {{-- {{ __('admin.specializations_of_doctors') }} --}}
+                                {{ __('admin.specializations_of_doctors') }}
                             </span>
                         </a>
-                    </li>
+                    </li> --}}
 
-                    <li class="treeview @if(Route::is('admin.laboratory-cities.*') || Route::is('admin.laboratories.*')) menu-open @endif">
+                    {{-- <li class="treeview @if(Route::is('admin.laboratory-cities.*') || Route::is('admin.laboratories.*')) menu-open @endif">
                         <a href="javascript:void(0)"><i class="fa fa-hospital-o"></i>
                             <span>
-                                {{-- {{ __('admin.laboratories') }} --}}
+                                {{ __('admin.laboratories') }}
                                 Лабораторії
                             </span>
                                 <i class="fa fa-angle-right"></i></a>
                         <ul class="treeview-menu" @if(Route::is('admin.laboratory-cities.*') || Route::is('admin.laboratories.*')) style="display: block;" @else style="display: none;" @endif>
                             <li @if(Route::is('admin.laboratory-cities.*')) class="active" @endif>
                                 <a href="{{ route('admin.laboratory-cities.index') }}">
-                                    {{-- {{ __('admin.laboratories_cities') }} --}}
+                                    {{ __('admin.laboratories_cities') }}
                                     Міста лабораторій
                                 </a>
                             </li>
                             <li @if(Route::is('admin.laboratories.index') || Route::is('admin.laboratories.create') || Route::is('admin.laboratories.edit')) class="active" @endif >
                                 <a href="{{ route('admin.laboratories.index') }}">
-                                    {{-- {{ __('admin.laboratories_list') }} --}}
+                                    {{ __('admin.laboratories_list') }}
                                     Список лабораторій
                                 </a>
                             </li>
@@ -286,24 +380,24 @@
                             <li @if(Route::is('admin.laboratories.prices.edit-seo')) class="active" @endif >
                                 <a href="{{ route('admin.laboratories.prices.edit-seo') }}">
                                     СЕО сторінки ціни лабораторії
-                                    {{-- {{ __('admin.one_laboratory_page_seo') }} --}}
+                                    {{ __('admin.one_laboratory_page_seo') }}
                                 </a>
                             </li>
 
                             <li @if(Route::is('admin.laboratories.edit-main-seo')) class="active" @endif >
                                 <a href="{{ route('admin.laboratories.edit-main-seo') }}">
-                                    {{-- {{ __('admin.laboratories_page_seo') }} --}}
+                                    {{ __('admin.laboratories_page_seo') }}
                                     СЕО сторінки лабораторій
                                 </a>
                             </li>
                             <li @if(Route::is('admin.laboratories.edit-one-page-seo')) class="active" @endif >
                                 <a href="{{ route('admin.laboratories.edit-one-page-seo') }}">
                                     СЕО однієї лабораторії
-                                    {{-- {{ __('admin.one_laboratory_page_seo') }} --}}
+                                    {{ __('admin.one_laboratory_page_seo') }}
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
 
                     {{-- <li @if(Route::is('admin.surgery.*')) class="active" @endif>
                         <a href="{{ route('admin.surgery.index') }}">
@@ -312,10 +406,10 @@
                         </a>
                     </li> --}}
 
-                    <li class="treeview @if(Route::is('admin.surgery.*')) menu-open @endif">
+                    {{-- <li class="treeview @if(Route::is('admin.surgery.*')) menu-open @endif">
                         <a href="javascript:void(0)"><i class="fa fa-medkit"></i>
                                 <span>
-                                    {{-- {{ __('admin.surgery') }} --}}
+                                    {{ __('admin.surgery') }}
                                     Хірургія
                                 </span> <i class="fa fa-angle-right"></i>
                         </a>
@@ -323,7 +417,7 @@
                             <li @if(Route::is('admin.surgery.index')) class="active" @endif>
                                 <a href="{{ route('admin.surgery.index') }}">
                                     <span>
-                                        {{-- {{ __('admin.surgery') }} --}}
+                                        {{ __('admin.surgery') }}
                                         Хірургія
                                     </span>
                                 </a>
@@ -331,11 +425,11 @@
                             <li @if(Route::is('admin.surgery.edit-main-seo')) class="active" @endif >
                                 <a href="{{ route('admin.surgery.edit-main-seo') }}">
                                     СЕО сторінки хірургія
-                                    {{-- {{ __('admin.surgery_page_seo') }} --}}
+                                    {{ __('admin.surgery_page_seo') }}
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
 
                     {{-- <li @if(Route::is('admin.vacancies.*')) class="active" @endif>
                         <a href="{{ route('admin.vacancies.index') }}">
@@ -344,10 +438,10 @@
                         </a>
                     </li> --}}
 
-                    <li class="treeview @if(Route::is('admin.vacancies.*')) menu-open @endif">
+                    {{-- <li class="treeview @if(Route::is('admin.vacancies.*')) menu-open @endif">
                         <a href="javascript:void(0)"><i class="fa fa-address-book-o"></i>
                             <span>
-                                {{-- {{ __('admin.vacancy') }} --}}
+                                {{ __('admin.vacancy') }}
                                 Вакансії
                             </span> <i class="fa fa-angle-right"></i>
                         </a>
@@ -355,7 +449,7 @@
                             <li @if(Route::is('admin.vacancies.index') || Route::is('admin.vacancies.create' || Route::is('admin.vacancies.edit'))) class="active" @endif>
                                 <a href="{{ route('admin.vacancies.index') }}">
                                     <span>
-                                        {{-- {{ __('admin.vacancy') }} --}}
+                                        {{ __('admin.vacancy') }}
                                         Список вакансій
                                     </span>
                                 </a>
@@ -363,18 +457,11 @@
                             <li @if(Route::is('admin.vacancies.edit-main-seo')) class="active" @endif >
                                 <a href="{{ route('admin.vacancies.edit-main-seo') }}">
                                     СЕО сторінки вакансій
-                                    {{-- {{ __('admin.vacancy_page_seo') }} --}}
+                                    {{ __('admin.vacancy_page_seo') }}
                                 </a>
                             </li>
                         </ul>
-                    </li>
-
-                    <li @if(Route::is('admin.edit-robots')) class="active" @endif>
-                        <a href="{{ route('admin.edit-robots') }}">
-                            <i class="fa fa-file-code-o"></i>
-                            <span>Robots.txt</span>
-                        </a>
-                    </li>
+                    </li> --}}
 
                     <li class="treeview @if(
                         Route::is('admin.main-page.*')
@@ -384,7 +471,7 @@
                         <a href="javascript:void(0)"><i class="fa fa-hospital-o"></i>
                             <span>
                                 {{-- {{ __('admin.pages') }} --}}
-                                Сторінки
+                                Налаштування
                             </span> <i class="fa fa-angle-right"></i>
                         </a>
                         <ul class="treeview-menu" @if(
@@ -392,19 +479,19 @@
                         || Route::is('admin.footer.*')
                         || Route::is('admin.header.*')
                         ) style="display: block;" @else style="display: none;" @endif>
-                            <li @if(Route::is('admin.main-page.show') || Route::is('admin.main-page.edit-block')) class="active" @endif>
+                            {{-- <li @if(Route::is('admin.main-page.show') || Route::is('admin.main-page.edit-block')) class="active" @endif>
                                 <a href="{{ route('admin.main-page.show') }}">
                                     Головна сторінка
-                                    {{-- {{ __('admin.main_page') }} --}}
+                                    {{ __('admin.main_page') }}
                                 </a>
                             </li>
 
                             <li @if(Route::is('admin.main-page.edit-seo')) class="active" @endif>
                                 <a href="{{ route('admin.main-page.edit-seo') }}">
                                     СЕО головної сторінки
-                                    {{-- {{ __('admin.main_page_seo') }} --}}
+                                    {{ __('admin.main_page_seo') }}
                                 </a>
-                            </li>
+                            </li> --}}
 
                             <li @if(Route::is('admin.header.*')) class="active" @endif>
                                 <a href="{{ route('admin.header.edit') }}">
@@ -426,15 +513,21 @@
                                     {{-- {{ __('admin.sort_footer_elements') }} --}}
                                 </a>
                             </li>
+
+                            <li @if(Route::is('admin.edit-robots')) class="active" @endif>
+                                <a href="{{ route('admin.edit-robots') }}">
+                                    <span>Robots.txt</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 
-                    <li @if(Route::is('admin.vacancy-apps.index')) class="active" @endif>
+                    {{-- <li @if(Route::is('admin.vacancy-apps.index')) class="active" @endif>
                         <a href="{{ route('admin.vacancy-apps.index') }}">
                             <i class="fa fa-address-book-o"></i>
                             <span>Заявки вакансій</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </nav>
         </div>

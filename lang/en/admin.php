@@ -189,4 +189,7 @@ return [
         'fourth'        => 'Четвертий',
         'fifth'         => 'П\'ятий',
     ],
+    'info_block'    => 'Info block',
+    'banner'        => 'Banner',
+    'section_progress' => 'Section progress',
 ];

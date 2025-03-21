@@ -17,6 +17,11 @@ class SurgeryController extends Controller
         return view('admin.surgery.index');
     }
 
+    public function index2()
+    {
+        return view('admin.surgery.index2');
+    }
+
     public function showSurgery(Surgery $surgery)
     {
         return view('admin.surgery.show', compact('surgery'));

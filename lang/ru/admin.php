@@ -368,4 +368,7 @@ return [
         'fourth'        => 'Четвертий',
         'fifth'         => 'П\'ятий',
     ],
+    'info_block'    => 'Блок инфо',
+    'banner'        => 'Баннер',
+    'section_progress' => 'Блок прогресс',
 ];

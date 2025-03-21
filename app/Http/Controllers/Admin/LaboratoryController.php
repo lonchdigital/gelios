@@ -19,6 +19,11 @@ class LaboratoryController extends Controller
         return view('admin.laboratory.index');
     }
 
+    public function index2()
+    {
+        return view('admin.laboratory.index2');
+    }
+
     public function create()
     {
         return view('admin.laboratory.create');

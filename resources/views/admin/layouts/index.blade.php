@@ -13,7 +13,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Title -->
-    <title>Gelios</title>
+    <title>Helyos</title>
+    <meta property="og:title" content="{{ 'Helyos' }}"/>
 
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('img/favicon.png') }}">

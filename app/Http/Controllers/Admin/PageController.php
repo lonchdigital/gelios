@@ -12,6 +12,15 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    public function index()
+    {
+        $pages = Page::where('type', PageType::TEXT->value)
+            ->where('show_in_footer', 1)
+            ->get();
+
+        return view('admin.pages.index', compact('pages'));
+    }
+
     public function mainPage()
     {
         return view('admin.main-page.index');

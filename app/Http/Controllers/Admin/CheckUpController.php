@@ -13,7 +13,10 @@ class CheckUpController extends Controller
 {
     public function index()
     {
-        return view('admin.check-up.index');
+        $page = Page::where('type', PageType::CHECKUP)
+            ->first();
+
+        return view('admin.check-up.index', compact('page'));
     }
 
     public function create()

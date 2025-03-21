@@ -11,6 +11,10 @@
         @livewire('admin.check-up.index')
         @livewire('admin.modals.delete')
     </div>
+
+    <div class="container-fluid">
+        @livewire('admin.main-page.seo', ['page' => $page])
+    </div>
 @endsection
 
 @push('scripts')

@@ -16,6 +16,11 @@ class PromotionController extends Controller
         return view('admin.promotion.index');
     }
 
+    public function index2()
+    {
+        return view('admin.promotion.index2');
+    }
+
     public function create()
     {
         return view('admin.promotion.create');

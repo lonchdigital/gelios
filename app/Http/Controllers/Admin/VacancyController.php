@@ -16,6 +16,11 @@ class VacancyController extends Controller
         return view('admin.vacancy.index');
     }
 
+    public function index2()
+    {
+        return view('admin.vacancy.index2');
+    }
+
     public function create()
     {
         return view('admin.vacancy.create');
