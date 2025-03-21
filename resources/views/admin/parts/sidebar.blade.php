@@ -35,6 +35,9 @@
                             <li @if(Route::is('directions.index')) class="active" @endif >
                                 <a href="{{ route('directions.index') }}">{{ trans('admin.directions') }}</a>
                             </li>
+                            <li @if(Route::is('common-blocks.directions')) class="active" @endif>
+                                <a href="{{ route('common-blocks.directions') }}">{{ trans('admin.directions_common_blocks') }}</a>
+                            </li>
                         </ul>
                     </li>
 
@@ -189,18 +192,7 @@
                         </a>
                     </li> --}}
 
-                    <li class="treeview @if(Route::is('common-blocks.*')) menu-open @endif">
-                        <a href="javascript:void(0)">
-                            <i class="fa fa-sitemap"></i>
-                            <span>{{ trans('admin.common_blocks') }}</span>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                        <ul class="treeview-menu" @if(Route::is('common-blocks.directions')) style="display: block;" @else style="display: none;" @endif>
-                            <li @if(Route::is('common-blocks.directions')) class="active" @endif>
-                                <a href="{{ route('common-blocks.directions') }}">{{ trans('admin.directions') }}</a>
-                            </li>
-                        </ul>
-                    </li>
+                    
 
                     {{-- <li class="treeview @if(Route::is('insurance.companies.*')) menu-open @endif">
                         <a href="javascript:void(0)">
