@@ -22,13 +22,19 @@
                         </a>
                     </li>
 
-                    <li class="treeview @if(Route::is('directions.*') || Route::is('common-blocks.directions')) menu-open @endif">
+                    <li class="treeview @if(Route::is('directions.*') || 
+                                            Route::is('common-blocks.directions') ||
+                                            ( Route::is('prices.index') && request()->route('page')->id === App\Models\Page::where('type', App\Enums\PageType::PRICES->value)->first()->id )
+                                            ) menu-open @endif">
                         <a href="javascript:void(0)">
                             <i class="fa fa-sitemap"></i>
                             <span>{{ trans('admin.directions') }}</span>
                             <i class="fa fa-angle-right"></i>
                         </a>
-                        <ul class="treeview-menu" @if(Route::is('directions.*') || Route::is('common-blocks.directions')) style="display: block;" @else style="display: none;" @endif>
+                        <ul class="treeview-menu" @if(Route::is('directions.*') || 
+                                                      Route::is('common-blocks.directions') ||
+                                                      ( Route::is('prices.index') && request()->route('page')->id === App\Models\Page::where('type', App\Enums\PageType::PRICES->value)->first()->id )
+                                                    ) style="display: block;" @else style="display: none;" @endif>
                             <li @if(Route::is('directions.page.edit')) class="active" @endif>
                                 <a href="{{ route('directions.page.edit') }}">{{ trans('admin.directions_page') }}</a>
                             </li>
@@ -37,6 +43,9 @@
                             </li>
                             <li @if(Route::is('common-blocks.directions')) class="active" @endif>
                                 <a href="{{ route('common-blocks.directions') }}">{{ trans('admin.directions_common_blocks') }}</a>
+                            </li>
+                            <li @if(Route::is('prices.index') && request()->route('page')->id === App\Models\Page::where('type', App\Enums\PageType::PRICES->value)->first()->id) class="active" @endif>
+                                <a href="{{ route('prices.index', ['page' => App\Models\Page::where('type', App\Enums\PageType::PRICES->value)->first()]) }}">{{ trans('admin.prices') }}</a>
                             </li>
                         </ul>
                     </li>
@@ -141,16 +150,13 @@
                         </a>
                     </li> --}}
 
-                    <li class="treeview @if(Route::is('prices.*')) menu-open @endif">
+                    <li class="treeview @if(Route::is('prices.index') && request()->route('page')->id === App\Models\Page::where('type', App\Enums\PageType::LABORATORY->value)->first()->id) menu-open @endif">
                         <a href="javascript:void(0)">
                             <i class="fa fa-usd"></i>
                             <span>{{ trans('admin.prices') }}</span>
                             <i class="fa fa-angle-right"></i>
                         </a>
-                        <ul class="treeview-menu" @if(Route::is('prices.*')) style="display: block;" @else style="display: none;" @endif>
-                            <li @if(Route::is('prices.index') && request()->route('page')->id === App\Models\Page::where('type', App\Enums\PageType::PRICES->value)->first()->id) class="active" @endif>
-                                <a href="{{ route('prices.index', ['page' => App\Models\Page::where('type', App\Enums\PageType::PRICES->value)->first()]) }}">{{ trans('admin.prices') }}</a>
-                            </li>
+                        <ul class="treeview-menu" @if(Route::is('prices.index') && request()->route('page')->id === App\Models\Page::where('type', App\Enums\PageType::LABORATORY->value)->first()->id) style="display: block;" @else style="display: none;" @endif>
                             <li @if(Route::is('prices.index') && request()->route('page')->id === App\Models\Page::where('type', App\Enums\PageType::LABORATORY->value)->first()->id) class="active" @endif>
                                 <a href="{{ route('prices.index', ['page' => App\Models\Page::where('type', App\Enums\PageType::LABORATORY->value)->first()]) }}">{{ trans('admin.laboratories') }}</a>
                             </li>
