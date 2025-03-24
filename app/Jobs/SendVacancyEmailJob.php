@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\Setting;
 use App\Notifications\SendFeedback;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -26,7 +27,9 @@ class SendVacancyEmailJob implements ShouldQueue
      */
     public function __construct(array $data)
     {
-        $this->email = 'hello@example.com';
+        $this->email = Setting::where('key', 'lead_email')
+            ->first()
+            ->value ?? 'test@test.com';
 
         $this->data = $data;
     }

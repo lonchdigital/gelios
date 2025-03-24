@@ -10,6 +10,8 @@
     <div class="container-fluid">
         @livewire('admin.surgery.index')
         @livewire('admin.modals.delete')
+
+        @livewire('admin.main-page.seo', ['page' => $page])
     </div>
 @endsection
 

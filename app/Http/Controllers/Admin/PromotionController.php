@@ -13,7 +13,10 @@ class PromotionController extends Controller
 {
     public function index()
     {
-        return view('admin.promotion.index');
+        $page = Page::where('type', PageType::SHARES->value)
+            ->first();
+
+        return view('admin.promotion.index', compact('page'));
     }
 
     public function index2()
@@ -23,12 +26,18 @@ class PromotionController extends Controller
 
     public function create()
     {
-        return view('admin.promotion.create');
+        $page = Page::where('type', PageType::SHARESITEM->value)
+            ->first();
+
+        return view('admin.promotion.create', compact('page'));
     }
 
     public function edit(Promotion $promotion)
     {
-        return view('admin.promotion.edit', compact('promotion'));
+        $page = Page::where('type', PageType::SHARESITEM->value)
+            ->first();
+
+        return view('admin.promotion.edit', compact('promotion', 'page'));
     }
 
     public function createSlide(Page $page)

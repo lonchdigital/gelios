@@ -22,7 +22,7 @@
                         </a>
                     </li>
 
-                    <li class="treeview @if(Route::is('directions.*') || 
+                    <li class="treeview @if(Route::is('directions.*') ||
                                             Route::is('common-blocks.directions') ||
                                             ( Route::is('prices.index') && request()->route('page')->id === App\Models\Page::where('type', App\Enums\PageType::PRICES->value)->first()->id )
                                             ) menu-open @endif">
@@ -31,7 +31,7 @@
                             <span>{{ trans('admin.directions') }}</span>
                             <i class="fa fa-angle-right"></i>
                         </a>
-                        <ul class="treeview-menu" @if(Route::is('directions.*') || 
+                        <ul class="treeview-menu" @if(Route::is('directions.*') ||
                                                       Route::is('common-blocks.directions') ||
                                                       ( Route::is('prices.index') && request()->route('page')->id === App\Models\Page::where('type', App\Enums\PageType::PRICES->value)->first()->id )
                                                     ) style="display: block;" @else style="display: none;" @endif>
@@ -74,7 +74,7 @@
                     </li>
 
                     <li class=" @if(Route::is('admin.surgery.*')) active @endif">
-                        <a href="{{ route('admin.surgery-page.index') }}"><i class="fa fa-medkit"></i>
+                        <a href="{{ route('admin.surgery.index') }}"><i class="fa fa-medkit"></i>
                             <span>
                                 {{ __('admin.surgery') }}
                             </span>
@@ -90,7 +90,7 @@
                     </li>
 
                     <li class=" @if(Route::is('admin.promotions.*')) active @endif">
-                        <a href="{{ route('admin.promotions-page.index') }}"><i class="fa fa-star-o"></i>
+                        <a href="{{ route('admin.promotions.index') }}"><i class="fa fa-star-o"></i>
                             <span>
                                 {{ __('admin.promotions') }}
                             </span>
@@ -466,16 +466,20 @@
                         || Route::is('admin.header.*')
                         || Route::is('admin.footer.*')
                     ) menu-open @endif">
-                        <a href="javascript:void(0)"><i class="fa fa-hospital-o"></i>
+                        <a href="javascript:void(0)"><i class="fa fa-cog"></i>
                             <span>
-                                {{-- {{ __('admin.pages') }} --}}
-                                Налаштування
+                                {{ __('admin.settings') }}
                             </span> <i class="fa fa-angle-right"></i>
                         </a>
                         <ul class="treeview-menu" @if(
                         Route::is('admin.main-page.*')
                         || Route::is('admin.footer.*')
                         || Route::is('admin.header.*')
+                        || Route::is('admin.lead-settings.index')
+                        || Route::is('admin.lead-apps.index')
+                        || Route::is('admin.edit-robots')
+                        || Route::is('admin.language-settings.index')
+
                         ) style="display: block;" @else style="display: none;" @endif>
                             {{-- <li @if(Route::is('admin.main-page.show') || Route::is('admin.main-page.edit-block')) class="active" @endif>
                                 <a href="{{ route('admin.main-page.show') }}">
@@ -493,22 +497,22 @@
 
                             <li @if(Route::is('admin.header.*')) class="active" @endif>
                                 <a href="{{ route('admin.header.edit') }}">
-                                    Хедер
-                                    {{-- {{ __('admin.header') }} --}}
+                                    {{-- Хедер --}}
+                                    {{ __('admin.header') }}
                                 </a>
                             </li>
 
                             <li @if(Route::is('admin.footer.edit')) class="active" @endif>
                                 <a href="{{ route('admin.footer.edit') }}">
-                                    Футер
-                                    {{-- {{ __('admin.footer') }} --}}
+                                    {{-- Футер --}}
+                                    {{ __('admin.footer') }}
                                 </a>
                             </li>
 
                             <li @if(Route::is('admin.footer.links.edit')) class="active" @endif>
                                 <a href="{{ route('admin.footer.links.edit') }}">
-                                    Сортування посилань в футері
-                                    {{-- {{ __('admin.sort_footer_elements') }} --}}
+                                    {{-- Сортування посилань в футері --}}
+                                    {{ __('admin.sort_footer_elements') }}
                                 </a>
                             </li>
 
@@ -517,6 +521,25 @@
                                     <span>Robots.txt</span>
                                 </a>
                             </li>
+
+                            <li @if(Route::is('admin.lead-apps.index')) class="active" @endif>
+                                <a href="{{ route('admin.lead-apps.index') }}">
+                                    <span>{{ __('admin.lead_applications') }}</span>
+                                </a>
+                            </li>
+
+                            <li @if(Route::is('admin.lead-settings.index')) class="active" @endif>
+                                <a href="{{ route('admin.lead-settings.index') }}">
+                                    <span>{{ __('admin.lead_form_settings') }}</span>
+                                </a>
+                            </li>
+
+                            <li @if(Route::is('admin.language-settings.index')) class="active" @endif>
+                                <a href="{{ route('admin.language-settings.index') }}">
+                                    <span>{{ __('admin.language_settings') }}</span>
+                                </a>
+                            </li>
+                            
                         </ul>
                     </li>
 

@@ -9,6 +9,8 @@
 @section('content')
     <div class="container-fluid">
         @livewire('admin.main-page.index')
+
+        @livewire('admin.main-page.seo', ['page' => $page])
     </div>
 @endsection
 

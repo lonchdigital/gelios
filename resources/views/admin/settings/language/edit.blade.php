@@ -2,8 +2,6 @@
 
 @section('content')
     <div class="container-fluid">
-        @livewire('admin.promotion.create-edit')
-
-        @livewire('admin.main-page.seo', ['page' => $page])
+        @livewire('admin.settings.edit-language')
     </div>
 @endsection

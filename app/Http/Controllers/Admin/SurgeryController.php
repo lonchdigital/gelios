@@ -14,7 +14,10 @@ class SurgeryController extends Controller
 {
     public function index()
     {
-        return view('admin.surgery.index');
+        $page = Page::where('type', PageType::SURGERY->value)
+            ->first();
+        
+        return view('admin.surgery.index', compact('page'));
     }
 
     public function index2()

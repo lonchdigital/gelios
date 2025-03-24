@@ -53,14 +53,14 @@
                                         </td>
                                     </tr>
 
-                                    <tr>
+                                    {{-- <tr>
                                         <td>
                                             {{ __('admin.main_page_seo') }}
                                         </td>
                                         <td style="text-align: right">
                                             <a href="{{ route('admin.main-page.edit-seo') }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
                                         </td>
-                                    </tr>
+                                    </tr> --}}
 
                                     <tr>
                                         <td>

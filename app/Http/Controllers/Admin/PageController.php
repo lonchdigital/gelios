@@ -23,7 +23,10 @@ class PageController extends Controller
 
     public function mainPage()
     {
-        return view('admin.main-page.index');
+        $page = Page::where('type', PageType::MAINPAGE->value)
+            ->first();
+
+        return view('admin.main-page.index', compact('page'));
     }
 
     public function mainPageEdit(PageBlock $block)
@@ -88,5 +91,20 @@ class PageController extends Controller
     public function editFooterAffiliate(HeaderCity $city, HeaderAffiliate $affiliate)
     {
         return view('admin.settings.affiliate.edit', compact('city', 'affiliate'));
+    }
+
+    public function leadAppsIndex()
+    {
+        return view('admin.settings.apps.index');
+    }
+
+    public function leadAppsSettings()
+    {
+        return view('admin.settings.lead.edit');
+    }
+
+    public function languageSettings()
+    {
+        return view('admin.settings.language.edit');
     }
 }

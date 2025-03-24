@@ -16,7 +16,10 @@ class LaboratoryController extends Controller
 {
     public function index()
     {
-        return view('admin.laboratory.index');
+        $page = Page::where('type', PageType::LABORATORY->value)
+            ->first();
+
+        return view('admin.laboratory.index', compact('page'));
     }
 
     public function index2()
@@ -87,7 +90,10 @@ class LaboratoryController extends Controller
 
     public function priceIndex()
     {
-        return view('admin.laboratory.price.index');
+        $page = Page::where('type', PageType::LABORATORYPRICE->value)
+            ->first();
+
+        return view('admin.laboratory.price.index', compact('page'));
     }
 
     public function priceCreate()

@@ -60,32 +60,32 @@
                                         </td>
                                     </tr>
 
-                                    <tr>
+                                    {{-- <tr>
                                         <td>
                                             {{ __('admin.one_laboratory_page_seo') }}
                                         </td>
                                         <td style="text-align: right">
                                             <a href="{{ route('admin.laboratories.prices.edit-seo') }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
                                         </td>
-                                    </tr>
+                                    </tr> --}}
 
-                                    <tr>
+                                    {{-- <tr>
                                         <td>
                                             {{ __('admin.laboratories_page_seo') }}
                                         </td>
                                         <td style="text-align: right">
                                             <a href="{{ route('admin.laboratories.edit-main-seo') }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
                                         </td>
-                                    </tr>
+                                    </tr> --}}
 
-                                    <tr>
+                                    {{-- <tr>
                                         <td>
                                             {{ __('admin.one_laboratory_page_seo') }}
                                         </td>
                                         <td style="text-align: right">
                                             <a href="{{ route('admin.laboratories.edit-one-page-seo') }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
                                         </td>
-                                    </tr>
+                                    </tr> --}}
 
                                 </tbody>
                             </table>

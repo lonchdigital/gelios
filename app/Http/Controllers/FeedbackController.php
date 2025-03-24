@@ -8,6 +8,8 @@ use App\Http\Requests\Feedback\StoreVacancyRequest;
 use App\Jobs\SendFeedbackEmailJob;
 use App\Jobs\SendVacancyEmailJob;
 use App\Models\Contact;
+use App\Models\LeadRequest;
+use App\Services\Site\LeadAppService;
 use App\Services\Site\VacancyAppService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -36,6 +38,16 @@ class FeedbackController extends Controller
 
         dispatch(new SendFeedbackEmailJob($data));
 
+        $service = resolve(LeadAppService::class);
+
+        $service->store([
+            'name' => $data['name'],
+            'phone' => $data['phone'],
+            'doctor_specialist' => $data['doctor'],
+            'clinic_name' => $data['clinic'],
+            'type' => $data['form'],
+        ]);
+
         return response()->json(['success' => true]);
     }
 
@@ -44,6 +56,14 @@ class FeedbackController extends Controller
         $data = $request->validated();
 
         dispatch(new SendFeedbackEmailJob($data));
+
+        $service = resolve(LeadAppService::class);
+
+        $service->store([
+            'name' => $data['name'],
+            'phone' => $data['phone'],
+            'type' => 'Залишились питання',
+        ]);
 
         return response()->json(['success' => true]);
     }

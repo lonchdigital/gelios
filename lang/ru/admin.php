@@ -372,4 +372,12 @@ return [
     'banner'        => 'Баннер',
     'section_progress' => 'Блок прогресс',
     'directions_common_blocks' => 'Сквозные блоки направлений',
+    'lead_applications' => 'Заявки лид-форм',
+    'lead_form_settings' => 'Настройки лид-форм',
+    'info' => 'Информация',
+    'name' => 'Имя',
+    'form' => 'Форма',
+    'language' => 'Язык',
+    'language_settings' => 'Настройки языка',
+    'promotions' => 'Акции'
 ];

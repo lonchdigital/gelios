@@ -404,4 +404,11 @@ return [
     'banner'        => 'Баннер',
     'section_progress' => 'блок прогрес',
     'directions_common_blocks' => 'Наскрізні блоки напрямків',
+    'lead_applications' => 'Заявки лід форм',
+    'lead_form_settings' => 'Налаштування лід форм',
+    'info' => 'Інформація',
+    'name' => 'ім\'я',
+    'form' => 'Форма',
+    'language' => 'Мова',
+    'language_settings' => 'Налаштування мови'
 ];
