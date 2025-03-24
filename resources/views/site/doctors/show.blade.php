@@ -60,7 +60,7 @@
                             {{ $doctor->specialization->title ?? '' }}</div>
 
                         @if(!empty($doctor->expirience))
-                            <div class="experience-quantity mb-3">{{ __('doctor.work_experience') }}: {{ $doctor->expirience ?? '' }} років</div>
+                            <div class="experience-quantity mb-3">{{ __('doctor.work_experience') }}: {{ $doctor->expirience ?? '' }}</div>
                         @endif
 
                         <div class="os-scrollbar-overflow content mb-3">
@@ -83,7 +83,7 @@
                             @endif
                             @if(!empty($doctor->age))
                                 <div class="mb-3">
-                                    <span class="text-blue mr-3">{{ __('doctor.doctor_experience') }}:</span><span>{{ $doctor->age ?? '' }} роки</span>
+                                    <span class="text-blue mr-3">{{ __('doctor.age') }}:</span><span>{{ $doctor->age ?? '' }} </span>
                                 </div>
                             @endif
                             <div class="mb-3">
