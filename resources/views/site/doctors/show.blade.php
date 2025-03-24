@@ -86,7 +86,7 @@
                                     <span class="text-blue mr-3">{{ __('admin.work_experience') }}:</span><span>{{ $doctor->getAgeWithWord() ?? '' }} </span>
                                 </div>
                             @endif
-                            @if(!empty($doctor->education))
+                            @if(!empty(trim(strip_tags($doctor->education))))
                                 <div class="mb-3">
                                     <span class="text-blue mr-3">{{ __('doctor.education') }}:</span><span>{!! $doctor->education !!}</span>
                                 </div>
