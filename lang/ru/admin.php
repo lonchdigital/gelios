@@ -379,5 +379,6 @@ return [
     'form' => 'Форма',
     'language' => 'Язык',
     'language_settings' => 'Настройки языка',
-    'promotions' => 'Акции'
+    'promotions' => 'Акции',
+    'work_experience' => 'Стаж',
 ];

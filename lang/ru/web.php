@@ -92,4 +92,7 @@ return [
     'promotional_price' => 'Акционная цена',
     'price' => 'Цена',
     'collapse' => 'Свернуть',
+    'one_year' => 'год',
+    'two_years' => 'года',
+    'years' => 'лет',
 ];

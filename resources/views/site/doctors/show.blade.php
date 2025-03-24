@@ -59,9 +59,9 @@
                         <div class="position-work font-weight-bold text-grey mb-3">{{ __('doctor.doctor') }}
                             {{ $doctor->specialization->title ?? '' }}</div>
 
-                        @if(!empty($doctor->expirience))
+                        {{-- @if(!empty($doctor->expirience))
                             <div class="experience-quantity mb-3">{{ __('doctor.work_experience') }}: {{ $doctor->expirience ?? '' }}</div>
-                        @endif
+                        @endif --}}
 
                         <div class="os-scrollbar-overflow content mb-3">
                             @if($doctor->specialty)
@@ -83,12 +83,14 @@
                             @endif
                             @if(!empty($doctor->age))
                                 <div class="mb-3">
-                                    <span class="text-blue mr-3">{{ __('doctor.age') }}:</span><span>{{ $doctor->age ?? '' }} </span>
+                                    <span class="text-blue mr-3">{{ __('admin.work_experience') }}:</span><span>{{ $doctor->getAgeWithWord() ?? '' }} </span>
                                 </div>
                             @endif
-                            <div class="mb-3">
-                                <span class="text-blue mr-3">{{ __('doctor.education') }}:</span><span>{!! $doctor->education !!}</span>
-                            </div>
+                            @if(!empty($doctor->education))
+                                <div class="mb-3">
+                                    <span class="text-blue mr-3">{{ __('doctor.education') }}:</span><span>{!! $doctor->education !!}</span>
+                                </div>
+                            @endif
                             {!! $doctor->content !!}
                             {{-- <p>1993-1999 Дніпропетровська державна медична академія</p>
                             <p>2006-2011 Зав. терапевтичного відділення МКЛ №11 в м. Дніпропетровськ</p>

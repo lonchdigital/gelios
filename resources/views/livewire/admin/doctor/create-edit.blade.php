@@ -51,7 +51,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -81,7 +81,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="col-md-12">
                                                 <div class="row">
@@ -183,7 +183,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -213,7 +213,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="col-md-12">
                                                 <div class="row">
@@ -315,7 +315,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -345,7 +345,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="col-md-12">
                                                 <div class="row">
@@ -505,7 +505,7 @@
                                                                 <div id="uaTitle"
                                                                     class="multilang-content tab-pane fade active show">
                                                                     <div class="form-group mb-1">
-                                                                        <label>{{ __('admin.age') }}
+                                                                        <label>{{ __('admin.work_experience') }}
                                                                         </label>
                                                                         <input type="number" wire:model="age"
                                                                             class="form-control">
@@ -764,7 +764,7 @@
                                                     <div class="row mb-3">
                                                         <div class="col-md-12">
                                                             <div class="form-group mb-1">
-                                                                <label>{{ __('areas_of_treatment') }}
+                                                                <label>{{ __('admin.areas_of_treatment') }}
                                                                 </label>
                                                                 @forelse($this->selectedArray ?? [] as $key => $item2)
                                                                     <li class="flex justify-between items-center py-2 px-3 border-b border-[#1f293733]"

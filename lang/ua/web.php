@@ -92,4 +92,8 @@ return [
     'promotional_price' => 'Акційна ціна',
     'price' => 'Ціна',
     'collapse' => 'Згорнути',
+    'one_year' => 'рік',
+    'two_years' => 'роки',
+    'years' => 'років',
+    'work_experience' => 'Стаж',
 ];

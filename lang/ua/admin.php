@@ -410,5 +410,6 @@ return [
     'name' => 'ім\'я',
     'form' => 'Форма',
     'language' => 'Мова',
-    'language_settings' => 'Налаштування мови'
+    'language_settings' => 'Налаштування мови',
+    'work_experience' => 'Стаж',
 ];

@@ -104,4 +104,29 @@ class Doctor extends Model
             });
         });
     }
+
+    public function getAgeWithWord(): string
+    {
+        $age = $this->age;
+        $word = $this->getAgeWord($age);
+        return "{$age} {$word}";
+    }
+
+    private function getAgeWord(int $age): string
+    {
+        $mod10 = $age % 10;
+        $mod100 = $age % 100;
+
+        if ($mod100 >= 11 && $mod100 <= 14) {
+            return __('web.years');
+        }
+        if ($mod10 == 1) {
+            return __('web.one_year');
+        }
+        if ($mod10 >= 2 && $mod10 <= 4) {
+            return __('web.two_years');
+        }
+
+        return __('web.years');
+    }
 }

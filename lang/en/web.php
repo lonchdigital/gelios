@@ -91,4 +91,7 @@ return [
     'promotional_price' => 'Promotional price',
     'price' => 'Price',
     'collapse' => 'Collapse',
+    'one_year' => 'year',
+    'two_years' => 'years',
+    'years' => 'years',
 ];

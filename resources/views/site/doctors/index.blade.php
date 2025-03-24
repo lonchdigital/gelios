@@ -88,8 +88,8 @@
                                         <div class="wrap-img mb-3">
                                             <img src="{{ $doctor->imageUrl }}" alt="{{ $doctor->title }}">
                                         </div>
-                                        @if (!empty($doctor->expirience))
-                                            <div class="experience-quantity mb-3">{{ trans('doctor.work_experience') . ': ' . $doctor->expirience }}
+                                        @if (!empty($doctor->age))
+                                            <div class="experience-quantity mb-3">{{ trans('doctor.work_experience') . ': ' . $doctor->getAgeWithWord() }}
                                                 {{-- років --}}
                                             </div>
                                         @endif

@@ -216,4 +216,5 @@ return [
     'description' => 'description',
     'meta_title' => 'Meta title',
     'meta_description' => 'Meta description',
+    'work_experience' => 'Work expirience',
 ];
