@@ -94,7 +94,7 @@
                                             </div>
                                         @endif
                                         <div class="h4 mb-1 font-weight-bolder">{{ $doctor->title }}</div>
-                                        <div class="position-work">{{ $doctor->specialization->title ?? '' }}</div>
+                                        <div class="position-work">{{ $doctor->specialty ?? '' }}</div>
                                     </a>
                                 </div>
                             </div>
