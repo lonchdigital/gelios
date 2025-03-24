@@ -59,9 +59,9 @@
                         <div class="position-work font-weight-bold text-grey mb-3">{{ __('doctor.doctor') }}
                             {{ $doctor->specialization->title ?? '' }}</div>
 
-                        {{-- @if(!empty($doctor->expirience))
-                            <div class="experience-quantity mb-3">{{ __('doctor.work_experience') }}: {{ $doctor->expirience ?? '' }}</div>
-                        @endif --}}
+                        @if(!empty($doctor->expirience))
+                            <div class="experience-quantity mb-3">{{ __('doctor.work_experience') }}: {{ $doctor->getAgeWithWord() ?? '' }}</div>
+                        @endif
 
                         <div class="os-scrollbar-overflow content mb-3">
                             @if($doctor->specialty)
