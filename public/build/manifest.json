@@ -56,12 +56,12 @@
     "src": "resources/fonts/Montserrat-Thin.ttf"
   },
   "resources/js/app.js": {
-    "file": "assets/app-CaiOgtUa.js",
+    "file": "assets/app-CcoDW2u0.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-CKHiNlEO.css"
+      "assets/app-C5ZbypEj.css"
     ],
     "assets": [
       "assets/Inter-Bold-D0m5Xa5u.ttf",
