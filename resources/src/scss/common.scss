@@ -1195,6 +1195,8 @@ form {
 			color: $black;
 			background: $white;
 			padding: 12px 32px;
+			hyphens: auto;
+			word-break: break-word;
 		}
 
 		.select2-results__option--selected,
@@ -1775,6 +1777,7 @@ form {
 			.page-link {
 				cursor: default;
 				background: $light-grey;
+				border: unset;
 
 				svg {
 					filter: unset;

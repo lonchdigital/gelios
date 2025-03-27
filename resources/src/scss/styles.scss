@@ -691,6 +691,10 @@
 
 	.buttons {
 		row-gap: 16px;
+
+		.btn {
+			line-height: 90%;
+		}
 	}
 
 	.contacts & {
@@ -1330,7 +1334,7 @@
 		}
 
 		.section-top & {
-			min-height: 440px;
+			min-height: 501px;
 
 			@include md-max {
 				min-height: auto;
@@ -2741,6 +2745,10 @@
 }
 
 .partners-top {
+	.backdrop {
+		min-height: 335px;
+	}
+
 	.wrap-img {
 		img {
 			object-position: 80%;
@@ -3043,7 +3051,7 @@
 
 				.wrap-img {
 					border-radius: 16px;
-					height: 335px;
+					height: 317px;
 					overflow: hidden;
 
 					img {
@@ -3053,6 +3061,15 @@
 
 				.underline {
 					text-decoration: underline;
+				}
+			}
+		}
+
+
+		.shares-list {
+			.shares--item {
+				.wrap-img {
+					height: 358px;
 				}
 			}
 		}
