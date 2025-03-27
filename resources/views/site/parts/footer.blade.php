@@ -4,7 +4,7 @@
 			<div class="row">
 				<div class="col">
 					<div class="row">
-						<div class="col-12 col-md d-flex flex-md-column flex-wrap align-items-center align-items-md-start justify-content-between mb-11 mb-md-0">
+						<div class="col-12 col-md d-flex flex-md-column flex-wrap align-items-center align-items-md-start justify-content-between justify-content-md-start mb-11 mb-md-0">
 							<div class="footer-logo--wrap">
 								<div class="footer-logo mb-0 mb-md-5">
 									<img src="{{ $footerImage ?? asset('static_images/logo-footer.png') }}" alt="logo">

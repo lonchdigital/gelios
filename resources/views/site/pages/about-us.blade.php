@@ -58,7 +58,21 @@
             <div class="row">
                 <div class="col-12 col-lg-6 mb-5 mb-lg-0">
                     <ul class="os-scrollbar-overflow list-unstyled mb-6">
-                        {!! $pageMediaBlock->text ?? '' !!}
+                        <!-- {!! $pageMediaBlock->text ?? '' !!} -->
+								<li>Проведення діагностики та лікування</li>
+								<li>Спостереження і лікування всієї родини у сімейного лікаря, висновок декларації</li>
+								<li>Прийом лікарів вузьких спеціальностей</li>
+								<li>Реабілітаційні послуги</li>
+								<li>Лабораторна діагностика</li>
+								<li>Стрес-тест</li>
+								<li>ЕКГ і ЕхоКГ</li>
+								<li>Проведення діагностики та лікування</li>
+								<li>Спостереження і лікування всієї родини у сімейного лікаря, висновок декларації</li>
+								<li>Прийом лікарів вузьких спеціальностей</li>
+								<li>Реабілітаційні послуги</li>
+								<li>Лабораторна діагностика</li>
+								<li>Стрес-тест</li>
+								<li>ЕКГ і ЕхоКГ</li>
                     </ul>
                     <button type="button" class="btn btn-blue" data-toggle="modal"
                         data-target="#popup--sign-up-appointment">{{ trans('web.make_appointment') }}</button>
