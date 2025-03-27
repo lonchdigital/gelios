@@ -13,7 +13,10 @@ class VacancyController extends Controller
 {
     public function index()
     {
-        return view('admin.vacancy.index');
+        $page = Page::where('type', PageType::OPENING->value)
+            ->first();
+
+        return view('admin.vacancy.index', compact('page'));
     }
 
     public function index2()

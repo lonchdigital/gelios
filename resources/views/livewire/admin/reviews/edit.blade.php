@@ -78,7 +78,7 @@
 
                         <x-admin.multilanguage-input
                             :is-required="false"
-                            :label="trans('admin.name')"
+                            :label="trans('admin.review_name')"
                             field-name="name"
                             live-wire-field="sectionData.name"
                             :values="$sectionData['name']"

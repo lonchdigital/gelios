@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Jobs\SitemapGenerateJob;
+use App\Services\Sitemap\SitemapService;
 use Illuminate\Console\Command;
 
 class GenerateSitemap extends Command
@@ -27,7 +28,9 @@ class GenerateSitemap extends Command
     public function handle()
     {
         try {
-            SitemapGenerateJob::dispatch();
+            $sitemapService = app(SitemapService::class);
+            $sitemapService->generate();
+            // SitemapGenerateJob::dispatch();
             $this->info('Sitemap generated successfully.');
         } catch (\Exception $exception) {
             $this->error($exception->getMessage());

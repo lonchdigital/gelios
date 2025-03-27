@@ -217,4 +217,6 @@ return [
     'meta_title' => 'Meta title',
     'meta_description' => 'Meta description',
     'work_experience' => 'Work expirience',
+    'review_name' => 'Name',
+    'application_for_vacancies' => 'Application for vacancies',
 ];

@@ -59,7 +59,7 @@
                         <div class="position-work font-weight-bold text-grey mb-3">{{ __('doctor.doctor') }}
                             {{ $doctor->specialization->title ?? '' }}</div>
 
-                        @if(!empty($doctor->expirience))
+                        @if(!empty($doctor->age))
                             <div class="experience-quantity mb-3">{{ __('doctor.work_experience') }}: {{ $doctor->getAgeWithWord() ?? '' }}</div>
                         @endif
 

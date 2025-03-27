@@ -381,4 +381,6 @@ return [
     'language_settings' => 'Настройки языка',
     'promotions' => 'Акции',
     'work_experience' => 'Стаж',
+    'review_name' => 'Имя',
+    'application_for_vacancies' => 'Заявки на вакансии',
 ];

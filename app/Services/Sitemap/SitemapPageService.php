@@ -307,21 +307,21 @@ class SitemapPageService
     private function getDirectionsUrls(): array
     {
         return $this->directions->map(function ($direction) {
-            return '/ua/' . $direction->page->buildFullPath();
+            return '/ua/' . $direction->buildFullPath();
         })->all();
     }
 
     private function getRuDirectionsUrls(): array
     {
         return $this->directions->map(function ($direction) {
-            return '/' . $direction->page->buildFullPath();
+            return '/' . $direction->buildFullPath();
         })->all();
     }
 
     private function getEnDirectionsUrls(): array
     {
         return $this->directions->map(function ($direction) {
-            return '/en/' . $direction->page->buildFullPath();
+            return '/en/' . $direction->buildFullPath();
         })->all();
     }
 

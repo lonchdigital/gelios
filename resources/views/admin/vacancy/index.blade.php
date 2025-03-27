@@ -9,6 +9,7 @@
 @section('content')
     <div class="container-fluid">
         @livewire('admin.vacancy.index')
+        @livewire('admin.main-page.seo', ['page' => $page])
         @livewire('admin.modals.delete')
     </div>
 @endsection
