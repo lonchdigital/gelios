@@ -3,8 +3,19 @@
 namespace App\Console\Commands;
 
 use App\Jobs\SitemapGenerateJob;
+use App\Services\Sitemap\SitemapPageService;
 use App\Services\Sitemap\SitemapService;
+use App\Services\Sitemap\SitemapSettingService;
+use App\Services\Sitemap\SitemapValidatorService;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\TooManyRedirectsException;
 use Illuminate\Console\Command;
+use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
 
 class GenerateSitemap extends Command
 {
@@ -22,18 +33,116 @@ class GenerateSitemap extends Command
      */
     protected $description = 'Generate the sitemap for the website';
 
+    private Sitemap $sitemap;
+    private SitemapValidatorService $validator;
+    private SitemapSettingService $settingService;
+
     /**
      * Execute the console command.
      */
+
+     public function __construct(SitemapValidatorService $validator, SitemapSettingService $settingService)
+     {
+         parent::__construct();
+
+         $this->validator = $validator;
+         $this->settingService = $settingService;
+
+         $this->sitemap = new Sitemap;
+     }
+
     public function handle()
     {
-        try {
-            $sitemapService = app(SitemapService::class);
-            $sitemapService->generate();
-            // SitemapGenerateJob::dispatch();
-            $this->info('Sitemap generated successfully.');
-        } catch (\Exception $exception) {
-            $this->error($exception->getMessage());
+        $this->generate();
+
+        $this->info('Sitemap generated successfully.');
+        // try {
+        //     $sitemapService = app(SitemapService::class);
+        //     $sitemapService->generate();
+        //     // SitemapGenerateJob::dispatch();
+        //     $this->info('Sitemap generated successfully.');
+        // } catch (\Exception $exception) {
+        //     $this->error($exception->getMessage());
+        // }
+    }
+
+    public function generate(): Response
+    {
+        $service = resolve(SitemapPageService::class);
+
+        $urls = $this->validator->validate($service->getUrls());
+
+        $urls = $this->filterUrl($urls);
+
+        $this->fillSitemap($urls);
+
+        $xmlContent = $this->sitemap->render();
+
+        $xmlContentWithSlashes = str_replace('</loc>', '/</loc>', $xmlContent);
+        file_put_contents(public_path('sitemap.xml'), $xmlContentWithSlashes);
+
+        return response($xmlContentWithSlashes)->header('Content-Type', 'application/xml');
+    }
+
+    private function fillSitemap(array $urls): void
+    {
+        foreach ($urls as $url) {
+            $settings = $this->settingService->getUrlSettings($url);
+
+            $tag = Url::create($url)
+                ->setChangeFrequency($settings['frequency'])
+                ->setPriority($settings['priority']);
+
+            $this->sitemap->add($tag);
         }
+    }
+
+    private function filterUrl(array $urls): array
+    {
+        $filteredUrls = [];
+
+        $bar = $this->output->createProgressBar(count($urls));
+        $bar->start();
+        $this->newLine();
+
+        foreach ($urls as $url) {
+            // $fullUrl = filter_var($url, FILTER_VALIDATE_URL) ? $url : 'http://helyos.lonchdev.com' . $url;
+            // $fullUrl = 'http://helyos.lonchdev.com' . $url;
+            $fullUrl = config('app.url') . $url;
+            // config('app.url')
+
+            try {
+                $response = Http::withHeaders([
+                    'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+                ])->withoutVerifying()->head($fullUrl);
+
+                $status = $response->status();
+            } catch (TooManyRedirectsException $e) {
+                Log::info("🔄 Забагато перенаправлень: {$fullUrl}");
+                $status = 500;
+            } catch (ConnectionException $e) {
+                Log::info("⛔ Відмова у з'єднанні: {$fullUrl}");
+                $status = 500;
+            } catch (RequestException $e) {
+                Log::info("❌ Помилка HTTP-запиту: {$fullUrl} | Код: " . $e->response->status());
+                $status = $e->response->status();
+            } catch (\Exception $e) {
+                Log::info("🚨 Невідома помилка: {$fullUrl} | " . $e->getMessage());
+                $status = 500;
+            }
+
+            if ($status !== 404 && $status !== 500) {
+                $filteredUrls[] = $url;
+            }
+
+            $bar->advance();
+        }
+
+        $this->newLine();
+        $bar->finish();
+        $this->newLine();
+
+
+        return $filteredUrls;
     }
 }
