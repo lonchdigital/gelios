@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Http;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\TooManyRedirectsException;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Log;
 
@@ -133,6 +134,9 @@ final class SitemapService extends SitemapPageService
                 ])->withoutVerifying()->head($fullUrl);
 
                 $status = $response->status();
+            } catch (TooManyRedirectsException $e) {
+                Log::info("🔄 Забагато перенаправлень: {$fullUrl}");
+                $status = 500;
             } catch (ConnectionException $e) {
                 Log::info("⛔ Відмова у з'єднанні: {$fullUrl}");
                 $status = 500;
