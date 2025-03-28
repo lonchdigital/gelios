@@ -14,6 +14,7 @@ class EditLanguage extends Component
 
 
     protected $listeners = [
+        'languageSwitched' => 'languageSwitched',
         'refresh' => '$refresh',
     ];
 
@@ -30,6 +31,11 @@ class EditLanguage extends Component
                 'string',
             ],
         ];
+    }
+
+    public function languageSwitched($lang)
+    {
+        // $this->activeLocale = $lang;
     }
 
     public function save()

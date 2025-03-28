@@ -383,4 +383,5 @@ return [
     'work_experience' => 'Стаж',
     'review_name' => 'Имя',
     'application_for_vacancies' => 'Заявки на вакансии',
+    'choose_language' => 'Виберите язык',
 ];

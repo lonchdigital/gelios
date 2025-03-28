@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Http;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use GuzzleHttp\Exception\RequestException;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Log;
 
 final class SitemapService extends SitemapPageService
@@ -56,16 +57,98 @@ final class SitemapService extends SitemapPageService
         }
     }
 
+    // private function filterUrl(array $urls): array
+    // {
+    //     foreach ($urls as $key => $url) {
+    //         $response = Http::get(config('app.url') . $url);
+
+    //         if ($response->status() === 404 || $response->status() === 500) {
+    //             unset($urls[$key]);
+    //         }
+    //     }
+
+    //     return $urls;
+    // }
+    //////////
+    // private function filterUrl(array $urls): array
+    // {
+    //     foreach ($urls as $key => $url) {
+    //         if($url !== '/pediatriya/pediatriya-dityacha') {
+    //             $response = Http::withOptions(['stream' => true])
+    //             ->withHeaders([
+    //                     'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+    //                 ])
+    //             ->head(
+    //             // config('app.url')
+    //                 'http://helyos.lonchdev.com' . $url);
+
+    //             if ($response->status() === 404 || $response->status() === 500) {
+    //                 unset($urls[$key]);
+    //             }
+
+    //             unset($response);
+
+    //             // usleep(1000000);
+
+    //             // if ($key % 10 === 0) {
+    //             //     usleep(1000000);
+    //             // }
+    //         }
+    //     }
+
+    //     return array_values($urls);
+    // }
+    ///////////
+
+    // private function filterUrl(array $urls): array
+    // {
+    //     foreach ($urls as $key => $url) {
+    //         try {
+    //             $response = Http::head('http://helyos.lonchdev.com' . $url)->throw(); // Кидає виняток при помилці
+    //             $status = $response->status();
+    //         } catch (RequestException | ConnectionException $e) {
+    //             $status = 500; // Якщо помилка з'єднання — вважаємо URL недоступним
+    //         }
+
+    //         if (in_array($status, [404, 500])) {
+    //             unset($urls[$key]);
+    //         }
+    //     }
+
+    //     return array_values($urls);
+    // }
     private function filterUrl(array $urls): array
     {
-        foreach ($urls as $key => $url) {
-            $response = Http::get(config('app.url') . $url);
+        $filteredUrls = [];
 
-            if ($response->status() === 404 || $response->status() === 500) {
-                unset($urls[$key]);
+        foreach ($urls as $url) {
+            // $fullUrl = filter_var($url, FILTER_VALIDATE_URL) ? $url : 'http://helyos.lonchdev.com' . $url;
+            // $fullUrl = 'http://helyos.lonchdev.com' . $url;
+            $fullUrl = config('app.url') . $url;
+            // config('app.url')
+
+            try {
+                $response = Http::withHeaders([
+                    'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+                ])->withoutVerifying()->head($fullUrl);
+
+                $status = $response->status();
+            } catch (ConnectionException $e) {
+                Log::info("⛔ Відмова у з'єднанні: {$fullUrl}");
+                $status = 500;
+            } catch (RequestException $e) {
+                Log::info("❌ Помилка HTTP-запиту: {$fullUrl} | Код: " . $e->response->status());
+                $status = $e->response->status();
+            } catch (\Exception $e) {
+                Log::info("🚨 Невідома помилка: {$fullUrl} | " . $e->getMessage());
+                $status = 500;
+            }
+
+            if ($status !== 404 && $status !== 500) {
+                $filteredUrls[] = $url;
             }
         }
 
-        return $urls;
+        return $filteredUrls;
     }
 }

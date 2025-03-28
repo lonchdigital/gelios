@@ -32,7 +32,7 @@
                                                                         </label>
                                                                         <select class="form-control rounded-0"
                                                                             wire:model.live="lang">
-                                                                            <option value="">{{ __('admin.choose_category') }}
+                                                                            <option value="">{{ __('admin.choose_language') }}
                                                                             </option>
                                                                             @forelse($this->languages as $key => $language)
                                                                                 <option value="{{ $key}}">

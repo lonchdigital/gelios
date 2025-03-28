@@ -45,15 +45,15 @@ class ArticleController extends Controller
         $seo = $service->getMeta($page->title, $articlePage->meta_title, $articlePage->meta_description);
         $seo[1] = strip_tags($seo[1]);
 
+        $url['ua'] = url('/') . '/ua/dlya-paczientov/' . $slug;
+        $url['ru'] = url('/') . '/dlya-paczientov/' . $slug;
+        $url['en'] = url('/') . '/en/dlya-paczientov/' . $slug;
+
         if ($article) {
             $relatedArticles = Article::where('id', '!=', $article->id)
                 ->inrandomOrder()
                 ->take(3)
                 ->get();
-
-            $url['ua'] = url('/') . '/ua/dlya-paczientov/' . $article->slug;
-            $url['ru'] = url('/') . '/dlya-paczientov/' . $article->slug;
-            $url['en'] = url('/') . '/en/dlya-paczientov/' . $article->slug;
 
             return view('site.articles.show', compact('article', 'articlePage', 'relatedArticles', 'seo', 'url'));
         } else {
@@ -67,7 +67,8 @@ class ArticleController extends Controller
             if(empty($page->type) || $page->type !== "text" ) { abort(404); }
 
             return view('site.text-pages.show', [
-                'page' => $page
+                'page' => $page,
+                'url' => $url
             ]);
         }
 

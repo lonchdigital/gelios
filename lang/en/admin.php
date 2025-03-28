@@ -219,4 +219,5 @@ return [
     'work_experience' => 'Work expirience',
     'review_name' => 'Name',
     'application_for_vacancies' => 'Application for vacancies',
+    'choose_language' => 'Choose language',
 ];
