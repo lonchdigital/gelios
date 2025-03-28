@@ -2,7 +2,7 @@
     <!-- Desktop Logo -->
     <div class="ecaps-logo">
         <a href="{{ route('adminDashboard') }}">
-            <img class="desktop-logo" src="{{ asset('admin_src/img/core-img/logo.png') }}" alt="Desktop Logo">
+            <img class="desktop-logo" src="{{ asset('admin_src/img/core-img/dashboard_logo.png') }}" alt="Desktop Logo">
             <img class="small-logo" src="{{ asset('static_images/logo-without-name.png') }}" alt="Mobile Logo">
         </a>
     </div>
