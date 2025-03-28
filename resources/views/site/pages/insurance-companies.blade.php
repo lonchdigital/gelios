@@ -102,10 +102,10 @@
                                                 </li>
                                             @endforeach
 
-                                            <li class="list-inline-item">
+                                            {{-- <li class="list-inline-item">
                                                 <button type="button" class="contact-details" data-toggle="modal"
                                                     data-target="#popup--contacts">{{ trans('web.view') }}</button>
-                                            </li>
+                                            </li> --}}
                                         </ul>
                                         <div class="descrp h5">{{ trans('web.will_be_happy_to_work') }}</div>
                                     </div>
