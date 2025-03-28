@@ -111,8 +111,8 @@
             <div class="container overflow-hidden">
                 <div class="row mb-8">
                     <div class="col d-flex align-items-center justify-content-between">
-                        <div class="h2 font-m font-weight-bolder text-blue">Лікарі</div>
-                        <a href="##" class="btn btn-white font-weight-bold">Усі лікарі</a>
+                        <div class="h2 font-m font-weight-bolder text-blue">{{ trans('pages.doctors') }}</div>
+                        <a href="##" class="btn btn-white font-weight-bold">{{ trans('pages.all_doctors') }}</a>
                     </div>
                 </div>
                 <div class="row">
