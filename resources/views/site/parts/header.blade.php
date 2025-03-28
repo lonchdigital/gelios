@@ -409,10 +409,10 @@
                                             <div class="push-menu--lvl scrollable-content">
                                                 <div class="scrollable-content--inner">
                                                     <div class="item has-dropdown">
-                                                        <a href="##">{{ trans('web.directions') }}</a>
+                                                        <a href="##" data-slug="{{ route('directions.page') }}">{{ trans('web.directions') }}</a>
                                                         <div class="push-menu--lvl scrollable-content">
                                                             <div class="scrollable-content--inner">
-                                                                <div class="item"><a href="##">{{ trans('web.directions') }}</a></div>
+                                                                <div class="item"><a href="{{ route('directions.page') }}">{{ trans('web.directions') }}</a></div>
                                                                 @foreach ($allDirections as $category)
                                                                     @if( $category['children'] )
                                                                         <div class="item has-dropdown">
