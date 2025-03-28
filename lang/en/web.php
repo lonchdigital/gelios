@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'plot_the_route' => 'Plan a route',
     'prices' => 'Prices',
     'how_is_consultation_going' => 'How is the consultation going?',
     'free' => 'Free',
