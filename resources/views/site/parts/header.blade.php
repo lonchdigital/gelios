@@ -432,15 +432,11 @@
                                                     <div class="item"><a href="{{ route('surgery.index') }}">{{ __('pages.surgery') }}</a></div>
                                                     <div class="item"><a href="{{ route('about.us.page') }}">{{ __('pages.about_company') }}</a></div>
                                                     <div class="item has-dropdown">
-                                                        <a href="{{ route('promotions.index') }}">{{ __('pages.promotions') }}</a>
+                                                        <a href="{{ route('promotions.index') }}" data-slug="{{ route('promotions.index') }}">{{ __('pages.promotions') }}</a>
                                                         <div class="push-menu--lvl scrollable-content">
                                                             <div class="scrollable-content--inner">
-                                                                <div class="item"><a
-                                                                            href="{{ route('promotions.index') }}">{{ __('pages.promotions') }}</a>
-                                                                </div>
-                                                                <div class="item"><a
-                                                                            href="{{ route('check-ups.index') }}">Check-up</a>
-                                                                </div>
+                                                                <div class="item"><a href="{{ route('promotions.index') }}">{{ __('pages.promotions') }}</a></div>
+                                                                <div class="item"><a href="{{ route('check-ups.index') }}">Check-up</a></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -449,7 +445,7 @@
                                                     <div class="item"><a href="{{ route('hospital.show') }}">{{ __('pages.hospital') }}</a></div>
                                                     <div class="item"><a href="{{ route('prices.page') }}">{{ __('pages.prices') }}</a></div>
                                                     <div class="item has-dropdown">
-                                                        <a href="##">{{ __('pages.contacts') }}</a>
+                                                        <a href="##" data-slug="{{ route('contacts.page') }}">{{ __('pages.contacts') }}</a>
                                                         <div class="push-menu--lvl scrollable-content">
                                                             <div class="scrollable-content--inner">
                                                                 <div class="item"><a href="{{ route('contacts.page') }}">{{ __('pages.contacts') }}</a></div>
