@@ -68,7 +68,7 @@
                             @endif
                         @endif
                     </div>
-                    <a href="##" class="btn btn-outline-blue font-weight-bold d-lg-none">{{ trans('web.more_details') }}</a>
+                    {{-- <a href="##" class="btn btn-outline-blue font-weight-bold d-lg-none">{{ trans('web.more_details') }}</a> --}}
                 </div>
 
                 <div class="col-12 col-lg-5 col-xl-4">
