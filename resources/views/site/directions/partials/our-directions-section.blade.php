@@ -6,12 +6,14 @@
                     <div class="h2 font-m font-weight-bolder mb-5">{{ $commonDirectionsBlock->title }}</div>
                     <div class="h5 font-weight-bold mb-5">{!! $commonDirectionsBlock->description !!}</div>
                 @endif
-                <div class="row">
-                    <div class="col-auto">
-                        <a href="{{ route('directions.page') }}" class="btn btn-fz-20 btn-outline-white font-weight-bold d-none d-xl-block">{{ trans('web.all_directions') }}</a>
-                        <a href="{{ route('directions.page') }}" class="btn btn-white font-weight-bold d-xl-none">{{ trans('web.all_directions') }}</a>
+                @if (!Route::is('directions.page'))
+                    <div class="row">
+                        <div class="col-auto">
+                            <a href="{{ route('directions.page') }}" class="btn btn-fz-20 btn-outline-white font-weight-bold d-none d-xl-block">{{ trans('web.all_directions') }}</a>
+                            <a href="{{ route('directions.page') }}" class="btn btn-white font-weight-bold d-xl-none">{{ trans('web.all_directions') }}</a>
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
             <div class="col-12 col-xl-9">
                 <div class="row">
