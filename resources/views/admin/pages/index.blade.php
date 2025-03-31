@@ -114,14 +114,6 @@
                                     </tr>
 
                                     <tr>
-                                        <td>{{ trans('admin.insurance_companies') }}</td>
-                                        <td style="text-align: right">
-                                            <a href="{{ route('insurance.companies.index') }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
-                                        </td>
-                                    </tr>
-
-
-                                    <tr>
                                         <td>{{ __('admin.surgery') }}</td>
                                         <td style="text-align: right">
                                             <a href="{{ route('admin.surgery.index') }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
