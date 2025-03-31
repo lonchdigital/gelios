@@ -5,9 +5,11 @@ namespace App\Livewire\Admin\Directions;
 use App\Models\Page;
 use App\Enums\PageType;
 use Livewire\Component;
+use App\Models\BriefBlock;
 use Livewire\WithFileUploads;
 use App\Traits\Livewire\SeoPages;
 use App\Services\Admin\Directions\DirectionsService;
+use App\Services\Admin\CommonBlocksService;
 
 class DirectionsPage extends Component
 {
@@ -16,12 +18,15 @@ class DirectionsPage extends Component
     public Page $page;
     public array $sectionData = [];
     public array $seoData = [];
-
     protected DirectionsService $directionsService;
+
+    public array $contentData = [];
+    protected CommonBlocksService $commonBlocksService;
 
     public function mount() 
     {
         $this->directionsService = new DirectionsService;
+        $this->commonBlocksService = new CommonBlocksService;
         $this->dispatch('livewire:load');
 
         $this->page = Page::where('type', PageType::DIRECTIONS->value)->first();
@@ -31,11 +36,16 @@ class DirectionsPage extends Component
 
         // Set SEO data
         $this->seoData = $this->setSeoDataPage($this->page);
+
+
+        $directionsData = BriefBlock::where('type', 'directions')->first();
+        $this->contentData = $this->commonBlocksService->setDirectionsData($directionsData);
     }
 
     public function hydrate()
     {
         $this->directionsService = app(DirectionsService::class);
+        $this->commonBlocksService = app(CommonBlocksService::class);
     }
     
     public function updated()
@@ -76,9 +86,36 @@ class DirectionsPage extends Component
                 'string',
                 'max:55000'
             ];
+
+            $rules['contentData.title.' . $locale] = [
+                'required',
+                'string',
+                'max:255'
+            ];
+            $rules['contentData.description.' . $locale] = [
+                'nullable',
+                'string',
+            ];
         endforeach;
 
         return $rules;
+    }
+
+    protected function attributes()
+    {
+        $attributes = [];
+
+        foreach (config('translatable.locales') as $locale) {
+            $attributes['contentData.title.' . $locale] = trans('admin.title') . ' ('. $locale .')';
+            $attributes['contentData.description.' . $locale] = trans('admin.description') . ' ('. $locale .')';
+        }
+
+        return $attributes;
+    }
+
+    public function getValidationAttributes()
+    {
+        return $this->attributes();
     }
 
     public function save()
@@ -86,8 +123,10 @@ class DirectionsPage extends Component
         $this->validate();
 
         $this->directionsService->updateMainDirectionPage($this->page, $this->sectionData);
-
         $this->updateSeoDataPage($this->page, $this->seoData);
+
+        $briefBlock = BriefBlock::where('type', 'directions')->first();
+        $this->commonBlocksService->updateDirectionsData($briefBlock, $this->contentData);
 
         redirect()->route('directions.page.edit')->with('success', trans('admin.document_updated'));
     }

@@ -43,7 +43,6 @@
                     </li>
 
                     <li class="treeview @if(Route::is('directions.*') ||
-                                            Route::is('common-blocks.directions') ||
                                             ( Route::is('prices.index') && request()->route('page')->id === App\Models\Page::where('type', App\Enums\PageType::PRICES->value)->first()->id )
                                             ) menu-open @endif">
                         <a href="javascript:void(0)">
@@ -52,7 +51,6 @@
                             <i class="fa fa-angle-right"></i>
                         </a>
                         <ul class="treeview-menu" @if(Route::is('directions.*') ||
-                                                      Route::is('common-blocks.directions') ||
                                                       ( Route::is('prices.index') && request()->route('page')->id === App\Models\Page::where('type', App\Enums\PageType::PRICES->value)->first()->id )
                                                     ) style="display: block;" @else style="display: none;" @endif>
                             <li @if(Route::is('directions.page.edit')) class="active" @endif>
@@ -65,14 +63,6 @@
                             </li>
                             <li @if(Route::is('directions.index')) class="active" @endif >
                                 <a href="{{ route('directions.index') }}">{{ trans('admin.directions') }}</a>
-                            </li>
-                            <li @if(Route::is('common-blocks.directions')) class="active" @endif>
-                                <a href="{{ route('common-blocks.directions') }}">
-                                    {{-- {{ trans('admin.directions_common_blocks') }} --}}
-                                    <span style="text-transform: lowercase;">
-                                        <span style="text-transform: uppercase;">{{ mb_substr(trans('admin.directions_common_blocks'), 0, 1) }}</span>{{ mb_substr(trans('admin.directions_common_blocks'), 1) }}
-                                    </span>
-                                </a>
                             </li>
                             <li @if(Route::is('prices.index') && request()->route('page')->id === App\Models\Page::where('type', App\Enums\PageType::PRICES->value)->first()->id) class="active" @endif>
                                 <a href="{{ route('prices.index', ['page' => App\Models\Page::where('type', App\Enums\PageType::PRICES->value)->first()]) }}">{{ trans('admin.prices') }}</a>
