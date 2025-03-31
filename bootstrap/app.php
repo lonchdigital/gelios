@@ -36,7 +36,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'setDefaultLanguage'      => SetDefaultLanguage::class,
             // 'forceLocalePrefix'       => ForceLocalePrefix::class,
             'trimSuffix'              => App\Http\Middleware\TrimRouteSuffix::class,
-            'lowercaseUrl'            => App\http\Middleware\LowercaseUrl::class,
+            'lowercaseUrl'            => App\Http\Middleware\LowercaseUrl::class,
         ]);
 
         $middleware->group('auth', [
