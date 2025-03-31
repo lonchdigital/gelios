@@ -243,7 +243,7 @@ class CreateEdit extends Component
         // $this->article->images = $imageService->processImages($this->article->images, $this->images);
 
         $this->article->slug = $this->slug;
-        $this->article->doctor_id = $this->doctorId ?? null;
+        $this->article->doctor_id = !empty($this->doctorId) ? $this->doctorId : null;
         $this->article->article_category_id = $this->categoryId ?? null;
         $this->article->save();
 

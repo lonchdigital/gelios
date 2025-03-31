@@ -17,8 +17,33 @@
                                 <div class="border border-secondary rounded p-3 col-md-11">
                                     <div class="row justify-content-between align-items-center" wire:ignore.self>
 
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <x-admin.multilanguage-text-area-rich
+                                                        :is-required="false"
+                                                        :label="__('admin.title')"
+                                                        field-name="title"
+                                                        live-wire-field="title"
+                                                        :values="[
+                                                            'ua' => $this->uaTitle,
+                                                            'ru' => $this->ruTitle,
+                                                            'en' => $this->enTitle
+                                                        ]"
+                                                    />
+                                                    @if($errors->has('uaTitle'))
+                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaTitle') }}</div>
+                                                    @elseif($errors->has('ruTitle'))
+                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruTitle') }}</div>
+                                                    @elseif($errors->has('enTitle'))
+                                                        <div class="mt-1 text-danger ajaxError">{{ $errors->first('enTitle') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         @if ($this->activeLocale == 'ua')
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -46,7 +71,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="col-md-12">
                                                 <div class="row">
@@ -110,7 +135,7 @@
                                         @endif
 
                                         @if ($this->activeLocale == 'ru')
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -138,7 +163,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="col-md-12">
                                                 <div class="row">
@@ -202,7 +227,7 @@
                                         @endif
 
                                         @if ($this->activeLocale == 'en')
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -230,7 +255,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="col-md-12">
                                                 <div class="row">

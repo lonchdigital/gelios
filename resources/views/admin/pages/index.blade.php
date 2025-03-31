@@ -120,6 +120,35 @@
                                         </td>
                                     </tr>
 
+
+                                    <tr>
+                                        <td>{{ __('admin.surgery') }}</td>
+                                        <td style="text-align: right">
+                                            <a href="{{ route('admin.surgery.index') }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>{{ __('admin.promotions') }}</td>
+                                        <td style="text-align: right">
+                                            <a href="{{ route('admin.promotions.index') }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>{{ trans('admin.check_ups') }}</td>
+                                        <td style="text-align: right">
+                                            <a href="{{ trans('admin.check_ups') }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>{{ __('admin.vacancy') }}</td>
+                                        <td style="text-align: right">
+                                            <a href="{{ route('admin.vacancies.index') }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                        </td>
+                                    </tr>
+
                                 </tbody>
                             </table>
                         </div>

@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import select2 from 'select2';
 select2();
-import { updateQueryAndFetch } from './common';
+import { updateQueryAndFetch, updateQueryAndFetchArticles } from './common';
 // import "../../../../../node_modules/select2/dist/js/select2.js";
 
 //? select
@@ -61,6 +61,12 @@ $(function() {
         const categoryId = $(this).val();
         // console.log(categoryId);
         updateQueryAndFetch('category', categoryId);
+    });
+
+    $('.select-news-category').on('select2:select', function (e) {
+        const categoryId = $(this).val();
+        // console.log(categoryId);
+        updateQueryAndFetchArticles('category', categoryId);
     });
 
 });

@@ -67,7 +67,7 @@
                             <div class="col-12 col-md-8 col-lg-9">
                                 <div class="search">
                                     <div class="input-search">
-                                        <input type="search" class="search-input" placeholder="Пошук">
+                                        <input type="search" class="search-input" placeholder="{{ __('web.search_input') }}">
                                         <button type="button" class="search-icon btn p-0"></button>
                                     </div>
                                     <div class="results-search"></div>
@@ -242,7 +242,7 @@
 
             // Функція для ініціалізації або перевстановлення пагінації
             function initPagination() {
-                console.log(123456);
+                // console.log(123456);
 
                 setTimeout(function () {
                     $(".pagination").empty();

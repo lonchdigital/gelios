@@ -416,4 +416,5 @@ return [
     'review_name' => 'Ім\'я',
     'application_for_vacancies' => 'Заявки на вакансії',
     'choose_language' => 'Виберіть мову',
+    'doctor' => 'Лікар',
 ];

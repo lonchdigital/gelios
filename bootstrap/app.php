@@ -20,7 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
-            Route::middleware('web')
+            Route::middleware('web', 'trimSuffix', 'lowercaseUrl')
                 ->group(base_path('routes/web.php'));
         }
 
@@ -33,8 +33,10 @@ return Application::configure(basePath: dirname(__DIR__))
             'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
             'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
             'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
-            'setDefaultLanguage'      => SetDefaultLanguage::class
+            'setDefaultLanguage'      => SetDefaultLanguage::class,
             // 'forceLocalePrefix'       => ForceLocalePrefix::class,
+            'trimSuffix'              => App\Http\Middleware\TrimRouteSuffix::class,
+            'lowercaseUrl'            => App\http\Middleware\LowercaseUrl::class,
         ]);
 
         $middleware->group('auth', [

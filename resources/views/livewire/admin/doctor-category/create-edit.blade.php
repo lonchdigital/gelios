@@ -118,7 +118,7 @@
                                                                     <div class="form-group mb-1">
                                                                         <label>{{ __('admin.type') }}
                                                                         </label>
-                                                                        <select class="form-control rounded-0"
+                                                                        <select disabled class="form-control rounded-0"
                                                                             wire:model.live="type">
                                                                             @forelse($this->types as $type2)
                                                                                 <option value="{{ $type2 }}">{{ __('doctor.'.$type2) }}</option>

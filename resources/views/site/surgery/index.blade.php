@@ -454,28 +454,27 @@
                     action="{{ route('feedback-question.store') }}">
                         @csrf
                         @method('POST')
-                        <div class="h2 font-m font-weight-bolder mb-5">Залишилися запитання?</div>
+                        <div class="h2 font-m font-weight-bolder mb-5">{{ __('web.do_you_have_any_questions') }}</div>
                         <div class="row field-wrap">
                             <div class="col-12">
                                 <div class="field mb-2">
-                                    <label class="control-label mb-2" for="form-any-questions-name-2">Вкажіть ПІБ</label>
+                                    <label class="control-label mb-2" for="form-any-questions-name-2">{{ __('web.enter_your_full_name') }}</label>
                                     <input type="text" id="form-any-questions-name-2" name="name" class="form-control mb-2">
-                                    <div class="field--help-info small-txt text-red mb-2">Вкажіть ПІБ</div>
+                                    <div class="field--help-info small-txt text-red mb-2">{{ __('web.enter_your_full_name') }}</div>
                                 </div>
                                 <div id="name_error" class="field--help-info small-txt text-red mb-2"></div>
                             </div>
                             <div class="col-12">
                                 <div class="field mb-2">
-                                    <label class="control-label mb-2" for="form-any-questions-phone-2">Вкажіть номер
-                                        телефону</label>
+                                    <label class="control-label mb-2" for="form-any-questions-phone-2">{{ __('web.enter_your_phone_number') }}</label>
                                     <input type="tel" id="form-any-questions-phone-2" name="phone" class="form-control mb-2">
-                                    <div class="field--help-info small-txt text-red mb-2">Вкажіть номер телефону</div>
+                                    <div class="field--help-info small-txt text-red mb-2">{{ __('web.enter_your_phone_number') }}</div>
                                 </div>
                                 <div id="phone_error" class="field--help-info small-txt text-red mb-2"></div>
                             </div>
                             <div class="col-12">
                                 <button type="submit"
-                                    class="btn btn-blue font-weight-bold w-100 mt-2">Записатися</button>
+                                    class="btn btn-blue font-weight-bold w-100 mt-2">{{ __('web.make_an_appointment') }}</button>
                             </div>
                         </div>
                     </form>

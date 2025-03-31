@@ -29,7 +29,12 @@
                             </span>
                         </a>
                     </li>
-                    <li class=" @if(Route::is('admin.pages.*')) active @endif">
+                    <li class=" @if(Route::is('admin.pages.*') ||
+                                    Route::is('admin.surgery.*') ||
+                                    Route::is('admin.check-ups.*') ||
+                                    Route::is('admin.promotions.*') ||
+                                    Route::is('admin.vacancies.*')
+                            ) active @endif">
                         <a href="{{ route('admin.pages.index') }}"><i class='fa fa-file-text-o'></i>
                             <span>
                                 {{ __('admin.pages2') }}
@@ -160,13 +165,13 @@
                         </ul>
                     </li>
 
-                    <li class=" @if(Route::is('admin.surgery.*')) active @endif">
+                    {{-- <li class=" @if(Route::is('admin.surgery.*')) active @endif">
                         <a href="{{ route('admin.surgery.index') }}"><i class="fa fa-medkit"></i>
                             <span>
                                 {{ __('admin.surgery') }}
                             </span>
                         </a>
-                    </li>
+                    </li> --}}
 
                     {{-- <li class=" @if(Route::is('admin.articles.*')) active @endif">
                         <a href="{{ route('admin.articles-page.index') }}"><i class="bx bx-home-heart"></i>
@@ -206,7 +211,7 @@
                         </ul>
                     </li>
 
-                    <li class=" @if(Route::is('admin.promotions.*')) active @endif">
+                    {{-- <li class=" @if(Route::is('admin.promotions.*')) active @endif">
                         <a href="{{ route('admin.promotions.index') }}"><i class="fa fa-star-o"></i>
                             <span>
                                 {{ __('admin.promotions') }}
@@ -220,7 +225,7 @@
                                 {{ trans('admin.check_ups') }}
                             </span>
                         </a>
-                    </li>
+                    </li> --}}
 
                     {{-- <li class=" @if(Route::is('admin.reviews.*')) active @endif">
                         <a href="{{ route('admin.reviews-page.index') }}"><i class="fa fa-commenting-o"></i>
@@ -264,13 +269,13 @@
                         </a>
                     </li> --}}
 
-                    <li class=" @if(Route::is('admin.vacancies.*')) active @endif">
+                    {{-- <li class=" @if(Route::is('admin.vacancies.*')) active @endif">
                         <a href="{{ route('admin.vacancies.index') }}"><i class="fa fa-address-book-o"></i>
                             <span>
                                 {{ __('admin.vacancy') }}
                             </span>
                         </a>
-                    </li>
+                    </li> --}}
 
 
                     <!-- OLD MENU

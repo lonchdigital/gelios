@@ -14,6 +14,11 @@ class Index extends Component
         'refresh' => '$refresh',
     ];
 
+    public function paginationView()
+    {
+        return 'vendor.pagination.plain';
+    }
+
     public function getCheckupsProperty()
     {
         $checkups = CheckUp::paginate(10);

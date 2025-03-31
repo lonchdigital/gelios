@@ -164,7 +164,7 @@
                                         @endif
                                         {{-- <img src="img/shares/card-img-1.jpeg" alt="img"> --}}
                                     </div>
-                                    <div class="h3 small">{{ $promotion->title }}</div>
+                                    <div class="h3 small">{!! $promotion->title !!}</div>
                                 </a>
                             </div>
                         @empty

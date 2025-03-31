@@ -95,4 +95,12 @@ return [
     'one_year' => 'год',
     'two_years' => 'года',
     'years' => 'лет',
+    'make_an_appointment' => 'Записаться',
+    'enter_your_phone_number' => 'Укажите номер телефона',
+    'enter_your_full_name' => 'Укажите ФИО',
+    'do_you_have_any_questions' => 'Остались вопросы?',
+    'leave_an_application' => 'Оставить заявку',
+    'sign_up_for_an_interview' => 'Записаться на собеседование',
+    'send' => 'Отправить',
+    'dnipro' => 'Днепр',
 ];

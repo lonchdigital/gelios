@@ -96,4 +96,12 @@ return [
     'two_years' => 'роки',
     'years' => 'років',
     'work_experience' => 'Стаж',
+    'make_an_appointment' => 'Записатися',
+    'enter_your_phone_number' => 'Вкажіть номер телефону',
+    'enter_your_full_name' => 'Вкажіть ПІБ',
+    'do_you_have_any_questions' => 'Залишилися запитання?',
+    'leave_an_application' => 'Залишити заявку',
+    'sign_up_for_an_interview' => 'Записатися на співбесіду',
+    'send' => 'Відправити',
+    'dnipro' => 'Дніпро',
 ];

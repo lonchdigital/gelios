@@ -12,6 +12,11 @@ class Index extends Component
         'refresh' => '$refresh',
     ];
 
+    public function paginationView()
+    {
+        return 'vendor.pagination.plain';
+    }
+
     public function getCategoriesProperty()
     {
         $categories = DoctorCategory::paginate(10);

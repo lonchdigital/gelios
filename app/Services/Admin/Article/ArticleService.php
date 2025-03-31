@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin\Article;
 
+use App\Models\Article;
 use App\Models\ArticleBlock;
 use App\Models\ArticleTranslation;
 
@@ -45,6 +46,15 @@ class ArticleService
 
         $block->update([
             'sort' => $newSort,
+        ]);
+    }
+
+    public function changeIsShowInSurgeryPage($id)
+    {
+        $article = Article::find($id);
+
+        $article->update([
+            'is_show_in_surgery_page' => !$article->is_show_in_surgery_page
         ]);
     }
 }

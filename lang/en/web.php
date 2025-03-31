@@ -95,4 +95,12 @@ return [
     'one_year' => 'year',
     'two_years' => 'years',
     'years' => 'years',
+    'make_an_appointment' => 'Make an appointment',
+    'enter_your_phone_number' => 'Enter your phone number',
+    'enter_your_full_name' => 'Enter your full name',
+    'do_you_have_any_questions' => 'Do you have any questions?',
+    'leave_an_application' => 'Leave an application',
+    'sign_up_for_an_interview' => 'Sign up for an interview',
+    'send' => 'Send',
+    'dnipro' => 'Dnipro',
 ];

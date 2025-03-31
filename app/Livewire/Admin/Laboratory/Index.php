@@ -19,6 +19,11 @@ class Index extends Component
         'refresh' => '$refresh',
     ];
 
+    public function paginationView()
+    {
+        return 'vendor.pagination.plain';
+    }
+
     public function mount()
     {
         $this->page2 = Page::where('type', PageType::LABORATORY->value)->first();

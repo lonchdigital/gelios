@@ -11,11 +11,32 @@ use App\Services\Site\MetaService;
 
 class ArticleController extends Controller
 {
-    public function index(Request $request, $page = 1)
-    {
-        $articles = Article::paginate(9, ['*'], 'page', $page);
+    // public function index(Request $request, $page = 1)
+    // {
+    //     $articles = Article::paginate(9, ['*'], 'page', $page);
 
-        $categories = ArticleCategory::get();
+    //     $categories = ArticleCategory::get();
+
+    //     $page = Page::where('type', PageType::BLOG->value)
+    //         ->with('translations')
+    //         ->first();
+
+    //     $url['ua'] = url('/') . '/ua/dlya-paczientov';
+    //     $url['ru'] = url('/') . '/dlya-paczientov';
+    //     $url['en'] = url('/') . '/en/dlya-paczientov';
+
+    //     return view('site.articles.index', compact('articles', 'categories', 'page', 'url'));
+    // }
+
+    public function index(Request $request)
+    {
+        $categoryId = $request->query('category');
+
+        $articles = Article::when($categoryId, function ($query) use ($categoryId) {
+            return $query->where('article_category_id', $categoryId);
+        })->get();
+
+        $categories = ArticleCategory::all();
 
         $page = Page::where('type', PageType::BLOG->value)
             ->with('translations')
@@ -24,6 +45,12 @@ class ArticleController extends Controller
         $url['ua'] = url('/') . '/ua/dlya-paczientov';
         $url['ru'] = url('/') . '/dlya-paczientov';
         $url['en'] = url('/') . '/en/dlya-paczientov';
+
+        if ($request->ajax()) {
+            return response()->json([
+                'articles' => view('site.articles.list', compact('articles'))->render(),
+            ]);
+        }
 
         return view('site.articles.index', compact('articles', 'categories', 'page', 'url'));
     }

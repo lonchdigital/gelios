@@ -21,7 +21,7 @@ class Index extends Component
 
     public function paginationView()
     {
-        return 'vendor.pagination.tailwind';
+        return 'vendor.pagination.plain';
     }
 
     public function mount()

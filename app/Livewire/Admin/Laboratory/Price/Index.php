@@ -13,6 +13,11 @@ class Index extends Component
         'refresh' => '$refresh',
     ];
 
+    public function paginationView()
+    {
+        return 'vendor.pagination.plain';
+    }
+
     public function getCategoriesProperty()
     {
         $prices = LabPriceCategory::paginate(10);

@@ -12,11 +12,11 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => 'Головна',
+                'title' => __('web.main'),
                 'url' => route('main'),
             ],
             [
-                'title' => 'Вакансії',
+                'title' => __('pages.vacancies'),
                 'url' => null,
             ],
         ],
@@ -86,7 +86,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <button type="button" class="btn d-block btn-blue font-weight-bold ml-auto" data-toggle="modal" data-target="#popup--interview" data-vacancy="{{ $vacancy->title }}">Залишити заявку</button>
+                                                <button type="button" class="btn d-block btn-blue font-weight-bold ml-auto" data-toggle="modal" data-target="#popup--interview" data-vacancy="{{ $vacancy->title }}">{{ __('web.leave_an_application') }}</button>
                                             </div>
                                         </div>
                                     </div>

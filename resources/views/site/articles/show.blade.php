@@ -28,11 +28,11 @@
 @include('site.components.breadcrumbs', [
     'breadcrumbs' => [
         [
-            'title' => 'Головна',
+            'title' => __('web.main'),
             'url' => route('main'),
         ],
         [
-            'title' => 'Блог',
+            'title' => __('pages.blog'),
             'url' => route('articles.index'),
         ],
         [

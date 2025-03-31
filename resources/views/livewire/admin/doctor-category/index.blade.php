@@ -5,9 +5,9 @@
                 <div class="d-flex justify-content-between align-items-center mb-20">
                     <h6 class="card-title mb-0">{{ __('admin.doctor_categories_list') }}</h6>
 
-                    <a href="{{ route('admin.doctor-categories.create') }}" class="btn btn-primary waves-effect waves-light float-right mb-3">
+                    {{-- <a href="{{ route('admin.doctor-categories.create') }}" class="btn btn-primary waves-effect waves-light float-right mb-3">
                         + {{ __('admin.create_category') }}
-                    </a>
+                    </a> --}}
                 </div>
 
                 @if(session('success'))
@@ -31,7 +31,7 @@
                                 <td>{{ $category->title }}</td>
                                 <td style="text-align: right">
                                     <a href="{{ route('admin.doctor-categories.edit', $category) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
-                                    <a wire:click="deleteItem('{{ $category->id }}', 'doctorCategory')" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
+                                    {{-- <a wire:click="deleteItem('{{ $category->id }}', 'doctorCategory')" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a> --}}
                                 </td>
                             </tr>
                         @endforeach

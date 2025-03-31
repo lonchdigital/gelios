@@ -69,6 +69,7 @@ return [
     'edit_check_up' => 'Edit Check Up',
     'create_check_up' => 'Create Check Up',
     'price' => 'Price',
+    'prices' => 'Prices',
     'new_price' => 'New Price',
     'programs_list' => 'Programs List',
     'add_program' => 'Add Program',
@@ -220,4 +221,6 @@ return [
     'review_name' => 'Name',
     'application_for_vacancies' => 'Application for vacancies',
     'choose_language' => 'Choose language',
+    'category' => 'Category',
+    'doctor' => 'Doctor',
 ];

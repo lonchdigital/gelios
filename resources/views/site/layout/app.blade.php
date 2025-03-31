@@ -337,7 +337,7 @@
                         <div class="row">
                             <div class="col position-static">
                                 <div class="d-flex align-items-start justify-content-between mb-3">
-                                    <div class="h2 font-m modal-title font-weight-bolder mb-0 pr-8">Записатися на співбесіду</div>
+                                    <div class="h2 font-m modal-title font-weight-bolder mb-0 pr-8">{{ __('web.sign_up_for_an_interview') }}</div>
                                     <button type="button" class="close" id="close-vacancy-modal" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">
                                             <svg>
@@ -351,17 +351,17 @@
                         <div class="row field-wrap">
                             <div class="col-12">
                                 <div class="field mb-2">
-                                    <label class="control-label mb-2" for="form-interview--name">Вкажіть ПІБ</label>
+                                    <label class="control-label mb-2" for="form-interview--name">{{ __('web.enter_full_name') }}</label>
                                     <input type="text" id="form-interview--name" name="name" class="form-control mb-2">
-                                    <div class="field--help-info small-txt text-red mb-2">Вкажіть ПІБ</div>
+                                    <div class="field--help-info small-txt text-red mb-2">{{ __('web.enter_full_name') }}</div>
                                 </div>
                                 <div id="name_error" class="field--help-info small-txt text-red mb-2"></div>
                             </div>
                             <div class="col-12">
                                 <div class="field mb-2">
-                                    <label class="control-label mb-2" for="form-interview--phone">Вкажіть номер телефону</label>
+                                    <label class="control-label mb-2" for="form-interview--phone">{{ __('web.enter_your_phone_number') }}</label>
                                     <input type="tel" id="form-interview--phone" name="phone" class="form-control mb-2">
-                                    <div class="field--help-info small-txt text-red mb-2">Вкажіть номер телефону</div>
+                                    <div class="field--help-info small-txt text-red mb-2">{{ __('web.enter_your_phone_number') }}</div>
                                 </div>
                                 <div id="phone_error" class="field--help-info small-txt text-red mb-2"></div>
                             </div>
@@ -369,7 +369,7 @@
                             <div class="col-12">
                                 <button type="submit" class="btn btn-blue font-weight-bold w-100 mt-2"
                                 {{-- data-dismiss="modal" aria-label="Close" --}}
-                                >Записатися</button>
+                                >{{ __('web.send') }}</button>
                             </div>
                         </div>
                     </form>

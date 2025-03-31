@@ -131,7 +131,7 @@
                                                     @endif
                                                     <li>
                                                         <button type="button" class="contact-details" data-toggle="modal" data-target="#popup--contacts"
-                                                        data-city="{{ 'Дніпро' }}"
+                                                        data-city="{{ __('web.dnipro') }}"
                                                         data-affiliates="{{ $affiliates ?? [] }}"
                                                         {{-- @forelse($affiliates as $affiliate2)
                                                             @switch($loop->iteration)

@@ -12,16 +12,16 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => 'Головна',
+                'title' => __('web.main'),
                 'url' => route('main'),
             ],
             [
-                'title' => 'Блог',
+                'title' => __('page_name.blog'),
                 'url' => null,
             ],
         ],
     ])
-    <section class="news-head mb-8">
+    <section class="news-head mb-8" id="articles">
         <div class="container">
             <div class="row align-items-center justify-content-between w-100 mb-5">
                 <div class="col-auto">
@@ -232,7 +232,8 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="news-list row">
+                    @include('site.articles.list')
+                    {{-- <div class="news-list row">
                         @forelse($articles as $article)
                             <div class="content-item col-12 col-md-6 col-xl-4">
                                 <div class="news--item">
@@ -255,136 +256,10 @@
                             </div>
                         @empty
                         @endforelse
-                        {{-- <div class="content-item col-12 col-md-6 col-xl-4">
-                            <div class="news--item">
-                                <a href="##" class="inner">
-                                    <div class="wrap-img mb-4">
-                                        <img src="{{ asset('static_images/articles/article-2.jpeg') }}" alt="img">
-                                        <div class="date-label">13 березня 2024</div>
-                                    </div>
-                                    <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                    <div class="h6 descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує..</div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="content-item col-12 col-md-6 col-xl-4">
-                            <div class="news--item">
-                                <a href="##" class="inner">
-                                    <div class="wrap-img mb-4">
-                                        <img src="{{ asset('static_images/articles/article-3.jpeg') }}" alt="img">
-                                        <div class="date-label">13 березня 2024</div>
-                                    </div>
-                                    <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                    <div class="h6 descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує..</div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="content-item col-12 col-md-6 col-xl-4">
-                            <div class="news--item">
-                                <a href="##" class="inner">
-                                    <div class="wrap-img mb-4">
-                                        <img src="{{ asset('static_images/articles/article-1.jpeg') }}" alt="img">
-                                        <div class="date-label">13 березня 2024</div>
-                                    </div>
-                                    <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                    <div class="h6 descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує..</div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="content-item col-12 col-md-6 col-xl-4">
-                            <div class="news--item">
-                                <a href="##" class="inner">
-                                    <div class="wrap-img mb-4">
-                                        <img src="{{ asset('static_images/articles/article-2.jpeg') }}" alt="img">
-                                        <div class="date-label">13 березня 2024</div>
-                                    </div>
-                                    <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                    <div class="h6 descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує..</div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="content-item col-12 col-md-6 col-xl-4">
-                            <div class="news--item">
-                                <a href="##" class="inner">
-                                    <div class="wrap-img mb-4">
-                                        <img src="{{ asset('static_images/articles/article-3.jpeg') }}" alt="img">
-                                        <div class="date-label">13 березня 2024</div>
-                                    </div>
-                                    <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                    <div class="h6 descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує..</div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="content-item col-12 col-md-6 col-xl-4">
-                            <div class="news--item">
-                                <a href="##" class="inner">
-                                    <div class="wrap-img mb-4">
-                                        <img src="{{ asset('static_images/articles/article-1.jpeg') }}" alt="img">
-                                        <div class="date-label">13 березня 2024</div>
-                                    </div>
-                                    <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                    <div class="h6 descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує..</div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="content-item col-12 col-md-6 col-xl-4">
-                            <div class="news--item">
-                                <a href="##" class="inner">
-                                    <div class="wrap-img mb-4">
-                                        <img src="{{ asset('static_images/articles/article-2.jpeg') }}" alt="img">
-                                        <div class="date-label">13 березня 2024</div>
-                                    </div>
-                                    <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                    <div class="h6 descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує..</div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="content-item col-12 col-md-6 col-xl-4">
-                            <div class="news--item">
-                                <a href="##" class="inner">
-                                    <div class="wrap-img mb-4">
-                                        <img src="{{ asset('static_images/articles/article-3.jpeg') }}" alt="img">
-                                        <div class="date-label">13 березня 2024</div>
-                                    </div>
-                                    <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                    <div class="h6 descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує..</div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="content-item col-12 col-md-6 col-xl-4">
-                            <div class="news--item">
-                                <a href="##" class="inner">
-                                    <div class="wrap-img mb-4">
-                                        <img src="{{ asset('static_images/articles/article-1.jpeg') }}" alt="img">
-                                        <div class="date-label">13 березня 2024</div>
-                                    </div>
-                                    <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                    <div class="h6 descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує..</div>
-                                </a>
-                            </div>
-                        </div> --}}
-                    </div>
+                    </div> --}}
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-12">
                     <nav class="mt-5 mt-lg-3">
                         @include('vendor.pagination.custom', ['articles' => $articles])
@@ -392,14 +267,76 @@
                         <ul class="pagination justify-content-center mb-0"></ul>
                     </nav>
                 </div>
-            </div>
-            {{-- <div class="row">
+            </div> --}}
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const categorySelect = document.querySelector('.select-news-category');
+console.log(categorySelect);
+                    const getQueryParams = () => {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        return Object.fromEntries(urlParams.entries());
+                    };
+
+                    const updateQueryAndFetch = (key, value) => {
+                        const urlParams = new URLSearchParams(getQueryParams());
+
+                        if (value) {
+                            urlParams.set(key, value);
+                        } else {
+                            urlParams.delete(key);
+                        }
+
+                        urlParams.delete('page');
+
+                        const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+                        window.history.replaceState({}, '', newUrl);
+
+                        fetchArticles(newUrl);
+                    };
+
+                    const fetchArticles = (url) => {
+                        fetch(url)
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Failed to fetch data');
+                                }
+                                return response.text();
+                            })
+                            .then(html => {
+                                const parser = new DOMParser();
+                                const doc = parser.parseFromString(html, 'text/html');
+                                const newArticlesList = doc.querySelector('#articles-container');
+
+                                document.querySelector('#articles-container').innerHTML = newArticlesList.innerHTML;
+                            })
+                            .catch(error => console.error('Error fetching articles:', error));
+                    };
+
+                    // $(categorySelect).select2();
+
+                    categorySelect.addEventListener('change', (e) => {
+                        console.log(123);
+                        const categoryId = e.target.value;
+                        console.log(categoryId);
+                        updateQueryAndFetch('category', categoryId);
+                    });
+
+                    // $('.select-news-category').on('select2:select', function (e) {
+                    //     const categoryId = $(this).val();
+                    //     console.log(categoryId);
+                    //     updateQueryAndFetch('category', categoryId);
+                    // });
+                });
+            </script>
+            <div class="row">
                 <div class="col-12">
                     <nav class="mt-5 mt-lg-3">
                         <ul class="pagination justify-content-center mb-0"></ul>
                     </nav>
                 </div>
-            </div> --}}
+            </div>
         </div>
     </section>
 @endsection

@@ -18,6 +18,11 @@ class Index extends Component
         'refresh' => '$refresh',
     ];
 
+    public function paginationView()
+    {
+        return 'vendor.pagination.plain';
+    }
+
     public function getDoctorsProperty()
     {
         $doctors = Doctor::search(rtrim($this->search))

@@ -11,7 +11,12 @@ class Index extends Component
         'refreshItemsAfterDelete' => 'refreshItemsAfterDelete',
         'refresh' => '$refresh',
     ];
-    
+
+    public function paginationView()
+    {
+        return 'vendor.pagination.plain';
+    }
+
     public function getCitiesProperty()
     {
         $cities = LaboratoryCity::paginate(10);

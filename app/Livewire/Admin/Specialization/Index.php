@@ -16,6 +16,11 @@ class Index extends Component
         'refresh' => '$refresh',
     ];
 
+    public function paginationView()
+    {
+        return 'vendor.pagination.plain';
+    }
+
     public function getSpecializationsProperty()
     {
         $specializations = Specialization::paginate(10);

@@ -12,7 +12,10 @@ class Index extends Component
 
     public $search = '';
 
-    protected $paginationTheme = 'tailwind';
+    public function paginationView()
+    {
+        return 'vendor.pagination.plain';
+    }
 
     public function getFeedbacksProperty()
     {

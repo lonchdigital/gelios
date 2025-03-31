@@ -41,18 +41,12 @@
                                         @if ($article->is_show_in_surgery_page) checked="checked" @endif />
                                     </label> --}}
                                     <div class="new-checkbox">
-                                        <label class="switch" style="width: 34px;">
-                                            <input type="checkbox">
-                                            <span class="slider round" style="position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 34px;"></span>
-                                        </label>
+                                        <div class="new-checkbox art-text-block-switcher">
+                                            <label class="switch mr-3">
+                                                <input type="checkbox" wire:click="changeActive('{{ $article->id }}')" @if($article->is_show_in_surgery_page) checked @endif>
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </td>
                                 <td style="text-align: right">
