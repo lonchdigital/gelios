@@ -43,5 +43,6 @@ return [
     'all_promotions' => 'Усі акції',
     'branches' => 'Філії',
     'thank_you_our_operator_will_contact_you_shortly' => 'Дякуємо! Наш оператор зателефонує Вам найближчим часом',
-    'thank_you_your_job_application_has_been_successfully_sent' => 'Дякуємо! Ваша заявка на вакансію успішно відправлена'
+    'thank_you_your_job_application_has_been_successfully_sent' => 'Дякуємо! Ваша заявка на вакансію успішно відправлена',
+    'laboratories_page' => 'Сторінка лабораторій',
 ];

@@ -107,7 +107,7 @@
                             <li @if(Route::is('admin.laboratories.index') || Route::is('admin.laboratories.create') || Route::is('admin.laboratories.edit')) class="active" @endif >
                                 <a href="{{ route('admin.laboratories.index') }}">
                                     <span style="text-transform: lowercase;">
-                                        <span style="text-transform: uppercase;">{{ mb_substr(__('admin.laboratories_list'), 0, 1) }}</span>{{ mb_substr(__('admin.laboratories_list'), 1) }}
+                                        <span style="text-transform: uppercase;">{{ mb_substr(__('pages.laboratories_page'), 0, 1) }}</span>{{ mb_substr(__('pages.laboratories_page'), 1) }}
                                     </span>
                                 </a>
                             </li>
