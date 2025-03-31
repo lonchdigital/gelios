@@ -73,6 +73,26 @@
                                         />
 
                                     </section>
+
+                                    
+                                    <h6 class="card-title">{{ trans('admin.common_blocks') }}</h6>
+
+                                    <section class="mb-50 mt-30">
+                                        <x-admin.multilanguage-input
+                                            :is-required="false"
+                                            :label="trans('admin.title')"
+                                            field-name="title"
+                                            live-wire-field="contentData.title"
+                                            :values="$contentData['title']"
+                                        />
+                                        <x-admin.multilanguage-text-area-rich
+                                            :is-required="false"
+                                            :label="trans('admin.description')"
+                                            field-name="description"
+                                            live-wire-field="contentData.description"
+                                            :values="$contentData['description']"
+                                        />
+                                    </section>
                                         
                                     <button type="submit" class="btn btn-primary mr-2 mb-3">{{ trans('admin.save') }}</button>
                                 </form>
