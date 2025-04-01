@@ -169,7 +169,7 @@ class EditHeader extends Component
 
             'headerImage' => [
                 'nullable',
-                'mimes:jpeg,jpg,png,gif',
+                'mimes:jpeg,jpg,png,gif,svg',
                 'image',
             ],
 

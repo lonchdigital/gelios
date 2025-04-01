@@ -24,24 +24,54 @@ class ImageService
         $name = $file->getClientOriginalName();
         $name = pathinfo($name, PATHINFO_FILENAME);
 
-        $manager = new ImageManager(
-            new (Driver::class)
-        );
+        // $manager = new ImageManager(
+        //     new (Driver::class)
+        // );
+        // $image = $manager->read($file);
 
-        $image = $manager->read($file);
+        // $encoded = $image->toWebp();
 
-        $encoded = $image->toWebp();
-
-        $filePath = $folder . '/' . $name . '.webp';
+        // $filePath = $folder . '/' . $name . '.webp';
 
         $counter = 1;
 
-        while (Storage::exists('public/' . $filePath)) {
-            $filePath = $folder . '/' . $name . '-' . $counter . '.webp';
-            $counter++;
-        }
+        $extension = $file->getClientOriginalExtension();
 
-        Storage::disk('public')->put($filePath, $encoded);
+        $filePath = $folder . '/' . $name;
+
+        // while (Storage::exists('public/' . $filePath)) {
+        //     $filePath = $folder . '/' . $name . '-' . $counter . '.webp';
+        //     $counter++;
+        // }
+        if (strtolower($extension) === 'svg') {
+            // Додаємо розширення .svg до шляху
+            $filePath .= '.svg';
+
+            // Перевіряємо, чи існує файл з таким ім'ям, і додаємо суфікс, якщо потрібно
+            while (Storage::disk('public')->exists($filePath)) {
+                $filePath = $folder . '/' . $name . '-' . $counter . '.svg';
+                $counter++;
+            }
+
+            // Зберігаємо SVG-файл без змін
+            Storage::disk('public')->put($filePath, $file->getContent());
+        } else {
+            // Ініціалізуємо менеджер зображень з драйвером GD
+            $manager = new ImageManager(new Driver());
+            // Зчитуємо зображення з файлу
+            $image = $manager->read($file);
+            // Конвертуємо зображення у формат WebP
+            $encoded = $image->toWebp();
+            // Додаємо розширення .webp до шляху
+            $filePath .= '.webp';
+
+            while (Storage::disk('public')->exists($filePath)) {
+                $filePath = $folder . '/' . $name . '-' . $counter . '.webp';
+                $counter++;
+            }
+
+            Storage::disk('public')->put($filePath, $encoded);
+        }
 
         return $filePath;
     }

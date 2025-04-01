@@ -122,7 +122,7 @@ class EditFooter extends Component
 
             'footerImage' => [
                 'nullable',
-                'mimes:jpeg,jpg,png,gif',
+                'mimes:jpeg,jpg,png,gif,svg',
                 'image',
             ],
 
