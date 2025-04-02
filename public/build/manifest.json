@@ -56,12 +56,12 @@
     "src": "resources/fonts/Montserrat-Thin.ttf"
   },
   "resources/js/app.js": {
-    "file": "assets/app-CRXFOuXY.js",
+    "file": "assets/app-BBj2Ey-I.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-BpsnMrIA.css"
+      "assets/app-Be-JOwki.css"
     ],
     "assets": [
       "assets/Inter-Bold-D0m5Xa5u.ttf",
@@ -84,7 +84,7 @@
     ]
   },
   "resources/js/filters/contacts/contactsFilter.js": {
-    "file": "assets/contactsFilter-D1bXkRgP.js",
+    "file": "assets/contactsFilter-CQGHKUiC.js",
     "name": "contactsFilter",
     "src": "resources/js/filters/contacts/contactsFilter.js",
     "isEntry": true,

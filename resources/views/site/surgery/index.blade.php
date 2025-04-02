@@ -82,7 +82,7 @@
                                 <div class="quantity h2 font-m font-weight-bolder mb-2">
                                     {{ $page->pageBlocks->where('block', 'second')->where('key', 'first')->first()->title ?? '' }}
                                 </div>
-                                <div class="h5 text-uppercase">{!! $page->pageBlocks->where('block', 'second')->where('key', 'first')->first()->description ?? '' !!}</div>
+                                <div class="h5">{!! $page->pageBlocks->where('block', 'second')->where('key', 'first')->first()->description ?? '' !!}</div>
                             </div>
                         </div>
                         <div class="col-6 mb-3 mb-sm-4 mb-lg-5">
@@ -90,7 +90,7 @@
                                 <div class="quantity h2 font-m font-weight-bolder mb-2">
                                     {{ $page->pageBlocks->where('block', 'second')->where('key', 'second')->first()->title ?? '' }}
                                 </div>
-                                <div class="h5 text-uppercase">{!! $page->pageBlocks->where('block', 'second')->where('key', 'second')->first()->description ?? '' !!}</div>
+                                <div class="h5">{!! $page->pageBlocks->where('block', 'second')->where('key', 'second')->first()->description ?? '' !!}</div>
                             </div>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                                 <div class="quantity h2 font-m font-weight-bolder mb-2">
                                     {{ $page->pageBlocks->where('block', 'second')->where('key', 'third')->first()->title ?? '' }}
                                 </div>
-                                <div class="h5 text-uppercase">{!! $page->pageBlocks->where('block', 'second')->where('key', 'third')->first()->description ?? '' !!}</div>
+                                <div class="h5">{!! $page->pageBlocks->where('block', 'second')->where('key', 'third')->first()->description ?? '' !!}</div>
                             </div>
                         </div>
                         <div class="col-6">
@@ -108,7 +108,7 @@
                                 <div class="quantity h2 font-m font-weight-bolder mb-2">
                                     {{ $page->pageBlocks->where('block', 'second')->where('key', 'fourth')->first()->title ?? '' }}
                                 </div>
-                                <div class="h5 text-uppercase">{!! $page->pageBlocks->where('block', 'second')->where('key', 'fourth')->first()->description ?? '' !!}</div>
+                                <div class="h5">{!! $page->pageBlocks->where('block', 'second')->where('key', 'fourth')->first()->description ?? '' !!}</div>
                             </div>
                         </div>
                     </div>

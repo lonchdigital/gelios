@@ -19,7 +19,7 @@
                             <div class="quantity h2 font-m font-weight-bolder mb-2">
                                 {!! $page->pageBlocks->where('block', $block)->where('key', 'first')->first()->title ?? '2&nbsp;640' !!}
                             </div>
-                            <div class="h5 text-uppercase">
+                            <div class="h5">
                                 {!! $page->pageBlocks->where('block', $block)->where('key', 'first')->first()->description ?? 'Проведено операцій' !!}
                             </div>
                         </div>
@@ -29,7 +29,7 @@
                             <div class="quantity h2 font-m font-weight-bolder mb-2">
                                 {!! $page->pageBlocks->where('block', $block)->where('key', 'second')->first()->title ?? '14' !!}
                             </div>
-                            <div class="h5 text-uppercase">
+                            <div class="h5">
                                 {!! $page->pageBlocks->where('block', $block)->where('key', 'second')->first()->description ?? 'Років досвіду' !!}
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                             <div class="quantity h2 font-m font-weight-bolder mb-2">
                                 {!! $page->pageBlocks->where('block', $block)->where('key', 'third')->first()->title ?? '24/7' !!}
                             </div>
-                            <div class="h5 text-uppercase">
+                            <div class="h5">
                                 {!! $page->pageBlocks->where('block', $block)->where('key', 'third')->first()->description ?? 'Ми поряд' !!}
                                 </div>
                         </div>
@@ -51,7 +51,7 @@
                             <div class="quantity h2 font-m font-weight-bolder mb-2">
                                 {!! $page->pageBlocks->where('block', $block)->where('key', 'fourth')->first()->title ?? '100 000' !!}
                                 </div>
-                            <div class="h5 text-uppercase">
+                            <div class="h5">
                                 {!! $page->pageBlocks->where('block', $block)->where('key', 'fourth')->first()->description ?? 'Відвідувань щороку' !!}
                                 </div>
                         </div>

@@ -56,6 +56,8 @@
                                 <div class="h3 font-m font-weight-bolder text-blue">{{ $doctor->title ?? '' }}</div>
                             </div>
                         </div>
+								<div class="row">
+									<div class="col">
                         <div class="position-work font-weight-bold text-grey mb-3">{{ __('doctor.doctor') }}
                             {{ $doctor->specialization->title ?? '' }}</div>
 
@@ -117,6 +119,8 @@
                         <button type="button" class="btn btn-blue font-weight-bold" data-toggle="modal"
                         data-target="#popup--sign-up-appointment">{{ __('pages.make_an_appointment') }}</button>
                     </div>
+							</div>
+						</div>
                 </div>
             </div>
         </div>

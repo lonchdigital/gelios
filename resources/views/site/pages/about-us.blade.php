@@ -74,7 +74,7 @@
 								<li>Стрес-тест</li>
 								<li>ЕКГ і ЕхоКГ</li>
                     </ul>
-                    <button type="button" class="btn btn-blue" data-toggle="modal"
+                    <button type="button" class="btn btn-outline-blue" data-toggle="modal"
                         data-target="#popup--sign-up-appointment">{{ trans('web.make_appointment') }}</button>
                 </div>
                 <div class="col-12 col-lg-6">
