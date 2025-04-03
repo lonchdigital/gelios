@@ -213,10 +213,10 @@ $items = [
         'from' => '/ergoterapevt/',
         'to' => '/reabilitacziya/ergoterapevt'
     ],
-    [
-        'from' => '/reabilitacziya/postkovidnaya-reabilitacziya/',
-        'to' => '/reabilitacziya/postkovidnaya-reabilitacziya'
-    ],
+    // [
+    //     'from' => '/reabilitacziya/postkovidnaya-reabilitacziya/',
+    //     'to' => '/reabilitacziya/postkovidnaya-reabilitacziya'
+    // ],
     [
         'from' => '/dityachij-czerebralnij-paralich/',
         'to' => '/reabilitacziya/dityachij-czerebralnij-paralich'
