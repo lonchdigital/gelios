@@ -103,4 +103,5 @@ return [
     'sign_up_for_an_interview' => 'Записаться на собеседование',
     'send' => 'Отправить',
     'dnipro' => 'Днепр',
+    'article_categories' => 'Категории блога',
 ];

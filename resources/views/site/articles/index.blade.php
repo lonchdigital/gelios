@@ -329,6 +329,10 @@ console.log(categorySelect);
                     //     updateQueryAndFetch('category', categoryId);
                     // });
                 });
+
+                const articleTranslations = {
+                    articleCategories: '{{ __("web.article_categories") }}'
+                };
             </script>
             <div class="row">
                 <div class="col-12">

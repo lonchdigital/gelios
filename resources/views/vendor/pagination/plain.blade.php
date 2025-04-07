@@ -4,7 +4,7 @@
         @if ($paginator->onFirstPage())
             <li class="page-item button-slider-prev disabled active no-hover" aria-disabled="true" aria-label="@lang('pagination.previous')" id="previous-page">
                 <span class="page-link no-hover">
-                    {{-- <svg><use xlink:href="img/icons/icons.svg#i-arrow-small-down"></use></svg> --}}
+                    {{-- <svg><use xlink:href="img/icons/icons.svg#i-arrow-small-left"></use></svg> --}}
                     <svg width="16.000000" height="16.000000" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <desc>
                                 Created with Pixso.
@@ -16,7 +16,8 @@
                         </defs>
                         <rect id="arrow-small-down" width="16.000000" height="16.000000" fill="#FFFFFF" fill-opacity="0"/>
                         <g clip-path="url(#clip12_24291)">
-                            <path id="Vector" d="M4 6L8 10L12 6" stroke="#111010" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+                            {{-- <path id="Vector" d="M4 6L8 10L12 6" stroke="#111010" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/> --}}
+                            <path d="M10 4L6 8L10 12" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </g>
                     </svg>
                 </span>
@@ -35,7 +36,8 @@
                         </defs>
                         <rect id="arrow-small-down" width="16.000000" height="16.000000" fill="#FFFFFF" fill-opacity="0"/>
                         <g clip-path="url(#clip12_24291)">
-                            <path id="Vector" d="M4 6L8 10L12 6" stroke="#111010" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+                            <path d="M10 4L6 8L10 12" stroke="#111010" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            {{-- <path id="Vector" d="M4 6L8 10L12 6" stroke="#111010" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/> --}}
                         </g>
                     </svg>
                 </a>
@@ -76,7 +78,8 @@
                         </defs>
                         <rect id="arrow-small-down" width="16.000000" height="16.000000" fill="#FFFFFF" fill-opacity="0"/>
                         <g clip-path="url(#clip12_24291)">
-                            <path id="Vector" d="M4 6L8 10L12 6" stroke="#111010" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+                            {{-- <path id="Vector" d="M4 6L8 10L12 6" stroke="#111010" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/> --}}
+                            <path d="M6 4L10 8L6 12" stroke="#111010" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </g>
                     </svg>
                 </a>
@@ -95,7 +98,8 @@
                         </defs>
                         <rect id="arrow-small-down" width="16.000000" height="16.000000" fill="#FFFFFF" fill-opacity="0"/>
                         <g clip-path="url(#clip12_24291)">
-                            <path id="Vector" d="M4 6L8 10L12 6" stroke="#111010" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+                            <path d="M6 4L10 8L6 12" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            {{-- <path id="Vector" d="M4 6L8 10L12 6" stroke="#111010" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/> --}}
                         </g>
                     </svg>
                 </span>

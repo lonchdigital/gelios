@@ -52,7 +52,7 @@ $(function() {
 
 	$('.select-news-category').select2({
 		minimumResultsForSearch: -1,
-		placeholder: 'Категорії статей',
+		placeholder: articleTranslations.articleCategories,
 		dropdownCssClass: 'news-category-results',
 		dropdownParent: $('.news-head')
 	});

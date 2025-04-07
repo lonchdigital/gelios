@@ -104,4 +104,5 @@ return [
     'sign_up_for_an_interview' => 'Записатися на співбесіду',
     'send' => 'Відправити',
     'dnipro' => 'Дніпро',
+    'article_categories' => 'Категорії статтей',
 ];

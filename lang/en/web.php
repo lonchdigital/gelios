@@ -103,4 +103,5 @@ return [
     'sign_up_for_an_interview' => 'Sign up for an interview',
     'send' => 'Send',
     'dnipro' => 'Dnipro',
+    'article_categories' => 'Article categories',
 ];

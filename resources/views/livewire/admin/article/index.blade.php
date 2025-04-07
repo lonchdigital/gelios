@@ -23,7 +23,7 @@
                             <tr>
                                 <th>{{ __('admin.name') }}</th>
                                 <th>{{ __('admin.image') }}</th>
-                                <th>{{ __('admin.is_show_in_surgery_page') }}</th>
+                                {{-- <th>{{ __('admin.is_show_in_surgery_page') }}</th> --}}
                                 <th style="text-align: right">{{ __('admin.actions') }}</th>
                             </tr>
                         </thead>
@@ -34,12 +34,7 @@
                                 <td>
                                     <img src="{{ $article->imageUrl }}" width="60">
                                 </td>
-                                <td>
-                                    {{-- <label class="switch">
-                                        <input type="checkbox" class="toggle toggle-primary toggle-xs"
-                                        wire:click="changeArticle('{{ $article->id }}', 'show_surgery')"
-                                        @if ($article->is_show_in_surgery_page) checked="checked" @endif />
-                                    </label> --}}
+                                {{-- <td>
                                     <div class="new-checkbox">
                                         <div class="new-checkbox art-text-block-switcher">
                                             <label class="switch mr-3">
@@ -48,7 +43,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                </td>
+                                </td> --}}
                                 <td style="text-align: right">
                                     <a href="{{ route('admin.articles.edit', $article) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
                                     <a wire:click="deleteItem('{{ $article->id }}', 'article')" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
