@@ -430,7 +430,18 @@
                                                         </div>
                                                     </div>
                                                     <div class="item"><a href="{{ route('surgery.index') }}">{{ __('pages.surgery') }}</a></div>
-                                                    <div class="item"><a href="{{ route('about.us.page') }}">{{ __('pages.about_company') }}</a></div>
+                                                    <div class="item {{ ($allCenters->count() > 0) ? 'has-dropdown' : '' }}">
+                                                        <a href="{{ route('about.us.page') }}" data-slug="{{ route('about.us.page') }}">{{ __('pages.about_company') }}</a>
+                                                        @if($allCenters->count() > 0)
+                                                            <div class="push-menu--lvl scrollable-content">
+                                                                <div class="scrollable-content--inner">
+                                                                    @foreach ($allCenters as $oneCenter)
+                                                                        <div class="item"><a class="link" href="{{ route('one.center.page', ['slug' => $oneCenter->slug]) }}">{{ $oneCenter->title }}</a></div>
+                                                                    @endforeach
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                    </div>
                                                     <div class="item has-dropdown">
                                                         <a href="{{ route('promotions.index') }}" data-slug="{{ route('promotions.index') }}">{{ __('pages.promotions') }}</a>
                                                         <div class="push-menu--lvl scrollable-content">
