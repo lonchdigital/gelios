@@ -273,7 +273,7 @@
                                         <div class="list-inline-item">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                   <a href="##"><span>{{ trans('web.directions') }}</span></a>
+                                                   <a href="{{ route('directions.page') }}"><span>{{ trans('web.directions') }}</span></a>
                                                 </div>
                                                 <div class="submenu position-absolute">
                                                     <div class="container">
