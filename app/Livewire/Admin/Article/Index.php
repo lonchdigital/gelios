@@ -32,7 +32,7 @@ class Index extends Component
 
     public function getArticlesProperty()
     {
-        $articles = Article::paginate(10);
+        $articles = Article::paginate(20);
 
         return $articles;
     }
