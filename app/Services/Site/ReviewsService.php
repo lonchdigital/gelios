@@ -3,7 +3,9 @@
 namespace App\Services\Site;
 
 use App\Models\Review;
-
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Str;
 
 class ReviewsService 
 {
@@ -18,12 +20,21 @@ class ReviewsService
         $dataToUpdate[$usersLocale]['text'] = $data['review'];
 
         if( isset($data['image']) ){
-            $image = downloadImage(self::IMAGE_PATH, $data['image']);
-            $dataToUpdate['image'] = $image;
+            $dataToUpdate['image'] = $this->storeReviewImage($data['image']);
         }
 
         $review = Review::create($dataToUpdate);
         return $review !== null;
+    }
+
+    private function storeReviewImage(UploadedFile $file): string
+    {
+        $filenameBase = self::IMAGE_PATH . '/' . sha1(microtime()) . '_' . Str::random(8);
+
+        storeImage($filenameBase, $file, 'webp');
+        storeImage($filenameBase, $file, 'jpg');
+
+        return $filenameBase . '.webp';
     }
 
 }

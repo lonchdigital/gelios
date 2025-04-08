@@ -105,4 +105,5 @@ return [
     'send' => 'Відправити',
     'dnipro' => 'Дніпро',
     'article_categories' => 'Категорії статтей',
+    'remove_image' => 'Видалити зображення',
 ];

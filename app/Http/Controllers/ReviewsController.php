@@ -40,7 +40,7 @@ class ReviewsController extends Controller
         App::setLocale($usersLocale);
 
         $request->validate([
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,|max:1048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,|max:10240',
             'name' => 'required|string|max:100',
             'review' => 'required|string|max:300',
             'locale' => 'required|string|max:10'

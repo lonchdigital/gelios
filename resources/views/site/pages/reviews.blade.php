@@ -120,6 +120,7 @@
 									</svg>
 								</button>
 								<input type="file" name="image" class="d-none">
+								<a href="#" class="remove-selected-image small-txt text-danger mt-2 text-center d-none">{{ trans('web.remove_image') }}</a>
 							</div>
 							<div class="col-12">
 								<div class="field mb-2">

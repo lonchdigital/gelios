@@ -81,10 +81,29 @@ $(document).ready(function() {
 
                 // add new image
                 button.append('<img src="' + e.target.result + '" alt="user image" class="selected-image" style="max-width: 100%; max-height: 100%;">');
+            
+                // 
+                var removeLink = button.siblings('.remove-selected-image');
+                removeLink.removeClass('d-none').addClass('d-block');
             }
 
             reader.readAsDataURL(input.files[0]);
         }
+    });
+
+    $('.remove-selected-image').click(function(e) {
+        e.preventDefault();
+    
+        var imageField = $(this).closest('.image-field');
+        var input = imageField.find('input[type="file"]');
+        var button = imageField.find('.btn-review-add-pic');
+    
+        input.val('');
+    
+        button.find('img.selected-image').remove();
+        button.find('svg').removeClass('d-none');
+    
+        $(this).removeClass('d-block').addClass('d-none');
     });
 
 });
