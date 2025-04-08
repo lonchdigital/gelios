@@ -104,4 +104,5 @@ return [
     'send' => 'Отправить',
     'dnipro' => 'Днепр',
     'article_categories' => 'Категории блога',
+    'remove_image' => 'Удалить изображение',
 ];

@@ -1,19 +1,68 @@
 <?php
 
-use Illuminate\Support\Str;
-use App\Models\PageTextBlock;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Imagick\Driver as ImagickDriver;
+use Intervention\Image\Encoders\JpegEncoder;
+use Intervention\Image\Encoders\WebpEncoder;
 use Illuminate\Http\UploadedFile;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Collection;
 
+function storeImage(string $path, UploadedFile $uploadedImage, string $format, int $quality = 70): void
+{
+    $format = strtolower(trim($format));
+    $manager = new ImageManager(new ImagickDriver());
+
+    switch ($format) {
+        case 'jpg':
+        case 'jpeg':
+            $encoder = new JpegEncoder(quality: $quality);
+            break;
+        case 'webp':
+            $encoder = new WebpEncoder(quality: $quality);
+            break;
+        default:
+            throw new \InvalidArgumentException("Unsupported format: [$format]");
+    }
+
+    $image = $manager->read($uploadedImage)->encode($encoder);
+
+    Storage::disk(config('app.images_disk_default'))
+        ->put($path . '.' . $format, (string) $image);
+}
+
+function deleteImage(string|null $path): void
+{
+    if(is_null($path)){
+        return;
+    }
+    $disk = Storage::disk(config('app.images_disk_default'));
+
+    // remove webp
+    if ($disk->exists($path)) {
+        $disk->delete($path);
+    }
+
+    // remove jpg
+    $jpgPath = pathinfo($path, PATHINFO_DIRNAME) . '/' . pathinfo($path, PATHINFO_FILENAME)  . '.jpg';
+    if ($disk->exists($jpgPath)) {
+        $disk->delete($jpgPath);
+    }
+
+    // remove png
+    $jpgPath = pathinfo($path, PATHINFO_DIRNAME) . '/' . pathinfo($path, PATHINFO_FILENAME)  . '.png';
+    if ($disk->exists($jpgPath)) {
+        $disk->delete($jpgPath);
+    }
+}
+
+// TODO:: remove if do not need them
+/*
 function storeImage(string $path, UploadedFile $image, string $format, $quality = 70): void
 {
     $image = Image::make($image)->encode($format, $quality);
     Storage::disk(config('app.images_disk_default'))->put($path . '.'.$format, $image);
 }
-
-
 function deleteImage(string|null $path): void
 {
     if(is_null($path)){
@@ -37,7 +86,7 @@ function deleteImage(string|null $path): void
         Storage::disk(config('app.images_disk_default'))->delete($jpgPath);
     }
 }
-
+*/
 
 function makeUsort(array $items)
 {

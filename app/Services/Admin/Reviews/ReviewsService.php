@@ -108,7 +108,8 @@ class ReviewsService
         $review = Review::find($reviewID);
 
         if(!is_null($review->image)){
-            removeImageFromStorage($review->image);
+            // removeImageFromStorage($review->image);
+            deleteImage($review->image);
         }
 
         $review->doctors()->sync([]);
