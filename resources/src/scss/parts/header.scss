@@ -535,7 +535,7 @@
 						visibility: hidden;
 						z-index: 2;
 						background: $light-blue;
-						box-shadow: 0 6px 6px #00000008;
+						// box-shadow: 0 6px 6px #00000008;
 						@include transition(0.3s ease-out 0.3s);
 
 						@include xl-max {

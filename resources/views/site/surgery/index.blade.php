@@ -294,7 +294,7 @@
             <div class="container overflow-hidden">
                 <div class="row mb-19">
                     <div class="col d-flex align-items-center justify-content-between">
-                        <div class="h2 font-m font-weight-bolder">{{ __('pages.reviews') }}</div>
+                        <div class="h2 font-m font-weight-bolder text-blue">{{ __('pages.reviews') }}</div>
                     </div>
                 </div>
                 <div class="row">
