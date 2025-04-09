@@ -140,7 +140,7 @@
 							</div>
 							<div class="col-12">
 								<input type="hidden" name="locale" value="{{ app()->getLocale() }}">
-								<button type="submit" class="btn btn-blue font-weight-bold w-100 mt-2">{{ trans('web.leave_review') }}</button>
+								<button type="submit" class="btn btn-blue font-weight-bold w-100 mt-2 art-submit">{{ trans('web.leave_review') }}</button>
 								<button type="button" class="art-open-review-success d-none" data-toggle="modal" data-target="#popup--review-thank" data-dismiss="modal" aria-label="Close"></button>
 							</div>
 						</div>

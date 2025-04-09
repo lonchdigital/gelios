@@ -2747,3 +2747,9 @@ form {
 .art-opacity-0 {
 	opacity: 0;
 }
+
+.form-popup--write-review {
+	button.art-submit.processing {
+		opacity: 0.5;
+	}
+}

@@ -16,7 +16,7 @@
                     <thead>
                         <tr style="background-color: rgba(149, 149, 149, 0.2)">
                             <th>ID</th>
-                            <th>{{ trans('admin.address') }}</th>
+                            <th>{{ trans('admin.full_name') }}</th>
                             <th style="text-align: right">{{ __('admin.actions') }}</th>
                         </tr>
                     </thead>

@@ -417,4 +417,5 @@ return [
     'application_for_vacancies' => 'Заявки на вакансії',
     'choose_language' => 'Виберіть мову',
     'doctor' => 'Лікар',
+    'full_name' => 'ПІБ',
 ];
