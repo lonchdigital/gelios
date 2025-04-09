@@ -6,9 +6,17 @@ $(document).ready(function() {
         event.preventDefault();
     
         let formTag = $(this);
+        let submitBtn = formTag.find('button[type="submit"]');
+
+        if (submitBtn.hasClass('processing')) {
+            return;
+        }
+
+        submitBtn.addClass('processing').prop('disabled', true);
+
         var formData = new FormData(this);
         formTag.find('.field-error').remove();
-    
+        
         runAjax(
             function(data) {
                 if( data ) {
@@ -21,6 +29,8 @@ $(document).ready(function() {
                     formTag.find('input[name="name"]').val('');
                     formTag.find('textarea.art-review-text').val('');
                 }
+
+                submitBtn.removeClass('processing').prop('disabled', false);
             },
             function(xhr) {
                 if (xhr.status === 422) {
@@ -28,6 +38,8 @@ $(document).ready(function() {
                 } else {
                     console.error('[Review]: error during sending the review.');
                 }
+
+                submitBtn.removeClass('processing').prop('disabled', false);
             },
             formData
         );

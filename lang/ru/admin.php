@@ -385,4 +385,5 @@ return [
     'application_for_vacancies' => 'Заявки на вакансии',
     'choose_language' => 'Виберите язык',
     'doctor' => 'Доктор',
+    'full_name' => 'ФИО',
 ];
