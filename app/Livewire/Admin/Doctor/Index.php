@@ -26,7 +26,7 @@ class Index extends Component
     public function getDoctorsProperty()
     {
         $doctors = Doctor::search(rtrim($this->search))
-        ->paginate(20);
+            ->paginate(20);
 
         return $doctors;
     }

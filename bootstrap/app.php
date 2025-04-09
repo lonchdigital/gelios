@@ -20,7 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
-            Route::middleware('web', 'trimSuffix', 'lowercaseUrl', 'redirect.if.en')
+            Route::middleware('web', 'trimSuffix', 'lowercaseUrl', 'redirect.if.en', 'detectLocale')
                 ->group(base_path('routes/web.php'));
         }
 
@@ -38,6 +38,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'trimSuffix'              => App\Http\Middleware\TrimRouteSuffix::class,
             'lowercaseUrl'            => App\Http\Middleware\LowercaseUrl::class,
             'redirect.if.en' => \App\Http\Middleware\RedirectIfEn::class,
+            'detectLocale'              => \App\Http\Middleware\DetectLocale::class,
         ]);
 
         $middleware->group('auth', [

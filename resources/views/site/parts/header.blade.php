@@ -186,18 +186,47 @@
                                         </svg>
                                     </div>
                                     <ul class="submenu list-unstyled mb-0 position-absolute py-1 px-2">
-                                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                        {{-- @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                             @if ($localeCode !== LaravelLocalization::getCurrentLocale() && $localeCode !== 'en')
                                                 <li>
                                                     <div class="language d-flex align-items-center">
-                                                        <a class="d-flex" rel="alternate" hreflang="{{ $localeCode }}"
-                                                           href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                        <a class="d-flex" rel="alternate"
+                                                        hreflang="{{ $localeCode }}"
+                                                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                            <span>{{ $localeCode }}</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            @endif
+                                        @endforeach --}}
+                                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                            @if ($localeCode !== LaravelLocalization::getCurrentLocale() && $localeCode !== 'en')
+                                                @php
+                                                    $path = ltrim(parse_url(request()->getRequestUri(), PHP_URL_PATH), '/');
+                                                    $segments = collect(explode('/', $path));
+                                                    $locales = array_keys(LaravelLocalization::getSupportedLocales());
+
+                                                    if ($segments->isNotEmpty() && in_array($segments->first(), $locales)) {
+                                                        $segments->shift();
+                                                    }
+
+                                                    $newSegments = $localeCode !== 'ru'
+                                                        ? $segments->prepend($localeCode)
+                                                        : $segments;
+
+                                                    $localizedUrl = url($newSegments->implode('/'));
+                                                @endphp
+
+                                                <li>
+                                                    <div class="language d-flex align-items-center">
+                                                        <a class="d-flex" rel="alternate" hreflang="{{ $localeCode }}" href="{{ $localizedUrl }}">
                                                             <span>{{ $localeCode }}</span>
                                                         </a>
                                                     </div>
                                                 </li>
                                             @endif
                                         @endforeach
+
                                     </ul>
                                 </div>
                             </div>
