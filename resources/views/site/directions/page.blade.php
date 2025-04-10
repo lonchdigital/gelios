@@ -13,7 +13,7 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => $page->title,
+                'title' => trans('web.directions'),
             ],
         ],
     ])
