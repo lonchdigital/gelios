@@ -109,20 +109,24 @@ import $ from 'jquery';
 				title = menu.curItem.children("a").text().trim();
 				menu.options.initElem.find(".nav-toggle").addClass("back-visible");
 
-				if (!menu.options.initElem.find(".nav-title").parent().is("a")) {
-					var titleLink = '<a href="##"><span class="nav-title h3">' + title + '</span></a>';
-					menu.options.initElem.find(".nav-toggle").find(".nav-title").replaceWith(titleLink);
-				} else {
-					menu.options.initElem.find(".nav-title").text(title);
-				}
+				// Додаємо посилання на заголовок, якщо його ще немає
+				let slug = menu.curItem.children("a").data('slug');
+				var titleLink = '<a href="' + slug + '"><span class="nav-title h3">' + title + '</span></a>';
+				menu.options.initElem.find(".nav-toggle").find(".nav-title").replaceWith(titleLink);
+
 			} else {
 				menu.options.initElem.find(".nav-toggle").removeClass("back-visible");
 
-				// На початковому рівні – залишаємо title як посилання
-				var titleLink = '<a href="##"><span class="nav-title h3">' + title + '</span></a>';
-				menu.options.initElem.find(".nav-toggle").find(".nav-title").parent().replaceWith(titleLink);
-			}
+				// Повертаємо заголовок до простого тексту без посилання на початковому рівні
+				var titleText = '<span class="nav-title h3">' + title + '</span>';
+				menu.options.initElem.find(".nav-toggle").find(".nav-title").replaceWith(titleText);
 
+				// видаляємо тег <a>
+				var currentTitle = menu.options.initElem.find(".nav-toggle").find("a");
+				if (currentTitle.length) {
+					currentTitle.replaceWith(titleText);
+				}
+			}
 		}
 
 
