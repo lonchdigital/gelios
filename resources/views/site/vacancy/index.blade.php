@@ -12,10 +12,6 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => __('web.main'),
-                'url' => route('main'),
-            ],
-            [
                 'title' => __('pages.vacancies'),
                 'url' => null,
             ],
