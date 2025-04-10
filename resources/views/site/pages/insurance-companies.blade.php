@@ -30,7 +30,7 @@
                         <div class="backdrop p-3 px-lg-6 py-lg-12">
                             <div class="row">
                                 <div class="col col-lg-6">
-                                    <div class="content pt-34 mt-20 pt-lg-0 mt-lg-0">
+                                    <div class="content pt-34 mt-16 pt-lg-0 mt-lg-0">
                                         <div class="h2 font-m font-weight-bolder mb-5">{{ $page->sub_title }}</div>
                                         <div class="h6 font-m font-weight-bold">{!! $pageTextBlock->text_one !!}</div>
                                     </div>
