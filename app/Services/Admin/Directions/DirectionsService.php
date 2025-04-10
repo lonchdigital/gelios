@@ -197,17 +197,17 @@ class DirectionsService
     {
         $locale = app()->getLocale();
 
-        return Cache::remember("all_directions_{$locale}", now()->addWeek(), function () {
-            return $this->buildTree($this->getAllDirections(), true);
+        return Cache::remember("all_directions_{$locale}", now()->addWeek(), function ($locale) {
+            return $this->buildTree($this->getAllDirections(), true, $locale);
         });
     }
-    public function buildTree($directions, $collection = false)
+    public function buildTree($directions, $collection = false, $locale = '')
     {
         $tree = [];
 
         foreach ($directions as $direction) {
             $children = $direction->children->isNotEmpty() 
-                ? $this->buildTree($direction->children) 
+                ? $this->buildTree($direction->children, true, $locale) 
                 : [];
 
             $tree[] = [
@@ -216,7 +216,7 @@ class DirectionsService
                 'template' => $direction->template,
                 'children' => $children,
                 'slug' => $direction->page->slug,
-                'full_path' => url($direction->buildFullPath())
+                'full_path' => url($locale . '/' . $direction->buildFullPath())
             ];
         }
 
