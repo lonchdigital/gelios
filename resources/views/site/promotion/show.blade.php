@@ -12,10 +12,6 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => __('pages.main_page'),
-                'url' => route('main'),
-            ],
-            [
                 'title' => __('pages.promotions'),
                 'url' => route('promotions.index'),
             ],

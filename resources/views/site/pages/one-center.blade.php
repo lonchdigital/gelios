@@ -17,10 +17,6 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => trans('web.main'),
-                'url' => route('main'),
-            ],
-            [
                 'title' => $page->title ?? '',
                 'url' => null,
             ],
