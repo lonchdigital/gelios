@@ -54,6 +54,8 @@ import $ from 'jquery';
 
 		this.options.menuTitle = this.options.initElem.find(".nav-title").text().trim() || this.options.menuTitle;
 
+		this.options.defaultSlug = this.options.initElem.find(".nav-title").closest("a").attr("href") || "#";
+
 		PushNav.prototype.setMenuTitle = function (title) {
 			self.options.menuTitle = title;
 			_updateMenuTitle(self);
@@ -103,31 +105,38 @@ import $ from 'jquery';
 
 		function _updateMenuTitle(menu) {
 			var title = menu.options.menuTitle;
+			var $navToggle = menu.options.initElem.find(".nav-toggle");
 
-			// Оновлення заголовка залежно від рівня меню
-			if (menu.curLevel > 0) {
-				title = menu.curItem.children("a").text().trim();
-				menu.options.initElem.find(".nav-toggle").addClass("back-visible");
+			if (menu.curLevel > 0 && menu.curItem && menu.curItem.length) {
+				const $link = menu.curItem.children("a");
+				title = $link.text().trim();
+				let slug = $link.data('slug') || '#';
 
-				// Додаємо посилання на заголовок, якщо його ще немає
-				let slug = menu.curItem.children("a").data('slug');
-				var titleLink = '<a href="' + slug + '"><span class="nav-title h3">' + title + '</span></a>';
-				menu.options.initElem.find(".nav-toggle").find(".nav-title").replaceWith(titleLink);
+				$navToggle.addClass("back-visible");
 
+				let $titleWrapper = $navToggle.find(".nav-title").closest("a");
+				if ($titleWrapper.length) {
+					$titleWrapper.attr("href", slug).find(".nav-title").text(title);
+				} else {
+					let titleLink = '<a href="' + slug + '"><span class="nav-title h3">' + title + '</span></a>';
+					$navToggle.find(".nav-title").replaceWith(titleLink);
+				}
 			} else {
-				menu.options.initElem.find(".nav-toggle").removeClass("back-visible");
+				title = menu.options.menuTitle;
+				let slug = menu.options.defaultSlug || '#';
+				$navToggle.removeClass("back-visible");
 
-				// Повертаємо заголовок до простого тексту без посилання на початковому рівні
-				var titleText = '<span class="nav-title h3">' + title + '</span>';
-				menu.options.initElem.find(".nav-toggle").find(".nav-title").replaceWith(titleText);
-
-				// видаляємо тег <a>
-				var currentTitle = menu.options.initElem.find(".nav-toggle").find("a");
-				if (currentTitle.length) {
-					currentTitle.replaceWith(titleText);
+				let $titleWrapper = $navToggle.find(".nav-title").closest("a");
+				if ($titleWrapper.length) {
+					$titleWrapper.attr("href", slug).find(".nav-title").text(title);
+				} else {
+					let titleLink = '<a href="' + slug + '"><span class="nav-title h3">' + title + '</span></a>';
+					$navToggle.find(".nav-title").replaceWith(titleLink);
 				}
 			}
 		}
+
+
 
 
 
@@ -156,6 +165,7 @@ import $ from 'jquery';
 		});
 	});
 })();
+
 
 
 
