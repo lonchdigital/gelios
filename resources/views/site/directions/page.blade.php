@@ -13,10 +13,6 @@
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [
-                'title' => 'Головна',
-                'url' => route('main'),
-            ],
-            [
                 'title' => $page->title,
             ],
         ],

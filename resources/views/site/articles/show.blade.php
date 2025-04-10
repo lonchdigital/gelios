@@ -28,10 +28,6 @@
 @include('site.components.breadcrumbs', [
     'breadcrumbs' => [
         [
-            'title' => __('web.main'),
-            'url' => route('main'),
-        ],
-        [
             'title' => __('pages.blog'),
             'url' => route('articles.index'),
         ],

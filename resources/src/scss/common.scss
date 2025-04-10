@@ -1545,6 +1545,14 @@ form {
 		position: relative;
 		display: inline;
 
+		&.main {
+
+			svg {
+				position: relative;
+    			bottom: 3px;
+			}
+		}
+
 		.i-home {
 			margin-bottom: 2px;
 		}
