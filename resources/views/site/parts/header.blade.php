@@ -310,7 +310,7 @@
                                                             <div class="push-menu--nav">
                                                                 <div class="nav-toggle">
                                                                     <span class="nav-back">{{ trans('web.back') }}</span>
-                                                                    <a href="direction.html"><span class="nav-title h3">{{ trans('web.directions') }}</span></a>
+                                                                    <a href="{{ route('directions.page') }}"><span class="nav-title h3">{{ trans('web.directions') }}</span></a>
                                                                     <span class="nav-close"></span>
                                                                 </div>
                                                                 <div class="push-menu--lvl">
