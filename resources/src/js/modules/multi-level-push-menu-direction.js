@@ -59,21 +59,23 @@ import $ from 'jquery';
 		}
 
 		function _clickHandlers(menu) {
+			// Назад
 			menu.options.initElem.find(".btn-nav-back").on("click", function (e) {
 				e.preventDefault();
 				_updateActiveMenu(menu, "back");
 			});
 
+			// Вперед по кнопці-стрілці
 			menu.options.initElem.find(".btn-nav-forward").on("click", function (e) {
 				e.preventDefault();
-				menu.curItem = $(this).closest(".push-menu").find(".item.has-dropdown").first();
+				menu.curItem = $(this).closest(".item.has-dropdown");
 				_updateActiveMenu(menu, 'forward');
 			});
 
+			// Залишити лише як fallback — якщо натиснули на <a> всередині has-dropdown (можна прибрати)
+			// або змінити на умовну перевірку:
 			menu.options.initElem.on("click", ".has-dropdown > a", function (e) {
-				e.preventDefault();
-				menu.curItem = $(this).parent();
-				_updateActiveMenu(menu, 'forward');
+				// Не забороняємо перехід — лінк працює як звичайно
 			});
 		}
 
