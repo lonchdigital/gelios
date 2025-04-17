@@ -46,13 +46,18 @@
     </section>
     <section class="prices-list mb-24">
         <div class="container">
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col">
                     <div class="accordion" id="accordion-prices-list">
                         {{-- got from ajax --}}
                     </div>
                 </div>
             </div>
+				<div class="row">
+					<div class="col">
+						<p class="small-txt">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus iure magnam repellendus excepturi distinctio sit fugit facilis, veniam optio accusamus perferendis assumenda pariatur qui voluptatum voluptatem et eos, ullam natus.</p>
+					</div>
+				</div>
         </div>
     </section>
 
