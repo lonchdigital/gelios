@@ -53,11 +53,11 @@
                     </div>
                 </div>
             </div>
-				<div class="row">
+				<!-- <div class="row">
 					<div class="col">
 						<p class="small-txt">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus iure magnam repellendus excepturi distinctio sit fugit facilis, veniam optio accusamus perferendis assumenda pariatur qui voluptatum voluptatem et eos, ullam natus.</p>
 					</div>
-				</div>
+				</div> -->
         </div>
     </section>
 
