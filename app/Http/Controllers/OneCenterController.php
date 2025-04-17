@@ -19,9 +19,9 @@ class OneCenterController extends Controller
         $allPageTextBlocks = PageTextBlock::where('page_id', $page->id)->get();
         $doctors = Doctor::limit(10)->get();
 
-        $url['ua'] = url('/') . '/one-center/ua/' . $slug;
+        $url['ua'] = url('/') . '/ua/one-center/' . $slug;
         $url['ru'] = url('/') . '/one-center/' . $slug;
-        $url['en'] = url('/') . '/one-center/en/' . $slug;
+        $url['en'] = url('/') . '/en/one-center/' . $slug;
 
         return view('site.pages.one-center',[
             'page' => $page,

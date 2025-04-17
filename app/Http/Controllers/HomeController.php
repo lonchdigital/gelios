@@ -16,9 +16,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $url['ua'] = url('/') . '/ua/';
+        $url['ua'] = url('/') . '/ua';
         $url['ru'] = url('/');
-        $url['en'] = url('/') . '/en/';
+        $url['en'] = url('/') . '/en';
 
         $promotions = Promotion::inRandomOrder()->take(3)->get();
         $doctors = Doctor::mainPage()->get();
