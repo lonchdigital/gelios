@@ -7,9 +7,9 @@
                         @if( $oneChildDirection['children'] )
                             <div class="directions-item">
                                 <div class="content item has-dropdown">
-                                    <a href="##" class="link">
+                                    <a href="{{ $oneChildDirection['full_path'] }}" class="link">
                                         <span>{{ $oneChildDirection['name'] }}</span>
-                                        <div class="i-link"></div>
+                                        <div class="i-link btn-nav-forward"></div>
                                     </a>
                                     <x-site.directions.section-menu :data="collect($oneChildDirection['children'])" />
                                 </div>
