@@ -17,7 +17,7 @@
                                 <div class="border border-secondary rounded p-3 col-md-11">
                                     <div class="row justify-content-between align-items-center" wire:ignore.self>
 
-                                        <div class="col-md-12">
+                                        {{-- <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <x-admin.multilanguage-text-area-rich
@@ -31,6 +31,7 @@
                                                             'en' => $this->enTitle
                                                         ]"
                                                     />
+                                                    <div class="text-danger ajaxError" style="margin-top: -20px; margin-left: 5px">{{ __('admin.edit_promotion_title') }}</div>
                                                     @if($errors->has('uaTitle'))
                                                         <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaTitle') }}</div>
                                                     @elseif($errors->has('ruTitle'))
@@ -40,10 +41,10 @@
                                                     @endif
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         @if ($this->activeLocale == 'ua')
-                                            {{-- <div class="col-md-12">
+                                            <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -60,6 +61,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <div class="text-danger ajaxError" style="margin-left: 5px">{{ __('admin.edit_promotion_title') }}</div>
                                                                 @if($errors->has('uaTitle'))
                                                                     <div class="mt-1 text-danger ajaxError">{{ $errors->first('uaTitle') }}</div>
                                                                 @elseif($errors->has('ruTitle'))
@@ -71,7 +73,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div> --}}
+                                            </div>
 
                                             <div class="col-md-12">
                                                 <div class="row">
@@ -135,7 +137,7 @@
                                         @endif
 
                                         @if ($this->activeLocale == 'ru')
-                                            {{-- <div class="col-md-12">
+                                            <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -152,6 +154,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <div class="text-danger ajaxError" style="margin-top: -20px; margin-left: 5px">{{ __('admin.edit_promotion_title') }}</div>
                                                                 @if($errors->has('ruTitle'))
                                                                     <div class="mt-1 text-danger ajaxError">{{ $errors->first('ruTitle') }}</div>
                                                                 @elseif($errors->has('uaTitle'))
@@ -163,7 +166,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div> --}}
+                                            </div>
 
                                             <div class="col-md-12">
                                                 <div class="row">
@@ -227,7 +230,7 @@
                                         @endif
 
                                         @if ($this->activeLocale == 'en')
-                                            {{-- <div class="col-md-12">
+                                            <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row mb-3">
@@ -244,6 +247,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <div class="text-danger ajaxError" style="margin-top: 5px; margin-left: 5px">{{ __('admin.edit_promotion_title') }}</div>
                                                                 @if($errors->has('enTitle'))
                                                                     <div class="mt-1 text-danger ajaxError">{{ $errors->first('enTitle') }}</div>
                                                                 @elseif($errors->has('ruTitle'))
@@ -255,7 +259,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div> --}}
+                                            </div>
 
                                             <div class="col-md-12">
                                                 <div class="row">

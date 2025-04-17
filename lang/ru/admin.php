@@ -386,4 +386,5 @@ return [
     'choose_language' => 'Виберите язык',
     'doctor' => 'Доктор',
     'full_name' => 'ФИО',
+    'edit_promotion_title' => 'Для виделения тексти оберните его тегом "<div class="underline"></div>"',
 ];

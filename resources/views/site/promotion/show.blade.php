@@ -30,7 +30,7 @@
                             <div class="col-12">
                                 <div class="content-wrap d-flex flex-column justify-content-between">
                                     <div>
-                                        <div class="h3 font-m font-weight-bolder text-blue mb-5">{{ $promotion->title }}
+                                        <div class="h3 font-m font-weight-bolder text-blue mb-5">{{ strip_tags($promotion->title) }}
                                         </div>
                                         <div class="price--consultation mb-5"><span class="price">{{ $promotion->price }}</span><span class="currency"></span></div>
                                         <div class="content os-scrollbar-overflow">

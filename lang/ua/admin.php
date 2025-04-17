@@ -418,4 +418,5 @@ return [
     'choose_language' => 'Виберіть мову',
     'doctor' => 'Лікар',
     'full_name' => 'ПІБ',
+    'edit_promotion_title' => 'Для виділення тексту обгорніть його тегом "<div class="underline"></div>"',
 ];
