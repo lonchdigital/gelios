@@ -243,7 +243,7 @@
                     <nav class="navbar navbar-expand-lg flex-column p-0">
                         <div class="inner w-100">
                             <div class="content d-flex justify-content-between">
-                                <a class="navbar-brand p-0" href="/"><img src="{{ $headerImage ?? asset('static_images/logo.png') }}"
+                                <a class="navbar-brand p-0" href="{{ route('main') }}"><img src="{{ $headerImage ?? asset('static_images/logo.png') }}"
                                                                           alt="logo"></a>
                                 <div class="navbar-nav--mob d-flex d-lg-none justify-content-between">
                                     <div class="languages">
