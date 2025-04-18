@@ -127,7 +127,7 @@ Route::group([
                 Route::get('/{test}/edit', [PriceController::class, 'editTest'])->name('prices.test.edit');
             });
 
-            Route::prefix('/contacts')->group(function() {
+            Route::prefix('/contact-us')->group(function() {
                 Route::get('/', [ContactController::class, 'index'])->name('contacts.index');
             });
 
