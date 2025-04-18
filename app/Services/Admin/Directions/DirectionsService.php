@@ -205,6 +205,7 @@ class DirectionsService
     {
         $tree = [];
         $locale = app()->getLocale();
+        $locale = ($locale === 'ru') ? '' : $locale;
 
         foreach ($directions as $direction) {
             $children = $direction->children->isNotEmpty() 
