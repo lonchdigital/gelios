@@ -59,7 +59,7 @@ $items = [
     // directions
     [
         'from' => '/pediatriya/',
-        'to' => '/pediatriya/pediatriya-dityacha'
+        'to' => '/pediatriya-dityacha/pediatriya'
     ],
     [
         'from' => '/pediatriya/otolaringologiya/',
