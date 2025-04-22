@@ -78,10 +78,6 @@ $items = [
         'to' => '/pediatriya/nefrologiya-detskaya'
     ],
     [
-        'from' => '/semejnaya-mediczina/',
-        'to' => '/simejna-medicina/semejnaya-mediczina'
-    ],
-    [
         'from' => '/vzroslym/hirurgiya/',
         'to' => '/hirurgiya'
     ],
