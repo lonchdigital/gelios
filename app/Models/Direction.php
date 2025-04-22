@@ -106,13 +106,15 @@ class Direction extends Model implements TranslatableContract
     {
         $breadcrumbs = [];
         $current = $this;
+        $locale = app()->getLocale();
+        $locale = ($locale === 'ru') ? '' : $locale;
 
         while ($current) {
             $breadcrumbs[] = [
                 'id' => $current->id,
                 'name' => $current->short_name ?? null,
                 'slug' => $current->page->slug ?? null,
-                'full_path' => url($current->buildFullPath())
+                'full_path' => url($locale . '/' . $current->buildFullPath())
             ];
             $current = $current->parent; // parent
         }
