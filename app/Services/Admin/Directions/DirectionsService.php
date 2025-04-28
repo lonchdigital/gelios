@@ -502,17 +502,23 @@ class DirectionsService
 
         foreach($directionPrices as $directionPrice) {
             $service = [];
-
             if(!is_null($directionPrice)) {
                 foreach ($directionPrice->getTranslationsArray() as $lang => $value) {
                     $service[$lang] = $value['service'];
                 }
             }
 
+            $price = [];
+            if(!is_null($directionPrice)) {
+                foreach ($directionPrice->getTranslationsArray() as $lang => $value) {
+                    $price[$lang] = $value['price'];
+                }
+            }
+
             $data[] = [
                 'id' => $directionPrice->id,
                 'sort' => $directionPrice->sort,
-                'price' => $directionPrice->price,
+                'price' => $price,
                 'service' => $service,
                 'is_free' => $directionPrice->is_free,
             ];
@@ -605,7 +611,6 @@ class DirectionsService
             if( !is_null($existingPrice) ) {
                 $dataToUpdate = [
                     'sort' => $price['sort'],
-                    'price' => $price['price'],
                     'is_free' => $price['is_free']
                 ];
 
@@ -614,19 +619,28 @@ class DirectionsService
                         $dataToUpdate[$lang]['service'] = $value;
                     }
                 }
+                if($price['price']) {
+                    foreach ($price['price'] as $lang => $value) {
+                        $dataToUpdate[$lang]['price'] = $value;
+                    }
+                }
 
                 $existingPrice->update($dataToUpdate);
             } else {
                 $dataToUpdate = [
                     'direction_id' => $directionId,
                     'sort' => $price['sort'],
-                    'price' => $price['price'],
                     'is_free' => $price['is_free']
                 ];
 
                 if($price['service']) {
                     foreach ($price['service'] as $lang => $value) {
                         $dataToUpdate[$lang]['service'] = $value;
+                    }
+                }
+                if($price['price']) {
+                    foreach ($price['price'] as $lang => $value) {
+                        $dataToUpdate[$lang]['price'] = $value;
                     }
                 }
 
@@ -674,46 +688,20 @@ class DirectionsService
 
     public function setSeoData(PageDirection $page)
     {
-        $data = [];
+        $data = [
+            'meta_title' => [],
+            'meta_description' => [],
+            'meta_keywords' => [],
+            'seo_title' => [],
+            'seo_text' => [],
+        ];
 
-        if(!is_null($page->meta_title)) {
-            foreach ($page->getTranslationsArray() as $lang => $value) {
-                $data['meta_title'][$lang] = $value['meta_title'];
-            }
-        } else {
-            $data['meta_title'] = [];
-        }
-        
-        if(!is_null($page->meta_description)) {
-            foreach ($page->getTranslationsArray() as $lang => $value) {
-                $data['meta_description'][$lang] = $value['meta_description'];
-            }
-        } else {
-            $data['meta_description'] = [];
-        }
-
-        if(!is_null($page->meta_keywords)) {
-            foreach ($page->getTranslationsArray() as $lang => $value) {
-                $data['meta_keywords'][$lang] = $value['meta_keywords'];
-            }
-        } else {
-            $data['meta_keywords'] = [];
-        }
-
-        if(!is_null($page->seo_title)) {
-            foreach ($page->getTranslationsArray() as $lang => $value) {
-                $data['seo_title'][$lang] = $value['seo_title'];
-            }
-        } else {
-            $data['seo_title'] = [];
-        }
-
-        if(!is_null($page->seo_text)) {
-            foreach ($page->getTranslationsArray() as $lang => $value) {
-                $data['seo_text'][$lang] = $value['seo_text'];
-            }
-        } else {
-            $data['seo_text'] = [];
+        foreach ($page->getTranslationsArray() as $lang => $translation) {
+            $data['meta_title'][$lang] = $translation['meta_title'] ?? null;
+            $data['meta_description'][$lang] = $translation['meta_description'] ?? null;
+            $data['meta_keywords'][$lang] = $translation['meta_keywords'] ?? null;
+            $data['seo_title'][$lang] = $translation['seo_title'] ?? null;
+            $data['seo_text'][$lang] = $translation['seo_text'] ?? null;
         }
 
         return $data;

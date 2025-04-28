@@ -8,7 +8,6 @@ class PageDirectionTranslation extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-        'locale',
         'name',
         'description',
         'text',

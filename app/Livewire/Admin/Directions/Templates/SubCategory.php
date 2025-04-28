@@ -134,7 +134,7 @@ class SubCategory extends Component
         $this->directionPrices[] = [
             'id' => null,
             'sort' => count($this->directionPrices) + 1,
-            'price' => 0,
+            'price' => [],
             'service' => [],
             'is_free' => 0,
         ];
@@ -327,7 +327,6 @@ class SubCategory extends Component
         ];
         $this->directionsService->updateTextBlock($formDataTwo);
 
-        // dd($this->directionPrices);
         // Update Direction Prices
         $existingDirectionPrices = DirectionPrice::where('direction_id', $this->direction->id)->get();
         $this->directionsService->syncPrices($this->directionPrices, $existingDirectionPrices, $this->direction->id);

@@ -11,6 +11,6 @@ class DirectionPrice extends Model implements TranslatableContract
 {
     use Translatable;
 
-    public $translatedAttributes = ['service'];
-    protected $fillable = ['direction_id', 'sort', 'price', 'is_free'];
+    public $translatedAttributes = ['service', 'price'];
+    protected $fillable = ['direction_id', 'sort', 'is_free'];
 }
