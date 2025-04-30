@@ -97,7 +97,8 @@ function buildItemHTML(item, iteration)
     item.additional_info.forEach(function (priceItem) {
         let priceItemTranslation = priceItem.translations.find(translation => translation.locale === appLocale);
         let priceItemService = priceItemTranslation ? priceItemTranslation.service : '';
-        let price = Math.floor(priceItem.price);
+        let price = priceItemTranslation ? priceItemTranslation.price : '';
+        // let price = Math.floor(priceItem.price);
         let priceHtml = '';
 
         if(priceItem.is_free) {
