@@ -84,7 +84,7 @@ class Edit extends Component
         $this->prices[] = [
             'id' => null,
             'sort' => count($this->prices) + 1,
-            'price' => 0,
+            'price' => [],
             'service' => [],
             'is_free' => 0,
         ];

@@ -16,18 +16,25 @@ class PricesService
         $data = [];
 
         foreach($prices as $price) {
-            $service = [];
 
+            $service = [];
             if(!is_null($price)) {
                 foreach ($price->getTranslationsArray() as $lang => $value) {
                     $service[$lang] = $value['service'];
                 }
             }
 
+            $priceItself = [];
+            if(!is_null($price)) {
+                foreach ($price->getTranslationsArray() as $lang => $value) {
+                    $priceItself[$lang] = $value['price'];
+                }
+            }
+
             $data[] = [
                 'id' => $price->id,
                 'sort' => $price->sort,
-                'price' => $price->price,
+                'price' => $priceItself,
                 'service' => $service,
                 'is_free' => $price->is_free,
             ];
@@ -44,7 +51,6 @@ class PricesService
             if( !is_null($existingPrice) ) {
                 $dataToUpdate = [
                     'sort' => $price['sort'],
-                    'price' => $price['price'],
                     'is_free' => $price['is_free']
                 ];
 
@@ -53,19 +59,28 @@ class PricesService
                         $dataToUpdate[$lang]['service'] = $value;
                     }
                 }
+                if($price['price']) {
+                    foreach ($price['price'] as $lang => $value) {
+                        $dataToUpdate[$lang]['price'] = $value;
+                    }
+                }
 
                 $existingPrice->update($dataToUpdate);
             } else {
                 $dataToUpdate = [
                     'test_id' => $testId,
                     'sort' => $price['sort'],
-                    'price' => $price['price'],
                     'is_free' => $price['is_free']
                 ];
 
                 if($price['service']) {
                     foreach ($price['service'] as $lang => $value) {
                         $dataToUpdate[$lang]['service'] = $value;
+                    }
+                }
+                if($price['price']) {
+                    foreach ($price['price'] as $lang => $value) {
+                        $dataToUpdate[$lang]['price'] = $value;
                     }
                 }
 

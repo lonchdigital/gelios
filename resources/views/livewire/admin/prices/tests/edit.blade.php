@@ -34,6 +34,7 @@
                     <section class="mb-50 mt-30 art-services-section ">
                         <h6 class="card-title">{{ trans('admin.prices') }}</h6>
 
+                        {{-- @dd($prices) --}}
                         @if(isset($prices))
                             @foreach($prices as $index => $price)
 
@@ -77,10 +78,13 @@
                                                     />
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <div class="form-group mb-1">
-                                                        <label for="meta_title_ua">{{ trans('admin.price') }}</label>
-                                                        <input type="number" wire:model="prices.{{ $index }}.price" name="prices.{{ $index }}.price" value="{{ $price['price'] }}" class="form-control">
-                                                    </div>
+                                                    <x-admin.multilanguage-input
+                                                        :is-required="false"
+                                                        :label="trans('admin.price')"
+                                                        field-name="prices.{{ $index }}.price"
+                                                        live-wire-field="prices.{{ $index }}.price"
+                                                        :values="$price['price']"
+                                                    />
                                                 </div>
 
                                                 <div class="col-md-2">
