@@ -190,7 +190,7 @@ class Direction extends Component
         $this->directionPrices[] = [
             'id' => null,
             'sort' => count($this->directionPrices) + 1,
-            'price' => 0,
+            'price' => [],
             'service' => [],
             'is_free' => 0,
         ];
