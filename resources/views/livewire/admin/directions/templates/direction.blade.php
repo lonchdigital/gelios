@@ -490,10 +490,13 @@
                                                                     />
                                                                 </div>
                                                                 <div class="col-md-2">
-                                                                    <div class="form-group mb-1">
-                                                                        <label for="meta_title_ua">{{ trans('admin.price') }}</label>
-                                                                        <input type="number" wire:model="directionPrices.{{ $index }}.price" name="directionPrices.{{ $index }}.price" value="{{ $directionPrice['price'] }}" class="form-control">
-                                                                    </div>
+                                                                    <x-admin.multilanguage-input
+                                                                        :is-required="false"
+                                                                        :label="trans('admin.price')"
+                                                                        field-name="directionPrices.{{ $index }}.price"
+                                                                        live-wire-field="directionPrices.{{ $index }}.price"
+                                                                        :values="$directionPrice['price']"
+                                                                    />
                                                                 </div>
 
                                                                 <div class="col-md-2">
