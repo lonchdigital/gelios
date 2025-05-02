@@ -200,7 +200,7 @@ function buildLaboratoryItemHTML(item, iteration)
 
         allPrices += `
             <div class="item">
-                <div class="name">${title}</div>
+                <div class="name">${priceItemTranslation.title}</div>
                 ${priceHtml}
             </div>
         `;

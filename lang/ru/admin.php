@@ -387,4 +387,5 @@ return [
     'doctor' => 'Доктор',
     'full_name' => 'ФИО',
     'edit_promotion_title' => 'Для виделения тексти оберните его тегом "<div class="underline"></div>"',
+    'check_ups' => 'Check up',
 ];

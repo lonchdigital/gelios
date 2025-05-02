@@ -224,4 +224,5 @@ return [
     'category' => 'Category',
     'doctor' => 'Doctor',
     'edit_promotion_title' => 'To select text, wrap it with a tag "<div class="underline"></div>"',
+    'check_ups' => 'Check up',
 ];

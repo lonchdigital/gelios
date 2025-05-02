@@ -130,7 +130,7 @@
                                     <tr>
                                         <td>{{ trans('admin.check_ups') }}</td>
                                         <td style="text-align: right">
-                                            <a href="{{ trans('admin.check_ups') }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                            <a href="{{ route('admin.check-ups.index') }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
                                         </td>
                                     </tr>
 
