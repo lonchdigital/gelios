@@ -2115,6 +2115,8 @@
 				background: $white;
 				padding: 20px;
 				@include transition(0.3s ease-out 0s);
+				word-break: break-word;
+				hyphens: auto;
 
 				@include md-max {
 					width: 190px;
