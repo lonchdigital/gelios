@@ -327,7 +327,7 @@
 
                                                                                 @if( $category['children'] )
                                                                                     <div class="item has-dropdown main-title">
-                                                                                        <a href="##" class="heading" data-slug="{{ $category['full_path'] }}">{{ $category['name'] }}</a>
+                                                                                        <span class="heading" data-slug="{{ $category['full_path'] }}">{{ $category['name'] }}</span>
                                                                                         <div class="push-menu--lvl">
                                                                                             <x-site.directions.header-menu :data="collect($category['children'])" />
                                                                                         </div>
@@ -341,7 +341,7 @@
                                                                                 @foreach (collect($category['children']) as $subCategory)
                                                                                     @if( $subCategory['children'] )
                                                                                         <div class="item has-dropdown">
-                                                                                            <a href="##" data-slug="{{ $subCategory['full_path'] }}">{{ $subCategory['name'] }}</a>
+                                                                                            <span data-slug="{{ $subCategory['full_path'] }}">{{ $subCategory['name'] }}</span>
                                                                                             <div class="push-menu--lvl">
                                                                                                 <x-site.directions.header-menu :data="collect($subCategory['children'])" />
                                                                                             </div>
