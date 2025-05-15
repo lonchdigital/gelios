@@ -76,7 +76,7 @@ import $ from 'jquery';
 			});
 
 			// Обробка кліків на елементи з підменю
-			menu.options.initElem.on("click", ".has-dropdown > .heading", function (e) {
+			menu.options.initElem.on("click", ".has-dropdown > span", function (e) {
 				e.preventDefault();
 				menu.curItem = $(this).parent();
 				_updateActiveMenu(menu, 'forward');
@@ -108,7 +108,7 @@ import $ from 'jquery';
 			var $navToggle = menu.options.initElem.find(".nav-toggle");
 
 			if (menu.curLevel > 0 && menu.curItem && menu.curItem.length) {
-				const $link = menu.curItem.children(".heading");
+				const $link = menu.curItem.children("span");
 				title = $link.text().trim();
 				let slug = $link.data('slug') || '#';
 
