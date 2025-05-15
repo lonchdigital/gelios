@@ -23,7 +23,7 @@
                 <div class="col">
                     <div class="row mb-8">
                         <div class="col d-flex align-items-center justify-content-between">
-                            <div class="h2 font-m font-weight-bolder text-blue">{{ $page->title ?? __('pages.promotions') }}</div>
+                            <h1 class="h2 font-m font-weight-bolder text-blue">{{ $page->title ?? __('pages.promotions') }}</h1>
                         </div>
                     </div>
                     <div class="row">

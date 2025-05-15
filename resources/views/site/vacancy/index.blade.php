@@ -26,7 +26,7 @@
                             <div class="col-12">
                                 <div class="content-wrap content-wrap--min-h d-flex flex-column justify-content-between">
                                     <div>
-                                        <div class="h2 font-m font-weight-bolder text-blue mb-5">{{ $page->pageBlocks->first()->title ?? '' }}</div>
+                                        <h1 class="h2 font-m font-weight-bolder text-blue mb-5">{{ $page->pageBlocks->first()->title ?? '' }}</h1>
                                         <div class="content os-scrollbar-overflow text-justify">
                                             <p>{!! $page->pageBlocks->first()->description ?? '' !!}</p>
                                         </div>

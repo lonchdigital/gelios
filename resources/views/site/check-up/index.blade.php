@@ -19,6 +19,11 @@
     ])
     <section class="section-check-up mb-24">
         <div class="container">
+		  		<div class="row mb-8">
+               <div class="col d-flex align-items-center justify-content-between">
+                  	<h1 class="h2 font-m font-weight-bolder text-blue">{{ $page->title ?? __('pages.promotions') }}</h1>
+                  </div>
+               </div>
             <div class="check-up--list row row-gap">
                 @forelse($checkUps as $checkUp)
                     <div class="col-12 col-lg-6">

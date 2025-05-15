@@ -180,9 +180,9 @@
                     <div class="row pt-16  pb-6 py-lg-16 text-white">
                         <div class="col col-md-8 col-xl-4">
                             <div class="content">
-                                <div class="h2 font-m font-weight-bolder mb-3 mb-lg-5">
+                                <h1 class="h2 font-m font-weight-bolder mb-3 mb-lg-5">
                                     {!! $page->pageBlocks->where('block', 'banner')->first()->title ?? '' !!}
-                                </div>
+                                </h1>
                                 <div class="h5 font-weight-bold mb-8 mb-lg-10">
                                     {!! $page->pageBlocks->where('block', 'banner')->first()->description ?? '' !!}
                                     {{-- Наші фахівці – це лікарі з великим досвідом

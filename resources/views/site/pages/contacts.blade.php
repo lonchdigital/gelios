@@ -25,7 +25,7 @@
                 <div class="col">
                     <div class="row mb-8">
                         <div class="col d-flex align-items-center justify-content-between">
-                            <div class="h2 font-m font-weight-bolder text-blue">{{ $page->title ?? '' }}</div>
+                            <h1 class="h2 font-m font-weight-bolder text-blue">{{ $page->title ?? '' }}</h1>
                         </div>
                     </div>
                 </div>

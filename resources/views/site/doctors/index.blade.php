@@ -21,7 +21,7 @@
         <div class="container">
             <div class="row mb-8">
                 <div class="col d-flex align-items-center justify-content-between">
-                    <div class="h2 font-m font-weight-bolder text-blue">{{ $page->title ?? 'Лікарі' }}</div>
+                    <h1 class="h2 font-m font-weight-bolder text-blue">{{ $page->title ?? 'Лікарі' }}</h1>
                 </div>
             </div>
             <div class="doctors--nav">

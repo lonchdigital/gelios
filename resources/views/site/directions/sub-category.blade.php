@@ -71,7 +71,7 @@
             <div class="container overflow-hidden">
                 <div class="row mb-8">
                     <div class="col d-flex align-items-center justify-content-between">
-                        <div class="h2 font-m font-weight-bolder text-blue">{{ trans('pages.doctors') }}</div>
+                        <h2 class="h2 font-m font-weight-bolder text-blue">{{ trans('pages.doctors') }}</h2>
                         <a href="{{ route('doctors.index') }}" class="btn btn-white font-weight-bold">{{ trans('doctor.all_doctors') }}</a>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
             <div class="container">
                 <div class="row mb-8">
                     <div class="col d-flex align-items-center justify-content-between">
-                        <div class="h2 font-m font-weight-bolder text-blue">{{ trans('pages.prices') }}</div>
+                        <h2 class="h2 font-m font-weight-bolder text-blue">{{ trans('pages.prices') }}</h2>
                     </div>
                 </div>
                 @forelse($direction->prices->sortBy('sort') as $price)
@@ -113,7 +113,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="h2 font-m font-weight-bolder text-blue mb-8">{{ trans('web.how_is_consultation_going') }}</div>
+                        <h2 class="h2 font-m font-weight-bolder text-blue mb-8">{{ trans('web.how_is_consultation_going') }}</h2>
                     </div>
                 </div>
                 <div class="row row-gap">
@@ -146,7 +146,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="h2 font-weight-bolder text-blue mb-8">{{ $page->seo_title }}</div>
+                        <h2 class="h2 font-weight-bolder text-blue mb-8">{{ $page->seo_title }}</h2>
                         <div class="seo-wrapper">
                             <div class="content os-scrollbar-overflow">
                                 {!! $page->seo_text !!}

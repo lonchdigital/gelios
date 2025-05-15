@@ -520,6 +520,7 @@
 							z-index: 3;
 							opacity: 1;
 							visibility: visible;
+							border-radius: 0 0 40px 40px;
 						}
 					}
 
@@ -730,7 +731,8 @@
 							margin-bottom: 8px;
 						}
 
-						a {
+						a,
+						span {
 							font-size: 16px;
 							font-weight: 400;
 							line-height: 140%;
@@ -780,7 +782,8 @@
 								margin-bottom: 0;
 							}
 
-							a {
+							a,
+							span {
 								padding: 4px 16px;
 							}
 

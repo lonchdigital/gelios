@@ -34,7 +34,7 @@
                                 <div class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
                                     <div class="backdrop px-3 pt-3 pb-10 p-sm-3 p-lg-6">
                                         <div class="content">
-                                            <div class="h1 font-m font-weight-bolder mb-3">{{ $slide->title }}</div>
+                                            <h1 class="h1 font-m font-weight-bolder mb-3">{{ $slide->title }}</h1>
                                             <div class="h5 font-m font-weight-bold mb-3">{{ $slide->description }}</div>
                                             <a href="##" data-toggle="modal"
                                                 data-target="#popup--sign-up-appointment"

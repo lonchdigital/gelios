@@ -49,7 +49,7 @@
                     <div class="doctor-descrp">
                         <div class="row mb-1">
                             <div class="col-8">
-                                <div class="h3 font-m font-weight-bolder text-blue">{{ $doctor->title ?? '' }}</div>
+                                <h1 class="h3 font-m font-weight-bolder text-blue">{{ $doctor->title ?? '' }}</h1>
                             </div>
                         </div>
 								<div class="row">

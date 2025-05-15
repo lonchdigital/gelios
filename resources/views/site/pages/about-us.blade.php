@@ -22,7 +22,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="h2 font-m font-weight-bolder text-blue mb-5">{{ $page->title ?? '' }}</div>
+                    <h1 class="h2 font-m font-weight-bolder text-blue mb-5">{{ $page->title ?? '' }}</h1>
                     <div class="row">
                         <div class="col-12 col-md-8 col-xl-3">
                             <div class="h5 text-grey mb-8">{{ trans('web.welcome_to_our_hospital') }}</div>

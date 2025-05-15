@@ -488,7 +488,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="h2 font-weight-bolder text-blue mb-8">{{ $page->seo_title }}</div>
+                        <h1 class="h2 font-weight-bolder text-blue mb-8">{{ $page->seo_title }}</h1>
                         <div class="seo-wrapper">
                             <div class="content os-scrollbar-overflow">
                                 {!! $page->seo_text !!}

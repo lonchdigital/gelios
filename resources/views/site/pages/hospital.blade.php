@@ -26,7 +26,7 @@
                         class="d-flex flex-column justify-content-end position-relative align-content-end h-100 rounded-sm overflow-hidden text-white p-3 p-lg-6">
                         <div class="backdrop">
                             <div class="content">
-                                <div class="h1 font-m font-weight-bolder mb-3">{{ $page->title }}</div>
+                                <h1 class="h1 font-m font-weight-bolder mb-3">{{ $page->title }}</h1>
                                 <div class="h5 font-weight-bold">{{ $page->sub_title }}</div>
                             </div>
                         </div>
