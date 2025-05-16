@@ -104,4 +104,6 @@ return [
     'send' => 'Send',
     'dnipro' => 'Dnipro',
     'article_categories' => 'Article categories',
+    'direction_meta_description' => '✅ Affordable prices in the private clinic Helios ✅ Modern methods of treatment ⚡ Highly qualified doctors ⚡ Modern equipment ✍️ Make an appointment online',
+    'direction_meta_title' => 'ᐈ Medical center “Helios”',
 ];

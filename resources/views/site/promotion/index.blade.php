@@ -104,11 +104,11 @@
                                 <a
                                     @switch(LaravelLocalization::getCurrentLocale())
                                         @case('ua')
-                                                href="{{ '/ua' . $page->pageblocks->where('block', 'second')->first()->url ?? '##' }}"
+                                                href="{{ '/ua' . $page->pageblocks->where('block', 'second')->first()->url ?? '' }}"
                                             @break
 
                                         @case('en')
-                                                href="{{ '/en' . $page->pageblocks->where('block', 'second')->first()->url ?? '##' }}"
+                                                href="{{ '/en' . $page->pageblocks->where('block', 'second')->first()->url ?? '' }}"
                                             @break
 
                                         @default

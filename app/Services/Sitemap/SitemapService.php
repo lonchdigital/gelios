@@ -47,12 +47,34 @@ final class SitemapService extends SitemapPageService
 
     private function fillSitemap(array $urls): void
     {
+        // foreach ($urls as $url) {
+        //     $settings = $this->settingService->getUrlSettings($url);
+
+        //     $tag = Url::create($url)
+        //         ->setChangeFrequency($settings['frequency'])
+        //         ->setPriority($settings['priority']);
+
+        //     $this->sitemap->add($tag);
+        // }
         foreach ($urls as $url) {
             $settings = $this->settingService->getUrlSettings($url);
 
-            $tag = Url::create($url)
-                ->setChangeFrequency($settings['frequency'])
-                ->setPriority($settings['priority']);
+            // Визначення частоти оновлення залежно від URL
+            $changeFreq = match (true) {
+                $url === '/' => 'always',
+                str_starts_with($url, '/categories') => 'always',
+                str_starts_with($url, '/doctors') => 'always',
+                str_starts_with($url, '/blog') => 'daily',
+                default => 'weekly',
+            };
+
+            // Отримати дату останньої модифікації (можна реалізувати в settingService)
+            $lastMod = $settings['lastmod'] ?? Carbon::now();
+
+            $tag = Url::create(config('app.url') . $url)
+                ->setChangeFrequency($changeFreq)
+                ->setPriority($settings['priority'] ?? 0.5)
+                ->setLastModificationDate(Carbon::parse($lastMod));
 
             $this->sitemap->add($tag);
         }

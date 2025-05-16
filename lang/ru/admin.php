@@ -110,6 +110,7 @@ return [
     'main' => 'Главная',
     'insurance_companies' => 'Страховые компании',
     'insurance_companies_page' => 'Страница страхових компаний',
+    'articles' => 'Блог',
     'add_new_article' => 'Добавить новую статтю',
     'edit_article' => 'Редактировать статтю',
     'title' => 'Заголовок',
@@ -388,4 +389,5 @@ return [
     'full_name' => 'ФИО',
     'edit_promotion_title' => 'Для виделения тексти оберните его тегом "<div class="underline"></div>"',
     'check_ups' => 'Check up',
+    'prices_list' => 'Список цен',
 ];

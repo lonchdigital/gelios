@@ -313,7 +313,6 @@ console.log(categorySelect);
                     // $(categorySelect).select2();
 
                     categorySelect.addEventListener('change', (e) => {
-                        console.log(123);
                         const categoryId = e.target.value;
                         console.log(categoryId);
                         updateQueryAndFetch('category', categoryId);

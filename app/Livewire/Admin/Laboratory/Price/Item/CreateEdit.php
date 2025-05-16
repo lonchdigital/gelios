@@ -56,17 +56,17 @@ class CreateEdit extends Component
             ->first()
             ->title ?? '';
 
-        $this->uaTitle = LabPriceItemTranslation::where('locale', 'ua')
+        $this->uaPrice = LabPriceItemTranslation::where('locale', 'ua')
             ->where('lab_price_item_id', $this->item->id ?? null)
             ->first()
             ->price ?? '';
 
-        $this->enTitle = LabPriceItemTranslation::where('locale', 'en')
+        $this->enPrice = LabPriceItemTranslation::where('locale', 'en')
             ->where('lab_price_item_id', $this->item->id ?? null)
             ->first()
             ->price ?? '';
 
-        $this->ruTitle = LabPriceItemTranslation::where('locale', 'ru')
+        $this->ruPrice = LabPriceItemTranslation::where('locale', 'ru')
             ->where('lab_price_item_id', $this->item->id ?? null)
             ->first()
             ->price ?? '';

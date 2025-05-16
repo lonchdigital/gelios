@@ -115,7 +115,13 @@
         document.addEventListener('DOMContentLoaded', () => {
             const buttons = document.querySelectorAll('.category .btn');
             const searchInput = document.querySelector('.search-input');
-            const categorySelect = document.querySelector('.select-doctors-category');
+            let categorySelect = document.querySelector('.select-doctors-category');
+            const typeMap = {
+                'дорослим': 'adult',
+                'дітям': 'children',
+                'взрослым': 'adult',
+                'детям': 'children'
+            };
 
             const getQueryParams = () => {
                 const urlParams = new URLSearchParams(window.location.search);
@@ -171,9 +177,9 @@
                     buttons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
 
-                    const type = button.textContent.trim().toLowerCase();
-                    const typeValue = type === 'дорослим' ? 'adult' : type === 'дітям' ?
-                        'children' : null;
+                    const typeText = button.textContent.trim().toLowerCase();
+                    const typeValue = typeMap[typeText] || null;
+
                     updateQueryAndFetch('type', typeValue);
 
                     initPagination();
@@ -186,11 +192,11 @@
                 initPagination();
             });
 
-            categorySelect.addEventListener('change', (e) => {
-                const categoryId = e.target.value;
-                updateQueryAndFetch('category', categoryId);
-                initPagination();
-            });
+            // categorySelect.addEventListener('change', (e) => {
+            //     const categoryId = e.target.value;
+            //     updateQueryAndFetch('category', categoryId);
+            //     initPagination();
+            // });
 
             // import $ from 'jquery';
 

@@ -2,8 +2,8 @@
 
 @section('head')
     @include('site.components.head', [
-        'title' => $page->meta_title ?: $page->title,
-        'description' => $page->meta_description,
+        'title' => $page->meta_title ?: $direction->name . ' ' . __('web.direction_meta_title'),
+        'description' => $page->meta_description ?? ($direction->name ?? '') . ' ' . __('web.direction_meta_description'),
         'url' => $url,
     ])
 @endsection
@@ -33,7 +33,7 @@
         <div class="container">
             <div class="row align-items-stretch">
                 @include('site.directions.partials.text-section-narrow', [
-                    'data' => $direction->textBlocks->where('number', 2)->first(), 
+                    'data' => $direction->textBlocks->where('number', 2)->first(),
                     'hasChildren' => $hasChildren,
                     'alt' => $direction->name . ' ' . 2,
                     ]

@@ -22,9 +22,9 @@ class ContactsController extends Controller
 
     public function page()
     {
-        $url['ua'] = url('/') . '/ua/contacts';
-        $url['ru'] = url('/') . '/contacts';
-        $url['en'] = url('/') . '/en/contacts';
+        $url['ua'] = url('/') . '/ua/contact-us';
+        $url['ru'] = url('/') . '/contact-us';
+        $url['en'] = url('/') . '/en/contact-us';
 
         return view('site.pages.contacts',[
             'page' => $this->page,

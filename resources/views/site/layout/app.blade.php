@@ -23,8 +23,9 @@
     </script>
 
     @yield('head')
+    <meta name="bingbot" content="nocache">
 
-    <link rel="shortcut icon" href="##" type="image/x-icon" />
+    {{-- <link rel="shortcut icon" href="##" type="image/x-icon" /> --}}
     {{-- TODO:: remove --}}
     {{-- <link rel="stylesheet" href="{{ asset('styles/css/libs.min.css') }}"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('styles/css/main.min.css') }}"> --}}
@@ -48,7 +49,7 @@
         }
     </style>
 
-    @section('SEO')
+    {{-- @section('SEO')
         <meta name="description" content="{{ config('app.name') }}">
     @show
 
@@ -60,7 +61,7 @@
         <meta property="og:title" content="{{ config('app.name') }}" />
         <meta property="og:description" content="{{ config('app.name') }}" />
         <meta property="og:image" content="{{ asset('/images/logos/logo-gold.svg') }}" />
-    @show
+    @show --}}
 
     @section('NOINDEX')
     @show
@@ -381,6 +382,11 @@
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDntN7eN_xiGJkpRz4N3jSN32wI5SrpnTo&callback=initMap&libraries=marker&v=beta"
         defer></script>
+        <script>
+            function initMap() {
+
+            };
+        </script>
     {{-- <script>
 	function initMap() {
 		const mapConfigs = [
@@ -717,6 +723,9 @@
         </script>
         <script>
             window.iconsPath = @json(Vite::asset(config('app.icons_path')));
+            const articleTranslations = {
+                articleCategories: '{{ __("web.article_categories") }}'
+            };
         </script>
     <script>
         transShowMore = @json(__('web.show_more'));

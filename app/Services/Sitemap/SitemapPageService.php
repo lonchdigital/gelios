@@ -46,27 +46,27 @@ class SitemapPageService
         return array_unique(array_map([$this, 'formatUrl'], [
             ...$this->getStaticPageUrls(),
             ...$this->getRuStaticPageUrls(),
-            ...$this->getEnStaticPageUrls(),
+            // ...$this->getEnStaticPageUrls(),
 
             ...$this->getPageUrls(),
             ...$this->getRuPageUrls(),
-            ...$this->getEnPageUrls(),
+            // ...$this->getEnPageUrls(),
 
             ...$this->getArticlesPagesUrls(),
             ...$this->getRuArticlesPagesUrls(),
-            ...$this->getEnArticlesPagesUrls(),
+            // ...$this->getEnArticlesPagesUrls(),
 
             ...$this->getArticlesUrls(),
             ...$this->getRuArticlesUrls(),
-            ...$this->getEnArticlesUrls(),
+            // ...$this->getEnArticlesUrls(),
 
             ...$this->getDoctorsUrls(),
             ...$this->getRuDoctorsUrls(),
-            ...$this->getEnDoctorsUrls(),
+            // ...$this->getEnDoctorsUrls(),
 
             ...$this->getDirectionsUrls(),
             ...$this->getRuDirectionsUrls(),
-            ...$this->getEnDirectionsUrls(),
+            // ...$this->getEnDirectionsUrls(),
         ]));
     }
 
@@ -80,21 +80,21 @@ class SitemapPageService
     {
         return [
             '/ua/',
-            '/ua/vakansii/',
-            '/ua//vzroslym/hirurgiya/',
-            '/ua/laboratories/',
+            '/ua/vakansii',
+            '/ua//vzroslym/hirurgiya',
+            '/ua/laboratories',
             '/ua/laboratories/prices',
-            '/ua/nashi-speczialisty/',
-            '/ua/check-up/',
-            '/ua/akczii-i-speczialnye-predlozheniya/',
-            '/ua/directions/',
-            '/ua/staczionar/',
-            '/ua/offices/',
+            '/ua/nashi-speczialisty',
+            '/ua/check-up',
+            '/ua/akczii-i-speczialnye-predlozheniya',
+            '/ua/directions',
+            '/ua/staczionar',
+            '/ua/offices',
             // '/ua/contacts-search-filter/',
-            '/ua/contacts/',
-            '/ua/prices/',
-            '/ua/otzyvy/',
-            '/ua/about-us/',
+            '/ua/contact-us',
+            '/ua/prices',
+            '/ua/otzyvy',
+            '/ua/about-us',
         ];
     }
 
@@ -102,43 +102,43 @@ class SitemapPageService
     {
         return [
             '',
-            '/vakansii/',
-            '/vzroslym/hirurgiya/',
-            '/laboratories/',
+            '/vakansii',
+            '/vzroslym/hirurgiya',
+            '/laboratories',
             '/laboratories/prices',
-            '/nashi-speczialisty/',
-            '/check-up/',
-            '/akczii-i-speczialnye-predlozheniya/',
-            '/directions/',
-            '/staczionar/',
-            '/offices/',
+            '/nashi-speczialisty',
+            '/check-up',
+            '/akczii-i-speczialnye-predlozheniya',
+            '/directions',
+            '/staczionar',
+            '/offices',
             // '/contacts-search-filter/',
-            '/contacts/',
-            '/prices/',
-            '/otzyvy/',
-            '/about-us/',
+            '/contacts',
+            '/prices',
+            '/otzyvy',
+            '/about-us',
         ];
     }
 
     private function getENStaticPageUrls()
     {
         return [
-            '/en/',
-            '/en/vakansii/',
-            '/en//vzroslym/hirurgiya/',
-            '/en/laboratories/',
+            '/en',
+            '/en/vakansii',
+            '/en//vzroslym/hirurgiya',
+            '/en/laboratories',
             '/en/laboratories/prices',
-            '/en/nashi-speczialisty/',
-            '/en/check-up/',
-            '/en/akczii-i-speczialnye-predlozheniya/',
-            '/en/directions/',
-            '/en/staczionar/',
-            '/en/offices/',
+            '/en/nashi-speczialisty',
+            '/en/check-up',
+            '/en/akczii-i-speczialnye-predlozheniya',
+            '/en/directions',
+            '/en/staczionar',
+            '/en/offices',
             // '/en/contacts-search-filter/',
-            '/en/contacts/',
-            '/en/prices/',
-            '/en/otzyvy/',
-            '/en/about-us/',
+            '/en/contacts',
+            '/en/prices',
+            '/en/otzyvy',
+            '/en/about-us',
         ];
     }
 
@@ -158,7 +158,7 @@ class SitemapPageService
         $pages[] = $basePath;
 
         for ($page = 2; $page <= $totalPages; $page++) {
-            $pages[] = $basePath."page/$page/";
+            $pages[] = $basePath."page/$page";
         }
 
         return $pages;
@@ -175,7 +175,7 @@ class SitemapPageService
         $pages[] = $basePath;
 
         for ($page = 2; $page <= $totalPages; $page++) {
-            $pages[] = $basePath."page/$page/";
+            $pages[] = $basePath."page/$page";
         }
 
         return $pages;
@@ -192,7 +192,7 @@ class SitemapPageService
         $pages[] = $basePath;
 
         for ($page = 2; $page <= $totalPages; $page++) {
-            $pages[] = $basePath."page/$page/";
+            $pages[] = $basePath."page/$page";
         }
 
         return $pages;
@@ -339,6 +339,6 @@ class SitemapPageService
             $fUrl = '/' . $fUrl;
         }
 
-        return rtrim($fUrl, '/') . '/';
+        return rtrim($fUrl, '/');
     }
 }

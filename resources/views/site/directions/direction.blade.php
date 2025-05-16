@@ -2,8 +2,8 @@
 
 @section('head')
     @include('site.components.head', [
-        'title' => $page->meta_title ?: $page->title,
-        'description' => $page->meta_description,
+        'title' => $page->meta_title ?: $direction->name . ' ' . __('web.direction_meta_title'),
+        'description' => $page->meta_description ?? ($direction->name ?? '') . ' ' . __('web.direction_meta_description'),
         'url' => $url,
     ])
 @endsection
@@ -52,7 +52,7 @@
                             <div class="media-content row mb-lg-8">
                                 <div class="col">
                                     @include('site.components.text-section', [
-                                        'data' => $textBlockThree, 
+                                        'data' => $textBlockThree,
                                         'mb' => 5,
                                         'alt' => $direction->name . ' ' . 3,
                                         ]

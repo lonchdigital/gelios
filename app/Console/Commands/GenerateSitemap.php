@@ -7,6 +7,7 @@ use App\Services\Sitemap\SitemapPageService;
 use App\Services\Sitemap\SitemapService;
 use App\Services\Sitemap\SitemapSettingService;
 use App\Services\Sitemap\SitemapValidatorService;
+use Carbon\Carbon;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Exception\TooManyRedirectsException;
 use Illuminate\Console\Command;
@@ -78,20 +79,41 @@ class GenerateSitemap extends Command
 
         $xmlContent = $this->sitemap->render();
 
-        $xmlContentWithSlashes = str_replace('</loc>', '/</loc>', $xmlContent);
-        file_put_contents(public_path('sitemap.xml'), $xmlContentWithSlashes);
+        // $xmlContentWithSlashes = str_replace('</loc>', '/</loc>', $xmlContent);
+        // file_put_contents(public_path('sitemap.xml'), $xmlContentWithSlashes);
+        $xmlContentWithSlashes = file_put_contents(public_path('sitemap.xml'), $xmlContent);
 
         return response($xmlContentWithSlashes)->header('Content-Type', 'application/xml');
     }
 
     private function fillSitemap(array $urls): void
     {
+        // foreach ($urls as $url) {
+        //     $settings = $this->settingService->getUrlSettings($url);
+
+        //     $tag = Url::create($url)
+        //         ->setChangeFrequency($settings['frequency'])
+        //         ->setPriority($settings['priority']);
+
+        //     $this->sitemap->add($tag);
+        // }
         foreach ($urls as $url) {
             $settings = $this->settingService->getUrlSettings($url);
 
-            $tag = Url::create($url)
-                ->setChangeFrequency($settings['frequency'])
-                ->setPriority($settings['priority']);
+            // $changeFreq = match (true) {
+            //     $url === '/' => 'always',
+            //     str_starts_with($url, '/categories') => 'always',
+            //     str_starts_with($url, '/doctors') => 'always',
+            //     str_starts_with($url, '/blog') => 'daily',
+            //     default => 'weekly',
+            // };
+
+            $lastMod = $settings['lastmod'] ?? Carbon::now();
+
+            $tag = Url::create(config('app.url') . $url)
+                // ->setChangeFrequency($changeFreq)
+                ->setPriority($settings['priority'] ?? 0.5)
+                ->setLastModificationDate(Carbon::parse($lastMod));
 
             $this->sitemap->add($tag);
         }

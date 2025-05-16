@@ -40,10 +40,10 @@
                             @if (!empty($page->pageBlocks->where('block', 'main')->first()->image))
                                 <img class="bg-down"
                                     src="{{ $page->pageBlocks->where('block', 'main')->first()->imageUrl }}"
-                                    alt="{{ $page->pageBlocks->where('block', 'main')->first()->title ?? '' }}">
+                                    alt="{{ $page->pageBlocks->where('block', 'main')->first()->title ?? __('pages.surgery') }}">
                             @else
                                 <img class="bg-down" src="{{ asset('static_images/img-background-1.jpeg') }}"
-                                    alt="img">
+                                    alt="{{ __('pages.surgery') }}">
                             @endif
                         </div>
                     </div>
@@ -63,9 +63,9 @@
                             @if (!empty($page->pageBlocks->where('block', 'second')->where('key', 'first')->first()->image))
                                 <img class="bg-down"
                                     src="{{ $page->pageBlocks->where('block', 'second')->where('key', 'first')->first()->imageUrl }}"
-                                    alt="img">
+                                    alt="{{ __('pages.surgery') }}">
                             @else
-                                <img class="bg-down" src="img/img-251.jpeg" alt="img">
+                                <img class="bg-down" src="img/img-251.jpeg" alt="{{ __('pages.surgery') }}">
                             @endif
                         </div>
                     </div>
@@ -127,7 +127,7 @@
                         <div class="col-12 col-lg-6">
                             @if (!empty($block2->image))
                                 <div class="wrap-img">
-                                    <img src="{{ $block2->imageUrl }}" alt="{{ $block2->description ?? '' }}">
+                                    <img src="{{ $block2->imageUrl }}" alt="{{ $block2->description ?? __('pages.surgery') }}">
                                 </div>
                             @endif
                         </div>
@@ -144,7 +144,7 @@
                         <div class="col-12 col-lg-6">
                             @if (!empty($block2->image))
                                 <div class="wrap-img">
-                                    <img src="{{ $block2->imageUrl }}" alt="{{ $block2->description }}">
+                                    <img src="{{ $block2->imageUrl }}" alt="{{ $block2->description ?? __('pages.surgery') }}">
                                 </div>
                             @endif
                         </div>
@@ -191,12 +191,12 @@
                                                         @if (!empty($block->image))
                                                             <div class="wrap-img">
                                                                 <img src="{{ $block->imageUrl }}"
-                                                                    alt="{{ $page->pageBlocks->where('block', 'directions')->first()->title ?? '' }}">
+                                                                    alt="{{ $page->pageBlocks->where('block', 'main')->first()->title ?? __('pages.surgery') }}">
                                                             </div>
                                                         @else
                                                             <div class="wrap-img">
                                                                 <img src="img/media/image-226.jpeg"
-                                                                    alt="{{ $page->pageBlocks->where('block', 'directions')->first()->title ?? '' }}">
+                                                                    alt="{{ $page->pageBlocks->where('block', 'main')->first()->title ?? __('pages.surgery') }}">
                                                             </div>
                                                         @endif
                                                     </div>
@@ -215,12 +215,12 @@
                                                         @if (!empty($block->image))
                                                             <div class="wrap-img">
                                                                 <img src="{{ $block->imageUrl }}"
-                                                                    alt="{{ $page->pageBlocks->where('block', 'directions')->first()->title ?? '' }}">
+                                                                    alt="{{ $page->pageBlocks->where('block', 'main')->first()->title ?? __('pages.surgery') }}">
                                                             </div>
                                                         @else
                                                             <div class="wrap-img">
                                                                 <img src="img/media/image-226.jpeg"
-                                                                    alt="{{ $page->pageBlocks->where('block', 'directions')->first()->title ?? '' }}">
+                                                                    alt="{{ $page->pageBlocks->where('block', 'main')->first()->title ?? __('pages.surgery') }}">
                                                             </div>
                                                         @endif
                                                     </div>

@@ -140,7 +140,7 @@ function initPagination() {
             var limitPerPage = 16;
         }
         var totalPages = Math.ceil(numberOfItems / limitPerPage);
-        console.log(numberOfItems);
+        // console.log(numberOfItems);
         var paginationSize = 7;
         var currentPage;
 
