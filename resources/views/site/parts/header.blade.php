@@ -485,7 +485,7 @@
                                                     </div>
                                                     <div class="item"><a href="{{ route('surgery.index') }}">{{ __('pages.surgery') }}</a></div>
                                                     <div class="item {{ ($allCenters->count() > 0) ? 'has-dropdown' : '' }}">
-                                                        <a href="{{ route('about.us.page') }}" data-slug="{{ route('about.us.page') }}">{{ __('pages.about_company') }}</a>
+                                                        <span data-slug="{{ route('about.us.page') }}">{{ __('pages.about_company') }}</span>
                                                         @if($allCenters->count() > 0)
                                                             <div class="push-menu--lvl scrollable-content">
                                                                 <div class="scrollable-content--inner">
@@ -497,7 +497,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="item has-dropdown">
-                                                        <a href="{{ route('promotions.index') }}" data-slug="{{ route('promotions.index') }}">{{ __('pages.promotions') }}</a>
+                                                        <span data-slug="{{ route('promotions.index') }}">{{ __('pages.promotions') }}</span>
                                                         <div class="push-menu--lvl scrollable-content">
                                                             <div class="scrollable-content--inner">
                                                                 <div class="item"><a href="{{ route('promotions.index') }}">{{ __('pages.promotions') }}</a></div>
