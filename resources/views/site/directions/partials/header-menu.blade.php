@@ -26,7 +26,7 @@
 
                 @if( $childSubCatDir['children'] )
                     <div class="item has-dropdown">
-                        <a href="##" data-slug="{{ $childSubCatDir['full_path'] }}">{{ $childSubCatDir['name'] }}</a>
+                        <span data-slug="{{ $childSubCatDir['full_path'] }}">{{ $childSubCatDir['name'] }}</span>
                         <div class="push-menu--lvl">
                             @include('site.directions.partials.header-menu', ['data' => collect($childSubCatDir['children'])])
                         </div>

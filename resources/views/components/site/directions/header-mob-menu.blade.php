@@ -2,7 +2,7 @@
     @foreach ($data as $childCatDir)
         @if( $childCatDir['children'] )
             <div class="item has-dropdown">
-                <a href="##" data-slug="{{ $childCatDir['full_path'] }}">{{ $childCatDir['name'] }}</a>
+                <span data-slug="{{ $childCatDir['full_path'] }}">{{ $childCatDir['name'] }}</span>
 
                 <div class="push-menu--lvl scrollable-content">
                     <x-site.directions.header-mob-menu :data="collect($childCatDir['children'])" />

@@ -29,10 +29,10 @@
                         <div class="push-menu">
                             <div class="push-menu--nav">
                                 <div class="nav-toggle">
-                                    <a href="##" class="btn-nav-back btn-nav-direction btn font-weight-bold ml-auto mb-6">
+                                    <div class="btn-nav-back btn-nav-direction btn font-weight-bold ml-auto mb-6">
                                         <span>{{ trans('web.back') }}</span>
                                         <span class="icon"></span>
-                                    </a>
+                                    </div>
                                 </div>
                                 <div class="push-menu--lvl position-relative">
                                     <div class="item has-dropdown">
