@@ -36,7 +36,7 @@
                                         <div class="content">
                                             <h1 class="h1 font-m font-weight-bolder mb-3">{{ $slide->title }}</h1>
                                             <div class="h5 font-m font-weight-bold mb-3">{{ $slide->description }}</div>
-                                            <a href="##" data-toggle="modal"
+                                            <a data-toggle="modal"
                                                 data-target="#popup--sign-up-appointment"
                                                 class="btn btn-white font-weight-bold">{{ trans('pages.sign_up_for_for_appointment') }}</a>
                                         </div>
@@ -108,7 +108,7 @@
                 <div class="row mb-8">
                     <div class="col d-flex align-items-center justify-content-between">
                         <div class="h2 font-m font-weight-bolder text-blue">{{ trans('pages.doctors') }}</div>
-                        <a href="##" class="btn btn-white font-weight-bold">{{ trans('pages.all_doctors') }}</a>
+                        <a class="btn btn-white font-weight-bold">{{ trans('pages.all_doctors') }}</a>
                     </div>
                 </div>
                 <div class="row">

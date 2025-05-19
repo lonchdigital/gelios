@@ -112,10 +112,10 @@
                                 <div class="push-menu">
                                     <div class="push-menu--nav">
                                         <div class="nav-toggle">
-                                            <a href="##" class="btn-nav-back btn-nav-direction btn font-weight-bold ml-auto mb-6"><span>{{ trans('web.back') }}</span>
+                                            <a class="btn-nav-back btn-nav-direction btn font-weight-bold ml-auto mb-6"><span>{{ trans('web.back') }}</span>
                                                 <span class="icon"></span>
                                             </a>
-                                            <a href="##" class="btn-nav-forward btn-nav-direction btn font-weight-bold ml-auto mb-6">
+                                            <a class="btn-nav-forward btn-nav-direction btn font-weight-bold ml-auto mb-6">
                                                 <span>{{ trans('web.all_directions') }}</span><span class="icon"></span>
                                             </a>
                                         </div>
@@ -192,7 +192,7 @@
                                                             class="offices-direction--descrp d-flex flex-column justify-content-between h-100">
                                                             <div class="h3 font-weight-bolder mb-5">{{ $contact->title }}</div>
                                                             <p class="mb-5 mb-lg-8">{!! $contact->text !!}</p>
-                                                            <a href="##" class="btn btn-blue font-weight-bold px-xl-14"
+                                                            <a class="btn btn-blue font-weight-bold px-xl-14"
                                                                 data-toggle="modal"
                                                                 data-target="#popup--sign-up-appointment">{{ trans('web.make_appointment') }}</a>
                                                         </div>
@@ -222,7 +222,7 @@
                                                                             @if( $item['children'] )
                                                                                 <div class="directions-item">
                                                                                     <div class="content item has-dropdown">
-                                                                                        <a href="##" class="link">
+                                                                                        <a class="link">
                                                                                             <span>{{ $item['name'] }}</span>
                                                                                             <div class="i-link"></div>
                                                                                         </a>
