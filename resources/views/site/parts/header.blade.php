@@ -438,14 +438,14 @@
                                             <div class="push-menu--lvl scrollable-content">
                                                 <div class="scrollable-content--inner">
                                                     <div class="item has-dropdown">
-                                                        <a href="##" data-slug="{{ route('directions.page') }}">{{ trans('web.directions') }}</a>
+                                                        <span data-slug="{{ route('directions.page') }}">{{ trans('web.directions') }}</span>
                                                         <div class="push-menu--lvl scrollable-content">
                                                             <div class="scrollable-content--inner">
                                                                 <div class="item"><a href="{{ route('directions.page') }}">{{ trans('web.directions') }}</a></div>
                                                                 @foreach ($allDirections as $category)
                                                                     @if( $category['children'] )
                                                                         <div class="item has-dropdown">
-                                                                            <a href="##" data-slug="{{ $category['full_path'] }}">{{ $category['name'] }}</a>
+                                                                            <span data-slug="{{ $category['full_path'] }}">{{ $category['name'] }}</span>
 
                                                                             <div class="push-menu--lvl scrollable-content">
                                                                                 <x-site.directions.header-mob-menu :data="collect($category['children'])" />
@@ -485,7 +485,7 @@
                                                     <div class="item"><a href="{{ route('hospital.show') }}">{{ __('pages.hospital') }}</a></div>
                                                     <div class="item"><a href="{{ route('prices.page') }}">{{ __('pages.prices') }}</a></div>
                                                     <div class="item has-dropdown">
-                                                        <a href="##" data-slug="{{ route('contacts.page') }}">{{ __('pages.contacts') }}</a>
+                                                        <span data-slug="{{ route('contacts.page') }}">{{ __('pages.contacts') }}</span>
                                                         <div class="push-menu--lvl scrollable-content">
                                                             <div class="scrollable-content--inner">
                                                                 <div class="item"><a href="{{ route('contacts.page') }}">{{ __('pages.contacts') }}</a></div>
