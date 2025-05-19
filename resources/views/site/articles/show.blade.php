@@ -256,30 +256,6 @@
                                 </div>
                             @empty
                             @endforelse
-                            {{-- <div class="swiper-slide news--item">
-                                <a href="##" class="inner">
-                                    <div class="wrap-img mb-4">
-                                        <img src="img/articles/article-2.jpeg" alt="img">
-                                        <div class="date-label">13 березня 2024</div>
-                                    </div>
-                                    <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                    <div class="descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує..</div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide news--item">
-                                <a href="##" class="inner">
-                                    <div class="wrap-img mb-4">
-                                        <img src="img/articles/article-3.jpeg" alt="img">
-                                        <div class="date-label">13 березня 2024</div>
-                                    </div>
-                                    <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                    <div class="descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                        Дніпрі пропонує..</div>
-                                </a>
-                            </div> --}}
                         </div>
                         <div class="swiper-pagination mt-6 d-xl-none"></div>
                     </div>

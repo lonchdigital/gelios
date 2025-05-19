@@ -46,45 +46,6 @@
                                 </div>
                             @empty
                             @endforelse
-                            {{-- <div
-                                class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
-                                <div class="backdrop p-3 p-lg-6">
-                                    <div class="content mt-18">
-                                        <div class="h1 font-m font-weight-bolder mb-3">Піклуєшся <br> про здоров’я?</div>
-                                        <div class="h5 font-m font-weight-bold mb-3">Обери свій CHECK-UP!</div>
-                                        <a href="##" class="btn btn-white font-weight-bold">Детальніше</a>
-                                    </div>
-                                </div>
-                                <div class="wrap-img">
-                                    <img class="bg-down" src="img/img-background-2.jpeg" alt="img">
-                                </div>
-                            </div>
-                            <div
-                                class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
-                                <div class="backdrop p-3 p-lg-6">
-                                    <div class="content mt-18">
-                                        <div class="h1 font-m font-weight-bolder mb-3">Піклуєшся <br> про здоров’я?</div>
-                                        <div class="h5 font-m font-weight-bold mb-3">Обери свій CHECK-UP!</div>
-                                        <a href="##" class="btn btn-white font-weight-bold">Детальніше</a>
-                                    </div>
-                                </div>
-                                <div class="wrap-img">
-                                    <img class="bg-down" src="img/img-background-1.jpeg" alt="img">
-                                </div>
-                            </div>
-                            <div
-                                class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
-                                <div class="backdrop p-3 p-lg-6">
-                                    <div class="content mt-18">
-                                        <div class="h1 font-m font-weight-bolder mb-3">Піклуєшся <br> про здоров’я?</div>
-                                        <div class="h5 font-m font-weight-bold mb-3">Обери свій CHECK-UP!</div>
-                                        <a href="##" class="btn btn-white font-weight-bold">Детальніше</a>
-                                    </div>
-                                </div>
-                                <div class="wrap-img">
-                                    <img class="bg-down" src="img/img-background-2.jpeg" alt="img">
-                                </div>
-                            </div> --}}
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>

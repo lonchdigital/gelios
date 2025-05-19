@@ -50,26 +50,6 @@
                                         </div>
                                     </div>
                                 @empty
-                                    {{-- <div
-                                            class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
-                                        <div class="backdrop p-3 p-lg-6">
-                                            <div class="content">
-                                                <div class="h1 font-m font-weight-bolder mb-3">
-                                                    {!! $page->pageBlocks->where('block', 'main')->where('key', 'first')->first()->title !!}
-                                                </div>
-                                                <div class="h5 font-m font-weight-bold mb-3">{!! $page->pageBlocks->where('block', 'main')->where('key', 'first')->first()->description !!}</div>
-                                                <a href="##" class="btn btn-white font-weight-bold">{!! $page->pageBlocks->where('block', 'main')->where('key', 'first')->first()->button !!}</a>
-                                            </div>
-                                        </div>
-                                        <div class="wrap-img">
-                                            @if(!empty($page->pageBlocks->where('block', 'main')->where('key', 'second')->first()->image))
-                                                <img class="bg-down" src="{{ $page->pageBlocks->where('block', 'main')->where('key', 'first')->first()->imageUrl }}"
-                                                    alt="{!! $page->pageBlocks->where('block', 'main')->where('key', 'first')->first()->title ?? 'Підпиши <br>декларацію за 5 хвилин' !!}">
-                                            @else
-                                                <img class="bg-down" src="{{ asset('static_images/img-background-2.jpeg') }}" alt="img">
-                                            @endif
-                                        </div>
-                                    </div> --}}
                                 @endforelse
                             </div>
                             <div class="swiper-pagination"></div>
@@ -147,26 +127,6 @@
                                     </div>
                                 @empty
                                 @endforelse
-                                {{-- <div class="swiper-slide shares--item">
-                                    <a href="##" class="inner">
-                                        <div class="wrap-img mb-4">
-                                            <img src="{{ asset('static_images/shares/card-img-2.jpeg') }}" alt="img">
-                                        </div>
-                                        <div class="h3 small font-m">Скористайтеся нашим осіннім обстеженням <div
-                                                class="underline">зі знижкою 15%!</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide shares--item">
-                                    <a href="##" class="inner">
-                                        <div class="wrap-img mb-4">
-                                            <img src="{{ asset('static_images/shares/card-img-3.jpeg') }}" alt="img">
-                                        </div>
-                                        <div class="h3 small font-m">Скористайтеся нашим осіннім обстеженням <div
-                                                class="underline">зі знижкою 15%!</div>
-                                        </div>
-                                    </a>
-                                </div> --}}
                             </div>
                             <div class="swiper-pagination mt-2 d-xl-none"></div>
                         </div>
@@ -370,42 +330,6 @@
                                     </div>
                                 @empty
                                 @endforelse
-                                {{-- <div class="swiper-slide news--item">
-                                    <a href="##" class="inner">
-                                        <div class="wrap-img mb-4">
-                                            <img src="{{ asset('static_images/articles/article-1.jpeg') }}" alt="img">
-                                            <div class="date-label">13 березня 2024</div>
-                                        </div>
-                                        <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                        <div class="descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                            Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                            Дніпрі пропонує..</div>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide news--item">
-                                    <a href="##" class="inner">
-                                        <div class="wrap-img mb-4">
-                                            <img src="{{ asset('static_images/articles/article-2.jpeg') }}" alt="img">
-                                            <div class="date-label">13 березня 2024</div>
-                                        </div>
-                                        <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                        <div class="descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                            Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                            Дніпрі пропонує..</div>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide news--item">
-                                    <a href="##" class="inner">
-                                        <div class="wrap-img mb-4">
-                                            <img src="{{ asset('static_images/articles/article-3.jpeg') }}" alt="img">
-                                            <div class="date-label">13 березня 2024</div>
-                                        </div>
-                                        <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
-                                        <div class="descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                            Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у
-                                            Дніпрі пропонує..</div>
-                                    </a>
-                                </div> --}}
                             </div>
                             <div class="swiper-pagination mt-6 d-xl-none"></div>
                         </div>

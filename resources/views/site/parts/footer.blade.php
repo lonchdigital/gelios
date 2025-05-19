@@ -60,13 +60,6 @@
                                         {{-- @endif --}}
                                     @empty
                                     @endforelse
-									{{-- <li><a href="##">Сімейна медицина</a></li>
-									<li><a href="##">Реабілітація</a></li>
-									<li><a href="##">Дітям</a></li>
-									<li><a href="##">Дорослим</a></li>
-									<li><a href="##">Функціональна діагностика</a></li>
-									<li><a href="##">Лабораторна діагностика</a></li>
-									<li><a href="##">Хірургія</a></li> --}}
 								</ul>
 							</div>
 						</div>
@@ -87,13 +80,6 @@
                                             >{{ $info->page->title ?? __('admin.' . $info->page->type) }}</a></li>
                                     @empty
                                     @endforelse
-									{{-- <li><a href="##">Про компанію</a></li>
-									<li><a href="##">Лікарі</a></li>
-									<li><a href="##">Акції</a></li>
-									<li><a href="##">Новини</a></li>
-									<li><a href="##">Ціни</a></li>
-									<li><a href="##">Станіонар</a></li>
-									<li><a href="##">Контакти</a></li> --}}
 								</ul>
 							</div>
 						</div>
