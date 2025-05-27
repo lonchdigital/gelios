@@ -337,21 +337,21 @@ class SitemapPageService
     private function getPromotionsUrls()
     {
         return $this->promotions->map( function ($promotion) {
-            return 'ua/'.$promotion->slug;
+            return '/ua/akczii-i-speczialnye-predlozheniya'.$promotion->slug;
         })->all();
     }
 
     private function getRuPromotionsUrls()
     {
         return $this->promotions->map( function ($promotion) {
-            return $promotion->slug;
+            return '/akczii-i-speczialnye-predlozheniya/' . $promotion->slug;
         })->all();
     }
 
     private function getEnPromotionsUrls()
     {
         return $this->promotions->map( function ($promotion) {
-            return 'en/' . $promotion->slug;
+            return '/en/akczii-i-speczialnye-predlozheniya/' . $promotion->slug;
         })->all();
     }
 
