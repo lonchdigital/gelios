@@ -2,8 +2,9 @@
     <tr class="child-direction">
         <td class="text-right">
         </td>
-        <td>
-            <a href="{{ $child['full_path'] }}" target="_blank"><i class="fa fa-eye text-info font-18"></i></a>
+        <td class="d-flex">
+            <a href="{{ $child['full_path'] }}" target="_blank"><i class="fa fa-eye text-info font-18 mr-3"></i></a>
+            <a href="{{ route('directions.edit', ['directionId' => $child['id']]) }}" target="_blank"><i class="fa fa-pencil text-info font-18"></i></a>
         </td>
         <td>
             <a href="{{ route('directions.edit', ['directionId' => $child['id']]) }}">
