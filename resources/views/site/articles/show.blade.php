@@ -20,8 +20,8 @@
             ],
             "url": "{{ url()->current() }}",
             "datePublished": "{{ $article->created_at->toIso8601String() }}",
-            "description": "{{ Str::limit(strip_tags($article->description), 300) ?? '' }}",
-            "articleBody": "{{ Str::limit(strip_tags($article->articleBlocks()->orderBy('sort', 'ASC')->first()->first_content), 300) ?? '' }}"
+            "description": "{{ Str::limit(strip_tags($article->description ?? ''), 300) ?? '' }}",
+            "articleBody": "{{ Str::limit(strip_tags($article->articleBlocks()->orderBy('sort', 'ASC')->first()->first_content ?? ''), 300) ?? '' }}"
         }
     </script>
 

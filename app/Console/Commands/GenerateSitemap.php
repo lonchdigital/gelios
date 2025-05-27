@@ -131,7 +131,6 @@ class GenerateSitemap extends Command
             // $fullUrl = filter_var($url, FILTER_VALIDATE_URL) ? $url : 'http://helyos.lonchdev.com' . $url;
             // $fullUrl = 'http://helyos.lonchdev.com' . $url;
             $fullUrl = config('app.url') . $url;
-            // config('app.url')
 
             try {
                 $response = Http::withHeaders([
