@@ -85,7 +85,6 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">{{ (is_null($direction)) ? trans('admin.all_directions') : $direction->name }}</h4>
-                                {{-- @dd($allDirections) --}}
                                 <div class="row aligh-items-center">
                                     <div class="col-md-9">
                                         <select wire:ignore class="form-control mb-2" id="childrenDisplaySelect" onchange="updateURL()">
