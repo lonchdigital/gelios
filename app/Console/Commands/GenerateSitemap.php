@@ -72,6 +72,7 @@ class GenerateSitemap extends Command
         $service = resolve(SitemapPageService::class);
 
         $urls = $this->validator->validate($service->getUrls());
+        $urls[] = '/';
 
         $urls = $this->filterUrl($urls);
 
@@ -109,6 +110,10 @@ class GenerateSitemap extends Command
             // };
 
             $lastMod = $settings['lastmod'] ?? Carbon::now();
+
+            if($url == '/') {
+                $url = '';
+            }
 
             $tag = Url::create(config('app.url') . $url)
                 // ->setChangeFrequency($changeFreq)
