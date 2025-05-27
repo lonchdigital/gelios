@@ -2,6 +2,7 @@
 
 namespace App\Services\Sitemap;
 
+use App\Enums\PageType;
 use App\Models\Article;
 use App\Models\Direction;
 use App\Models\Doctor;
@@ -16,6 +17,7 @@ class SitemapPageService
     private Collection $doctors;
     private Collection $directions;
     private Collection $promotions;
+    private Collection $centers;
     private int $articlesCount;
     private int $articlePagination;
 
@@ -35,6 +37,10 @@ class SitemapPageService
             ->get();
 
         $this->promotions = Promotion::with('translations')
+            ->get();
+
+        $this->centers = Page::where('type', PageType::ONECENTER)
+            ->with('translations')
             ->get();
 
         $this->articlesCount = Article::count();
@@ -76,6 +82,10 @@ class SitemapPageService
             ...$this->getPromotionsUrls(),
             ...$this->getRuPromotionsUrls(),
             // ...$this->getEnPromotionsUrls(),
+
+            ...$this->getCentersUrls(),
+            ...$this->getRuCentersUrls(),
+            // ...$this->getEnCentersUrls(),
         ]));
     }
 
@@ -337,7 +347,7 @@ class SitemapPageService
     private function getPromotionsUrls()
     {
         return $this->promotions->map( function ($promotion) {
-            return '/ua/akczii-i-speczialnye-predlozheniya'.$promotion->slug;
+            return '/ua/akczii-i-speczialnye-predlozheniya/' . $promotion->slug;
         })->all();
     }
 
@@ -352,6 +362,27 @@ class SitemapPageService
     {
         return $this->promotions->map( function ($promotion) {
             return '/en/akczii-i-speczialnye-predlozheniya/' . $promotion->slug;
+        })->all();
+    }
+
+    private function getCentersUrls()
+    {
+        return $this->centers->map( function ($center) {
+            return '/ua/one-center/' . $center->slug;
+        })->all();
+    }
+
+    private function getRuCentersUrls()
+    {
+        return $this->centers->map( function ($center) {
+            return '/one-center/' . $center->slug;
+        })->all();
+    }
+
+    private function getEnCentersUrls()
+    {
+        return $this->centers->map( function ($center) {
+            return '/en/one-center/' . $center->slug;
         })->all();
     }
 
