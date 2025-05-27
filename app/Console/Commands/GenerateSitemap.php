@@ -132,29 +132,29 @@ class GenerateSitemap extends Command
             // $fullUrl = 'http://helyos.lonchdev.com' . $url;
             $fullUrl = config('app.url') . $url;
 
-            try {
-                $response = Http::withHeaders([
-                    'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
-                ])->withoutVerifying()->head($fullUrl);
+            // try {
+            //     $response = Http::withHeaders([
+            //         'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+            //     ])->withoutVerifying()->head($fullUrl);
 
-                $status = $response->status();
-            } catch (TooManyRedirectsException $e) {
-                Log::info("🔄 Забагато перенаправлень: {$fullUrl}");
-                $status = 500;
-            } catch (ConnectionException $e) {
-                Log::info("⛔ Відмова у з'єднанні: {$fullUrl}");
-                $status = 500;
-            } catch (RequestException $e) {
-                Log::info("❌ Помилка HTTP-запиту: {$fullUrl} | Код: " . $e->response->status());
-                $status = $e->response->status();
-            } catch (\Exception $e) {
-                Log::info("🚨 Невідома помилка: {$fullUrl} | " . $e->getMessage());
-                $status = 500;
-            }
+            //     $status = $response->status();
+            // } catch (TooManyRedirectsException $e) {
+            //     Log::info("🔄 Забагато перенаправлень: {$fullUrl}");
+            //     $status = 500;
+            // } catch (ConnectionException $e) {
+            //     Log::info("⛔ Відмова у з'єднанні: {$fullUrl}");
+            //     $status = 500;
+            // } catch (RequestException $e) {
+            //     Log::info("❌ Помилка HTTP-запиту: {$fullUrl} | Код: " . $e->response->status());
+            //     $status = $e->response->status();
+            // } catch (\Exception $e) {
+            //     Log::info("🚨 Невідома помилка: {$fullUrl} | " . $e->getMessage());
+            //     $status = 500;
+            // }
 
-            if ($status !== 404 && $status !== 500) {
+            // if ($status !== 404 && $status !== 500) {
                 $filteredUrls[] = $url;
-            }
+            // }
 
             $bar->advance();
         }
