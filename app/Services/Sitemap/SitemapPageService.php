@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Direction;
 use App\Models\Doctor;
 use App\Models\Page;
+use App\Models\Promotion;
 use Illuminate\Database\Eloquent\Collection;
 
 class SitemapPageService
@@ -14,6 +15,7 @@ class SitemapPageService
     private Collection $articles;
     private Collection $doctors;
     private Collection $directions;
+    private Collection $promotions;
     private int $articlesCount;
     private int $articlePagination;
 
@@ -30,6 +32,9 @@ class SitemapPageService
             ->get();
 
         $this->directions = Direction::with('translations')
+            ->get();
+
+        $this->promotions = Promotion::with('translations')
             ->get();
 
         $this->articlesCount = Article::count();
@@ -67,6 +72,10 @@ class SitemapPageService
             ...$this->getDirectionsUrls(),
             ...$this->getRuDirectionsUrls(),
             // ...$this->getEnDirectionsUrls(),
+
+            ...$this->getPromotionsUrls(),
+            ...$this->getRuPromotionsUrls(),
+            // ...$this->getEnPromotionsUrls(),
         ]));
     }
 
@@ -101,7 +110,7 @@ class SitemapPageService
     private function getRuStaticPageUrls()
     {
         return [
-            '',
+            '/',
             '/vakansii',
             '/vzroslym/hirurgiya',
             '/laboratories',
@@ -113,7 +122,7 @@ class SitemapPageService
             '/staczionar',
             '/offices',
             // '/contacts-search-filter/',
-            '/contacts',
+            '/contact-us',
             '/prices',
             '/otzyvy',
             '/about-us',
@@ -135,7 +144,7 @@ class SitemapPageService
             '/en/staczionar',
             '/en/offices',
             // '/en/contacts-search-filter/',
-            '/en/contacts',
+            '/en/contact-us',
             '/en/prices',
             '/en/otzyvy',
             '/en/about-us',
@@ -322,6 +331,27 @@ class SitemapPageService
     {
         return $this->directions->map(function ($direction) {
             return '/en/' . $direction->buildFullPath();
+        })->all();
+    }
+
+    private function getPromotionsUrls()
+    {
+        return $this->promotions->map( function ($promotion) {
+            return 'ua/'.$promotion->slug;
+        })->all();
+    }
+
+    private function getRuPromotionsUrls()
+    {
+        return $this->promotions->map( function ($promotion) {
+            return $promotion->slug;
+        })->all();
+    }
+
+    private function getEnPromotionsUrls()
+    {
+        return $this->promotions->map( function ($promotion) {
+            return 'en/' . $promotion->slug;
         })->all();
     }
 

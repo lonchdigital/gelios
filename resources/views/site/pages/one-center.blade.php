@@ -14,6 +14,37 @@
 @endsection
 
 @section('content')
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "MedicalOrganization",
+            "name": "{{ $page->title ?? '' }}",
+            "description": "{{ $slides->first()->description ?? '' }}",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "",
+              "addressLocality": "",
+              "postalCode": "",
+              "addressRegion": "",
+              "addressCountry": ""
+            },
+            "telephone": "",
+            "email": "",
+            "openingHours": "",
+            "medicalSpecialty": "{{ $page->title ?? '' }}",
+            "image": "{{ config('app.url') . '/storage/' . $slides->first()->image }}",
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "",
+              "longitude": ""
+            },
+            "hasMap": "",
+            "priceRange": "",
+            "sameAs": [
+            ]
+        }
+    </script>
+
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [
             [

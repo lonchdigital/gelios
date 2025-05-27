@@ -21,7 +21,7 @@
                 "addressLocality": "{{ $doctor->city ?? '' }}",
                 "streetAddress": "{{ $doctor->address ?? '' }}"
             },
-            "image": "{{ $doctor->imageUrl }}"
+            "image": "{{ $doctor->imageUrl }}",
         }
     </script>
 

@@ -24,6 +24,8 @@ class Article extends Model
     public $translatedAttributes = [
         'title',
         'description',
+        'seo_title',
+        'seo_description'
     ];
 
     protected $casts = [

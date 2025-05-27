@@ -59,6 +59,20 @@ class CreateEdit extends Component
 
     public $doctorId;
 
+    public string $seoDescription;
+
+    public string $uaSeoTitle = '';
+
+    public string $enSeoTitle = '';
+
+    public string $ruSeoTitle = '';
+
+    public string $uaSeoDescription = '';
+
+    public string $enSeoDescription = '';
+
+    public string $ruSeoDescription = '';
+
     protected $listeners = [
         'languageSwitched' => 'languageSwitched',
         'refreshItemsAfterDelete' => 'refreshItemsAfterDelete',
@@ -102,6 +116,29 @@ class CreateEdit extends Component
         $this->uaDescription = $translations['ua']->description ?? '';
         $this->enDescription = $translations['en']->description ?? '';
         $this->ruDescription = $translations['ru']->description ?? '';
+
+        $this->uaSeoDescription = $translations['ua']->seo_description ?? '';
+        $this->enSeoDescription = $translations['en']->seo_description ?? '';
+        $this->ruSeoDescription = $translations['ru']->seo_description ?? '';
+
+        $this->uaSeoTitle = $translations['ua']->seo_title ?? '';
+        $this->enSeoTitle = $translations['en']->seo_title ?? '';
+        $this->ruSeoTitle = $translations['ru']->seo_title ?? '';
+    }
+
+    public function updatedSeoDescription($val)
+    {
+        switch ($this->activeLocale) {
+            case 'ua':
+                $this->uaSeoDescription = $val;
+                break;
+            case 'ru':
+                $this->ruSeoDescription = $val;
+                break;
+            case 'en':
+                $this->enSeoDescription = $val;
+                break;
+        }
     }
 
     public function updatedNewImage($val)
@@ -269,6 +306,16 @@ class CreateEdit extends Component
                 'ua' => $this->uaDescription,
                 'en' => $this->enDescription,
                 'ru' => $this->ruDescription,
+            ],
+            [
+                'ua' => $this->uaSeoTitle,
+                'en' => $this->enSeoTitle,
+                'ru' => $this->ruSeoTitle,
+            ],
+            [
+                'ua' => $this->uaSeoDescription,
+                'en' => $this->enSeoDescription,
+                'ru' => $this->ruSeoDescription,
             ],
         );
     }

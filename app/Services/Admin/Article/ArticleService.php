@@ -17,6 +17,8 @@ class ArticleService
         $articleId,
         $titles,
         $descriptions,
+        $seoTitles,
+        $seoDescriptions
         )
     {
         $locales = ['ua', 'en', 'ru'];
@@ -30,6 +32,8 @@ class ArticleService
                 [
                     'title' => $titles[$locale],
                     'description' => $descriptions[$locale],
+                    'seo_title' =>  $seoTitles[$locale],
+                    'seo_description' => $seoDescriptions[$locale],
                 ]
             );
         }

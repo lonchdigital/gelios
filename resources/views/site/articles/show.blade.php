@@ -2,8 +2,8 @@
 
 @section('head')
     @include('site.components.head', [
-        'title' => ($article->title) . ($seo[0] ?? $articlePage->meta_title ?: $articlePage->title),
-        'description' => $seo[1] ?? $articlePage->meta_description,
+        'title' => $article->seo_title ?? ($article->title) . ($seo[0] ?? $articlePage->meta_title ?: $articlePage->title),
+        'description' => $article->seo_description ?? ($seo[1] ?? $articlePage->meta_description),
         'url' => $url
     ])
 @endsection
@@ -20,8 +20,8 @@
             ],
             "url": "{{ url()->current() }}",
             "datePublished": "{{ $article->created_at->toIso8601String() }}",
-            "description": "{{ $article->description }}",
-            "articleBody": "{{ Str::limit(strip_tags($article->body), 300) ?? '' }}"
+            "description": "{{ Str::limit(strip_tags($article->description), 300) ?? '' }}",
+            "articleBody": "{{ Str::limit(strip_tags($article->articleBlocks()->orderBy('sort', 'ASC')->first()->first_content), 300) ?? '' }}"
         }
     </script>
 
@@ -62,8 +62,13 @@
                                     class="swiper-slide position-relative align-content-end h-100 rounded-sm overflow-hidden text-white">
                                     <div class="backdrop p-3 p-lg-6">
                                         <div class="content mt-16">
-                                            <div class="h1 font-m font-weight-bolder mb-3">{{ $image->title }}
-                                            </div>
+                                            @if($loop->iteration == 1)
+                                                <h1 class="h1 font-m font-weight-bolder mb-3">{{ $image->title }}
+                                                </h1>
+                                            @else
+                                                <div class="h1 font-m font-weight-bolder mb-3">{{ $image->title }}
+                                                </div>
+                                            @endif
                                             <div class="h5 font-m font-weight-bold mb-3">{!! $image->description !!}</div>
                                         </div>
                                     </div>
