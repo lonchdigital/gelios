@@ -132,8 +132,9 @@
                                                         wire:sortable.handle 
                                                         style="cursor:move"></i>
                                                     </td>
-                                                    <td>
-                                                        <a href="{{ $direction['full_path'] }}" target="_blank"><i class="fa fa-eye text-info font-18"></i></a>
+                                                    <td class="d-flex">
+                                                        <a href="{{ $direction['full_path'] }}" target="_blank"><i class="fa fa-eye text-info font-18 mr-3"></i></a>
+                                                        <a href="{{ route('directions.edit', ['directionId' => $direction['id']]) }}" target="_blank"><i class="fa fa-pencil text-info font-18"></i></a>
                                                     </td>
                                                     <td>
                                                         <a href="{{ route('directions.edit', ['directionId' => $direction['id']]) }}">{{ $direction['name'] }}</a>
