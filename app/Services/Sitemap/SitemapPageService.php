@@ -63,8 +63,8 @@ class SitemapPageService
             ...$this->getRuPageUrls(),
             // ...$this->getEnPageUrls(),
 
-            ...$this->getArticlesPagesUrls(),
-            ...$this->getRuArticlesPagesUrls(),
+            // ...$this->getArticlesPagesUrls(),
+            // ...$this->getRuArticlesPagesUrls(),
             // ...$this->getEnArticlesPagesUrls(),
 
             ...$this->getArticlesUrls(),
