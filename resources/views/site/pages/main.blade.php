@@ -145,10 +145,6 @@
                                 </h1>
                                 <div class="h5 font-weight-bold mb-8 mb-lg-10">
                                     {!! $page->pageBlocks->where('block', 'banner')->first()->description ?? '' !!}
-                                    {{-- Наші фахівці – це лікарі з великим досвідом
-                                    наукової діяльності та практичної медицини, які володіють найсучаснішими медичними
-                                    технологіями та методиками. Діагностика, лікування, профілактика, реабілітація та
-                                    надання медичних послуг усім членам сім'ї в рамках програми «Сімейний лікар». --}}
                                 </div>
                                 <a href="{{ $page->pageBlocks->where('block', 'banner')->first()->url ?? '##' }}" class="btn btn-white font-weight-bold">
                                     {{ $page->pageBlocks->where('block', 'banner')->first()->button ?? '' }}
