@@ -27,6 +27,8 @@ class Index extends Component
     public array $allDirections = [];
     protected DirectionsService $directionsService;
 
+    public string $search = '';
+
     public function mount() 
     {
         $this->directionsService = app(DirectionsService::class);
@@ -49,13 +51,18 @@ class Index extends Component
         $this->directionsService = app(DirectionsService::class);
     }
     
-    public function updated($propertyName)
-    {}
+    // public function updated($propertyName)
+    // {}
 
     public function updateOrder($list)
     {
-        foreach($list as $item){
-            Direction::find($item['value'])->update(['sort' => $item['order']]);
+        $ids = collect($list)->pluck('value')->all();
+        $directions = Direction::whereIn('id', $ids)->get()->keyBy('id');
+
+        foreach ($list as $item) {
+            if (isset($directions[$item['value']])) {
+                $directions[$item['value']]->update(['sort' => $item['order']]);
+            }
         }
 
         foreach (config('translatable.locales') as $locale):
@@ -68,26 +75,24 @@ class Index extends Component
             $allDirections = $this->directionsService->getDirectionsByCategory($this->direction->id);
             $this->allDirections = $this->directionsService->buildTreeForDashboard($allDirections);
         }
-
-        // TODO: old version of display directions
-        // if(is_null($this->direction)) {
-        //     $allDirections = $this->directionsService->getAllDirections();
-        //     $this->allDirections = $this->directionsService->buildTreeForDashboard($allDirections);
-        // } else {
-        //     $allDirections = $this->directionsService->getDirectionsByCategory($this->direction->id);
-        //     $this->allDirections = $this->directionsService->buildTreeForDashboard($allDirections);
-        // }
     }
 
     public function removeDirectionFromDB(int $id)
     {
-        // dd('remove | ' . $id);
         if($id) {
             $this->directionsService->removeDirectionWithChildren($id);
             redirect()->route('directions.index')->with('success', trans('admin.removed'));
         }
-
         redirect()->route('directions.index')->with('error', trans('admin.error'));
+    }
+
+    public function updatedSearch()
+    {        
+        if (mb_strlen(trim($this->search)) >= 4) {
+            $this->allDirections = $this->directionsService->searchWithParents($this->search);
+        } else {
+            $this->allDirections = $this->directionsService->getCachedDirectionsForDashboard();
+        }
     }
 
     protected function rules()

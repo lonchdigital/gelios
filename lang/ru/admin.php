@@ -390,4 +390,5 @@ return [
     'edit_promotion_title' => 'Для виделения тексти оберните его тегом "<div class="underline"></div>"',
     'check_ups' => 'Check up',
     'prices_list' => 'Список цен',
+    'search' => 'Поиск',
 ];
