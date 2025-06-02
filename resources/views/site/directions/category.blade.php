@@ -104,7 +104,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="h2 font-weight-bolder text-blue mb-8">{{ $page->seo_title }}</div>
+                        @if($page->seo_title)
+                            <h2 class="h2 font-weight-bolder text-blue mb-8">{{ $page->seo_title }}</h2>
+                        @endif
                         <div class="seo-wrapper">
                             <div class="content os-scrollbar-overflow">
                                 {!! $page->seo_text !!}
