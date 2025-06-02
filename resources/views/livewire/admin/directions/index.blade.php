@@ -94,7 +94,7 @@
                                     </div>
                                 </div>
 
-                                <form id="directionForm" action="#" method="GET" class="mb-5">
+                                <form id="directionForm" action="#" method="GET" class="mb-2">
                                     <div class="row aligh-items-center">
                                         <div wire:ignore class="col-md-9">
                                             <select class="form-control" id="directionSelect">
@@ -110,6 +110,13 @@
                                     </div>
                                 </form>
 
+                                <div class="row mb-5">
+                                    <div class="col-md-9">
+                                        <input class="form-control" type="text" wire:model.live="search" placeholder="{{ trans('admin.search') }}" />
+                                    </div>
+                                </div>
+                                
+
                                 <div class="template-demo">
                                     <table class="dark-lincs table mb-0">
                                         <thead>
@@ -120,9 +127,14 @@
                                                 <th class="text-right">{{ trans('admin.remove') }}</th>
                                             </tr>
                                         </thead>
-                                        <tbody wire:ignore wire:sortable="updateOrder" id="art-directions-container" class="art-directions-container">
+                                        
+                                        <tbody 
+                                            wire:sortable="updateOrder" 
+                                            id="art-directions-container" 
+                                            class="art-directions-container">{{-- wire:ignore --}}
                                             @foreach ($allDirections as $direction)
-                                                <tr wire:sortable.item="{{ $direction['id'] }}" 
+                                                <tr 
+                                                    wire:sortable.item="{{ $direction['id'] }}" 
                                                     wire:key="direction-{{ $direction['id'] }}" 
                                                     class="art-drag-item drag-item"
                                                     id="parent-direction-{{ $direction['id'] }}">
