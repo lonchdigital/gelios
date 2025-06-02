@@ -3,7 +3,7 @@
 @section('head')
     @include('site.components.head', [
         'title' => $page->meta_title ?: $direction->name . ' ' . __('web.direction_meta_title'),
-        'description' => $page->meta_description ?? ($direction->name ?? '') . ' ' . __('web.direction_meta_description'),
+        'description' => strip_tags($page->meta_description) ? $page->meta_description : ($direction->name ?? '') . ' ' . __('web.direction_meta_description'),
         'url' => $url,
     ])
 @endsection

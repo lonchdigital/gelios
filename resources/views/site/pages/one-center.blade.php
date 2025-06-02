@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-    <script type="application/ld+json">
+    {{-- <script type="application/ld+json">
         {
             "@context": "http://schema.org",
             "@type": "MedicalOrganization",
@@ -43,7 +43,7 @@
             "sameAs": [
             ]
         }
-    </script>
+    </script> --}}
 
     @include('site.components.breadcrumbs', [
         'breadcrumbs' => [

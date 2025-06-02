@@ -9,6 +9,39 @@
 @endsection
 
 @section('content')
+    @forelse($affiliates as $affiliate)
+        <script type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "MedicalOrganization",
+                "name": "{{ $affiliate->address ?? '' }}",
+                "description": "{{ ($affiliate->address ?? '') . ' ' . ($affiliate->first_phone ?? '') }}",
+                "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "{{ $affiliate->address ?? '' }}",
+                "addressLocality": "",
+                "postalCode": "",
+                "addressRegion": "",
+                "addressCountry": ""
+                },
+                "telephone": "{{ $affiliate->first_phone ?? '' }}",
+                "email": "{{ $affiliate->email ?? '' }}",
+                "openingHours": "{{ $affiliate->hours ?? '' }}",
+                "medicalSpecialty": "{{ $page->title ?? '' }}",
+                "image": "",
+                "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "{{ $affiliate->latitude ?? '' }}",
+                "longitude": "{{ $affiliate->longitude ?? '' }}"
+                },
+                "hasMap": "",
+                "priceRange": "",
+                "sameAs": [
+                ]
+            }
+        </script>
+    @empty
+    @endforelse
     {{-- <main class="main"> --}}
         <section class="section-top mb-24 mt-8">
             <div class="container">

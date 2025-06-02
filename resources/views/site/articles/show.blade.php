@@ -192,7 +192,7 @@
                                             сімейного здоров'я та реабілітації “Геліос” у Дніпрі пропонує прийом
                                             лікаря-анестезіолога пацієнтам, які готуються до планового хірургічного втручання.</p>
                                         <p>Оперативне лікування неможливе без анестезіолога-реаніматолога.</p> --}}
-                                        <div class="title">{{ $block->first_title }}</div>
+                                        <h2 class="title">{{ $block->first_title }}</h2>
                                         <p>
                                             {!! $block->first_content !!}
                                         </p>
@@ -202,11 +202,11 @@
                                 @if(!empty($block->first_title) && !empty($block->first_content) && !empty($block->second_title) && !empty($block->second_content))
                                     <div class="columns">
                                         <div class="articles--item">
-                                            <div class="title">{{ $block->first_title }}</div>
+                                            <h2 class="title">{{ $block->first_title }}</h2>
                                             <p>{!! $block->first_content !!}</p>
                                         </div>
                                         <div class="articles--item">
-                                            <div class="title">{{ $block->second_title }}</div>
+                                            <h2 class="title">{{ $block->second_title }}</h2>
                                             <p>{!! $block->second_content !!}</p>
                                         </div>
                                     </div>
