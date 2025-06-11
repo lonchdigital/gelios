@@ -278,6 +278,8 @@ class DirectionsService
     public function buildTreeForDashboard($directions)
     {
         $tree = [];
+        $locale = app()->getLocale();
+        $locale = ($locale === 'ru') ? '' : $locale;
 
         foreach ($directions as $direction) {
             $children = $direction->children->isNotEmpty() 
@@ -290,7 +292,7 @@ class DirectionsService
                 'template' => $direction->template,
                 'children' => $children,
                 'slug' => $direction->page->slug,
-                'full_path' => url($direction->buildFullPath())
+                'full_path' => url($locale . '/' . $direction->buildFullPath())
             ];
         }
 
