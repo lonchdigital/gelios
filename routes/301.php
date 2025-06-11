@@ -32,10 +32,6 @@ $items = [
         'to' => '/reproduktologiya'
     ],
     [
-        'from' => '/vzroslym/reproduktologiya-test1/',
-        'to' => '/reproduktologiya-test1'
-    ],
-    [
         'from' => '/gelios-novomskovsk/ehokg/',
         'to' => '/funkcionalna-diagnostika/ekg-i-ehokg'
     ],
