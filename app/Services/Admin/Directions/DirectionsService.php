@@ -288,7 +288,7 @@ class DirectionsService
 
             $tree[] = [
                 'id' => $direction->id,
-                'name' => $direction->short_name,
+                'name' => $direction->name,
                 'template' => $direction->template,
                 'children' => $children,
                 'slug' => $direction->page->slug,
