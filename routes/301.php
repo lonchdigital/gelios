@@ -32,6 +32,10 @@ $items = [
         'to' => '/reproduktologiya'
     ],
     [
+        'from' => '/vzroslym/reproduktologiya-test1/',
+        'to' => '/reproduktologiya-test1'
+    ],
+    [
         'from' => '/gelios-novomskovsk/ehokg/',
         'to' => '/funkcionalna-diagnostika/ekg-i-ehokg'
     ],
@@ -299,7 +303,7 @@ $items = [
 if (!empty($items)) {
     foreach ($items as $item) {
         Route::get($item['from'], function () use ($item) {
-            return redirect()->away(config('app.url') . $item['to'], 302);
+            return redirect()->away(config('app.url') . $item['to'], 301);
         });
     }
 }
