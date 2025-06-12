@@ -26,11 +26,12 @@ class WebPagesController extends Controller
             $direction = $page->direction;
             $directionSlugs = explode('/', $direction->buildFullPath());
 
-            $skipSlugCheck = ['reproduktologiya'];
-            if (!in_array($lastSlug, $skipSlugCheck)) {
-                if ($directionSlugs !== $slugs) {
-                    abort(404);
-                }
+            //$skipSlugCheck = ['']; // reproduktologiya
+            // if (!in_array($lastSlug, $skipSlugCheck)) {
+                
+            // }
+            if ($directionSlugs !== $slugs) {
+                abort(404);
             }
 
             switch ( $direction->template ) {
