@@ -28,10 +28,6 @@ $items = [
         'to' => '/reabilitacziya/autizm'
     ],
     [
-        'from' => '/vzroslym/reproduktologiya/',
-        'to' => '/reproduktologiya'
-    ],
-    [
         'from' => '/gelios-novomskovsk/ehokg/',
         'to' => '/funkcionalna-diagnostika/ekg-i-ehokg'
     ],
