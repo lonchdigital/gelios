@@ -15,12 +15,12 @@ class RedirectIfEn
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (app()->getLocale() == 'en') {
-            $url = $request->getRequestUri();
-            $uaUrl = str_replace('/en', '/ua', $url);
+        // if (app()->getLocale() == 'en') {
+        //     $url = $request->getRequestUri();
+        //     $uaUrl = str_replace('/en', '/ua', $url);
 
-            return redirect()->to($uaUrl, 301);
-        }
+        //     return redirect()->to($uaUrl, 301);
+        // }
 
         return $next($request);
     }

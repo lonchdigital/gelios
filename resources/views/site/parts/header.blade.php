@@ -200,7 +200,7 @@
                                             @endif
                                         @endforeach --}}
                                         @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                            @if ($localeCode !== LaravelLocalization::getCurrentLocale() && $localeCode !== 'en')
+                                            @if ($localeCode !== LaravelLocalization::getCurrentLocale())
                                                 @php
                                                     $path = ltrim(parse_url(request()->getRequestUri(), PHP_URL_PATH), '/');
                                                     $segments = collect(explode('/', $path));
@@ -267,7 +267,7 @@
                                                             </div>
                                                         </li>
                                                     @endif --}}
-                                                    @if ($localeCode !== LaravelLocalization::getCurrentLocale() && $localeCode !== 'en')
+                                                    @if ($localeCode !== LaravelLocalization::getCurrentLocale())
                                                         @php
                                                             $path = ltrim(parse_url(request()->getRequestUri(), PHP_URL_PATH), '/');
                                                             $segments = collect(explode('/', $path));
