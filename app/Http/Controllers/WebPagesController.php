@@ -30,7 +30,9 @@ class WebPagesController extends Controller
             // if (!in_array($lastSlug, $skipSlugCheck)) {
                 
             // }
+            
             if ($directionSlugs !== $slugs) {
+                dd('test', $directionSlugs, $slugs);
                 abort(404);
             }
 
