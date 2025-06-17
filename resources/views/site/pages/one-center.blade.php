@@ -95,9 +95,13 @@
             <div class="row">
                 <div class="col">
                     <div class="section-directions--list">
+                        @php
+                            $locale = app()->getLocale();
+                            $localePrefix = $locale === 'ru' ? '' : '/' . $locale;
+                        @endphp
                         @foreach ($briefBlocks as $briefBlock)
                             <div class="item">
-                                <a href="{{ $briefBlock->url ?? '' }}">
+                                <a href="{{ $localePrefix . '/' . $briefBlock->url ?? '' }}">
                                     <div class="item--body">
                                         <div class="mb-2 mb-lg-4">
                                             <img src="{{ '/storage/' . $briefBlock->image }}" alt="icon">
