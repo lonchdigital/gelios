@@ -101,7 +101,7 @@
                         @endphp
                         @foreach ($briefBlocks as $briefBlock)
                             <div class="item">
-                                <a href="{{ $localePrefix . '/' . $briefBlock->url ?? '' }}">
+                                <a href="{{ $localePrefix . $briefBlock->url ?? '' }}">
                                     <div class="item--body">
                                         <div class="mb-2 mb-lg-4">
                                             <img src="{{ '/storage/' . $briefBlock->image }}" alt="icon">
