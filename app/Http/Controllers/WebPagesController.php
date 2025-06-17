@@ -11,6 +11,21 @@ use App\Http\Controllers\Controller;
 class WebPagesController extends Controller
 {
 
+    private function getPageDirection(string $lastSlug, array $slugs)
+    {
+        $possiblePages = PageDirection::where('slug', $lastSlug)->get();
+
+        foreach ($possiblePages as $page) {
+            $directionSlugs = explode('/', $page->direction->buildFullPathFrom($page));
+
+            if ($directionSlugs === $slugs) {
+                return $page;
+            }
+        }
+
+        return null;
+    }
+
     public function webPageByFullPath($slug) // full path slug
     {
         $url['ua'] = url('/') . '/ua/' . $slug;
@@ -20,7 +35,8 @@ class WebPagesController extends Controller
         $slugs = explode('/', $slug);
         $lastSlug = end($slugs);
 
-        $page = PageDirection::where('slug', $lastSlug)->first();
+        // $page = PageDirection::where('slug', $lastSlug)->first();
+        $page = $this->getPageDirection($lastSlug, $slugs);
 
         if(!is_null($page)) {
             $direction = $page->direction;

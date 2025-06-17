@@ -134,4 +134,26 @@ class Direction extends Model implements TranslatableContract
 
         return implode('/', array_reverse($segments)); // full path
     }
+
+    public function buildFullPathFrom(PageDirection $pageDirection): string
+    {
+        $segments = [];
+        $current = $this;
+
+        while ($current) {
+            $slug = $current->pageDirections()
+                            ->where('page_id', $pageDirection->page_id)
+                            ->first()?->slug;
+
+            $segments[] = $slug ?? null;
+            $current = $current->parent;
+        }
+
+        return implode('/', array_reverse(array_filter($segments)));
+    }
+
+    public function pageDirections()
+    {
+        return $this->hasMany(PageDirection::class, 'direction_id', 'id');
+    }
 }
