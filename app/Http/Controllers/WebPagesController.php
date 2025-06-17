@@ -35,8 +35,8 @@ class WebPagesController extends Controller
         $slugs = explode('/', $slug);
         $lastSlug = end($slugs);
 
-        // $page = PageDirection::where('slug', $lastSlug)->first();
-        $page = $this->getPageDirection($lastSlug, $slugs);
+        $page = PageDirection::where('slug', $lastSlug)->first();
+        // $page = $this->getPageDirection($lastSlug, $slugs);
 
         if(!is_null($page)) {
             $direction = $page->direction;
