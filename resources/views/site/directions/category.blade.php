@@ -37,13 +37,13 @@
                                 <div class="push-menu--lvl position-relative">
                                     <div class="item has-dropdown">
                                         <div class="category-directions">
-                                            <div class="category-directions--list">
+                                            <div class="category-directions--list 111">
                                                 <div class="row">
                                                     @foreach ($direction->children as $child)
                                                         <div class="col-12 col-lg-4 col-xl-3 position-static">
                                                             <div class="directions-item">
                                                                 <div class="content item">
-                                                                    <a href="{{ url($child->buildFullPath()) }}" class="link">
+                                                                    <a href="{{ $child->buildFullPath() }}" class="link">
                                                                         <span>{{ $child->name }}</span>
                                                                         <div class="i-link"></div>
                                                                     </a>
