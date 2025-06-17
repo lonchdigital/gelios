@@ -10,22 +10,6 @@ use App\Http\Controllers\Controller;
 
 class WebPagesController extends Controller
 {
-
-    private function getPageDirection(string $lastSlug, array $slugs)
-    {
-        $possiblePages = PageDirection::where('slug', $lastSlug)->get();
-
-        foreach ($possiblePages as $page) {
-            $directionSlugs = explode('/', $page->direction->buildFullPathFrom($page));
-
-            if ($directionSlugs === $slugs) {
-                return $page;
-            }
-        }
-
-        return null;
-    }
-
     public function webPageByFullPath($slug) // full path slug
     {
         $url['ua'] = url('/') . '/ua/' . $slug;
@@ -47,12 +31,20 @@ class WebPagesController extends Controller
                 
             // }
             
-            if ($directionSlugs !== $slugs) {
-                $slug = $direction->buildFullPath();
+            // if ($directionSlugs !== $slugs) {
+            //     $slug = $direction->buildFullPath();
 
-                $url['ua'] = url('/') . '/ua/' . $slug;
-                $url['ru'] = url('/') . '/' . $slug;
-                $url['en'] = url('/') . '/en/' . $slug;
+            //     $url['ua'] = url('/') . '/ua/' . $slug;
+            //     $url['ru'] = url('/') . '/' . $slug;
+            //     $url['en'] = url('/') . '/en/' . $slug;
+            // }
+
+            if ($directionSlugs !== $slugs) {
+                $locale = app()->getLocale();
+                $localePrefix = $locale === 'ru' ? '' : '/' . $locale;
+                $correctSlug = $direction->buildFullPath();
+
+                return redirect()->to(url($localePrefix . '/' . $correctSlug));
             }
 
             switch ( $direction->template ) {
