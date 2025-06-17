@@ -32,7 +32,7 @@ class WebPagesController extends Controller
             // }
             
             if ($directionSlugs !== $slugs) {
-                dd('test', $directionSlugs, $slugs);
+                dd('test', $directionSlugs, $slugs, PageDirection::where('slug', $lastSlug)->get());
                 abort(404);
             }
 
