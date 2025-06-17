@@ -30,14 +30,6 @@ class WebPagesController extends Controller
             // if (!in_array($lastSlug, $skipSlugCheck)) {
                 
             // }
-            
-            // if ($directionSlugs !== $slugs) {
-            //     $slug = $direction->buildFullPath();
-
-            //     $url['ua'] = url('/') . '/ua/' . $slug;
-            //     $url['ru'] = url('/') . '/' . $slug;
-            //     $url['en'] = url('/') . '/en/' . $slug;
-            // }
 
             if ($directionSlugs !== $slugs) {
                 $locale = app()->getLocale();
