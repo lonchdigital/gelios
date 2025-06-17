@@ -285,10 +285,10 @@ $items = [
         'from' => '/zapisatsya-na-priem-k-mammologu-onkologu',
         'to' => '/vzroslym/mammologiya'
     ],
-    [
-        'from' => '/ultrazvukovaya-i-funkczionalnaya-diagnostika-vzroslyh',
-        'to' => '/uzi-s-elastografiej'
-    ],
+    // [
+    //     'from' => '/ultrazvukovaya-i-funkczionalnaya-diagnostika-vzroslyh',
+    //     'to' => '/uzi-s-elastografiej'
+    // ],
     // directions END
 ];
 
