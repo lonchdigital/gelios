@@ -48,10 +48,7 @@ class WebPagesController extends Controller
             // }
             
             if ($directionSlugs !== $slugs) {
-                // dd('test', $directionSlugs, $slugs, PageDirection::where('slug', $lastSlug)->get());
-                // abort(404);
-
-                dd($direction->buildFullPath());
+                $slug = $direction->buildFullPath();
 
                 $url['ua'] = url('/') . '/ua/' . $slug;
                 $url['ru'] = url('/') . '/' . $slug;
