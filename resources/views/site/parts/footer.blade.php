@@ -53,6 +53,10 @@
                                                             href="{{ '/ua/' . $direction->page->buildFullPath() ?? '##' }}"
                                                         @break
 
+                                                        @case('en')
+                                                            href="{{ '/en/' . $direction->page->buildFullPath() ?? '##' }}"
+                                                        @break
+
                                                         @default
                                                             href="{{ '/' . $direction->page->buildFullPath() ?? '##' }}"
                                                     @endswitch()
@@ -72,6 +76,10 @@
                                             @switch(LaravelLocalization::getCurrentLocale())
                                                         @case('ua')
                                                             href="{{ '/ua/' . $info->page->slug ?? '##' }}"
+                                                        @break
+
+                                                        @case('en')
+                                                            href="{{ '/en/' . $info->page->slug ?? '##' }}"
                                                         @break
 
                                                         @default

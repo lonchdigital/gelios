@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    @forelse($affiliates as $affiliate)
+    {{-- @forelse($affiliates as $affiliate)
         <script type="application/ld+json">
             {
                 "@context": "http://schema.org",
@@ -41,7 +41,46 @@
             }
         </script>
     @empty
-    @endforelse
+    @endforelse --}}
+    <script type="application/ld+json">
+        {!! json_encode([
+            "@context" => "http://schema.org",
+            "@type" => "MedicalOrganization",
+            "name" => "Центр хірургії та реабілітації 'Геліос'",
+            "description" => $page->description ?? '',
+            "address" => $affiliates->map(function($affiliate) {
+                return [
+                    "@type" => "PostalAddress",
+                    "streetAddress" => $affiliate->address ?? '',
+                    "addressLocality" => $affiliate->city ?? 'Дніпро',
+                    "postalCode" => $affiliate->postal_code ?? '50000',
+                    "addressRegion" => $affiliate->region ?? 'Дніпропетровська область',
+                    "addressCountry" => $affiliate->country ?? 'UA',
+                    "telephone" => array_filter([
+                        $affiliate->first_phone,
+                        $affiliate->second_phone,
+                    ])
+                ];
+            })->toArray(),
+            "email" => $affiliates->first()?->email ?? '',
+            "openingHours" => $affiliates->first()?->hours ?? '',
+            "medicalSpecialty" => $page->title ?? 'Багатопрофільний медичний центр',
+            "image" => $page->image_url ?? 'http://example.com/medicalcenter.jpg',
+            "geo" => [
+                "@type" => "GeoCoordinates",
+                "latitude" => $affiliates->first()?->latitude ?? '',
+                "longitude" => $affiliates->first()?->longitude ?? '',
+            ],
+            "hasMap" => $affiliates->first()?->map_url ?? 'https://goo.gl/maps/your-location',
+            "priceRange" => '',
+            "sameAs" => [
+                "http://facebook.com/medicalcenter",
+                "http://twitter.com/medicalcenter",
+                "http://instagram.com/medicalcenter"
+            ]
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
+
     {{-- <main class="main"> --}}
         <section class="section-top mb-24 mt-8">
             <div class="container">

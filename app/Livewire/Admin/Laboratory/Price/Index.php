@@ -5,9 +5,12 @@ namespace App\Livewire\Admin\Laboratory\Price;
 use App\Models\LaboratoryCity;
 use App\Models\LabPriceCategory;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
+    use WithPagination;
+    
     protected $listeners = [
         'refreshItemsAfterDelete' => 'refreshItemsAfterDelete',
         'refresh' => '$refresh',

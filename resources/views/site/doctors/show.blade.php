@@ -22,6 +22,7 @@
                 "streetAddress": "{{ $doctor->address ?? '' }}"
             },
             "image": "{{ $doctor->imageUrl }}",
+            "url": "{{ request()->fullUrl() }}"
         }
     </script>
 

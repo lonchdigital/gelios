@@ -109,4 +109,10 @@ return [
     'you_care' => 'Care',
     'about_health' => 'about health?',
     'choose_yours' => 'Choose yours',
+    'doctor_seo_title' => '%title% ᐈ Doctors of the medical center "Helios"',
+    'doctor_seo_description' => '%title% ✅ Highly qualified doctor with many years of experience in the Helios clinic ✍️ Make an appointment with a doctor online',
+    'blog_seo_title' => '%title% ᐈ Blog of the Helios Clinic',
+    'blog_seo_description' => '%title% ✴️ Recommendations and advice from specialists of the Helios Medical Center ✴️ Read more in the blog of our clinic',
+    'direction_seo_title' => '%title% ᐈ Medical center "Helios"',
+    'direction_seo_description' => '%title% ✅ Affordable prices in the private clinic Helios ✅ Modern methods of treatment ⚡ Highly qualified doctors ⚡ Modern equipment ✍️ Online booking',
 ];

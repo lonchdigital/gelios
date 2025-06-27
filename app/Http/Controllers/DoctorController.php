@@ -95,7 +95,9 @@ class DoctorController extends Controller
             ->with('translations')
             ->first();
 
-        $seo = $service->getMeta($page->title, $doctorPage->meta_title, $doctorPage->meta_description);
+        $doctor->with('translations');
+
+        $seo = $service->getMeta($doctor->title, trans('web.doctor_seo_title'), trans('web.doctor_seo_description'));
         $seo[1] = strip_tags($seo[1]);
 
         $relatedArticles = Article::inrandomOrder()
