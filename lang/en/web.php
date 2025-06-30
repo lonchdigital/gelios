@@ -115,4 +115,5 @@ return [
     'blog_seo_description' => '%title% ✴️ Recommendations and advice from specialists of the Helios Medical Center ✴️ Read more in the blog of our clinic',
     'direction_seo_title' => '%title% ᐈ Medical center "Helios"',
     'direction_seo_description' => '%title% ✅ Affordable prices in the private clinic Helios ✅ Modern methods of treatment ⚡ Highly qualified doctors ⚡ Modern equipment ✍️ Online booking',
+    'uah' => 'UAH',
 ];

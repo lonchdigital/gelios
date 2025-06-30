@@ -70,5 +70,10 @@
             </div>
         </div>
     </section>
+    <script>
+        const translationsPrices = {
+            uah: @json(__('web.uah'))
+        };
+    </script>
 
 @endsection

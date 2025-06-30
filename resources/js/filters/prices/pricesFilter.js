@@ -193,14 +193,14 @@ function buildLaboratoryItemHTML(item, iteration)
         let priceHtml = '';
 // console.log(priceItemTranslation);
         if(priceItem.is_free) {
-            priceHtml = `<div class="price">${priceItemTranslation.price}</div>`;
+            priceHtml = `<div class="price">${priceItemTranslation?.price ?? ''} ${priceItemTranslation?.price ? translationsPrices.uah : ''}</div>`;
         } else {
-            priceHtml = `<div class="price">${priceItemTranslation.price}</div>`;
+            priceHtml = `<div class="price">${priceItemTranslation?.price ?? ''} ${priceItemTranslation?.price ? translationsPrices.uah : ''}</div>`;
         }
 
         allPrices += `
             <div class="item">
-                <div class="name">${priceItemTranslation.title}</div>
+                <div class="name">${priceItemTranslation?.title ?? ''}</div>
                 ${priceHtml}
             </div>
         `;
