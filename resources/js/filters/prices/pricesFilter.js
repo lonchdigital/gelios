@@ -104,7 +104,11 @@ function buildItemHTML(item, iteration)
         if(priceItem.is_free) {
             priceHtml = `<div class="price">${translations['free']}</div>`;
         } else {
-            priceHtml = `<div class="price">${price} грн</div>`;
+            if(itemTranslation.locale == 'en') {
+                priceHtml = `<div class="price">${price} UAH</div>`;
+            } else {
+                priceHtml = `<div class="price">${price} грн</div>`;
+            }
         }
 
         allPrices += `
