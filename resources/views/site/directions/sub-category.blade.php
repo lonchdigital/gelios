@@ -16,6 +16,25 @@
 
 @section('content')
 
+    @if (count($direction->infoBlocks) > 0)
+        <script type="application/ld+json">
+            {!! json_encode([
+                "@context" => "https://schema.org",
+                "@type" => "FAQPage",
+                "mainEntity" => $direction->infoBlocks->map(function ($block) {
+                    return [
+                        "@type" => "Question",
+                        "name" => strip_tags($block->title), // або htmlspecialchars
+                        "acceptedAnswer" => [
+                            "@type" => "Answer",
+                            "text" => strip_tags($block->description),
+                        ],
+                    ];
+                })->values(), // to ensure indexed array
+            ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+        </script>
+        @endif
+
     @include('site.directions.partials.breadcrumbs', [
         'breadcrumbs' => $direction->buildBreadcrumbs(),
     ])
