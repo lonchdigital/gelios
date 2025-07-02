@@ -16,7 +16,7 @@
 
 @section('content')
 
-    @if ($direction->infoBlocks->isNotEmpty())
+    @if (count($direction->infoBlocks) > 0)
         <script type="application/ld+json">
             {!! json_encode([
                 "@context" => "https://schema.org",
