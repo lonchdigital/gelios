@@ -121,4 +121,10 @@ return [
     'doctor' => 'doctor',
     'name' => 'name',
     'clinic' => 'clinic',
+    'uaTitle' => 'ua title',
+    'ruTitle' => 'ru title',
+    'enTitle' => 'en title',
+    'uaPrice' => 'ua price',
+    'ruPrice' => 'ru price',
+    'enPrice' => 'en price',
 ];

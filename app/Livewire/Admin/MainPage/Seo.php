@@ -265,19 +265,19 @@ class Seo extends Component
 
         switch ($this->page->type) {
             case 'main_page':
-                    return $this->redirectRoute('admin.main-page.edit-seo');
+                    return $this->redirectRoute('admin.main-page.show');
                 break;
 
             case 'laboratory':
-                    return $this->redirectRoute('admin.laboratories.edit-main-seo');
+                    return $this->redirectRoute('admin.laboratories.index');
                 break;
 
             case 'one_laboratory':
-                    return $this->redirectRoute('admin.laboratories.edit-one-page-seo');
+                    return $this->redirectRoute('admin.laboratories.show');
                 break;
 
             case 'shares':
-                    return $this->redirectRoute('admin.promotions.edit-main-seo');
+                    return $this->redirectRoute('admin.promotions.index');
                 break;
 
             case 'shares_item':
@@ -285,11 +285,11 @@ class Seo extends Component
                 break;
 
             case 'check_up':
-                    return $this->redirectRoute('admin.check-ups.edit-main-seo');
+                    return $this->redirectRoute('admin.check-ups.index');
                 break;
 
             case 'check_up_item':
-                    return $this->redirectRoute('admin.check-ups.edit-one-page-seo');
+                    return $this->redirectRoute('admin.check-ups.index');
                 break;
 
             case 'blog':
@@ -309,19 +309,19 @@ class Seo extends Component
                 break;
 
             case 'surgery':
-                    return $this->redirectRoute('admin.surgery.edit-main-seo');
+                    return $this->redirectRoute('admin.surgery.index');
                 break;
 
             case 'opening':
-                    return $this->redirectRoute('admin.vacancies.edit-main-seo');
+                    return $this->redirectRoute('admin.vacancies.index');
                 break;
 
             case 'laboratory_price':
-                    return $this->redirectRoute('admin.laboratories.prices.edit-seo');
+                    return $this->redirectRoute('admin.laboratories.prices.index');
                 break;
 
             default:
-                return $this->redirectRoute('admin.main-page.edit-seo');
+                return $this->redirectRoute('admin.main-page.show');
         }
 
     }

@@ -4,10 +4,10 @@
     @include('site.components.head', [
         'title' =>
             // $page->meta_title ?:
-            $direction->name . ' ' . __('web.direction_meta_title'),
+            ($direction->textBlocks->where('number', 1)->first()->text_one ?? $direction->name) . ' ' . __('web.direction_meta_title'),
         'description' =>
-            // strip_tags($page->meta_description) ? $page->meta_description : 
-            ($direction->name ?? '') . ' ' . __('web.direction_meta_description'),
+            // strip_tags($page->meta_description) ? $page->meta_description :
+            ($direction->textBlocks->where('number', 1)->first()->text_one ?? $direction->name) . ' ' . __('web.direction_meta_description'),
         'url' => $url,
     ])
 @endsection

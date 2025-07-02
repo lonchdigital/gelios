@@ -12,6 +12,7 @@ class LabPriceItem extends Model
 
     protected $fillable = [
         'lab_price_category_id',
+        'is_free',
     ];
 
     protected $translatedAttributes = [

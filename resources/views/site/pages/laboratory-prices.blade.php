@@ -72,7 +72,8 @@
     </section>
     <script>
         const translationsPrices = {
-            uah: @json(__('web.uah'))
+            uah: @json(__('web.uah')),
+            free: @json(__('admin.free'))
         };
     </script>
 

@@ -13,6 +13,8 @@ class CreateEdit extends Component
 {
     public LabPriceCategory $category;
 
+    public array $validationAttributes = [];
+
     public LabPriceItem $item;
 
     public string $activeLocale;
@@ -29,6 +31,8 @@ class CreateEdit extends Component
 
     public string $ruPrice = '';
 
+    public bool $is_free = false;
+
     protected $listeners = [
         'languageSwitched' => 'languageSwitched'
     ];
@@ -38,6 +42,8 @@ class CreateEdit extends Component
         $this->category = $category ?? new LabPriceCategory();
 
         $this->item = $item ?? new LabPriceItem();
+
+        $this->is_free = $this->item->is_free ?? false;
 
         $this->activeLocale = config('app.active_lang');
 
@@ -70,6 +76,15 @@ class CreateEdit extends Component
             ->where('lab_price_item_id', $this->item->id ?? null)
             ->first()
             ->price ?? '';
+
+        $this->validationAttributes = [
+            'uaTitle' => trans('validation.uaTitle'),
+            'enTitle' => trans('validation.enTitle'),
+            'ruTitle' => trans('validation.ruTitle'),
+            'uaPrice' => trans('validation.uaPrice'),
+            'enPrice' => trans('validation.enPrice'),
+            'ruPrice' => trans('validation.ruPrice'),
+        ];
     }
 
     public function languageSwitched($lang)
@@ -109,6 +124,11 @@ class CreateEdit extends Component
                 'required',
                 'string',
             ],
+
+            'is_free' => [
+                // 'nullable',
+                'boolean',
+            ]
         ];
     }
 
@@ -117,6 +137,8 @@ class CreateEdit extends Component
         $this->validate();
 
         $this->item->lab_price_category_id = $this->category->id;
+
+        $this->item->is_free = $this->is_free;
 
         $this->item->save();
 

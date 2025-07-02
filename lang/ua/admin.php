@@ -420,4 +420,5 @@ return [
     'full_name' => 'ПІБ',
     'edit_promotion_title' => 'Для виділення тексту обгорніть його тегом "<div class="underline"></div>"',
     'search' => 'Пошук',
+    'is_free' => 'Чи безкоштовно'
 ];

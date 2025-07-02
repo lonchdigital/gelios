@@ -166,5 +166,10 @@ return [
     'doctor' => 'врач',
     'name' => 'имя',
     'clinic' => 'клиника',
-
+    'uaTitle' => 'ua заголовок',
+    'ruTitle' => 'ru заголовок',
+    'enTitle' => 'en заголовок',
+    'uaPrice' => 'ua стоимость',
+    'ruPrice' => 'ru стоимость',
+    'enPrice' => 'en стоимость',
 ];

@@ -391,4 +391,5 @@ return [
     'check_ups' => 'Check up',
     'prices_list' => 'Список цен',
     'search' => 'Поиск',
+    'is_free' => 'Безплатно',
 ];

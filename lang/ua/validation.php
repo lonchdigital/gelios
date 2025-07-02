@@ -144,4 +144,10 @@ return [
     'doctor' => 'лікар',
     'name' => 'ім\'я',
     'clinic' => 'клінка',
+    'uaTitle' => 'ua заголовок',
+    'ruTitle' => 'ru заголовок',
+    'enTitle' => 'en заголовок',
+    'uaPrice' => 'ua вартість',
+    'ruPrice' => 'ru вартість',
+    'enPrice' => 'en вартість',
 ];
