@@ -88,7 +88,7 @@ Route::group([
         Route::get('/laboratories/prices', [LaboratoryController::class, 'prices'])->name('laboratories.prices');
         Route::post('/laboratories-prices-search-filter/', [LaboratoryController::class, 'searchFilter']);
 
-        Route::get('/vzroslym/hirurgiya/', [SurgeryController::class, 'index'])->name('surgery.index');
+        Route::get('/vzroslym/hirurgiya', [SurgeryController::class, 'index'])->name('surgery.index');
 
         Route::get('/vakansii/', [VacancyController::class, 'index'])->name('vacancy.index');
 
