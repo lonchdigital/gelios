@@ -21,14 +21,16 @@
             {!! json_encode([
                 "@context" => "https://schema.org",
                 "@type" => "FAQPage",
-                "mainEntity" => {
-                    "@type" => "Question",
-                    "name" => strip_tags($page->seo_title),
-                    "acceptedAnswer" => [
-                        "@type" => "Answer",
-                        "text" => strip_tags($page->seo_text),
-                    ],
-                }
+                "mainEntity" => [
+                    [
+                        "@type" => "Question",
+                        "name" => strip_tags($page->seo_title),
+                        "acceptedAnswer" => [
+                            "@type" => "Answer",
+                            "text" => strip_tags($page->seo_text),
+                        ],
+                    ]
+                ]
             ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
         </script>
     @endif
