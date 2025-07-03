@@ -21,16 +21,16 @@
             {!! json_encode([
                 "@context" => "https://schema.org",
                 "@type" => "FAQPage",
-                "mainEntity" => $direction->infoBlocks->map(function ($block) {
-                    return [
+                "mainEntity" => [
+                    [
                         "@type" => "Question",
-                        "name" => strip_tags($block->title), // або htmlspecialchars
+                        "name" => strip_tags($page->seo_title),
                         "acceptedAnswer" => [
                             "@type" => "Answer",
-                            "text" => strip_tags($block->description),
+                            "text" => strip_tags($page->seo_text),
                         ],
-                    ];
-                })->values(), // to ensure indexed array
+                    ]
+                ]
             ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
         </script>
     @endif
