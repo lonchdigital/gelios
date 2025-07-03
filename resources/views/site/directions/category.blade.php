@@ -4,10 +4,10 @@
     @include('site.components.head', [
         'title' =>
             // $page->meta_title ?:
-            (preg_match('/<h1\b[^>]*>(.*?)<\/h1>/is', $direction->textBlocks->where('number', 1)->first()->text_one, $m) ? $m[1] : $direction->name) . ' ' . __('web.direction_meta_title'),
+            (preg_match('/<h1\b[^>]*>(.*?)<\/h1>/is', $direction->textBlocks->where('number', 1)->first()->text_one, $m) ? strip_tags($m[1]) : $direction->name) . ' ' . __('web.direction_meta_title'),
         'description' =>
             // strip_tags($page->meta_description) ? $page->meta_description :
-            (preg_match('/<h1\b[^>]*>(.*?)<\/h1>/is', $direction->textBlocks->where('number', 1)->first()->text_one, $m) ? $m[1] : $direction->name) . ' ' . __('web.direction_meta_description'),
+            (preg_match('/<h1\b[^>]*>(.*?)<\/h1>/is', $direction->textBlocks->where('number', 1)->first()->text_one, $m) ? strip_tags($m[1]) : $direction->name) . ' ' . __('web.direction_meta_description'),
         'url' => $url,
     ])
 @endsection
