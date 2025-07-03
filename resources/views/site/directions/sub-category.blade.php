@@ -4,10 +4,10 @@
     @include('site.components.head', [
         'title' =>
             // $page->meta_title ?:
-            ($direction->textBlocks->where('number', 1)->first()->text_one ?? $direction->name) . ' ' . __('web.direction_meta_title'),
+            (collect(preg_match('/<span[^>]*>(.*?)<\/span>/is', preg_replace('/<h1[^>]*>.*?<\/h1>/is', '', $direction->textBlocks->where('number', 1)->first()->text_one), $m) ? $m[1] : [])->first() ?? $direction->name) . ' ' . __('web.direction_meta_title'),
         'description' =>
             // strip_tags($page->meta_description) ? $page->meta_description :
-            ($direction->textBlocks->where('number', 1)->first()->text_one ?? $direction->name) . ' ' . __('web.direction_meta_description'),
+            (collect(preg_match('/<span[^>]*>(.*?)<\/span>/is', preg_replace('/<h1[^>]*>.*?<\/h1>/is', '', $direction->textBlocks->where('number', 1)->first()->text_one), $m) ? $m[1] : [])->first() ?? $direction->name) . ' ' . __('web.direction_meta_description'),
         'url' => $url,
     ])
 @endsection
@@ -16,24 +16,22 @@
 
 @section('content')
 
-    @if (count($direction->infoBlocks) > 0)
+    @if (!isEmptyHtml($page->seo_text))
         <script type="application/ld+json">
             {!! json_encode([
                 "@context" => "https://schema.org",
                 "@type" => "FAQPage",
-                "mainEntity" => $direction->infoBlocks->map(function ($block) {
-                    return [
-                        "@type" => "Question",
-                        "name" => strip_tags($block->title), // або htmlspecialchars
-                        "acceptedAnswer" => [
-                            "@type" => "Answer",
-                            "text" => strip_tags($block->description),
-                        ],
-                    ];
-                })->values(), // to ensure indexed array
+                "mainEntity" => {
+                    "@type" => "Question",
+                    "name" => strip_tags($page->seo_title),
+                    "acceptedAnswer" => [
+                        "@type" => "Answer",
+                        "text" => strip_tags($page->seo_text),
+                    ],
+                }
             ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
         </script>
-        @endif
+    @endif
 
     @include('site.directions.partials.breadcrumbs', [
         'breadcrumbs' => $direction->buildBreadcrumbs(),
