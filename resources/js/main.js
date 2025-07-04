@@ -3,3 +3,4 @@
 
 import '../src/js/libs.js';
 import '../src/js/main.js';
+import './forms/datalayer-forms.js';
