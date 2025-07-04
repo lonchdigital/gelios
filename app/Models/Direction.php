@@ -132,8 +132,6 @@ class Direction extends Model implements TranslatableContract
             $current = $current->parent; // parent
         }
 
-        $segments = array_unique(array_reverse($segments));
-
         return implode('/', array_reverse($segments)); // full path
     }
 
