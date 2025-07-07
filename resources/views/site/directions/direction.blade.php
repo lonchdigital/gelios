@@ -103,7 +103,7 @@
                                 <ul class="nav">
                                     @foreach ($direction->children as $child)
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ $child->buildFullPath() }}">
+                                            <a class="nav-link" href="{{ url($child->buildFullPath()) }}">
                                                 {{ $child->name }}
                                             </a>
                                         </li>
