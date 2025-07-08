@@ -16,7 +16,7 @@
 
 @section('content')
 
-    @if (count($direction->infoBlocks) > 0)
+    {{-- @if (count($direction->infoBlocks) > 0)
         <script type="application/ld+json">
             {!! json_encode([
                 "@context" => "https://schema.org",
@@ -33,7 +33,7 @@
                 ]
             ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
         </script>
-    @endif
+    @endif --}}
 
     @include('site.directions.partials.breadcrumbs', [
         'breadcrumbs' => $direction->buildBreadcrumbs(),
