@@ -12,6 +12,12 @@
     ])
 @endsection
 
+@if (in_array($direction->id, [513, 104, 163, 495, 176, 463]))
+    @section('NOINDEX')
+        <meta name="robots" content="noindex">
+    @endsection
+@endif
+
 @section('main_class', 'art-direction-template')
 
 @section('content')
