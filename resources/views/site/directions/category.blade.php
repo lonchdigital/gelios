@@ -1,6 +1,6 @@
 @extends('site.layout.app')
 
-@if (in_array($direction->id, [513, 104, 163, 495, 176, 463]))
+@if (in_array($direction->id, [513, 104, 163, 495, 176, 463, 261]))
     @section('noindex')
         <meta name="robots" content="noindex, nofollow">
     @endsection
