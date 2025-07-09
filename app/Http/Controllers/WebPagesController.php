@@ -25,7 +25,6 @@ class WebPagesController extends Controller
         if(!is_null($page)) {
             $direction = $page->direction;
             $directionSlugs = explode('/', $direction->buildFullPath());
-            dd('direction', $direction->id);
 
             //$skipSlugCheck = ['']; // reproduktologiya
             // if (!in_array($lastSlug, $skipSlugCheck)) {
@@ -78,8 +77,6 @@ class WebPagesController extends Controller
         } else {
             $page = Page::where('slug', $slug)->first();
             if(empty($page->type) || $page->type !== "text" ) { abort(404); }
-
-            dd('page', $page->id);
 
             return view('site.text-pages.show', [
                 'page' => $page,
