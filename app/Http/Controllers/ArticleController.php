@@ -69,7 +69,7 @@ class ArticleController extends Controller
             ->with('translations')
             ->first();
 
-        $seo = $service->getMeta($article->title, trans('web.blog_seo_title'), trans('web.blog_seo_description'));
+        $seo = $service->getMeta($article->title ?? '', trans('web.blog_seo_title'), trans('web.blog_seo_description'));
         $seo[1] = strip_tags($seo[1]);
 
         $url['ua'] = url('/') . '/ua/dlya-paczientov/' . $slug;
