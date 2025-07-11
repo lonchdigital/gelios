@@ -398,6 +398,15 @@
                                                 <div class="hover-aside-menu--list">
                                                     <div class="hover-aside-menu--inner">
                                                         <div class="hover-aside-menu--content">
+                                                            <div class="hover-aside-menu--item">
+                                                                <a class="link" href="{{ route('offices.page') }}">{{ __('pages.branches') }}</a>
+                                                            </div>
+                                                            <div class="hover-aside-menu--item">
+                                                                <a class="link" href="{{ route('articles.index') }}">{{ __('pages.blog') }}</a>
+                                                            </div>
+                                                            <div class="hover-aside-menu--item">
+                                                                <a class="link" href="{{ route('laboratories.index') }}">{{ __('pages.our_laboratories') }}</a>
+                                                            </div>
                                                             @foreach ($allCenters as $oneCenter)
                                                                 <div class="hover-aside-menu--item"><a class="link" href="{{ route('one.center.page', ['slug' => $oneCenter->slug]) }}">{{ $oneCenter->title }}</a></div>
                                                             @endforeach
@@ -437,9 +446,6 @@
                                                         </div>
                                                         <div class="hover-aside-menu--item">
                                                             <a class="link" href="{{ route('vacancy.index') }}">{{ __('pages.vacancies') }}</a>
-                                                        </div>
-                                                        <div class="hover-aside-menu--item">
-                                                            <a class="link" href="{{ route('offices.page') }}">{{ __('pages.branches') }}</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -513,7 +519,6 @@
                                                         <span data-slug="{{ route('contacts.page') }}">{{ __('pages.contacts') }}</span>
                                                         <div class="push-menu--lvl scrollable-content">
                                                             <div class="scrollable-content--inner">
-                                                                <div class="item"><a href="{{ route('contacts.page') }}">{{ __('pages.contacts') }}</a></div>
                                                                 <div class="item"><a href="{{ route('strahovym.kompaniyam.page') }}">{{ __('pages.insurance') }}</a></div>
                                                                 <div class="item"><a href="{{ route('vacancy.index') }}">{{ __('pages.vacancies') }}</a></div>
                                                             </div>
