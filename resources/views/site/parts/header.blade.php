@@ -495,6 +495,15 @@
                                                         @if($allCenters->count() > 0)
                                                             <div class="push-menu--lvl scrollable-content">
                                                                 <div class="scrollable-content--inner">
+                                                                    <div class="item">
+                                                                        <a class="link" href="{{ route('offices.page') }}">{{ __('pages.branches') }}</a>
+                                                                    </div>
+                                                                    <div class="item">
+                                                                        <a class="link" href="{{ route('articles.index') }}">{{ __('pages.blog') }}</a>
+                                                                    </div>
+                                                                    <div class="item">
+                                                                        <a class="link" href="{{ route('laboratories.index') }}">{{ __('pages.our_laboratories') }}</a>
+                                                                    </div>
                                                                     @foreach ($allCenters as $oneCenter)
                                                                         <div class="item"><a class="link" href="{{ route('one.center.page', ['slug' => $oneCenter->slug]) }}">{{ $oneCenter->title }}</a></div>
                                                                     @endforeach
