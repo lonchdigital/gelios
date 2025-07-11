@@ -506,7 +506,6 @@
                                                         <span data-slug="{{ route('promotions.index') }}">{{ __('pages.promotions') }}</span>
                                                         <div class="push-menu--lvl scrollable-content">
                                                             <div class="scrollable-content--inner">
-                                                                <div class="item"><a href="{{ route('promotions.index') }}">{{ __('pages.promotions') }}</a></div>
                                                                 <div class="item"><a href="{{ route('check-ups.index') }}">Check-up</a></div>
                                                             </div>
                                                         </div>
