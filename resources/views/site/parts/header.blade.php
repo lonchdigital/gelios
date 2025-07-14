@@ -27,7 +27,7 @@
                                         data-target="#popup--contacts"
                                         data-city="{{ $firstCity->title ?? '' }}"
                                         data-affiliates="{{ $firstCity->headerAffiliates }}">
-                                    {{ __('pages.view') }}
+                                    {{ __('pages.work_schedule') }}
                                 </button>
                             </li>
                         </ul>
@@ -45,7 +45,7 @@
                             <li class="list-inline-item">
                                 <button type="button" class="contact-details" data-toggle="modal" data-city="{{ $secondCity->title ?? '' }}"
                                     data-affiliates="{{ $secondCity->headerAffiliates }}"
-                                    data-target="#popup--contacts">{{ __('pages.view') }}
+                                    data-target="#popup--contacts">{{ __('pages.work_schedule') }}
                                 </button>
                             </li>
                         </ul>
@@ -71,7 +71,7 @@
                                 <li class="list-inline-item">
                                     <button type="button" class="contact-details" data-toggle="modal" data-city="{{ $firstCity->title ?? '' }}"
                                         data-affiliates="{{ $firstCity->headerAffiliates }}"
-                                        data-target="#popup--contacts">{{ __('pages.view') }}
+                                        data-target="#popup--contacts">{{ __('pages.work_schedule') }}
                                     </button>
                                 </li>
                             </ul>
@@ -91,7 +91,7 @@
                                         data-toggle="modal"
                                         data-city="{{ $secondCity->title ?? '' }}"
                                         data-affiliates="{{ $secondCity->headerAffiliates }}"
-                                        data-target="#popup--contacts">{{ __('pages.view') }}
+                                        data-target="#popup--contacts">{{ __('pages.work_schedule') }}
                                     </button>
                                 </li>
                             </ul>

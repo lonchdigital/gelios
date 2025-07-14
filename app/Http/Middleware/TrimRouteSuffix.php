@@ -65,6 +65,19 @@ class TrimRouteSuffix
             );
         }
 
+        $uri = $request->getRequestUri();
+
+        if ($request->isMethod('get') && $uri !== '/' && preg_match('#/$#', $uri)) {
+            $target = rtrim($uri, '/');
+
+            $qs = $request->getQueryString();
+            if ($qs) {
+                $target .= '?' . $qs;
+            }
+
+            return redirect($target, 301);
+        }
+
         return $next($request);
     }
 }
