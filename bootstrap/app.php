@@ -39,6 +39,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'lowercaseUrl'            => App\Http\Middleware\LowercaseUrl::class,
             'redirect.if.en' => \App\Http\Middleware\RedirectIfEn::class,
             'detectLocale'              => \App\Http\Middleware\DetectLocale::class,
+            'trimSlash'                 => App\Http\Middleware\TrimSlash::class,
         ]);
 
         $middleware->group('auth', [
