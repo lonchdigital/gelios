@@ -17,5 +17,5 @@
     <link rel="alternate" href="{{ $url['ua'] }}" hreflang="uk-UA">
     <link rel="alternate" href="{{ $url['ru'] }}" hreflang="ru-UA">
     <link rel="alternate" href="{{ $url['ua'] }}" hreflang="x-default">
-    {{-- <link rel="alternate" href="{{ $url['en'] }}" hreflang="en-UA"> --}}
+    <link rel="alternate" href="{{ $url['en'] }}" hreflang="en-UA">
 @endif
