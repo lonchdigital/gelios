@@ -302,6 +302,13 @@ function initMap(affiliates) {
 
             map.fitBounds(bounds);
 
+            google.maps.event.addListenerOnce(map, 'bounds_changed', function() {
+                const minZoom = 12;
+                if (this.getZoom() > minZoom) {
+                    this.setZoom(minZoom);
+                }
+            });
+
             map.data.setStyle({
                 strokeColor: "#FF0000",
                 strokeOpacity: 0.5,
