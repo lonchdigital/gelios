@@ -16,15 +16,19 @@ class TrimSlash
     public function handle(Request $request, Closure $next): Response
     {
         $uri = $request->getRequestUri();
+        $redirects = collect(config('redirects'))->pluck('from')->all();
 
-        if ($request->isMethod('get') && $uri !== '/' && preg_match('#/$#', $uri)) {
+        if (
+            $request->isMethod('get') &&
+            $uri !== '/' &&
+            preg_match('#/$#', $uri) &&
+            !in_array($uri, $redirects, true)
+        ) {
             $target = rtrim($uri, '/');
-
-            $qs = $request->getQueryString();
-            if ($qs) {
+            if ($qs = $request->getQueryString()) {
                 $target .= '?' . $qs;
             }
-
+            
             return redirect($target, 301);
         }
 
