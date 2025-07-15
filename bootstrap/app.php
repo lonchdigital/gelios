@@ -20,7 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
-            Route::middleware('web', 'trimSuffix', 'lowercaseUrl', 'redirect.if.en', 'detectLocale')
+            Route::middleware('web', 'trimSuffix', 'lowercaseUrl', 'redirect.if.en', 'detectLocale', 'trimSlash')
                 ->group(base_path('routes/web.php'));
         }
 
