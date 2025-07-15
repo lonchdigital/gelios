@@ -76,6 +76,23 @@
            "logo": "{{ $headerImage ?? asset('static_images/logo.png') }}"
         }
     </script>
+
+    @if (app()->environment('production'))
+        <script type="text/javascript">
+            (function(d, w, s) {
+            var widgetHash = '2zlopiixpgtv1eoa4c13', gcw = d.createElement(s); gcw.type = 'text/javascript'; gcw.async = true;
+            gcw.src = '//widgets.binotel.com/getcall/widgets/'+ widgetHash +'.js';
+            var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(gcw, sn);
+            })(document, window, 'script');
+        </script>
+        <script type="text/javascript">
+            (function(d, w, s) {
+            var widgetHash = 'dd9kfom4kyj0f1ig4aec', ctw = d.createElement(s); ctw.type = 'text/javascript'; ctw.async = true;
+            ctw.src = '//widgets.binotel.com/calltracking/widgets/'+ widgetHash +'.js';
+            var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(ctw, sn);
+            })(document, window, 'script');
+        </script>
+    @endif
 </head>
 
 <body>
