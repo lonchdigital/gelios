@@ -22,22 +22,40 @@ class FeedbackController extends Controller
 
         $data['form'] = 'Записатися на прийом';
         $data['clinic'] = Contact::find($data['clinic'])->title;
-        $data['url'] = request()->headers->get('referer');
+        // $data['url'] = request()->headers->get('referer');
+        $referer = $request->server('HTTP_REFERER') ?? '';
+        $url = $referer ? parse_url($referer, PHP_URL_PATH) : '';
+        $data['url'] = url($url);
 
-        $utmSource = request()->query('utm_source');
-        $utmMedium = request()->query('utm_medium');
-        $utmCampaign = request()->query('utm_campaign');
-        $utmTerm = request()->query('utm_term');
-        $utmContent = request()->query('utm_content');
+        $referer = request()->headers->get('referer');
 
-        $data['utm_source'] = $utmSource ?? '';
-        $data['utm_medium'] = $utmMedium ?? '';
-        $data['utm_campaign'] = $utmCampaign ?? '';
-        $data['utm_term'] = $utmTerm ?? '';
-        $data['utm_content'] = $utmContent ?? '';
+        if ($referer) {
+            $query = parse_url($referer, PHP_URL_QUERY);
+            parse_str($query, $params);
+        } else {
+            $params = [];
+        }
+
+        $utm_source   = $params['utm_source']   ?? '';
+        $utm_medium   = $params['utm_medium']   ?? '';
+        $utm_campaign = $params['utm_campaign'] ?? '';
+        $utm_term     = $params['utm_term']     ?? '';
+        $utm_content  = $params['utm_content']  ?? '';
+
+        // $utmSource = request()->query('utm_source');
+        // $utmMedium = request()->query('utm_medium');
+        // $utmCampaign = request()->query('utm_campaign');
+        // $utmTerm = request()->query('utm_term');
+        // $utmContent = request()->query('utm_content');
+
+        $data['utm_source'] = $utm_source ?? '';
+        $data['utm_medium'] = $utm_medium ?? '';
+        $data['utm_campaign'] = $utm_campaign ?? '';
+        $data['utm_term'] = $utm_term ?? '';
+        $data['utm_content'] = $utm_content ?? '';
 
         dispatch(new SendFeedbackEmailJob($data));
-
+Log::info($data);
         $service = resolve(LeadAppService::class);
 
         $service->store([
@@ -55,6 +73,33 @@ class FeedbackController extends Controller
     {
         $data = $request->validated();
 
+        $data['form'] = 'Залишилися запитання';
+
+        $referer = $request->server('HTTP_REFERER') ?? '';
+        $url = $referer ? parse_url($referer, PHP_URL_PATH) : '';
+        $data['url'] = url($url);
+
+        $referer = request()->headers->get('referer');
+
+        if ($referer) {
+            $query = parse_url($referer, PHP_URL_QUERY);
+            parse_str($query, $params);
+        } else {
+            $params = [];
+        }
+
+        $utm_source   = $params['utm_source']   ?? '';
+        $utm_medium   = $params['utm_medium']   ?? '';
+        $utm_campaign = $params['utm_campaign'] ?? '';
+        $utm_term     = $params['utm_term']     ?? '';
+        $utm_content  = $params['utm_content']  ?? '';
+
+        $data['utm_source'] = $utm_source ?? '';
+        $data['utm_medium'] = $utm_medium ?? '';
+        $data['utm_campaign'] = $utm_campaign ?? '';
+        $data['utm_term'] = $utm_term ?? '';
+        $data['utm_content'] = $utm_content ?? '';
+Log::info($data);
         dispatch(new SendFeedbackEmailJob($data));
 
         $service = resolve(LeadAppService::class);
@@ -77,19 +122,31 @@ class FeedbackController extends Controller
         $service->store($data);
 
         $data['form'] = 'Вакансія';
-        $data['url'] = request()->headers->get('referer');
+        $referer = $request->server('HTTP_REFERER') ?? '';
+        $url = $referer ? parse_url($referer, PHP_URL_PATH) : '';
+        $data['url'] = url($url);
 
-        $utmSource = request()->query('utm_source');
-        $utmMedium = request()->query('utm_medium');
-        $utmCampaign = request()->query('utm_campaign');
-        $utmTerm = request()->query('utm_term');
-        $utmContent = request()->query('utm_content');
+        $referer = request()->headers->get('referer');
 
-        $data['utm_source'] = $utmSource ?? '';
-        $data['utm_medium'] = $utmMedium ?? '';
-        $data['utm_campaign'] = $utmCampaign ?? '';
-        $data['utm_term'] = $utmTerm ?? '';
-        $data['utm_content'] = $utmContent ?? '';
+        if ($referer) {
+            $query = parse_url($referer, PHP_URL_QUERY);
+            parse_str($query, $params);
+        } else {
+            $params = [];
+        }
+
+        $utm_source   = $params['utm_source']   ?? '';
+        $utm_medium   = $params['utm_medium']   ?? '';
+        $utm_campaign = $params['utm_campaign'] ?? '';
+        $utm_term     = $params['utm_term']     ?? '';
+        $utm_content  = $params['utm_content']  ?? '';
+
+        $data['utm_source'] = $utm_source ?? '';
+        $data['utm_medium'] = $utm_medium ?? '';
+        $data['utm_campaign'] = $utm_campaign ?? '';
+        $data['utm_term'] = $utm_term ?? '';
+        $data['utm_content'] = $utm_content ?? '';
+Log::info($data);
 
         dispatch(new SendVacancyEmailJob($data));
 

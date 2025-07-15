@@ -33,7 +33,9 @@ class SitemapPageService
         $this->doctors = Doctor::with('translations')
             ->get();
 
-        $this->directions = Direction::with('translations')
+        $this->directions = Direction::whereNotIn('id',
+                [513, 104, 163, 495, 176, 463, 261, 271, 73])
+            ->with('translations')
             ->get();
 
         $this->promotions = Promotion::with('translations')
