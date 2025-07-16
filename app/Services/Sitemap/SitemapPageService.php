@@ -79,7 +79,7 @@ class SitemapPageService
 
             ...$this->getDirectionsUrls(),
             ...$this->getRuDirectionsUrls(),
-            ...$this->getEnDirectionsUrls(),
+            // ...$this->getEnDirectionsUrls(),
 
             ...$this->getPromotionsUrls(),
             ...$this->getRuPromotionsUrls(),
