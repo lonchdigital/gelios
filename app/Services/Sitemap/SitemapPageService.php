@@ -59,7 +59,7 @@ class SitemapPageService
         return array_unique(array_map([$this, 'formatUrl'], [
             ...$this->getStaticPageUrls(),
             ...$this->getRuStaticPageUrls(),
-            ...$this->getEnStaticPageUrls(),
+            // ...$this->getEnStaticPageUrls(),
 
             ...$this->getPageUrls(),
             ...$this->getRuPageUrls(),
@@ -79,7 +79,7 @@ class SitemapPageService
 
             ...$this->getDirectionsUrls(),
             ...$this->getRuDirectionsUrls(),
-            // ...$this->getEnDirectionsUrls(),
+            ...$this->getEnDirectionsUrls(),
 
             ...$this->getPromotionsUrls(),
             ...$this->getRuPromotionsUrls(),
