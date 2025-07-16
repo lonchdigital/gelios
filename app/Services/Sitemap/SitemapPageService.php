@@ -59,11 +59,11 @@ class SitemapPageService
         return array_unique(array_map([$this, 'formatUrl'], [
             ...$this->getStaticPageUrls(),
             ...$this->getRuStaticPageUrls(),
-            // ...$this->getEnStaticPageUrls(),
+            ...$this->getEnStaticPageUrls(),
 
             ...$this->getPageUrls(),
             ...$this->getRuPageUrls(),
-            // ...$this->getEnPageUrls(),
+            ...$this->getEnPageUrls(),
 
             // ...$this->getArticlesPagesUrls(),
             // ...$this->getRuArticlesPagesUrls(),
@@ -71,23 +71,23 @@ class SitemapPageService
 
             ...$this->getArticlesUrls(),
             ...$this->getRuArticlesUrls(),
-            // ...$this->getEnArticlesUrls(),
+            ...$this->getEnArticlesUrls(),
 
             ...$this->getDoctorsUrls(),
             ...$this->getRuDoctorsUrls(),
-            // ...$this->getEnDoctorsUrls(),
+            ...$this->getEnDoctorsUrls(),
 
             ...$this->getDirectionsUrls(),
             ...$this->getRuDirectionsUrls(),
-            // ...$this->getEnDirectionsUrls(),
+            ...$this->getEnDirectionsUrls(),
 
             ...$this->getPromotionsUrls(),
             ...$this->getRuPromotionsUrls(),
-            // ...$this->getEnPromotionsUrls(),
+            ...$this->getEnPromotionsUrls(),
 
             ...$this->getCentersUrls(),
             ...$this->getRuCentersUrls(),
-            // ...$this->getEnCentersUrls(),
+            ...$this->getEnCentersUrls(),
         ]));
     }
 
