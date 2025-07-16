@@ -141,7 +141,7 @@ class SitemapPageService
         ];
     }
 
-    private function getENStaticPageUrls()
+    private function getEnStaticPageUrls()
     {
         return [
             '/en',
