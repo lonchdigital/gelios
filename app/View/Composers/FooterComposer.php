@@ -12,19 +12,37 @@ class FooterComposer
 {
     public function compose(View $view)
     {
+        $settings = Setting::with('translations')
+            ->whereIn('key', [
+                'footer_image',
+                'footer_description',
+                'facebook_link',
+                'instagram_link',
+                'youtube_link'
+            ])->get()->keyBy('key');
+
+        $footerInfos = FooterInfo::where('is_active', true)
+            ->orderBy('sort', 'ASC')
+            ->get();
+
+        $footerDirections = FooterDirection::with('page', 'page.translations')
+            ->whereHas('page', function ($q) {
+                $q->where('in_footer', true);
+            })->orderBy('sort', 'ASC')->get();
+
+        $affiliates = HeaderAffiliate::with('translations')
+            ->whereNull('header_city_id')->get();
+
         try {
             $view->with([
-                'footerImage'       => Setting::where('key', 'footer_image')->first()->imageUrl ?? '',
-                'description'       => Setting::where('key', 'footer_description')->first()->text ?? '',
-                'facebook'          => Setting::where('key', 'facebook_link')->first()->value ?? '',
-                'instagram'         => Setting::where('key', 'instagram_link')->first()->value ?? '',
-                'youtube'           => Setting::where('key', 'youtube_link')->first()->value ?? '',
-                'infos'             => FooterInfo::where('is_active', true)->orderBy('sort', 'ASC')->get() ?? [],
-                'directions'        => FooterDirection::whereHas('page', function($q) {
-                                                    $q->where('in_footer', true);
-                                                })
-                                            ->orderBy('sort', 'ASC')->get() ?? [],
-                'affiliates'        => HeaderAffiliate::where('header_city_id', null)->get(),
+                'footerImage' => $settings['footer_image']->imageUrl ?? '',
+                'description' => $settings['footer_description']->text ?? '',
+                'facebook'    => $settings['facebook_link']->value ?? '',
+                'instagram'   => $settings['instagram_link']->value ?? '',
+                'youtube'     => $settings['youtube_link']->value ?? '',
+                'infos'       => $footerInfos,
+                'directions'  => $footerDirections,
+                'affiliates'  => $affiliates,
             ]);
         } catch (\Exception $e) {
         }

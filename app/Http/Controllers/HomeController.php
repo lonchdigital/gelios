@@ -20,8 +20,11 @@ class HomeController extends Controller
         $url['ru'] = url('/');
         $url['en'] = url('/') . '/en';
 
-        $promotions = Promotion::inRandomOrder()->take(3)->get();
-        $doctors = Doctor::mainPage()->get();
+        $promotions = Promotion::with('translations')
+            ->inRandomOrder()->take(3)->get();
+        $doctors = Doctor::with('translations')
+            ->mainPage()
+            ->get();
         $page = Page::where('type', PageType::MAINPAGE->value)
             ->with('translations', 'pageBlocks', 'pageBlocks.translations')
             ->first();

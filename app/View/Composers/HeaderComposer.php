@@ -10,16 +10,30 @@ class HeaderComposer
 {
     public function compose(View $view)
     {
-        $firstCity = HeaderCity::first() ?? null;
+        // $firstCity = HeaderCity::first() ?? null;
 
-        $secondCity = HeaderCity::where('id', '!=', $firstCity->id)->first() ?? null;
+        // $secondCity = HeaderCity::where('id', '!=', $firstCity->id)->first() ?? null;
+
+        // $cities = HeaderCity::with('translations', 'headerAffiliates', 'headerAffiliates.translations')->take(2)->get();
+        $cities = HeaderCity::with([
+            'translations',
+            'headerAffiliates.translations'
+        ])->take(2)->get();
+
+        $firstCity = $cities[0] ?? null;
+        $secondCity = $cities[1] ?? null;
+
+        $headerImage = Setting::where('key', 'header_image')->first()?->imageUrl ?? '';
 
         try {
-            $view->with([
-                'firstCity'       => $firstCity,
-                'secondCity'       => $secondCity,
-                'headerImage'       => Setting::where('key', 'header_image')->first()->imageUrl ?? '',
-            ]);
+            $view->with(compact('firstCity', 'secondCity', 'headerImage'));
+            // $view->with([
+            //     'firstCity'       => $cities[0] ?? null,
+            //     // $firstCity,
+            //     'secondCity'       => $cities[1] ?? null,
+            //     // $secondCity,
+            //     'headerImage'       => Setting::where('key', 'header_image')->first()->imageUrl ?? '',
+            // ]);
         } catch (\Exception $e) {
         }
 
