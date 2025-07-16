@@ -234,23 +234,23 @@ class Seo extends Component
             'ua' => [
                 'title' => $this->uaTitle,
                 'meta_title' => $this->uaMetaTitle,
-                'meta_description' => $this->uaSeoDescription,
+                'meta_description' => $this->cleanOrNull($this->uaSeoDescription),
                 'seo_title' => $this->uaSeoTitle,
-                'seo_text' => $this->uaSeoContent,
+                'seo_text' => $this->cleanOrNull($this->uaSeoContent),
             ],
             'en' => [
                 'title' => $this->enTitle,
                 'meta_title' => $this->uaMetaTitle,
-                'meta_description' => $this->enSeoDescription,
+                'meta_description' => $this->cleanOrNull($this->enSeoDescription),
                 'seo_title' => $this->enSeoTitle,
-                'seo_text' => $this->enSeoContent,
+                'seo_text' => $this->cleanOrNull($this->enSeoContent),
             ],
             'ru' => [
                 'title' => $this->ruTitle,
                 'meta_title' => $this->ruMetaTitle,
-                'meta_description' => $this->ruSeoDescription,
+                'meta_description' => $this->cleanOrNull($this->ruSeoDescription),
                 'seo_title' => $this->ruSeoTitle,
-                'seo_text' => $this->ruSeoContent,
+                'seo_text' => $this->cleanOrNull($this->ruSeoContent),
             ]
         ];
 
@@ -323,7 +323,11 @@ class Seo extends Component
             default:
                 return $this->redirectRoute('admin.main-page.show');
         }
+    }
 
+    protected function cleanOrNull($value)
+    {
+        return trim(strip_tags($value)) === '' ? null : $value;
     }
 
     public function render()

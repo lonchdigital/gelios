@@ -3,8 +3,8 @@
 @section('head')
     @vite(['resources/js/filters/contacts/contactsFilter.js'])
     @include('site.components.head', [
-        'title' => $page->meta_title ?: $page->title,
-        'description' => $page->meta_description,
+        'title' => $page->meta_title ?: $page->title . ' ' . __('web.direction_meta_title'),
+        'description' => $page->meta_description ?: $page->title . ' ' . __('web.direction_meta_description'),
         'url' => $url,
     ])
 @endsection

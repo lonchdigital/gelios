@@ -41,6 +41,7 @@ class SendVacancyEmailJob implements ShouldQueue
     {
         $message = 'Ім\'я клієнта: ' . $this->data['name'] . "\n" .
                     'Телефон клієнта: ' . $this->data['phone'] . "\n".
+                    'Вакансія: ' . $this->data['vacancy'] . "\n".
                    'Сторінка: ' . $this->data['url'] . "\n" .
                    'Форма: ' . $this->data['form'] . "\n" .
                    'utm_source: ' . $this->data['utm_source'] . "\n" .
