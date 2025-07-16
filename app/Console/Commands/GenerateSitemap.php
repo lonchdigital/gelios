@@ -72,7 +72,7 @@ class GenerateSitemap extends Command
         $service = resolve(SitemapPageService::class);
 
         $urls = $this->validator->validate($service->getUrls());
-        dd($urls);
+
         $urls[] = '/';
 
         $urls = $this->filterUrl($urls);

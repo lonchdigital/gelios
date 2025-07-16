@@ -25,7 +25,7 @@ class SitemapValidatorService
             $urls = $this->filterDisallowedUrls($urls);
             $urls = array_merge($urls, $this->allows);
         }
-        
+
         return $urls;
     }
 
@@ -78,6 +78,7 @@ class SitemapValidatorService
 
     private function hasDisallowAll(): bool
     {
-        return in_array('/', $this->disallows);
+        return false;
+        // in_array('/', $this->disallows);
     }
 }
