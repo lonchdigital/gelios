@@ -1062,7 +1062,6 @@ button:focus {
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 25px;
-    text-transform: capitalize;
     color: #3c4858;
     line-height: 1.4;
 }
@@ -1837,7 +1836,6 @@ div.tagsinput span.tag a {
     color: #000;
     font-size: 15px;
     font-weight: 600;
-    text-transform: capitalize;
     height: 50px;
 }
 
@@ -7020,7 +7018,6 @@ image.amcharts-zoom-out-image {
 
 .submit-text {
     display: inline-block;
-    text-transform: capitalize;
 }
 
 .wizard>.steps .current-info {
@@ -12347,7 +12344,6 @@ a.mytooltip {
 .line-legend .chart-legend li {
     display: inline-block;
     font-size: 16px;
-    text-transform: capitalize;
     position: relative;
     color: #283a5e;
     margin-left: 28px;
@@ -13855,7 +13851,6 @@ a.mytooltip {
     color: #fff;
     font-weight: 600;
     transition-duration: 500ms;
-    text-transform: capitalize;
     box-shadow: 0px 18px 32px 0px rgba(108, 98, 255, 0.2);
 }
 
