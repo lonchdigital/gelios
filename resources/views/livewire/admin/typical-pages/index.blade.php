@@ -15,7 +15,7 @@
                                 @endif
 
                                 <div class="d-flex justify-content-between align-items-center mb-20">
-                                    <h6 class="card-title mb-0">{{ trans('admin.typical_pages_list') }}</h6>
+                                    <h6 class=" mb-0">{{ trans('admin.typical_pages_list') }}</h6>
 
                                     <a href="{{ route('typical.pages.create') }}"
                                         class="btn btn-primary waves-effect waves-light float-right mb-3">

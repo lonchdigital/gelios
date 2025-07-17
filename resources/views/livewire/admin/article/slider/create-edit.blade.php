@@ -6,9 +6,9 @@
                     <section class="mb-50">
                         <h6 class="card-title">
                             @if (!empty($this->block->id))
-                                Редагування слайду
+                                {{ __('admin.create_slide') }}
                             @else
-                                Додавання слайду
+                                {{ __('admin.edit_slide') }}
                             @endif
                         </h6>
 

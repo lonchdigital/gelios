@@ -21,7 +21,7 @@
                                 <form wire:submit.prevent="save">
 
                                     <section class="mb-50 mt-30">
-                                        <h6 class="card-title">{{ trans('admin.content') }}</h6>
+                                        <h6 class="">{{ trans('admin.content') }}</h6>
 
                                         <x-admin.multilanguage-input
                                             :is-required="false"

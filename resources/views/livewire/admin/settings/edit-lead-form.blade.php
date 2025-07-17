@@ -10,7 +10,7 @@
 
                 <form wire:submit.prevent="save">
                     <section class="mb-50">
-                        <h6 class="card-title">
+                        <h6 class="">
                             {{ __('admin.lead_form_settings') }}
                         </h6>
 

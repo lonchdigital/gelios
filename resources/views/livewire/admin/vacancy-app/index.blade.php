@@ -3,7 +3,7 @@
         <div class="card mb-30">
             <div class="card-body pb-0">
                 <div class="d-flex justify-content-between align-items-center mb-20">
-                    <h6 class="card-title mb-0">Список заявок вакансій</h6>
+                    <h6 class=" mb-0">{{ __('admin.vacancies_app_list') }}</h6>
 
                     <div>
                         <input type="text" wire:model.live="search" class="form-control">
@@ -20,10 +20,10 @@
                     <table class="table table-nowrap">
                         <thead>
                             <tr>
-                                <th>Ім'я</th>
-                                <th>Номер телефону</th>
-                                <th>Вакансія</th>
-                                <th>Статус</th>
+                                <th>{{ __('admin.name') }}</th>
+                                <th>{{ __('admin.phone') }}</th>
+                                <th>{{ __('admin.vacancy') }}</th>
+                                <th>{{ __('admin.status') }}</th>
                             </tr>
                         </thead>
                         <tbody>

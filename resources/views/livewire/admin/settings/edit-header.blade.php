@@ -10,7 +10,7 @@
 
                 <form wire:submit.prevent="save">
                     <section class="mb-50">
-                        <h6 class="card-title">
+                        <h6 class="">
                             {{ __('admin.edit_header') }}
                         </h6>
 
@@ -625,7 +625,7 @@
                         <div class="card mb-30">
                             <div class="card-body pb-0">
                                 <div class="d-flex justify-content-between align-items-center mb-20">
-                                    <h6 class="card-title mb-0">{{ __('admin.first_city_header_affiliates') }}</h6>
+                                    <h6 class=" mb-0">{{ __('admin.first_city_header_affiliates') }}</h6>
 
                                     <a href="{{ route('admin.affiliate.create', ['city' => 1]) }}" class="btn btn-primary waves-effect waves-light float-right mb-3">
                                         + {{ __('admin.add_affiliate') }}
@@ -661,7 +661,7 @@
                         <div class="card mb-30">
                             <div class="card-body pb-0">
                                 <div class="d-flex justify-content-between align-items-center mb-20">
-                                    <h6 class="card-title mb-0">{{ __('admin.second_city_header_affiliates') }}</h6>
+                                    <h6 class=" mb-0">{{ __('admin.second_city_header_affiliates') }}</h6>
 
                                     <a href="{{ route('admin.affiliate.create', ['city' => 2]) }}" class="btn btn-primary waves-effect waves-light float-right mb-3">
                                         + {{ __('admin.add_affiliate') }}

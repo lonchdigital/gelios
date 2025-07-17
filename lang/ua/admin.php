@@ -420,5 +420,12 @@ return [
     'full_name' => 'ПІБ',
     'edit_promotion_title' => 'Для виділення тексту обгорніть його тегом "<div class="underline"></div>"',
     'search' => 'Пошук',
-    'is_free' => 'Чи безкоштовно'
+    'is_free' => 'Чи безкоштовно',
+    'edit_item' => 'Редагування елементу',
+    'create_item' => 'Додавання елементу',
+    'vacancies_app_list' => 'Список заявок вакансій',
+    'first_city_first_phone' => 'Перший номер телефону першого міста',
+    'first_city_second_phone' => 'Другий номер телефону першого міста',
+    'second_city_first_phone' => 'Номер телефону другого міста',
+    
 ];

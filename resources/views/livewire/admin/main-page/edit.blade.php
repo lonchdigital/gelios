@@ -4,7 +4,7 @@
             <div class="card-body pb-0">
                 <form wire:submit.prevent="save">
                     <section class="mb-50">
-                        <h6 class="card-title">
+                        <h6 class="">
                             {{ __('admin.edit_block') }}
                         </h6>
 

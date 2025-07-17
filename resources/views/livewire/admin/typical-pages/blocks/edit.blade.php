@@ -20,9 +20,9 @@
                 </div>
 
                 <form wire:submit.prevent="save">
-                    
+
                     <section class="mb-50 mt-30">
-                        <h6 class="card-title">{{ trans('admin.section_text') }}</h6>
+                        <h6 class="">{{ trans('admin.section_text') }}</h6>
 
                         <div class="form-group mt-2 mb-0">
 
@@ -35,17 +35,17 @@
                             </div>
 
                             <div class="checkbox d-inline">
-                                <input 
-                                    type="checkbox" 
+                                <input
+                                    type="checkbox"
                                     wire:model="sectionData.is_image"
                                     wire:click="handleDisplayFields()"
-                                    id="is_image_1" 
+                                    id="is_image_1"
                                     @if($sectionData['is_image']) checked @endif
                                 >
                                 <label for="is_image_1" class="cr">{{ trans('admin.is_image') }}</label>
                             </div>
                         </div>
-                        
+
                         <x-admin.multilanguage-text-area-rich
                             :is-required="false"
                             :label="trans('admin.text')"

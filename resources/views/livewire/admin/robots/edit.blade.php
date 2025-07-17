@@ -4,7 +4,7 @@
             <div class="card-body pb-0">
                 <form wire:submit.prevent="save">
                     <section class="mb-50">
-                        <h6 class="card-title">{{ __('admin.edit_file') }} robots.txt</h6>
+                        <h6 class="">{{ __('admin.edit_file') }} robots.txt</h6>
 
                         <div class="row" id="faqs-cars">
                                 <div class="col-12 faq-car-row pb-1 mb-4 d-flex justify-content-start" id="faq-car-id-2">

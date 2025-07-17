@@ -9,7 +9,7 @@
                 @endif
 
                 <div class="d-flex justify-content-between align-items-center mb-20">
-                    <h6 class="card-title mb-0">{{ __('admin.list_of_pages_in_the_info_block') }}</h6>
+                    <h6 class=" mb-0">{{ __('admin.list_of_pages_in_the_info_block') }}</h6>
                 </div>
 
                 <div class="table-responsive art-cars-list">
@@ -56,7 +56,7 @@
 
 
                 <div class="d-flex justify-content-between align-items-center mb-20">
-                    <h6 class="card-title mb-0">{{ __('admin.list_of_pages_in_the_directions_block') }}</h6>
+                    <h6 class=" mb-0">{{ __('admin.list_of_pages_in_the_directions_block') }}</h6>
                 </div>
 
                 <div class="table-responsive art-cars-list">

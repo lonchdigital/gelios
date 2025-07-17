@@ -3,7 +3,7 @@
         <div class="card mb-30">
             <div class="card-body pb-0">
                 <div class="d-flex justify-content-between align-items-center mb-20">
-                    <h5 class="card-title mb-0">{{ __('admin.main_page_blocks_list') }}</h5>
+                    <h5 class="mb-0">{{ __('admin.main_page_blocks_list') }}</h5>
 
                     {{-- <a href="{{ route('admin.doctors.create') }}" class="btn btn-primary waves-effect waves-light float-right mb-3">
                         + Додати лікаря

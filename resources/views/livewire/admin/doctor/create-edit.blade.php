@@ -4,7 +4,7 @@
             <div class="card-body pb-0">
                 <form wire:submit.prevent="save">
                     <section class="mb-50">
-                        <h6 class="card-title">
+                        <h6 class="">
                             @if (!empty($this->doctor->id))
                                 {{ __('admin.edit_doctor') }}
                             @else
@@ -743,7 +743,7 @@
                                         </div>
 
                                         <div class="card-body pb-0 mb-5">
-                                            <h5 class="card-title">{{ __('admin.diploma_or_certificate') }}</h5>
+                                            <h5 class="">{{ __('admin.diploma_or_certificate') }}</h5>
                                             <div class="row">
                                                 @forelse($this->images as $key => $image)
                                                     <div class="col-sm-6 col-xl-3 text-danger ">
