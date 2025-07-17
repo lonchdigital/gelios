@@ -1145,10 +1145,10 @@ return [
         'to' => '/ua/ultrazvukova-diagnostika/uzi-s-elastografiej'
     ],
 ///// 191-210
-    [
-        'from' => '/team-member/polevich/',
-        'to' => '/ua/team-member/polevich'
-    ],
+    // [
+    //     'from' => '/team-member/polevich/',
+    //     'to' => '/ua/team-member/polevich'
+    // ],
     [
         'from' => '/ua/gelios-novomskovsk/ekg/',
         'to' => '/ua/funkcionalna-diagnostika/ekg-i-ehokg'
@@ -1307,10 +1307,10 @@ return [
         'from' => '/team-member/postupinskij-sergej-sergeevich/',
         'to' => '/team-member/postupinskij-sergij-sergijovich'
     ],
-    [
-        'from' => '/ua/team-member/guzenko-nataliya-valeriyivna/',
-        'to' => '/ua/team-member/guzenko-nataliya-valeriyivna'
-    ],
+    // [
+    //     'from' => '/ua/team-member/guzenko-nataliya-valeriyivna/',
+    //     'to' => '/ua/team-member/guzenko-nataliya-valeriyivna'
+    // ],
     [
         'from' => '/ua/uzi-s-elastografiej/',
         'to' => '/ua/ultrazvukova-diagnostika/uzi-s-elastografiej'
