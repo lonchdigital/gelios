@@ -16,7 +16,13 @@ class DoctorComposer
     {
         try {
             $view->with([
-                'doctors'       => Specialization::get(),
+                'doctors'       => Specialization::join('specialization_translations as t', function ($join) {
+                                            $join->on('specializations.id', '=', 't.specialization_id')
+                                                ->where('t.locale', '=', 'ua');
+                                        })
+                                        ->orderBy('t.title')
+                                        ->select('specializations.*')
+                                        ->get(),
                 'clinics'       => Contact::get(),
             ]);
         } catch (\Exception $e) {
