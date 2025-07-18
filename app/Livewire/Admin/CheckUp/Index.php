@@ -6,9 +6,12 @@ use App\Enums\PageType;
 use App\Models\CheckUp;
 use App\Models\Page;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
+    use WithPagination;
+
     protected $listeners = [
         'refreshItemsAfterDelete' => 'refreshItemsAfterDelete',
         'refresh' => '$refresh',
