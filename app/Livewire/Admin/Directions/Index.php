@@ -28,15 +28,15 @@ class Index extends Component
     protected DirectionsService $directionsService;
 
     public string $search = '';
+    public bool $hideChildren = false;
 
     public function mount() 
     {
         $this->directionsService = app(DirectionsService::class);
         $this->dispatch('livewire:load');
 
+        $this->hideChildren = request()->has('hide_children');
         $this->allDirectionContacts = $this->directionsService->getAllOffices();
-
-        // $this->directionTemplate = 1;
 
         if(is_null($this->direction)) {
             $this->allDirections = $this->directionsService->getCachedDirectionsForDashboard();
