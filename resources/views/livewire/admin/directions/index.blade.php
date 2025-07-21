@@ -167,7 +167,7 @@
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                @if (!empty($direction['children']) && !request()->has('hide_children'))
+                                                @if (!empty($direction['children']) && !$hideChildren)
                                                     <x-admin.directions.direction-children :children="$direction['children']" :level="1" />
                                                 @endif
                                             @endforeach

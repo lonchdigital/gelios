@@ -53,6 +53,13 @@ class DirectionsService
     {
         return Direction::with('children.children')->whereNull('parent_id')->orderBy('sort')->get();
     }
+    // public function getAllDirections(): Collection
+    // {
+    //     return Direction::with([
+    //         'children' => fn($q) => $q->orderBy('sort'),
+    //         'children.children' => fn($q) => $q->orderBy('sort'),
+    //     ])->whereNull('parent_id')->orderBy('sort')->get();
+    // }
     public function getAllDirectionsExceptOne(Direction $direction)
     {
         $excludedId = $direction->id;
@@ -89,6 +96,13 @@ class DirectionsService
     {
         return Direction::with('children.children')->where('parent_id', $parentId)->orderBy('sort')->get();
     }
+    // public function getDirectionsByCategory(int $parentId): Collection
+    // {
+    //     return Direction::with([
+    //         'children' => fn($q) => $q->orderBy('sort'),
+    //         'children.children' => fn($q) => $q->orderBy('sort'),
+    //     ])->where('parent_id', $parentId)->orderBy('sort')->get();
+    // }
 
     public function removeDirectionWithChildren(int $id)
     {
