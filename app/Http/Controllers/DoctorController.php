@@ -57,7 +57,13 @@ class DoctorController extends Controller
             return view('site.doctors.partials.doctors_list', compact('doctors'))->render();
         }
 
-        $categories = Specialization::get();
+        $categories = Specialization::join('specialization_translations as t', function ($join) {
+                $join->on('specializations.id', '=', 't.specialization_id')
+                    ->where('t.locale', '=', 'ua');
+            })
+            ->orderBy('t.title')
+            ->select('specializations.*')
+            ->get();
 
         // if ($request->has('type') && in_array($request->type, $types)) {
         //     $categories = Doctor::where('type', $request->type)
