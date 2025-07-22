@@ -217,6 +217,7 @@
                                                         <div class="category-directions">
                                                             <div class="category-directions--list ">
                                                                 <div class="row">
+                                                                    {{-- @dd($contact->getDirectionsTree()[0]) --}}
                                                                     @foreach ($contact->getDirectionsTree() as $item)
                                                                         <div class="col-12 col-lg-4 col-xl-3 position-static">
                                                                             @if( $item['children'] )

@@ -244,49 +244,69 @@ class DirectionsService
     }
 
 
-    public function buildTreeForOneContact(Collection $directions, Collection $validDirections, $parentId = null)
+    public function filterDirectionsTree(array $tree, array $validIds): array
     {
-        $tree = [];
-        $addedIds = collect(); // Track already added elements to avoid duplicates
+        $filtered = [];
 
-        foreach ($directions as $direction) {
-            // Skip the element if it is not in the list of valid directions
-            if (!$validDirections->has($direction->id)) {
-                continue;
-            }
+        foreach ($tree as $item) {
+            // Рекурсивно фильтруем детей
+            $children = $this->filterDirectionsTree($item['children'], $validIds);
 
-            // Check if the element is a child of another element
-            $isChild = $validDirections->contains('id', $direction->parent_id);
-
-            // If the element has a parent, but that parent is not valid, treat it as a root element
-            if ($isChild && !$validDirections->has($direction->parent_id)) {
-                $isChild = false;
-            }
-
-            // If the element has a parent, it should only be added as a child
-            if ($parentId === null && $isChild) {
-                continue;
-            }
-
-            // Filter only valid children
-            $children = $direction->children->filter(fn($child) => $validDirections->has($child->id));
-
-            // Add the element if it hasn't been added yet
-            if (!$addedIds->contains($direction->id)) {
-                $tree[] = [
-                    'id' => $direction->id,
-                    'name' => $direction->short_name,
-                    'template' => $direction->template,
-                    'children' => $this->buildTreeForOneContact($children, $validDirections, $direction->id),
-                    'slug' => optional($direction->page)->slug,
-                    'full_path' => url($direction->buildFullPath()),
-                ];
-                $addedIds->push($direction->id);
+            // Оставляем элемент, если он сам валиден или у него есть валидные дети
+            if (in_array($item['id'], $validIds) || count($children)) {
+                $item['children'] = $children;
+                $filtered[] = $item;
             }
         }
 
-        return $tree;
+        return $filtered;
     }
+
+    // TODO:: old
+    // public function buildTreeForOneContact(Collection $directions, Collection $validDirections, $parentId = null)
+    // {
+    //     $tree = [];
+    //     $addedIds = collect(); // Track already added elements to avoid duplicates
+
+    //     foreach ($directions as $direction) {
+    //         // Skip the element if it is not in the list of valid directions
+    //         if (!$validDirections->has($direction->id)) {
+    //             continue;
+    //         }
+
+    //         // Check if the element is a child of another element
+    //         $isChild = $validDirections->contains('id', $direction->parent_id);
+
+    //         // If the element has a parent, but that parent is not valid, treat it as a root element
+    //         if ($isChild && !$validDirections->has($direction->parent_id)) {
+    //             $isChild = false;
+    //         }
+
+    //         // If the element has a parent, it should only be added as a child
+    //         if ($parentId === null && $isChild) {
+    //             continue;
+    //         }
+
+    //         // Filter only valid children
+    //         $children = $direction->children->filter(fn($child) => $validDirections->has($child->id));
+
+    //         // Add the element if it hasn't been added yet
+    //         if (!$addedIds->contains($direction->id)) {
+    //             $tree[] = [
+    //                 'id' => $direction->id,
+    //                 'name' => $direction->short_name,
+    //                 'template' => $direction->template,
+    //                 'children' => $this->buildTreeForOneContact($children, $validDirections, $direction->id),
+    //                 'slug' => optional($direction->page)->slug,
+    //                 'full_path' => url($direction->buildFullPath()),
+    //             ];
+    //             $addedIds->push($direction->id);
+    //         }
+    //     }
+    //     // dd($tree);
+
+    //     return $tree;
+    // }
 
 
     public function buildTreeForDashboard($directions)
