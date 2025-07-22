@@ -51,21 +51,44 @@ class Contact extends Model implements TranslatableContract
     }
 
 
+    
+
     public function getDirectionsTree()
     {
-        $contactDirections = $this->directions()->with('parent')->get();
-        $allDirections = $this->directionsService()->getAllDirectionsWithParents($contactDirections);
+        $all = $this->directionsService()->getCachedDirections();
+        $validIds = $this->directions()->select('directions.id')->pluck('id')->toArray();
 
-        return $this->directionsService()->buildTreeForOneContact($allDirections, $contactDirections->keyBy('id'));
+        return $this->filterDirectionsTree($all, $validIds);
+    }
+    
+    private function filterDirectionsTree(\Illuminate\Support\Collection $tree, array $validIds): array
+    {
+        $filtered = [];
+
+        foreach ($tree as $item) {
+            $children = $this->filterDirectionsTree(collect($item['children']), $validIds);
+
+            if (in_array($item['id'], $validIds) || count($children)) {
+                $item['children'] = $children;
+                $filtered[] = $item;
+            }
+        }
+
+        return $filtered;
     }
     // TODO:: old version of getDirectionsTree()
     // public function getDirectionsTree()
     // {
-    //     $contactDirections = $this->directions()->with('children.children')->get();
-
+    //     $contactDirections = $this->directions()->with('parent')->get();
     //     $allDirections = $this->directionsService()->getAllDirectionsWithParents($contactDirections);
 
-    //     return $this->directionsService()->buildTree($allDirections, true);
+    //     // dd( $contactDirections, $allDirections );
+
+    //     return $this->directionsService()->buildTreeForOneContact(
+    //         $allDirections, 
+    //         $contactDirections->keyBy('id')
+    //     );
     // }
+
     
 }
