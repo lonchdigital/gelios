@@ -68,14 +68,83 @@ import $ from 'jquery';
 			// Вперед по кнопці-стрілці
 			menu.options.initElem.find(".btn-nav-forward").on("click", function (e) {
 				e.preventDefault();
-				menu.curItem = $(this).closest(".item.has-dropdown");
-				_updateActiveMenu(menu, 'forward');
+
+				let $item = $(this).closest(".item.has-dropdown");
+
+				// Якщо не всередині .item.has-dropdown — шукаємо в поточному активному
+				if (!$item.length && menu.curItem && menu.curItem.length) {
+					$item = menu.curItem.find(".item.has-dropdown").first();
+				}
+
+				// Якщо й цього нема — fallback на перший
+				if (!$item.length) {
+					$item = menu.options.initElem.find(".item.has-dropdown").first();
+				}
+
+				if ($item.length) {
+					// Очищаємо всі попередні активні класи
+					menu.options.initElem.find(".item.has-dropdown").removeClass("nav-dropdown-open nav-dropdown-active");
+
+					// Записуємо новий поточний пункт
+					menu.curItem = $item;
+
+					// Встановлюємо класи по всьому ланцюжку батьків
+					$item.parents(".item.has-dropdown").addBack().each(function () {
+						$(this).addClass("nav-dropdown-open nav-dropdown-active");
+					});
+
+					// Рахуємо рівень вкладеності (0 = корінь)
+					menu.curLevel = $item.parents(".item.has-dropdown").length;
+
+					// Переміщуємо меню на потрібний рівень
+					menu.options.initElem.children(".push-menu--nav").children(".push-menu--lvl").css({
+						transform: "translateX(-" + menu.curLevel * 100 + "%)"
+					});
+
+					// Перемикаємо кнопку "Назад"
+					if (menu.curLevel > 0) {
+						menu.options.initElem.find(".nav-toggle").addClass("back-visible");
+					} else {
+						menu.options.initElem.find(".nav-toggle").removeClass("back-visible");
+					}
+				}
 			});
+
 
 			// Залишити лише як fallback — якщо натиснули на <a> всередині has-dropdown (можна прибрати)
 			// або змінити на умовну перевірку:
 			menu.options.initElem.on("click", ".has-dropdown > a", function (e) {
-				// Не забороняємо перехід — лінк працює як звичайно
+				e.preventDefault();
+
+				let $item = $(this).parent(".item.has-dropdown");
+
+				if ($item.length) {
+					// Очищаємо всі активні класи
+					menu.options.initElem.find(".item.has-dropdown").removeClass("nav-dropdown-open nav-dropdown-active");
+
+					// Записуємо поточний пункт
+					menu.curItem = $item;
+
+					// Додаємо класи по всіх батьках (включно з поточним)
+					$item.parents(".item.has-dropdown").addBack().each(function () {
+						$(this).addClass("nav-dropdown-open nav-dropdown-active");
+					});
+
+					// Визначаємо рівень вкладеності (кількість батьків .item.has-dropdown)
+					menu.curLevel = $item.parents(".item.has-dropdown").length;
+
+					// Виконуємо зсув меню по X
+					menu.options.initElem.children(".push-menu--nav").children(".push-menu--lvl").css({
+						transform: "translateX(-" + menu.curLevel * 100 + "%)"
+					});
+
+					// Перемикаємо видимість кнопки "Назад"
+					if (menu.curLevel > 0) {
+						menu.options.initElem.find(".nav-toggle").addClass("back-visible");
+					} else {
+						menu.options.initElem.find(".nav-toggle").removeClass("back-visible");
+					}
+				}
 			});
 		}
 
