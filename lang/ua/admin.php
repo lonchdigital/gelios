@@ -259,6 +259,7 @@ return [
     'name' => 'Назва',
     'direction_name' => 'Назва напрямку',
     'is_show_in_surgery_page' => 'Чи відображати на сторінці Хірургія',
+    'is_show_in_laboratories_page' => 'Чи відображати на сторінці Лабораторії',
     'articles_list' => 'Список статтей',
     'add_article' => 'Додати cтаттю',
     'article_page_blocks' => 'Список блоків сторінки блогу',
@@ -427,5 +428,5 @@ return [
     'first_city_first_phone' => 'Перший номер телефону першого міста',
     'first_city_second_phone' => 'Другий номер телефону першого міста',
     'second_city_first_phone' => 'Номер телефону другого міста',
-    
+
 ];

@@ -315,6 +315,25 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="h2 font-m font-weight-bolder text-blue mb-3">{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'title')->first()->title ?? '' }}</div>
+                        @if(!empty($page->pageBlocks->where('block', 'conditions')->where('key', 'title')->first()->description))
+                            <div class="h5 font-m text-grey font-weight-bold mb-3">{!! $page->pageBlocks->where('block', 'conditions')->where('key', 'title')->first()->description ?? '' !!}</div>
+                        @endif
+                        @if(!empty($page->pageBlocks->where('block', 'conditions')->where('key', 'title')->first()->url))
+						    <a
+                            @switch(LaravelLocalization::getCurrentLocale())
+                                @case('ua')
+                                        href="{{ '/ua/' . $page->pageBlocks->where('block', 'conditions')->where('key', 'title')->first()->url ?? '##' }}"
+                                    @break
+
+                                @case('en')
+                                        href="{{ '/en/' . $page->pageBlocks->where('block', 'conditions')->where('key', 'title')->first()->url ?? '##' }}"
+                                    @break
+
+                                @default
+                                    href="{{ $page->pageBlocks->where('block', 'conditions')->where('key', 'title')->first()->url ?? '##' }}"
+                            @endswitch()
+                            class="btn btn-white font-weight-bold mb-8">{{ __('pages.read_more') }}</a>
+                        @endif
                     </div>
                 </div>
                 <div class="row d-none d-lg-flex">
@@ -376,6 +395,25 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="h2 font-m font-weight-bolder text-blue mb-3">{{ $page->pageBlocks->where('block', 'Inpatient')->where('key', 'title')->first()->title ?? '' }}</div>
+                        @if(!empty($page->pageBlocks->where('block', 'Inpatient')->where('key', 'title')->first()->description))
+                            <div class="h5 font-m text-grey font-weight-bold mb-3">{!! $page->pageBlocks->where('block', 'Inpatient')->where('key', 'title')->first()->description ?? '' !!}</div>
+                        @endif
+                        @if(!empty($page->pageBlocks->where('block', 'Inpatient')->where('key', 'title')->first()->url))
+						    <a
+                                @switch(LaravelLocalization::getCurrentLocale())
+                                    @case('ua')
+                                            href="{{ '/ua/' . $page->pageBlocks->where('block', 'Inpatient')->where('key', 'title')->first()->url ?? '##' }}"
+                                        @break
+
+                                    @case('en')
+                                            href="{{ '/en/' . $page->pageBlocks->where('block', 'Inpatient')->where('key', 'title')->first()->url ?? '##' }}"
+                                        @break
+
+                                    @default
+                                        href="{{ $page->pageBlocks->where('block', 'Inpatient')->where('key', 'title')->first()->url ?? '##' }}"
+                                @endswitch()
+                                class="btn btn-white font-weight-bold mb-8">{{ __('pages.read_more') }}</a>
+                        @endif
                     </div>
                 </div>
                 <div class="row d-none d-lg-flex">

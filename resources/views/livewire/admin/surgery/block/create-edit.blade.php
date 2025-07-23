@@ -182,7 +182,9 @@
                                             @endif
                                         @endif
 
-                                        @if(!empty($this->block->block) && $this->block->block == '3d')
+                                        @if(!empty($this->block->block) && $this->block->block == '3d'
+                                                || !empty($this->block->block) && $this->block->block == 'conditions'
+                                                || !empty($this->block->block) && $this->block->block == 'Inpatient')
                                             <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">

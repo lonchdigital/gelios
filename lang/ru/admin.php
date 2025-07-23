@@ -237,6 +237,7 @@ return [
     'name' => 'Название',
     'direction_name' => 'Название направления',
     'is_show_in_surgery_page' => 'Отображать на странице Хирургия',
+    'is_show_in_laboratories_page' => 'Отображать на странице Лаборатории',
     'articles_list' => 'Список статей',
     'add_article' => 'Добавить статью',
     'article_page_blocks' => 'Список блоков страницы блога',

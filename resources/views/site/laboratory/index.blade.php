@@ -216,6 +216,76 @@
             </div>
         </div>
     </section>
+    @if(count($articles))
+        <section class="news mb-24">
+            <div class="container overflow-hidden">
+                <div class="row">
+                    <div class="col d-flex align-items-center justify-content-between mb-5">
+                        <div class="h2 font-m font-weight-bolder">{{ __('pages.news') }}</div>
+                        <a href="{{ route('articles.index') }}" class="btn btn-white font-weight-bold">{{ __('pages.all_news') }}</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="news--swiper">
+                            <div class="swiper-wrapper">
+                                {{-- <div class="swiper-slide news--item">
+                                    <a href="##" class="inner">
+                                        <div class="wrap-img mb-4">
+                                            <img src="img/articles/article-1.jpeg" alt="img">
+                                            <div class="date-label">13 березня 2024</div>
+                                        </div>
+                                        <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
+                                        <div class="descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у Дніпрі пропонує..</div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide news--item">
+                                    <a href="##" class="inner">
+                                        <div class="wrap-img mb-4">
+                                            <img src="img/articles/article-2.jpeg" alt="img">
+                                            <div class="date-label">13 березня 2024</div>
+                                        </div>
+                                        <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
+                                        <div class="descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у Дніпрі пропонує..</div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide news--item">
+                                    <a href="##" class="inner">
+                                        <div class="wrap-img mb-4">
+                                            <img src="img/articles/article-3.jpeg" alt="img">
+                                            <div class="date-label">13 березня 2024</div>
+                                        </div>
+                                        <div class="h3 small mb-2">Консультація анестезіолога у Дніпрі</div>
+                                        <div class="descrp">Медичний центр сімейного здоров’я та реабілітації “Геліос” у Дніпрі пропонує Медичний центр сімейного здоров’я та реабілітації “Геліос” у Дніпрі пропонує..</div>
+                                    </a>
+                                </div> --}}
+                                @forelse($articles as $article)
+                                        <div class="swiper-slide news--item">
+                                            <a href="{{ route('articles.show', ['slug' => $article->slug]) }}" class="inner">
+                                                <div class="wrap-img mb-4">
+                                                    @if($article->image)
+                                                    <img src="{{ $article->imageUrl }}" alt="{{ $article->title ?? '' }}">
+                                                    @else
+                                                    <img src="{{ asset('static_images/articles/article-1.jpeg') }}" alt="img">
+                                                    @endif
+                                                    <div class="date-label">{{ Carbon\Carbon::parse($article->created_at)->day }}
+                                                        {{ Carbon\Carbon::parse($article->created_at)->translatedFormat('F') }}
+                                                        {{ Carbon\Carbon::parse($article->created_at)->year }}</div>
+                                                </div>
+                                                <div class="h3 small mb-2">{{ $article->title }}</div>
+                                                <div class="descrp">{!! $article->description !!}</div>
+                                            </a>
+                                        </div>
+                                    @empty
+                                    @endforelse
+                            </div>
+                            <div class="swiper-pagination mt-6 d-xl-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
     <section class="meeting mb-24 py-lg-16">
         <div class="container">
             <div class="row align-items-center">

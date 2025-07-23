@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\PageType;
+use App\Models\Article;
 use App\Models\Laboratory;
 use App\Models\LaboratoryCity;
 use App\Models\Page;
@@ -23,8 +24,11 @@ class LaboratoryController extends Controller
         $url['ua'] = url('/') . '/ua/laboratories';
         $url['ru'] = url('/') . '/laboratories';
         $url['en'] = url('/') . '/en/laboratories';
+        $articles = Article::with('translations', 'articleBlocks', 'articleBlocks.translations')
+            ->where('is_show_in_surgery_page', true)
+            ->get();
 
-        return view('site.laboratory.index', compact('cities', 'page', 'url'));
+        return view('site.laboratory.index', compact('cities', 'page', 'url', 'articles'));
     }
 
     public function prices()

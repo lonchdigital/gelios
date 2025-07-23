@@ -53,6 +53,7 @@ return [
     'short_name' => 'short name',
     'direction_name' => 'Direction Name',
     'is_show_in_surgery_page' => 'Show in Surgery Page',
+    'is_show_in_laboratories_page' => 'Show in Laboratories age',
     'articles_list' => 'Articles List',
     'add_article' => 'Add Article',
     'article_page_blocks' => 'Article Page Blocks List',
