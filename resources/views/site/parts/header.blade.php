@@ -405,10 +405,10 @@
                                                                 <a class="link" href="{{ route('offices.page') }}">{{ __('pages.branches') }}</a>
                                                             </div>
                                                             <div class="hover-aside-menu--item">
-                                                                <a class="link" href="{{ route('articles.index') }}">{{ __('pages.blog') }}</a>
+                                                                <a class="link" href="{{ route('laboratories.index') }}">{{ __('pages.our_laboratories') }}</a>
                                                             </div>
                                                             <div class="hover-aside-menu--item">
-                                                                <a class="link" href="{{ route('laboratories.index') }}">{{ __('pages.our_laboratories') }}</a>
+                                                                <a class="link" href="{{ route('articles.index') }}">{{ __('pages.blog') }}</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -502,10 +502,10 @@
                                                                         <a class="link" href="{{ route('offices.page') }}">{{ __('pages.branches') }}</a>
                                                                     </div>
                                                                     <div class="item">
-                                                                        <a class="link" href="{{ route('articles.index') }}">{{ __('pages.blog') }}</a>
+                                                                        <a class="link" href="{{ route('laboratories.index') }}">{{ __('pages.our_laboratories') }}</a>
                                                                     </div>
                                                                     <div class="item">
-                                                                        <a class="link" href="{{ route('laboratories.index') }}">{{ __('pages.our_laboratories') }}</a>
+                                                                        <a class="link" href="{{ route('articles.index') }}">{{ __('pages.blog') }}</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
