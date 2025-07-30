@@ -31,6 +31,7 @@ return [
     'all_rights_reserved' => 'All rights reserved',
     'surgery' => 'Surgery',
     'about_company' => 'About company',
+    'about_us' => 'About us',
     'hospital' => 'Hospital',
     'prices' => 'Prices',
     'contacts' => 'Contacts',

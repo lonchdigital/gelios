@@ -31,6 +31,7 @@ return [
     'all_rights_reserved' => 'Все права защищены',
     'surgery' => 'Хирургия',
     'about_company' => 'О компании',
+    'about_us' => 'О нас',
     'hospital' => 'Стационар',
     'prices' => 'Цены',
     'contacts' => 'Контакты',

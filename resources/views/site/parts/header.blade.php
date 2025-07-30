@@ -393,7 +393,7 @@
                                             <a class="nav-link" href="{{ route('surgery.index') }}">{{ __('pages.surgery') }}</a>
                                         </div>
                                         <div class="hover-aside-menu--item list-inline-item">
-                                            <a class="nav-link" href="{{ route('about.us.page') }}">{{ __('pages.about_company') }}</a>
+                                            <a class="nav-link" href="{{ route('about.us.page') }}">{{ __('pages.about_us') }}</a>
                                             @if($allCenters->count() > 0)
                                                 <div class="hover-aside-menu--list">
                                                     <div class="hover-aside-menu--inner">
@@ -491,7 +491,7 @@
                                                     </div>
                                                     <div class="item"><a href="{{ route('surgery.index') }}">{{ __('pages.surgery') }}</a></div>
                                                     <div class="item {{ ($allCenters->count() > 0) ? 'has-dropdown' : '' }}">
-                                                        <span data-slug="{{ route('about.us.page') }}">{{ __('pages.about_company') }}</span>
+                                                        <span data-slug="{{ route('about.us.page') }}">{{ __('pages.about_us') }}</span>
                                                         @if($allCenters->count() > 0)
                                                             <div class="push-menu--lvl scrollable-content">
                                                                 <div class="scrollable-content--inner">
