@@ -268,9 +268,6 @@
                                                     @else
                                                     <img src="{{ asset('static_images/articles/article-1.jpeg') }}" alt="img">
                                                     @endif
-                                                    <div class="date-label">{{ Carbon\Carbon::parse($article->created_at)->day }}
-                                                        {{ Carbon\Carbon::parse($article->created_at)->translatedFormat('F') }}
-                                                        {{ Carbon\Carbon::parse($article->created_at)->year }}</div>
                                                 </div>
                                                 <div class="h3 small mb-2">{{ $article->title }}</div>
                                                 <div class="descrp">{!! $article->description !!}</div>

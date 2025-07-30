@@ -253,7 +253,6 @@
                                     <a href="{{ route('articles.show', ['slug' => $relatedArticle->slug]) }}" class="inner">
                                         <div class="wrap-img mb-4">
                                             <img src="{{ $relatedArticle->imageUrl }}" alt="{{ $relatedArticle->title }}">
-                                            <div class="date-label">{{ Carbon\Carbon::parse($relatedArticle->created_at)->day }}  {{ Carbon\Carbon::parse($relatedArticle->created_at)->translatedFormat('F') }} {{ Carbon\Carbon::parse($relatedArticle->created_at)->year }}</div>
                                         </div>
                                         <div class="h3 small mb-2">{{ $relatedArticle->title }}</div>
                                         <div class="descrp">{!! $relatedArticle->description !!}</div>
