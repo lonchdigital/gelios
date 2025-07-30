@@ -74,7 +74,6 @@
                                     </div>
                                     <div class="wrap-img">
                                         <img class="bg-down" src="{{ $image->imageUrl }}" alt="{{ $image->title }}">
-                                        <div class="date-label">{{ Carbon\Carbon::parse($article->created_at)->day }}  {{ Carbon\Carbon::parse($article->created_at)->translatedFormat('F') }} {{ Carbon\Carbon::parse($article->created_at)->year }}</div>
                                     </div>
                                 </div>
                             @empty
