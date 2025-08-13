@@ -36,7 +36,10 @@ class DoctorController extends Controller
         if ($request->has('search')) {
             $query->whereHas('translations', function ($q) use ($request, $locale) {
                 $q->where('locale', $locale)
-                    ->where('title', 'like', '%' . $request->search . '%');
+                    ->where('title', 'like', '%' . $request->search . '%')
+                    ->orWhere('specialty', 'like', '%' . $request->search . '%')
+                    ->orWhere('education', 'like', '%' . $request->search . '%');
+//                    ->orWhere('content', 'like', '%' . $request->search . '%');
             });
         }
 
