@@ -38,8 +38,8 @@ class DoctorController extends Controller
                 $q->where('locale', $locale)
                     ->where('title', 'like', '%' . $request->search . '%')
                     ->orWhere('specialty', 'like', '%' . $request->search . '%')
-                    ->orWhere('education', 'like', '%' . $request->search . '%');
-//                    ->orWhere('content', 'like', '%' . $request->search . '%');
+                    ->orWhere('education', 'like', '%' . $request->search . '%')
+                    ->orWhere('content', 'like', '%' . $request->search . '%');
             });
         }
 
