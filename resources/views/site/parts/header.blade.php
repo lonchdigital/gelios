@@ -31,6 +31,7 @@
                                 </button>
                             </li>
                         </ul>
+
                         <ul class="list-inline mb-0 d-none d-xxl-flex align-items-center mr-xxl-2">
                             <li class="list-inline-item">
                                 <div class="city">{{ $secondCity->title ?? '' }}</div>
@@ -43,12 +44,14 @@
                                 </li>
                             @endif
                             <li class="list-inline-item">
-                                <button type="button" class="contact-details" data-toggle="modal" data-city="{{ $secondCity->title ?? '' }}"
-                                    data-affiliates="{{ $secondCity->headerAffiliates }}"
-                                    data-target="#popup--contacts">{{ __('pages.work_schedule') }}
+                                <button type="button" class="contact-details" data-toggle="modal"
+                                        data-city="{{ $secondCity->title ?? '' }}"
+                                        data-affiliates="{{ $secondCity->headerAffiliates }}"
+                                        data-target="#popup--contacts">{{ __('pages.work_schedule') }}
                                 </button>
                             </li>
                         </ul>
+
                         <div class="item d-flex d-xxl-none flex-column flex-xxl-row justify-content-between align-items-end align-items-xxl-center">
                             <ul class="list-inline mb-0 d-flex align-items-center">
                                 <li class="list-inline-item">
@@ -69,9 +72,10 @@
                                     </li>
                                 @endif
                                 <li class="list-inline-item">
-                                    <button type="button" class="contact-details" data-toggle="modal" data-city="{{ $firstCity->title ?? '' }}"
-                                        data-affiliates="{{ $firstCity->headerAffiliates }}"
-                                        data-target="#popup--contacts">{{ __('pages.work_schedule') }}
+                                    <button type="button" class="contact-details" data-toggle="modal"
+                                            data-city="{{ $firstCity->title ?? '' }}"
+                                            data-affiliates="{{ $firstCity->headerAffiliates }}"
+                                            data-target="#popup--contacts">{{ __('pages.work_schedule') }}
                                     </button>
                                 </li>
                             </ul>
@@ -81,98 +85,26 @@
                                 </li>
                                 @if(!empty($secondCity->first_phone))
                                     <li class="list-inline-item">
-                                        <a href="tel:{{ $secondCity->first_phone ?? '' }}"">
-                                            <div class="link-phone">{{ $secondCity->first_phone ?? '' }}"</div>
+                                        <a href="tel:{{ $secondCity->first_phone ?? '' }}">
+                                            <div class="link-phone">{{ $secondCity->first_phone ?? '' }}</div>
                                         </a>
                                     </li>
                                 @endif
                                 <li class="list-inline-item">
                                     <button type="button" class="contact-details"
-                                        data-toggle="modal"
-                                        data-city="{{ $secondCity->title ?? '' }}"
-                                        data-affiliates="{{ $secondCity->headerAffiliates }}"
-                                        data-target="#popup--contacts">{{ __('pages.work_schedule') }}
+                                            data-toggle="modal"
+                                            data-city="{{ $secondCity->title ?? '' }}"
+                                            data-affiliates="{{ $secondCity->headerAffiliates }}"
+                                            data-target="#popup--contacts">{{ __('pages.work_schedule') }}
                                     </button>
                                 </li>
                             </ul>
                         </div>
 
-                        {{-- <ul class="list-inline mb-0 d-none d-xxl-flex align-items-center">
-                            <li class="list-inline-item">
-                                <div class="city">Дніпро</div>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="tel:+38 (095) 000-01-50">
-                                    <div class="link-phone">+38 (095) 000-01-50</div>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="tel:+38 (050) 325-62-93">
-                                    <div class="link-phone">+38 (050) 325-62-93</div>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <button type="button" class="contact-details" data-toggle="modal"
-                                        data-target="#popup--contacts">Переглянути
-                                </button>
-                            </li>
-                        </ul>
-                        <ul class="list-inline mb-0 d-none d-xxl-flex align-items-center mr-xxl-2">
-                            <li class="list-inline-item">
-                                <div class="city">Новомосковськ</div>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="tel:+38 (050) 325-62-93">
-                                    <div class="link-phone">+38 (050) 325-62-93</div>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <button type="button" class="contact-details" data-toggle="modal"
-                                        data-target="#popup--contacts">Переглянути
-                                </button>
-                            </li>
-                        </ul>
-                        <div class="item d-flex d-xxl-none flex-column flex-xxl-row justify-content-between align-items-end align-items-xxl-center">
-                            <ul class="list-inline mb-0 d-flex align-items-center">
-                                <li class="list-inline-item">
-                                    <div class="city">Дніпро</div>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="tel:+38 (095) 000-01-50">
-                                        <div class="link-phone">+38 (095) 000-01-50</div>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="tel:+38 (050) 325-62-93">
-                                        <div class="link-phone">+38 (050) 325-62-93</div>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <button type="button" class="contact-details" data-toggle="modal"
-                                            data-target="#popup--contacts">Переглянути
-                                    </button>
-                                </li>
-                            </ul>
-                            <ul class="list-inline mb-0 d-flex align-items-center">
-                                <li class="list-inline-item">
-                                    <div class="city">Новомосковськ</div>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="tel:+38 (050) 325-62-93">
-                                        <div class="link-phone">+38 (050) 325-62-93</div>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <button type="button" class="contact-details" data-toggle="modal"
-                                        data-target="#popup--contacts">Переглянути
-                                    </button>
-                                </li>
-                            </ul>
-                        </div> --}}
                         <div class="item d-flex justify-content-between align-items-center mr-xxl-1">
                             <div class="d-xxl-none">
                                 <button type="button" class="btn btn-blue" data-toggle="modal"
-                                    data-target="#popup--sign-up-appointment">{{ __('pages.sign_up_for_for_appointment') }}
+                                        data-target="#popup--sign-up-appointment">{{ __('pages.sign_up_for_for_appointment') }}
                                 </button>
                             </div>
                             <div class="languages list-inline-item">
@@ -186,37 +118,20 @@
                                         </svg>
                                     </div>
                                     <ul class="submenu list-unstyled mb-0 position-absolute py-1 px-2">
-                                        {{-- @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                            @if ($localeCode !== LaravelLocalization::getCurrentLocale() && $localeCode !== 'en')
-                                                <li>
-                                                    <div class="language d-flex align-items-center">
-                                                        <a class="d-flex" rel="alternate"
-                                                        hreflang="{{ $localeCode }}"
-                                                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                                            <span>{{ $localeCode }}</span>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                            @endif
-                                        @endforeach --}}
                                         @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                             @if ($localeCode !== LaravelLocalization::getCurrentLocale())
                                                 @php
                                                     $path = ltrim(parse_url(request()->getRequestUri(), PHP_URL_PATH), '/');
                                                     $segments = collect(explode('/', $path));
                                                     $locales = array_keys(LaravelLocalization::getSupportedLocales());
-
                                                     if ($segments->isNotEmpty() && in_array($segments->first(), $locales)) {
                                                         $segments->shift();
                                                     }
-
                                                     $newSegments = $localeCode !== 'ru'
                                                         ? $segments->prepend($localeCode)
                                                         : $segments;
-
                                                     $localizedUrl = url($newSegments->implode('/'));
                                                 @endphp
-
                                                 <li>
                                                     <div class="language d-flex align-items-center">
                                                         <a class="d-flex" rel="alternate" hreflang="{{ $localeCode }}" href="{{ $localizedUrl }}">
@@ -226,16 +141,16 @@
                                                 </li>
                                             @endif
                                         @endforeach
-
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div><!-- /.item -->
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div><!-- /.header-top -->
+
     <div class="header-main">
         <div class="container position-relative">
             <div class="row">
@@ -243,8 +158,10 @@
                     <nav class="navbar navbar-expand-lg flex-column p-0">
                         <div class="inner w-100">
                             <div class="content d-flex justify-content-between">
-                                <a class="navbar-brand p-0" href="{{ route('main') }}"><img src="{{ $headerImage ?? asset('static_images/logo.png') }}"
-                                                                          alt="logo"></a>
+                                <a class="navbar-brand p-0" href="{{ route('main') }}">
+                                    <img src="{{ $headerImage ?? asset('static_images/logo.png') }}" alt="logo">
+                                </a>
+
                                 <div class="navbar-nav--mob d-flex d-lg-none justify-content-between">
                                     <div class="languages">
                                         <div class="current-lang">
@@ -258,32 +175,19 @@
                                             </div>
                                             <ul class="submenu list-unstyled mb-0 position-absolute py-1 px-2">
                                                 @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                                    {{-- @if ($localeCode !== LaravelLocalization::getCurrentLocale() && $localeCode !== 'en')
-                                                        <li>
-                                                            <div class="language d-flex align-items-center">
-                                                                <a class="d-flex" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                                                    <span>{{ $localeCode }}</span>
-                                                                </a>
-                                                            </div>
-                                                        </li>
-                                                    @endif --}}
                                                     @if ($localeCode !== LaravelLocalization::getCurrentLocale())
                                                         @php
                                                             $path = ltrim(parse_url(request()->getRequestUri(), PHP_URL_PATH), '/');
                                                             $segments = collect(explode('/', $path));
                                                             $locales = array_keys(LaravelLocalization::getSupportedLocales());
-
                                                             if ($segments->isNotEmpty() && in_array($segments->first(), $locales)) {
                                                                 $segments->shift();
                                                             }
-
                                                             $newSegments = $localeCode !== 'ru'
                                                                 ? $segments->prepend($localeCode)
                                                                 : $segments;
-
                                                             $localizedUrl = url($newSegments->implode('/'));
                                                         @endphp
-
                                                         <li>
                                                             <div class="language d-flex align-items-center">
                                                                 <a class="d-flex" rel="alternate" hreflang="{{ $localeCode }}" href="{{ $localizedUrl }}">
@@ -293,41 +197,36 @@
                                                         </li>
                                                     @endif
                                                 @endforeach
-                                                {{-- <li>
-                                                    <div class="language d-flex align-items-center">
-                                                        <a class="d-flex" href="/">
-                                                            <span>Ru</span>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="language d-flex align-items-center">
-                                                        <a class="d-flex" href="/">
-                                                            <span>Eng</span>
-                                                        </a>
-                                                    </div>
-                                                </li> --}}
                                             </ul>
                                         </div>
                                     </div>
-                                    <button class="navbar-toggler h-100 collapsed" type="button" data-toggle="collapse"
-                                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                            aria-expanded="false" aria-label="Toggle navigation" id="toggleMenu">
+
+                                    <button class="navbar-toggler h-100 collapsed" type="button"
+                                            data-toggle="collapse"
+                                            data-target="#navbarSupportedContent"
+                                            aria-controls="navbarSupportedContent"
+                                            aria-expanded="false"
+                                            aria-label="Toggle navigation"
+                                            id="toggleMenu">
                                         <div class="menu-burger position-relative">
                                             <div class="lines"></div>
                                         </div>
                                     </button>
                                 </div>
-                            </div>
+                            </div><!-- /.content -->
 
                             <div class="collapse navbar-collapse justify-content-between order-last"
                                  id="navbarSupportedContent">
+
+                                {{-- ======= DESKTOP ======= --}}
                                 <div class="header-main--desk d-none d-lg-flex align-items-center justify-content-end justify-content-xxl-between w-100">
                                     <div class="navbar-nav list-inline hover-aside-menu--list">
                                         <div class="list-inline-item">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                   <a href="{{ route('directions.page') }}"><span>{{ trans('web.directions') }}</span></a>
+                                                    <a href="{{ route('directions.page') }}">
+                                                        <span>{{ trans('web.directions') }}</span>
+                                                    </a>
                                                 </div>
                                                 <div class="submenu position-absolute">
                                                     <div class="container">
@@ -339,17 +238,14 @@
                                                                     <span class="nav-close"></span>
                                                                 </div>
                                                                 <div class="push-menu--lvl">
-
                                                                     <div class="push-menu--aside">
                                                                         @foreach ($allDirections->where('template', 3) as $direction)
                                                                             <div class="item"><a href="{{ $direction['full_path'] }}">{{ $direction['name'] }}</a></div>
                                                                         @endforeach
                                                                     </div>
-
                                                                     <div class="push-menu--category">
                                                                         @foreach ($allDirections->where('template', 1) as $category)
-																			<div class="push-menu--sub-category">
-
+                                                                            <div class="push-menu--sub-category">
                                                                                 @if( $category['children'] )
                                                                                     <div class="item has-dropdown main-title">
                                                                                         <span class="heading" data-slug="{{ $category['full_path'] }}">{{ $category['name'] }}</span>
@@ -362,7 +258,6 @@
                                                                                         <a href="{{ $category['full_path'] }}" class="heading">{{ $category['name'] }}</a>
                                                                                     </div>
                                                                                 @endif
-
                                                                                 @foreach (collect($category['children']) as $subCategory)
                                                                                     @if( $subCategory['children'] )
                                                                                         <div class="item has-dropdown">
@@ -377,21 +272,21 @@
                                                                                         </div>
                                                                                     @endif
                                                                                 @endforeach
-																			</div>
-																		@endforeach
+                                                                            </div>
+                                                                        @endforeach
                                                                     </div>
-
-
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div><!-- /.submenu -->
                                             </div>
                                         </div>
+
                                         <div class="list-inline-item">
                                             <a class="nav-link" href="{{ route('surgery.index') }}">{{ __('pages.surgery') }}</a>
                                         </div>
+
                                         <div class="hover-aside-menu--item list-inline-item">
                                             <a class="nav-link" href="{{ route('about.us.page') }}">{{ __('pages.about_us') }}</a>
                                             @if($allCenters->count() > 0)
@@ -401,63 +296,55 @@
                                                             @foreach ($allCenters as $oneCenter)
                                                                 <div class="hover-aside-menu--item"><a class="link" href="{{ route('one.center.page', ['slug' => $oneCenter->slug]) }}">{{ $oneCenter->title }}</a></div>
                                                             @endforeach
-                                                            <div class="hover-aside-menu--item">
-                                                                <a class="link" href="{{ route('offices.page') }}">{{ __('pages.branches') }}</a>
-                                                            </div>
-                                                            <div class="hover-aside-menu--item">
-                                                                <a class="link" href="{{ route('laboratories.index') }}">{{ __('pages.our_laboratories') }}</a>
-                                                            </div>
-                                                            <div class="hover-aside-menu--item">
-                                                                <a class="link" href="{{ route('articles.index') }}">{{ __('pages.blog') }}</a>
-                                                            </div>
+                                                            <div class="hover-aside-menu--item"><a class="link" href="{{ route('offices.page') }}">{{ __('pages.branches') }}</a></div>
+                                                            <div class="hover-aside-menu--item"><a class="link" href="{{ route('laboratories.index') }}">{{ __('pages.our_laboratories') }}</a></div>
+                                                            <div class="hover-aside-menu--item"><a class="link" href="{{ route('articles.index') }}">{{ __('pages.blog') }}</a></div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             @endif
                                         </div>
+
                                         <div class="hover-aside-menu--item position-right list-inline-item">
                                             <a class="nav-link" href="{{ route('promotions.index') }}">{{ __('pages.promotions') }}</a>
                                             <div class="hover-aside-menu--list">
                                                 <div class="hover-aside-menu--inner">
                                                     <div class="hover-aside-menu--content">
-                                                        <div class="hover-aside-menu--item"><a class="link"
-                                                                                               href="{{ route('check-ups.index') }}">Check-up</a>
-                                                        </div>
+                                                        <div class="hover-aside-menu--item"><a class="link" href="{{ route('check-ups.index') }}">Check-up</a></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="list-inline-item">
-                                            <a class="nav-link" href="{{ route('doctors.index') }}">{{ __('pages.doctors') }}</a>
-                                        </div>
-                                        <div class="list-inline-item">
-                                            <a class="nav-link" href="{{ route('hospital.show') }}">{{ __('pages.hospital') }}</a>
-                                        </div>
-                                        <div class="list-inline-item">
-                                            <a class="nav-link" href="{{ route('prices.page') }}">{{ __('pages.prices') }}</a>
-                                        </div>
+
+                                        <div class="list-inline-item"><a class="nav-link" href="{{ route('doctors.index') }}">{{ __('pages.doctors') }}</a></div>
+                                        <div class="list-inline-item"><a class="nav-link" href="{{ route('hospital.show') }}">{{ __('pages.hospital') }}</a></div>
+                                        <div class="list-inline-item"><a class="nav-link" href="{{ route('prices.page') }}">{{ __('pages.prices') }}</a></div>
+
                                         <div class="hover-aside-menu--item position-left list-inline-item">
                                             <a class="nav-link" href="{{ route('contacts.page') }}">{{ __('pages.contacts') }}</a>
                                             <div class="hover-aside-menu--list">
                                                 <div class="hover-aside-menu--inner">
                                                     <div class="hover-aside-menu--content">
-                                                        <div class="hover-aside-menu--item">
-                                                            <a class="link" href="{{ route('strahovym.kompaniyam.page') }}">{{ __('pages.insurance') }}</a>
-                                                        </div>
-                                                        <div class="hover-aside-menu--item">
-                                                            <a class="link" href="{{ route('vacancy.index') }}">{{ __('pages.vacancies') }}</a>
-                                                        </div>
+                                                        <div class="hover-aside-menu--item"><a class="link" href="{{ route('strahovym.kompaniyam.page') }}">{{ __('pages.insurance') }}</a></div>
+                                                        <div class="hover-aside-menu--item"><a class="link" href="{{ route('vacancy.index') }}">{{ __('pages.vacancies') }}</a></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div><!-- /.navbar-nav -->
+
+                                    {{-- справа: поиск + кнопка записи (десктоп) --}}
                                     <div class="navbar-nav--other d-none d-xxl-flex align-items-center">
+                                        <div style="margin-right:14px;">
+                                            @include('components.header-search-inline')
+                                        </div>
                                         <button type="button" class="btn btn-blue" data-toggle="modal"
-                                            data-target="#popup--sign-up-appointment">{{ trans('web.make_appointment') }}
+                                                data-target="#popup--sign-up-appointment">{{ trans('web.make_appointment') }}
                                         </button>
                                     </div>
-                                </div>
+                                </div><!-- /.header-main--desk -->
+
+                                {{-- ======= MOBILE (бургер) ======= --}}
                                 <div class="header-main--mob d-lg-none">
                                     <div class="push-menu d-flex flex-column justify-content-between">
                                         <div class="nav-toggle">
@@ -465,6 +352,12 @@
                                             <span class="nav-title">Menu</span>
                                             <span class="nav-close"></span>
                                         </div>
+
+                                        {{-- СЛОТ ДЛЯ ПОИСКА между заголовком и списком меню --}}
+                                        <div class="mob-search-slot px-3 pt-2 pb-2">
+                                            @include('components.header-search-inline', ['context' => 'mobile'])
+                                        </div>
+
                                         <div class="push-menu--nav">
                                             <div class="push-menu--lvl scrollable-content">
                                                 <div class="scrollable-content--inner">
@@ -477,7 +370,6 @@
                                                                     @if( $category['children'] )
                                                                         <div class="item has-dropdown">
                                                                             <span data-slug="{{ $category['full_path'] }}">{{ $category['name'] }}</span>
-
                                                                             <div class="push-menu--lvl scrollable-content">
                                                                                 <x-site.directions.header-mob-menu :data="collect($category['children'])" />
                                                                             </div>
@@ -489,6 +381,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                     <div class="item"><a href="{{ route('surgery.index') }}">{{ __('pages.surgery') }}</a></div>
                                                     <div class="item {{ ($allCenters->count() > 0) ? 'has-dropdown' : '' }}">
                                                         <span data-slug="{{ route('about.us.page') }}">{{ __('pages.about_us') }}</span>
@@ -498,19 +391,14 @@
                                                                     @foreach ($allCenters as $oneCenter)
                                                                         <div class="item"><a class="link" href="{{ route('one.center.page', ['slug' => $oneCenter->slug]) }}">{{ $oneCenter->title }}</a></div>
                                                                     @endforeach
-                                                                    <div class="item">
-                                                                        <a class="link" href="{{ route('offices.page') }}">{{ __('pages.branches') }}</a>
-                                                                    </div>
-                                                                    <div class="item">
-                                                                        <a class="link" href="{{ route('laboratories.index') }}">{{ __('pages.our_laboratories') }}</a>
-                                                                    </div>
-                                                                    <div class="item">
-                                                                        <a class="link" href="{{ route('articles.index') }}">{{ __('pages.blog') }}</a>
-                                                                    </div>
+                                                                    <div class="item"><a class="link" href="{{ route('offices.page') }}">{{ __('pages.branches') }}</a></div>
+                                                                    <div class="item"><a class="link" href="{{ route('laboratories.index') }}">{{ __('pages.our_laboratories') }}</a></div>
+                                                                    <div class="item"><a class="link" href="{{ route('articles.index') }}">{{ __('pages.blog') }}</a></div>
                                                                 </div>
                                                             </div>
                                                         @endif
                                                     </div>
+
                                                     <div class="item has-dropdown">
                                                         <span data-slug="{{ route('promotions.index') }}">{{ __('pages.promotions') }}</span>
                                                         <div class="push-menu--lvl scrollable-content">
@@ -519,10 +407,11 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="item"><a href="{{ route('doctors.index') }}">{{ __('pages.doctors') }}</a>
-                                                    </div>
+
+                                                    <div class="item"><a href="{{ route('doctors.index') }}">{{ __('pages.doctors') }}</a></div>
                                                     <div class="item"><a href="{{ route('hospital.show') }}">{{ __('pages.hospital') }}</a></div>
                                                     <div class="item"><a href="{{ route('prices.page') }}">{{ __('pages.prices') }}</a></div>
+
                                                     <div class="item has-dropdown">
                                                         <span data-slug="{{ route('contacts.page') }}">{{ __('pages.contacts') }}</span>
                                                         <div class="push-menu--lvl scrollable-content">
@@ -532,12 +421,13 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div><!-- /.scrollable-content--inner -->
                                             </div>
                                         </div>
+
                                         <div class="navbar-nav--other mb-5">
                                             <button type="button" class="btn btn-blue w-100 mb-5" data-toggle="modal"
-                                            data-target="#popup--sign-up-appointment">{{ __('pages.sign_up_for_for_appointment') }}
+                                                    data-target="#popup--sign-up-appointment">{{ __('pages.sign_up_for_for_appointment') }}
                                             </button>
                                             <div class="contact-offices">
                                                 <div class="contact-offices--label">{{ __('pages.view_branches') }}:</div>
@@ -546,72 +436,81 @@
                                                             data-toggle="modal"
                                                             data-target="#popup--contacts"
                                                             data-city="{{ $firstCity->title ?? '' }}"
-                                                            data-affiliates="{{ $firstCity->headerAffiliates }}"
-                                                            {{-- @forelse($firstCity->headerAffiliates as $affiliate)
-                                                                @switch($loop->iteration)
-                                                                    @case(1)
-                                                                        data-first="{{ $affiliate }}"
-                                                                        @break
-
-                                                                    @case(2)
-                                                                        data-second="{{ $affiliate }}"
-                                                                        @break
-
-                                                                    @case(3)
-                                                                        data-third="{{ $affiliate }}"
-                                                                        @break
-
-                                                                    @case(4)
-                                                                        data-fourth="{{ $affiliate }}"
-                                                                        @break
-
-                                                                    @default
-
-                                                                @endswitch
-                                                            @empty
-                                                            @endforelse --}}
-                                                            ><span>{{ $firstCity->title ?? '' }}</span>
+                                                            data-affiliates="{{ $firstCity->headerAffiliates }}"><span>{{ $firstCity->title ?? '' }}</span>
                                                     </button>
                                                     <button type="button" class="contact-details btn"
                                                             data-toggle="modal"
                                                             data-target="#popup--contacts"
                                                             data-city="{{ $secondCity->title ?? '' }}"
-                                                            data-affiliates="{{ $secondCity->headerAffiliates }}"
-                                                            {{-- @forelse($secondCity->headerAffiliates as $affiliate)
-                                                                @switch($loop->iteration)
-                                                                    @case(1)
-                                                                        data-first="{{ $affiliate }}"
-                                                                        @break
-
-                                                                    @case(2)
-                                                                        data-second="{{ $affiliate }}"
-                                                                        @break
-
-                                                                    @case(3)
-                                                                        data-third="{{ $affiliate }}"
-                                                                        @break
-
-                                                                    @case(4)
-                                                                        data-fourth="{{ $affiliate }}"
-                                                                        @break
-
-                                                                    @default
-
-                                                                @endswitch
-                                                            @empty
-                                                            @endforelse --}}
-                                                            ><span>{{ $secondCity->title ?? '' }}</span>
+                                                            data-affiliates="{{ $secondCity->headerAffiliates }}"><span>{{ $secondCity->title ?? '' }}</span>
                                                     </button>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                        </div><!-- /.navbar-nav--other -->
+                                    </div><!-- /.push-menu -->
+                                </div><!-- /.header-main--mob -->
+                            </div><!-- /.collapse -->
+                        </div><!-- /.inner -->
                     </nav>
                 </div>
             </div>
         </div>
-    </div>
+    </div><!-- /.header-main -->
+
+    {{-- Минимальные стили только для контейнера бургера (скролл и без горизонтального выезда) --}}
+ <style>
+/* ===== MOBILE: общий скролл всего бургера, поиск открыт, ничего не перекрывается ===== */
+@media (max-width: 991.98px){
+
+  /* 1) Скроллим ВЕСЬ контент бургера (menu + кнопка + филиалы + поиск) */
+  .header .header-main .collapse.show {
+    /* высота видимой области минус реальная высота верхней полосы */
+    --header-mobile-top: 92px;              /* подстройте при нужде */
+    max-height: calc(100dvh - var(--header-mobile-top));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+  }
+
+  /* 2) Внутри — обычный поток, без "расталкивания" блоков и локальных скроллов */
+  .header .header-main .push-menu{
+    display:block !important;              /* убираем d-flex/justify-content-between */
+  }
+  .header .header-main .push-menu .scrollable-content,
+  .header .header-main .push-menu .scrollable-content--inner{
+    max-height:none !important;
+    overflow:visible !important;
+  }
+
+  /* 3) Поиск — отдельная карточка, не толкает и не прилипает к кнопке */
+  .hxs3--mob{ width:100%; }
+  .hxs3--mob .hxs3__panel{
+    position:static;
+    display:block;                          /* всегда видимая карточка */
+    margin:10px 0 12px;                     /* зазоры сверху/снизу */
+    border:1px solid #E6EEF7;
+    border-radius:16px;
+    box-shadow:0 6px 18px rgba(44,84,118,.08);
+  }
+  .hxs3--mob .hxs3__form{ margin:10px; }
+  .hxs3--mob .hxs3__suggest{
+    position:static;
+    margin-top:8px;
+    max-height:none;
+    overflow:visible;
+  }
+
+  /* 4) Меню — небольшой низ, чтобы текст не "подлазил" к кнопке */
+  .header .header-main .push-menu--nav{ padding-bottom: 12px; }
+
+  /* 5) Кнопка и блок филиалов — обычный поток, с отступами */
+  .header .header-main .navbar-nav--other{
+    position:static;
+    margin: 12px 0 18px !important;
+	padding-top: 20px;
+  }
+}
+</style>
+
 </header>

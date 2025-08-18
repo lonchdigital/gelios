@@ -21,6 +21,7 @@ use App\Http\Controllers\OneCenterController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\LaboratoryController;
 use App\Http\Controllers\InsuranceCompaniesController;
+use App\Http\Controllers\SearchController; // Добавление контроллера поиска
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 require __DIR__ . '/301.php';
@@ -46,64 +47,40 @@ Route::group([
     ], function () {
 
         Route::get('/', [HomeController::class, 'index'])->name('main');
+        
+        // >>> Добавлены маршруты поиска (внутри локализованной группы)
+        Route::get('/search', [SearchController::class, 'index'])->name('search.index');  // Результаты поиска
+        Route::get('/search/suggest', [SearchController::class, 'suggest'])->name('search.suggest');  // Подсказки для поиска
+        // <<< Конец добавленных маршрутов поиска
 
         Route::get('/one-center/{slug}', [OneCenterController::class, 'page'])->name('one.center.page');
-
         Route::get('/about-us/', [AboutUsController::class, 'page'])->name('about.us.page');
-
         Route::get('/strahovym-kompaniyam/', [InsuranceCompaniesController::class, 'page'])->name('strahovym.kompaniyam.page');
-
         Route::get('/otzyvy/', [ReviewsController::class, 'page'])->name('reviews.page');
         Route::post('/user-write-review/', [ReviewsController::class, 'userWriteReview']);
-
         Route::get('/prices/', [PricesController::class, 'page'])->name('prices.page');
         Route::post('/prices-search-filter/', [PricesController::class, 'searchFilter']);
-
         Route::get('/contact-us/', [ContactsController::class, 'page'])->name('contacts.page');
         Route::post('/contacts-search-filter/', [ContactsController::class, 'searchFilter']);
-
         Route::get('/offices/', [OfficesController::class, 'page'])->name('offices.page');
-
         Route::get('/staczionar/', [HospitalController::class, 'show'])->name('hospital.show');
-
         Route::get('/directions/', [DirectionController::class, 'page'])->name('directions.page');
-        // TODO:: use them for redirects
-        // Route::get('/direction/{pageDirection:slug}', [DirectionController::class, 'direction'])->name('direction.itself');
-        // Route::get('/direction/category/{pageDirection:slug}', [DirectionController::class, 'category'])->name('direction.category');
-        // Route::get('/direction/sub-category/{pageDirection:slug}', [DirectionController::class, 'subCategory'])->name('direction.sub-category');
-
         Route::get('/akczii-i-speczialnye-predlozheniya/', [PromotionController::class, 'index'])->name('promotions.index');
         Route::get('/akczii-i-speczialnye-predlozheniya/{promotion:slug}', [PromotionController::class, 'show'])->name('promotions.show');
-
         Route::get('/check-up/', [CheckUpController::class, 'index'])->name('check-ups.index');
-
         Route::get('/dlya-paczientov/', [ArticleController::class, 'index'])->name('articles.index');
         Route::get('/dlya-paczientov/page/{page}', [ArticleController::class, 'index'])->name('articles.page');
         Route::get('/dlya-paczientov/{slug}', [ArticleController::class, 'show'])->name('articles.show');
-
         Route::get('/nashi-speczialisty/', [DoctorController::class, 'index'])->name('doctors.index');
         Route::get('/team-member/{doctor:slug}', [DoctorController::class, 'show'])->name('doctors.show');
-
         Route::get('/laboratories/', [LaboratoryController::class, 'index'])->name('laboratories.index');
         Route::get('/laboratories/prices', [LaboratoryController::class, 'prices'])->name('laboratories.prices');
         Route::post('/laboratories-prices-search-filter/', [LaboratoryController::class, 'searchFilter']);
-
         Route::get('/vzroslym/hirurgiya', [SurgeryController::class, 'index'])->name('surgery.index');
-
         Route::get('/vakansii/', [VacancyController::class, 'index'])->name('vacancy.index');
-
-        // TODO:: old route of displaying pages. Can be removed
-        // Route::get('/dlya-paczientov/{page:slug}', [TextPagesController::class, 'show'])->name('text.page.show');
-
-
-        // Route::get('/{slug}', [WebPagesController::class, 'webPageShow'])->name('web.page.show');
         Route::get('/{slug}', [WebPagesController::class, 'webPageByFullPath'])
             ->where('slug', '.*') // any route
             ->name('web.page.show');
 });
 
 Route::get('lang/{lang}', [LanguageController::class, 'changeLanguage'])->name('changeLanguage');
-
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
