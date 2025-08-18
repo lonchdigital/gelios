@@ -257,4 +257,6 @@ return [
     'first_city_first_phone' => 'First phone first city',
     'first_city_second_phone' => 'Second phone first city',
     'second_city_first_phone' => 'First phone second city',
+    'doctor_centers' => 'Doctor centers',
+    'add_center' => 'Add center',
 ];

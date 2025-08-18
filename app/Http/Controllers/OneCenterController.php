@@ -17,7 +17,7 @@ class OneCenterController extends Controller
 
         $allBriefBlocks = BriefBlock::where('page_id', $page->id)->get();
         $allPageTextBlocks = PageTextBlock::where('page_id', $page->id)->get();
-        $doctors = Doctor::limit(10)->get();
+        $doctors = $page->doctors;
 
         $url['ua'] = url('/') . '/ua/one-center/' . $slug;
         $url['ru'] = url('/') . '/one-center/' . $slug;

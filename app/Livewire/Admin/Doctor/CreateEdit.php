@@ -2,12 +2,15 @@
 
 namespace App\Livewire\Admin\Doctor;
 
+use App\Enums\PageType;
 use App\Models\Direction;
 use App\Models\DirectionDoctor;
 use App\Models\Doctor;
 use App\Models\DoctorCategory;
+use App\Models\DoctorCenter;
 use App\Models\DoctorSpecialization;
 use App\Models\DoctorTranslation;
+use App\Models\Page;
 use App\Models\Specialization;
 use App\Services\Admin\DoctorService;
 use App\Services\Admin\ImageService;
@@ -92,6 +95,12 @@ class CreateEdit extends Component
 
     public string $searchSpecialization = '';
 
+    public $centers;
+
+    public array $selectedCenters = [];
+
+    public string $searchCenter = '';
+
     public $categories;
 
     public $category;
@@ -132,6 +141,8 @@ class CreateEdit extends Component
         $this->loadImages();
 
         $this->specializations = Specialization::get();
+        $this->centers = Page::where('type', PageType::ONECENTER->value)
+            ->get();
         // $this->specialization = $this->doctor->specialization_id ?? null;
 
         $this->categories = DoctorCategory::get();
@@ -159,7 +170,24 @@ class CreateEdit extends Component
             $ids2[] = $item->id ?? $item['id'];
         }
 
-        $this->specializations = Specialization::whereNotIn('id', $ids)->take(5)->get();
+        $this->specializations = Specialization::whereNotIn('id', $ids2)
+            ->take(5)
+            ->get();
+
+        foreach ($this->doctor->centers ?? [] as $center) {
+            $this->selectedCenters[] = $center;
+        }
+
+        $ids3 = [];
+
+        foreach ($this->selectedCenters as $item) {
+            $ids3[] = $item->id ?? $item['id'];
+        }
+
+        $this->centers = Page::where('type', PageType::ONECENTER->value)
+            ->whereNotIn('id', $ids3)
+            ->take(5)
+            ->get();
     }
 
     private function loadImages()
@@ -178,6 +206,21 @@ class CreateEdit extends Component
         }
 
         $this->directions = Direction::search(rtrim($val))
+            ->whereNotIn('id', $ids)
+            ->take(5)
+            ->get();
+    }
+
+    public function updatedSearchCenter($val)
+    {
+        $ids = [];
+
+        foreach ($this->selectedCenters as $item) {
+            $ids[] = $item->id ?? $item['id'];
+        }
+
+        $this->specializations = Page::where('type', PageType::ONECENTER->value)
+            ->search(rtrim($val))
             ->whereNotIn('id', $ids)
             ->take(5)
             ->get();
@@ -510,6 +553,8 @@ class CreateEdit extends Component
 
         $this->syncSpecializations();
 
+        $this->syncCenters();
+
         session()->flash('success', 'Дані успішно збережено');
 
         $this->redirectRoute('admin.doctors.index');
@@ -648,6 +693,67 @@ class CreateEdit extends Component
         $this->searchSpecialization = '';
     }
 
+    public function syncCenters()
+    {
+        $ids = [];
+
+        foreach ($this->selectedCenters as $item) {
+            $ids[] = $item->id ?? $item['id'];
+        }
+
+        foreach ($this->doctor->centers()->whereNotIn('pages.id', $ids)->get() as $deleteItem) {
+            DoctorCenter::where('page_id', $deleteItem->id)
+                ->where('doctor_id', $this->doctor->id)
+                ->first()
+                ->delete();
+        }
+
+        foreach ($this->selectedCenters as $item) {
+            DoctorCenter::firstOrCreate([
+                'doctor_id' => $this->doctor->id,
+                'page_id' => $item->id ?? $item['id'],
+            ]);
+        }
+    }
+
+    public function deleteCenterItem($key)
+    {
+        unset($this->selectedCenters[$key]);
+
+        $ids = [];
+
+        foreach ($this->selectedCenters as $item) {
+            $ids[] = $item->id ?? $item['id'];
+        }
+
+        $this->centers = Page::where('type', PageType::ONECENTER->value)
+            ->whereNotIn('id', $ids)
+            ->take(5)
+            ->get();
+    }
+
+    public function selectCenter($id)
+    {
+        $center = Page::where('type', PageType::ONECENTER->value)
+            ->find($id);
+
+        $this->searchCenter = $center->title;
+
+        $this->selectedCenters[] = $center;
+
+        $ids = [];
+
+        foreach ($this->selectedCenters as $item) {
+            $ids[] = $item->id ?? $item['id'];
+        }
+
+        $this->centers = Page::where('type', PageType::ONECENTER->value)
+            ->whereNotIn('id', $ids)
+            ->take(5)
+            ->get();
+
+        $this->searchCenter = '';
+    }
 
     public function render()
     {

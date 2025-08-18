@@ -417,4 +417,6 @@ return [
     'second_city_first_phone' => 'Номер телефона второго города',
     'create_affiliate' => 'Добавление филиала',
     'vacancies_app_list' => 'Список заявлений вакансий',
+    'doctor_centers' => 'Список центров доктора',
+    'add_center' => 'Добавить центр',
 ];

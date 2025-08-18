@@ -428,5 +428,6 @@ return [
     'first_city_first_phone' => 'Перший номер телефону першого міста',
     'first_city_second_phone' => 'Другий номер телефону першого міста',
     'second_city_first_phone' => 'Номер телефону другого міста',
-
+    'doctor_centers' => 'Список центрів лікаря',
+    'add_center' => 'Додати центр',
 ];

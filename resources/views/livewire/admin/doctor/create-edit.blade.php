@@ -870,6 +870,62 @@
                                             </div>
                                         </div>
 
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group mb-1">
+                                                                <label>{{ __('admin.doctor_centers') }}
+                                                                </label>
+                                                                @forelse($this->selectedCenters ?? [] as $key => $center)
+                                                                    <li class="flex justify-between items-center py-2 px-3 border-b border-[#1f293733]"
+                                                                        style="border-color: #1f293733">
+                                                                        <span>{{ $center->title ?? $center['title'] }}</span>
+                                                                        <a wire:click="deleteCenterItem({{ $key }})" style="cursor: pointer"><i class="fa fa-trash text-danger font-18"></i></a>
+                                                                    </li>
+                                                                @empty
+                                                                    <li class="py-2 px-3">{{ __('admin.empty') }}</li>
+                                                                @endforelse
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group mb-1">
+                                                                <label>{{ __('admin.add_center') }}
+                                                                </label>
+                                                                <input type="search" tabIndex="0"
+                                                                placeholder="Search"
+                                                                wire:model.live="searchCenter"
+                                                                    class="form-control">
+                                                            </div>
+                                                            @if(count($this->centers))
+                                                            <div class="dropdown open w-full">
+                                                                <ul tabindex="0"
+                                                                    class="dropdown-content dropdown-open menu p-2 shadow rounded-box w-fit min-w-52 max-w-[400px] bg-white z-50">
+                                                                    @foreach ($this->centers as $center)
+                                                                        <li
+                                                                            wire:click="selectCenter('{{ $center->id }}')">
+                                                                            <span>{{ $center->title }}</span>
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

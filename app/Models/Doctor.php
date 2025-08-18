@@ -129,4 +129,10 @@ class Doctor extends Model
 
         return __('web.years');
     }
+
+    public function centers()
+    {
+        return $this->belongsToMany(Page::class, DoctorCenter::class, 'doctor_id', 'page_id')
+            ->withTimestamps();
+    }
 }

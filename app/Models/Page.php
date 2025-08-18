@@ -43,7 +43,7 @@ class Page extends Model implements TranslatableContract
     {
         return $this->hasMany(PageTextBlock::class);
     }
-    
+
     public function briefBlocks(): HasMany
     {
         return $this->hasMany(BriefBlock::class);
@@ -59,4 +59,18 @@ class Page extends Model implements TranslatableContract
         return $this->morphToMany(Review::class, 'reviewable');
     }
 
+    public function scopeSearch($query, $val)
+    {
+        return $query->when($val, function($q) use ($val) {
+            $q->whereHas('translations', function($q2) use ($val) {
+                $q2->where('title', 'like', "%$val%");
+            });
+        });
+    }
+
+    public function doctors()
+    {
+        return $this->belongsToMany(Doctor::class, DoctorCenter::class, 'page_id', 'doctor_id')
+            ->withTimestamps();
+    }
 }
